@@ -4,10 +4,11 @@ const path = require('path');
 const http = require('http');
 const fs = require('fs');
 const compression = require('compression');
+const expressEnforcesSSL = require('express-enforces-ssl');
 const app = express();
 
 const mode = 'https';
-const port = mode === 'http' ? 3000 : 443;
+const port = process.env.PORT || (mode === 'http' ? 3000 : 443);
 
 // error handling;
 function errorHandler (err, req, res, next) {
@@ -16,6 +17,12 @@ function errorHandler (err, req, res, next) {
   }
   res.status(500);
   res.render('error', { error: err });
+}
+
+if (port === 443) {
+  // force https;
+  app.enable('trust proxy');
+  app.use(expressEnforcesSSL());
 }
 
 // gzip compress;
@@ -44,3 +51,4 @@ app.listen = function(port) {
 };
 
 app.listen(port);
+
