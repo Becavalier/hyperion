@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Docker 最佳实践（三） | 曜彤.手记</title><meta name="description" content="本篇将讨论 Docker 用于构建微服务的相关实践。如何将 Docker 用于生产环境，并且构建一个更复杂的多容器应用？同时利用链接和卷等 Docker 特性来管理 Docker 中的应用，以及 Docker 集群等。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a></h1><p itemprop="description">随手写写，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="/scripts/index.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/zoomage.js@1.1.3/dist/zoomage.min.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="735484af63d3af597c0d252019506354" class="full"><h1 itemprop="headline" class="post-heading">Docker 最佳实践（三）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2017-11-09T07:53:48.000Z"> 2017 / 11 / 09, 15:53:48</time></span><span class="page-tag-anchor"><a href="/tags/Docker" itemprop="url">#Docker</a>&nbsp;&nbsp;</span></div><br><p>本篇将讨论 Docker 用于构建微服务的相关实践。如何将 Docker 用于生产环境，并且构建一个更复杂的多容器应用？同时利用链接和卷等 Docker 特性来管理 Docker 中的应用，以及 Docker 集群等。</p>
+<h4 id="1、Docker-Compose："><a href="#1、Docker-Compose：" class="headerlink" title="1、Docker Compose："></a>1、Docker Compose：</h4><p>Docker Compose 可以进行简单的容器编排，将容器服务化。安装 Docker Compose。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 Docker Compose；</span>
+<span class="token function">sudo</span> curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -s<span class="token variable">`</span></span>-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -m<span class="token variable">`</span></span> -o /usr/local/bin/docker-compose
+<span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose
+docker-compose --version
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编写 Dockerfile 以及应用程序相关的文件。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Dockerfile；</span>
+FROM python:2.7
+MAINTAINER YHSPY <span class="token operator">&lt;</span>yhorg@hotmail.com<span class="token operator">></span>
+ENV REFRESHED_AT 20167-11-09
+ADD <span class="token keyword">.</span> /composeapp
+WORKDIR /composeapp
+RUN pip <span class="token function">install</span> -r requirements.txt
+
+<span class="token comment" spellcheck="true"># Application(app.py/requirements.txt)；</span>
+<span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编写 docker-compose.yml 配置 Docker Compose 来创建服务。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">version: <span class="token string">'3'</span>
+services:
+  web:
+    image: jamtur01/composeapp
+    command: python app.py
+    ports:
+     - <span class="token string">"5000:5000"</span>
+    volumes:
+     - .:/composeapp
+    links:
+     - redis
+  redis:
+    image: redis
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行服务。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker-compose up
+docker-compose logs
+docker-compose stop
+docker-compose <span class="token function">kill</span>
+docker-compose <span class="token function">rm</span>
+docker-compose <span class="token function">ps</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、Consul、服务发现和-Docker："><a href="#2、Consul、服务发现和-Docker：" class="headerlink" title="2、Consul、服务发现和 Docker："></a>2、Consul、服务发现和 Docker：</h4><p>（待补充）</p>
+<h4 id="3、Docker-Swarm："><a href="#3、Docker-Swarm：" class="headerlink" title="3、Docker Swarm："></a>3、Docker Swarm：</h4><p>Docker Swarm 是一个原生的 Docker 集群管理工具，支持容器的跨宿主节点的集群管理。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 拉取 Docker Swarm 镜像；</span>
+<span class="token function">sudo</span> docker pull swarm
+
+<span class="token comment" spellcheck="true"># 初始化主节点；</span>
+<span class="token function">sudo</span> docker swarm init --advertise-addr <span class="token operator">&lt;</span>manager-ip<span class="token operator">></span>
+<span class="token function">sudo</span> docker info
+<span class="token function">sudo</span> docker node <span class="token function">ls</span>
+
+<span class="token comment" spellcheck="true"># 设置从节点；</span>
+<span class="token punctuation">(</span>Optional<span class="token punctuation">)</span> <span class="token function">sudo</span> docker swarm <span class="token function">join</span> --token <span class="token operator">&lt;</span>token<span class="token operator">></span> 127.0.0.1:2377
+
+
+<span class="token comment" spellcheck="true"># 创建服务；</span>
+<span class="token function">sudo</span> docker <span class="token function">service</span> create --replicas 1 --name <span class="token operator">&lt;</span>name<span class="token operator">></span> -p <span class="token operator">&lt;</span>local<span class="token operator">></span>:<span class="token operator">&lt;</span>remote<span class="token operator">></span> -e <span class="token string">"ENV_PASS=yue.lu"</span> -t <span class="token operator">&lt;</span>image<span class="token operator">></span>
+
+
+<span class="token function">sudo</span> docker <span class="token function">service</span> <span class="token function">ls</span>
+<span class="token function">sudo</span> docker <span class="token function">service</span> inspect <span class="token operator">&lt;</span>name<span class="token operator">></span>
+<span class="token function">sudo</span> docker <span class="token function">service</span> <span class="token function">rm</span> <span class="token operator">&lt;</span>name<span class="token operator">></span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4、Kubernetes："><a href="#4、Kubernetes：" class="headerlink" title="4、Kubernetes："></a>4、Kubernetes：</h4><p>Kubernetes是一个开放源代码系统，用于跨多个主机来管理 Docker 化等应用程序，为应用程序的部署，维护和扩展提供基本的功能。我们这里使用 Minikube 在本地创建一个单节点单 Kubernetes 集群，同时使用 <code>kubectl</code> 命令行工具来管理 Kubernetes 集群（kubectl 是一个用于操作 Kubernetes 集群的命令行接口）。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 首先安装 kubectl 命令行工具；</span>
+curl -LO https://storage.googleapis.com/kubernetes-release/release/<span class="token variable"><span class="token variable">$(</span>curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt<span class="token variable">)</span></span>/bin/linux/amd64/kubectl
+<span class="token function">chmod</span> +x ./kubectl
+<span class="token function">sudo</span> <span class="token function">mv</span> ./kubectl /usr/local/bin/kubectl
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 可选的本机单集群；</span>
+<span class="token comment" spellcheck="true"># https://github.com/kubernetes/minikube</span>
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x minikube <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">mv</span> minikube /usr/local/bin/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">minikube version
+minikube start
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>安装依赖 VirtualBox（由于 ECS 等云服务器本身即基于虚拟化的产品，因此并不能在 ECS 等产品上再使用嵌套的虚拟化服务 /proc/xen）。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /etc/yum.repos.d/
+<span class="token function">wget</span> http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
+yum update
+yum <span class="token function">install</span> binutils qt gcc <span class="token function">make</span> patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
+<span class="token function">export</span> KERN_DIR<span class="token operator">=</span>/usr/src/kernels/<span class="token operator">&lt;</span>kernels_version<span class="token operator">></span>
+yum <span class="token function">install</span> VirtualBox-5.2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">kubectl run <span class="token operator">&lt;</span>name<span class="token operator">></span> --image<span class="token operator">=</span><span class="token operator">&lt;</span>image<span class="token operator">></span>
+kubectl get pods
+kubectl expose deployment <span class="token operator">&lt;</span>name<span class="token operator">></span> --port <span class="token operator">&lt;</span>port<span class="token operator">></span> --type LoadBalancer
+kubectl get services
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过配置文件来创建 Pods，Pods 是一个或一组容器的集合，每一个 Pods 对应于一个逻辑上的应用程序。Pods 内部还有 Volumes，这些 Volumes 组成了该 Pods 的数据层。整个 Pods 共享一个网络命名空间（IP），内部的容器和 Volumes 之间可以相互访问。</p>
+<p><img src="1.png" alt=""></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># pods.yaml</span>
+apiVersion: v1
+kind: Pod
+metadata:
+  name: monolith
+  labels:
+    app: monolith
+spec:
+  containers:
+    - name: monolith
+      image: udacity/example-monolith:1.0.0
+      args:
+        - <span class="token string">"-http=0.0.0.0:80"</span>
+        - <span class="token string">"-health=0.0.0.0:81"</span>
+        - <span class="token string">"-secret=secret"</span>
+      ports:
+        - name: http
+          containerPort: 80
+        - name: health
+          containerPort: 81
+      resources:
+        limits:
+          cpu: 0.2
+          memory: <span class="token string">"10Mi"</span>
+      livenessProbe:
+        httpGet:
+          path: /healthz
+          port: 81
+          scheme: HTTP
+        initialDelaySeconds: 5
+        periodSeconds: 15
+        timeoutSeconds: 5
+      readinessProbe:
+        httpGet:
+          path: /readiness
+          port: 81
+          scheme: HTTP
+        initialDelaySeconds: 5
+        timeoutSeconds: 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">kubectl create -f pods.yaml
+kubectl get pods
+kubectl describe pods monolith
+
+kubectl port-forward monolith 10080:80 <span class="token comment" spellcheck="true"># 端口代理；</span>
+kubectl logs monolith
+kubectl <span class="token function">exec</span> monolith --stdin --tty -c monolith /bin/sh <span class="token comment" spellcheck="true"># 打开一个与 Pods 进行交互的终端；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Docker 常用命令总结：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># remove exited containers:</span>
+docker <span class="token function">ps</span> --filter status<span class="token operator">=</span>dead --filter status<span class="token operator">=</span>exited -aq <span class="token operator">|</span> <span class="token function">xargs</span> -r docker <span class="token function">rm</span> -v
+
+<span class="token comment" spellcheck="true"># remove unused images:</span>
+docker images --no-trunc <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'&lt;none>'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{ print <span class="token variable">$3</span> }'</span> <span class="token operator">|</span> <span class="token function">xargs</span> -r docker rmi
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2017-11-09T07:53:48.000Z"> 2019 / 02 / 20, 13:58:36</time></span></div></article><br><div class="article-end-saparator"><span class="line"></span><span class="text">我也是有底线的</span><span class="line"></span></div><span class="next-post"><a href="/2017/11/07/Docker-最佳实践（二）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/11/12/The-Twelve-Factor-App/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main></body></html>

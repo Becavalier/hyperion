@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Docker 最佳实践（二） | 曜彤.手记</title><meta name="description" content="接着上一篇文章，我们继续深入了解并学习关于 Docker 的基础知识以及相关基于 Docker 实现的典型架构解决方案。Docker 在协调线下／上多环境开发等场景下有着其独特的优势。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a></h1><p itemprop="description">随手写写，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="/scripts/index.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/zoomage.js@1.1.3/dist/zoomage.min.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="9dae5e272294cac673f5a8a492eb01a9" class="full"><h1 itemprop="headline" class="post-heading">Docker 最佳实践（二）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2017-11-07T05:52:09.000Z"> 2017 / 11 / 07, 13:52:09</time></span><span class="page-tag-anchor"><a href="/tags/Docker" itemprop="url">#Docker</a>&nbsp;&nbsp;</span></div><br><p>接着上一篇文章，我们继续深入了解并学习关于 Docker 的基础知识以及相关基于 Docker 实现的典型架构解决方案。Docker 在协调线下／上多环境开发等场景下有着其独特的优势。</p>
+<h4 id="1、Docker-作为本地开发环境："><a href="#1、Docker-作为本地开发环境：" class="headerlink" title="1、Docker 作为本地开发环境："></a>1、Docker 作为本地开发环境：</h4><p>编写 Dockerfile 文件：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Dockerfile</span>
+FROM ubuntu:14.04
+MAINTAINER YHSPY <span class="token string">"yhorg@hotmail.com"</span>
+ENV REFRESHED_AT 2017-11-06
+RUN <span class="token function">apt-get</span> -yqq update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> -yqq <span class="token function">install</span> nginx <span class="token comment" spellcheck="true"># 安装 Nginx；</span>
+RUN <span class="token function">mkdir</span> -p /var/www/html/website <span class="token comment" spellcheck="true"># 容器内创建文件夹；</span>
+ADD nginx/global.conf /etc/nginx/conf.d/ <span class="token comment" spellcheck="true"># 复制本地配置文件到镜像中；</span>
+ADD nginx/nginx.conf /etc/nginx/nginx.conf 
+EXPOSE 80 <span class="token comment" spellcheck="true"># 打开 80 端口；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>构建镜像：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker build -t becavalier/nginx
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>通过镜像来构建可用容器：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 运行容器，并使用 `-v` 参数来挂载本地目录到容器卷，卷可以在容器间进行共享；</span>
+docker run -d -p 80 --name<span class="token operator">=</span><span class="token string">"website"</span> -v <span class="token variable">$PWD</span>/website:/var/www/html/website:rw becavalier/nginx nginx
+<span class="token comment" spellcheck="true"># 常用于多个不同的系统环境，多个不同的框架环境，多个不同的运行环境，公用同一份代码；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、基于-Docker-的微服务容器关联："><a href="#2、基于-Docker-的微服务容器关联：" class="headerlink" title="2、基于 Docker 的微服务容器关联："></a>2、基于 Docker 的微服务容器关联：</h4><p><img src="1.png" alt=""></p>
+<pre class="line-numbers language-bash"><code class="language-bash">ip a show docker0 <span class="token comment" spellcheck="true"># docker0 网络接口，docker0 是一个虚拟的以太网桥，用来连接容器和本地宿主网络；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Docker 每创建一个容器就会创建一组互联的网络接口，两端分别连接容器里的 eth0 接口和宿主机的 veth<em> 接口，这些所有的 veth</em> 接口最后会被绑定到 docker0 的网桥上。</p>
+<p><img src="2.png" alt=""></p>
+<p>如果我们在容器内通过 <code>traceroute</code> 来跟踪一个 TCP 请求的路由节点，会发现所有在容器内发送的请求都会先发送到由 docker0 创建的虚拟子网的网关地址上。</p>
+<p><img src="3.png" alt=""></p>
+<ol>
+<li><strong>通过硬编码 IP 地址进行 Docker 容器之间的互联（如何访问 Container1 的 Http 服务）</strong>：</li>
+</ol>
+<p><img src="4.png" alt=""></p>
+<ol start="2">
+<li><strong>通过 Docker Networking（Docker V1.9 以上）</strong>：</li>
+</ol>
+<p>Docker Networking 会自动更新各个容器内的 /etc/hosts 文件来保证各个容器的 IP 准确。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker network create app <span class="token comment" spellcheck="true"># 创建一个桥接网络；</span>
+docker network inspect app <span class="token comment" spellcheck="true"># 查看桥接网络；</span>
+docker network <span class="token function">ls</span> <span class="token comment" spellcheck="true"># 列出所有网络；</span>
+docker network <span class="token function">rm</span> <span class="token operator">&lt;</span>network<span class="token operator">></span> <span class="token comment" spellcheck="true"># 删除一个桥接网络；</span>
+docker network connect <span class="token operator">&lt;</span>network<span class="token operator">></span> <span class="token operator">&lt;</span>container<span class="token operator">></span> <span class="token comment" spellcheck="true"># 将已有容器加入到网络；</span>
+
+
+<span class="token comment" spellcheck="true"># 在运行容器时指定加入的桥接网络；</span>
+docker run -d --net<span class="token operator">=</span>app --name<span class="token operator">=</span>static_web becavalier/static_web
+
+<span class="token comment" spellcheck="true"># 在桥接网络内的容器通过以下方式即可互相访问；</span>
+<span class="token function">ping</span> <span class="token operator">&lt;</span>network<span class="token operator">></span>.<span class="token operator">&lt;</span>container<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><strong>通过 Docker 链接（Docker V1.9 以下推荐）</strong>：</li>
+</ol>
+<p>Docker 容器的名字是唯一的。使用 Docker 链接创建的容器建交互接口是安全，并且不对外开放的。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动“服务”方；</span>
+docker run -d --name redis becavalier/redis
+<span class="token comment" spellcheck="true"># “客户” 链接 “服务”；</span>
+docker run -p 4567 --name webapp --link redis:db -t -i -v <span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3、Docker-用于-CI："><a href="#3、Docker-用于-CI：" class="headerlink" title="3、Docker 用于 CI："></a>3、Docker 用于 CI：</h4><p>构建运行 Docker 的 Jenkins 服务器 -&gt; Docker 递归（Docker in Docker）运行。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 用于构建 Jenkins 的 Dockerfile；</span>
+FROM ubuntu:14.04
+MAINTAINER yhorg@hotmail.com
+ENV REFRESHED_AT 2017-11-09
+RUN <span class="token function">apt-get</span> update -qq <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> -qqy curl apt-transport 
+-https
+RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 
+<span class="token punctuation">..</span>.
+VOLUME /var/lib/docker <span class="token comment" spellcheck="true"># Docker 用来存储容器的目录；</span>
+<span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建 Docker-Jenkins 容器；</span>
+<span class="token comment" spellcheck="true"># --privileged 标志给予 Docker-Jenkins 足够的权限；</span>
+docker run -p 8080:8080 --name<span class="token operator">=</span>jenkins --privileged -d becavalier_jenkins
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2017-11-07T05:52:09.000Z"> 2019 / 02 / 20, 13:54:20</time></span></div></article><br><div class="article-end-saparator"><span class="line"></span><span class="text">我也是有底线的</span><span class="line"></span></div><span class="next-post"><a href="/2017/11/04/Docker-最佳实践（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/11/09/Docker-最佳实践（三）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main></body></html>

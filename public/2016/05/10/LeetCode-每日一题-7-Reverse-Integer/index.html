@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>LeetCode 每日一题 - 7. Reverse Integer | 曜彤.手记</title><meta name="description" content="LeetCode 每日一题系列，今天第十四题。今天这道题既可以看成是一道字符串的题目，也可以看成是一道数学相关的题目。两种解题方法对应着两种不同的思路，要学会从不同的角度去思考问题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a></h1><p itemprop="description">随手写写，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="/scripts/index.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/zoomage.js@1.1.3/dist/zoomage.min.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="e3eb848263a4df8c48c892e8b13e2bb2" class="full"><h1 itemprop="headline" class="post-heading">LeetCode 每日一题 - 7. Reverse Integer</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2016-05-10T10:22:08.000Z"> 2016 / 05 / 10, 18:22:08</time></span><span class="page-tag-anchor"><a href="/tags/算法" itemprop="url">#算法</a>&nbsp;&nbsp;<a href="/tags/LeetCode" itemprop="url">#LeetCode</a>&nbsp;&nbsp;</span></div><br><p>LeetCode 每日一题系列，今天第十四题。今天这道题既可以看成是一道字符串的题目，也可以看成是一道数学相关的题目。两种解题方法对应着两种不同的思路，要学会从不同的角度去思考问题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】</p>
+<h4 id="7-Reverse-Integer："><a href="#7-Reverse-Integer：" class="headerlink" title="7. Reverse Integer："></a>7. <a href="https://leetcode.com/problems/reverse-integer/" target="_blank" rel="noopener">Reverse Integer</a>：</h4><blockquote>
+<p>Reverse digits of an integer.</p>
+</blockquote>
+<blockquote>
+<p>For the purpose of this problem, assume that your function <strong>returns 0</strong> when the reversed integer <strong>overflows</strong>.</p>
+</blockquote>
+<p><strong>Example：</strong></p>
+<pre class="line-numbers language-text"><code class="language-text">Example1: x = 123, return 321
+
+Example2: x = -123, return -321
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>0. 题目大意：</strong></p>
+<p>给定一个数字，求将该数所有位上的数倒序排列后新生成的数，新数和原数的正负性保持不变。</p>
+<p><strong>注意</strong>：如果新数的大小不在 Int 类型的范围内（过大或过小）则返回数字0。</p>
+<p><strong>1. 第一种方法，当做字符串：</strong></p>
+<p>思路很简单，首先将给定的数字转换成字符串，然后再将该字符串分割转换成字符数组。此时使用我们常用的“双指针”法将数组内的所有元素倒序排列，再转换成整数类型即可。不要忘记检测转换之后的整数是否有溢出的问题，这里直接使用 <code>try...catch</code> 语句来检查是否有 <strong>NumberFormatException</strong> 异常出现。代码如下所示：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">reverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 保存原数字的正负符号；</span>
+    <span class="token keyword">int</span> flag <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 取绝对值；</span>
+    x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 开始拆分；</span>
+    String temp <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> tempChar <span class="token operator">=</span> temp<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 用双指针方法“倒序”排列原数字；</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> tempChar<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> j <span class="token operator">=</span> tempChar<span class="token punctuation">.</span>length <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">>=</span> j<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">char</span> tempInt <span class="token operator">=</span> tempChar<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        tempChar<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tempChar<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        tempChar<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> tempInt<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        result <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>tempChar<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">*</span> flag<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">NumberFormatException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 如果遇到溢出，则返回0；</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">1032 / 1032 test cases passed.
+Status: Accepted
+Runtime: 6 ms
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><strong>2. 第二种方法，当做数字：</strong></p>
+<p>第二种方法的思路同样也十分简单，既然传进来的是一个数字那么我们就直接把它当做数字来处理。将数字<strong>循环除10</strong>来获得各个分位上的数字，最后再将各个分位的数字乘以对应的10的幂次（注意低分位应该乘以高分位对应阶数的10的幂）重新相加即可。代码如下所示：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">reverseOptimize</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 保留正负性；</span>
+    <span class="token keyword">int</span> flag <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 取绝对值；</span>
+    x <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    String temp <span class="token operator">=</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 获得数字位数；</span>
+    <span class="token keyword">char</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> tempChar <span class="token operator">=</span> temp<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> bitLen <span class="token operator">=</span> tempChar<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">long</span> container <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 循环次数为位数；</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> bitLen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> bit <span class="token operator">=</span> x <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 取出该位；</span>
+        container <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">long</span><span class="token punctuation">)</span><span class="token punctuation">(</span>container <span class="token operator">+</span> bit <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> bitLen <span class="token operator">-</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 用一个 Long 型变量来存储最后的值（防止溢出）；</span>
+
+        <span class="token comment" spellcheck="true">// 溢出则返回0；</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>container <span class="token operator">></span> Integer<span class="token punctuation">.</span>MAX_VALUE <span class="token operator">||</span> container <span class="token operator">&lt;</span> Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> container <span class="token operator">*</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">1032 / 1032 test cases passed.
+Status: Accepted
+Runtime: 4 ms
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2016-05-10T10:22:08.000Z"> 2019 / 02 / 10, 10:49:47</time></span></div></article><br><div class="article-end-saparator"><span class="line"></span><span class="text">我也是有底线的</span><span class="line"></span></div><span class="next-post"><a href="/2016/05/08/LeetCode-每日一题-6-ZigZag-Conversion/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/05/12/前端那些事儿-URL-对象/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main></body></html>
