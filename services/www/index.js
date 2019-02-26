@@ -5,10 +5,13 @@ const http = require('http');
 const fs = require('fs');
 const compression = require('compression');
 const expressEnforcesSSL = require('express-enforces-ssl');
+
 const app = express();
 
-const mode = 'https';
-const port = process.env.PORT || (mode === 'http' ? 3000 : 443);
+const isProd = process.env.state === 'production';
+const port = isProd ? 443 : 3000;
+
+console.info(`[info] server selected port :${port}.`);
 
 // error handling;
 function errorHandler (err, req, res, next) {
@@ -19,10 +22,13 @@ function errorHandler (err, req, res, next) {
   res.render('error', { error: err });
 }
 
-if (port === 443) {
+if (isProd) {
   // force https;
   app.enable('trust proxy');
   app.use(expressEnforcesSSL());
+
+  // listen 80;
+  http.createServer(app).listen(80);
 }
 
 // gzip compress;
@@ -38,7 +44,7 @@ app.use(errorHandler);
 app.listen = function(port) {
   let server = null;
 
-  if (mode === 'https') {
+  if (isProd) {
     server = https.createServer({
       ca: fs.readFileSync('/etc/pki/tls/certs/ca_bundle.crt'),
       key: fs.readFileSync('/etc/pki/tls/private/private.key'),
@@ -51,4 +57,3 @@ app.listen = function(port) {
 };
 
 app.listen(port);
-

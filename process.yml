@@ -1,8 +1,8 @@
 apps:
   - script: ./services/www/index.js
     name: Article
-    instances: "max"
+    instances: max
     watch: true
     exec_mode: cluster
     env:
-      PORT: 80
+      state: production
