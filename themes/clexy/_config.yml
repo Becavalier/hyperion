@@ -1,0 +1,15 @@
+# config
+logo: /images/logo.png
+menu:
+  首页: ' '
+  文章: articles
+  作品: works
+  标签: tags
+  关于: author
+
+# Content
+excerpt_link: Read More
+
+# Miscellaneous
+#rss: /atom.xml
+google_analytics:
