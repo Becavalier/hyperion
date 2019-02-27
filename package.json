@@ -1,14 +1,15 @@
 {
   "name": "articles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "hexo": {
     "version": "3.8.0"
   },
   "scripts": {
-    "build": "hexo clean && hexo g && cp -R extra/ public/",
+    "build": "hexo clean && hexo g && npm run generate-sw && cp -R extra/ public/",
     "serve": "npm run build && hexo s",
-    "daemon": "pm2 start ./process.yml"
+    "daemon": "pm2 start ./process.yml",
+    "generate-sw": "workbox generateSW workbox-config.js"
   },
   "dependencies": {
     "compression": "^1.7.3",

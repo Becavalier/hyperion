@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', e => {
   const id = document.querySelector('article').getAttribute('post-id');
   console.log(`[id: ${id}]`);
 
+
   // back to top;
   const action = () => {
     if (window.getComputedStyle(document.body, null).getPropertyValue('flex-direction') === 'column') {
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', e => {
   };
   document.querySelector('.touch-top').addEventListener('touchstart', action);
   document.querySelector('.touch-top').addEventListener('click', action);
+
 
   // image zooming;
   const canvasContainer = document.querySelector('.canvas-containter');
@@ -46,3 +48,11 @@ document.addEventListener('DOMContentLoaded', e => {
     canvasContainer.classList.remove('animation-show');
   });
 });
+
+// service worker;
+if ('serviceWorker' in window.navigator) {
+  // use the window load event to keep the page load performant;
+  window.addEventListener('load', () => {
+    window.navigator.serviceWorker.register('/sw.js');
+  });
+}

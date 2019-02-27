@@ -46,7 +46,11 @@ app.listen = function(port) {
 
   if (isProd) {
     server = https.createServer({
-      ca: fs.readFileSync('/etc/pki/tls/certs/ca_bundle.crt'),
+      ca: [
+        fs.readFileSync('/etc/pki/tls/certs/ca_bundle.crt'), 
+        // intermediary ca;
+        fs.readFileSync('/alidata/server/httpd/ssl_key/lets-encrypt-x3-cross-signed.pem')
+      ],
       key: fs.readFileSync('/etc/pki/tls/private/private.key'),
       cert: fs.readFileSync('/etc/pki/tls/certs/certificate.crt')
     }, this);
