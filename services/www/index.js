@@ -5,6 +5,7 @@ const http = require('http');
 const fs = require('fs');
 const compression = require('compression');
 const expressEnforcesSSL = require('express-enforces-ssl');
+const setInterfaceEntrance = require('./graphql-server');
 
 const app = express();
 
@@ -22,6 +23,9 @@ function errorHandler (err, req, res, next) {
   res.render('error', { error: err });
 }
 
+app.use(errorHandler);
+
+
 if (isProd) {
   // force https;
   app.enable('trust proxy');
@@ -37,10 +41,11 @@ app.use(compression());
 // set static folder;
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));
 
-// set error handler;
-app.use(errorHandler);
+// set api routes;
+setInterfaceEntrance(app, isProd);
 
 
+// listen port;
 app.listen = function(port) {
   let server = null;
 
