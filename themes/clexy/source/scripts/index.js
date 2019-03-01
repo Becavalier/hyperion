@@ -73,43 +73,55 @@ document.addEventListener('DOMContentLoaded', async e => {
     `;
   }
 
-  document.querySelector('.submit-comment').addEventListener('click', async () => {
+  document.querySelector('.submit-comment').addEventListener('click', async e => {
+    const target = e.target || e.srcElement;
     const content = contentNode.value;
     const publisher = publisherNode.value;
     if (content && publisher) {
-      const { 
-        data: {
-          data: {
-            insertPostComment
-          } 
-        }
-      } = await axios.post('/graphql', {
-        query: `
-mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
-  insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
-    ...post
-  }
-}
+      target.disabled = true;
+      target.innerText = '... 提交中 ...';
 
-fragment post on PostComment {
-  id
-  publisher
-  content
-  ipAddr
-  publishTime
-}
-        `,
-        variables: {
-          postId, content, publisher
-        }
-      });
-      let ph = commentDisplayNode.querySelector('.placeholder');
-      ph && ph.remove();
+      try {
+        const { 
+          data: {
+            data: {
+              insertPostComment
+            } 
+          }
+        } = await axios.post('/graphql', {
+          query: `
+  mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
+    insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
+      ...post
+    }
+  }
+  
+  fragment post on PostComment {
+    id
+    publisher
+    content
+    ipAddr
+    publishTime
+  }
+          `,
+          variables: {
+            postId, content, publisher
+          }
+        });
       
-      commentDisplayNode.insertAdjacentHTML('afterbegin', wrapCommentSnippet(insertPostComment));
-      (contentNode.value = '') || (publisherNode.value = '');
+        let ph = commentDisplayNode.querySelector('.placeholder');
+        ph && ph.remove();
+        
+        commentDisplayNode.insertAdjacentHTML('afterbegin', wrapCommentSnippet(insertPostComment));
+        (contentNode.value = '') || (publisherNode.value = '');
+        // move top;
+        window.location.href = "#comments";
+      } finally {
+        target.disabled = false;
+        target.innerText = '发布';
+      }
     } else {
-      alert("请输入【评论内容】和【昵称】后再提交！");
+      alert("请同时输入【评论内容】和【昵称】后再提交！");
     }
   });
 
