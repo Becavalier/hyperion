@@ -1,8 +1,4 @@
-document.addEventListener('DOMContentLoaded', e => { 
-  // for comments interfaces;
-  const id = document.querySelector('article').getAttribute('post-id');
-  console.log(`[id: ${id}]`);
-
+document.addEventListener('DOMContentLoaded', async e => { 
 
   // back to top;
   const action = () => {
@@ -47,6 +43,115 @@ document.addEventListener('DOMContentLoaded', e => {
     canvasContainer.classList.add('animation-hide');
     canvasContainer.classList.remove('animation-show');
   });
+
+
+  // comments;
+  const postId = document.querySelector('article').getAttribute('post-id');
+
+  const contentNode = document.querySelector('.comments-input textarea');
+  const publisherNode = document.querySelector('.comments-input input[type="text"]');
+  const commentDisplayNode = document.querySelector(".comments-display-container");
+  
+  // "@";
+  commentDisplayNode.addEventListener('click', e => {
+    const target = e.target || e.srcElement;
+    if (target.className === 'nickname') {
+      contentNode.value = `@${target.innerText} ` + contentNode.value;
+    }
+  });
+
+  // wrapping comment DOM;
+  const wrapCommentSnippet = (comment) => {
+    return `
+      <div class="comment-snippet">
+        <div>
+          <span class="nickname">${comment.publisher}</span>
+          <span class="date">${comment.publishTime}</span>
+        </div>
+        <div class="content">${comment.content}</div>
+      </div>
+    `;
+  }
+
+  document.querySelector('.submit-comment').addEventListener('click', async () => {
+    const content = contentNode.value;
+    const publisher = publisherNode.value;
+    if (content && publisher) {
+      const { 
+        data: {
+          data: {
+            insertPostComment
+          } 
+        }
+      } = await axios.post('http://localhost:3000/graphql', {
+        query: `
+mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
+  insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
+    ...post
+  }
+}
+
+fragment post on PostComment {
+  id
+  publisher
+  content
+  ipAddr
+  publishTime
+}
+        `,
+        variables: {
+          postId, content, publisher
+        }
+      });
+      let ph = commentDisplayNode.querySelector('.placeholder');
+      ph && ph.remove();
+      
+      commentDisplayNode.insertAdjacentHTML('afterbegin', wrapCommentSnippet(insertPostComment));
+      (contentNode.value = '') || (publisherNode.value = '');
+    } else {
+      alert("请输入【评论内容】和【昵称】后再提交！");
+    }
+  });
+
+  // query exist comments;
+  const loadComments = async (callback = false) => {
+    const { 
+      data: {
+        data: {
+          postComments
+        } 
+      }
+    } = await axios.get('http://localhost:3000/graphql', {
+      params: {
+        query: `
+query {
+  postComments(postId: "${postId}") {
+    ...post
+  }
+}
+fragment post on PostComment {
+  id
+  publisher
+  content
+  publishTime
+}
+        `
+      }
+    });
+  
+    // dynamic mount;
+    if (Array.isArray(postComments) && postComments.length > 0) {
+      let ph = commentDisplayNode.querySelector('.placeholder');
+      ph && ph.remove();
+      postComments.forEach(comment => {
+        commentDisplayNode.insertAdjacentHTML('beforeend', wrapCommentSnippet(comment));
+      });
+    }
+    
+    callback && callback();
+  }
+
+  loadComments();
 });
 
 // service worker;

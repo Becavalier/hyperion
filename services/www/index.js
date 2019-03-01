@@ -42,7 +42,7 @@ app.use(compression());
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));
 
 // set api routes;
-setInterfaceEntrance(app, isProd);
+setInterfaceEntrance(app);
 
 
 // listen port;

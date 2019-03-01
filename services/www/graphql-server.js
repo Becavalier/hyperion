@@ -1,46 +1,84 @@
-const graphqlHTTP = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { ApolloServer, gql } = require('apollo-server-express');
+const { GraphQLScalarType } = require('graphql');
 const { PostComments } = require('./db');
+const dayjs = require('dayjs');
+require('dayjs/locale/zh-cn'); 
 
-module.exports = (app, isProd) => {
+module.exports = app => {
 
-  app.use('/graphql', graphqlHTTP(async (request, response, graphQLParams) => ({
-    schema: buildSchema(`
-      type Query {
-        postComments(postId: Int!): [PostComment]!
+  const DateScalarType = new GraphQLScalarType({
+    name: 'DateScalarType',
+    description: 'DateScalarType custom scalar type',
+    serialize(value) {
+      // timestamp formatted;
+      return dayjs(value).locale('zh-cn').format('YYYY-MM-DD HH:mm:ss');
+    },
+    parseValue(value) {
+      // Implement your own behavior here by setting the 'result' variable
+      return value;
+    },
+    parseLiteral(ast) {
+      switch (ast.kind) {
+        // Implement your own behavior here by returning what suits your needs
+        // depending on ast.kind
       }
-      type Mutation {
-        insertPostComment(postId: Int!, publisher: String!, content: String!): PostComment!
-      }
-      type PostComment {
-        id: Int,
-        postId: Int,
-        publisher: String,
-        content: String,
-        ipAddr: String,
-        publishTime: Float
-      }
-    `),
-    rootValue: { 
-      postComments: async (args) => {
+    }
+  });
+
+  var typeDefs = gql`
+    scalar DateScalarType
+
+    type Query {
+      postComments(postId: String!): [PostComment]!
+    }
+    type Mutation {
+      insertPostComment(postId: String!, publisher: String!, content: String!): PostComment!
+    }
+    type PostComment {
+      id: Int,
+      postId: String,
+      publisher: String,
+      content: String,
+      ipAddr: String,
+      publishTime: DateScalarType
+    }
+  `;
+
+  var resolvers = {
+    Query: {
+      async postComments(parent, args) {
         return await PostComments.findAll({
           where: {
             postId: args.postId
-          }
+          },
+          order: [
+            ['publishTime', 'DESC'],
+          ]
         });
-      },
-      insertPostComment: async (args) => {
+      }
+    },
+    Mutation: {
+      async insertPostComment(parent, args, context) {
+        const publishTime = new Date();
         let result = await PostComments.create({
           ...args,
-          ipAddr: request.headers['x-forwarded-for'] || request.connection.remoteAddress,
-          publishTime: new Date()
+          ipAddr: context.ipAddr,
+          publishTime,
         });
-        // transform to timestamp;
-        result.publishTime = new Date(result.publishTime).getTime();
         return result;
       }
     },
-    graphiql: !isProd,
-  })));
+    DateScalarType
+  };
+  
+
+  const server = new ApolloServer({ 
+    typeDefs, 
+    resolvers,
+    context: ({ req }) => ({
+      ipAddr: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    })
+  });
+  server.applyMiddleware({ app });
 
 };

@@ -22,7 +22,7 @@ const PostComments = sequelize.define('t_blog_comments', {
     'autoIncrement' : true
   },
   postId: {
-    'type': Sequelize.INTEGER,
+    'type': Sequelize.STRING(128),
     'allowNull': false,
     'unique': false
   },

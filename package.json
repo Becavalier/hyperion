@@ -1,6 +1,6 @@
 {
-  "name": "articles",
-  "version": "1.0.4",
+  "name": "hyperion",
+  "version": "1.0.5",
   "private": true,
   "hexo": {
     "version": "3.8.0"
@@ -13,10 +13,11 @@
     "sync": "git pull --rebase origin master && pm2 reload all"
   },
   "dependencies": {
+    "apollo-server-express": "^2.4.8",
     "compression": "^1.7.3",
+    "dayjs": "^1.8.8",
     "express": "^4.16.4",
     "express-enforces-ssl": "^1.1.0",
-    "express-graphql": "^0.7.1",
     "graphql": "^14.1.1",
     "hexo": "^3.7.0",
     "hexo-generator-archive": "^0.1.5",

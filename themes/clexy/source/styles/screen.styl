@@ -254,8 +254,7 @@ main
     margin 20px 0 30px 0
     align-items center
     span.text
-      width 145px
-      font-size 1.3rem
+      font-size 1.4rem
       font-weight normal
       text-align center
       color #666
@@ -690,6 +689,69 @@ hr
     position relative
     top -9px
 
+.comments-display-container
+  padding 25px
+  font-size 14px
+  div.placeholder
+    color #666
+    display block
+    text-align center
+  .comment-snippet
+    padding 20px 0
+    border-bottom solid 1px #ddd
+    &:last-child
+      border none
+      padding-bottom 0
+    div
+      span
+        font-weight bold
+        margin-right 10px
+        &.nickname
+          cursor pointer
+        &.date
+          font-style italic
+          float right
+      &.content
+        word-break break-all
+        text-indent 2em
+        margin-top 8px
+
+.dot-decoration
+  text-align center
+  font-size 20px
+  &:after
+    content '...'
+
+.comments-input
+  margin 20px 20px 40px
+  display flex
+  flex-direction column
+  border solid 1px #141414
+  padding 15px
+  font-size 14px
+  textarea
+    flex 1
+    margin 0px
+    height 100px
+    resize none
+    padding 5px 10px
+    border-radius 2px
+    border solid 1px #ddd
+  div
+    margin-top 10px
+    display flex
+    flex-direction row
+    input[type="text"]
+      flex 1
+      padding 5px 10px
+    button
+      width 200px
+      background-color #141414
+      color white
+      margin-left 10px
+      font-size 15px
+      height 45px
+
 .animation-show
   animation-name animationShow
   animation-duration .7s
@@ -713,7 +775,7 @@ hr
   to
     opacity 0
     z-index -200
-
+    
 article 
   max-width 1024px
   pre[class*="language-"]
