@@ -5,15 +5,15 @@ My Hexo blog system (deeply customized).
 
 * **Hexo**:
 
-For generating static pages according to */source/_posts*;
+For generating static pages according to */source/_posts*.
 
 * **Expressjs**: 
 
-Supply the basic HTTP service;
+Supply the basic HTTP service.
 
 * **GraphQL + MySQL**: 
 
-Provide the apis for commenting sub-system;
+Provide the apis for commenting sub-system.
 
 * **Workbox**:
 

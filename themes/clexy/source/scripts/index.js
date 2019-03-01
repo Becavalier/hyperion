@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async e => {
             insertPostComment
           } 
         }
-      } = await axios.post('http://localhost:3000/graphql', {
+      } = await axios.post('/graphql', {
         query: `
 mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
   insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
@@ -121,7 +121,7 @@ fragment post on PostComment {
           postComments
         } 
       }
-    } = await axios.get('http://localhost:3000/graphql', {
+    } = await axios.get('/graphql', {
       params: {
         query: `
 query {
