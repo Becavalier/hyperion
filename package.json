@@ -6,7 +6,7 @@
     "version": "3.8.0"
   },
   "scripts": {
-    "build": "hexo clean && hexo g && npm run generate-sw && cp -R extra/ public/",
+    "build": "hexo clean && hexo g && cp -R extra/ public/ && npm run generate-sw",
     "serve": "npm run build && hexo s",
     "daemon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW workbox-config.js",

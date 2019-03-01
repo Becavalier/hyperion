@@ -1580,6 +1580,62 @@ self.__precacheManifest = [
     "revision": "4abc9a2fdd3dc7254f220675eea737c5"
   },
   {
+    "url": "me/css/font-awesome.min.css",
+    "revision": "bb53ad7bffecc0014d64553e96501dce"
+  },
+  {
+    "url": "me/css/style.min.css",
+    "revision": "92d95f6db8e0be019e7d4980867acfd9"
+  },
+  {
+    "url": "me/fonts/fontawesome-webfont.eot",
+    "revision": "25a32416abee198dd821b0b17a198a8f"
+  },
+  {
+    "url": "me/fonts/fontawesome-webfont.svg",
+    "revision": "d7c639084f684d66a1bc66855d193ed8"
+  },
+  {
+    "url": "me/fonts/fontawesome-webfont.ttf",
+    "revision": "1dc35d25e61d819a9c357074014867ab"
+  },
+  {
+    "url": "me/fonts/fontawesome-webfont.woff",
+    "revision": "c8ddf1e5e5bf3682bc7bebf30f394148"
+  },
+  {
+    "url": "me/fonts/fontawesome-webfont.woff2",
+    "revision": "e6cf7c6ec7c2d6f670ae9d762604cb0b"
+  },
+  {
+    "url": "me/images/avatar.jpg",
+    "revision": "9c6591636adbb410915f48734cb481c5"
+  },
+  {
+    "url": "me/images/book-wasm.jpg",
+    "revision": "2a683bd44d7f5f379051b534023e1ffa"
+  },
+  {
+    "url": "me/images/speech-eleme-13.jpg",
+    "revision": "32c0dbd729ad633dfbe00a4971a47d45"
+  },
+  {
+    "url": "me/images/speech-fcc-1.jpg",
+    "revision": "4bf00173ec69498bc7afacd1a2f791c5"
+  },
+  {
+    "url": "me/images/speech-fcc-2.jpg",
+    "revision": "b6e6b750697c65c8621eb486b08ba864"
+  },
+  {
+    "url": "me/images/speech-qcon-2017.jpg",
+    "revision": "53cc863f22a2effb6a5cd95d407c04bc"
+  },
+  {
+    "url": "me/index.html",
+    "revision": "1e46bb6488d267a1c4f57be15e0aeb89"
+  },
+  {
     "url": "page/10/index.html",
     "revision": "4abc9a2fdd3dc7254f220675eea737c5"
   },
@@ -1709,7 +1765,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "bc21f045f52d886966f1a8cefc9bf722"
+    "revision": "bb4b00e2d6faeec1ca887ffc0bc08c1d"
   },
   {
     "url": "tags/Java/index.html",
@@ -1768,8 +1824,8 @@ self.__precacheManifest = [
     "revision": "98d55137053a7c675408f67d73bc9482"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "c31a9122356b5dfc48dee6212c2237cf"
+    "url": "tags/Python/index.html",
+    "revision": "d05f4b31a962c0605eae01f8035a743c"
   },
   {
     "url": "tags/React/index.html",
