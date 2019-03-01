@@ -1701,7 +1701,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "f9d9d5e9d65e4e8ca0bf841bf7cebb6a"
+    "revision": "515c3ce3d5c1907ec970964c834d3465"
   },
   {
     "url": "tags/Android/index.html",
@@ -1765,7 +1765,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "bb4b00e2d6faeec1ca887ffc0bc08c1d"
+    "revision": "ba6df962a04d00867e9e6fc6b0e90d9e"
   },
   {
     "url": "tags/Java/index.html",
