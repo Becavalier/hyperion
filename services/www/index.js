@@ -6,8 +6,6 @@ const fs = require('fs');
 const compression = require('compression');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
-// middlewares;
-const forceWWWMiddleware = require('./middlewares/force-www');
 
 const app = express();
 
@@ -23,7 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(forceWWWMiddleware);
 
 // set static folder;
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));

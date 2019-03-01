@@ -1,0 +1,16 @@
+{
+    "name": "Hyperion",
+    "short_name": "Hyperion",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#141414",
+    "description": "YHSPY's smart hexo system",
+    "icons": [{
+      "src": "/images/apple-touch-icon-57x57",
+      "sizes": "57x57",
+      "type": "image/png"
+    }],
+    "related_applications": [{
+      "platform": "web"
+    }]
+  }
