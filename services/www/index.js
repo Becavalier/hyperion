@@ -14,6 +14,10 @@ const port = isProd ? 443 : 3000;
 
 console.info(`[info] server selected port :${port}.`);
 
+
+// set static folder;
+app.use(express.static(path.resolve(__dirname, '../..', 'public')));
+
 // error handling;
 function errorHandler (err, req, res, next) {
   if (res.headersSent) {
@@ -38,8 +42,6 @@ if (isProd) {
 // gzip compress;
 app.use(compression());
 
-// set static folder;
-app.use(express.static(path.resolve(__dirname, '../..', 'public')));
 
 // set api routes;
 setInterfaceEntrance(app);
