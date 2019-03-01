@@ -6,6 +6,8 @@ const fs = require('fs');
 const compression = require('compression');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
+// middlewares;
+const forceWWWMiddleware = require('./middlewares/force-www');
 
 const app = express();
 
@@ -14,6 +16,14 @@ const port = isProd ? 443 : 3000;
 
 console.info(`[info] server selected port :${port}.`);
 
+// set common middleware attributes;
+app.use((req, res, next) => {
+  req.isProd = isProd;
+  req.port = port;
+  next();
+});
+
+app.use(forceWWWMiddleware);
 
 // set static folder;
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));

@@ -1767,7 +1767,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "460df37aebb88a7ac118280926c6708a"
+    "revision": "1ea4ab07774b027f9b52bc7be17493fa"
   },
   {
     "url": "tags/Java/index.html",
@@ -1826,8 +1826,8 @@ self.__precacheManifest = [
     "revision": "d28f045188d5d748e12ace64d0205155"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "ee7ce7b5d2b6b18a20e5f202dd6cb9ec"
+    "url": "tags/Python/index.html",
+    "revision": "ac4d851295ba79fa408aa605f0561233"
   },
   {
     "url": "tags/React/index.html",
