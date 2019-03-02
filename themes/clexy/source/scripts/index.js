@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', async e => {
       try {
         const response = await axios.post('/graphql', {
           query: `
-  mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
-    insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
+  mutation insertPostComment($comment: CommentInput!) {
+    insertPostComment(comment: $comment) {
       ...post
     }
   }
@@ -104,7 +104,9 @@ document.addEventListener('DOMContentLoaded', async e => {
   }
           `,
           variables: {
-            postId, content, publisher
+            comment: {
+              postId, content, publisher
+            }
           }
         });
 

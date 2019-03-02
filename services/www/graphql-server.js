@@ -28,18 +28,24 @@ module.exports = app => {
   var typeDefs = gql`
     scalar DateScalarType
 
+    input CommentInput {
+      postId: String!
+      publisher: String!
+      content: String!
+    }
+
     type Query {
       postComments(postId: String!): [PostComment]!
     }
     type Mutation {
-      insertPostComment(postId: String!, publisher: String!, content: String!): PostComment!
+      insertPostComment(comment: CommentInput!): PostComment!
     }
     type PostComment {
-      id: Int,
-      postId: String,
-      publisher: String,
-      content: String,
-      ipAddr: String,
+      id: Int
+      postId: String
+      publisher: String
+      content: String
+      ipAddr: String
       publishTime: DateScalarType
     }
   `;
@@ -60,13 +66,14 @@ module.exports = app => {
     Mutation: {
       async insertPostComment(parent, args, context) {
         const publishTime = new Date();
-        if (args.publisher === '@@') {
-          args.publisher = 'YHSPY（博主）';
-        } else if (args.publisher.includes('YHSPY') || args.publisher.includes('博主')) {
+        let comment = args.comment;
+        if (comment.publisher === '@@') {
+          comment.publisher = 'YHSPY（博主）';
+        } else if (comment.publisher.includes('YHSPY') || comment.publisher.includes('博主')) {
           throw new ApolloError('Sorry, submit failed! Please re-check your input params.');
         }
         let result = await PostComments.create({
-          ...args,
+          ...comment,
           ipAddr: context.ipAddr,
           publishTime,
         });

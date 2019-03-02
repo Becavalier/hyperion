@@ -1779,7 +1779,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/index.js",
-    "revision": "f0701f76bb136bff8bfded6a400f559c"
+    "revision": "012428267ba169e59ebd268fbbfd3590"
   },
   {
     "url": "styles/fontawesome.min.css",
@@ -1855,7 +1855,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "7d175a2c5597b839efb8b06cca11edc9"
+    "revision": "80633321f9194c9a37bb2ff9fb0a8c14"
   },
   {
     "url": "tags/Java/index.html",
@@ -1914,8 +1914,8 @@ self.__precacheManifest = [
     "revision": "0de8e71dee8d76ce76afa6f21ed61403"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "fc570780d5d75b417dfde5706b9f8c5a"
+    "url": "tags/Python/index.html",
+    "revision": "b8626b4de44aa5c53ea34d1292e44b18"
   },
   {
     "url": "tags/React/index.html",
