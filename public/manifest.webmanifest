@@ -1,10 +1,10 @@
 {
-    "name": "Hyperion",
-    "short_name": "Hyperion",
-    "start_url": ".",
+    "name": "曜彤.手记",
+    "short_name": "曜彤.手记",
+    "start_url": "/",
     "display": "standalone",
-    "background_color": "#eee",
-    "description": "YHSPY's smart hexo system",
+    "background_color": "#f8f8f8",
+    "description": "随手写写，关于互联网技术、产品与创业",
     "icons": [{
       "src": "/images/apple-touch-icon-57x57",
       "sizes": "57x57",
