@@ -1,9 +1,14 @@
+const DEFAULT_INDEX = 0;
+
 document.addEventListener('DOMContentLoaded', async e => { 
 
   // back to top;
   const action = () => {
     if (window.getComputedStyle(document.body, null).getPropertyValue('flex-direction') === 'column') {
-      document.documentElement.scrollTop = 0;
+      window.scrollTo({ 
+        top: 0, 
+        behavior: "smooth" 
+      });
     } else {
       document.querySelector('main').scrollTop = 0;
     }
@@ -82,13 +87,7 @@ document.addEventListener('DOMContentLoaded', async e => {
       target.innerText = '... 提交中 ...';
 
       try {
-        const { 
-          data: {
-            data: {
-              insertPostComment
-            } 
-          }
-        } = await axios.post('/graphql', {
+        const response = await axios.post('/graphql', {
           query: `
   mutation insertPostComment($postId: String!, $publisher: String!, $content: String!) {
     insertPostComment(postId: $postId, publisher: $publisher, content: $content) {
@@ -108,6 +107,20 @@ document.addEventListener('DOMContentLoaded', async e => {
             postId, content, publisher
           }
         });
+
+        // exception handling;
+        if (Array.isArray(response.data.errors) && response.data.errors.length > 0) {
+          alert(response.data.errors[DEFAULT_INDEX].message);
+          return;
+        }
+
+        const { 
+          data: {
+            data: {
+              insertPostComment
+            } 
+          }
+        } = response;
       
         let ph = commentDisplayNode.querySelector('.placeholder');
         ph && ph.remove();
@@ -116,12 +129,14 @@ document.addEventListener('DOMContentLoaded', async e => {
         (contentNode.value = '') || (publisherNode.value = '');
         // move top;
         window.location.href = "#comments";
+      } catch(e) {
+        console.error(e.message);
       } finally {
         target.disabled = false;
         target.innerText = '发布';
       }
     } else {
-      alert("请同时输入【评论内容】和【昵称】后再提交！");
+      alert("STOP! Please check your input fields.");
     }
   });
 

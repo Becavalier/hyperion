@@ -1,4 +1,4 @@
-const { ApolloServer, gql } = require('apollo-server-express');
+const { ApolloServer, ApolloError, gql } = require('apollo-server-express');
 const { GraphQLScalarType } = require('graphql');
 const { PostComments } = require('./db');
 const dayjs = require('dayjs');
@@ -60,6 +60,11 @@ module.exports = app => {
     Mutation: {
       async insertPostComment(parent, args, context) {
         const publishTime = new Date();
+        if (args.publisher === '@@') {
+          args.publisher = 'YHSPY（博主）';
+        } else if (args.publisher.includes('YHSPY') || args.publisher.includes('博主')) {
+          throw new ApolloError('Sorry, submit failed! Please re-check your input params.');
+        }
         let result = await PostComments.create({
           ...args,
           ipAddr: context.ipAddr,

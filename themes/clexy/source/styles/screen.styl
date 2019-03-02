@@ -622,10 +622,15 @@ hr
               white-space nowrap
               span[itemprop="category"]
                 display none
+      .comments-input
+        margin 20px 0 40px
 
 // ===========================================================================
 // 6. Custimization
 // ===========================================================================
+input, textarea
+   -webkit-appearance none
+   
 @font-face {        
   font-family: 'CodeFont';        
   src: url('/fonts/code/CodeFont.eot');        
@@ -680,6 +685,7 @@ hr
   border solid 4px #141414
   cursor pointer
   overflow hidden
+  z-index 999
   span
     width: 0
     height: 0
@@ -744,13 +750,16 @@ hr
     input[type="text"]
       flex 1
       padding 5px 10px
-    button
+    button.submit-comment
       width 200px
       background-color #141414
       color white
       margin-left 10px
       font-size 15px
       height 45px
+      border none
+      &[disabled]
+        background-color grey
 
 .animation-show
   animation-name animationShow
