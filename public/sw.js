@@ -1791,7 +1791,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "ee9cb7c6a788e1337f6204d3f49423a1"
+    "revision": "c9d85520ed8696625670eba11996ec79"
   },
   {
     "url": "tags/Android/index.html",
@@ -1855,7 +1855,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "f17f6523bb276d114d46e8c4f8c4cc16"
+    "revision": "7d175a2c5597b839efb8b06cca11edc9"
   },
   {
     "url": "tags/Java/index.html",
@@ -1914,8 +1914,8 @@ self.__precacheManifest = [
     "revision": "0de8e71dee8d76ce76afa6f21ed61403"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "b8626b4de44aa5c53ea34d1292e44b18"
+    "url": "tags/python/index.html",
+    "revision": "fc570780d5d75b417dfde5706b9f8c5a"
   },
   {
     "url": "tags/React/index.html",
