@@ -1,45 +1,42 @@
 {
     "name": "曜彤.手记",
-    "short_name": "曜彤.手记",
-    "start_url": "/",
+    "short_name": "Hyperion",
+    "start_url": "/?source=pwa",
     "display": "standalone",
     "background_color": "#f8f8f8",
     "description": "随手写写，关于互联网技术、产品与创业",
     "icons": [{
-      "src": "/images/apple-touch-icon-57x57",
+      "src": "/images/apple-touch-icon-57x57.png",
       "sizes": "57x57",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-60x60",
+      "src": "/images/apple-touch-icon-60x60.png",
       "sizes": "60x60",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-72x72",
+      "src": "/images/apple-touch-icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-76x76",
+      "src": "/images/apple-touch-icon-76x76.png",
       "sizes": "76x76",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-114x114",
+      "src": "/images/apple-touch-icon-114x114.png",
       "sizes": "114x114",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-120x120",
+      "src": "/images/apple-touch-icon-120x120.png",
       "sizes": "120x120",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-144x144",
+      "src": "/images/apple-touch-icon-144x144.png",
       "sizes": "144x144",
       "type": "image/png"
     }, {
-      "src": "/images/apple-touch-icon-152x152",
+      "src": "/images/apple-touch-icon-152x152.png",
       "sizes": "152x152",
       "type": "image/png"
     }],
-    "related_applications": [{
-      "platform": "web",
-      "url": "https://www.yhspy.com/"
-    }]
+    "related_applications": []
   }

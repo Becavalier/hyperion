@@ -23,6 +23,10 @@ Just service worker, for caching static resources.
 
 Used for website visitor statistic.
 
+* **PWA**:
+
+PWA supported.
+
 
 ### TODO
 
