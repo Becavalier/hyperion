@@ -1723,7 +1723,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me/index.html",
-    "revision": "1e46bb6488d267a1c4f57be15e0aeb89"
+    "revision": "230ded8ef1b24d4db72406cbea98b242"
   },
   {
     "url": "page/10/index.html",
@@ -1855,7 +1855,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "80633321f9194c9a37bb2ff9fb0a8c14"
+    "revision": "6fa9cc8ec923b1f418ad195c4d2f90e9"
   },
   {
     "url": "tags/Java/index.html",
@@ -1914,8 +1914,8 @@ self.__precacheManifest = [
     "revision": "0de8e71dee8d76ce76afa6f21ed61403"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "b8626b4de44aa5c53ea34d1292e44b18"
+    "url": "tags/python/index.html",
+    "revision": "fc570780d5d75b417dfde5706b9f8c5a"
   },
   {
     "url": "tags/React/index.html",
