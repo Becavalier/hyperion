@@ -14,7 +14,17 @@ const port = isProd ? 443 : 3000;
 
 console.info(`[info] server selected port :${port}.`);
 
-// set common middleware attributes;
+// set common middleware / global data;
+const { models } = JSON.parse(
+  fs.readFileSync(
+    path.resolve(__dirname, '../..', 'db.json'), {
+    encoding: 'utf8'
+  }
+));
+global.hexoMeta = {
+  Post: models.Post, Tag: models.Tag
+};
+
 app.use((req, res, next) => {
   req.isProd = isProd;
   req.port = port;

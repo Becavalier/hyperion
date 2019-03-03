@@ -36,17 +36,28 @@ module.exports = app => {
 
     type Query {
       postComments(postId: String!): [PostComment]!
+      searchPostsByKey(key: String!): [PostSearchResult]!
+      searchTagsByKey(key: String!): [TagSearchResult]!
     }
     type Mutation {
       insertPostComment(comment: CommentInput!): PostComment!
     }
     type PostComment {
-      id: Int
-      postId: String
-      publisher: String
-      content: String
+      id: Int!
+      postId: String!
+      publisher: String!
+      content: String!
       ipAddr: String
-      publishTime: DateScalarType
+      publishTime: DateScalarType!
+    }
+    type PostSearchResult {
+      title: String!
+      url: String!
+      date: DateScalarType!
+      rawDate: String!
+    }
+    type TagSearchResult {
+      tagName: String!
     }
   `;
 
@@ -60,6 +71,32 @@ module.exports = app => {
           order: [
             ['publishTime', 'DESC'],
           ]
+        });
+      },
+      async searchPostsByKey(parent, args) {
+        const key = args.key;
+        const reg = new RegExp(`${key}`, 'i');
+        return global.hexoMeta.Post.filter(post => {       
+          return reg.test(post.raw) || reg.test(post.title)
+        }).map(candidate => {
+          const localDate = dayjs(candidate.date).locale('zh-cn').format('YYYY-MM-DD');
+          return {
+            title: candidate.title,
+            url: `/${localDate.replace(/-/g, '/')}/${candidate.slug}`,
+            date: candidate.date,
+            rawDate: candidate.date
+          }
+        });
+      },
+      async searchTagsByKey(parent, args) {
+        const key = args.key;
+        const reg = new RegExp(`${key}`, 'i');
+        return global.hexoMeta.Tag.filter(tag => {       
+          return reg.test(tag.name)
+        }).map(candidate => {
+          return {
+            tagName: candidate.name,
+          }
         });
       }
     },
