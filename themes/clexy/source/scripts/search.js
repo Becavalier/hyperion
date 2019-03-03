@@ -43,7 +43,15 @@ document.addEventListener('DOMContentLoaded', async e => {
   const mountDOMs = document.querySelectorAll('.search-result-container');
   const searchKeyDOM = document.querySelector('.input-search');
   const emptySignDOM = document.querySelector('div.no-result');
-  document.querySelector('.submit-search').addEventListener('click', async e => {
+  const submitButtonDOM = document.querySelector('.submit-search');
+
+  searchKeyDOM.addEventListener('keydown', e => {
+    if (e.keyCode === 13) {
+      submitButtonDOM.click();
+    }
+  });
+  
+  submitButtonDOM.addEventListener('click', async e => {
     const target = e.target || e.srcElement;
     const searchKey = searchKeyDOM.value;
     if (searchKey) {
