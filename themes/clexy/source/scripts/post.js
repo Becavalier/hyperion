@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     return `
       <div class="comment-snippet">
         <div>
-          <span class="nickname">${comment.publisher}</span>
+          <span class="nickname">${comment.publisher.name}</span>
           <span class="date">${comment.publishTime}</span>
         </div>
         <div class="content">${comment.content}</div>
@@ -97,7 +97,10 @@ document.addEventListener('DOMContentLoaded', async e => {
   
   fragment post on PostComment {
     id
-    publisher
+    publisher {
+      name
+      gender
+    }
     content
     ipAddr
     publishTime
@@ -160,7 +163,10 @@ document.addEventListener('DOMContentLoaded', async e => {
   }
   fragment post on PostComment {
     id
-    publisher
+    publisher {
+      name
+      gender
+    }
     content
     publishTime
   }

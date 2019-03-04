@@ -45,7 +45,7 @@ module.exports = app => {
     type PostComment {
       id: Int!
       postId: String!
-      publisher: String!
+      publisher(id: String): Publisher!
       content: String!
       ipAddr: String
       publishTime: DateScalarType!
@@ -58,6 +58,14 @@ module.exports = app => {
     }
     type TagSearchResult {
       tagName: String!
+    }
+    type Publisher {
+      name: String!
+      gender: Gender!
+    }
+    enum Gender {
+      MALE
+      FEMALE
     }
   `;
 
@@ -117,7 +125,15 @@ module.exports = app => {
         return result;
       }
     },
-    DateScalarType
+    DateScalarType,
+    PostComment: {
+      publisher(parent) {
+        return {
+          name: parent.publisher,
+          gender: 'MALE'
+        }
+      }
+    }
   };
   
 
