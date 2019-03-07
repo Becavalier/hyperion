@@ -66,7 +66,7 @@ type Mutation {
 2. 自定义**标量（Scalar）类型**；
 3. 起始节点的跟字段，即**位于 Query 和 Mutation 类型中的资源字段**；
 
-而位于其他位置的字段则可根据实际业务需求来选择性地为其添加 Resolver。为什么说 GraphQL 的资源描述可以组成一个 DAG 无向图？这是因为每一个 Resolver 都不能也不应该将某类型字段解析成包含有本类型字段的值，这样由于回环的出现便无法进行“下降”的解析。一个基于 JavaScript 实现的 Resolver 小例子：
+而位于其他位置的字段则可根据实际业务需求来选择性地为其添加 Resolver。为什么说 GraphQL 的资源描述可以组成一个 DAG 无环图？这是因为每一个 Resolver 都不能也不应该将某类型字段解析成包含有本类型字段的值，这样由于回环的出现便无法进行“下降”的解析。一个基于 JavaScript 实现的 Resolver 小例子：
 
 ```javascript
 Query: {
