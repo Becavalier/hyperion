@@ -95,4 +95,10 @@ about:
   github: https://github.com/Becavalier
   resume: /me
 
+# PWA
 pwa: true
+
+# Sitemap
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap-skeleton.xml
