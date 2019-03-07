@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for post in posts %}
   <url>
+  
     <loc>{{ post.permalink | uriencode }}</loc>
+
     <changefreq>monthly</changefreq>
     {% if post.updated %}
     <lastmod>{{ post.updated.toISOString() }}</lastmod>

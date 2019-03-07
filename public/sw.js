@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "ad4a548b7cf08a3f88e02374c8bcbc60"
+    "revision": "57d3f30d2bac332ca69d40d872b2ee1b"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -1083,7 +1083,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "656bdd3ba6626a522c3f34ef33d5465c"
+    "revision": "c2ed5e2a87c5856e9f679adb46eac8fb"
   },
   {
     "url": "author/index.html",
@@ -1579,7 +1579,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "c1783799d848c1a3a2e6d1477a655330"
+    "revision": "e9da2a328d27d28997169849dba2798d"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1619,7 +1619,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "d59238ee292f7b41310b0f8e00b812b5"
+    "revision": "322a1c252ef45709aaddb8bd7b0c4960"
   },
   {
     "url": "tags/Java/index.html",
@@ -1627,15 +1627,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/jQuery/index.html",
