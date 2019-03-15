@@ -327,7 +327,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/07/16/设计模式速谈：一、序论/index.html",
-    "revision": "b2ffada25df9bdc8ab80ef0886813807"
+    "revision": "1f90f583cc4bcad8ce734ca976041dc2"
   },
   {
     "url": "2016/07/17/设计模式速谈：二、简单工厂模式/1.png",
@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "57d3f30d2bac332ca69d40d872b2ee1b"
+    "revision": "ad4a548b7cf08a3f88e02374c8bcbc60"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -1079,11 +1079,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/03/GraphQL-设计艺术/index.html",
-    "revision": "5ee42257aa20b1c9ef1d8065eece5e0c"
+    "revision": "b65d020c34e79deba732aba0de620d20"
+  },
+  {
+    "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/1.jpg",
+    "revision": "075537a509890c85e5c5d29a8297628d"
+  },
+  {
+    "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/2.jpg",
+    "revision": "1ea47a1bdb568c54325a153797598454"
+  },
+  {
+    "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/index.html",
+    "revision": "e832aa99170ce59a5d93046614c8cfb4"
   },
   {
     "url": "articles/index.html",
-    "revision": "c2ed5e2a87c5856e9f679adb46eac8fb"
+    "revision": "1424cad2907869b948b2eb00d9fc9ea9"
   },
   {
     "url": "author/index.html",
@@ -1415,7 +1427,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1475,55 +1487,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/11/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/12/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/13/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/14/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/2/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/3/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/4/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/5/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/6/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/7/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/8/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "page/9/index.html",
-    "revision": "839aa935c605cc318ecfd8a2bb024b6c"
+    "revision": "0fae40b282392e26116cd2633695809e"
   },
   {
     "url": "scripts/index.js",
@@ -1551,7 +1563,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "99363d8cab05c064423892d8cd935ee6"
+    "revision": "6184a57dcefb3ca054460b29fa1df486"
   },
   {
     "url": "tags/Android/index.html",
@@ -1579,7 +1591,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "e9da2a328d27d28997169849dba2798d"
+    "revision": "c1783799d848c1a3a2e6d1477a655330"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1619,7 +1631,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "322a1c252ef45709aaddb8bd7b0c4960"
+    "revision": "15adae4daa93e1946617442fe8234507"
   },
   {
     "url": "tags/Java/index.html",
@@ -1627,15 +1639,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/jQuery/index.html",
@@ -1678,8 +1690,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
+    "url": "tags/python/index.html",
+    "revision": "91a020ad83553a3c19975a5ab9424ba2"
   },
   {
     "url": "tags/React/index.html",
@@ -1759,7 +1771,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/日记/index.html",
-    "revision": "4f3c8b1c0dd0ac9b1a82878477684b93"
+    "revision": "51ebaffd46fd126ef85a5cc43314b3fe"
   },
   {
     "url": "tags/机器学习/index.html",
@@ -1812,6 +1824,10 @@ self.__precacheManifest = [
   {
     "url": "tags/钢琴/index.html",
     "revision": "9855210aa5e8a45b6c073c4ea08ac6f9"
+  },
+  {
+    "url": "tags/黑客松/index.html",
+    "revision": "0a2f19f2c63d78ea4af385b2d1bb47d0"
   },
   {
     "url": "works/index.html",
