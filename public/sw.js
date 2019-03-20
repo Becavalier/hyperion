@@ -1091,11 +1091,39 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/index.html",
-    "revision": "e832aa99170ce59a5d93046614c8cfb4"
+    "revision": "a078c1cec32e1df665d13d4bf32ca8df"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/1.jpg",
+    "revision": "603fea776d785d69a4673139508a8b62"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/3.jpg",
+    "revision": "2d4313a72f8bb1ec96c913543e8b558a"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/4.jpg",
+    "revision": "c45007f7bb8d63ed30d70e0de3bd83e1"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/5.jpg",
+    "revision": "5fba10e809187b9c9f3a12b4eca4c4b5"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/6.jpg",
+    "revision": "9b22964854da82b0f67b3c59bc65316d"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/8.jpg",
+    "revision": "e4e246d833f7c5db7a9034950c79404d"
+  },
+  {
+    "url": "2019/03/17/女装之路-完全大揭秘/index.html",
+    "revision": "865918ee4edc23c63197651b88be383d"
   },
   {
     "url": "articles/index.html",
-    "revision": "1424cad2907869b948b2eb00d9fc9ea9"
+    "revision": "0f08dfc5587ec0b9266c8c0707edae73"
   },
   {
     "url": "author/index.html",
@@ -1427,7 +1455,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1487,55 +1515,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/11/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/12/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/13/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/14/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/2/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/3/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/4/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/5/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/6/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/7/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/8/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "page/9/index.html",
-    "revision": "0fae40b282392e26116cd2633695809e"
+    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
   },
   {
     "url": "scripts/index.js",
@@ -1563,7 +1591,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "6184a57dcefb3ca054460b29fa1df486"
+    "revision": "011890399c48761d186068e729681e62"
   },
   {
     "url": "tags/Android/index.html",
@@ -1631,7 +1659,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "15adae4daa93e1946617442fe8234507"
+    "revision": "f3db66dddec9ba80f42b1fa12c71eed3"
   },
   {
     "url": "tags/Java/index.html",
@@ -1690,8 +1718,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "91a020ad83553a3c19975a5ab9424ba2"
+    "url": "tags/Python/index.html",
+    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
   },
   {
     "url": "tags/React/index.html",
@@ -1762,6 +1790,10 @@ self.__precacheManifest = [
     "revision": "4ded1057535efe012d65914c7057d8a2"
   },
   {
+    "url": "tags/女装/index.html",
+    "revision": "3dcd9bbc2dedf065c20f811ef877afed"
+  },
+  {
     "url": "tags/尾递归/index.html",
     "revision": "a6c6777c715d312ccc2fbadceb7acd69"
   },
@@ -1771,7 +1803,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/日记/index.html",
-    "revision": "51ebaffd46fd126ef85a5cc43314b3fe"
+    "revision": "30e8520a6f69e942c049625b7d7f341a"
   },
   {
     "url": "tags/机器学习/index.html",
