@@ -1119,11 +1119,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/17/女装之路-完全大揭秘/index.html",
-    "revision": "865918ee4edc23c63197651b88be383d"
+    "revision": "6f4002ea5f4d8f4da6ca2e2cf1552144"
+  },
+  {
+    "url": "2019/03/30/初聊风险投资（VC）/index.html",
+    "revision": "4962e80451edb3980c0101cfccd4ae34"
   },
   {
     "url": "articles/index.html",
-    "revision": "0f08dfc5587ec0b9266c8c0707edae73"
+    "revision": "65f8d525f0e37dc616a78c333db48142"
   },
   {
     "url": "author/index.html",
@@ -1455,7 +1459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1515,55 +1519,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/11/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/12/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/13/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/14/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/2/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/3/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/4/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/5/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/6/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/7/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/8/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "page/9/index.html",
-    "revision": "3e65afb2b731d6ea9ec7405af62c9463"
+    "revision": "4c7343b9d0392c6ef97214273fbf206f"
   },
   {
     "url": "scripts/index.js",
@@ -1591,7 +1595,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "011890399c48761d186068e729681e62"
+    "revision": "ef2ebcd3e1fc56e056c7de223d01f569"
   },
   {
     "url": "tags/Android/index.html",
@@ -1659,7 +1663,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "f3db66dddec9ba80f42b1fa12c71eed3"
+    "revision": "64c51e1808f6f41c826717d9fed95d4f"
   },
   {
     "url": "tags/Java/index.html",
@@ -1771,7 +1775,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/创业/index.html",
-    "revision": "abd9d9b89989ec5b1954d8b5d1702707"
+    "revision": "255f22e0daa51fb4c661a95b07102c9f"
   },
   {
     "url": "tags/后端/index.html",
@@ -1856,6 +1860,10 @@ self.__precacheManifest = [
   {
     "url": "tags/钢琴/index.html",
     "revision": "9855210aa5e8a45b6c073c4ea08ac6f9"
+  },
+  {
+    "url": "tags/风投/index.html",
+    "revision": "c665b87d9c6f69d518682dce6e190628"
   },
   {
     "url": "tags/黑客松/index.html",
