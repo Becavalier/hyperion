@@ -1123,7 +1123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
-    "revision": "4962e80451edb3980c0101cfccd4ae34"
+    "revision": "22781ab15b9e9f04c2b0e19a960dab39"
   },
   {
     "url": "articles/index.html",
@@ -1459,7 +1459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1519,55 +1519,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/11/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/12/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/13/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/14/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/2/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/3/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/4/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/5/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/6/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/7/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/8/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "page/9/index.html",
-    "revision": "4c7343b9d0392c6ef97214273fbf206f"
+    "revision": "eafa563a229e42045ab64a950c3f17d7"
   },
   {
     "url": "scripts/index.js",
@@ -1663,7 +1663,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "64c51e1808f6f41c826717d9fed95d4f"
+    "revision": "a77718a52df1d5b54ac3ac423fbb210b"
   },
   {
     "url": "tags/Java/index.html",
@@ -1722,8 +1722,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
+    "url": "tags/python/index.html",
+    "revision": "91a020ad83553a3c19975a5ab9424ba2"
   },
   {
     "url": "tags/React/index.html",
