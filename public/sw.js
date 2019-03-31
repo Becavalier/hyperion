@@ -1123,7 +1123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
-    "revision": "22781ab15b9e9f04c2b0e19a960dab39"
+    "revision": "67f4285305e324f1e0e1a802e3a42935"
   },
   {
     "url": "articles/index.html",
@@ -1663,7 +1663,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "a77718a52df1d5b54ac3ac423fbb210b"
+    "revision": "524899f6e96e034fa2a47e12ee740e8e"
   },
   {
     "url": "tags/Java/index.html",
