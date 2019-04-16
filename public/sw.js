@@ -1123,11 +1123,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
-    "revision": "67f4285305e324f1e0e1a802e3a42935"
+    "revision": "79e62ab470af18cb5ff9b081d30986af"
+  },
+  {
+    "url": "2019/04/10/浅谈前端代码加密/1.png",
+    "revision": "7c58a4febdef2db9eb86ae871cd83bf0"
+  },
+  {
+    "url": "2019/04/10/浅谈前端代码加密/2.png",
+    "revision": "4409d3eac1b56a08c55f977f3b25ba61"
+  },
+  {
+    "url": "2019/04/10/浅谈前端代码加密/index.html",
+    "revision": "a0795b7d3aca24d0ab5f44b5cead3420"
   },
   {
     "url": "articles/index.html",
-    "revision": "65f8d525f0e37dc616a78c333db48142"
+    "revision": "0138df2fa36be0b4a0195b360b89d555"
   },
   {
     "url": "author/index.html",
@@ -1459,7 +1471,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1519,55 +1531,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/11/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/12/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/13/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/14/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/2/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/3/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/4/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/5/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/6/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/7/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/8/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "page/9/index.html",
-    "revision": "eafa563a229e42045ab64a950c3f17d7"
+    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
   },
   {
     "url": "scripts/index.js",
@@ -1663,7 +1675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "524899f6e96e034fa2a47e12ee740e8e"
+    "revision": "2c84ee3140077e05228ba388cb2f6093"
   },
   {
     "url": "tags/Java/index.html",
@@ -1776,6 +1788,14 @@ self.__precacheManifest = [
   {
     "url": "tags/创业/index.html",
     "revision": "255f22e0daa51fb4c661a95b07102c9f"
+  },
+  {
+    "url": "tags/前端/index.html",
+    "revision": "9f51557267aff9ccb17c56149e628918"
+  },
+  {
+    "url": "tags/加密/index.html",
+    "revision": "7bdb0cb84dfbeaffa23e712cebb7958d"
   },
   {
     "url": "tags/后端/index.html",
