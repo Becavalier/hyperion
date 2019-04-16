@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "ad4a548b7cf08a3f88e02374c8bcbc60"
+    "revision": "57d3f30d2bac332ca69d40d872b2ee1b"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -1135,11 +1135,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/10/浅谈前端代码加密/index.html",
-    "revision": "a0795b7d3aca24d0ab5f44b5cead3420"
+    "revision": "be8380a081c203d48d2fa81fecf0383d"
   },
   {
     "url": "articles/index.html",
-    "revision": "0138df2fa36be0b4a0195b360b89d555"
+    "revision": "2bc85169aec53baa20b4ce7e9ffd0d31"
   },
   {
     "url": "author/index.html",
@@ -1635,7 +1635,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "c1783799d848c1a3a2e6d1477a655330"
+    "revision": "e9da2a328d27d28997169849dba2798d"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1675,7 +1675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "2c84ee3140077e05228ba388cb2f6093"
+    "revision": "ed322ecf6711be25cdabeb2597b39254"
   },
   {
     "url": "tags/Java/index.html",
@@ -1683,15 +1683,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/jQuery/index.html",
@@ -1734,8 +1734,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "91a020ad83553a3c19975a5ab9424ba2"
+    "url": "tags/Python/index.html",
+    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
   },
   {
     "url": "tags/React/index.html",
