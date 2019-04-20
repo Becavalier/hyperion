@@ -1119,7 +1119,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/17/女装之路-完全大揭秘/index.html",
-    "revision": "6f4002ea5f4d8f4da6ca2e2cf1552144"
+    "revision": "8af417cb6b7234ab09354c3d84624f5d"
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
@@ -1675,7 +1675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "65bb35396a4b11e71c54a75b35e10cfa"
+    "revision": "e595830024b9cdd6ea68f9dd8865046c"
   },
   {
     "url": "tags/Java/index.html",
@@ -1734,8 +1734,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
+    "url": "tags/python/index.html",
+    "revision": "91a020ad83553a3c19975a5ab9424ba2"
   },
   {
     "url": "tags/React/index.html",
