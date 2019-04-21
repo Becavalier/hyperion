@@ -1135,11 +1135,39 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/10/浅谈前端代码加密/index.html",
-    "revision": "be8380a081c203d48d2fa81fecf0383d"
+    "revision": "f35c283f0ad332f67d6e0dfb8f0a6cf2"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/1.png",
+    "revision": "61b60f01679cf74eb7426e1ab5019246"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/2.png",
+    "revision": "ac513044f534142518c03c219a9d4500"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/3.jpeg",
+    "revision": "c299dd31995a9f1252ce9f1ce38a8286"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/4.jpeg",
+    "revision": "1541913315fe642f40b14d3112e4d268"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/5.jpeg",
+    "revision": "69d648c2756ee69d5b1bbbc1bb00796e"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/index.html",
+    "revision": "528e7ccbf7276c7911ec674899ca9225"
+  },
+  {
+    "url": "2019/04/21/FCC-China-DevTalk-访谈实录/封面.jpeg",
+    "revision": "f83ddaff961447e75e9a6561baf22108"
   },
   {
     "url": "articles/index.html",
-    "revision": "2bc85169aec53baa20b4ce7e9ffd0d31"
+    "revision": "2108350a4dabed6330264ce633a16c31"
   },
   {
     "url": "author/index.html",
@@ -1471,7 +1499,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1531,55 +1559,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/11/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/12/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/13/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/14/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/2/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/3/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/4/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/5/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/6/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/7/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/8/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "page/9/index.html",
-    "revision": "7264a1f2fe4cefc34e78d91fceee31b2"
+    "revision": "e6f397134e6894fc6787fc4fd827d656"
   },
   {
     "url": "scripts/index.js",
@@ -1658,6 +1686,10 @@ self.__precacheManifest = [
     "revision": "4615cf6c1b40a853d89102b223a01255"
   },
   {
+    "url": "tags/FCC/index.html",
+    "revision": "71c4476ef1d0cf3c401f90dd92fbffef"
+  },
+  {
     "url": "tags/Git/index.html",
     "revision": "4d143bbd82537769dd050b2f529cd35b"
   },
@@ -1675,7 +1707,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "e595830024b9cdd6ea68f9dd8865046c"
+    "revision": "674c98c1948c7f3341213d6f759b3124"
   },
   {
     "url": "tags/Java/index.html",
@@ -1872,6 +1904,10 @@ self.__precacheManifest = [
   {
     "url": "tags/设计模式/index.html",
     "revision": "7fac975ee8a54920bbec30bef050a988"
+  },
+  {
+    "url": "tags/访谈/index.html",
+    "revision": "ddf14d760b14252f185f238c68bf369c"
   },
   {
     "url": "tags/读书/index.html",
