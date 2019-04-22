@@ -223,15 +223,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/03/26/JavaScript-核心特性揭秘（一）/index.html",
-    "revision": "b47c7974a44e35cd0a7aa2368370113a"
+    "revision": "50c76a8a824d6c76464c92eee71aa22b"
   },
   {
     "url": "2016/03/29/JavaScript-核心特性揭秘（二）/index.html",
-    "revision": "9b2b635e07fe791703beaee1fa834223"
+    "revision": "b1a3bb2a9843cbc8cd70c152ff5a4dee"
   },
   {
     "url": "2016/04/03/JavaScript-核心特性揭秘（三）/index.html",
-    "revision": "3c39689282267976a9bbf84ebfe27f23"
+    "revision": "64e0fe30314d03f339b1400b823f7683"
   },
   {
     "url": "2016/04/09/五分钟算法-二分法查找（Binary-Search）/1.jpg",
@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "57d3f30d2bac332ca69d40d872b2ee1b"
+    "revision": "6f2849d8484b190c7e7d4512b4932d90"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -431,7 +431,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/13/前端常见技术点-HTML/index.html",
-    "revision": "a8f7535d1f11f10633e255a884e8b055"
+    "revision": "dce065fd6b88f86d5d4c67a1cb536537"
   },
   {
     "url": "2016/12/13/前端常见技术点-JavaScript/1.jpg",
@@ -1167,7 +1167,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "2108350a4dabed6330264ce633a16c31"
+    "revision": "f2208e10475b80effa56d606f413f52b"
   },
   {
     "url": "author/index.html",
@@ -1663,7 +1663,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "e9da2a328d27d28997169849dba2798d"
+    "revision": "c1783799d848c1a3a2e6d1477a655330"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1707,7 +1707,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "674c98c1948c7f3341213d6f759b3124"
+    "revision": "99b9b12e329469aed2ccbb3fba45ddc2"
   },
   {
     "url": "tags/Java/index.html",
@@ -1715,15 +1715,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/jQuery/index.html",
@@ -1766,8 +1766,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "91a020ad83553a3c19975a5ab9424ba2"
+    "url": "tags/Python/index.html",
+    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
   },
   {
     "url": "tags/React/index.html",

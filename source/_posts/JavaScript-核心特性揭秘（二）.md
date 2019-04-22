@@ -9,7 +9,7 @@ tags:
 
 本文是《JavaScript 核心特性揭秘》系列的第二篇，这一系列的文章并没有按照由浅入深的顺序来写，旨在记录与分享，将碎片化的 JS 知识集中起来。囊括所有你需要知道的 Javascript 核心特性与技巧。文章内容如有错误，欢迎大家积极指正与交流。
 
-1. 从一个函数中返回另一个函数，这是一个常用的技巧。参考《Javascript高级程序设计》给出的示例代码：
+1. 从一个函数中返回另一个函数，这是一个常用的技巧。参考《Javascript 高级程序设计》给出的示例代码：
 
 ```javascript
 function createComparisonFunction(propertyName) {

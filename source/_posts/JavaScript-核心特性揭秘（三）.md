@@ -72,7 +72,7 @@ person1.sayName();
 person2.sayName();
 ```
 
-我们此处用 `function` 关键字创建了自定义的构造函数和该构造函数所持有的方法和属性，不再直接使用 `Object()` 构造函数生成对象。（请注意在 JS 中构造函即函数，两者没有本质的区别，只是调用的方式不同而已）接下来通过 `new` 操作符创建该构造函数所对用的对象实例，并且调用对象所持有的方法。“**构造函数模式**”与文章开篇我们讲解的直接使用 `Object()` 创建对象的方法相比较有一个优点，即对于使用“**构造函数模式**”生成的每一个对象，我们都可以使用对象实例的 `instanceof` 方法或者 `constructor` 属性来判断该对象所对应的类型，如下代码所示：
+我们此处用 `function` 关键字创建了自定义的构造函数和该构造函数所持有的方法和属性，不再直接使用 `Object()` 构造函数生成对象。（请注意在 JS 中构造函即函数，两者没有本质的区别，只是调用的方式不同而已）接下来通过 `new` 操作符创建该构造函数所引用的对象实例，并且调用对象所持有的方法。“**构造函数模式**”与文章开篇我们讲解的直接使用 `Object()` 创建对象的方法相比较有一个优点，即对于使用“**构造函数模式**”生成的每一个对象，我们都可以使用对象实例的 `instanceof` 方法或者 `constructor` 属性来判断该对象所对应的类型，如下代码所示：
 
 ```javascript
 // 自定义构造函数；
@@ -96,7 +96,7 @@ console.log(animal instanceof Animal);  // 输出 true；
 
 ```javascript
 // 自定义构造函数；
-function Person(){}
+function Person() {}
 Person.prototype.name = "Jason";
 Person.prototype.age = 23;
 Person.prototype.job = "Engineer";
@@ -114,7 +114,7 @@ console.log(person1.sayName === person2.sayName);  // 输出 true；
 
 ```javascript
 // 自定义构造函数；
-function Person(){}
+function Person() {}
 Person.prototype = {
   constructor: Person,  // 修正 constructor 指向的值；
   name: "Jason",
@@ -133,7 +133,7 @@ var person1 = new Person();
 
 ```javascript
 // 自定义构造函数，添加本地化属性，每个对象有自己的属性，并不共享；
-function Person(name, age, job){
+function Person(name, age, job) {
   this.name = name;
   this.age = age;
   this.job = job;

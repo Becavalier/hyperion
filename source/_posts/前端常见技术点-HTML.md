@@ -49,7 +49,7 @@ title 在 SEO 的权重中比 h1 要高，strong 着重内容，b 无强调或�
 
 #### 6. 简述一下你对 HTML 语义化的理解？
 
-* 为了在没有 CSS 的情况下，页面也能呈现出很好地内容结构、代码结构；
+* 为了在没有 CSS 的情况下，页面也能呈现出很好的内容结构、代码结构；
 * 增强用户体验；
 * 利于页面的 SEO；
 * 方便其他设备解析；
@@ -89,7 +89,7 @@ window.applicationCache
 
 #### 9. 如何实现浏览器内多个标签页之间的通信？
 
-利用本地的 Cookie，SessionStorage，LocalStorage，WebSql，Application Cache，IndexedDB 等。
+利用本地的 Cookie，SessionStorage，LocalStorage，WebSQL，Application Cache，IndexedDB 等。
 
 #### 10. HTML5 的 form 表单如何关闭自动完成功能？
 

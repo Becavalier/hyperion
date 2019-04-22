@@ -35,10 +35,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </li>
 </ol>
 <ul>
-<li><p><strong>标记清除：</strong>即当变量进入环境时就为该变量标记为“进入环境”。而当变量离开环境时，同理会被标记为“离开环境”。“进入环境”的变量永远不会被释放。被标记为“离开环境”的变量将被视为准备被释放的变量，因为环境中所有的变量都已经无法访问到这些变量了。最后，垃圾收集器将会完成垃圾清理工作。</p>
-</li>
-<li><p><strong>引用计数：</strong>该方法的基本思路是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型的值赋给该变量时，则这个值的引用次数便加一。相反，如果包含对这个值引用的变量又取得另外一个值，则这个值的引用次数便减一。如果引用次数变为0，则垃圾收集器将回收该值所占用的内存空间。</p>
-</li>
+<li><strong>标记清除：</strong>即当变量进入环境时就为该变量标记为“进入环境”。而当变量离开环境时，同理会被标记为“离开环境”。“进入环境”的变量永远不会被释放。被标记为“离开环境”的变量将被视为准备被释放的变量，因为环境中所有的变量都已经无法访问到这些变量了。最后，垃圾收集器将会完成垃圾清理工作。</li>
+<li><strong>引用计数：</strong>该方法的基本思路是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型的值赋给该变量时，则这个值的引用次数便加一。相反，如果包含对这个值引用的变量又取得另外一个值，则这个值的引用次数便减一。如果引用次数变为0，则垃圾收集器将回收该值所占用的内存空间。</li>
 </ul>
 <p>通常大部分浏览器均会采用标记清除的方式来作为基本的垃圾回收方式，而早期的 “Netscape Navigator3.0” 浏览器则使用了引用计数的方式。但这个方式很快便暴露出了一个严重的问题，即“<strong>循环引用</strong>”。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -67,7 +65,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token keyword">return</span> arg1 <span class="token operator">+</span> arg2<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2016-03-26T14:43:16.000Z"> 2019 / 02 / 05, 18:40:46</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/03/20/Java-基础语法特性记录/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/03/29/JavaScript-核心特性揭秘（二）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-135435065-1" type="text/javascript" async></script><script>window.dataLayer = window.dataLayer || [];
+<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2016-03-26T14:43:16.000Z"> 2019 / 04 / 22, 11:36:21</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/03/20/Java-基础语法特性记录/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/03/29/JavaScript-核心特性揭秘（二）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-135435065-1" type="text/javascript" async></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-135435065-1');</script></body></html>
