@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "6f2849d8484b190c7e7d4512b4932d90"
+    "revision": "0b97f71593d2eae019796f3b2a50ea66"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -1159,15 +1159,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/index.html",
-    "revision": "528e7ccbf7276c7911ec674899ca9225"
+    "revision": "2b676e7d450649d5ca89d5e8dbe2486c"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/封面.jpeg",
     "revision": "f83ddaff961447e75e9a6561baf22108"
   },
   {
+    "url": "2019/04/26/React-知识点整理/index.html",
+    "revision": "f2b1daeda1f058d5eadd5466d46f2362"
+  },
+  {
     "url": "articles/index.html",
-    "revision": "f2208e10475b80effa56d606f413f52b"
+    "revision": "b38e945a81a90327a60a93f3f2c9a1dc"
   },
   {
     "url": "author/index.html",
@@ -1499,7 +1503,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1559,55 +1563,55 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/11/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/12/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/13/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/14/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/2/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/3/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/4/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/5/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/6/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/7/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/8/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "page/9/index.html",
-    "revision": "e6f397134e6894fc6787fc4fd827d656"
+    "revision": "14680a607784a68afbd3efd3326fa3ee"
   },
   {
     "url": "scripts/index.js",
@@ -1663,7 +1667,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "c1783799d848c1a3a2e6d1477a655330"
+    "revision": "e9da2a328d27d28997169849dba2798d"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1707,7 +1711,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "4fa7e1fb6c7e6fa3029c58e31c5d24b6"
+    "revision": "49b4bc452eb2229c3f8e513ac95527c5"
   },
   {
     "url": "tags/Java/index.html",
@@ -1715,15 +1719,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
+    "revision": "5df3a93597218631a96ee7da3c325f63"
   },
   {
     "url": "tags/jQuery/index.html",
@@ -1766,12 +1770,12 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/Python/index.html",
-    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
+    "url": "tags/python/index.html",
+    "revision": "91a020ad83553a3c19975a5ab9424ba2"
   },
   {
     "url": "tags/React/index.html",
-    "revision": "0ece530cabea91d4971116fd4b3f4baa"
+    "revision": "bdea15ec0cfd98555459e27c5a742c7c"
   },
   {
     "url": "tags/Redis/index.html",
