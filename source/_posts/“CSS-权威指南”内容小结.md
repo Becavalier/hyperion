@@ -1,6 +1,6 @@
 ---
 title: “CSS 权威指南”内容小结
-intro: Enter intro here to display on home page
+intro: “CSS 权威指南”之前看过一遍，第二遍把整书的知识点稍微总结一下，便于后面准备面试或查找问题之用。
 comments: true
 date: 2019-04-28 20:53:11
 tags:

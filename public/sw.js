@@ -411,7 +411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "0b97f71593d2eae019796f3b2a50ea66"
+    "revision": "6f2849d8484b190c7e7d4512b4932d90"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -1171,15 +1171,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/28/“CSS-权威指南”内容小结/index.html",
-    "revision": "7f7c02cc8cd0951c540823f61a74dd07"
+    "revision": "e18095d77cc30dbbc4e18bbc79783a10"
   },
   {
     "url": "2019/04/30/基本算法概括/index.html",
-    "revision": "6028743d7f883d6750ba6537baff7c2e"
+    "revision": "b009947aa94dd6902455ff928a075b42"
   },
   {
     "url": "articles/index.html",
-    "revision": "2615f4904c12a15bd7975c45dc9f9ec0"
+    "revision": "ebfb7c1e79c1aa2e516cd2840c5d12e4"
   },
   {
     "url": "author/index.html",
@@ -1511,7 +1511,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -1627,59 +1627,59 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/11/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/12/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/13/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/14/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/15/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/2/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/3/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/4/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/5/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/6/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/7/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/8/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "page/9/index.html",
-    "revision": "8e74f0e51c888308f26404f6d2009af0"
+    "revision": "e9e2e6f3b515468f21d9cc39dc7a7a76"
   },
   {
     "url": "scripts/index.js",
@@ -1735,7 +1735,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "25a4e0f2b7f030bd78c4f9a292e4fb64"
+    "revision": "4c9d43afd4f5f527a07f369cc746f82e"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1779,7 +1779,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "50031e492c528ff0b98d15d0fe7794cb"
+    "revision": "a38493a7e1a733c1150ef3c64db235bd"
   },
   {
     "url": "tags/Java/index.html",
@@ -1787,15 +1787,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/JavaScript/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/2/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/JavaScript/page/3/index.html",
-    "revision": "5df3a93597218631a96ee7da3c325f63"
+    "revision": "899fb33ec6d8d32e60036430bc5b2acb"
   },
   {
     "url": "tags/jQuery/index.html",
