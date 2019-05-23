@@ -1167,11 +1167,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/26/React-知识点整理/index.html",
-    "revision": "f2b1daeda1f058d5eadd5466d46f2362"
+    "revision": "2765a6e0551defd98acc6138f755092a"
+  },
+  {
+    "url": "2019/04/28/“CSS-权威指南”内容小结/index.html",
+    "revision": "7f7c02cc8cd0951c540823f61a74dd07"
+  },
+  {
+    "url": "2019/04/30/基本算法概括/index.html",
+    "revision": "6028743d7f883d6750ba6537baff7c2e"
   },
   {
     "url": "articles/index.html",
-    "revision": "b38e945a81a90327a60a93f3f2c9a1dc"
+    "revision": "2615f4904c12a15bd7975c45dc9f9ec0"
   },
   {
     "url": "author/index.html",
@@ -1503,7 +1511,63 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
+  },
+  {
+    "url": "me-en/css/font-awesome.min.css",
+    "revision": "bb53ad7bffecc0014d64553e96501dce"
+  },
+  {
+    "url": "me-en/css/style.min.css",
+    "revision": "92d95f6db8e0be019e7d4980867acfd9"
+  },
+  {
+    "url": "me-en/fonts/fontawesome-webfont.eot",
+    "revision": "25a32416abee198dd821b0b17a198a8f"
+  },
+  {
+    "url": "me-en/fonts/fontawesome-webfont.svg",
+    "revision": "d7c639084f684d66a1bc66855d193ed8"
+  },
+  {
+    "url": "me-en/fonts/fontawesome-webfont.ttf",
+    "revision": "1dc35d25e61d819a9c357074014867ab"
+  },
+  {
+    "url": "me-en/fonts/fontawesome-webfont.woff",
+    "revision": "c8ddf1e5e5bf3682bc7bebf30f394148"
+  },
+  {
+    "url": "me-en/fonts/fontawesome-webfont.woff2",
+    "revision": "e6cf7c6ec7c2d6f670ae9d762604cb0b"
+  },
+  {
+    "url": "me-en/images/avatar.jpg",
+    "revision": "9c6591636adbb410915f48734cb481c5"
+  },
+  {
+    "url": "me-en/images/book-wasm.jpg",
+    "revision": "2a683bd44d7f5f379051b534023e1ffa"
+  },
+  {
+    "url": "me-en/images/speech-eleme-13.jpg",
+    "revision": "32c0dbd729ad633dfbe00a4971a47d45"
+  },
+  {
+    "url": "me-en/images/speech-fcc-1.jpg",
+    "revision": "4bf00173ec69498bc7afacd1a2f791c5"
+  },
+  {
+    "url": "me-en/images/speech-fcc-2.jpg",
+    "revision": "b6e6b750697c65c8621eb486b08ba864"
+  },
+  {
+    "url": "me-en/images/speech-qcon-2017.jpg",
+    "revision": "53cc863f22a2effb6a5cd95d407c04bc"
+  },
+  {
+    "url": "me-en/index.html",
+    "revision": "425aa67b57c522046ca0ce979669cc85"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1559,59 +1623,63 @@ self.__precacheManifest = [
   },
   {
     "url": "me/index.html",
-    "revision": "fae0f86709cc61c02da8c4f3853cdf36"
+    "revision": "d3bc6b29fc320fe00defd1fba90af07b"
   },
   {
     "url": "page/10/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/11/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/12/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/13/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/14/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
+  },
+  {
+    "url": "page/15/index.html",
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/2/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/3/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/4/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/5/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/6/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/7/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/8/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "page/9/index.html",
-    "revision": "14680a607784a68afbd3efd3326fa3ee"
+    "revision": "8e74f0e51c888308f26404f6d2009af0"
   },
   {
     "url": "scripts/index.js",
@@ -1667,7 +1735,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/CSS/index.html",
-    "revision": "e9da2a328d27d28997169849dba2798d"
+    "revision": "25a4e0f2b7f030bd78c4f9a292e4fb64"
   },
   {
     "url": "tags/DCE/index.html",
@@ -1711,7 +1779,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "49b4bc452eb2229c3f8e513ac95527c5"
+    "revision": "50031e492c528ff0b98d15d0fe7794cb"
   },
   {
     "url": "tags/Java/index.html",
@@ -1770,8 +1838,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "91a020ad83553a3c19975a5ab9424ba2"
+    "url": "tags/Python/index.html",
+    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
   },
   {
     "url": "tags/React/index.html",
@@ -1883,15 +1951,15 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/算法/index.html",
-    "revision": "e8e28a9d663992a45e6835dab42b63e5"
+    "revision": "1706d3c9556c63388708923fa7d25545"
   },
   {
     "url": "tags/算法/page/2/index.html",
-    "revision": "e8e28a9d663992a45e6835dab42b63e5"
+    "revision": "1706d3c9556c63388708923fa7d25545"
   },
   {
     "url": "tags/算法/page/3/index.html",
-    "revision": "e8e28a9d663992a45e6835dab42b63e5"
+    "revision": "1706d3c9556c63388708923fa7d25545"
   },
   {
     "url": "tags/经营/index.html",
