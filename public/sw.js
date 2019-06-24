@@ -1171,7 +1171,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/28/“CSS-权威指南”内容小结/index.html",
-    "revision": "e18095d77cc30dbbc4e18bbc79783a10"
+    "revision": "541fdd014bb2ae8487f3b3fabd3e7f35"
   },
   {
     "url": "2019/04/30/基本算法概括/index.html",
@@ -1550,10 +1550,6 @@ self.__precacheManifest = [
     "revision": "2a683bd44d7f5f379051b534023e1ffa"
   },
   {
-    "url": "me-en/images/speech-eleme-13.jpg",
-    "revision": "32c0dbd729ad633dfbe00a4971a47d45"
-  },
-  {
     "url": "me-en/images/speech-fcc-1.jpg",
     "revision": "4bf00173ec69498bc7afacd1a2f791c5"
   },
@@ -1562,12 +1558,16 @@ self.__precacheManifest = [
     "revision": "b6e6b750697c65c8621eb486b08ba864"
   },
   {
+    "url": "me-en/images/speech-gmtc-2019.jpg",
+    "revision": "fa6f0704239c3ce9518465bc212668a0"
+  },
+  {
     "url": "me-en/images/speech-qcon-2017.jpg",
     "revision": "53cc863f22a2effb6a5cd95d407c04bc"
   },
   {
     "url": "me-en/index.html",
-    "revision": "425aa67b57c522046ca0ce979669cc85"
+    "revision": "4a4a82404a67986d226dfb2b1d9cf1dd"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -1606,10 +1606,6 @@ self.__precacheManifest = [
     "revision": "2a683bd44d7f5f379051b534023e1ffa"
   },
   {
-    "url": "me/images/speech-eleme-13.jpg",
-    "revision": "32c0dbd729ad633dfbe00a4971a47d45"
-  },
-  {
     "url": "me/images/speech-fcc-1.jpg",
     "revision": "4bf00173ec69498bc7afacd1a2f791c5"
   },
@@ -1618,12 +1614,16 @@ self.__precacheManifest = [
     "revision": "b6e6b750697c65c8621eb486b08ba864"
   },
   {
+    "url": "me/images/speech-gmtc-2019.jpg",
+    "revision": "fa6f0704239c3ce9518465bc212668a0"
+  },
+  {
     "url": "me/images/speech-qcon-2017.jpg",
     "revision": "53cc863f22a2effb6a5cd95d407c04bc"
   },
   {
     "url": "me/index.html",
-    "revision": "d3bc6b29fc320fe00defd1fba90af07b"
+    "revision": "1a349924883d4c6a7c6eba803eca6c1c"
   },
   {
     "url": "page/10/index.html",
@@ -1779,7 +1779,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "a38493a7e1a733c1150ef3c64db235bd"
+    "revision": "00e673f0b8f3a4ce126083efe3fe7deb"
   },
   {
     "url": "tags/Java/index.html",
