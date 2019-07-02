@@ -89,8 +89,8 @@ deploy:
 about:
   name: 于航(曜彤)
   intro1: Male, @Alibaba/ElemeFE.
-  intro2: The author of 《深入浅出 WebAssembly》, QCon speaker.
-  skills: Web Frontend, WebAssembly, LLVM, Compiler Design, Product, Piano
+  intro2: The author of 《深入浅出 WebAssembly》, QCon/GMTC speaker.
+  skills: Web Frontend, WebAssembly, Serverless, LLVM Product, Piano
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /me

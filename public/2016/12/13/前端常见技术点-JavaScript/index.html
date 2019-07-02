@@ -108,16 +108,16 @@ Person<span class="token punctuation">.</span><span class="token function">call<
 <h4 id="21-柯里化-currying："><a href="#21-柯里化-currying：" class="headerlink" title="21. 柯里化 currying："></a>21. 柯里化 currying：</h4><p>把接受多个参数的函数变换成接受一个单一参数（最初函数的第一个参数）的并且返回一个接受余下的参数而且返回结果的新函数；给函数分步传递参数，每次函数接受部分参数后应用这些参数，并返回一个函数接受剩下的参数，这中间可嵌套多层这样的接受部分参数的函数，直至返回最后结果。</p>
 <h4 id="22-escape、encodeURI-与-encodeURIComponent-的区别？"><a href="#22-escape、encodeURI-与-encodeURIComponent-的区别？" class="headerlink" title="22. escape、encodeURI 与 encodeURIComponent 的区别？"></a>22. escape、encodeURI 与 encodeURIComponent 的区别？</h4><p><code>escape</code> 除了 ASCII 字母，数字和特定的符号（- _ . ! ~ * “ ( )）外，对传进来的字符串<strong>全部进行转义编码</strong>。而 <code>encodeURI</code> 用于编码整个 URI，因为 URI 中的合法字符都不会被编码转换。<code>encodeURIComponent</code> 方法在编码单个 URIComponent 应当是最常用的，它可以将参数中的中文. 特殊字符进行转义，而不会影响整个 URL。</p>
 <h4 id="23-静态作用域和动态作用域："><a href="#23-静态作用域和动态作用域：" class="headerlink" title="23. 静态作用域和动态作用域："></a>23. 静态作用域和动态作用域：</h4><p><strong>静态作用域：</strong>又称词法作用域，按照作用域链来分析，是 JS 使用的作用域管理方式；在编译阶段就分析出环境中的变量引用。</p>
-<p><img src="1.jpg" alt></p>
+<p><img src="1.jpg" alt=""></p>
 <p><strong>动态作用域：</strong>维护一个统一的作用域栈；在程序运行时才会分析出各个变量的引用。</p>
-<p><img src="2.jpg" alt></p>
+<p><img src="2.jpg" alt=""></p>
 <h4 id="24-词法环境与作用域链："><a href="#24-词法环境与作用域链：" class="headerlink" title="24. 词法环境与作用域链："></a>24. 词法环境与作用域链：</h4><p>词法环境是在语句或者函数运行前就初始化好的，每一个词法环境都有一个指向上一次作用域的 <strong>outer 指针</strong>，词法环境的内部变量的赋值是在语句运行时进行的。在一个函数内一条语句用到的变量会沿着词法环境作用域链逐层向上寻找。</p>
 <p><strong>优先级：</strong>函数定义 &gt; 形参 &gt; 变量定义。</p>
-<p><img src="3.jpg" alt></p>
+<p><img src="3.jpg" alt=""></p>
 <p><strong>函数定义和函数表达式在词法作用域的区别：</strong>函数定义在程序运行前做静态分析时就已经被放到作用域链中了，而函数表达式（IIFE 的匿名函数也是一种函数表达式）同变量定义一样，只有在运行到它之前才会开始分析作用域，并放到整个作用域链当中。</p>
-<p><img src="4.jpg" alt></p>
+<p><img src="4.jpg" alt=""></p>
 <p><strong>闭包：</strong>具体原理如下图所示。</p>
-<p><img src="5.jpg" alt></p>
+<p><img src="5.jpg" alt=""></p>
 <h4 id="25-XMLHttpRequest-Level-2："><a href="#25-XMLHttpRequest-Level-2：" class="headerlink" title="25. XMLHttpRequest Level 2："></a>25. XMLHttpRequest Level 2：</h4><p>IE 时代的 “XMLHttpRequest1.0” 存在的问题：</p>
 <ol>
 <li>只支持文本数据的传输，不支持二进制数据；</li>
@@ -133,7 +133,7 @@ Person<span class="token punctuation">.</span><span class="token function">call<
 <li>可以获取服务器端的二进制数据；</li>
 <li>可以获得数据传输的进度信息；</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last updated on<time itemprop="dateModified" datetime="2016-12-12T16:16:23.000Z"> 2019 / 02 / 11, 14:47:43</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/12/13/前端常见技术点-CSS-DOM-布局/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/12/13/前端常见技术点-HTML/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-135435065-1" type="text/javascript" async></script><script>window.dataLayer = window.dataLayer || [];
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2016-12-12T16:16:23.000Z"> 2019 / 07 / 02, 13:14:07</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/12/13/前端常见技术点-CSS-DOM-布局/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/12/13/前端常见技术点-HTML/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script><script src="https://www.googletagmanager.com/gtag/js?id=UA-135435065-1" type="text/javascript" async></script><script>window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-135435065-1');</script></body></html>
