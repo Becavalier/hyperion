@@ -9,7 +9,7 @@ const imageminPngquant = require('imagemin-pngquant');
  
 const DEFAULT_INDEX = 0;
 
-// set article id (for commenting);
+// set article id (for comment);
 hexo.extend.filter.register('before_post_render', data => {
   data.id = crypto.createHash('md5').update(data.title).digest('hex');
   return data;
@@ -50,15 +50,19 @@ hexo.extend.filter.register('before_exit', function(data) {
       const relativePath = key + i;
       const absolutePath = path.resolve(__dirname, '../public', relativePath);
 
-      const files = await imagemin([absolutePath], path.dirname(absolutePath), {
-        plugins: [
-          imageminMozjpeg({
-            quality: 50
-          }),
-          imageminPngquant({quality: [.5, .6]})
-        ]
-      });
-      files[DEFAULT_INDEX] && console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['path']}`);
+      try {
+        const files = await imagemin([absolutePath], path.dirname(absolutePath), {
+          plugins: [
+            imageminMozjpeg({
+              quality: 50
+            }),
+            imageminPngquant({quality: [.5, .6]})
+          ]
+        });
+        files[DEFAULT_INDEX] && console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['path']}`);
+      } catch (e) {
+        console.error(e)
+      }
     });
   }
 });

@@ -4,6 +4,7 @@ const path = require('path');
 const http = require('http');
 const fs = require('fs');
 const compression = require('compression');
+const helmet = require('helmet');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
 
@@ -25,12 +26,15 @@ global.hexoMeta = {
   Post: models.Post, Tag: models.Tag
 };
 
+// helmet;
+app.use(helmet());
+
+// configurations;
 app.use((req, res, next) => {
   req.isProd = isProd;
   req.port = port;
   next();
 });
-
 
 // set static folder;
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));
@@ -46,7 +50,6 @@ function errorHandler (err, req, res, next) {
 
 app.use(errorHandler);
 
-
 if (isProd) {
   // force https;
   app.enable('trust proxy');
@@ -59,10 +62,8 @@ if (isProd) {
 // gzip compress;
 app.use(compression());
 
-
 // set api routes;
 setInterfaceEntrance(app);
-
 
 // listen port;
 app.listen = function(port) {

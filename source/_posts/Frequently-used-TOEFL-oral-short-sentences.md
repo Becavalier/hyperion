@@ -10,6 +10,8 @@ tags:
 
 Some of frequently used oral short sentences in TOEFL examination. Reocrding here for further recap and exercise in the future. Totally about 800+ items without classification.
 
+### Group 1
+
 1. Not yet! 还没！
 2. So long. 再见（过于怀旧）。
 3. Cheer up! 振作起来！
@@ -38,4 +40,31 @@ Some of frequently used oral short sentences in TOEFL examination. Reocrding her
 26. You own me one! 你欠我一个人情!
 27. Any day will do. 哪一天都行。
 28. I don't mean it. 我不是有意的。
-29. 
+29. So far, so good. 到目前为止还不错。
+30. He is ill in bed. 他卧病在床。
+31. How's everything? 一切如何？
+32. I'm on your side. 我站在你这边。
+33. No pain, no gain. 不劳无获。
+34. Well, it depends. 哦，这得看情况而定。
+35. We're all for it. 我们全都同意。
+36. What a good deal! 真便宜。
+37. You asked for it. 你自讨苦吃。
+38. You have my word. 我保证。
+39. Don't count on me. 别指望我。
+40. Don't fall for it! 别上当！
+41. Don't let me down! 别让我失望！
+42. I beg your pardon? 请您在说一遍？
+43. Just wait and see! 等着瞧！
+44. Make up your mind! 做个决定吧！
+45. Here comes the bus. 汽车来了。
+46. Don't be so modest! 别谦虚了！
+47. Don't give me that! 少来这套！
+48. Any messages for me? 有我的留言吗？
+49. Forget it! 休想。
+50. Let me see. 让我想想。
+
+### Group 2
+
+51. I can't help it anymore! 我再也忍不了了！
+52. It's a long story. 说来话长。
+53. You can't miss it! 你一定能找到。
