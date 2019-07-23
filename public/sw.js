@@ -1915,7 +1915,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me/index.html",
-    "revision": "656efb5f3b8f2a0b21416aa005763c95"
+    "revision": "8bae44417fc7f7fead9ffecc15ac6f92"
   },
   {
     "url": "page/10/index.html",
@@ -2075,7 +2075,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "1671b665752be2dd04bad3a92fbc77c1"
+    "revision": "28b2e1e354a6fd4978f37b0c82fa2643"
   },
   {
     "url": "tags/Java/index.html",
