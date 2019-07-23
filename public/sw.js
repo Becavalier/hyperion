@@ -927,7 +927,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2018/11/29/Git-最佳实践/index.html",
-    "revision": "aa0bde2f278a1917a8e57102e231a008"
+    "revision": "2780dec2f3271324c6e399e5587c6f95"
   },
   {
     "url": "2019/01/05/“增长黑客：创业公司的用户与收入增长秘籍” 读书笔记/index.html",
@@ -1179,7 +1179,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/07/11/Frequently-used-TOEFL-oral-short-sentences/index.html",
-    "revision": "8740e69f003576cc058e8d7baa5fd539"
+    "revision": "b6c59603e8fca71dfe8f5ead08245913"
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/1.png",
@@ -2075,7 +2075,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "28b2e1e354a6fd4978f37b0c82fa2643"
+    "revision": "442bdb60c8bd650ba751320a2e6e8b58"
   },
   {
     "url": "tags/Java/index.html",
