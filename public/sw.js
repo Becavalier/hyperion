@@ -1179,7 +1179,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/07/11/Frequently-used-TOEFL-oral-short-sentences/index.html",
-    "revision": "1789bcc5ed3aa34779c86d02c84b43a4"
+    "revision": "b1548e002ce0630cbae5555768277f41"
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/1.png",
@@ -1191,7 +1191,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/08/23/54th-day-in-PayPal/index.html",
-    "revision": "36be896f5351aa3f14b7b21925abc05e"
+    "revision": "0719b497eef45258c49aad65bd646d16"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -2083,7 +2083,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "9e1debef3e8e519eab99924d6b2e047c"
+    "revision": "b127a087b3ba9bcd5c411d2a1634396e"
   },
   {
     "url": "tags/Java/index.html",
