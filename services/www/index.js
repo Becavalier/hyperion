@@ -7,11 +7,12 @@ const compression = require('compression');
 const helmet = require('helmet');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
+const setupChallengesRoute = require('./routers/challenges');
 
 const app = express();
 
 const isProd = process.env.state === 'production';
-const port = isProd ? 443 : 3000;
+const port = isProd ? 443 : 80;
 
 console.info(`[info] server selected port :${port}.`);
 
@@ -49,6 +50,9 @@ function errorHandler (err, req, res, next) {
 }
 
 app.use(errorHandler);
+
+// setup other routes;
+setupChallengesRoute(app);
 
 if (isProd) {
   // force https;
