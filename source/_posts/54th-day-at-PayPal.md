@@ -1,5 +1,5 @@
 ---
-title: 54th day in PayPal
+title: 54th day at PayPal
 intro: Hello guys, It's been a while since the last article.  I have resigned from Alibaba at the end of June and turned to another job which the company is PayPal. Actually, there are a lot of things I want to tell you guys since this new job is really different from the previous one. Time goes so fast, It's already 8 weeks since I joined this new company.  I don't want to talk much about the business background of PayPal, but the working style and life here instead.  
 comments: true
 date: 2019-08-23 18:25:33
@@ -8,7 +8,7 @@ tags:
 - English
 ---
 
-Hello guys, It's been a while since the last article. I have resigned from Alibaba at the end of June and turned to another job which the company is PayPal. Actually, there are a lot of things I want to tell you guys since this new job is really different from the previous one. Time goes so fast, It's already 8 weeks since I joined this new company. I don't want to talk much about the business background of PayPal, but the working style and life here instead.  
+Hello guys, It's been a while since the last article. I have resigned from Alibaba at the end of June and turned to another job which the company's name is PayPal. Actually, there are a lot of things I want to tell you guys since this new job is really different from the previous one. Time goes on so fast, It's already 8 weeks since I joined this new company. I don't want to talk much about the business background of PayPal, but the working style and life here instead.  
 
 The most apparent difference between Alibaba is that I have more flexible time to do what I really wanna do after work. I don't need to work as 996, I can schedule all the work stuff all by myself, that's exactly what we called "work-life balance". Another difference is that it seems like we have more meetings than I was at Alibaba. Because of the time-gap, we need to have meetings with foreign colleagues at the time which suits us all, sometimes it would be early morning. But, it doesn't matter since we are already accustomed to this. 
 

@@ -68,3 +68,17 @@ Some of frequently used oral short sentences in TOEFL examination. Reocrding her
 51. I can't help it anymore! 我再也忍不了了！
 52. It's a long story. 说来话长。
 53. You can't miss it! 你一定能找到。
+
+
+
+
+### Misc
+
+1. Personally, I think that ...
+2. If it were up to me, I would ...
+3. They'll probably ...
+4. I'll have a glass of wine please.
+5. Sorry, what did you say?
+6. You are an excellent cook!
+7. What's the magic word? … please.
+8. Truth or Dare.
