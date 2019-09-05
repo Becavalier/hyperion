@@ -1191,7 +1191,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/08/23/54th-day-at-PayPal/index.html",
-    "revision": "097e7e1f653b742f677d874dc4c984f7"
+    "revision": "af2f4257611c57b8efc06caaa1002198"
   },
   {
     "url": "2019/08/31/C-11-好用的新语法特性/index.html",
@@ -1203,7 +1203,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/01/C-编译器优化之-RVO-与-NRVO/index.html",
-    "revision": "8b83c498acb9b42bc529fc5f7bc3ead5"
+    "revision": "8cb0fbba7e8426f7a2e2c977d8a7cf8e"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1831,7 +1831,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -1947,59 +1947,59 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/11/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/12/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/13/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/14/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/15/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/2/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/3/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/4/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/5/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/6/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/7/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/8/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "page/9/index.html",
-    "revision": "8a140c0970a2498ddb94a1e779220796"
+    "revision": "edafa09e3bb2b87cbbedef6af4782192"
   },
   {
     "url": "scripts/index.js",
@@ -2103,7 +2103,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "1650389d31504d73754558e1b99aefa0"
+    "revision": "e32c6be9bb2c82040ae44741b3d74889"
   },
   {
     "url": "tags/Java/index.html",
