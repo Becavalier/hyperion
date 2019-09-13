@@ -89,7 +89,7 @@ deploy:
 about:
   name: 于航(曜彤)
   intro1: Male, @PayPal.
-  intro2: The author of 《深入浅出 WebAssembly》, QCon/GMTC speaker.
+  intro2: The author of 《深入浅出 WebAssembly》, QCon/GMTC speaker & host.
   skills: Web Frontend, WebAssembly, Serverless, LLVM, Product, Piano
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
