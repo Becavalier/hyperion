@@ -91,7 +91,7 @@ kubectl expose deployment <span class="token operator">&lt;</span>name<span clas
 kubectl get services
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过配置文件来创建 Pods，Pods 是一个或一组容器的集合，每一个 Pods 对应于一个逻辑上的应用程序。Pods 内部还有 Volumes，这些 Volumes 组成了该 Pods 的数据层。整个 Pods 共享一个网络命名空间（IP），内部的容器和 Volumes 之间可以相互访问。</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png" alt></p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># pods.yaml</span>
 apiVersion: v1
 kind: Pod

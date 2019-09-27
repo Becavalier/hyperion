@@ -19,17 +19,17 @@ EXPOSE 80 <span class="token comment" spellcheck="true"># 打开 80 端口；</s
 docker run -d -p 80 --name<span class="token operator">=</span><span class="token string">"website"</span> -v <span class="token variable">$PWD</span>/website:/var/www/html/website:rw becavalier/nginx nginx
 <span class="token comment" spellcheck="true"># 常用于多个不同的系统环境，多个不同的框架环境，多个不同的运行环境，公用同一份代码；</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="2、基于-Docker-的微服务容器关联："><a href="#2、基于-Docker-的微服务容器关联：" class="headerlink" title="2、基于 Docker 的微服务容器关联："></a>2、基于 Docker 的微服务容器关联：</h4><p><img src="1.png" alt=""></p>
+<h4 id="2、基于-Docker-的微服务容器关联："><a href="#2、基于-Docker-的微服务容器关联：" class="headerlink" title="2、基于 Docker 的微服务容器关联："></a>2、基于 Docker 的微服务容器关联：</h4><p><img src="1.png" alt></p>
 <pre class="line-numbers language-bash"><code class="language-bash">ip a show docker0 <span class="token comment" spellcheck="true"># docker0 网络接口，docker0 是一个虚拟的以太网桥，用来连接容器和本地宿主网络；</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>Docker 每创建一个容器就会创建一组互联的网络接口，两端分别连接容器里的 eth0 接口和宿主机的 veth<em> 接口，这些所有的 veth</em> 接口最后会被绑定到 docker0 的网桥上。</p>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png" alt></p>
 <p>如果我们在容器内通过 <code>traceroute</code> 来跟踪一个 TCP 请求的路由节点，会发现所有在容器内发送的请求都会先发送到由 docker0 创建的虚拟子网的网关地址上。</p>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png" alt></p>
 <ol>
 <li><strong>通过硬编码 IP 地址进行 Docker 容器之间的互联（如何访问 Container1 的 Http 服务）</strong>：</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png" alt></p>
 <ol start="2">
 <li><strong>通过 Docker Networking（Docker V1.9 以上）</strong>：</li>
 </ol>

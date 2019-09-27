@@ -7,7 +7,7 @@
 </ul>
 <p>下面给出了这两种具体简单工厂模式的 UML 类图。</p>
 <p><strong>1、只有一个产品对象的简单工厂模式：</strong></p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png" alt></p>
 <p>如下所示的类图中“<strong>虚线</strong>”的部分表示两个类之间的的“<strong>依赖关系</strong>”，其中用户（Client）使用工厂（Factory）来“生产”产品（Product），这里的产品（Product）是固定不变的，即：用该工厂只能“生产”出<strong>特定一种类型</strong>的产品。示例代码如下所示：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Factory.java；</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">{</span>
@@ -42,7 +42,7 @@
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>2、带有一个抽象产品的简单工厂模式：</strong></p>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png" alt></p>
 <p>基于前一种模式，只要我们稍加改进便会形成另一种类型的“简单工厂模式”，这里我们将具体的“产品”变为抽象的“产品”，即所有的具体产品均继承自抽象产品类型。这样在“工厂”内部，我们便可以根据“客户”的不同需求来创建不同的“产品”。示例代码如下所示：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">// Factory.java；</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Factory</span> <span class="token punctuation">{</span>

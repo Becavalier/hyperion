@@ -46,7 +46,7 @@ const PostComments = sequelize.define('t_blog_comments', {
     'type': 'TIMESTAMP',
     'allowNull': false,
     'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
-  }
+  },
 }, {
   timestamps: false,
   paranoid: true,
@@ -55,4 +55,92 @@ const PostComments = sequelize.define('t_blog_comments', {
   tableName: 't_blog_comments'
 });
 
-module.exports = { PostComments };
+const TOVDAccount = sequelize.define('t_tovd_account', {
+  id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': false,
+    'unique': true,
+    'primaryKey': true,
+    'autoIncrement' : true
+  },
+  username: {
+    'type': Sequelize.STRING(32),
+    'allowNull': true,
+    'unique': true
+  },
+  password: {
+    'type': Sequelize.STRING(64),
+    'allowNull': true,
+  },
+  created_at: {
+    'type': 'TIMESTAMP',
+    'allowNull': false,
+    'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+}, {
+  timestamps: false,
+  paranoid: true,
+  underscored: true,
+  freezeTableName: true,
+  tableName: 't_tovd_account'
+});
+
+const TOVDToken = sequelize.define('t_tovd_token', {
+  id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': false,
+    'unique': true,
+    'primaryKey': true
+  },
+  token: {
+    'type': Sequelize.STRING(64),
+    'allowNull': true,
+    'unique': true
+  },
+  expiry_at: {
+    'type': 'TIMESTAMP',
+    'allowNull': false,
+    'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+}, {
+  timestamps: false,
+  paranoid: true,
+  underscored: true,
+  freezeTableName: true,
+  tableName: 't_tovd_token'
+});
+
+const TOVDAppData = sequelize.define('t_tovd_app_data', {
+  id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': false,
+    'unique': true,
+    'primaryKey': true
+  },
+  data: {
+    'type': Sequelize.TEXT,
+    'allowNull': true,
+    'unique': false
+  },
+  updated_at: {
+    'type': 'TIMESTAMP',
+    'allowNull': false,
+    'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+}, {
+  timestamps: false,
+  paranoid: true,
+  underscored: true,
+  freezeTableName: true,
+  tableName: 't_tovd_app_data'
+});
+
+TOVDAccount.hasOne(TOVDToken, { foreignKey: 'id' });
+TOVDToken.belongsTo(TOVDAccount, { foreignKey: 'id' })
+
+module.exports = { 
+  PostComments, 
+  TOVDAccount,
+  TOVDToken,
+  TOVDAppData, 
+};

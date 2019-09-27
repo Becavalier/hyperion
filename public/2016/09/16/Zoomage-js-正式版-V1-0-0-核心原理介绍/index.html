@@ -6,19 +6,19 @@
 <h4 id="一、支持动作："><a href="#一、支持动作：" class="headerlink" title="一、支持动作："></a>一、支持动作：</h4><ol>
 <li>双击缩放：</li>
 </ol>
-<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-dbclick.gif?raw=true" alt=""></p>
+<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-dbclick.gif?raw=true" alt></p>
 <ol start="2">
 <li>双指手势缩放：</li>
 </ol>
-<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-zoom.gif?raw=true" alt=""></p>
+<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-zoom.gif?raw=true" alt></p>
 <ol start="3">
 <li>单指手势拖拽：</li>
 </ol>
-<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-drag.gif?raw=true" alt=""></p>
+<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-drag.gif?raw=true" alt></p>
 <ol start="4">
 <li>双指手势旋转：</li>
 </ol>
-<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-rotate.gif?raw=true" alt=""></p>
+<p><img src="https://github.com/Becavalier/Zoomage.js/raw/master/images/preview-rotate.gif?raw=true" alt></p>
 <h4 id="二、核心原理："><a href="#二、核心原理：" class="headerlink" title="二、核心原理："></a>二、核心原理：</h4><p>对于 DOM 元素的“平移”，“缩放”和“旋转”这三种类型的基本动作，我们在 Zoomage.js 中使用了两套不同的方案来实现。第一种方案是基于 Canvas 对象的 <code>drawImage</code> 方法来实现的；第二种则是基于 CSS3 的 <code>transform</code> 属性来实现的。</p>
 <p>这两种方法有各的优点和缺点。首先，使用 Canvas 对象可以让我们不用再去考虑当图像处在绘图边界时的情况（即图像不会脱离 Canvas 绘图区域）。当图像处于 “Offscreen Canvas” 区域时会被 Canvas 自动隐藏，这也正是我们需要达到的效果。但对于使用 “transform” 方案时，绘图边界的情况则需要另行处理，在正常情况图片超过 “transform” 容器时是不会被隐藏的。</p>
 <p>另一方面，在使用 Canvas 方案时对图像的旋转操作会出现特殊情况，Canvas 本身并不能只对其上绘制的图像进行旋转，所以只能将整个 Canvas 画布进行旋转来模拟图像旋转的效果，但是这样带来的问题是当 Canvas 画布和画布容器由于旋转导致不再重合时，“Offscreen Canvas” 区域的图像便不能被清除，这样最终导致图像的移动轨迹全部留在了屏幕上。而使用 “transform” 便不用考虑类似 Canvas 的重绘问题，只需要考虑如何计算元素的移动轨迹即可，这也是相对于 Canvas 方案，”transform” 所独有的优点。因此，当用户选择开启图像旋转支持时，Zoomage.js 会自动使用 “transform” 方案来支持图像的旋转操作。</p>

@@ -15,9 +15,10 @@
   "dependencies": {
     "apollo-server-express": "^2.4.8",
     "compression": "^1.7.3",
-    "dayjs": "^1.8.8",
+    "dayjs": "^1.8.16",
     "express": "^4.16.4",
     "express-enforces-ssl": "^1.1.0",
+    "express-session": "^1.16.2",
     "graphql": "^14.1.1",
     "helmet": "^3.18.0",
     "hexo": "^3.7.0",
@@ -33,6 +34,7 @@
     "hexo-server": "^0.3.1",
     "imagemin": "^6.1.0",
     "mysql2": "^1.6.5",
+    "rand-token": "^0.4.0",
     "sequelize": "^4.42.1"
   },
   "devDependencies": {

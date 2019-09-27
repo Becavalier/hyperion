@@ -1,11 +1,20 @@
 const { ApolloServer, ApolloError, gql } = require('apollo-server-express');
 const { GraphQLScalarType } = require('graphql');
-const { PostComments } = require('./db');
+const { 
+  PostComments, 
+  TOVDAccount,
+  TOVDToken,
+  TOVDAppData,
+} = require('./db');
 const dayjs = require('dayjs');
+const randToken = require('rand-token');
+const crypto = require('crypto');
+const { TOVDValidateToken } = require('./helpers/tovd');
 require('dayjs/locale/zh-cn'); 
 
-module.exports = app => {
+const md5 = value => crypto.createHash('md5').update(value).digest('hex');
 
+module.exports = app => {
   const DateScalarType = new GraphQLScalarType({
     name: 'DateScalarType',
     description: 'DateScalarType custom scalar type',
@@ -27,20 +36,38 @@ module.exports = app => {
 
   var typeDefs = gql`
     scalar DateScalarType
-
     input CommentInput {
       postId: String!
       publisher: String!
       content: String!
     }
-
+    input TOVDAppDataInput {
+      data: String!
+    }
+    input TOVDCredential {
+      username: String!
+      password: String!
+    }
+    type HTTPResult {
+      result: Boolean!
+      data: String
+      token: String
+      id: Int
+      username: String
+    }
     type Query {
       postComments(postId: String!): [PostComment]!
       searchPostsByKey(key: String!): [PostSearchResult]!
       searchTagsByKey(key: String!): [TagSearchResult]!
+      tovdSignInAccount(credential: TOVDCredential!): HTTPResult!
+      tovdSignOutAccount: HTTPResult!
+      tovdTokenValidation: HTTPResult!
+      tovdRetrieveAppData: HTTPResult!
     }
     type Mutation {
       insertPostComment(comment: CommentInput!): PostComment!
+      tovdSyncAppData(TOVDAppData: TOVDAppDataInput!): HTTPResult!
+      tovdSignUpAccount(credential: TOVDCredential!): HTTPResult!
     }
     type PostComment {
       id: Int!
@@ -69,7 +96,7 @@ module.exports = app => {
     }
   `;
 
-  var resolvers = {
+  const resolvers = {
     Query: {
       async postComments(parent, args) {
         return await PostComments.findAll({
@@ -106,6 +133,95 @@ module.exports = app => {
             tagName: candidate.name,
           }
         });
+      },
+      async tovdTokenValidation(parent, args, context) {
+        const { token } = context;
+        try {
+          return await TOVDValidateToken(token);
+        } catch(e) {
+          console.error(e);
+          return {
+            result: false,
+          }
+        }
+      },
+      async tovdSignOutAccount(parent, args, context) {
+        const { token } = context;
+        try {
+          const rows = await TOVDToken.destroy({
+            where: {
+              token,
+            },
+          });
+          // return the number of deleted rows;
+          if (rows > 0) {
+            return {
+              result: true,
+            }
+          }
+        } catch(e) {
+          console.error(e);
+          return {
+            result: false,
+          }
+        }
+      },
+      async tovdSignInAccount(parent, args, context) {
+        const { username, password } = args.credential;
+        try {
+          const profile = await TOVDAccount.findOne({
+            where: {
+              username,
+              password: md5(password),
+            },
+          });
+          if (profile && Object.keys(profile).length > 0) {
+            // regenerate token;
+            const token = randToken.uid(64);
+            await TOVDToken.upsert({
+              id: profile.id,
+              token,
+              expiry_at: dayjs().add(1, 'year').format('YYYY-MM-DD hh:mm:ss'),
+            });
+            return {
+              result: true,
+              id: profile.id,
+              username: profile.username,
+              token,
+            }
+          } else {
+            return { result: false }
+          }
+        } catch(e) {
+          console.error(e);
+          return {
+            result: false,
+          }
+        }
+      },
+      async tovdRetrieveAppData(parent, args, context) {
+        const { token } = context;
+        try {
+          const { result, id } = await TOVDValidateToken(token);
+          if (result) {
+            const res = await TOVDAppData.findOne({
+              where: {
+                id,
+              },
+            });
+            return {
+              result: true,
+              data: res ? res.data : '{}',
+            }
+          } else {
+            return { result: false }
+          }
+        } catch(e) {
+          console.error(e);
+          return {
+            result: false,
+          }
+        }
       }
     },
     Mutation: {
@@ -117,13 +233,67 @@ module.exports = app => {
         } else if (comment.publisher.includes('YHSPY') || comment.publisher.includes('博主')) {
           throw new ApolloError('Sorry, submit failed! Please re-check your input params.');
         }
-        let result = await PostComments.create({
+        const result = await PostComments.create({
           ...comment,
           ipAddr: context.ipAddr,
           publishTime,
         });
         return result;
-      }
+      },
+      async tovdSyncAppData(parent, args, context) {
+        const { token } = context;
+        try {
+          const { result, id } = await TOVDValidateToken(token);
+          console.log(result)
+          if (result) {
+            const { data } = args.TOVDAppData;
+            await TOVDAppData.upsert({
+              data, id,
+            });
+            return { result: true };
+          } else {
+            return { result: false };
+          }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
+      },
+      async tovdSignUpAccount(parent, args, context) {
+        const { username, password } = args.credential;
+        try {
+          const profile = await TOVDAccount.findOne({
+            where: {
+              username,
+            },
+          });
+          if (profile && Object.keys(profile).length > 0) {
+            return { result: false };
+          } else {
+            // create account;
+            const record = await TOVDAccount.create({
+              username, 
+              password: md5(password),
+            });
+            // regenerate token;
+            const token = randToken.uid(64);
+            await TOVDToken.create({
+              id: record.id,
+              token,
+              expiry_at: dayjs().add(1, 'year').format('YYYY-MM-DD hh:mm:ss'),
+            });
+            return {
+              result: true,
+              id: record.id,
+              username: record.username,
+              token,
+            };
+          }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
+      },
     },
     DateScalarType,
     PostComment: {
@@ -141,9 +311,9 @@ module.exports = app => {
     typeDefs, 
     resolvers,
     context: ({ req }) => ({
+      token: req.get('token'),
       ipAddr: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
     })
   });
   server.applyMiddleware({ app });
-
 };

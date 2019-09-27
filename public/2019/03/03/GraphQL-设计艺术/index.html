@@ -42,7 +42,7 @@ type Mutation <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在这段 GraphQL 资源描述定义中，可以看到客户端可以使用的后端查询资源有 postComments，请求该资源的返回值是 PostComment 类型的数组（不能为 <code>null</code>）；同理，客户端可用的变更资源为 insertPostComment，该资源在请求成功后会返回类型为 PostComment 的对象资源。而在 PostComment 对象的类型定义中，我们可以看到多个字段，其中有一个字段为我们自定义的常量类型，即 DateScalarType 类型；同样还有名为 Publisher 的自定义复合类型，而其他字段的类型均为 GraphQL 的标准常量类型。因此可以看到，实际上 GraphQL 通过这样一种资源的逐层表示方法，将所有复合（对象）类型均“递归下降解析”到最底层的常量类型（包括自定义常量类型和枚举类型）。每一个复合资源各字段的解析过程都可以对应一个独立的 “Resolver（解析函数）”，顶层解析函数所得到的资源会依次传递给对应的子层类型各字段的解析函数，子层字段继续解析直到最底层所有复合类型全部解析成符合 GraphQL 的标准常量或自定义常量类型。我们可以将上述的资源描述定义代码绘制成下图所示的无向图结构。</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png" alt></p>
 <p>在上图中，小虚线的指向代表类型实体的组成关系，即所指向的对象结构可以直接替代箭头起始位置处的资源别名；大虚线表示资源的对应转换规则到资源实体。每一个 Resolver 都可以从任何的数据源来获取数据，或者直接修改从父层级传递过来对应字段的数据。正常来说，我们可以为 GraphQL 所有可用资源的所有层级的每一个字段都设置对应的 Resolver，但实际上在 GraphQL 中，一般有三种情况需要为对应字段设置 Resolver：</p>
 <ol>
 <li>需要<strong>接收参数</strong>的字段；</li>
