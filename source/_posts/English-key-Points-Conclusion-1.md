@@ -35,6 +35,7 @@ My company granted my wish and bought me a new computer.
 * I'm supposed to call my parents every Sunday. 我们周日都应该给我父母打电话。
 * We're supposed to finish work at 8pm.
 
+
 * To pitch a tent. 搭帐篷。
 * We're going to rise to the challenge. 我们将迎接挑战。
 
@@ -51,14 +52,18 @@ Are there any other questions before we wrap up the meetng?
 * Q: What are you in the mood for?
 * A: Let's go to Burger King / Let's go for Chinese food (cuisine); Chinese;
 
+
 * Q: What are you gonna get? 你想要点什么？
 * A: I'm gonna get an ice-cream.
+
 
 * Q: Do you wanna get an appetizer? 
 * A: Yes/Sure/Nah.
 
+
 * Q: Do you wanna get dessert?
 * A: Yes/Sure/Nah.
+
 
 * Q: Are you gonna get a drink? 
 * A: Yes/Nah/No. (Can not use "sure" to respond here, because it's not an agreement)

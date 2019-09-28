@@ -1223,7 +1223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "9d5912e1ec50905f3c943bab952a4e5a"
+    "revision": "ba5c71e295c7e00317f7a0d2c99dd5e1"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "8f24ea3e2311df69c97b8d65d70160b0"
+    "revision": "d9c55084d431afc088b4d0f817a11297"
   },
   {
     "url": "tags/Java/index.html",
@@ -2186,8 +2186,8 @@ self.__precacheManifest = [
     "revision": "e1bb0fa8c047157dbcc001dba9edec24"
   },
   {
-    "url": "tags/python/index.html",
-    "revision": "91a020ad83553a3c19975a5ab9424ba2"
+    "url": "tags/Python/index.html",
+    "revision": "c4efcf37c7b77cf074f753bfc3d15454"
   },
   {
     "url": "tags/React/index.html",
