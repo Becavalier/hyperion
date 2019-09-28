@@ -1,2 +1,3 @@
 node_modules/
 .db-secret.json
+.well-known/
