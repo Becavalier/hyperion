@@ -1,6 +1,6 @@
 ---
 title: English key Points Conclusion .1
-intro: Enter intro here to display on home page
+intro: English Knowledge Series, key Points Conclusion .1
 comments: true
 date: 2019-09-16 10:02:52
 tags:

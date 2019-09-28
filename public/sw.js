@@ -1223,7 +1223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "e6d09edde3b164e437b53b852f27c72a"
+    "revision": "9d5912e1ec50905f3c943bab952a4e5a"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1523,7 +1523,7 @@ self.__precacheManifest = [
   },
   {
     "url": "author/index.html",
-    "revision": "5fc7cff0539fc3b502a606dfd637bc30"
+    "revision": "d6d5a2df826b1be72b94fe9c6af9274f"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1851,7 +1851,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -1967,59 +1967,59 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/11/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/12/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/13/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/14/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/15/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/2/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/3/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/4/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/5/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/6/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/7/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/8/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "page/9/index.html",
-    "revision": "ecf30735ac4625a3d5d0c34931ac2007"
+    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
   },
   {
     "url": "scripts/index.js",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "86f4b1e9ed4ae295e27607714b5dc732"
+    "revision": "8f24ea3e2311df69c97b8d65d70160b0"
   },
   {
     "url": "tags/Java/index.html",
