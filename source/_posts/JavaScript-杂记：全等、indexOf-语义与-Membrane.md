@@ -66,6 +66,8 @@ function GetValue(value) {
 
 再往上看，这里在判断全等时使用了标准中定义的 “The Strict Equality Comparison Algorithm” 算法，对于 Primitive 类型的值可以参考其前面几个步骤，而对象值则需要**判断是否指向了同一个对象**。
 
+Anyway, I don't know what I'm talking about either. That's it.
+
 
 #### JavaScript Membrane
 

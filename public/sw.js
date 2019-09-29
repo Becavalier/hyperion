@@ -1215,7 +1215,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/index.html",
-    "revision": "d9d61311b34861401a802fb1b0053184"
+    "revision": "b001b41504159c034f5fe2be18f2e383"
   },
   {
     "url": "2019/09/13/Privacy-Policy-for-TOVD/index.html",
@@ -1523,7 +1523,7 @@ self.__precacheManifest = [
   },
   {
     "url": "author/index.html",
-    "revision": "d6d5a2df826b1be72b94fe9c6af9274f"
+    "revision": "56dda14c682f9f812e9fbd04bcf8c1b4"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1859,7 +1859,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me-en/css/style.min.css",
-    "revision": "9ae07a777a10fb736c030c2164fb1a4f"
+    "revision": "e604fdf6f2206918ea2cd304baa80507"
   },
   {
     "url": "me-en/fonts/fontawesome-webfont.eot",
@@ -1915,7 +1915,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me/css/style.min.css",
-    "revision": "9ae07a777a10fb736c030c2164fb1a4f"
+    "revision": "e604fdf6f2206918ea2cd304baa80507"
   },
   {
     "url": "me/fonts/fontawesome-webfont.eot",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "956b5a223f024713000015c4bf3dc74b"
+    "revision": "4c75e962124227e9d0fc331b8a8dabc8"
   },
   {
     "url": "tags/Java/index.html",
