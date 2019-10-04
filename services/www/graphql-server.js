@@ -35,26 +35,6 @@ module.exports = app => {
   });
 
   var typeDefs = gql`
-    scalar DateScalarType
-    input CommentInput {
-      postId: String!
-      publisher: String!
-      content: String!
-    }
-    input TOVDAppDataInput {
-      data: String!
-    }
-    input TOVDCredential {
-      username: String!
-      password: String!
-    }
-    type HTTPResult {
-      result: Boolean!
-      data: String
-      token: String
-      id: Int
-      username: String
-    }
     type Query {
       postComments(postId: String!): [PostComment]!
       searchPostsByKey(key: String!): [PostSearchResult]!
@@ -68,6 +48,39 @@ module.exports = app => {
       insertPostComment(comment: CommentInput!): PostComment!
       tovdSyncAppData(TOVDAppData: TOVDAppDataInput!): HTTPResult!
       tovdSignUpAccount(credential: TOVDCredential!): HTTPResult!
+      tovdInsertNewRecord(TOVDRecordData: TOVDRecordDataInput!): HTTPResult!
+      tovdRemoveRecord(TOVDRecordDataJSON: TOVDRecordDataJSONInput!): HTTPResult!
+    }
+    scalar DateScalarType
+    input TOVDRecordDataJSONInput {
+      index: Int!
+      data: String!
+    }
+    input CommentInput {
+      postId: String!
+      publisher: String!
+      content: String!
+    }
+    input TOVDAppDataInput {
+      data: String!
+    }
+    input TOVDCredential {
+      username: String!
+      password: String!
+    }
+    input TOVDRecordDataInput {
+      content: String!
+      translation: String!
+      date: String!
+      type: String
+      index: Float!  
+    }
+    type HTTPResult {
+      result: Boolean!
+      data: String
+      token: String
+      id: Int
+      username: String
     }
     type PostComment {
       id: Int!
@@ -205,9 +218,7 @@ module.exports = app => {
           const { result, id } = await TOVDValidateToken(token);
           if (result) {
             const res = await TOVDAppData.findOne({
-              where: {
-                id,
-              },
+              where: { id },
             });
             return {
               result: true,
@@ -244,12 +255,47 @@ module.exports = app => {
         const { token } = context;
         try {
           const { result, id } = await TOVDValidateToken(token);
-          console.log(result)
           if (result) {
             const { data } = args.TOVDAppData;
             await TOVDAppData.upsert({
               data, id,
             });
+            return { result: true };
+          } else {
+            return { result: false };
+          }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
+      },
+      async tovdInsertNewRecord(parent, args, context) {
+        const { token } = context;
+        try {
+          const { result, id } = await TOVDValidateToken(token);
+          if (result) {
+            const record = args.TOVDRecordData;
+            const db = (await TOVDAppData.findOne({ where: { id }})).data;
+            const position = -2;
+            const data = [db.slice(0, position), `${db.length <= 27 ? '' : ','}${JSON.stringify(record)}`, db.slice(position)].join('');
+            await TOVDAppData.upsert({ data, id });
+            return { result: true };
+          } else {
+            return { result: false };
+          }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
+      },
+      async tovdRemoveRecord(parent, args, context) {
+        const { token } = context;
+        try {
+          const { result, id } = await TOVDValidateToken(token);
+          if (result) {
+            const { index, data } = args.TOVDRecordDataJSON;
+            const db = (await TOVDAppData.findOne({ where: { id }})).data;
+            await TOVDAppData.upsert({ data: db.replace(new RegExp(index === 0 ? `${data},?` : `,?${data}`), ''), id });
             return { result: true };
           } else {
             return { result: false };
@@ -313,7 +359,15 @@ module.exports = app => {
     context: ({ req }) => ({
       token: req.get('token'),
       ipAddr: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-    })
+    }),
+    formatError: error => {
+      console.error(error);
+      return error;
+    },
+    formatResponse: response => {
+      console.log(response);
+      return response;
+    },
   });
   server.applyMiddleware({ app });
 };
