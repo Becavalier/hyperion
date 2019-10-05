@@ -71,3 +71,39 @@ Anyway, I don't know what I'm talking about either. That's it.
 
 #### JavaScript Membrane
 
+一个简单的实现如下所示：
+
+```javascript
+class Foo {
+	#foo = 42;
+	print() {
+		return this.#foo;
+	}
+}
+const p = new NaiveMembrane(new Foo());
+p.print() // 42;
+
+const wrapped = new WeakMap();
+function NaiveMembrane(target) {
+  const p = new Proxy(target, {
+    get(target, key, reciever) {
+      const result = Reflect.get(target, key, reciever)
+      if (typeof result === 'function') {
+        // change caller;
+        return new Proxy(result, {
+          apply(target, thisArg, argList) {
+            const unwrapped = wrapped.has(thisArg) ? wrapped.get(thisArg) : thisArg;
+            // call function with new "this";
+            return Reflect.apply(target, unwrapped, argList)
+          }
+        });
+      } else {
+        return result
+      }
+    }
+  });
+  wrapped.set(p, target);
+  return p;
+}
+```
+

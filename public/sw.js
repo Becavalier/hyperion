@@ -1179,7 +1179,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/07/11/Frequently-used-TOEFL-oral-short-sentences/index.html",
-    "revision": "ef445309211786cdb6fb7b9f80c7a479"
+    "revision": "205d3ee6fb0dd7abc543e852b7fc6899"
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/1.png",
@@ -1215,7 +1215,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/index.html",
-    "revision": "b001b41504159c034f5fe2be18f2e383"
+    "revision": "0f3b0eabd115265071f0a9a24f8b3371"
   },
   {
     "url": "2019/09/13/Privacy-Policy-for-TOVD/index.html",
@@ -1223,7 +1223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "ba5c71e295c7e00317f7a0d2c99dd5e1"
+    "revision": "0c6bb1c889fcb1768db456797d292572"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1851,7 +1851,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -1967,59 +1967,59 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/11/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/12/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/13/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/14/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/15/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/2/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/3/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/4/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/5/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/6/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/7/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/8/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "page/9/index.html",
-    "revision": "52d1be3b7f651cca13150e34e3c23dfc"
+    "revision": "8e5b055653a623ca3fde13633d55b18b"
   },
   {
     "url": "scripts/index.js",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "4c75e962124227e9d0fc331b8a8dabc8"
+    "revision": "3769db47ad773e198ab08be69816ba53"
   },
   {
     "url": "tags/Java/index.html",
