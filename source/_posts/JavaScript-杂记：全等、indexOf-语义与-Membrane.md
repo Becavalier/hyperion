@@ -75,10 +75,10 @@ Anyway, I don't know what I'm talking about either. That's it.
 
 ```javascript
 class Foo {
-	#foo = 42;
-	print() {
-		return this.#foo;
-	}
+  #foo = 42;
+  print() {
+    return this.#foo;
+  }
 }
 const p = new NaiveMembrane(new Foo());
 p.print() // 42;

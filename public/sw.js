@@ -1215,7 +1215,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/index.html",
-    "revision": "0f3b0eabd115265071f0a9a24f8b3371"
+    "revision": "331aa07e1359f74dd5350d04975e3b94"
   },
   {
     "url": "2019/09/13/Privacy-Policy-for-TOVD/index.html",
@@ -1223,7 +1223,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "0c6bb1c889fcb1768db456797d292572"
+    "revision": "d7b77ce42acbab1091db4f542c2d6230"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "3769db47ad773e198ab08be69816ba53"
+    "revision": "5844c272346fd6adbd2493fe5770f9fc"
   },
   {
     "url": "tags/Java/index.html",

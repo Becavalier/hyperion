@@ -68,6 +68,26 @@ Are there any other questions before we wrap up the meetng?
 * Q: Are you gonna get a drink? 
 * A: Yes/Nah/No. (Can not use "sure" to respond here, because it's not an agreement)
 
+#### ... used to ... / ... would ...
+
+* I used to play scooer. (I play soccer long time ago, but not now)
+* I used to be a teacher. (I was a teacher before, but not now)
+
+
+* Where did you used to play?
+* Didn't you used to have a car? (For confirmation purpose)
+
+* When I was a kid, I would collect stamps and put them in a box in my room. (**Used for repeated actions, but can not be used for statuses**)
+
+
+1. Introduce the concept with "used to";
+2. Give details(repeated actions) with "would"(specific time period);
+3. End with past(memory) or present(the situation now) tense statements;
+
+
+* I used to live with a really messy roommate. Every week, the guy would leave his dirty dishes in the sink and wait for me to clean them up! I eventually moved out. 
+* My parents used to live around here when I worked in this neighborhood. I would go to their house every week for dinner. My mom makes amazing food, and my dad is pretty good with barbecue.
+
 
 #### Phrases
 
@@ -75,19 +95,19 @@ Are there any other questions before we wrap up the meetng?
 * To keep an eye out for sth (a new restaruant). = **Please watch carefully for sth.**
 * To add fuel to the fire.  
 * To poke the bear. = **To make a joke on sb who was already upset.**
-* To wrap your head around sth. (ep: I can't warp my head around why made this descision.) = **I can't understand sth.**
-* To call it a day. (Use this when leave school, off work. ep: I am gonna call it a day.） = **To decide to finish the day.**
+* To wrap your head around sth. (e.g. I can't warp my head around why made this descision.) = **I can't understand sth.**
+* To call it a day. (Use this when leave school, off work. e.g. I am gonna call it a day.） = **To decide to finish the day.**
 * It's not rocket science. = **It's not difficult.**
 * To burn the candle at both ends. = **Working too hard, but usually with negative effects.**
-* To be in the dark. (ep: I am in the dark about the topic for today's meeting.) = **To have no information.** 
-* To play devil's advocate. (ep: I am gonna play devil's advocate here.) = **Argue with sb on sth, agree but need to ask questions and clarify sth.** 
-* To draw a blank. (ep: Sorry, I am drawing a blank on her name.) = **Unable to remember sth;**
+* To be in the dark. (e.g. I am in the dark about the topic for today's meeting.) = **To have no information.** 
+* To play devil's advocate. (e.g. I am gonna play devil's advocate here.) = **Argue with sb on sth, agree but need to ask questions and clarify sth.** 
+* To draw a blank. (e.g. Sorry, I am drawing a blank on her name.) = **Unable to remember sth;**
 * To fight fire with fire.
 * To go viral. = **To get very popular in a very peroid short of time.**
 * Hair of the dog (that bit you). = **Alcohol.**
-* Hands down. (ep: Hands down, this is the best dinner you have ever made.) = **No doubts.** 
-* Not my cup of tea. (ep: that movie was not my cup of tea.) = **I don't like it.**
-* On the fence. (ep: I am on the fence about which place should I move to.) = **Not able to decide sth.**
+* Hands down. (e.g. Hands down, this is the best dinner you have ever made.) = **No doubts.** 
+* Not my cup of tea. (e.g. that movie was not my cup of tea.) = **I don't like it.**
+* On the fence. (e.g. I am on the fence about which place should I move to.) = **Not able to decide sth.**
 * To read between the lines. = **Understand sth that is not said.**
 * To take the wind out of sb's sail. = **To cause sb to lose their confidence.**
-* Hit the hay. (ep: I am gonna hit the hay.) = **Go to sleep.**
+* Hit the hay. (e.g. I am gonna hit the hay.) = **Go to sleep.**
