@@ -1907,7 +1907,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me-en/index.html",
-    "revision": "b41fa23a4eb9d2a60c823e2a7f2d91c1"
+    "revision": "50ec1ce2acb43f8c2c8a4bad3c888e81"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -2123,7 +2123,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "5844c272346fd6adbd2493fe5770f9fc"
+    "revision": "0f31b6621fde9238bd0ba429dbe20781"
   },
   {
     "url": "tags/Java/index.html",
