@@ -5,23 +5,23 @@ My Hexo blog system (deeply customized).
 
 * **Hexo**:
 
-For generating static pages according to */source/_posts*.
+Generating static pages according to */source/_posts*.
 
 * **Expressjs**: 
 
-Supply the basic HTTP service.
+Supply basic HTTP services.
 
 * **GraphQL + MySQL**: 
 
-Provide the apis for commenting sub-system.
+Provide the APIs for commenting sub-system, and etc.
 
 * **Workbox**:
 
-Just service worker, for caching static resources.
+For caching static resources.
 
 * **GA**:
 
-Used for website visitor statistic.
+Used for tracking website visitor statistics.
 
 * **PWA**:
 
