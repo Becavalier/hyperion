@@ -50,10 +50,14 @@ module.exports = app => {
       tovdSignUpAccount(credential: TOVDCredential!): HTTPResult!
       tovdInsertNewRecord(TOVDRecordData: TOVDRecordDataInput!): HTTPResult!
       tovdRemoveRecord(TOVDRecordDataJSON: TOVDRecordDataJSONInput!): HTTPResult!
+      tovdSyncReviewData(TOVDReviewDataJSON: TOVDReviewDataJSONInput!): HTTPResult!
     }
     scalar DateScalarType
     input TOVDRecordDataJSONInput {
       index: Int!
+      data: String!
+    }
+    input TOVDReviewDataJSONInput {
       data: String!
     }
     input CommentInput {
@@ -161,16 +165,13 @@ module.exports = app => {
       async tovdSignOutAccount(parent, args, context) {
         const { token } = context;
         try {
-          const rows = await TOVDToken.destroy({
+          await TOVDToken.destroy({
             where: {
               token,
             },
           });
-          // return the number of deleted rows;
-          if (rows > 0) {
-            return {
-              result: true,
-            }
+          return {
+            result: true,
           }
         } catch(e) {
           console.error(e);
@@ -340,7 +341,31 @@ module.exports = app => {
           return { result: false };
         }
       },
-    },
+      async tovdSyncReviewData(parent, args, context) {
+        const { token } = context;
+        try {
+          const { result, id } = await TOVDValidateToken(token);
+          if (result) {
+            const { data } = args.TOVDReviewDataJSON;
+            const parsedReviewData = JSON.parse(data);
+            const db = (await TOVDAppData.findOne({ where: { id }})).data;
+            const parsedAppData = JSON.parse(db);
+            parsedAppData.data.forEach(i => {
+              i.index = parsedReviewData[i.index] || i.index;
+            });
+            await TOVDAppData.upsert({
+              data: JSON.stringify(parsedAppData), id,
+            });            
+            return { result: true };
+          } else {
+            return { result: false };
+          }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
+      }
+     },
     DateScalarType,
     PostComment: {
       publisher(parent) {
