@@ -2284,13 +2284,13 @@ function _webViewerPageChanging() {
   _webViewerPageChanging = _asyncToGenerator(
   /*#__PURE__*/
   _regenerator["default"].mark(function _callee9(evt) {
-    var page, fileId, response, pageView;
+    var page, fileId, pageView;
     return _regenerator["default"].wrap(function _callee9$(_context9) {
       while (1) {
         switch (_context9.prev = _context9.next) {
           case 0:
             page = evt.pageNumber;
-            fileId = Number(PDFViewerApplication.url.split('-')[DEFAULT_INDEX]);
+            fileId = Number(PDFViewerApplication.url.match(/\d+/)[DEFAULT_INDEX]);
             PDFViewerApplication.toolbar.setPageNumber(page, evt.pageLabel || null);
             PDFViewerApplication.secondaryToolbar.setPageNumber(page);
 
@@ -2299,7 +2299,7 @@ function _webViewerPageChanging() {
             }
 
             if (!(fileId > 0)) {
-              _context9.next = 9;
+              _context9.next = 8;
               break;
             }
 
@@ -2315,9 +2315,6 @@ function _webViewerPageChanging() {
             });
 
           case 8:
-            response = _context9.sent;
-
-          case 9:
             if (typeof Stats !== 'undefined' && Stats.enabled) {
               pageView = PDFViewerApplication.pdfViewer.getPageView(page - 1);
 
@@ -2326,7 +2323,7 @@ function _webViewerPageChanging() {
               }
             }
 
-          case 10:
+          case 9:
           case "end":
             return _context9.stop();
         }
