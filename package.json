@@ -11,7 +11,7 @@
     "daemon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW workbox-config.js",
     "sync": "git pull --rebase origin master && pm2 reload all",
-    "validate": "cd ./public && browser-sync start --server --files ."
+    "preview": "cd ./public && browser-sync start --server --files ."
   },
   "dependencies": {
     "apollo-server-express": "^2.4.8",

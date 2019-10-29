@@ -5,6 +5,7 @@ const {
   TOVDAccount,
   TOVDToken,
   TOVDAppData,
+  BookShelf,
 } = require('./db');
 const dayjs = require('dayjs');
 const randToken = require('rand-token');
@@ -43,9 +44,11 @@ module.exports = app => {
       tovdSignOutAccount: HTTPResult!
       tovdTokenValidation: HTTPResult!
       tovdRetrieveAppData: HTTPResult!
+      fetchAllBookRecord: [BookRecord]!
     }
     type Mutation {
       insertPostComment(comment: CommentInput!): PostComment!
+      updateBookCurrentPage(BookCurrentPage: BookCurrentPageInput!): HTTPResult!
       tovdSyncAppData(TOVDAppData: TOVDAppDataInput!): HTTPResult!
       tovdSignUpAccount(credential: TOVDCredential!): HTTPResult!
       tovdInsertNewRecord(TOVDRecordData: TOVDRecordDataInput!): HTTPResult!
@@ -59,6 +62,10 @@ module.exports = app => {
     }
     input TOVDReviewDataJSONInput {
       data: String!
+    }
+    input BookCurrentPageInput {
+      id: Int!
+      currentPage: Int!
     }
     input CommentInput {
       postId: String!
@@ -93,6 +100,13 @@ module.exports = app => {
       content: String!
       ipAddr: String
       publishTime: DateScalarType!
+    }
+    type BookRecord {
+      id: Int!
+      name: String!
+      url: String!
+      totalPages: Int!
+      currentPages: Int
     }
     type PostSearchResult {
       title: String!
@@ -150,6 +164,20 @@ module.exports = app => {
             tagName: candidate.name,
           }
         });
+      },
+      async fetchAllBookRecord(parent, args) {
+        try {
+          return (await BookShelf.findAll()).map(i => ({
+            id: i.id,
+            name: i.name,
+            url: i.url,
+            totalPages: i.total_pages,
+            currentPages: i.current_page,
+          }));
+        } catch(e) {
+          console.error(e);
+          return [];
+        }
       },
       async tovdTokenValidation(parent, args, context) {
         const { token } = context;
@@ -251,6 +279,16 @@ module.exports = app => {
           publishTime,
         });
         return result;
+      },
+      async updateBookCurrentPage(parent, args) {
+        const { id, currentPage } = args.BookCurrentPage;
+        try {
+          await BookShelf.update({ current_page: currentPage }, { where: { id }});
+          return { result: true }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
       },
       async tovdSyncAppData(parent, args, context) {
         const { token } = context;

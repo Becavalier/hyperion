@@ -755,7 +755,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/06/29/Common-Lisp-全记录（一）/index.html",
-    "revision": "8a4b196dd90f64c949a94db9b367036e"
+    "revision": "50fffdeeab1c60d9bf8a8ae4b610bcc8"
   },
   {
     "url": "2017/06/29/Mac-配置-Commom-Lisp-开发环境/index.html",
@@ -1223,307 +1223,735 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "d7b77ce42acbab1091db4f542c2d6230"
+    "revision": "0c43e9f5728d59d4e0937341a6bb757e"
+  },
+  {
+    "url": "2019/10/11/SICP-计算机程序的构造和解释（一）/index.html",
+    "revision": "2c8619db81aa6d0b24a6ce0321f12e7e"
+  },
+  {
+    "url": "2019/10/14/浅谈企业股权设计/index.html",
+    "revision": "19dd9d3bdedaf5dacefacb9a638092b4"
+  },
+  {
+    "url": "app-pdf-viewer/build/pdf.js",
+    "revision": "66d5979ae7352d1b7a58096aae117b27"
+  },
+  {
+    "url": "app-pdf-viewer/build/pdf.worker.js",
+    "revision": "17f81f8857c5902823fa30dd30c833d4"
+  },
+  {
+    "url": "app-pdf-viewer/web/debugger.js",
+    "revision": "f3c574d0c88bb5fed257a0d0c8e269e0"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-check.svg",
+    "revision": "1aac80711a19e2e435ef13aba855901f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-comment.svg",
+    "revision": "4f3d3d9b61d113ba0d284481d2454af4"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-help.svg",
+    "revision": "6ec1ca7b8aa80a3e10325e74d7998894"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-insert.svg",
+    "revision": "790992abfc5034ed777d4ca8b4865a96"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-key.svg",
+    "revision": "40015bde172203a4ffa880a238d6d779"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-newparagraph.svg",
+    "revision": "bb7062f13b8ce19185fc37ff7dc67566"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-noicon.svg",
+    "revision": "6508f26ea254277f5c0df4ea5ab9f24d"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-note.svg",
+    "revision": "832e3217eb765543d201f3b40005956d"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/annotation-paragraph.svg",
+    "revision": "da51c08160d09ff8f5e8e09dc9e042eb"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-next-rtl.png",
+    "revision": "d635a5da775d416e415930f5433d829c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-next-rtl@2x.png",
+    "revision": "e6397a5760a891c427998d92a5c65e11"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-next.png",
+    "revision": "b425dabab271624e125082f6be17e996"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-next@2x.png",
+    "revision": "7f5d17319ccac59c9eec58275e6b4023"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-previous-rtl.png",
+    "revision": "b425dabab271624e125082f6be17e996"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-previous-rtl@2x.png",
+    "revision": "7f5d17319ccac59c9eec58275e6b4023"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-previous.png",
+    "revision": "d635a5da775d416e415930f5433d829c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/findbarButton-previous@2x.png",
+    "revision": "e6397a5760a891c427998d92a5c65e11"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/loading-icon.gif",
+    "revision": "faa74e8c61fc64d5edb11613c7eead2c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/loading-small.png",
+    "revision": "9244a600a36f650764a9512791792ec8"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/loading-small@2x.png",
+    "revision": "14e5ac73c1ae3f8a1f62556b9634db33"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-documentProperties.png",
+    "revision": "e81d4e81a94de79e10c236547670eb5a"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-documentProperties@2x.png",
+    "revision": "0f468066bd65a8d2bc3e7c848069c056"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-firstPage.png",
+    "revision": "4966f15d1573ee9665ad1115b3a1eb44"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-firstPage@2x.png",
+    "revision": "2d43ccfa724192addf989be5b45c565f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-handTool.png",
+    "revision": "2eac9c669b98ce3c624dba5f46a6b328"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-handTool@2x.png",
+    "revision": "04d38d1ed2861a6d8fca564324dc27d7"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-lastPage.png",
+    "revision": "d58e9db0f88f5129cb026d2d6ecca73c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-lastPage@2x.png",
+    "revision": "c450b43bcf64b4e4a31c1a040d7964bf"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-rotateCcw.png",
+    "revision": "9904daadfe637b3a1003ba5274363c5d"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-rotateCcw@2x.png",
+    "revision": "c89c60ede5edd40d6ba425d35b1c2ba6"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-rotateCw.png",
+    "revision": "858044220ca467eac1d3d8abec9e0b8c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-rotateCw@2x.png",
+    "revision": "9a07c9d66c3d75fbf64d8fc046131fe2"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollHorizontal.png",
+    "revision": "4d4b2e69413360368a96d612d0c431f2"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollHorizontal@2x.png",
+    "revision": "f01f66adde5d412e652aa6878b0c7dab"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollVertical.png",
+    "revision": "b0dbe88561bb48fc3b0580ec26df8f5a"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollVertical@2x.png",
+    "revision": "6489acfca9e652ea619dfb3a178ca74a"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollWrapped.png",
+    "revision": "55fce14861a5587bf01ec72b18cc121f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-scrollWrapped@2x.png",
+    "revision": "61b79e9f1c70bac96f04038d0c443345"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-selectTool.png",
+    "revision": "edfd25ff9999ace3ee701fff5dbc2fa2"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-selectTool@2x.png",
+    "revision": "62a82ead4a30d2dbb7421c038fcdc9d3"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadEven.png",
+    "revision": "3e83bd58b9f77a6cb906e37276675271"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadEven@2x.png",
+    "revision": "c5d447ed101b00492d05075b907ffeaa"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadNone.png",
+    "revision": "458217d12e4449eec9b4d714ea5aea40"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadNone@2x.png",
+    "revision": "9528f82a4af0ec621f866f309fc49094"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadOdd.png",
+    "revision": "84d9145fcd7fee78cdb1b57e846dc794"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/secondaryToolbarButton-spreadOdd@2x.png",
+    "revision": "ee68a154138508bd0ff24c3c9b85649c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/shadow.png",
+    "revision": "bf677598a57b9539055834af51cf6062"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/texture.png",
+    "revision": "be7cd9355fa2121fab8e619ed546ced4"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-bookmark.png",
+    "revision": "97676ebb2225309ad15ba193f23f7fa8"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-bookmark@2x.png",
+    "revision": "5da7bcfae7b61f069cb91b25920c64c5"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-download.png",
+    "revision": "f20a55dc99268dac130586e52e2b10d6"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-download@2x.png",
+    "revision": "3b56d4b64a3bf24df1c0dbe2dd2f52b2"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-menuArrows.png",
+    "revision": "0f776a81f64ed3775ce1917917879e4b"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-menuArrows@2x.png",
+    "revision": "211044c3c1f898cc25a872d13f5108f4"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-openFile.png",
+    "revision": "8db4158c49b8a31e311ee501af30566f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-openFile@2x.png",
+    "revision": "4a27a5e1915518b7fef119007e937c8d"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageDown-rtl.png",
+    "revision": "5bfdeb6b844f6cc9fa636ec358a76986"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageDown-rtl@2x.png",
+    "revision": "eea2e0da4795a4c3e7a03ba1bf4aca15"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageDown.png",
+    "revision": "d86ed7c2ca30e08f7f3b499de2dca107"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageDown@2x.png",
+    "revision": "7fdce5fb0a3d1bf9e884cc3b4061d143"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageUp-rtl.png",
+    "revision": "6fa884ed046f2885582e80f2164f392f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageUp-rtl@2x.png",
+    "revision": "8b828859a3f2d503c7c4eab8ba1a2fc4"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageUp.png",
+    "revision": "c270b41d7a0ff9892ba9ac67d789a841"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-pageUp@2x.png",
+    "revision": "1919a86db02ab08b5ac0ef3cb5e53ff9"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-presentationMode.png",
+    "revision": "fb94ca39aec07d85a29fdb62b0b03b24"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-presentationMode@2x.png",
+    "revision": "6f172f3b9c5b7331531969c68f919945"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-print.png",
+    "revision": "923cfb0f2a944b5a49f99a6901770f71"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-print@2x.png",
+    "revision": "a603c277f9547c2428055e7371fd4d81"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-search.png",
+    "revision": "273cffad049d5b4e1f0a9d7af149e597"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-search@2x.png",
+    "revision": "33358e593e99cfe72ac2e9de6c9f244f"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-secondaryToolbarToggle-rtl.png",
+    "revision": "2f4f9206840c72baef8a402175fbfc45"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-secondaryToolbarToggle-rtl@2x.png",
+    "revision": "773ae955c3570a34012c730181f1bdfd"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-secondaryToolbarToggle.png",
+    "revision": "7af7e96cf59fea4b789db1c5d4636d08"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-secondaryToolbarToggle@2x.png",
+    "revision": "cdac287bc3d5648256e106dcb921c520"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-sidebarToggle-rtl.png",
+    "revision": "4796174bdfd65f1861dc2bea81ce744c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-sidebarToggle-rtl@2x.png",
+    "revision": "4bdb2eb80c6a6cdcbedbc225bb661c08"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-sidebarToggle.png",
+    "revision": "6c365a103073ff2d8303c68856df0a4e"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-sidebarToggle@2x.png",
+    "revision": "b82384c2cc730c47b2e132eb89e9cec4"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewAttachments.png",
+    "revision": "b58498a5ba191146108d60bf1e079592"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewAttachments@2x.png",
+    "revision": "13c0f04fa5dd5a05059b017b28181304"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewOutline-rtl.png",
+    "revision": "26e6d0ea3c09f725e9f5d2f91d7f4741"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewOutline-rtl@2x.png",
+    "revision": "016d9158111a9dc6104628c0c1149077"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewOutline.png",
+    "revision": "2d32348db7b0eca4195bf844551a5c58"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewOutline@2x.png",
+    "revision": "9eb0bed2459b8cecb8d435849d7ae75c"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewThumbnail.png",
+    "revision": "5ab2c00425ead7f7a0c219385d55bf03"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-viewThumbnail@2x.png",
+    "revision": "f74f681bc5389d5163e0a845fff82b61"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-zoomIn.png",
+    "revision": "1ec009b6c54709afa73d99db10c57039"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-zoomIn@2x.png",
+    "revision": "19aea6e460a160e97ec298448d9f06f9"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-zoomOut.png",
+    "revision": "e1256ccd98a1865848fb957009e6f7a9"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-zoomOut@2x.png",
+    "revision": "cc2a035371ed64c3878f903e05a7fea8"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-collapsed-rtl.png",
+    "revision": "b4a247f2a189f66715009f8bb1938398"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-collapsed-rtl@2x.png",
+    "revision": "719f8e84b8f2b1907daa8c4138bee063"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-collapsed.png",
+    "revision": "583ca0cee62b36c8972ef6b89967700b"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-collapsed@2x.png",
+    "revision": "9879163b7a2d0bd390c73174c6e276d5"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-expanded.png",
+    "revision": "6fd8d469b43811d4d0cbdbc2e3dca116"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/treeitem-expanded@2x.png",
+    "revision": "f71c9d5993e2823a1829a454014e0471"
+  },
+  {
+    "url": "app-pdf-viewer/web/viewer.css",
+    "revision": "a2a704a047f6b351242c3cecd6ea17c4"
+  },
+  {
+    "url": "app-pdf-viewer/web/viewer.html",
+    "revision": "cb4751502d74d3f1feba79969bc6ac3b"
+  },
+  {
+    "url": "app-pdf-viewer/web/viewer.js",
+    "revision": "e3e5a6c8b1fd9238d8c19ecff1ff2f5d"
   },
   {
     "url": "archives/2014/12/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2014/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/01/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/02/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/03/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/07/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/08/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/11/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2015/page/3/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/01/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/02/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/03/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/04/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/04/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/05/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/06/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/07/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/08/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/09/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/12/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/page/3/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/page/4/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/page/5/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2016/page/6/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/01/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/02/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/03/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/04/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/05/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/06/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/06/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/07/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/08/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/09/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/11/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/12/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/page/3/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/page/4/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2017/page/5/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2018/01/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2018/11/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2018/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/01/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/02/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/03/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/04/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/07/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/08/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/09/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+  },
+  {
+    "url": "archives/2019/10/index.html",
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/2019/page/3/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/10/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/11/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/12/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/13/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/14/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/15/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+  },
+  {
+    "url": "archives/page/16/index.html",
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/2/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/3/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/4/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/5/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/6/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/7/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/8/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "archives/page/9/index.html",
-    "revision": "15708ab50c95c8183751c22e338dd009"
+    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
   },
   {
     "url": "articles/index.html",
-    "revision": "a64f3e270ea0c2971693f7f5a3944490"
+    "revision": "e6c4180ffd34fc844b3935bc2da8279f"
   },
   {
     "url": "author/index.html",
     "revision": "56dda14c682f9f812e9fbd04bcf8c1b4"
+  },
+  {
+    "url": "books/index.html",
+    "revision": "5261e6eae589b0c67a01a1d7d0799403"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1851,7 +2279,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -1967,59 +2395,67 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/11/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/12/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/13/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/14/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/15/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+  },
+  {
+    "url": "page/16/index.html",
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/2/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/3/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/4/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/5/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/6/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/7/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/8/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
   },
   {
     "url": "page/9/index.html",
-    "revision": "8e5b055653a623ca3fde13633d55b18b"
+    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+  },
+  {
+    "url": "scripts/book.js",
+    "revision": "9397d1066edb5ac3006abaad6740bf34"
   },
   {
     "url": "scripts/index.js",
@@ -2047,7 +2483,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "9ce7205967ce4cfa5e0611fac17a426e"
+    "revision": "d79540eb1f63339afe895d25a470b837"
   },
   {
     "url": "tags/Android/index.html",
@@ -2123,7 +2559,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "0f31b6621fde9238bd0ba429dbe20781"
+    "revision": "8ed9a4af9ec6a2972797a212d11806d0"
   },
   {
     "url": "tags/Java/index.html",
@@ -2206,6 +2642,10 @@ self.__precacheManifest = [
     "revision": "dd022465b1714b70639f90c1239c25c4"
   },
   {
+    "url": "tags/SICP/index.html",
+    "revision": "554c94e36a28fc2bf1bafd3a73f548a2"
+  },
+  {
     "url": "tags/TensorFlow/index.html",
     "revision": "99ad797f0562c726f0b027f1313e01f0"
   },
@@ -2243,7 +2683,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/创业/index.html",
-    "revision": "255f22e0daa51fb4c661a95b07102c9f"
+    "revision": "1cd2523266570bdb69a695d3503a23e3"
   },
   {
     "url": "tags/前端/index.html",
@@ -2328,6 +2768,10 @@ self.__precacheManifest = [
   {
     "url": "tags/职业发展/index.html",
     "revision": "b084482f8d5ddb055a4e6353bfaab426"
+  },
+  {
+    "url": "tags/股权设计/index.html",
+    "revision": "921ecd688b83679fa6a6f3956ffcbc45"
   },
   {
     "url": "tags/设计模式/index.html",

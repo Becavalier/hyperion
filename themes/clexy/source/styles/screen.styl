@@ -807,6 +807,22 @@ article
     max-width: 100%;
     border: solid 1px #ccc;
     max-height: 500px;
+  .books-container
+    margin 20px 0
+    .book-item
+      display flex
+      border-bottom solid 1px #ddd
+      &:last-child
+        border-bottom none
+      span
+        flex 1
+        &.state
+          flex 0 0 80px
+      button
+        flex 0 0 90px
+        background none
+        border none
+        text-decoration underline
   &.search-page
     div.no-result
       text-align center

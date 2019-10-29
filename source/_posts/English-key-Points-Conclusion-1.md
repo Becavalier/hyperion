@@ -89,6 +89,14 @@ Are there any other questions before we wrap up the meetng?
 * My parents used to live around here when I worked in this neighborhood. I would go to their house every week for dinner. My mom makes amazing food, and my dad is pretty good with barbecue.
 
 
+#### Subjunctive Mood
+
+* 真实条件状语从句（真实可能性很大）：If it is raining tomorrow, we will cancel the sports meeting.
+* 对现在的情况进行虚拟假设：(If + 主语 + did（were），主语 + would（should、could、might）+ do) e.g. If I knew her telephone number, I would tell you.
+* 对过去的情况进行虚拟假设：(If + 主语 + had done, 主语 + would（should、could、might）+ have done.) e.g. If you had listened to me, you would have avoided the mistake.
+* 对未来的情况进行虚拟假设：(If + 主语 + should（were to）+ do, 主语 + would（could、should、might）+ do) e.g. If it were to rain tomorrow, I would stay at home.
+
+
 #### Phrases
 
 * To kill 2 birds with one stone. =  **To achieve 2 things with 1 action.**

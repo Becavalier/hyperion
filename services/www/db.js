@@ -14,7 +14,7 @@ const sequelize = new Sequelize(db.name, db.username, db.password, {
   timezone: '+08:00'
 });
 
-const PostComments = sequelize.define('t_blog_comments', {
+const PostComments = sequelize.define('t_post_comments', {
   id: {
     'type': Sequelize.INTEGER,
     'allowNull': false,
@@ -52,7 +52,44 @@ const PostComments = sequelize.define('t_blog_comments', {
   paranoid: true,
   underscored: true,
   freezeTableName: true,
-  tableName: 't_blog_comments'
+  tableName: 't_post_comments'
+});
+
+const BookShelf = sequelize.define('t_book_shelf', {
+  id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': false,
+    'unique': true,
+    'primaryKey': true,
+    'autoIncrement' : true
+  },
+  name: {
+    'type': Sequelize.STRING(64),
+    'allowNull': true,
+  },
+  url: {
+    'type': Sequelize.STRING(128),
+    'allowNull': true,
+  },
+  total_pages: {
+    'type': Sequelize.INTEGER,
+    'allowNull': true,
+  },
+  current_page: {
+    'type': Sequelize.INTEGER,
+    'allowNull': true,
+  },
+  created_at: {
+    'type': 'TIMESTAMP',
+    'allowNull': false,
+    'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+}, {
+  timestamps: false,
+  paranoid: true,
+  underscored: true,
+  freezeTableName: true,
+  tableName: 't_book_shelf'
 });
 
 const TOVDAccount = sequelize.define('t_tovd_account', {
@@ -143,4 +180,5 @@ module.exports = {
   TOVDAccount,
   TOVDToken,
   TOVDAppData, 
+  BookShelf,
 };
