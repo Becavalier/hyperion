@@ -1635,7 +1635,7 @@ self.__precacheManifest = [
   },
   {
     "url": "app-pdf-viewer/web/viewer.html",
-    "revision": "cb4751502d74d3f1feba79969bc6ac3b"
+    "revision": "9d5cf3d83e913bd469c5b91bd671ad32"
   },
   {
     "url": "app-pdf-viewer/web/viewer.js",
@@ -2559,7 +2559,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "83aa7abac655d00b7eccaf05fde242c0"
+    "revision": "b1bd1b31525f4b34c9ba2e5f9a70e27f"
   },
   {
     "url": "tags/Java/index.html",
