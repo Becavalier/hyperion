@@ -3,3 +3,4 @@ node_modules/
 .well-known/
 .vscode/
 **/files/*.pdf
+.DS_Store

@@ -20,7 +20,7 @@ query {
       return `
         <div class="book-item">
           <span>《${i.name}》</span>
-          <span class="state">${i.currentPages} / ${i.totalPages}</span>
+          <span class="state">${(i.currentPages / i.totalPages).toFixed(1)}%</span>
           <button class="action-read" data-url="${i.url}" data-id="${i.id}" data-page="${i.currentPages}">阅读</button>
         </div>`;
     }));

@@ -150,7 +150,14 @@ function getViewerConfiguration() {
       print: document.getElementById('print'),
       presentationModeButton: document.getElementById('presentationMode'),
       download: document.getElementById('download'),
-      viewBookmark: document.getElementById('viewBookmark')
+      viewBookmark: document.getElementById('viewBookmark'),
+      note: {
+        actionBar: document.getElementById('note'),
+        inputBar: document.getElementById('noteInputBar'),
+        textarea: document.querySelector('#noteInputBar textarea'),
+        submitBtn: document.querySelector('#noteInputBar button'),
+        list: document.querySelector('#noteList ul')
+      }
     },
     secondaryToolbar: {
       toolbar: document.getElementById('secondaryToolbar'),
@@ -1667,6 +1674,8 @@ var PDFViewerApplication = {
     eventBus.on('findfromurlhash', webViewerFindFromUrlHash);
     eventBus.on('updatefindmatchescount', webViewerUpdateFindMatchesCount);
     eventBus.on('updatefindcontrolstate', webViewerUpdateFindControlState);
+    eventBus.on('note', webViewTakingNote);
+    eventBus.on('submitnote', webViewSubmitNote);
     eventBus.on('fileinputchange', webViewerFileInputChange);
   },
   bindWindowEvents: function bindWindowEvents() {
@@ -1826,85 +1835,127 @@ function loadAndEnablePDFBug(enabledTabs) {
 }
 
 function webViewerInitialized() {
-  var appConfig = PDFViewerApplication.appConfig;
-  var file;
-  var queryString = document.location.search.substring(1);
-  var params = (0, _ui_utils.parseQueryString)(queryString);
-  file = 'file' in params ? params.file : _app_options.AppOptions.get('defaultUrl');
-  validateFileURL(file);
-  var fileInput = document.createElement('input');
-  fileInput.id = appConfig.openFileInputName;
-  fileInput.className = 'fileInput';
-  fileInput.setAttribute('type', 'file');
-  fileInput.oncontextmenu = _ui_utils.noContextMenuHandler;
-  document.body.appendChild(fileInput);
+  return _webViewerInitialized.apply(this, arguments);
+}
 
-  if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
-    appConfig.toolbar.openFile.setAttribute('hidden', 'true');
-    appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
-  } else {
-    fileInput.value = null;
-  }
+function _webViewerInitialized() {
+  _webViewerInitialized = _asyncToGenerator(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee9() {
+    var appConfig, file, queryString, params, fileInput, res;
+    return _regenerator["default"].wrap(function _callee9$(_context9) {
+      while (1) {
+        switch (_context9.prev = _context9.next) {
+          case 0:
+            appConfig = PDFViewerApplication.appConfig;
+            PDFViewerApplication.notesAll = {};
+            queryString = document.location.search.substring(1);
+            params = (0, _ui_utils.parseQueryString)(queryString);
+            file = 'file' in params ? params.file : _app_options.AppOptions.get('defaultUrl');
+            validateFileURL(file);
+            fileInput = document.createElement('input');
+            fileInput.id = appConfig.openFileInputName;
+            fileInput.className = 'fileInput';
+            fileInput.setAttribute('type', 'file');
+            fileInput.oncontextmenu = _ui_utils.noContextMenuHandler;
+            document.body.appendChild(fileInput);
 
-  fileInput.addEventListener('change', function (evt) {
-    var files = evt.target.files;
+            if (!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+              appConfig.toolbar.openFile.setAttribute('hidden', 'true');
+              appConfig.secondaryToolbar.openFileButton.setAttribute('hidden', 'true');
+            } else {
+              fileInput.value = null;
+            }
 
-    if (!files || files.length === 0) {
-      return;
-    }
+            fileInput.addEventListener('change', function (evt) {
+              var files = evt.target.files;
 
-    PDFViewerApplication.eventBus.dispatch('fileinputchange', {
-      source: this,
-      fileInput: evt.target
-    });
-  });
-  appConfig.mainContainer.addEventListener('dragover', function (evt) {
-    evt.preventDefault();
-    evt.dataTransfer.dropEffect = 'move';
-  });
-  appConfig.mainContainer.addEventListener('drop', function (evt) {
-    evt.preventDefault();
-    var files = evt.dataTransfer.files;
+              if (!files || files.length === 0) {
+                return;
+              }
 
-    if (!files || files.length === 0) {
-      return;
-    }
+              PDFViewerApplication.eventBus.dispatch('fileinputchange', {
+                source: this,
+                fileInput: evt.target
+              });
+            });
+            appConfig.mainContainer.addEventListener('dragover', function (evt) {
+              evt.preventDefault();
+              evt.dataTransfer.dropEffect = 'move';
+            });
+            appConfig.mainContainer.addEventListener('drop', function (evt) {
+              evt.preventDefault();
+              var files = evt.dataTransfer.files;
 
-    PDFViewerApplication.eventBus.dispatch('fileinputchange', {
-      source: this,
-      fileInput: evt.dataTransfer
-    });
-  });
+              if (!files || files.length === 0) {
+                return;
+              }
 
-  if (!PDFViewerApplication.supportsPrinting) {
-    appConfig.toolbar.print.classList.add('hidden');
-    appConfig.secondaryToolbar.printButton.classList.add('hidden');
-  }
+              PDFViewerApplication.eventBus.dispatch('fileinputchange', {
+                source: this,
+                fileInput: evt.dataTransfer
+              });
+            });
 
-  if (!PDFViewerApplication.supportsFullscreen) {
-    appConfig.toolbar.presentationModeButton.classList.add('hidden');
-    appConfig.secondaryToolbar.presentationModeButton.classList.add('hidden');
-  }
+            if (!PDFViewerApplication.supportsPrinting) {
+              appConfig.toolbar.print.classList.add('hidden');
+              appConfig.secondaryToolbar.printButton.classList.add('hidden');
+            }
 
-  if (PDFViewerApplication.supportsIntegratedFind) {
-    appConfig.toolbar.viewFind.classList.add('hidden');
-  }
+            if (!PDFViewerApplication.supportsFullscreen) {
+              appConfig.toolbar.presentationModeButton.classList.add('hidden');
+              appConfig.secondaryToolbar.presentationModeButton.classList.add('hidden');
+            }
 
-  appConfig.mainContainer.addEventListener('transitionend', function (evt) {
-    if (evt.target === this) {
-      PDFViewerApplication.eventBus.dispatch('resize', {
-        source: this
-      });
-    }
-  }, true);
+            if (PDFViewerApplication.supportsIntegratedFind) {
+              appConfig.toolbar.viewFind.classList.add('hidden');
+            }
 
-  try {
-    webViewerOpenFileViaURL(file);
-  } catch (reason) {
-    PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (msg) {
-      PDFViewerApplication.error(msg, reason);
-    });
-  }
+            appConfig.mainContainer.addEventListener('transitionend', function (evt) {
+              if (evt.target === this) {
+                PDFViewerApplication.eventBus.dispatch('resize', {
+                  source: this
+                });
+              }
+            }, true);
+
+            try {
+              webViewerOpenFileViaURL(file);
+            } catch (reason) {
+              PDFViewerApplication.l10n.get('loading_error', null, 'An error occurred while loading the PDF.').then(function (msg) {
+                PDFViewerApplication.error(msg, reason);
+              });
+            }
+
+            PDFViewerApplication.fileId = Number(PDFViewerApplication.url.match(/\d+/)[DEFAULT_INDEX]);
+            _context9.next = 24;
+            return axios.get('/graphql', {
+              params: {
+                query: "\nquery searchContent($id: Int!) {\n  fetchAllBookNoteById(id: $id) {\n    id\n    bookId\n    page\n    note\n  }\n}\n      ",
+                variables: {
+                  id: 1
+                }
+              }
+            });
+
+          case 24:
+            res = _context9.sent.data.data.fetchAllBookNoteById;
+            res.forEach(function (i) {
+              if (!Array.isArray(PDFViewerApplication.notesAll[i.page])) {
+                PDFViewerApplication.notesAll[i.page] = [];
+              }
+
+              PDFViewerApplication.notesAll[i.page].push(i.note);
+            });
+
+          case 26:
+          case "end":
+            return _context9.stop();
+        }
+      }
+    }, _callee9);
+  }));
+  return _webViewerInitialized.apply(this, arguments);
 }
 
 var webViewerOpenFileViaURL;
@@ -2239,6 +2290,73 @@ function webViewerFindFromUrlHash(evt) {
   });
 }
 
+function webViewTakingNote(evt) {
+  var e = PDFViewerApplication.toolbar.items.note.inputBar;
+
+  if (e.style.display === 'flex') {
+    e.setAttribute('style', 'display: none;');
+  } else {
+    e.setAttribute('style', 'display: flex;');
+  }
+}
+
+function webViewSubmitNote(_x5) {
+  return _webViewSubmitNote.apply(this, arguments);
+}
+
+function _webViewSubmitNote() {
+  _webViewSubmitNote = _asyncToGenerator(
+  /*#__PURE__*/
+  _regenerator["default"].mark(function _callee10(evt) {
+    var page, note;
+    return _regenerator["default"].wrap(function _callee10$(_context10) {
+      while (1) {
+        switch (_context10.prev = _context10.next) {
+          case 0:
+            page = PDFViewerApplication.page;
+            note = PDFViewerApplication.toolbar.items.note.textarea.value;
+            _context10.prev = 2;
+            _context10.next = 5;
+            return axios.post('/graphql', {
+              query: "\nmutation insertBookNote($input: BookNoteInput!) {\n  insertBookNote(BookNote: $input) {\n    result\n  }\n}",
+              variables: {
+                input: {
+                  bookId: PDFViewerApplication.fileId,
+                  page: page,
+                  note: note
+                }
+              }
+            });
+
+          case 5:
+            PDFViewerApplication.toolbar.items.note.inputBar.setAttribute('style', 'display: none;');
+            PDFViewerApplication.toolbar.items.note.textarea.value = '';
+
+            if (!Array.isArray(PDFViewerApplication.notesAll[page])) {
+              PDFViewerApplication.notesAll[page] = [];
+            }
+
+            PDFViewerApplication.notesAll[page].push(note);
+
+            _showNotes(page);
+
+            _context10.next = 14;
+            break;
+
+          case 12:
+            _context10.prev = 12;
+            _context10.t0 = _context10["catch"](2);
+
+          case 14:
+          case "end":
+            return _context10.stop();
+        }
+      }
+    }, _callee10, null, [[2, 12]]);
+  }));
+  return _webViewSubmitNote.apply(this, arguments);
+}
+
 function webViewerUpdateFindMatchesCount(_ref9) {
   var matchesCount = _ref9.matchesCount;
 
@@ -2276,21 +2394,30 @@ function webViewerRotationChanging(evt) {
   PDFViewerApplication.pdfViewer.currentPageNumber = evt.pageNumber;
 }
 
-function webViewerPageChanging(_x5) {
+function _showNotes(page) {
+  if (PDFViewerApplication.notesAll) {
+    var notes = PDFViewerApplication.notesAll[page];
+    var e = PDFViewerApplication.toolbar.items.note.list;
+    e.innerHTML = Array.isArray(notes) && notes.length > 0 ? notes.map(function (i) {
+      return "<li>".concat(i, "</li>");
+    }).join('') : '';
+  }
+}
+
+function webViewerPageChanging(_x6) {
   return _webViewerPageChanging.apply(this, arguments);
 }
 
 function _webViewerPageChanging() {
   _webViewerPageChanging = _asyncToGenerator(
   /*#__PURE__*/
-  _regenerator["default"].mark(function _callee9(evt) {
-    var page, fileId, pageView;
-    return _regenerator["default"].wrap(function _callee9$(_context9) {
+  _regenerator["default"].mark(function _callee11(evt) {
+    var page, pageView;
+    return _regenerator["default"].wrap(function _callee11$(_context11) {
       while (1) {
-        switch (_context9.prev = _context9.next) {
+        switch (_context11.prev = _context11.next) {
           case 0:
             page = evt.pageNumber;
-            fileId = Number(PDFViewerApplication.url.match(/\d+/)[DEFAULT_INDEX]);
             PDFViewerApplication.toolbar.setPageNumber(page, evt.pageLabel || null);
             PDFViewerApplication.secondaryToolbar.setPageNumber(page);
 
@@ -2298,17 +2425,19 @@ function _webViewerPageChanging() {
               PDFViewerApplication.pdfThumbnailViewer.scrollThumbnailIntoView(page);
             }
 
-            if (!(fileId > 0)) {
-              _context9.next = 8;
+            _showNotes(page);
+
+            if (!(PDFViewerApplication.fileId > 0)) {
+              _context11.next = 8;
               break;
             }
 
-            _context9.next = 8;
+            _context11.next = 8;
             return axios.post('/graphql', {
               query: "\nmutation updateBookCurrentPage($input: BookCurrentPageInput!) {\n  updateBookCurrentPage(BookCurrentPage: $input) {\n    result\n  }\n}",
               variables: {
                 input: {
-                  id: fileId,
+                  id: PDFViewerApplication.fileId,
                   currentPage: page
                 }
               }
@@ -2325,10 +2454,10 @@ function _webViewerPageChanging() {
 
           case 9:
           case "end":
-            return _context9.stop();
+            return _context11.stop();
         }
       }
-    }, _callee9);
+    }, _callee11);
   }));
   return _webViewerPageChanging.apply(this, arguments);
 }
@@ -13428,6 +13557,16 @@ function () {
       });
       items.download.addEventListener('click', function () {
         eventBus.dispatch('download', {
+          source: self
+        });
+      });
+      items.note.actionBar.addEventListener('click', function () {
+        eventBus.dispatch('note', {
+          source: self
+        });
+      });
+      items.note.submitBtn.addEventListener('click', function () {
+        eventBus.dispatch('submitnote', {
           source: self
         });
       });

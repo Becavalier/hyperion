@@ -437,6 +437,41 @@ select {
   display: none !important;
 }
 
+#noteInputBar {
+  position: fixed;
+  z-index: 2;
+  right: 8px;
+  top: 41px;
+  display: none;
+  flex-direction: column;
+  box-shadow: 4px 4px 6px #3f3f3f;
+}
+#noteInputBar textarea {
+  resize: none;
+  outline: none;
+  padding: 5px;
+}
+#noteInputBar button {
+  height: 25px;
+}
+#noteList {
+  position: fixed;
+  margin-top: 9px;
+  z-index: 1;
+  right: 8px;
+}
+#noteList ul {
+  list-style: none;
+}
+#noteList ul li {
+  background-color: white;
+  padding: 10px;
+  border: solid 1px #333;
+  margin: 5px 0;
+  width: 200px;
+  text-align: left;
+}
+
 #viewerContainer.pdfPresentationMode:-ms-fullscreen {
   top: 0px !important;
   overflow: hidden !important;
@@ -1351,6 +1386,11 @@ html[dir='rtl'] .toolbarButton.pageDown::before {
   content: url(images/toolbarButton-bookmark.png);
 }
 
+.toolbarButton.note::before,
+.secondaryToolbarButton.note::before {
+  content: url(images/toolbarButton-note.png);
+}
+
 #viewThumbnail.toolbarButton::before {
   content: url(images/toolbarButton-viewThumbnail.png);
 }
@@ -2158,6 +2198,11 @@ html[dir='rtl'] #documentPropertiesOverlay .row > * {
   .toolbarButton.bookmark::before,
   .secondaryToolbarButton.bookmark::before {
     content: url(images/toolbarButton-bookmark@2x.png);
+  }
+
+  .toolbarButton.note::before,
+  .secondaryToolbarButton.note::before {
+    content: url(images/toolbarButton-note@2x.png);
   }
 
   #viewThumbnail.toolbarButton::before {

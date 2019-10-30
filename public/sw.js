@@ -1462,6 +1462,14 @@ self.__precacheManifest = [
     "revision": "211044c3c1f898cc25a872d13f5108f4"
   },
   {
+    "url": "app-pdf-viewer/web/images/toolbarButton-note.png",
+    "revision": "63ca9fa973ebaff32d63ab3ba57e1fd7"
+  },
+  {
+    "url": "app-pdf-viewer/web/images/toolbarButton-note@2x.png",
+    "revision": "866e681576c542a6198212e9af3ff928"
+  },
+  {
     "url": "app-pdf-viewer/web/images/toolbarButton-openFile.png",
     "revision": "8db4158c49b8a31e311ee501af30566f"
   },
@@ -1631,15 +1639,15 @@ self.__precacheManifest = [
   },
   {
     "url": "app-pdf-viewer/web/viewer.css",
-    "revision": "a2a704a047f6b351242c3cecd6ea17c4"
+    "revision": "8519c3a2829d94bc3bdf1c24e191e2da"
   },
   {
     "url": "app-pdf-viewer/web/viewer.html",
-    "revision": "9d5cf3d83e913bd469c5b91bd671ad32"
+    "revision": "e88a8de0df988630f78d2a50f2a40aa1"
   },
   {
     "url": "app-pdf-viewer/web/viewer.js",
-    "revision": "7f1b22bc9c4b4fea116b209b927ffe61"
+    "revision": "39756b2cbc10b3e4152d6e489fff9b09"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -2455,7 +2463,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "9397d1066edb5ac3006abaad6740bf34"
+    "revision": "aff06deea21ed31671b2a77ee7c521e5"
   },
   {
     "url": "scripts/index.js",
@@ -2559,7 +2567,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "b1bd1b31525f4b34c9ba2e5f9a70e27f"
+    "revision": "3f3591adcfa747ed05da677f63a18a24"
   },
   {
     "url": "tags/Java/index.html",

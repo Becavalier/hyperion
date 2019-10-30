@@ -92,6 +92,40 @@ const BookShelf = sequelize.define('t_book_shelf', {
   tableName: 't_book_shelf'
 });
 
+const BookNote = sequelize.define('t_book_notes', {
+  id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': false,
+    'unique': true,
+    'primaryKey': true,
+    'autoIncrement' : true
+  },
+  book_id: {
+    'type': Sequelize.INTEGER,
+    'allowNull': true,
+  },
+  page: {
+    'type': Sequelize.INTEGER,
+    'allowNull': true,
+  },
+  note: {
+    'type': Sequelize.TEXT,
+    'allowNull': true,
+  },
+  created_at: {
+    'type': 'TIMESTAMP',
+    'allowNull': false,
+    'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+}, {
+  timestamps: false,
+  paranoid: true,
+  underscored: true,
+  freezeTableName: true,
+  tableName: 't_book_notes'
+});
+
+
 const TOVDAccount = sequelize.define('t_tovd_account', {
   id: {
     'type': Sequelize.INTEGER,
@@ -181,4 +215,5 @@ module.exports = {
   TOVDToken,
   TOVDAppData, 
   BookShelf,
+  BookNote,
 };

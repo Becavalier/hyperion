@@ -6,6 +6,7 @@ const {
   TOVDToken,
   TOVDAppData,
   BookShelf,
+  BookNote,
 } = require('./db');
 const dayjs = require('dayjs');
 const randToken = require('rand-token');
@@ -45,10 +46,12 @@ module.exports = app => {
       tovdTokenValidation: HTTPResult!
       tovdRetrieveAppData: HTTPResult!
       fetchAllBookRecord: [BookRecord]!
+      fetchAllBookNoteById(id: Int!): [BookNoteRecord]!
     }
     type Mutation {
       insertPostComment(comment: CommentInput!): PostComment!
       updateBookCurrentPage(BookCurrentPage: BookCurrentPageInput!): HTTPResult!
+      insertBookNote(BookNote: BookNoteInput!): HTTPResult!
       tovdSyncAppData(TOVDAppData: TOVDAppDataInput!): HTTPResult!
       tovdSignUpAccount(credential: TOVDCredential!): HTTPResult!
       tovdInsertNewRecord(TOVDRecordData: TOVDRecordDataInput!): HTTPResult!
@@ -66,6 +69,11 @@ module.exports = app => {
     input BookCurrentPageInput {
       id: Int!
       currentPage: Int!
+    }
+    input BookNoteInput {
+      bookId: Int!
+      page: Int!
+      note: String!
     }
     input CommentInput {
       postId: String!
@@ -107,6 +115,12 @@ module.exports = app => {
       url: String!
       totalPages: Int!
       currentPages: Int
+    }
+    type BookNoteRecord {
+      id: Int!
+      bookId: Int!
+      page: Int!
+      note: String!
     }
     type PostSearchResult {
       title: String!
@@ -173,6 +187,20 @@ module.exports = app => {
             url: i.url,
             totalPages: i.total_pages,
             currentPages: i.current_page,
+          }));
+        } catch(e) {
+          console.error(e);
+          return [];
+        }
+      },
+      async fetchAllBookNoteById(parent, args) {
+        const { id } = args;
+        try {
+          return (await BookNote.findAll({}, { where: { book_id: id }})).map(i => ({
+            id: i.id,
+            bookId: i.book_id,
+            page: i.page,
+            note: i.note,
           }));
         } catch(e) {
           console.error(e);
@@ -279,6 +307,16 @@ module.exports = app => {
           publishTime,
         });
         return result;
+      },
+      async insertBookNote(parent, args, context) {
+        const { bookId, page, note } = args.BookNote;
+        try {
+          await BookNote.create({ page, note, book_id: bookId });
+          return { result: true }
+        } catch(e) {
+          console.error(e);
+          return { result: false };
+        }
       },
       async updateBookCurrentPage(parent, args) {
         const { id, currentPage } = args.BookCurrentPage;
