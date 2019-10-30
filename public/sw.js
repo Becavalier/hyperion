@@ -1639,7 +1639,7 @@ self.__precacheManifest = [
   },
   {
     "url": "app-pdf-viewer/web/viewer.css",
-    "revision": "8519c3a2829d94bc3bdf1c24e191e2da"
+    "revision": "ef79640e147bc4c15f4fc0dcd7403128"
   },
   {
     "url": "app-pdf-viewer/web/viewer.html",
@@ -2463,7 +2463,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "aff06deea21ed31671b2a77ee7c521e5"
+    "revision": "37c4468323650373ce999f39d8bfd8b9"
   },
   {
     "url": "scripts/index.js",
@@ -2567,7 +2567,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "3f3591adcfa747ed05da677f63a18a24"
+    "revision": "1a0a13a0ad86ad6e0e15809cd640a2e4"
   },
   {
     "url": "tags/Java/index.html",

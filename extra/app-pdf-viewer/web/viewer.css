@@ -468,8 +468,10 @@ select {
   padding: 10px;
   border: solid 1px #333;
   margin: 5px 0;
-  width: 200px;
+  width: 250px;
   text-align: left;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 #viewerContainer.pdfPresentationMode:-ms-fullscreen {
