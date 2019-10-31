@@ -450,6 +450,7 @@ select {
   resize: none;
   outline: none;
   padding: 5px;
+  white-space: pre-wrap;
 }
 #noteInputBar button {
   height: 25px;
@@ -468,10 +469,13 @@ select {
   padding: 10px;
   border: solid 1px #333;
   margin: 5px 0;
-  width: 250px;
+  max-width: 300px;
   text-align: left;
   font-size: 12px;
   line-height: 16px;
+}
+#noteList ul li pre {
+  white-space: pre-wrap;
 }
 
 #viewerContainer.pdfPresentationMode:-ms-fullscreen {

@@ -2399,7 +2399,7 @@ function _showNotes(page) {
     var notes = PDFViewerApplication.notesAll[page];
     var e = PDFViewerApplication.toolbar.items.note.list;
     e.innerHTML = Array.isArray(notes) && notes.length > 0 ? notes.map(function (i) {
-      return "<li>".concat(i, "</li>");
+      return "<li><pre>".concat(i, "</pre></li>");
     }).join('') : '';
   }
 }
