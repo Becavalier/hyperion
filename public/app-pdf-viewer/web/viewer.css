@@ -469,13 +469,14 @@ select {
   padding: 10px;
   border: solid 1px #333;
   margin: 5px 0;
-  max-width: 300px;
+  max-width: 280px;
   text-align: left;
   font-size: 12px;
   line-height: 16px;
 }
 #noteList ul li pre {
   white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 #viewerContainer.pdfPresentationMode:-ms-fullscreen {
