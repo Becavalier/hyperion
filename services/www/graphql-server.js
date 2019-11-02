@@ -145,14 +145,21 @@ module.exports = app => {
   const resolvers = {
     Query: {
       async postComments(parent, args) {
-        return await PostComments.findAll({
+        return (await PostComments.findAll({
           where: {
-            postId: args.postId
+            post_id: args.postId
           },
           order: [
-            ['publishTime', 'DESC'],
+            ['created_at', 'DESC'],
           ]
-        });
+        })).map(i => ({
+          id: i.id,
+          postId: i.post_id,
+          publisher: i.publisher,
+          content: i.content,
+          ipAddr: i.ip_addr,
+          publishTime: i.created_at,
+        }));;
       },
       async searchPostsByKey(parent, args) {
         const key = args.key;
@@ -303,9 +310,11 @@ module.exports = app => {
           throw new ApolloError('Sorry, submit failed! Please re-check your input params.');
         }
         const result = await PostComments.create({
-          ...comment,
-          ipAddr: context.ipAddr,
-          publishTime,
+          post_id: comment.postId, 
+          content: comment.content, 
+          publisher: comment.publisher,
+          ip_addr: context.ipAddr,
+          created_at: publishTime,
         });
         return result;
       },

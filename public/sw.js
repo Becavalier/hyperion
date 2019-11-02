@@ -2471,7 +2471,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/post.js",
-    "revision": "637f733e095ef886ecac97ec19e2e79f"
+    "revision": "853d07200a529ca4b63a18a24a833cae"
   },
   {
     "url": "scripts/search.js",
@@ -2567,7 +2567,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "c61aec60664d95f93daa0e00e49b2a88"
+    "revision": "404881d4d6e1f8ff31bf7ebe8501a1f7"
   },
   {
     "url": "tags/Java/index.html",

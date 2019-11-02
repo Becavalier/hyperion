@@ -4,7 +4,6 @@ const db = require('../../.db-secret.json');
 const sequelize = new Sequelize(db.name, db.username, db.password, {
   host: db.host,
   dialect: 'mysql',
-  operatorsAliases: false,
   pool: {
     max: 5,
     min: 0,
@@ -22,7 +21,7 @@ const PostComments = sequelize.define('t_post_comments', {
     'primaryKey': true,
     'autoIncrement' : true
   },
-  postId: {
+  post_id: {
     'type': Sequelize.STRING(128),
     'allowNull': false,
     'unique': false
@@ -37,12 +36,12 @@ const PostComments = sequelize.define('t_post_comments', {
     'allowNull': false,
     'defaultValue': '',
   },
-  ipAddr: {
+  ip_addr: {
     'type': Sequelize.STRING(16),
     'allowNull': false,
     'defaultValue': '',
   },
-  publishTime: {
+  created_at: {
     'type': 'TIMESTAMP',
     'allowNull': false,
     'defaultValue': Sequelize.literal('CURRENT_TIMESTAMP'),
