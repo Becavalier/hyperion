@@ -12,6 +12,7 @@ const dayjs = require('dayjs');
 const randToken = require('rand-token');
 const crypto = require('crypto');
 const { TOVDValidateToken } = require('./helpers/tovd');
+const escape = require('escape-html');
 require('dayjs/locale/zh-cn'); 
 
 const md5 = value => crypto.createHash('md5').update(value).digest('hex');
@@ -311,7 +312,7 @@ module.exports = app => {
       async insertBookNote(parent, args, context) {
         const { bookId, page, note } = args.BookNote;
         try {
-          await BookNote.create({ page, note, book_id: bookId });
+          await BookNote.create({ page, note: escape(note), book_id: bookId });
           return { result: true }
         } catch(e) {
           console.error(e);
