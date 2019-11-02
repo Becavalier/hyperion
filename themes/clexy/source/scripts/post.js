@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async e => {
       target.innerText = '... 提交中 ...';
 
       try {
-        const response = await axios.post('http://localhost:80/graphql', {
+        const response = await axios.post('/graphql', {
           query: `
   mutation insertPostComment($comment: CommentInput!) {
     insertPostComment(comment: $comment) {
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async e => {
           postComments
         } 
       }
-    } = await axios.get('http://localhost:80/graphql', {
+    } = await axios.get('/graphql', {
       params: {
         query: `
   query {
