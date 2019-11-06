@@ -204,7 +204,7 @@ module.exports = app => {
       async fetchAllBookNoteById(parent, args) {
         const { id } = args;
         try {
-          return (await BookNote.findAll({}, { where: { book_id: id }})).map(i => ({
+          return (await BookNote.findAll({ where: { book_id: id }})).map(i => ({
             id: i.id,
             bookId: i.book_id,
             page: i.page,

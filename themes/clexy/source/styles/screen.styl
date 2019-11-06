@@ -556,7 +556,7 @@ hr
 // 5. Media Queries
 // ===========================================================================
 
-@media (min-width 720px)
+@media (min-width 830px)
 
   body
     display flex
@@ -812,14 +812,21 @@ article
     .book-item
       display flex
       border-bottom solid 1px #ddd
+      padding 15px 0
       &:last-child
         border-bottom none
       span
         flex 1
         &.state
           flex 0 0 80px
+        &.progress
+          flex 0 0 80px
+          margin-right 10px
+          progress
+            width 100%
+            vertical-align middle
       button
-        flex 0 0 90px
+        flex 0 0 50px
         background none
         border none
         text-decoration underline

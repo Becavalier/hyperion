@@ -1235,11 +1235,11 @@ self.__precacheManifest = [
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
-    "revision": "66d5979ae7352d1b7a58096aae117b27"
+    "revision": "4685c79b435ca899450c13c759df58ef"
   },
   {
     "url": "app-pdf-viewer/build/pdf.worker.js",
-    "revision": "17f81f8857c5902823fa30dd30c833d4"
+    "revision": "f1ba9892afcf79e861f054fec11db7b5"
   },
   {
     "url": "app-pdf-viewer/web/debugger.js",
@@ -1647,7 +1647,7 @@ self.__precacheManifest = [
   },
   {
     "url": "app-pdf-viewer/web/viewer.js",
-    "revision": "f828ead9606913dfae63295b607ea9ae"
+    "revision": "91588e8960ddad4116e0947b585a9523"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -2463,7 +2463,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "122508726b697e7be12f2ba5e661b8b5"
+    "revision": "df959067e358f1488645a98d73f03c47"
   },
   {
     "url": "scripts/index.js",
@@ -2491,7 +2491,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "d79540eb1f63339afe895d25a470b837"
+    "revision": "d7b6c5136f564c5d26f36b7c61d302ee"
   },
   {
     "url": "tags/Android/index.html",
@@ -2567,7 +2567,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "d4b0d100f2a22ab3e42958e57084f753"
+    "revision": "9870ed4b404a2ad0094c0eacbf7d5de7"
   },
   {
     "url": "tags/Java/index.html",

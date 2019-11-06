@@ -1931,9 +1931,9 @@ function _webViewerInitialized() {
             _context9.next = 24;
             return axios.get('/graphql', {
               params: {
-                query: "\nquery searchContent($id: Int!) {\n  fetchAllBookNoteById(id: $id) {\n    id\n    bookId\n    page\n    note\n  }\n}\n      ",
+                query: "\n        query fetchBookNotes($id: Int!) {\n          fetchAllBookNoteById(id: $id) {\n            id\n            bookId\n            page\n            note\n          }\n        }\n      ",
                 variables: {
-                  id: 1
+                  id: PDFViewerApplication.fileId
                 }
               }
             });

@@ -123,8 +123,8 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
-var pdfjsVersion = '2.4.88';
-var pdfjsBuild = '16fb5437';
+var pdfjsVersion = '2.4.93';
+var pdfjsBuild = '4e81962c';
 
 var pdfjsCoreWorker = __w_pdfjs_require__(1);
 
@@ -235,7 +235,7 @@ var WorkerMessageHandler = {
     var WorkerTasks = [];
     var verbosity = (0, _util.getVerbosityLevel)();
     var apiVersion = docParams.apiVersion;
-    var workerVersion = '2.4.88';
+    var workerVersion = '2.4.93';
 
     if (apiVersion !== workerVersion) {
       throw new Error("The API version \"".concat(apiVersion, "\" does not match ") + "the Worker version \"".concat(workerVersion, "\"."));
@@ -12009,6 +12009,14 @@ function () {
         return missingChunks;
       };
 
+      ChunkedStreamSubstream.prototype.allChunksLoaded = function () {
+        if (this.numChunksLoaded === this.numChunks) {
+          return true;
+        }
+
+        return this.getMissingChunks().length === 0;
+      };
+
       var subStream = new ChunkedStreamSubstream();
       subStream.pos = subStream.start = start;
       subStream.end = start + length || this.end;
@@ -13465,8 +13473,6 @@ var _primitives = __w_pdfjs_require__(184);
 var _parser = __w_pdfjs_require__(190);
 
 var _core_utils = __w_pdfjs_require__(187);
-
-var _chunked_stream = __w_pdfjs_require__(186);
 
 var _crypto = __w_pdfjs_require__(201);
 
@@ -15744,12 +15750,12 @@ exports.FileSpec = FileSpec;
 
 var ObjectLoader = function () {
   function mayHaveChildren(value) {
-    return (0, _primitives.isRef)(value) || (0, _primitives.isDict)(value) || Array.isArray(value) || (0, _primitives.isStream)(value);
+    return value instanceof _primitives.Ref || value instanceof _primitives.Dict || Array.isArray(value) || (0, _primitives.isStream)(value);
   }
 
   function addChildren(node, nodesToVisit) {
-    if ((0, _primitives.isDict)(node) || (0, _primitives.isStream)(node)) {
-      var dict = (0, _primitives.isDict)(node) ? node : node.dict;
+    if (node instanceof _primitives.Dict || (0, _primitives.isStream)(node)) {
+      var dict = node instanceof _primitives.Dict ? node : node.dict;
       var dictKeys = dict.getKeys();
 
       for (var i = 0, ii = dictKeys.length; i < ii; i++) {
@@ -15779,31 +15785,54 @@ var ObjectLoader = function () {
   }
 
   ObjectLoader.prototype = {
-    load: function load() {
-      this.capability = (0, _util.createPromiseCapability)();
+    load: function () {
+      var _load = _asyncToGenerator(
+      /*#__PURE__*/
+      _regenerator["default"].mark(function _callee3() {
+        var keys, dict, nodesToVisit, i, ii, rawValue;
+        return _regenerator["default"].wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!(!this.xref.stream.allChunksLoaded || this.xref.stream.allChunksLoaded())) {
+                  _context3.next = 2;
+                  break;
+                }
 
-      if (!(this.xref.stream instanceof _chunked_stream.ChunkedStream) || this.xref.stream.getMissingChunks().length === 0) {
-        this.capability.resolve();
-        return this.capability.promise;
+                return _context3.abrupt("return", undefined);
+
+              case 2:
+                this.capability = (0, _util.createPromiseCapability)();
+                keys = this.keys, dict = this.dict;
+                this.refSet = new _primitives.RefSet();
+                nodesToVisit = [];
+
+                for (i = 0, ii = keys.length; i < ii; i++) {
+                  rawValue = dict.getRaw(keys[i]);
+
+                  if (rawValue !== undefined) {
+                    nodesToVisit.push(rawValue);
+                  }
+                }
+
+                this._walk(nodesToVisit);
+
+                return _context3.abrupt("return", this.capability.promise);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function load() {
+        return _load.apply(this, arguments);
       }
 
-      var keys = this.keys,
-          dict = this.dict;
-      this.refSet = new _primitives.RefSet();
-      var nodesToVisit = [];
-
-      for (var i = 0, ii = keys.length; i < ii; i++) {
-        var rawValue = dict.getRaw(keys[i]);
-
-        if (rawValue !== undefined) {
-          nodesToVisit.push(rawValue);
-        }
-      }
-
-      this._walk(nodesToVisit);
-
-      return this.capability.promise;
-    },
+      return load;
+    }(),
     _walk: function _walk(nodesToVisit) {
       var _this3 = this;
 
@@ -15813,7 +15842,7 @@ var ObjectLoader = function () {
       while (nodesToVisit.length) {
         var currentNode = nodesToVisit.pop();
 
-        if ((0, _primitives.isRef)(currentNode)) {
+        if (currentNode instanceof _primitives.Ref) {
           if (this.refSet.has(currentNode)) {
             continue;
           }
@@ -15841,7 +15870,7 @@ var ObjectLoader = function () {
           for (var i = 0, ii = baseStreams.length; i < ii; i++) {
             var stream = baseStreams[i];
 
-            if (stream.getMissingChunks && stream.getMissingChunks().length) {
+            if (stream.allChunksLoaded && !stream.allChunksLoaded()) {
               foundMissingData = true;
               pendingRequests.push({
                 begin: stream.start,
@@ -15863,7 +15892,7 @@ var ObjectLoader = function () {
           for (var _i4 = 0, _ii3 = nodesToRevisit.length; _i4 < _ii3; _i4++) {
             var node = nodesToRevisit[_i4];
 
-            if ((0, _primitives.isRef)(node)) {
+            if (node instanceof _primitives.Ref) {
               _this3.refSet.remove(node);
             }
           }
