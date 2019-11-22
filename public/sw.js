@@ -1231,7 +1231,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/10/14/浅谈企业股权设计/index.html",
-    "revision": "19dd9d3bdedaf5dacefacb9a638092b4"
+    "revision": "ab53aa686bc7feab3aa1456176a8c4ec"
+  },
+  {
+    "url": "2019/11/22/C-中的移动构造与-noexcept/1.png",
+    "revision": "30e3c35133c11ad5837c11ea39330b39"
+  },
+  {
+    "url": "2019/11/22/C-中的移动构造与-noexcept/index.html",
+    "revision": "63d35d63561d798a3a98cbdc8c4189c1"
+  },
+  {
+    "url": "2019/11/22/C-编码准则之-“The-Rule-of-Three”/1.png",
+    "revision": "ad8fd2930dca749e1cb1e3fdeaab17f8"
+  },
+  {
+    "url": "2019/11/22/C-编码准则之-“The-Rule-of-Three”/index.html",
+    "revision": "0742b1670c6bc2a8e8f2a3b7016f861e"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1651,307 +1667,311 @@ self.__precacheManifest = [
   },
   {
     "url": "archives/2014/12/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2014/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/01/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/02/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/03/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/07/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/08/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/11/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2015/page/3/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/01/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/02/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/03/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/04/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/04/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/05/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/06/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/07/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/08/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/09/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/12/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/page/3/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/page/4/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/page/5/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2016/page/6/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/01/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/02/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/03/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/04/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/05/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/06/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/06/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/07/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/08/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/09/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/11/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/12/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/page/3/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/page/4/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2017/page/5/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2018/01/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2018/11/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2018/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/01/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/02/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/03/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/04/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/07/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/08/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/09/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/10/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
+  },
+  {
+    "url": "archives/2019/11/index.html",
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/2019/page/3/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/10/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/11/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/12/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/13/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/14/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/15/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/16/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/2/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/3/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/4/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/5/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/6/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/7/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/8/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "archives/page/9/index.html",
-    "revision": "2b22aca9d61654c7405d13cda7aa50c7"
+    "revision": "068fdf6e416f64bf3f0b6f76e61a75fb"
   },
   {
     "url": "articles/index.html",
-    "revision": "e6c4180ffd34fc844b3935bc2da8279f"
+    "revision": "58f1bc74b91bf2a39c203dc6f3a69d09"
   },
   {
     "url": "author/index.html",
@@ -2287,7 +2307,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -2403,63 +2423,63 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/11/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/12/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/13/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/14/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/15/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/16/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/2/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/3/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/4/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/5/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/6/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/7/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/8/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "page/9/index.html",
-    "revision": "46b425204b2c4c59901b6c8d0fcecf11"
+    "revision": "303feb612a8798bc806d99b75a2ab0f1"
   },
   {
     "url": "scripts/book.js",
@@ -2515,7 +2535,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/C/index.html",
-    "revision": "56a8cc35ff62aec14062c059b70b9bf7"
+    "revision": "d722af8124cb91494ab668b78daa8d21"
   },
   {
     "url": "tags/CSS/index.html",
@@ -2567,7 +2587,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "9870ed4b404a2ad0094c0eacbf7d5de7"
+    "revision": "ed0640b0ae4835699e1aaa927d5a331e"
   },
   {
     "url": "tags/Java/index.html",
