@@ -2363,7 +2363,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me-en/index.html",
-    "revision": "50ec1ce2acb43f8c2c8a4bad3c888e81"
+    "revision": "424f0bebb02be1a4e1bbe5732983dde7"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -2419,7 +2419,7 @@ self.__precacheManifest = [
   },
   {
     "url": "me/index.html",
-    "revision": "8bae44417fc7f7fead9ffecc15ac6f92"
+    "revision": "e4148d74f3b7ef95d18d578f6fb9ffeb"
   },
   {
     "url": "page/10/index.html",
@@ -2587,7 +2587,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "ed0640b0ae4835699e1aaa927d5a331e"
+    "revision": "e2e6adb5900118ff601fae0c4d004f46"
   },
   {
     "url": "tags/Java/index.html",
