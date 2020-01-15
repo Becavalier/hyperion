@@ -1247,7 +1247,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/11/22/C-编码准则之-“The-Rule-of-Three”/index.html",
-    "revision": "0742b1670c6bc2a8e8f2a3b7016f861e"
+    "revision": "6dedc9d4bd2dcd4c590f2b7ea0c89b1d"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -2587,7 +2587,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "39ab4a400cc20122b650fc816360020c"
+    "revision": "4bcb71ff718cfdd6c212c1254eeb63ec"
   },
   {
     "url": "tags/Java/index.html",

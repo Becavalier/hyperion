@@ -55,7 +55,8 @@ class Person {
 int main(int argc, char **argv) {
   Person P1("Jason Yu", 26);  // 构造生成；
   Person P2(P1);  // 拷贝构造生成；
-  Person P3 = P2;  // 拷贝赋值生成；
+  Person P3 = P2;  // 拷贝构造生成；
+  P1 = P3; // 拷贝赋值生成；
 }
 ```
 
