@@ -1,7 +1,6 @@
 const DEFAULT_INDEX = 0;
 
 document.addEventListener('DOMContentLoaded', async e => { 
-
   // wrapping DOM;
   const wrapFuncs = {
     wrapSearchPostResultSnippet: results => {
