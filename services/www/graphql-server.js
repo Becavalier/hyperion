@@ -309,14 +309,20 @@ module.exports = app => {
         } else if (comment.publisher.includes('YHSPY') || comment.publisher.includes('博主')) {
           throw new ApolloError('Sorry, submit failed! Please re-check your input params.');
         }
-        const result = await PostComments.create({
+        const { id, post_id, content, publisher, created_at } = await PostComments.create({
           post_id: comment.postId, 
           content: comment.content, 
           publisher: comment.publisher,
           ip_addr: context.ipAddr,
           created_at: publishTime,
         });
-        return result;
+        return {
+          id,
+          postId: post_id,
+          publisher,
+          content,
+          publishTime: created_at,
+        };
       },
       async insertBookNote(parent, args, context) {
         const { bookId, page, note } = args.BookNote;

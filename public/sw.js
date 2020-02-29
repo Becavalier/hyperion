@@ -2587,7 +2587,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "dd7363bdb4360a9bbbbf09b695f16969"
+    "revision": "becde0dd9db1e8259327ff20a29a85a3"
   },
   {
     "url": "tags/Java/index.html",
