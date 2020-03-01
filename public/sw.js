@@ -2339,15 +2339,15 @@ self.__precacheManifest = [
   },
   {
     "url": "me-en/images/avatar.jpg",
-    "revision": "9c6591636adbb410915f48734cb481c5"
+    "revision": "ddce0781461e95ec75a3e617c05213e9"
   },
   {
     "url": "me-en/images/book-wasm.jpg",
-    "revision": "2a683bd44d7f5f379051b534023e1ffa"
+    "revision": "7928b670b96b5a8d376a0ecbcb47a0fb"
   },
   {
     "url": "me-en/images/speech-fcc-1.jpg",
-    "revision": "4bf00173ec69498bc7afacd1a2f791c5"
+    "revision": "3c029650983d40780c255e84572f09b5"
   },
   {
     "url": "me-en/images/speech-fcc-2.jpg",
@@ -2355,15 +2355,15 @@ self.__precacheManifest = [
   },
   {
     "url": "me-en/images/speech-gmtc-2019.jpg",
-    "revision": "fa6f0704239c3ce9518465bc212668a0"
+    "revision": "990aa004c85ab51d1d2392209f1a056f"
   },
   {
     "url": "me-en/images/speech-qcon-2017.jpg",
-    "revision": "53cc863f22a2effb6a5cd95d407c04bc"
+    "revision": "bbdea3c98c57dc32ae0a5c290a4b3b9f"
   },
   {
     "url": "me-en/index.html",
-    "revision": "9a187275fe053cfcf4829607d1fed056"
+    "revision": "479c6bf805102f9aa1876d920d88b80d"
   },
   {
     "url": "me/css/font-awesome.min.css",
@@ -2395,15 +2395,15 @@ self.__precacheManifest = [
   },
   {
     "url": "me/images/avatar.jpg",
-    "revision": "9c6591636adbb410915f48734cb481c5"
+    "revision": "ddce0781461e95ec75a3e617c05213e9"
   },
   {
     "url": "me/images/book-wasm.jpg",
-    "revision": "2a683bd44d7f5f379051b534023e1ffa"
+    "revision": "7928b670b96b5a8d376a0ecbcb47a0fb"
   },
   {
     "url": "me/images/speech-fcc-1.jpg",
-    "revision": "4bf00173ec69498bc7afacd1a2f791c5"
+    "revision": "3c029650983d40780c255e84572f09b5"
   },
   {
     "url": "me/images/speech-fcc-2.jpg",
@@ -2411,15 +2411,15 @@ self.__precacheManifest = [
   },
   {
     "url": "me/images/speech-gmtc-2019.jpg",
-    "revision": "fa6f0704239c3ce9518465bc212668a0"
+    "revision": "990aa004c85ab51d1d2392209f1a056f"
   },
   {
     "url": "me/images/speech-qcon-2017.jpg",
-    "revision": "53cc863f22a2effb6a5cd95d407c04bc"
+    "revision": "bbdea3c98c57dc32ae0a5c290a4b3b9f"
   },
   {
     "url": "me/index.html",
-    "revision": "ed37d5b1e767864e9a12933c6666361f"
+    "revision": "03621a09354353ebb76508c3f35f478f"
   },
   {
     "url": "page/10/index.html",
@@ -2587,7 +2587,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "3f0aa6a17c780fcfb91008c36d85a827"
+    "revision": "ddd458e0c4d315ac671b1f0f31747fce"
   },
   {
     "url": "tags/Java/index.html",
