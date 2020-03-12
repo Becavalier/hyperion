@@ -8,3 +8,7 @@ nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
     each url, label in theme.menu
       li(itemprop='name', class="menu-item")
         a(href= config.root + url, alt= label, title= label, itemprop='url')= label
+p(class="meta-icp")
+  a(target="_blank",href="http://www.miit.gov.cn/")
+    span
+     | 吉 ICP 备10004938号
