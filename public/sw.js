@@ -1287,7 +1287,39 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/03/11/WebAssembly-Summit-2020-—-议题深度解析（上）/index.html",
-    "revision": "4d80b39ead6cb94fcc69302c5155d4f8"
+    "revision": "47fe79b54fcc8907a38d082b33a55679"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/1.png",
+    "revision": "d20e155d0866e129489732c150a24c30"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/2.png",
+    "revision": "cac1adcca39149483e0152a05655d737"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/3.png",
+    "revision": "0b3dd377bb822b7b167915926c825801"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/4.png",
+    "revision": "8a1b0eaa59ecfe8f9a68dabd25e3db1c"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/5.png",
+    "revision": "06ecb96577c03b2ecd89a6e2474ea48b"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/6.png",
+    "revision": "998f08f4bc1d265e2a4f256fe9266eb9"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/7.png",
+    "revision": "d721c9fb5272e2db50aad23c79370efc"
+  },
+  {
+    "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/index.html",
+    "revision": "ff0903d7028ae03367bab4decb430a51"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1707,319 +1739,319 @@ self.__precacheManifest = [
   },
   {
     "url": "archives/2014/12/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2014/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/01/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/02/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/03/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/07/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/08/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/11/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2015/page/3/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/01/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/02/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/03/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/04/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/04/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/05/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/06/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/07/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/08/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/09/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/12/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/page/3/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/page/4/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/page/5/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2016/page/6/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/01/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/02/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/03/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/04/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/05/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/06/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/06/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/07/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/08/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/09/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/11/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/12/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/page/3/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/page/4/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2017/page/5/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2018/01/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2018/11/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2018/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/01/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/02/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/03/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/04/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/07/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/08/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/09/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/10/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/11/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2019/page/3/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2020/03/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/2020/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/10/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/11/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/12/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/13/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/14/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/15/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/16/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/2/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/3/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/4/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/5/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/6/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/7/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/8/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "archives/page/9/index.html",
-    "revision": "1cd0b8ab14b858f58edceb119248429e"
+    "revision": "f727bac3d428431baf3119914321a77e"
   },
   {
     "url": "articles/index.html",
-    "revision": "3c480f34e3734f47446b29e3f81016e4"
+    "revision": "196c9261823ff9ffd3ee3dc497a28bfb"
   },
   {
     "url": "author/index.html",
@@ -2355,7 +2387,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -2471,63 +2503,63 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/11/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/12/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/13/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/14/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/15/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/16/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/2/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/3/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/4/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/5/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/6/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/7/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/8/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "page/9/index.html",
-    "revision": "406ffd8f29d4b8c6d98aeaee6c2e7c91"
+    "revision": "210cdd294372c6b3b5122669b63ad834"
   },
   {
     "url": "scripts/book.js",
@@ -2635,7 +2667,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "ef44063efd10873ce42e6be4d58e1fbd"
+    "revision": "5d6453a36dfc5e38a61fff014a715c66"
   },
   {
     "url": "tags/Java/index.html",
@@ -2743,11 +2775,11 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/WebAssembly/index.html",
-    "revision": "e388623f92b7a37b7c6f9c11203a3abb"
+    "revision": "8192ff4c02303a857dc41155df40162d"
   },
   {
     "url": "tags/WebAssembly/page/2/index.html",
-    "revision": "e388623f92b7a37b7c6f9c11203a3abb"
+    "revision": "8192ff4c02303a857dc41155df40162d"
   },
   {
     "url": "tags/互联网/index.html",
