@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async e => {
             variables: { id: Number(id) }
           }
         })).data.data.fetchAllBookNoteById;
-        window.open().document.write(`<ol>${response.map(i => `<li><pre>${i.note}</pre></li>`).join('')}</ol>`);
+        window.open().document.write(`<ol>${response.map(i => `<li><pre>(Page: ${i.page}) - ${i.note}</pre></li>`).join('')}</ol>`);
       }
     });
   }  

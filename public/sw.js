@@ -2563,7 +2563,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "df959067e358f1488645a98d73f03c47"
+    "revision": "8d6685dce880d5fd57576db248ad944a"
   },
   {
     "url": "scripts/index.js",
@@ -2667,7 +2667,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "5d6453a36dfc5e38a61fff014a715c66"
+    "revision": "e5ebfecbadd6536bb3c557fb031ac6fe"
   },
   {
     "url": "tags/Java/index.html",
