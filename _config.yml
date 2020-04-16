@@ -102,3 +102,17 @@ pwa: true
 sitemap:
   path: sitemap.xml
   template: ./sitemap-skeleton.xml
+
+# RSS
+feed:
+  type: atom
+  path: /atom.xml
+  limit: 30
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  icon: /images/rss.png
+  autodiscovery: true
+  template:

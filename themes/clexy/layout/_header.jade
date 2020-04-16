@@ -2,6 +2,9 @@ if theme.logo
   .logo
 h1
   a(href= config.root, alt= config.title, title= config.title, itemprop='headline')= config.title
+  if config.feed && config.feed.type == 'atom'
+    a.rss(title='Atom 0.3', target='__blank' href= config.feed.path)
+      img(src=config.feed.icon)
 p(itemprop='description')!= config.description
 nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
   ul

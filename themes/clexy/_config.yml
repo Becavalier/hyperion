@@ -11,5 +11,5 @@ menu:
 excerpt_link: Read More
 
 # Miscellaneous
-#rss: /atom.xml
+rss: /atom.xml
 google_analytics: false

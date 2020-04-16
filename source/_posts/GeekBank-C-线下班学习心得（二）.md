@@ -20,14 +20,14 @@ tags:
 #### 产品经理必读书：
 
 * 《系统化思维导论》（Jerry Weinberg 著）：训练逻辑思维。
-* 《精英数据分析》
-* 《从0到1》
+* 《精英数据分析》；
+* 《从0到1》；
 
 #### 产品经验总结：
 
 1. 策划产品时要对产品面向的用户群体进行细分（必须进行量化），不能使用模糊的群体分类（比如极客），要有明确的定位，并在生活中可以找到实例；
 2. 表达能力重要性和逻辑推理的重要性；
-3. 从创意去思考背后的问题，%99用户的主意都是无用的；
+3. 从创意去思考背后的问题，99%的用户的主意都是无用的；
 4. 走出办公楼，去面对自己的用户；
 
 
@@ -51,7 +51,7 @@ tags:
 
 **堆：**
 
-* 在 C++ 中由程序员手动控制 “New” 出来的对象在堆上；
+* 在 C++ 中由程序员手动控制 “new” 出来的对象在堆上；
 * 手动分配 `new` 和 `malloc`；
 * 手动释放 `delete` 和 `free`；
 * 具有全局性，总体大小无限制；
@@ -62,9 +62,9 @@ tags:
 **避免悬浮指针：**
 
 ```cpp
-MyClass *func() {
-    MyClass c(10);
-    return &c;
+MyClass* func() {
+  MyClass c(10);
+  return &c;
 }
 ```
 
@@ -72,25 +72,25 @@ MyClass *func() {
 
 ```cpp
 MyClass func() {
-    MyClass c(10);
-    AClass a(100);
-    c.pa = $a;
-    return c;
+  MyClass c(10);
+  AClass a(100);
+  c.pa = $a;
+  return c;
 }
 ```
 
-**返回值尽量不要反悔指针，谁分配内存谁释放内存：**
+**返回值尽量不要返回指针，谁分配内存谁释放内存：**
 
 ```cpp
-MyClass *func() {
-    MyClass * pa = new MyClass();
-    return pa;
+MyClass* func() {
+  MyClass * pa = new MyClass();
+  return pa;
 }
 MyClass *p = func();
 ```
 
-* 栈上存放指针，堆上存储真正的对象;
-* 栈对象：对象内存直接存储于栈对象;
+* 栈上存放指针，堆上存储真正的对象；
+* 栈对象：对象内存直接存储于栈对象；
 
 
 #### C++ 变量模型与使用：
@@ -100,10 +100,10 @@ MyClass *p = func();
 ```cpp
 // 传对象不好，对象较大，只要传参就是拷贝；
 void func1(MyClass c) {
-    // 这里 “c” 的大小依赖于各个字段的大小，32位机器若有虚函数加 4byte，64位则加 8byte；
+  // 这里 “c” 的大小依赖于各个字段的大小，32位机器若有虚函数加 4byte，64位则加 8byte；
 }
 void func2(MyClass *pc) {
-    // 尽量不用，不能 delete 栈对象；
+  // 尽量不用，不能 delete 栈对象；
 }
 ```
 
@@ -117,12 +117,12 @@ delete(pc);
 
 ```cpp
 void func3(MyClass &mc) {
-    // 传参成本低，效率高，背后是指针，不用考虑是栈对象还是堆对象；
+  // 传参成本低，效率高，背后是指针，不用考虑是栈对象还是堆对象；
 }
 void func3(MyClass &mc) {
-    // 若 “mc” 是堆对象，则函数没问题，但 “mc” 是外部参数，函数不负责释放；
-    MyClass *p = &mc;
-    delete p;
+  // 若 “mc” 是堆对象，则函数没问题，但 “mc” 是外部参数，函数不负责释放；
+  MyClass *p = &mc;
+  delete p;
 }
 // ByValue 的替代，传 const 引用；
 void func3(const MyClass &mc) {}
@@ -142,26 +142,26 @@ func3(c1);
 
 ```cpp
 MyClass func1() {
-    MyClass c1;
-    return c1;
+  MyClass c1;
+  return c1;
 
-    MyClass* pc2 = new MyClass();
-    return *pc2;
-    // 返回对象常见；
-    // 这里 “pc2” 指针不会被释放；
+   MyClass* pc2 = new MyClass();
+  return *pc2;
+  // 返回对象常见；
+  // 这里 “pc2” 指针不会被释放；
 }
 
 MyClass *func2() {
-    MyClass c1;
-    return &c1;
-    // OR；
-    MyClass *pc2 = new MyClass();
-    return pc2;
-    // 只能返回堆对象的指针；
+  MyClass c1;
+  return &c1;
+  // OR；
+  MyClass *pc2 = new MyClass();
+  return pc2;
+  // 只能返回堆对象的指针；
 }
 
 MyClass& func4(MyClass &c) {
-    return c;
+  return c;
 }	
 ```
 
@@ -173,4 +173,3 @@ MyClass& func4(MyClass &c) {
 * 掌握堆、栈的概念；
 * 掌握指针、引用、对象；
 * 探微知著：魔鬼尽在细节中；
-

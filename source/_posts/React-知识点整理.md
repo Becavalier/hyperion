@@ -1,5 +1,5 @@
 ---
-title: React 知识点整理
+title: React 知识点整理（V16.8.6）
 intro: 只是稍微整理了下 React 的一些知识点，nothing special。基于版本 V16.8.6 (March 27, 2019)。
 comments: true
 date: 2019-04-26 00:13:01
