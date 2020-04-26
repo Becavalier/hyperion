@@ -1359,7 +1359,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/04/26/C-未限定名字查找与-ADL/index.html",
-    "revision": "f2f2d1bd630ef4204e670c92bc1d5aad"
+    "revision": "66e99bc26a2a033f39ffefe320655912"
   },
   {
     "url": "2020/04/26/常用-C-高效开发范式（二）/index.html",
@@ -2731,7 +2731,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "cbf048680a1e25eb81fe0c929e8cd139"
+    "revision": "31b2a17a2699125261830f64f9c15d7e"
   },
   {
     "url": "tags/Java/index.html",
