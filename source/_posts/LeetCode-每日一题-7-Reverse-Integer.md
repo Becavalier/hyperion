@@ -36,36 +36,36 @@ Example2: x = -123, return -321
 
 ```java
 public static int reverse(int x) {
-    // 保存原数字的正负符号；
-    int flag = (x > 0) ? 1 : -1;
-    int result = 0;
+  // 保存原数字的正负符号；
+  int flag = (x > 0) ? 1 : -1;
+  int result = 0;
 
-    // 取绝对值；
-    x = Math.abs(x);
+  // 取绝对值；
+  x = Math.abs(x);
 
-    // 开始拆分；
-    String temp = String.valueOf(x);
-    char [] tempChar = temp.toCharArray();
+  // 开始拆分；
+  String temp = String.valueOf(x);
+  char [] tempChar = temp.toCharArray();
+  
+  // 用双指针方法“倒序”排列原数字；
+  for (int i = 0; i < tempChar.length; i++) {
+    int j = tempChar.length - i - 1;
     
-    // 用双指针方法“倒序”排列原数字；
-    for (int i = 0; i < tempChar.length; i++) {
-    	int j = tempChar.length - i - 1;
-    	
-    	if(i >= j)
-    		break;
-    	
-    	char tempInt = tempChar[i];
-    	tempChar[i] = tempChar[j];
-    	tempChar[j] = tempInt;
-    }
+    if(i >= j)
+      break;
     
-    try {
-    	result = Integer.parseInt(String.valueOf(tempChar)) * flag;
-    } catch (NumberFormatException e) {  // 如果遇到溢出，则返回0；
-    	return 0;
-    }
-    
-    return result;
+    char tempInt = tempChar[i];
+    tempChar[i] = tempChar[j];
+    tempChar[j] = tempInt;
+  }
+  
+  try {
+    result = Integer.parseInt(String.valueOf(tempChar)) * flag;
+  } catch (NumberFormatException e) {  // 如果遇到溢出，则返回0；
+    return 0;
+  }
+  
+  return result;
 }
 ```
 
@@ -81,32 +81,32 @@ Runtime: 6 ms
 
 ```java
 public static int reverseOptimize(int x) {
-    // 保留正负性；
-    int flag = (x > 0) ? 1 : -1;
+  // 保留正负性；
+  int flag = (x > 0) ? 1 : -1;
 
-    // 取绝对值；
-    x = Math.abs(x);
-    String temp = String.valueOf(x);
+  // 取绝对值；
+  x = Math.abs(x);
+  String temp = String.valueOf(x);
 
-    // 获得数字位数；
-    char [] tempChar = temp.toCharArray();
-    int bitLen = tempChar.length;
-    int i = 1;
-    long container = 0;
+  // 获得数字位数；
+  char [] tempChar = temp.toCharArray();
+  int bitLen = tempChar.length;
+  int i = 1;
+  long container = 0;
 
-    // 循环次数为位数；
-    while (i <= bitLen) {
-        int bit = x % 10;  // 取出该位；
-        container = (long)(container + bit * Math.pow(10, bitLen - i++)); // 用一个 Long 型变量来存储最后的值（防止溢出）；
-            
-        // 溢出则返回0；
-        if (container > Integer.MAX_VALUE || container < Integer.MIN_VALUE)
-            return 0;
+  // 循环次数为位数；
+  while (i <= bitLen) {
+    int bit = x % 10;  // 取出该位；
+    container = (long)(container + bit * Math.pow(10, bitLen - i++)); // 用一个 Long 型变量来存储最后的值（防止溢出）；
+      
+    // 溢出则返回0；
+    if (container > Integer.MAX_VALUE || container < Integer.MIN_VALUE)
+      return 0;
 
-        x = x / 10;
-    }
-    
-    return (int) container * flag;
+    x = x / 10;
+  }
+  
+  return (int) container * flag;
 }
 ```
 

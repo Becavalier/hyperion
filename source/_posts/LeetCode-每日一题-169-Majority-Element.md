@@ -31,24 +31,24 @@ Because integer 2 appears more than 3.5 times, so after your function it should 
 
 ```java
 public static int majorityElement(int[] nums) {
-    if (nums.length == 0)  // 如果数组长度为0则返回-1；
-    	return -1;
-    
-    int arrLen = nums.length;
-    Map<Integer, Integer> map = new HashMap<>();
-    for (int i = 0;i < arrLen; i++) {
-    	int currentVal = 0;
-    	if (map.containsKey(nums[i]))  // 如果 HashMap 中存在该值对应的元素则使用该值；
-    		currentVal = map.get(nums[i]);
+  if (nums.length == 0)  // 如果数组长度为0则返回-1；
+  	return -1;
+  
+  int arrLen = nums.length;
+  Map<Integer, Integer> map = new HashMap<>();
+  for (int i = 0;i < arrLen; i++) {
+  	int currentVal = 0;
+  	if (map.containsKey(nums[i]))  // 如果 HashMap 中存在该值对应的元素则使用该值；
+  		currentVal = map.get(nums[i]);
 
-    	if (currentVal > arrLen / 2) {  // 如果满足条件则返回该元素；
-    		return nums[i];
-    	} else {
-    		map.put(nums[i], currentVal + 1);  // 否则对应元素值加一；
-    	}
-    }
-    
-    return -1;
+  	if (currentVal > arrLen / 2) {  // 如果满足条件则返回该元素；
+  		return nums[i];
+  	} else {
+  		map.put(nums[i], currentVal + 1);  // 否则对应元素值加一；
+  	}
+  }
+  
+  return -1;
 }
 ```
 
@@ -60,12 +60,12 @@ public static int majorityElement(int[] nums) {
 
 ```java
 public static boolean majorityElementOptimize(int[] nums) {
-    if (nums.length == 0)
-        return -1;
-    
-    int arrLen = nums.length;
-    Arrays.sort(nums);  // 对数组进行堆排序；
-    return nums[arrLen / 2];  // 返回中间元素；
+  if (nums.length == 0)
+    return -1;
+  
+  int arrLen = nums.length;
+  Arrays.sort(nums);  // 对数组进行堆排序；
+  return nums[arrLen / 2];  // 返回中间元素；
 }
 ```
 
@@ -76,27 +76,27 @@ public static boolean majorityElementOptimize(int[] nums) {
 
 ```java
 public static int majorityElementOptimize(int[] nums) {
-    if (nums.length == 0)
-        return -1;
-    
-    int arrLen = nums.length;
-    int mark = nums[0], count = 1;
-    for (int i = 1; i < arrLen; i++) {
-        if (count == 0) {
-            mark = nums[i];
-            count = 1;
-            continue;
-        }
+  if (nums.length == 0)
+    return -1;
+  
+  int arrLen = nums.length;
+  int mark = nums[0], count = 1;
+  for (int i = 1; i < arrLen; i++) {
+    if (count == 0) {
+      mark = nums[i];
+      count = 1;
+      continue;
+    }
 
-        if (nums[i] != mark) {
-            count--;
-        }
-        
-        if (nums[i] == mark) {
-            count++;
-        }
+    if (nums[i] != mark) {
+      count--;
     }
     
-    return mark;
+    if (nums[i] == mark) {
+      count++;
+    }
+  }
+  
+  return mark;
 }
 ```

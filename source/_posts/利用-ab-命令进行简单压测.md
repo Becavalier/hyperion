@@ -25,6 +25,6 @@ ab.exe -n 100 -c 50 -w https://www.baidu.com/
 ab.exe -n 100 -c 50 -w https://www.baidu.com/ >> C:ab_result.html
 ```
 
-![结果 HTML 文件中记录的压测结果](2.png)
+![结果 HTML 文件中记录的压测结果](2.png)
 
 输出到 HTML 文件中的信息包括服务器完成的请求和失败的请求数量，连接服务器和处理请求花费的时间，以及每秒钟服务器请求的数量等压力测试的相关信息。

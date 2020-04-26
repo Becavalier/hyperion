@@ -16,7 +16,7 @@ tags:
 无独有偶，W3C 在最近的草案中发布了专门为解决“同源问题”的技术 — “**CORS**”，CORS(Cross Origin Resource Sharing) 全名为“跨域资源共享”。CORS 使用起来非常简单，只需要服务器端向来自非同源的 AJAX 请求返回一个特定的响应标头即可通过跨域进行正常的访问。比如在含有数据接口的 PHP 页面中包含以下语句即可实现 AJAX 的跨域资源请求。
 
 ```php
-    header("Access-Control-Allow-Origin：*");
+header("Access-Control-Allow-Origin：*");
 ```
 
 这里代码中的“\*”号表示接受来自所有域名的请求，但这样做会存在安全性问题，所以并不推荐。只需将“*”改为需要发送请求的它特定域名，例如上文中提到的“a.abc.com”即可实现较为安全的跨域资源请求。现在的大部分浏览器已经支持 CORS，所以可以放心大胆的使用了。

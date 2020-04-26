@@ -36,19 +36,19 @@ Your function should return length = 2, with the first two elements of nums bein
 
 ```java
 public static int removeElement(int[] nums, int val) {
-    int arrLen = nums.length;
-    int j = 0;
-    
-    for (int i = 0; i < arrLen; i ++) {
-        if (nums[i] != val) {
-            int temp = nums[j];
-            nums[j] = nums[i];
-            nums[i] = temp;
-            j ++;
-        }
+  int arrLen = nums.length;
+  int j = 0;
+  
+  for (int i = 0; i < arrLen; i ++) {
+    if (nums[i] != val) {
+      int temp = nums[j];
+      nums[j] = nums[i];
+      nums[i] = temp;
+      j ++;
     }
+  }
 
-    return j;
+  return j;
 }
 ```
 

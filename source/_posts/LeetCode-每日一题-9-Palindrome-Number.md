@@ -32,17 +32,17 @@ Example2: x = 123123, return false
 
 ```java
 public static boolean isPalindrome(int x) {
-    String s = String.valueOf(x);
-    char[] cArr = s.toCharArray();
-    
-    for (int i = 0; i < cArr.length; i ++) {
-    	int j = cArr.length - i - 1;
-    	if (cArr[i] != cArr[j])
-    	    return false;	
-    	if (i > j)
-    	    break;
-    }
-    return true;
+  String s = String.valueOf(x);
+  char[] cArr = s.toCharArray();
+  
+  for (int i = 0; i < cArr.length; i ++) {
+    int j = cArr.length - i - 1;
+    if (cArr[i] != cArr[j])
+      return false;  
+    if (i > j)
+      break;
+  }
+  return true;
 }
 ```
 

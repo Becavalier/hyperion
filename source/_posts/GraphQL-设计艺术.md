@@ -115,17 +115,17 @@ fragment post on PostComment {
 
 ```javascript
 {
-    "postComments": [
-        { 
-            "id": 552,
-            "publisher": {
-                "name": "YHSPY（博主）",
-                "gender": "MALE"
-            },
-            "content": "评论系统上线啦~~ 欢迎各位客官多多留言交流 ；） 商业评论、技术研究、生活琐事 and 创业思考。",
-            "publishTime": "2019-03-02 16:57:12"
-        }
-    ]
+  "postComments": [
+    { 
+      "id": 552,
+      "publisher": {
+        "name": "YHSPY（博主）",
+        "gender": "MALE"
+      },
+      "content": "评论系统上线啦~~ 欢迎各位客官多多留言交流 ；） 商业评论、技术研究、生活琐事 and 创业思考。",
+      "publishTime": "2019-03-02 16:57:12"
+    }
+  ]
 }
 ```
 

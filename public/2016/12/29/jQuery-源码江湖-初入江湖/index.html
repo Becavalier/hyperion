@@ -24,7 +24,7 @@
 <span class="token comment" spellcheck="true">// JS 原始值 undefined 在低版本浏览器可以被修改赋值，所以这里以未赋值参数的形式来获取 JS 的原始 undefined 值；</span>
 <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span> window<span class="token punctuation">,</span> undefined <span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-    <span class="token comment" spellcheck="true">// 内部代码；</span>
+  <span class="token comment" spellcheck="true">// 内部代码；</span>
 
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span> window <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
@@ -36,63 +36,63 @@
 <span class="token comment" spellcheck="true">// 严格模式在老版本 Firefox 上会出现微软类库的 AJAX 请求失败的问题；</span>
 <span class="token comment" spellcheck="true">//"use strict";</span>
 <span class="token keyword">var</span>
-    <span class="token comment" spellcheck="true">// A central reference to the root jQuery(document)</span>
-    <span class="token comment" spellcheck="true">// 该变量等于 jQuery(document); 利于代码压缩，提高代码可读性；</span>
-    rootjQuery<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// A central reference to the root jQuery(document)</span>
+  <span class="token comment" spellcheck="true">// 该变量等于 jQuery(document); 利于代码压缩，提高代码可读性；</span>
+  rootjQuery<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// The deferred used on DOM ready </span>
-    readyList<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// The deferred used on DOM ready </span>
+  readyList<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Support: IE9</span>
-    <span class="token comment" spellcheck="true">// For `typeof xmlNode.method` instead of `xmlNode.method !== undefined`</span>
-    <span class="token comment" spellcheck="true">// 存储 undefined 的字符串模式，由于低版本 IE 上的 xmlNode 类型需要通过 typeof 来检测；</span>
-    core_strundefined <span class="token operator">=</span> <span class="token keyword">typeof</span> undefined<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Support: IE9</span>
+  <span class="token comment" spellcheck="true">// For `typeof xmlNode.method` instead of `xmlNode.method !== undefined`</span>
+  <span class="token comment" spellcheck="true">// 存储 undefined 的字符串模式，由于低版本 IE 上的 xmlNode 类型需要通过 typeof 来检测；</span>
+  core_strundefined <span class="token operator">=</span> <span class="token keyword">typeof</span> undefined<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Use the correct document accordingly with window argument (sandbox)</span>
-    <span class="token comment" spellcheck="true">// 存储常用对象，利于代码压缩；</span>
-    location <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">,</span>
-    document <span class="token operator">=</span> window<span class="token punctuation">.</span>document<span class="token punctuation">,</span>
-    docElem <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Use the correct document accordingly with window argument (sandbox)</span>
+  <span class="token comment" spellcheck="true">// 存储常用对象，利于代码压缩；</span>
+  location <span class="token operator">=</span> window<span class="token punctuation">.</span>location<span class="token punctuation">,</span>
+  document <span class="token operator">=</span> window<span class="token punctuation">.</span>document<span class="token punctuation">,</span>
+  docElem <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// 防止冲突，通过判断 _jQuery 和 _$ 是否为 undefined 来判断是否发生冲突；</span>
-    <span class="token comment" spellcheck="true">// Map over jQuery in case of overwrite</span>
-    _jQuery <span class="token operator">=</span> window<span class="token punctuation">.</span>jQuery<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// 防止冲突，通过判断 _jQuery 和 _$ 是否为 undefined 来判断是否发生冲突；</span>
+  <span class="token comment" spellcheck="true">// Map over jQuery in case of overwrite</span>
+  _jQuery <span class="token operator">=</span> window<span class="token punctuation">.</span>jQuery<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Map over the $ in case of overwrite</span>
-    _$ <span class="token operator">=</span> window<span class="token punctuation">.</span>$<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Map over the $ in case of overwrite</span>
+  _$ <span class="token operator">=</span> window<span class="token punctuation">.</span>$<span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// [[Class]] -> type pairs</span>
-    <span class="token comment" spellcheck="true">// 主要用于 $.type() 方法，使用 Object.prototype.toString.call() 来检测变量类型；</span>
-    class2type <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// [[Class]] -> type pairs</span>
+  <span class="token comment" spellcheck="true">// 主要用于 $.type() 方法，使用 Object.prototype.toString.call() 来检测变量类型；</span>
+  class2type <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// List of deleted data cache ids, so we can reuse them</span>
-    <span class="token comment" spellcheck="true">// 老版本与数据缓存有关 （该版本已无实际用途）；</span>
-    core_deletedIds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// List of deleted data cache ids, so we can reuse them</span>
+  <span class="token comment" spellcheck="true">// 老版本与数据缓存有关 （该版本已无实际用途）；</span>
+  core_deletedIds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// 指定版本号</span>
-    core_version <span class="token operator">=</span> <span class="token string">"2.0.3"</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// 指定版本号</span>
+  core_version <span class="token operator">=</span> <span class="token string">"2.0.3"</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Save a reference to some core methods</span>
-    <span class="token comment" spellcheck="true">// 存储一些常用的数组方法；</span>
-    core_concat <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>concat<span class="token punctuation">,</span>
-    core_push <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>push<span class="token punctuation">,</span>
-    core_slice <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>slice<span class="token punctuation">,</span>
-    core_indexOf <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>indexOf<span class="token punctuation">,</span>
-    <span class="token comment" spellcheck="true">// 存储 Object 对象的 toString 和 hasOwnProperty 方法；</span>
-    core_toString <span class="token operator">=</span> class2type<span class="token punctuation">.</span>toString<span class="token punctuation">,</span>
-    core_hasOwn <span class="token operator">=</span> class2type<span class="token punctuation">.</span>hasOwnProperty<span class="token punctuation">,</span>
-    core_trim <span class="token operator">=</span> core_version<span class="token punctuation">.</span>trim<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Save a reference to some core methods</span>
+  <span class="token comment" spellcheck="true">// 存储一些常用的数组方法；</span>
+  core_concat <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>concat<span class="token punctuation">,</span>
+  core_push <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>push<span class="token punctuation">,</span>
+  core_slice <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>slice<span class="token punctuation">,</span>
+  core_indexOf <span class="token operator">=</span> core_deletedIds<span class="token punctuation">.</span>indexOf<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// 存储 Object 对象的 toString 和 hasOwnProperty 方法；</span>
+  core_toString <span class="token operator">=</span> class2type<span class="token punctuation">.</span>toString<span class="token punctuation">,</span>
+  core_hasOwn <span class="token operator">=</span> class2type<span class="token punctuation">.</span>hasOwnProperty<span class="token punctuation">,</span>
+  core_trim <span class="token operator">=</span> core_version<span class="token punctuation">.</span>trim<span class="token punctuation">,</span>
 
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们暂时不需要将上述变量的用处全部弄懂，在后面的文章里当我们用到对应的变量时，会进行详细的讲解。接下来源代码的第 61 到 64 行，这里是 jQuery 的构造方法。也就是我们平时使用 jQuery 时所调用的构造方法，比如 <code>$()</code> 和 <code>jQuery()</code> 这两种常用的调用方式，这两者其实是等价的。在该构造方法里，jQuery 直接返回一个对象，使得我们可以直接进行接下来的链式操作，进而省去了实例化的过程。实际上，jQuery 内部真正的构造方法是其原型链上的 <code>jQuery.fn.init()</code> 方法，而 jQuery.fn 实际上就是 jQuery 的显式原型 jQuery.prototype。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Define a local copy of jQuery</span>
 jQuery <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> selector<span class="token punctuation">,</span> context <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// The jQuery object is actually just the init constructor &amp;#39;enhanced&amp;#39;</span>
+  <span class="token comment" spellcheck="true">// The jQuery object is actually just the init constructor &amp;#39;enhanced&amp;#39;</span>
 
-    <span class="token comment" spellcheck="true">// 返回一个 jQuery 对象；</span>
-    <span class="token comment" spellcheck="true">// jQuery.fn = jQuery.prototype;</span>
-    <span class="token comment" spellcheck="true">// jQuery.fn.init.prototype = jQuery.fn (jQuery.prototype);</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>init</span><span class="token punctuation">(</span> selector<span class="token punctuation">,</span> context<span class="token punctuation">,</span> rootjQuery <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 返回一个 jQuery 对象；</span>
+  <span class="token comment" spellcheck="true">// jQuery.fn = jQuery.prototype;</span>
+  <span class="token comment" spellcheck="true">// jQuery.fn.init.prototype = jQuery.fn (jQuery.prototype);</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">jQuery<span class="token punctuation">.</span>fn<span class="token punctuation">.</span>init</span><span class="token punctuation">(</span> selector<span class="token punctuation">,</span> context<span class="token punctuation">,</span> rootjQuery <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们可以分别从如下所示源码的第 96 行和 283 行发现 jQuery 构造函数的整个结构，jQuery 为其内部的显式原型创建了一个别名 jQuery.fn，<strong>别名的好处有两点：</strong></p>
@@ -136,20 +136,20 @@ rdashAlpha <span class="token operator">=</span> <span class="token regex">/-([d
 <p><strong>深入：</strong>通过查看 jQuery 的第 #9572 号 BUG 得知，这里之所以会为 IE 的样式标签进行单独处理，是由于微软在 IE 浏览器的带有浏览器内核前缀的样式进行 properity 转换时没有与其他浏览器达成统一。除 IE 外的所有主流浏览器都会将对应自己内核前缀的属性比如 “-moz-transform” 转换成大驼峰的写法即 “MozTransform” 应用在其 DOM 对象的 properity 里，而只有 IE 家族选择了小驼峰的写法，造成了这种尴尬的局面。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Used by jQuery.camelCase as callback to replace()</span>
 fcamelCase <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> all<span class="token punctuation">,</span> letter <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> letter<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> letter<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
 <span class="token comment" spellcheck="true">// The ready event handler and self cleanup method</span>
 completed <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    document<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span> <span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span> completed<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    window<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span> <span class="token string">"load"</span><span class="token punctuation">,</span> completed<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    jQuery<span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  document<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span> <span class="token string">"DOMContentLoaded"</span><span class="token punctuation">,</span> completed<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  window<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span> <span class="token string">"load"</span><span class="token punctuation">,</span> completed<span class="token punctuation">,</span> <span class="token boolean">false</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  jQuery<span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Convert dashed to camelCase; used by the css and data modules</span>
 <span class="token comment" spellcheck="true">// Microsoft forgot to hump their vendor prefix (#9572)</span>
 camelCase<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span> string <span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span> rmsPrefix<span class="token punctuation">,</span> <span class="token string">"ms-"</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span> rdashAlpha<span class="token punctuation">,</span> fcamelCase <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> string<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span> rmsPrefix<span class="token punctuation">,</span> <span class="token string">"ms-"</span> <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span> rdashAlpha<span class="token punctuation">,</span> fcamelCase <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2016-12-29T05:55:16.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/12/22/Promise-浅谈/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/01/16/2017-开篇/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2016-12-29T05:55:16.000Z"> 2020 / 04 / 25, 15:05:19</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/12/22/Promise-浅谈/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/01/16/2017-开篇/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

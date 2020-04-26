@@ -1,5 +1,5 @@
 ---
-title: Primer C++ 完全笔记（第14-16章）
+title: Primer C++ 5th 完全笔记（第14-16章）
 intro: 文接上回，本文将记录全书第14-16章中出现的知识点，这几章主要介绍了 C++ 中有关面操作重载和类型转换、向对象程序设计（OOP）与模板与泛型编程等相关内容。注意这些知识点的记录完全遵循我个人的想法，因此也仅适配我个人的情况和需求，未记录的其他知识点并非不重要。
 comments: true
 date: 2020-04-14 22:24:37
@@ -31,7 +31,7 @@ int operator+(B& b, A& a) { return operator+(a, b); }
 int main(int argc, char **argv) {
   B b(10);
   A a(20);
-  std::std::cout << a + b;
+  std::cout << a + b;
   return 0;
 }
 ```
@@ -53,7 +53,7 @@ struct B {
 int main(int argc, char **argv) {
   B b = {1, 2};  // 构造函数；
   b = {1, 2, 3, 4};  // 赋值构造；
-  std::std::cout << b.sum << std::endl;
+  std::cout << b.sum << std::endl;
   return 0;
 }
 ```
@@ -75,7 +75,7 @@ struct B {
 int main(int argc, char **argv) {
   B b;
   b++;
-  std::std::cout << ++b << std::endl;
+  std::cout << ++b << std::endl;
   return 0;
 }
 ```
@@ -94,8 +94,8 @@ struct B {
 int main(int argc, char **argv) {
   auto b = new B;
   **b = 100;
-  std::std::cout << (**b) << std::endl;
-  std::std::cout << ((*b)->sum) << std::endl;
+  std::cout << (**b) << std::endl;
+  std::cout << ((*b)->sum) << std::endl;
   return 0;
 }
 ```
@@ -109,7 +109,7 @@ struct B {
 };
 int main(int argc, char **argv) {
   B b;
-  std::std::cout << b() << std::endl;
+  std::cout << b() << std::endl;
   return 0;
 }
 ```
@@ -126,7 +126,7 @@ struct B {
 };
 int main(int argc, char **argv) {
   B b;
-  std::std::cout << static_cast<int>(b) << std::endl;
+  std::cout << static_cast<int>(b) << std::endl;
   return 0;
 }
 ```
@@ -146,7 +146,7 @@ int operator+(const B& x, const B& y) { return x.num + y.num; }
 int main(int argc, char **argv) {
   B b1, b2;
   int sum = b1 + 10;  // error, ambiguous!
-  std::std::cout << sum << std::endl;
+  std::cout << sum << std::endl;
   return 0;
 }
 ```
@@ -172,7 +172,7 @@ int main(int argc, char **argv) {
   A a(10);
   B b(20);
   b = a;
-  std::std::cout << b.val << std::endl;  // 10；
+  std::cout << b.val << std::endl;  // 10；
   return 0;
 }
 ```
@@ -184,11 +184,11 @@ int main(int argc, char **argv) {
 struct B {
   int val = 0;
   B(int x) : val(x) {}
-  virtual void print() { std::std::cout << val << std::endl; }
+  virtual void print() { std::cout << val << std::endl; }
 };
 struct A : public B {
   A(int x) : B(x) {}
-  void print() override final { std::std::cout << B::val * 100 << std::endl; }
+  void print() override final { std::cout << B::val * 100 << std::endl; }
 };
 int main(int argc, char **argv) {
   A a(10);
@@ -230,7 +230,7 @@ struct A1 : B {};  // 默认 public 继承；
 class A2 : B {};  // 默认 private 继承；
 ```
 
-208. （Page：546）通过 using 改变个别派生类成员的可访问性：
+208. （Page：546）通过 using 改变个别派生类成员的可访问性（并不会向派生类添加新成员变量）：
 
 ```cpp
 struct B {
@@ -247,12 +247,12 @@ struct A : private B {
 struct C : public A {
   C() : A() {};
   void foo() {
-    std::std::cout << A::val << std::endl;
+    std::cout << A::val << std::endl;
   }
 };
 ```
 
-209. （Page：549）定义派生类中的函数不会重载（一组重载函数必须定义在同一个 scope 中）其基类中的的成员，但基类中的同名函数会被隐藏。
+209. （Page：549）定义派生类中的函数不会重载（**一组重载函数必须定义在同一个 scope 中**）其基类中的的成员，但基类中的同名函数会被隐藏。
 210. （Page：555）定义派生类的拷贝或移动构造函数：
 
 ```cpp
@@ -295,21 +295,21 @@ struct A : public B {
 int main(int argc, char **argv) {
   A x(10), y(20);
   y = x;
-  std::std::cout << y.val << std::endl;
+  std::cout << y.val << std::endl;
   return 0;
 }
 ```
 
-212. （Page：556）派生类在析构时会按照与对象构造相反的顺序进行，先析构派生类对象，然后析构基类对象：
+212. （Page：556）派生类在析构时会按照与对象构造相反的顺序进行，先析构派生类对象，然后析构基类对象；使用 using 继承的构造函数的访问权限不受在派生类中声明位置的影响（与基类保持一致），且该 using 语句会由编译器生成代码（其他 using 只影响了类成员的可见性）。
 
 ```cpp
 struct B {
-  virtual ~B() { std::std::cout << "B destruct." << std::endl; }
+  virtual ~B() { std::cout << "B destruct." << std::endl; }
 };
 struct A : public B {
   A(int x) = default;
-  using B::B;  // 继承 B 的构造函数；
-  ~A() { std::std::cout << "A destruct" << std::endl; }
+  using B::B;  // 继承 B 的构造函数，可见性依在派生类中的位置而定；
+  ~A() { std::cout << "A destruct" << std::endl; }
 };
 int main(int argc, char **argv) {
   A a(10);
@@ -347,7 +347,7 @@ int totalSize(int (&x)[M], int (&y)[N]) {
 }
 int main(int argc, char **argv) {
   int x[10], y[20];
-  std::std::cout << totalSize(x, y) << std::endl;
+  std::cout << totalSize(x, y) << std::endl;
   return 0;
 }
 ```
@@ -384,7 +384,7 @@ struct B {
   int v = 100;
 };
 struct A { // A 只能做 B 的友元类；
-  void foo(B<A>& b) { std::std::cout << b.v << std::endl; }
+  void foo(B<A>& b) { std::cout << b.v << std::endl; }
 };
 int main(int argc, char **argv) {
   B<A> b;
@@ -416,7 +416,7 @@ struct A {
 template<typename T>
 void foo(T&& t) {
   typename T::Type v = t.v;  // 使用 T 中的自定义类型；
-  std::std::std::cout << v << std::endl;
+  std::std::cout << v << std::endl;
 }
 int main(int argc, char **argv) {
   foo<A>(A(10));
@@ -433,7 +433,7 @@ struct Foo {
 };
 template<typename T, typename F = Foo<T>>  // 默认模板实参；
 void proxy() {
-  std::std::std::cout << F()() << std::endl;  // 先生成类对象，再调用；
+  std::std::cout << F()() << std::endl;  // 先生成类对象，再调用；
 }
 int main(int argc, char **argv) {
   proxy<int>();
@@ -569,7 +569,7 @@ inline void StrVec::emplace_back(Args&&... args) {
 }
 ```
 
-251. （Page：626）函数模板特例化：当我们不能（或不希望）将模板定义用于某些特定类型时，特例化非常有用。
+251. （Page：626）函数模板特例化：当我们不能（或不希望）将模板定义用于某些特定类型时，特例化非常有用。**当一个非模板函数提供与模板函数同样的匹配时，编译器会优先选择非模板版本**。
 
 ```cpp
 template<class T>
@@ -577,7 +577,7 @@ T add(T x, T y) { return x + y; }
 // 函数模板特例化；
 template<> int add(int x, int y) { return x + y + 10; };
 int main(int argc, char **argv) {
-  std::std::cout << add(1,2);
+  std::cout << add(1,2);
   return 0;
 }
 ```

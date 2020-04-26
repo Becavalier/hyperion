@@ -43,7 +43,7 @@ tags:
 // JS 原始值 undefined 在低版本浏览器可以被修改赋值，所以这里以未赋值参数的形式来获取 JS 的原始 undefined 值；
 (function( window, undefined ) {
 
-    // 内部代码；
+  // 内部代码；
 
 })( window );
 ```
@@ -59,52 +59,52 @@ tags:
 // 严格模式在老版本 Firefox 上会出现微软类库的 AJAX 请求失败的问题；
 //"use strict";
 var
-    // A central reference to the root jQuery(document)
-    // 该变量等于 jQuery(document); 利于代码压缩，提高代码可读性；
-    rootjQuery,
+  // A central reference to the root jQuery(document)
+  // 该变量等于 jQuery(document); 利于代码压缩，提高代码可读性；
+  rootjQuery,
 
-    // The deferred used on DOM ready 
-    readyList,
+  // The deferred used on DOM ready 
+  readyList,
 
-    // Support: IE9
-    // For `typeof xmlNode.method` instead of `xmlNode.method !== undefined`
-    // 存储 undefined 的字符串模式，由于低版本 IE 上的 xmlNode 类型需要通过 typeof 来检测；
-    core_strundefined = typeof undefined,
+  // Support: IE9
+  // For `typeof xmlNode.method` instead of `xmlNode.method !== undefined`
+  // 存储 undefined 的字符串模式，由于低版本 IE 上的 xmlNode 类型需要通过 typeof 来检测；
+  core_strundefined = typeof undefined,
 
-    // Use the correct document accordingly with window argument (sandbox)
-    // 存储常用对象，利于代码压缩；
-    location = window.location,
-    document = window.document,
-    docElem = document.documentElement,
+  // Use the correct document accordingly with window argument (sandbox)
+  // 存储常用对象，利于代码压缩；
+  location = window.location,
+  document = window.document,
+  docElem = document.documentElement,
 
-    // 防止冲突，通过判断 _jQuery 和 _$ 是否为 undefined 来判断是否发生冲突；
-    // Map over jQuery in case of overwrite
-    _jQuery = window.jQuery,
+  // 防止冲突，通过判断 _jQuery 和 _$ 是否为 undefined 来判断是否发生冲突；
+  // Map over jQuery in case of overwrite
+  _jQuery = window.jQuery,
 
-    // Map over the $ in case of overwrite
-    _$ = window.$,
+  // Map over the $ in case of overwrite
+  _$ = window.$,
 
-    // [[Class]] -> type pairs
-    // 主要用于 $.type() 方法，使用 Object.prototype.toString.call() 来检测变量类型；
-    class2type = {},
+  // [[Class]] -> type pairs
+  // 主要用于 $.type() 方法，使用 Object.prototype.toString.call() 来检测变量类型；
+  class2type = {},
 
-    // List of deleted data cache ids, so we can reuse them
-    // 老版本与数据缓存有关 （该版本已无实际用途）；
-    core_deletedIds = [],
+  // List of deleted data cache ids, so we can reuse them
+  // 老版本与数据缓存有关 （该版本已无实际用途）；
+  core_deletedIds = [],
 
-    // 指定版本号
-    core_version = "2.0.3",
+  // 指定版本号
+  core_version = "2.0.3",
 
-    // Save a reference to some core methods
-    // 存储一些常用的数组方法；
-    core_concat = core_deletedIds.concat,
-    core_push = core_deletedIds.push,
-    core_slice = core_deletedIds.slice,
-    core_indexOf = core_deletedIds.indexOf,
-    // 存储 Object 对象的 toString 和 hasOwnProperty 方法；
-    core_toString = class2type.toString,
-    core_hasOwn = class2type.hasOwnProperty,
-    core_trim = core_version.trim,
+  // Save a reference to some core methods
+  // 存储一些常用的数组方法；
+  core_concat = core_deletedIds.concat,
+  core_push = core_deletedIds.push,
+  core_slice = core_deletedIds.slice,
+  core_indexOf = core_deletedIds.indexOf,
+  // 存储 Object 对象的 toString 和 hasOwnProperty 方法；
+  core_toString = class2type.toString,
+  core_hasOwn = class2type.hasOwnProperty,
+  core_trim = core_version.trim,
 
 ```
 
@@ -114,12 +114,12 @@ var
  ```javascript
 // Define a local copy of jQuery
 jQuery = function( selector, context ) {
-    // The jQuery object is actually just the init constructor &#39;enhanced&#39;
+  // The jQuery object is actually just the init constructor &#39;enhanced&#39;
 		
-    // 返回一个 jQuery 对象；
-    // jQuery.fn = jQuery.prototype;
-    // jQuery.fn.init.prototype = jQuery.fn (jQuery.prototype);
-    return new jQuery.fn.init( selector, context, rootjQuery );
+  // 返回一个 jQuery 对象；
+  // jQuery.fn = jQuery.prototype;
+  // jQuery.fn.init.prototype = jQuery.fn (jQuery.prototype);
+  return new jQuery.fn.init( selector, context, rootjQuery );
 },
 ```
 
@@ -180,14 +180,14 @@ completed 函数主要用于 jQuery 的 ready 事件，这个我们会在接下�
  ```javascript
 // Used by jQuery.camelCase as callback to replace()
 fcamelCase = function( all, letter ) {
-    return letter.toUpperCase();
+  return letter.toUpperCase();
 },
 
 // The ready event handler and self cleanup method
 completed = function() {
-    document.removeEventListener( "DOMContentLoaded", completed, false );
-    window.removeEventListener( "load", completed, false );
-    jQuery.ready();
+  document.removeEventListener( "DOMContentLoaded", completed, false );
+  window.removeEventListener( "load", completed, false );
+  jQuery.ready();
 };
 ```
 
@@ -195,6 +195,6 @@ completed = function() {
 // Convert dashed to camelCase; used by the css and data modules
 // Microsoft forgot to hump their vendor prefix (#9572)
 camelCase: function( string ) {
-    return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
+  return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
 },
 ```

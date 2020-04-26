@@ -31,14 +31,14 @@ Else return false.
 
 ```java
 public static boolean containsDuplicate(int[] nums) {
-    int arrLen = nums.length;
-    for (int i = 0; i< arrLen; i++) {
-	    for (int j = i + 1; j < arrLen; j++) {
-            if (nums[i] == nums[j] && j - i <= k)
-	        return true;
-	    }
+  int arrLen = nums.length;
+  for (int i = 0; i< arrLen; i++) {
+    for (int j = i + 1; j < arrLen; j++) {
+      if (nums[i] == nums[j] && j - i <= k)
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 ```
 
@@ -48,22 +48,22 @@ public static boolean containsDuplicate(int[] nums) {
 思路不变，先检查 HashMap 中是否含有此元素，如果有则检查当前元素与该元素的索引距离是否大于 **k**，如果没有则将该元素放入 HashMap，并继续从数组中取下一个元素，否则返回 `false` 。时间复杂度 “O(n)“。代码如下所示：
 ```java
 public static boolean containsDuplicateOptimize(int[] nums) {
-    int arrLen = nums.length;
-    Map<Integer, Integer> map = new HashMap<>();
-    int prevPos = 0;
-    
-    for (int i = 0; i< arrLen; i++) {
-        if (map.containsKey(nums[i])) {
-            prevPos = map.get(nums[i]);
-            if((i - prevPos) <= k)
-		        return true;
-            else 
-	            return false;
-        } else {
-            map.put(nums[i], i);
-        }
+  int arrLen = nums.length;
+  Map<Integer, Integer> map = new HashMap<>();
+  int prevPos = 0;
+  
+  for (int i = 0; i< arrLen; i++) {
+    if (map.containsKey(nums[i])) {
+      prevPos = map.get(nums[i]);
+      if((i - prevPos) <= k)
+        return true;
+      else 
+        return false;
+    } else {
+      map.put(nums[i], i);
     }
-    return false;      
+  }
+  return false;    
 }
 ```
 
@@ -73,24 +73,24 @@ public static boolean containsDuplicateOptimize(int[] nums) {
 
 ```java
 public static boolean containsDuplicateOptimizeFurther(int[] nums) {
-    Set<Integer> set = new HashSet<Integer>();  
-    // 定义窗口的首尾指针；
-    int start = 0, end = 0;
-    // 开始遍历；
-    for (int i = 0; i < nums.length; i++) {   
-        if (!set.contains(nums[i])) {    
-            set.add(nums[i]);   
-            end++;   // 如果 Set 中没有此元素则加入，尾指针后移；
-        } else { 
-            return true;   // 有则返回 true；
-        }
-        
-        // 保持首尾指针距离不大于 k；
-        if(end - start > k) {  
-            set.remove(nums[start]);    //如果大于则移除首指针元素；
-            start++;   // 移除后首指针后移；
-        }  
+  Set<Integer> set = new HashSet<Integer>();  
+  // 定义窗口的首尾指针；
+  int start = 0, end = 0;
+  // 开始遍历；
+  for (int i = 0; i < nums.length; i++) {   
+    if (!set.contains(nums[i])) {  
+      set.add(nums[i]);   
+      end++;   // 如果 Set 中没有此元素则加入，尾指针后移；
+    } else { 
+      return true;   // 有则返回 true；
+    }
+    
+    // 保持首尾指针距离不大于 k；
+    if(end - start > k) {  
+      set.remove(nums[start]);  //如果大于则移除首指针元素；
+      start++;   // 移除后首指针后移；
     }  
-    return false;
+  }  
+  return false;
 }
 ```

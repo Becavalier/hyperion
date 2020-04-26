@@ -44,10 +44,10 @@ HttpResponse httpResponse = httpClient.execute(httpRequest);
 
 ```java
 if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
-    String result = EntityUtils.toString(httpResponse.getEntity());  
-    tv.setText(result);  
-    Log.i(TAG, \"result = \" + result);  
+  String result = EntityUtils.toString(httpResponse.getEntity());  
+  tv.setText(result);  
+  Log.i(TAG, \"result = \" + result);  
 } else {  
-    tv.setText(\"request error!\");  
+  tv.setText(\"request error!\");  
 } 
 ```

@@ -29,8 +29,8 @@ BigPipe 的前后端并行处理过程见下图：
 
 ```json
 {
-    "part": "#main",
-    "payload": {}
+  "part": "#main",
+  "payload": {}
 }
 ```
 

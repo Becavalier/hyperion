@@ -36,7 +36,7 @@ String s = "init object";  // 变量值存储于“栈”中；
 
 ```java
 {
-    Stirng s = new String("init object");
+  Stirng s = new String("init object");
 }
 ```
 

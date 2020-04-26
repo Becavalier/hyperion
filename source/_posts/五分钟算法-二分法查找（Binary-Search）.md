@@ -29,49 +29,49 @@ tags:
 
 ```java
 public class Main {
-    public static void main(String[] args) {
-	    // 给定数组；
-        Int [] sortedArray = {1, 2, 3, 3, 4, 5, 5, 5, 6, 7, 8, 10, 11};
-	    // 调用方法；
-        System.out.print(Main.binarySearchLastPos(sortedArray, 5));
-    }
+  public static void main(String[] args) {
+	  // 给定数组；
+    Int [] sortedArray = {1, 2, 3, 3, 4, 5, 5, 5, 6, 7, 8, 10, 11};
+	  // 调用方法；
+    System.out.print(Main.binarySearchLastPos(sortedArray, 5));
+  }
 
-    public static int binarySearchLastPos(int[] nums, int target) {
-        // 判断数组是否合法；
-        if (nums == null || nums.length == 0) {
-            return -1;
-        }  
-        // 设置标志，初始化时start为0，end为数组长度减1，即分别指向头尾；
-        int start = 0, end = nums.length - 1;
-        
-        // Main method (find the last position of the target)
-        // if start = 1, end = 2;
-        // if then nums[1] = target, mid = (start + end) / 2 = 1
-        // cause endless loop
+  public static int binarySearchLastPos(int[] nums, int target) {
+    // 判断数组是否合法；
+    if (nums == null || nums.length == 0) {
+      return -1;
+    }  
+    // 设置标志，初始化时start为0，end为数组长度减1，即分别指向头尾；
+    int start = 0, end = nums.length - 1;
+    
+    // Main method (find the last position of the target)
+    // if start = 1, end = 2;
+    // if then nums[1] = target, mid = (start + end) / 2 = 1
+    // cause endless loop
 
-        while (start + 1 &lt; end) {
-            int mid = (start + end) / 2;  // 中间指针指向数组中间元素；
-            
-            // Better usage, in case of over range
-            // int mid = start + (end - start) / 2;
-            
-            // 根据三种不同情况分别移动首尾指针；
-            if (nums[mid] == target) {
-                start = mid;  
-            } else if (nums[mid] &lt; target) {
-                start = mid;
-            } else if (nums[mid] &gt; target) {
-                end = mid;
-            }
-        }
-        if (nums[start] == target) {
-            return start;
-        }
-        if (nums[end] == target) {
-            return end;
-        }
-        return -1;
+    while (start + 1 &lt; end) {
+      int mid = (start + end) / 2;  // 中间指针指向数组中间元素；
+      
+      // Better usage, in case of over range
+      // int mid = start + (end - start) / 2;
+      
+      // 根据三种不同情况分别移动首尾指针；
+      if (nums[mid] == target) {
+        start = mid;  
+      } else if (nums[mid] &lt; target) {
+        start = mid;
+      } else if (nums[mid] &gt; target) {
+        end = mid;
+      }
     }
+    if (nums[start] == target) {
+      return start;
+    }
+    if (nums[end] == target) {
+      return end;
+    }
+    return -1;
+  }
 }
 ```
 

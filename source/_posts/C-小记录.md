@@ -39,7 +39,7 @@ char32_t ch2 = U'U0000222B';
 cout.setf(ios_base::fixed, ios_base::floatfield);
 ```
 
-10. `auto` 关键字，自动类型推倒：
+10. `auto` 关键字，自动类型推导：
 
 ```c
 std::vector<double> scores;

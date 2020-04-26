@@ -31,28 +31,28 @@ Given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3
 
 ```java
 public static void moveZeroes(int[] nums) {
-    int arrLen = nums.length;
-    int zeroCount = 0, flag = 0;  // 声明两个变量，一个用来保存数组中0的个数，一个用来标志移动的0的个数，用于控制循环；
-    
-    for (int i = 0; i < arrLen; i++) {  // 获取数组中0的个数；
-    	if (nums[i] == 0) {
-    		zeroCount++;
-    	}
+  int arrLen = nums.length;
+  int zeroCount = 0, flag = 0;  // 声明两个变量，一个用来保存数组中0的个数，一个用来标志移动的0的个数，用于控制循环；
+  
+  for (int i = 0; i < arrLen; i++) {  // 获取数组中0的个数；
+    if (nums[i] == 0) {
+      zeroCount++;
     }
-    
-    for (int i = 0; i < arrLen; i++) {  // 循环遍历数组；
-    	while (nums[i] == 0) {  // 防止连续的0，只有当移动之后当前位置不为0，才向下移动；
-    	    for (int k = i; k < arrLen - 1; k++) {  // 注意此处的k是代表索引位置，并不是循环次数；
-    	        nums[k] = nums[k + 1];  // 移除找到的0，并依次将元素向前移动（填补移除的0的位置）；
-    	    }
-    		
-    	    nums[arrLen - 1] = 0;  // 数组末尾值置0；
-    	    flag++;  
-            if (zeroCount == flag) {  // 当移除0的次数与0的个数相等时结束循环；
-    		    return;
-    	    }
-    	}
+  }
+  
+  for (int i = 0; i < arrLen; i++) {  // 循环遍历数组；
+    while (nums[i] == 0) {  // 防止连续的0，只有当移动之后当前位置不为0，才向下移动；
+      for (int k = i; k < arrLen - 1; k++) {  // 注意此处的k是代表索引位置，并不是循环次数；
+        nums[k] = nums[k + 1];  // 移除找到的0，并依次将元素向前移动（填补移除的0的位置）；
+      }
+    	
+      nums[arrLen - 1] = 0;  // 数组末尾值置0；
+      flag++;  
+      if (zeroCount == flag) {  // 当移除0的次数与0的个数相等时结束循环；
+        return;
+      }
     }
+  }
 }
 ```
 
@@ -68,29 +68,29 @@ public static void moveZeroes(int[] nums) {
 
 ```java
 public static void moveZeroesOptimize(int[] nums) {
-    int arrLen = nums.length;
-    int zeroPointer = -1;
-    
-    for (int i = 0; i < arrLen; i++) {
-	    // 处理两种情况：
-        // 1、数组中第一个元素值即为0；
-        // 2、若该元素的前一个元素不为0，而该元素为0，则将 zeroPointer 指针指向该元素；
-    	if((i == 0 && nums[i] == 0) || (i != 0 && nums[i] == 0 && nums[i - 1] != 0)) {
-	        zeroPointer = i;
-    	}
-    	
-	    // 找到 zeroPointer 指针后面位置中不为0的元素；
-    	if(zeroPointer != -1 && nums[i] != 0) {
-            // 交换两个指针对应元素的值；
-            nums[zeroPointer] = nums[i];
-            nums[i] = 0;
-            // 重点：若当前元素前一个元素不为0，则将 zeroPointer 指针指向该元素，否则 zeroPointer 指针后移一个位置；
-            if(i - 1 >= 0 && nums[i - 1] != 0)
-                zeroPointer = i;
-            else
-                zeroPointer ++;
-    	}
+  int arrLen = nums.length;
+  int zeroPointer = -1;
+  
+  for (int i = 0; i < arrLen; i++) {
+    // 处理两种情况：
+    // 1、数组中第一个元素值即为0；
+    // 2、若该元素的前一个元素不为0，而该元素为0，则将 zeroPointer 指针指向该元素；
+    if((i == 0 && nums[i] == 0) || (i != 0 && nums[i] == 0 && nums[i - 1] != 0)) {
+        zeroPointer = i;
     }
+    
+      // 找到 zeroPointer 指针后面位置中不为0的元素；
+    if(zeroPointer != -1 && nums[i] != 0) {
+      // 交换两个指针对应元素的值；
+      nums[zeroPointer] = nums[i];
+      nums[i] = 0;
+      // 重点：若当前元素前一个元素不为0，则将 zeroPointer 指针指向该元素，否则 zeroPointer 指针后移一个位置；
+      if(i - 1 >= 0 && nums[i - 1] != 0)
+        zeroPointer = i;
+      else
+        zeroPointer ++;
+    }
+  }
 }
 ```
 

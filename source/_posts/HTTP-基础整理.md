@@ -29,10 +29,10 @@ URI 是统一资源定位符的简写，主要用对应的定位符来定位某�
 
 ```php
 if (!validate($_SERVER["PHP_AUTH_USER"], $_SERVER["PHP_AUTH_PW"])) {
-    http_response_code(401);    // 401 未授权: (Unauthorized)；
-    header("WWW-Authenticate:Basic realm='Please input you username and password!'");
-    echo "Please input you username and password!";
-    exit;
+  http_response_code(401);  // 401 未授权: (Unauthorized)；
+  header("WWW-Authenticate:Basic realm='Please input you username and password!'");
+  echo "Please input you username and password!";
+  exit;
 }
 ```
 

@@ -122,7 +122,7 @@ git mv <org> <des>  # 常用于更换文件名；
 17. 管理远程仓库：
 ```bash
 git remote -v
-git remote add <shortname> <url>    # 添加上游仓库；
+git remote add <shortname> <url>  # 添加上游仓库；
 git remote show <remote>
 ```
 

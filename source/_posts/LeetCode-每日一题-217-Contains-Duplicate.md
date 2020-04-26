@@ -29,15 +29,15 @@ Else return true.
 
 ```java
 public static boolean containsDuplicate(int[] nums) {
-    int arrLen = nums.length;
-	
-    for (int i = 0; i < arrLen - 1; i++) {      	
-    	for (int j = i + 1; j < arrLen; j++) {
-    	    if (nums[i] == nums[j])
-    		return true;
-    	}
+  int arrLen = nums.length;
+  
+  for (int i = 0; i < arrLen - 1; i++) {
+    for (int j = i + 1; j < arrLen; j++) {
+      if (nums[i] == nums[j])
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 ```
 
@@ -48,18 +48,18 @@ public static boolean containsDuplicate(int[] nums) {
 
 ```java
 public static boolean containsDuplicateOptimize(int[] nums) {
-    Map<Integer,Integer< map = new HashMap<>();
-    int arrLen = nums.length;
-    
-    for (int i = 0; i < arrLen; i++) {
-        map.put(nums[i], i);  // 为HashMap赋值
-    }
-    
-    int result = map.size();
-    if (arrLen != result) {
-        return true;
-    }
-    return false;
+  Map<Integer,Integer< map = new HashMap<>();
+  int arrLen = nums.length;
+  
+  for (int i = 0; i < arrLen; i++) {
+    map.put(nums[i], i);  // 为HashMap赋值
+  }
+  
+  int result = map.size();
+  if (arrLen != result) {
+    return true;
+  }
+  return false;
 }
 ```
 
@@ -71,17 +71,17 @@ public static boolean containsDuplicateOptimize(int[] nums) {
 
 ```java
 public static boolean containsDuplicateOptimizeFurther(int[] nums) {
-    Map<Integer,Integer< map = new HashMap<>();
-    int arrLen = nums.length;
-    
-    for (int i = 0; i < arrLen; i++) {
-        if (map.containsKey(nums[i])) {
-            return true;
-        } else {
-            map.put(nums[i], i);
-        }
+  Map<Integer,Integer< map = new HashMap<>();
+  int arrLen = nums.length;
+  
+  for (int i = 0; i < arrLen; i++) {
+    if (map.containsKey(nums[i])) {
+      return true;
+    } else {
+      map.put(nums[i], i);
     }
-    return false;       
+  }
+  return false;     
 }
 ```
 
@@ -92,11 +92,11 @@ public static boolean containsDuplicateOptimizeFurther(int[] nums) {
 
 ```java
 public boolean containsDuplicateSort(int[] nums) {
-    Arrays.sort(nums);
-    for (int i = 0; i < nums.length - 1;++i) {
-        if (nums[i] == nums[i + 1]) return true;
-    }
-    return false;
+  Arrays.sort(nums);
+  for (int i = 0; i < nums.length - 1;++i) {
+    if (nums[i] == nums[i + 1]) return true;
+  }
+  return false;
 }
 ```
 
@@ -106,18 +106,18 @@ public boolean containsDuplicateSort(int[] nums) {
 
 ```java
 public static boolean containsDuplicateSet(int[] nums) {
-    Set<Integer< set = new HashSet<>();
+  Set<Integer< set = new HashSet<>();
 
-    int arrLen = nums.length;
-	
-    for (int i = 0; i < arrLen; i++) {
-        set.add(nums[i]);
-    }
-	
-    int result = set.size();
-    if (arrLen != result) {
-        return true;
-    }
-    return false;
+  int arrLen = nums.length;
+  
+  for (int i = 0; i < arrLen; i++) {
+    set.add(nums[i]);
+  }
+  
+  int result = set.size();
+  if (arrLen != result) {
+    return true;
+  }
+  return false;
 }
 ```

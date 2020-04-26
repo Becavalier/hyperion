@@ -38,29 +38,29 @@ Given s = "Hello World", return 5.
 
 ```java
 public static int lengthOfLastWord(String s) {
-    if (s.length() == 0) {
-        return 0;
-    }
+  if (s.length() == 0) {
+    return 0;
+  }
 		
-    int strLen = s.length();
-    int lastWordIndex = 0;
-    int lastWordLen = 0;
+  int strLen = s.length();
+  int lastWordIndex = 0;
+  int lastWordLen = 0;
 		
-    for (int i = strLen - 1; i > 0; i--) {
-        if (s.charAt(i) != " ") {
-            lastWordIndex = i;
-            break;
-        }
+  for (int i = strLen - 1; i > 0; i--) {
+    if (s.charAt(i) != " ") {
+      lastWordIndex = i;
+      break;
     }
+  }
 
-    for (int i = lastWordIndex; i >= 0; i--) {
-        if (s.charAt(i) != " ") {
-            lastWordLen ++;
-        } else {
-            break;
-        }
+  for (int i = lastWordIndex; i >= 0; i--) {
+    if (s.charAt(i) != " ") {
+      lastWordLen ++;
+    } else {
+      break;
     }
-    return lastWordLen;
+  }
+  return lastWordLen;
 }
 ```
 

@@ -39,33 +39,33 @@ LeetCode 每日一题系列，今天第九题。这是一道与数学“进制�
 
 ```java
 public static String convertToTitle(int n) {
-    String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    String result = "";
+  String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+  String result = "";
+  
+  if (n <= 26) { 
+  	return alphabet[n - 1];  // n 小于26直接返回对应数组的字母；
+  }
+  
+  int i = n, j = 0;
+  while (i > 26){
+    i = n / 26;
+    j = n % 26;
     
-    if (n <= 26) { 
-    	return alphabet[n - 1];  // n 小于26直接返回对应数组的字母；
+    if (j != 0) {  // 获得余数；
+    	result = alphabet[j - 1] + result;
+    } else {  // 没有余数则将i减一，防止出现数字26而进位；
+    	i = i - 1;
+    	result = &#39;Z&#39; + result;  // 去0换 Z；
     }
     
-    int i = n, j = 0;
-    while (i > 26){
-    	i = n / 26;
-        j = n % 26;
-        
-        if (j != 0) {  // 获得余数；
-        	result = alphabet[j - 1] + result;
-        } else {  // 没有余数则将i减一，防止出现数字26而进位；
-        	i = i - 1;
-        	result = &#39;Z&#39; + result;  // 去0换 Z；
-        }
-        
-        if (i > 26) {
-        	n = i;
-        } else {
-        	result = alphabet[i - 1] + result;
-        }
+    if (i > 26) {
+    	n = i;
+    } else {
+    	result = alphabet[i - 1] + result;
     }
-    
-    return result;
+  }
+  
+  return result;
 }
 ```
 
@@ -76,17 +76,17 @@ public static String convertToTitle(int n) {
 
 ```java
 public static String convertToTitleOptimize(int n) {
-    String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    String result = "", j = "";
-    
-    while (n > 0) { 
-        int i = n % 26;  
-        if (i == 0) i = 26;  // 没有余数则表明进位了，手动去0换 Z；
-        j = alphabet[i - 1];  
-        result = j + result;  
-        n = (n - 1) / 26;  // 两种情况：1、有余数时并没有影响；2、没有余数时强制少进一位，去0换 Z； 
-    }  
-    
-    return result;
+  String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+  String result = "", j = "";
+  
+  while (n > 0) { 
+    int i = n % 26;  
+    if (i == 0) i = 26;  // 没有余数则表明进位了，手动去0换 Z；
+    j = alphabet[i - 1];  
+    result = j + result;  
+    n = (n - 1) / 26;  // 两种情况：1、有余数时并没有影响；2、没有余数时强制少进一位，去0换 Z； 
+  }  
+  
+  return result;
 }
 ```

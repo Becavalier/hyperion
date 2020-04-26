@@ -36,26 +36,26 @@ Return the maximum profit by one transaction is 13.
 
 ```java
 public static int maxProfit(int[] prices) {
-    int arrLen = prices.length;
-    Set<Integer> set = new HashSet<>();
+  int arrLen = prices.length;
+  Set<Integer> set = new HashSet<>();
+  
+  if (arrLen == 0)
+    return 0;
     
-    if (arrLen == 0)
-        return 0;
-        
-    for (int i = 0; i < arrLen - 1; i++) {  // i 指针对应元素值为买入价；
-        for (int j = i + 1; j < arrLen; j++) {  // j 指针对应元素值为卖出价；
-            int maxVal = prices[j] - prices[i];  // 获得所有可能的收益值；
-            if (maxVal >= 0)
-                set.add(maxVal);  // 将正收益值存入 Set；
-        }
+  for (int i = 0; i < arrLen - 1; i++) {  // i 指针对应元素值为买入价；
+    for (int j = i + 1; j < arrLen; j++) {  // j 指针对应元素值为卖出价；
+      int maxVal = prices[j] - prices[i];  // 获得所有可能的收益值；
+      if (maxVal >= 0)
+        set.add(maxVal);  // 将正收益值存入 Set；
     }
-    
-    if (set.isEmpty())
-        return 0;
-    
-    Integer[] array = (Integer[]) set.toArray(new Integer[set.size()]);  // 将 Set 转换为 Array；
-    Arrays.sort(array);  // 对 Array 进行排序；
-    return array[array.length - 1];  // 返回最大值，即最大收益值；
+  }
+  
+  if (set.isEmpty())
+    return 0;
+  
+  Integer[] array = (Integer[]) set.toArray(new Integer[set.size()]);  // 将 Set 转换为 Array；
+  Arrays.sort(array);  // 对 Array 进行排序；
+  return array[array.length - 1];  // 返回最大值，即最大收益值；
 }
 ```
 
@@ -66,20 +66,20 @@ public static int maxProfit(int[] prices) {
 
 ```java
 public static int maxProfitOptimize(int[] prices) {
-    int arrLen = prices.length;
-    
-    if (arrLen == 0)
-        return 0;
-    
-    int maxProfit = 0;
-    int curMin = prices[0];
-    
-    for (int i = 1; i < arrLen; i++) {
-        curMin = Math.min(curMin, prices[i]);  // 更新最低价格；
-        maxProfit = Math.max(maxProfit, prices[i] - curMin);  // 更新最大收益；
-    }
-    
-    return maxProfit;   
+  int arrLen = prices.length;
+  
+  if (arrLen == 0)
+    return 0;
+  
+  int maxProfit = 0;
+  int curMin = prices[0];
+  
+  for (int i = 1; i < arrLen; i++) {
+    curMin = Math.min(curMin, prices[i]);  // 更新最低价格；
+    maxProfit = Math.max(maxProfit, prices[i] - curMin);  // 更新最大收益；
+  }
+  
+  return maxProfit;   
 }
 ```
 

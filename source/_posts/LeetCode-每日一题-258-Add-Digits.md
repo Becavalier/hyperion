@@ -32,19 +32,19 @@ Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one
 
 ```java
 public static int addDigits(int num) {
-    String temp = String.valueOf(num);
-    char [] tempCharArr = temp.toCharArray();
-    int amount = 0;
-    
-    if (tempCharArr.length <= 1){
-    	return num;
-    }
-    
-    for (int i = 0; i < tempCharArr.length; i++){
-    	amount = amount + Integer.parseInt(String.valueOf(tempCharArr[i]));
-    }
-    
-    return Main.addDigits(amount);
+  String temp = String.valueOf(num);
+  char [] tempCharArr = temp.toCharArray();
+  int amount = 0;
+  
+  if (tempCharArr.length <= 1){
+  	return num;
+  }
+  
+  for (int i = 0; i < tempCharArr.length; i++){
+  	amount = amount + Integer.parseInt(String.valueOf(tempCharArr[i]));
+  }
+  
+  return Main.addDigits(amount);
 }
 ```
 
@@ -55,8 +55,8 @@ public static int addDigits(int num) {
 
 ```java
 public static int addDigitsOptimize(int num) {
-    // Use formula；
-    return num - 9 * ((num - 1) / 9);
+  // Use formula；
+  return num - 9 * ((num - 1) / 9);
 }
 ```
 

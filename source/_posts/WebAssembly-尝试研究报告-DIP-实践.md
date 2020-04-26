@@ -31,13 +31,13 @@ tags:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SimpleDIP</title>
-    <style>
-        #video {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>SimpleDIP</title>
+  <style>
+    #video {
+        display: none;
+    }
+  </style>
 </head>
 <body>
 	<canvas id="canvas">

@@ -33,16 +33,16 @@ Given num = 5, return false.
 
 ```java
 public static boolean isPowerOfFour(int num) {
-    if (num == 1)  // 单独处理数字1；
-        return true;
-	
-    while (num % 4 == 0 && num != 0) {
-	num = num / 4;
-	if (num == 1)
-	    return true;
-    }
-	
-    return false;
+  if (num == 1)  // 单独处理数字1；
+    return true;
+    
+  while (num % 4 == 0 && num != 0) {
+    num = num / 4;
+    if (num == 1)
+      return true;
+  }
+    
+  return false;
 }
 ```
 
@@ -65,20 +65,20 @@ public static boolean isPowerOfFour(int num) {
 
 ```java
 public static boolean isPowerOfFourOptimize(int num) {
-    if (num == 1)  // 单独处理数字1；
-	    return true;
-	
-    if (num == 0)  // 单独处理数字0；
-	    return false;
-	
-    String binaryCode = Integer.toBinaryString(num);  // 获取给定数字的二进制形式（没有前置0补全，即以1开头）；
-	
-    String lastPos = binaryCode.substring(1);  // 获取二进制数除第一位之后的所有位数字；
-    int lastPosVal = Integer.valueOf(lastPos, 2);  // 除第一位数之后所有位数组成的二进制数字的值；
-	
-    if (lastPosVal == 0 && (lastPos.length() % 4 == 0 || lastPos.length() % 4 == 2))  // 满足条件则返回 true；
-	    return true;
-    else
-	    return false;
+  if (num == 1)  // 单独处理数字1；
+    return true;
+    
+  if (num == 0)  // 单独处理数字0；
+    return false;
+    
+  String binaryCode = Integer.toBinaryString(num);  // 获取给定数字的二进制形式（没有前置0补全，即以1开头）；
+    
+  String lastPos = binaryCode.substring(1);  // 获取二进制数除第一位之后的所有位数字；
+  int lastPosVal = Integer.valueOf(lastPos, 2);  // 除第一位数之后所有位数组成的二进制数字的值；
+    
+  if (lastPosVal == 0 && (lastPos.length() % 4 == 0 || lastPos.length() % 4 == 2))  // 满足条件则返回 true；
+    return true;
+  else
+    return false;
 }
 ```

@@ -21,45 +21,45 @@ BigRender 的思路是将首屏需要渲染的 DOM 数量降为最少，把那�
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <style type="text/css">
-        [lazy-render] {
-            display: none;
-        }
-    </style>
+  <title></title>
+  <style type="text/css">
+    [lazy-render] {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 <div id="sidebar"></div>
 <div id="main"></div>
 <textarea id="render-main" lazy-render>
-    <p>Main Content</p>
-    <ul>
-      <li>Coffee</li>
-      <li>Tea</li>
-      <li>Milk</li>
-    </ul>
+  <p>Main Content</p>
+  <ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+  </ul>
 </textarea>
 <textarea id="render-sidebar" lazy-render>
-    <p>Sidebar Content</p>
-    <ul>
-      <li>Apple</li>
-      <li>Banana</li>
-      <li>Orange</li>
-    </ul>
+  <p>Sidebar Content</p>
+  <ul>
+    <li>Apple</li>
+    <li>Banana</li>
+    <li>Orange</li>
+  </ul>
 </textarea>
 
 <script>
-    // DOM 加载完毕后开始渲染；
-    document.addEventListener("DOMContentLoaded", function() {
-      // 控制渲染的间隔，防止重绘与回流引起页面的卡顿；
-      var renderList = ["main", "sidebar"];
+  // DOM 加载完毕后开始渲染；
+  document.addEventListener("DOMContentLoaded", function() {
+    // 控制渲染的间隔，防止重绘与回流引起页面的卡顿；
+    var renderList = ["main", "sidebar"];
 
-      renderList.forEach(function(i, index) {
-        setTimeout(function() {
-          document.getElementById(i).innerHTML = document.getElementById("render-" + i).value;
-        }, 1000 + index * 1000);
-      });
+    renderList.forEach(function(i, index) {
+    setTimeout(function() {
+      document.getElementById(i).innerHTML = document.getElementById("render-" + i).value;
+    }, 1000 + index * 1000);
     });
+  });
 </script>
 </body>
 </html>

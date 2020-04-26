@@ -23,65 +23,65 @@ tags:
 #ifdef __cplusplus
 extern "C" {
 #endif
-    // 预置函数，暴露给 JS 进行处理；
-    extern void printStr(char* offset, int length);
-    extern void printInt(int number);
-    extern void printArr(int* offset, int length);
+  // 预置函数，暴露给 JS 进行处理；
+  extern void printStr(char* offset, int length);
+  extern void printInt(int number);
+  extern void printArr(int* offset, int length);
 
-    int array[N];
-    // 返回数组在内存中的偏移地址；
-    int* EMSCRIPTEN_KEEPALIVE getArrayOffset() {
-        return array;
-    }
+  int array[N];
+  // 返回数组在内存中的偏移地址；
+  int* EMSCRIPTEN_KEEPALIVE getArrayOffset() {
+    return array;
+  }
 
-    void push2(std::stack<int> &stack, int left, int right) {
-        stack.push(right);
-        stack.push(left);
-    }
+  void push2(std::stack<int> &stack, int left, int right) {
+    stack.push(right);
+    stack.push(left);
+  }
 
-    void quicksort(int sortArray[], int leftPart, int rightPart) {
-        std::stack<int> stack;
-        push2(stack, leftPart, rightPart);
-        int lwalker, rwalker, mid;
+  void quicksort(int sortArray[], int leftPart, int rightPart) {
+    std::stack<int> stack;
+    push2(stack, leftPart, rightPart);
+    int lwalker, rwalker, mid;
 
-        while (!stack.empty()) {
-            int left = stack.top(); stack.pop();
-            int right = stack.top(); stack.pop();
-            lwalker = left;
-            rwalker = right;
-            mid = sortArray[(lwalker + rwalker) / 2];
+    while (!stack.empty()) {
+      int left = stack.top(); stack.pop();
+      int right = stack.top(); stack.pop();
+      lwalker = left;
+      rwalker = right;
+      mid = sortArray[(lwalker + rwalker) / 2];
 
-            while (lwalker < rwalker) {
-                while(sortArray[lwalker] < mid) lwalker++;
-                while(sortArray[rwalker] > mid) rwalker--;
+      while (lwalker < rwalker) {
+        while(sortArray[lwalker] < mid) lwalker++;
+        while(sortArray[rwalker] > mid) rwalker--;
 
-                if (lwalker <= rwalker) {
-                    int tmp = sortArray[lwalker];
-                    sortArray[lwalker] = sortArray[rwalker];
-                    sortArray[rwalker] = tmp;
-                    lwalker++;
-                    rwalker--;
-                }
-            }
-
-            if (lwalker < right) push2(stack, lwalker, right);
-            if (rwalker > left) push2(stack, left, rwalker);
+        if (lwalker <= rwalker) {
+          int tmp = sortArray[lwalker];
+          sortArray[lwalker] = sortArray[rwalker];
+          sortArray[rwalker] = tmp;
+          lwalker++;
+          rwalker--;
         }
-    }
+      }
 
-    void EMSCRIPTEN_KEEPALIVE sort() {
-        quicksort(array, 0, N - 1);
-        // printArr(array, N);
+      if (lwalker < right) push2(stack, lwalker, right);
+      if (rwalker > left) push2(stack, left, rwalker);
     }
+  }
 
-    void EMSCRIPTEN_KEEPALIVE test_printInt() {
-        printInt(N);
-    }
+  void EMSCRIPTEN_KEEPALIVE sort() {
+    quicksort(array, 0, N - 1);
+    // printArr(array, N);
+  }
 
-    void EMSCRIPTEN_KEEPALIVE test_printStr() {
-        char str[] = "test_printStr";
-        printStr(str, 13);
-    }
+  void EMSCRIPTEN_KEEPALIVE test_printInt() {
+    printInt(N);
+  }
+
+  void EMSCRIPTEN_KEEPALIVE test_printStr() {
+    char str[] = "test_printStr";
+    printStr(str, 13);
+  }
 #ifdef __cplusplus
 }
 #endif
@@ -101,8 +101,8 @@ extern "C" {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
+  <meta charset="UTF-8">
+  <title></title>
 </head>
 <body>
 
@@ -111,39 +111,39 @@ extern "C" {
   var Module = {};
 
   fetch("program.wasm").then(response => response.arrayBuffer()).then((bytes) => {
-    // 填充主要数据；
-    Module.wasmBinary = bytes;
-    // 异步载入初始化脚本（该脚本文件是编译后自动生成的）；
-    var script = document.createElement("script");
-    script.src = "program.js";
-    document.body.appendChild(script);
+  // 填充主要数据；
+  Module.wasmBinary = bytes;
+  // 异步载入初始化脚本（该脚本文件是编译后自动生成的）；
+  var script = document.createElement("script");
+  script.src = "program.js";
+  document.body.appendChild(script);
   });
 
   window.onload = function() {
-    // Module.ccall("test_printInt");
-    // Module.ccall("test_printStr");
-    // 获取数组偏移地址；
-    var arrayOffset = Module.ccall("getArrayOffset", "number");
+  // Module.ccall("test_printInt");
+  // Module.ccall("test_printStr");
+  // 获取数组偏移地址；
+  var arrayOffset = Module.ccall("getArrayOffset", "number");
 
-    console.time("WASM-NO-RECURSION");
-    var arr = [];
-    for (var j = 0; j < 1000000; j++) {
-      for (var i = 0; i < 100; i++) {
-        var number = Math.round(Math.random() * 100);
-        // arr.push(number); 
-        // 在对应内存地址填充数据；
-        Module.setValue(arrayOffset + 4 * i, number, "i32");
-      }
-      /*
-      console.log(arr);
-      for (var i = 0; i < 100; i++) {
-        console.log(Module.getValue(arrayOffset + 4 * i, "i32"));
-      }
-      */
-      // 调用排序函数；
-      Module.ccall("sort");
+  console.time("WASM-NO-RECURSION");
+  var arr = [];
+  for (var j = 0; j < 1000000; j++) {
+    for (var i = 0; i < 100; i++) {
+    var number = Math.round(Math.random() * 100);
+    // arr.push(number); 
+    // 在对应内存地址填充数据；
+    Module.setValue(arrayOffset + 4 * i, number, "i32");
     }
-    console.timeEnd("WASM-NO-RECURSION");
+    /*
+    console.log(arr);
+    for (var i = 0; i < 100; i++) {
+    console.log(Module.getValue(arrayOffset + 4 * i, "i32"));
+    }
+    */
+    // 调用排序函数；
+    Module.ccall("sort");
+  }
+  console.timeEnd("WASM-NO-RECURSION");
   }
 </script>
 </body>
@@ -156,23 +156,23 @@ extern "C" {
 ```javascript
 mergeInto(LibraryManager.library, {
   printStr: function(offset, length) {
-    var str = "";
-    var arr = [];
-    for (var i = 0; i < length; i++) {
-      arr.push(Module.getValue(offset + i, "i8"));
-    }
-    console.log(new TextDecoder().decode(new Uint8Array(arr)));
+  var str = "";
+  var arr = [];
+  for (var i = 0; i < length; i++) {
+    arr.push(Module.getValue(offset + i, "i8"));
+  }
+  console.log(new TextDecoder().decode(new Uint8Array(arr)));
   },
   printArr: function(offset, length) {
-    var str = "";
-    var arr = [];
-    for (var i = 0; i < length; i++) {
-      arr.push(Module.getValue(offset + 4 * i, "i32"));
-    }
-    console.log(arr);
+  var str = "";
+  var arr = [];
+  for (var i = 0; i < length; i++) {
+    arr.push(Module.getValue(offset + 4 * i, "i32"));
+  }
+  console.log(arr);
   },
   printInt: function (int) {
-    console.log(int);
+  console.log(int);
   }
 });
 ```

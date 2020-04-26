@@ -27,24 +27,24 @@ LeetCode 每日一题系列，今天第十八题。今天的题目其解法有�
 
 ```java
 public static int singleNumber(int[] nums) {
-    int arrLen = nums.length;
-    HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
-        
-    for (int i = 0; i < arrLen; i++) {
-        if (map.containsKey(nums[i])) {
-            int currentTime = map.get(nums[i]);
-            map.put(nums[i], ++currentTime);
-        } else {
-            map.put(nums[i], 1);
-        }
+  int arrLen = nums.length;
+  HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+    
+  for (int i = 0; i < arrLen; i++) {
+    if (map.containsKey(nums[i])) {
+      int currentTime = map.get(nums[i]);
+      map.put(nums[i], ++currentTime);
+    } else {
+      map.put(nums[i], 1);
     }
-    // 遍历 Map；
-    for (Map.Entry<Integer, Integer> entry : map.entrySet()) {    
-        if (entry.getValue() == 1)
-            return entry.getKey();
-    }  
-         
-    return 0;
+  }
+  // 遍历 Map；
+  for (Map.Entry<Integer, Integer> entry : map.entrySet()) {  
+    if (entry.getValue() == 1)
+      return entry.getKey();
+  }  
+     
+  return 0;
 }
 ```
 
@@ -60,18 +60,18 @@ Runtime: 27 ms
 
 ```java
 public static int singleNumberOptimize(int[] nums) {
-    int arrLen = nums.length;
-    HashSet<Integer> set = new HashSet<Integer>();
-        
-    for (int i = 0; i < arrLen; i++) {
-        if (set.contains(nums[i])) {
-            set.remove(nums[i]);
-        } else {
-            set.add(nums[i]);
-        }
+  int arrLen = nums.length;
+  HashSet<Integer> set = new HashSet<Integer>();
+    
+  for (int i = 0; i < arrLen; i++) {
+    if (set.contains(nums[i])) {
+      set.remove(nums[i]);
+    } else {
+      set.add(nums[i]);
     }
-         
-    return set.iterator().next();
+  }
+     
+  return set.iterator().next();
 }
 ```
 
@@ -89,26 +89,26 @@ Runtime: 21 ms
 
 ```java
 public static int singleNumberOptimizeFuther(int[] nums) {
-    int arrLen = nums.length;
-    if(arrLen == 1)
-        return nums[0];
-	// 排序数组；
-    Arrays.sort(nums);
-		
-    for (int i = 0; i < arrLen; i += 2) {
-        int j = i + 1;
-			
-        if (j == arrLen)
-            return nums[i];
-						
-        if (nums[i] == nums[j])
-            continue;
-        else 
-            return nums[i];
-    }
-		
-    return 0;       
-}	
+  int arrLen = nums.length;
+  if(arrLen == 1)
+    return nums[0];
+  // 排序数组；
+  Arrays.sort(nums);
+    
+  for (int i = 0; i < arrLen; i += 2) {
+    int j = i + 1;
+      
+    if (j == arrLen)
+      return nums[i];
+            
+    if (nums[i] == nums[j])
+      continue;
+    else 
+      return nums[i];
+  }
+    
+  return 0;     
+}  
 ```
 
 ```text
@@ -123,15 +123,15 @@ Runtime: 9 ms
 
 ```java
 public class Solution {
-    public int singleNumber(int[] nums) {
-        int arrLen = nums.length;
-        int result = 0;
-        for (int i = 0; i < arrLen; i++) {
-            result = result ^ nums[i];
-        }
-        
-        return result;
+  public int singleNumber(int[] nums) {
+    int arrLen = nums.length;
+    int result = 0;
+    for (int i = 0; i < arrLen; i++) {
+      result = result ^ nums[i];
     }
+    
+    return result;
+  }
 }
 ```
 

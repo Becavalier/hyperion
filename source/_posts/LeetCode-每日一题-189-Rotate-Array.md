@@ -25,17 +25,17 @@ LeetCode 每日一题系列，今天第七题。今天的题型还是基于数�
 
 ```java
 public static void rotate(int[] nums, int k) {
-    if (nums.length == 0)
-        return;
-        
-    int arrLen = nums.length;
-    for (int i = 0; i < k; i++){
-        int lastVal = nums[nums.length - 1];  // 最后一个值存储到临时变量；
-        for (int j = nums.length - 2; j >= 0 ; j--){  // 所有元素依次后移一位；
-            nums[j + 1] = nums[j]; 
-        }
-        nums[0] = lastVal;  // 将临时变量的值赋给第一个元素；
+  if (nums.length == 0)
+    return;
+    
+  int arrLen = nums.length;
+  for (int i = 0; i < k; i++){
+    int lastVal = nums[nums.length - 1];  // 最后一个值存储到临时变量；
+    for (int j = nums.length - 2; j >= 0 ; j--){  // 所有元素依次后移一位；
+      nums[j + 1] = nums[j]; 
     }
+    nums[0] = lastVal;  // 将临时变量的值赋给第一个元素；
+  }
 }
 ```
 
@@ -46,22 +46,21 @@ public static void rotate(int[] nums, int k) {
 
 ```java
 public static void rotateOptimize(int[] nums, int k) {
-    if (nums.length == 0)
-        return;
-        
-    int arrLen = nums.length;
-    int temp[] = new int[arrLen];
-    k = k % arrLen;
+  if (nums.length == 0)
+    return;
     
-    for (int i = 0; i < k; i++) {
-       temp[i] = nums[arrLen - k + i];
-    }
-    
-    for (int j = k; j < arrLen; j++){ 
-        temp[j] = nums[j - k];
-    }
-    
-    System.arraycopy(temp, 0, nums, 0, nums.length);
+  int arrLen = nums.length;
+  int temp[] = new int[arrLen];
+  k = k % arrLen;
+  
+  for (int i = 0; i < k; i++) {
+     temp[i] = nums[arrLen - k + i];
+  }
+  for (int j = k; j < arrLen; j++){ 
+    temp[j] = nums[j - k];
+  }
+  
+  System.arraycopy(temp, 0, nums, 0, nums.length);
 }
 ```
 
@@ -79,30 +78,30 @@ public static void rotateOptimize(int[] nums, int k) {
 
 ```java
 public static void rotateOptimizeFuther(int[] nums, int k) {
-    k = k % nums.length;
+  k = k % nums.length;
  
-    if (nums == null || k < 0) {
-        return;
-    }
+  if (nums == null || k < 0) {
+    return;
+  }
  
-    int a = nums.length - k; 
+  int a = nums.length - k; 
  
-    reverse(nums, 0, a-1);  // 翻转前一部分元素；
-    reverse(nums, a, nums.length-1);  // 翻转后一部分元素；
-    reverse(nums, 0, nums.length-1);  // 翻转整体元素；
+  reverse(nums, 0, a-1);  // 翻转前一部分元素；
+  reverse(nums, a, nums.length-1);  // 翻转后一部分元素；
+  reverse(nums, 0, nums.length-1);  // 翻转整体元素；
 }
  
 public static void reverse(int[] nums, int left, int right) {
-    if(nums == null || nums.length == 1) 
-        return;
+  if(nums == null || nums.length == 1) 
+    return;
  
-    while(left < right) {
-        // 翻转的整体思路是利用双指针前后调换对应元素的值；
-        int temp = nums[left];
-        nums[left] = nums[right];
-        nums[right] = temp;
-        left++;
-        right--;
-    }   
+  while(left < right) {
+    // 翻转的整体思路是利用双指针前后调换对应元素的值；
+    int temp = nums[left];
+    nums[left] = nums[right];
+    nums[right] = temp;
+    left++;
+    right--;
+  }   
 }
 ```

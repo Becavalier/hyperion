@@ -31,15 +31,15 @@ Given s = "hello", return "olleh".
 
 ```java
 public static String reverseString(String s) {
-    int strLength = s.length();
-    char [] tempCharArr = s.toCharArray();
-    char [] resultArr = new char[strLength];
-    
-    for (int i = 0; i< strLength; i++) {
-    	resultArr[i] = tempCharArr[strLength - i - 1];
-    }
-    
-    return String.valueOf(resultArr);
+  int strLength = s.length();
+  char [] tempCharArr = s.toCharArray();
+  char [] resultArr = new char[strLength];
+  
+  for (int i = 0; i< strLength; i++) {
+  	resultArr[i] = tempCharArr[strLength - i - 1];
+  }
+  
+  return String.valueOf(resultArr);
 }
 ```
 
@@ -51,21 +51,21 @@ public static String reverseString(String s) {
 ```java
 // In-Place；
 public static String reverseStringOptimize(String s) {
-    int strLength = s.length();
-    char [] tempCharArr = s.toCharArray();
-    
-    for (int i = 0; i< strLength; i++) {
-    	int j = strLength - i - 1;  // 尾指针；
-    	if (i >= j) {  // 首指针大于等于尾指针时循环结束；
-    		break;
-    	}
-    	
-        // 以此交换收尾指针对应元素的值；
-    	char tempVal = tempCharArr[i]; 
-    	tempCharArr[i] = tempCharArr[j];
-    	tempCharArr[j] = tempVal;
-    }
-    
-    return String.valueOf(tempCharArr);
+  int strLength = s.length();
+  char [] tempCharArr = s.toCharArray();
+  
+  for (int i = 0; i< strLength; i++) {
+  	int j = strLength - i - 1;  // 尾指针；
+  	if (i >= j) {  // 首指针大于等于尾指针时循环结束；
+  		break;
+  	}
+  	
+    // 以此交换收尾指针对应元素的值；
+  	char tempVal = tempCharArr[i]; 
+  	tempCharArr[i] = tempCharArr[j];
+  	tempCharArr[j] = tempVal;
+  }
+  
+  return String.valueOf(tempCharArr);
 }
 ```

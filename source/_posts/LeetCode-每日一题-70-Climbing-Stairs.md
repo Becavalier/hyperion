@@ -27,15 +27,15 @@ LeetCode 每日一题系列，今天第八题。这是一道读题不用费力�
 
 ```java
 public static int climbStairs(int n) {
-    if (n == 1) {  // 只剩一阶时只有一种走法；
-    	return 1;
-    }
-    
-    if (n == 2) {  // 剩两阶时有两种走法；
-    	return 2;
-    }
-    
-    return climbStairs(n - 1) + climbStairs(n - 2);  // 递归；
+  if (n == 1) {  // 只剩一阶时只有一种走法；
+    return 1;
+  }
+  
+  if (n == 2) {  // 剩两阶时有两种走法；
+    return 2;
+  }
+  
+  return climbStairs(n - 1) + climbStairs(n - 2);  // 递归；
 }
 ```
 
@@ -46,17 +46,17 @@ public static int climbStairs(int n) {
 
 ```java
 public static int climbStairsOptimize(int n) {
-    int a = 0;
-    int b = 1;
-    int sum = 0;
-	
-    for (int i = 0; i < n; i++) {
-    	sum = a + b;
-    	a = b;
-    	b = sum;
-    }
-    
-    return sum;
+  int a = 0;
+  int b = 1;
+  int sum = 0;
+  
+  for (int i = 0; i < n; i++) {
+    sum = a + b;
+    a = b;
+    b = sum;
+  }
+  
+  return sum;
 }
 ```
 
@@ -67,15 +67,15 @@ public static int climbStairsOptimize(int n) {
 
 ```java
 public static int climbStairsOptimizeArray(int n) {
-    int[] arr = new int[3];
-	
-    arr[0] = 1;  
-    arr[1] = 1;  
+  int[] arr = new int[3];
+  
+  arr[0] = 1;  
+  arr[1] = 1;  
 
-    for (int i = 2; i <= n; i++) {  
-    	arr[i%3] = arr[(i-1)%3] + arr[(i-2)%3];  
-    }  
+  for (int i = 2; i <= n; i++) {  
+    arr[i%3] = arr[(i-1)%3] + arr[(i-2)%3];  
+  }  
 
-    return arr[n%3]; 
+  return arr[n%3]; 
 }
 ```

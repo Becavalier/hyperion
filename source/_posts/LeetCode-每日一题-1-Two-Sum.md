@@ -29,25 +29,25 @@ return [<strong>0</strong>, <strong>1</strong>].
 
 ```java
 public static int[] twoSum(int[] nums, int target) {
-    int numsLength = nums.length;
-    int start = 0, end = 0;
+  int numsLength = nums.length;
+  int start = 0, end = 0;
+  
+  int[] resultArr = new int[] {};
+  while (start < numsLength - 1) {  // 最外层循环移动 start 指针；
+    end = start + 1;  // end 永远位于 start 后面；
     
-    int[] resultArr = new int[] {};
-    while (start < numsLength - 1) {  // 最外层循环移动 start 指针；
-    	end = start + 1;  // end 永远位于 start 后面；
-    	
-    	int stepLength = numsLength - end;  // 每一次循环 end 指针需要走的步长；
-    	
-    	for (int i = 0; i< stepLength; i ++) {  // 最内层循环移动 end 指针；
-    		if ((nums[start] + nums[end]) == target) {  // 判断每一次遇到的值是否与 target 相等；
-    			return new int[] {start, end};
-    		} else {
-    			end++;
-    		}
-    	}
-    	start++;
-    }   
-    return resultArr;
+    int stepLength = numsLength - end;  // 每一次循环 end 指针需要走的步长；
+    
+    for (int i = 0; i< stepLength; i ++) {  // 最内层循环移动 end 指针；
+      if ((nums[start] + nums[end]) == target) {  // 判断每一次遇到的值是否与 target 相等；
+        return new int[] {start, end};
+      } else {
+        end++;
+      }
+    }
+    start++;
+  }   
+  return resultArr;
 }
 ```
 
@@ -57,20 +57,20 @@ public static int[] twoSum(int[] nums, int target) {
 
 ```java
 public static int[] twoSumOptimize(int[] nums, int target) {
-    int numsLength = nums.length;
-    Map<Integer, Integer> map = new HashMap<>();
-	
-    for (int i = 0; i < numsLength; i++) {  // 为 HashMap 赋值，重复值只会取最后一次出现的，重复值无用；
-        map.put(nums[i], i);
+  int numsLength = nums.length;
+  Map<Integer, Integer> map = new HashMap<>();
+  
+  for (int i = 0; i < numsLength; i++) {  // 为 HashMap 赋值，重复值只会取最后一次出现的，重复值无用；
+    map.put(nums[i], i);
+  }
+  
+  for (int i = 0; i < numsLength; i++) {  // 开始遍历查询；
+    int search = target - nums[i];  // 得到与当前值的匹配值；
+    if (map.containsKey(search) && map.get(search) != i) {  // 查询匹配值是否存在于 HashMap 中，并且匹配值不能是自己； 
+      return new int[] {i, map.get(search)};
     }
-    
-    for (int i = 0; i < numsLength; i++) {  // 开始遍历查询；
-        int search = target - nums[i];  // 得到与当前值的匹配值；
-        if (map.containsKey(search) && map.get(search) != i) {  // 查询匹配值是否存在于 HashMap 中，并且匹配值不能是自己； 
-            return new int[] {i, map.get(search)};
-        }
-    }
-    return new int[] {};
+  }
+  return new int[] {};
 }
 ```
 
@@ -80,17 +80,17 @@ public static int[] twoSumOptimize(int[] nums, int target) {
 
 ```java
 public static int[] twoSumFurtherOptimize(int[] nums, int target) {
-    int numsLength = nums.length;
-    int[] resultArr = new int[] {};
-    Map<Integer, Integer> map = new HashMap<>();
-	
-    for (int i = 0; i < numsLength; i++) {
-        int search = target - nums[i];
-        if (map.containsKey(search) && map.get(search) != i) {
-            return new int[] {map.get(search), i};
-        }
-        map.put(nums[i], i);  // 向 HashSet 中插入值；
+  int numsLength = nums.length;
+  int[] resultArr = new int[] {};
+  Map<Integer, Integer> map = new HashMap<>();
+  
+  for (int i = 0; i < numsLength; i++) {
+    int search = target - nums[i];
+    if (map.containsKey(search) && map.get(search) != i) {
+      return new int[] {map.get(search), i};
     }
-    return resultArr;
+    map.put(nums[i], i);  // 向 HashSet 中插入值；
+  }
+  return resultArr;
 }
 ```

@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-04-19T09:08:31.777Z</updated>
+  <updated>2020-04-26T14:08:38.721Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,68 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Primer C++ 完全笔记（第17-19章）</title>
+    <title>常用 C++ 高效开发范式（二）</title>
+    <link href="https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-04-26T13:28:21.000Z</published>
+    <updated>2020-04-26T14:08:38.721Z</updated>
+    
+    <summary type="html">
+    
+      文接上回，本文将继续记录常见的 C++ 高效开发范式，这些范式均总结于《Effective C++ 3th》一书。由于该书出版年代较为久远，因此对于书中条款的不适用之处，作者将尽量予以纠正并给出自己的建议。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ 未限定名称查找与 ADL</title>
+    <link href="https://www.yhspy.com/2020/04/26/C-%E6%9C%AA%E9%99%90%E5%AE%9A%E5%90%8D%E5%AD%97%E6%9F%A5%E6%89%BE%E4%B8%8E-ADL/"/>
+    <id>https://www.yhspy.com/2020/04/26/C-%E6%9C%AA%E9%99%90%E5%AE%9A%E5%90%8D%E5%AD%97%E6%9F%A5%E6%89%BE%E4%B8%8E-ADL/</id>
+    <published>2020-04-26T13:10:29.000Z</published>
+    <updated>2020-04-26T15:30:05.487Z</updated>
+    
+    <summary type="html">
+    
+      简单总结下 ADL（aka. Koenig Lookup）算法与 C++ 中对于“未限定名称”查找之间的关系。毕竟日常对于 using、命名空间内（或标准库全特化）的自定义 swap 函数等的用法都涉及到这部分内容，记录下免得踩坑。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用 C++ 高效开发范式（一）</title>
+    <link href="https://www.yhspy.com/2020/04/24/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/04/24/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-04-24T13:59:46.000Z</published>
+    <updated>2020-04-26T13:04:03.404Z</updated>
+    
+    <summary type="html">
+    
+      还是趁最近疫情 WFH 的闲暇时间，把《Effective C++ 3th》这本书读了一遍。说句实话，整个读书过程的体验并不是很好。首先，这本书最新修订版的出版时间决定了其内容会稍微有些脱节和过时，比如整本书中会出现 C++ 在其 TR1（Technical Report 1）版本中的一些诸如 “std::auto_ptr” 这类现在已经被弃用的语法特性；其次，由于本书的中文版是由台湾的侯捷先生翻译的，因此读起来很多地方还是比较拗口，其带有浓烈台湾语言特色的文字，需要你在读书的过程中再重新整理语句然后加以理解；最后就是原作者的行文方式，个人感觉废话偏多，而且行文连续性很差，对于一些重点并没有使用直观的方式进行展示，而是直接平铺直叙，从上到下叙述，给人的感觉是想到哪写到哪。但无论如何整体来看，还是瑕不掩瑜的。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Primer C++ 5th 完全笔记（第17-19章）</title>
     <link href="https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-16T12:43:00.000Z</published>
-    <updated>2020-04-19T09:08:31.777Z</updated>
+    <updated>2020-04-21T07:10:40.551Z</updated>
     
     <summary type="html">
     
@@ -36,11 +93,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 完全笔记（第14-16章）</title>
+    <title>Primer C++ 5th 完全笔记（第14-16章）</title>
     <link href="https://www.yhspy.com/2020/04/14/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC14-16%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/14/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC14-16%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-14T14:24:37.000Z</published>
-    <updated>2020-04-16T12:41:55.405Z</updated>
+    <updated>2020-04-22T14:03:03.479Z</updated>
     
     <summary type="html">
     
@@ -55,11 +112,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 完全笔记（第09-13章）</title>
+    <title>Primer C++ 5th 完全笔记（第09-13章）</title>
     <link href="https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-12T09:28:14.000Z</published>
-    <updated>2020-04-16T12:46:06.854Z</updated>
+    <updated>2020-04-22T05:49:46.921Z</updated>
     
     <summary type="html">
     
@@ -74,11 +131,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 完全笔记（第01-08章）</title>
+    <title>Primer C++ 5th 完全笔记（第01-08章）</title>
     <link href="https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-10T05:20:03.000Z</published>
-    <updated>2020-04-16T12:47:53.595Z</updated>
+    <updated>2020-04-21T07:10:19.802Z</updated>
     
     <summary type="html">
     
@@ -407,7 +464,7 @@
     <link href="https://www.yhspy.com/2019/04/28/%E2%80%9CCSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E2%80%9D%E5%86%85%E5%AE%B9%E5%B0%8F%E7%BB%93/"/>
     <id>https://www.yhspy.com/2019/04/28/%E2%80%9CCSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E2%80%9D%E5%86%85%E5%AE%B9%E5%B0%8F%E7%BB%93/</id>
     <published>2019-04-28T12:53:11.000Z</published>
-    <updated>2019-07-11T16:30:20.146Z</updated>
+    <updated>2020-04-25T07:12:31.096Z</updated>
     
     <summary type="html">
     
@@ -487,7 +544,7 @@
     <link href="https://www.yhspy.com/2019/03/30/%E5%88%9D%E8%81%8A%E9%A3%8E%E9%99%A9%E6%8A%95%E8%B5%84%EF%BC%88VC%EF%BC%89/"/>
     <id>https://www.yhspy.com/2019/03/30/%E5%88%9D%E8%81%8A%E9%A3%8E%E9%99%A9%E6%8A%95%E8%B5%84%EF%BC%88VC%EF%BC%89/</id>
     <published>2019-03-30T15:39:37.000Z</published>
-    <updated>2019-06-28T07:56:25.445Z</updated>
+    <updated>2020-04-25T06:53:55.114Z</updated>
     
     <summary type="html">
     
@@ -542,65 +599,6 @@
       <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
     
       <category term="黑客松" scheme="https://www.yhspy.com/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GraphQL 设计艺术</title>
-    <link href="https://www.yhspy.com/2019/03/03/GraphQL-%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF/"/>
-    <id>https://www.yhspy.com/2019/03/03/GraphQL-%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF/</id>
-    <published>2019-03-03T11:50:24.000Z</published>
-    <updated>2019-06-28T07:56:25.401Z</updated>
-    
-    <summary type="html">
-    
-      最近一个月做了个重要的决定，将之前用了将近4年的 PHP 博客迁移成了主流的静态博客。但实际上大部分静态博客都是采用 Disque 来从第三方集成评论系统，由于个人觉得 Disque 与新博客的整体风格不搭，并且在国内其加载速度较慢，遂决定自己开发这部分子功能。而后端接口则摒弃了传统的 REST 模式，采用了曾风靡一时的 GraphQL 模式（抽象查询语言）。与 REST 所不同的是，GraphQL 对 API 请求资源的描述采用了更加“细腻”的方式。
-    
-    </summary>
-    
-    
-    
-      <category term="GraphQL" scheme="https://www.yhspy.com/tags/GraphQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>今日商业评论 — 瑞幸咖啡 VS 星巴克，如何互补？</title>
-    <link href="https://www.yhspy.com/2019/02/28/%E4%BB%8A%E6%97%A5%E5%95%86%E4%B8%9A%E8%AF%84%E8%AE%BA%E2%80%94%E7%91%9E%E5%B9%B8%E5%92%96%E5%95%A1VS%E6%98%9F%E5%B7%B4%E5%85%8B%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BA%92%E8%A1%A5%EF%BC%9F/"/>
-    <id>https://www.yhspy.com/2019/02/28/%E4%BB%8A%E6%97%A5%E5%95%86%E4%B8%9A%E8%AF%84%E8%AE%BA%E2%80%94%E7%91%9E%E5%B9%B8%E5%92%96%E5%95%A1VS%E6%98%9F%E5%B7%B4%E5%85%8B%EF%BC%8C%E5%A6%82%E4%BD%95%E4%BA%92%E8%A1%A5%EF%BC%9F/</id>
-    <published>2019-02-28T06:30:40.000Z</published>
-    <updated>2019-06-28T07:56:25.442Z</updated>
-    
-    <summary type="html">
-    
-      瑞幸咖啡凭借大量补贴和快速开店的策略，在国内咖啡市场快速扩张，目前门店已经超过2000家，预计今年还将新开2500家门店。快速发展的背后是瑞幸的高额亏损，累计亏损超过8亿元，且亏损还在持续扩大。若瑞幸一直持续补贴，没有明确的盈利模式，其资金链必将受到影响。而作为咖啡市场老大的星巴克，由于瑞幸咖啡的崛起，在中国也出现了增长乏力的现象。你认为瑞幸和星巴克在营业模式上有哪些值得相互学习的地方？
-    
-    </summary>
-    
-    
-    
-      <category term="商业评论" scheme="https://www.yhspy.com/tags/%E5%95%86%E4%B8%9A%E8%AF%84%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>日本樱花季游攻略</title>
-    <link href="https://www.yhspy.com/2019/02/14/%E6%97%A5%E6%9C%AC%E6%A8%B1%E8%8A%B1%E5%AD%A3%E6%B8%B8%E6%94%BB%E7%95%A5/"/>
-    <id>https://www.yhspy.com/2019/02/14/%E6%97%A5%E6%9C%AC%E6%A8%B1%E8%8A%B1%E5%AD%A3%E6%B8%B8%E6%94%BB%E7%95%A5/</id>
-    <published>2019-02-14T15:34:42.000Z</published>
-    <updated>2020-04-16T06:19:36.543Z</updated>
-    
-    <summary type="html">
-    
-      计划今年3月下旬待天气稍微转暖，把18年剩余的几天年假用掉，碰巧此时也正好赶上了日本3-5月份的“樱花季”，遂决定去趟日本🇯🇵。按照往年的规律，东京的樱花期是从每年的3月22日开始，持续连续一周左右时间，而我们的出行航班正好是于花季的第二天到达东京，没准能够感上“最新鲜”的樱花视觉盛宴。整个旅程计划6天5晚，大致路线为：东京-镰仓-箱根。
-    
-    </summary>
-    
-    
-    
-      <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-      <category term="旅游" scheme="https://www.yhspy.com/tags/%E6%97%85%E6%B8%B8/"/>
     
   </entry>
   

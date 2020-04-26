@@ -19,14 +19,14 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 ```html
 <!-- XHTML Request: xxx.php?x,y （x,y 为用户点击图像的相对位置）-->
 <a href="xxx.php">
-    <img src="xxx.jpg" ismap="ismap" alt="" />
+  <img src="xxx.jpg" ismap="ismap" alt="" />
 </a>
 <!-- XHTML 外部脚本会在当页面已完成加载后，才会执行 -->
 <script src="xxx.js" defer="defer"></script>
 
 <!-- HTML5 Request: xxx.php?x,y （x,y 为用户点击图像的相对位置）-->
 <a href="xxx.php">
-    <img src="xxx.jpg" ismap alt="" />
+  <img src="xxx.jpg" ismap alt="" />
 </a>
 <!-- HTML5 外部脚本会在当页面已完成加载后，才会执行 -->
 <script src="xxx.js" defer></script>
@@ -74,7 +74,7 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 ```html
 <!-- 定义有序列表 -->
 <ol start="2" type="I">
-    <li></li>
+  <li></li>
 </ol>
 
 <!-- 定义图片映射 -->
@@ -85,14 +85,14 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 
 <!-- 标准表格 -->
 <table>
-    <caption>表格标题</caption>
-    <colgroup>
-    <col />
-    <col span="2" />
-    </colgroup>
-    <thead><tr></tr></thead>
-    <tfoot><tr></tr></tfoot>
-    <tbody><tr></tr></tbody>&nbsp;   
+  <caption>表格标题</caption>
+  <colgroup>
+  <col />
+  <col span="2" />
+  </colgroup>
+  <thead><tr></tr></thead>
+  <tfoot><tr></tr></tfoot>
+  <tbody><tr></tr></tbody>&nbsp;   
 </table>
 
 <!-- <meter> 和 <progress> -->
@@ -108,10 +108,10 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 
 ```html
 <!-- 
-    “contentEditable” 属性： 使某一 HTML 的内容（innerHTML）可编辑（向下继承）；
-    “isContentEditable” 属性：判断当前元素内容是否可编辑 ；
+  “contentEditable” 属性： 使某一 HTML 的内容（innerHTML）可编辑（向下继承）；
+  “isContentEditable” 属性：判断当前元素内容是否可编辑 ；
 
-    *而对于全局的 HTML 页面，可以使用 “document.designMode = true;” 来使整个页面可编辑；
+  *而对于全局的 HTML 页面，可以使用 “document.designMode = true;” 来使整个页面可编辑；
 -->
 <p contentEditable="true">这是一段可编辑的段落</p>
 <!-- 设置 “hidden“ 属性为 “true” 相当于设置 “display: none;” 样式 -->
@@ -164,7 +164,7 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 
 ```html
 <form id="form" action="">
-    <input type="text" name="name" />
+  <input type="text" name="name" />
 </form>
 
 <!-- 利用 form 的 “id” 属性来进行关系连接 -->
@@ -176,9 +176,9 @@ XHMTL 是一种更严格、更纯洁的 HTML 代码，W3C 制定了 XHTML 主要
 
 ```html
 <form id="form" action="">
-    <input type="text" name="name" />
-    <input type="submit" value="Submit Entrance One" formaction="interface_one" formmethod="get"/>
-    <input type="submit" value="Submit Entrance Two" formaction="interface_two" formmethod="post"/>
+  <input type="text" name="name" />
+  <input type="submit" value="Submit Entrance One" formaction="interface_one" formmethod="get"/>
+  <input type="submit" value="Submit Entrance Two" formaction="interface_two" formmethod="post"/>
 </form>
 ```
 

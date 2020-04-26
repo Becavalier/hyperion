@@ -28,13 +28,13 @@ function saltPwd($password, $salt) {
 ```php
 function optimizedSaltPwd($password, $salt, $saltGain = 1) {
   // 过滤参数；
-  if(!is_numeric($saltGain)) exit;
-  if(intval($saltGain) < 0 || intval($saltGain) > 35) exit;
+  if (!is_numeric($saltGain)) exit;
+  if (intval($saltGain) < 0 || intval($saltGain) > 35) exit;
 	
   // 对 MD5 后的盐值进行变换，添加信息增益；
   $tempSaltMd5 = md5($salt);
-  for($i = 0;$i < strlen($tempSaltMd5); $i++){
-    if(ord($tempSaltMd5[$i]) < 91 && ord($tempSaltMd5[$i]) > 32) {
+  for ($i = 0; $i < strlen($tempSaltMd5); $i++) {
+    if (ord($tempSaltMd5[$i]) < 91 && ord($tempSaltMd5[$i]) > 32) {
       // 每一个字符添加同样的增益；
       $tempSaltMd5[$i] = chr(ord($tempSaltMd5[$i]) + $saltGain);
     }

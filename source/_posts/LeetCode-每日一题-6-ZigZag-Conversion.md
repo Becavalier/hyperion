@@ -43,50 +43,50 @@ string convert(string text, int nRows);
 
 ```java
 public static String convert(String s, int numRows) {
-    char[] tempCharArr = s.toCharArray();
-    int tempCharArrLen = tempCharArr.length;
-    // 计算列数；
-    int columeNum = tempCharArrLen * numRows / (2 * numRows - 1) + 
-    		(tempCharArrLen % (2 * numRows - 1) <= numRows ? 1 : tempCharArrLen % (2 * numRows - 1) - numRows + 1);
-    char[][] charMap = new char[numRows][columeNum];
+  char[] tempCharArr = s.toCharArray();
+  int tempCharArrLen = tempCharArr.length;
+  // 计算列数；
+  int columeNum = tempCharArrLen * numRows / (2 * numRows - 1) + 
+    (tempCharArrLen % (2 * numRows - 1) <= numRows ? 1 : tempCharArrLen % (2 * numRows - 1) - numRows + 1);
+  char[][] charMap = new char[numRows][columeNum];
+  
+  int x = 0, y = 0, k = 1, h = 1;
+  for (int i = 0; i < tempCharArrLen; i++){
+    char thisChar = tempCharArr[i];
+    charMap[x][y] = thisChar;
     
-    int x = 0, y = 0, k = 1, h = 1;
-    for (int i = 0; i < tempCharArrLen; i++){
-    	char thisChar = tempCharArr[i];
-     	charMap[x][y] = thisChar;
-    	
-    	if (x == 0) {
-    		k = 1;
-    		h = 0;
-    	} else if (x == numRows - 1) {
-    		k = -1;
-    		h = 1;
-    	}
-    	
-    	// 特殊情况；
-    	if (numRows == 1) {
-    		k = 0;
-    		h = 1;
-    	}
-    		
-    	x = x + k;
-    	y = y + h;
-    }		
-    
-    StringBuffer sb = new StringBuffer();
-    
-    // Output string；
-    for (int i = 0; i < charMap.length; i++){
-    	for (int j = 0; j < charMap[i].length; j++){
-            char c = charMap[i][j];
-    	    if (c == ''\0'')
-    		    continue;
-    	    else
-    		    sb.append(c);
-    	}
+    if (x == 0) {
+      k = 1;
+      h = 0;
+    } else if (x == numRows - 1) {
+      k = -1;
+      h = 1;
     }
     
-    return sb.toString();
+    // 特殊情况；
+    if (numRows == 1) {
+      k = 0;
+      h = 1;
+    }
+      
+    x = x + k;
+    y = y + h;
+  }    
+  
+  StringBuffer sb = new StringBuffer();
+  
+  // Output string；
+  for (int i = 0; i < charMap.length; i++){
+    for (int j = 0; j < charMap[i].length; j++){
+      char c = charMap[i][j];
+      if (c == ''\0'')
+        continue;
+      else
+        sb.append(c);
+    }
+  }
+  
+  return sb.toString();
 }
 ```
 
@@ -102,25 +102,25 @@ Runtime: 51 ms
 
 ```java
 public static String convertOptimize(String s, int numRows) {
-    int len = s.length();  
-    if (len == 0 || numRows < 2) return s;  
-      
-    String ret = "";   
-    int period = 2 * numRows - 2; // “直线列”水平读取时的循环周期；
-    for (int i = 0; i < numRows; i++) {  
-        for (int j = i; j < len; j += period) {  
-            ret += s.charAt(j);  
-              
-            // 非首行和末行时还要多读取一个字符；
-            if (i > 0 && i < numRows - 1) {  
-                int t = j + period - 2 * i;  
-                if (t < len) {  
-                    ret += s.charAt(t);  
-                }  
-            }  
+  int len = s.length();  
+  if (len == 0 || numRows < 2) return s;  
+    
+  String ret = "";   
+  int period = 2 * numRows - 2; // “直线列”水平读取时的循环周期；
+  for (int i = 0; i < numRows; i++) {  
+    for (int j = i; j < len; j += period) {  
+      ret += s.charAt(j);  
+        
+      // 非首行和末行时还要多读取一个字符；
+      if (i > 0 && i < numRows - 1) {  
+        int t = j + period - 2 * i;  
+        if (t < len) {  
+          ret += s.charAt(t);  
         }  
+      }  
     }  
-    return ret;  
+  }  
+  return ret;  
 }
 ```
 ```text
@@ -128,10 +128,3 @@ public static String convertOptimize(String s, int numRows) {
 Status: Accepted
 Runtime: 65 ms
 ```
-
-
-
-
-
-
-

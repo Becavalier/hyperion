@@ -20,17 +20,17 @@ tags:
 
 ```php
 <?php
-    // 使用 utf8_encode 方法编码 JSON 字符串；
-    $result = JSON_decode(utf8_encode($response), true);
+  // 使用 utf8_encode 方法编码 JSON 字符串；
+  $result = JSON_decode(utf8_encode($response), true);
 ```
 
 使用 UTF8 编码 JSON 字符串并没有解决问题，发现输出的 UTF8 编码过的 JSON 字符串最前端部分存在乱码。对于 JSON 字符串的格式是否正确和是否使用双引号可以通过 `print_r` 函数把响应数据打印到页面直接观察来得到。接下来去掉 JSON 字符串中的控制和转义字符。
 
 ```php
 <?php
-    // 去掉 JSON 字符串中的换行符("\\"换成"\")；
-    $order = array("\\r\\n", "\\r", "\\n");
-    str_replace($order, '', $response);
+  // 去掉 JSON 字符串中的换行符("\\"换成"\")；
+  $order = array("\\r\\n", "\\r", "\\n");
+  str_replace($order, '', $response);
 ```
 
 至此，问题依然没有解决，接下来还是从之前发现的 UTF8 编码后 JSON 字符串存在乱码入手。乱码位于 JSON 字符串的最前端，并且是在经过 UTF8 编码之后产生的。`utf8_encode` 方法也会将不可见的标识或控制字符进行编码。因此怀疑是存在隐藏的标识字符或者控制字符。
@@ -55,8 +55,8 @@ PHP 在设计时就没有考虑 BOM 的问题，也就是说他不会忽略 UTF-
 
 ```php
 <?php
-    // 去掉 BOM 头字符；
-    $result = JSON_decode(trim($response, chr(239).chr(187).chr(191)),true);
+  // 去掉 BOM 头字符；
+  $result = JSON_decode(trim($response, chr(239).chr(187).chr(191)),true);
 ```
 
 至此，终于找到了问题所在。其实我们在调试过程中并不需要这么麻烦，直接通过 `JSON_last_error` 函数即可获得最后一次 `JSON_decode` 函数执行失败的原因。
@@ -65,16 +65,16 @@ PHP 在设计时就没有考虑 BOM 的问题，也就是说他不会忽略 UTF-
 
 ```php
 <?php
-    public function JSONDecode($content) {
-        // 去空格和占位符("\\"换成"\")；
-        $order = array("\\r\\n", "\\r", "\\n");
-        str_replace($order, '', $content);
-        // 去掉 BOM 头；
-        $content = trim($response, chr(239).chr(187).chr(191));
-        // 使用 UTF-8 编码；
-        $content = utf8_encode($response);
-        // 解析并返回生成的数组；
-        return JSON_decode($content, true);
-    }
+  public function JSONDecode($content) {
+    // 去空格和占位符("\\"换成"\")；
+    $order = array("\\r\\n", "\\r", "\\n");
+    str_replace($order, '', $content);
+    // 去掉 BOM 头；
+    $content = trim($response, chr(239).chr(187).chr(191));
+    // 使用 UTF-8 编码；
+    $content = utf8_encode($response);
+    // 解析并返回生成的数组；
+    return JSON_decode($content, true);
+  }
 ```
 

@@ -40,36 +40,36 @@ Return: 1 --> 2 --> 3 --> 4 --> 5
 /**
  * Definition for singly-linked list.
  * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) { val = x; }
+ *   int val;
+ *   ListNode next;
+ *   ListNode(int x) { val = x; }
  * }
  */
 
 public class Solution {
-    public ListNode removeElements(ListNode head, int val) {  
-        // 在头节点前加入“伪节点”；
-        ListNode fakeNode = new ListNode(0);  
-        fakeNode.next = head;  
-        // 两个节点指针分别指向“伪节点”和“首节点”；
-        ListNode p = fakeNode;  
-        ListNode q = head;  
-        // 当下一个节点存在时继续遍历；
-        while (q! = null) {  
-            if (q.val == val) {  
-                // 删除该节点；
-                p.next = q.next;  
-            } else {  
-                // p 指针后移；
-                p = p.next;  
-            }  
-            // q 指针后移；
-            q = q.next;  
-        }  
-        
-        // 返回“首节点”
-        return fakeNode.next;  
+  public ListNode removeElements(ListNode head, int val) {  
+    // 在头节点前加入“伪节点”；
+    ListNode fakeNode = new ListNode(0);  
+    fakeNode.next = head;  
+    // 两个节点指针分别指向“伪节点”和“首节点”；
+    ListNode p = fakeNode;  
+    ListNode q = head;  
+    // 当下一个节点存在时继续遍历；
+    while (q! = null) {  
+      if (q.val == val) {  
+        // 删除该节点；
+        p.next = q.next;  
+      } else {  
+        // p 指针后移；
+        p = p.next;  
+      }  
+      // q 指针后移；
+      q = q.next;  
     }  
+    
+    // 返回“首节点”
+    return fakeNode.next;  
+  }  
 }
 ```
 

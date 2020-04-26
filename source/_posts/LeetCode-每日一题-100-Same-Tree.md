@@ -28,38 +28,38 @@ LeetCode 每日一题系列，今天第十九题。又是一段时间没有更�
 
 ```java
 public class Solution {
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        ArrayList a1 = Solution.depthOrderTraversal(p);
-        ArrayList a2 = Solution.depthOrderTraversal(q);
+  public boolean isSameTree(TreeNode p, TreeNode q) {
+    ArrayList a1 = Solution.depthOrderTraversal(p);
+    ArrayList a2 = Solution.depthOrderTraversal(q);
 			
-        return a1.equals(a2);
-    }
+    return a1.equals(a2);
+  }
 
-    public static ArrayList depthOrderTraversal(TreeNode t) {
-        if (t == null) 
-            return new ArrayList();
+  public static ArrayList depthOrderTraversal(TreeNode t) {
+    if (t == null) 
+      return new ArrayList();
 		
-        Stack <TreeNode> nodeStack = new Stack <TreeNode>();
-        TreeNode node;
-        ArrayList result = new ArrayList();
+    Stack <TreeNode> nodeStack = new Stack <TreeNode>();
+    TreeNode node;
+    ArrayList result = new ArrayList();
 		
-        nodeStack.push(t);
+    nodeStack.push(t);
 		
-        while (!nodeStack.isEmpty()) {
-            node = nodeStack.pop();
+    while (!nodeStack.isEmpty()) {
+      node = nodeStack.pop();
 			
-            if (node == null) {
-                result.add(null);
-            } else {
-                result.add(node.val);
+      if (node == null) {
+        result.add(null);
+      } else {
+        result.add(node.val);
 				
-                nodeStack.push(node.right);
-                nodeStack.push(node.left);
-            }
-        }
-        // 返回遍历后的序列；
-        return result;	
+        nodeStack.push(node.right);
+        nodeStack.push(node.left);
+      }
     }
+    // 返回遍历后的序列；
+    return result;	
+  }
 }
 ```
 

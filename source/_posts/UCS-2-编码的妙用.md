@@ -21,62 +21,62 @@ Unicode 的码空间范围从 u0000（0x0000）到 u10FFFF（0x10FFFF），共�
 
 ```php
 class Util {
-    public static function charAnaylze($str) {   
-        // 转换成 UCS-2 定长编码；
-        $str = iconv('UTF-8', 'UCS-2', $str);
+  public static function charAnaylze($str) {   
+    // 转换成 UCS-2 定长编码；
+    $str = iconv('UTF-8', 'UCS-2', $str);
 
-        // 获取字符串总长度；
-        $strLen = strlen($str);
+    // 获取字符串总长度；
+    $strLen = strlen($str);
 
-        $tempStr = '';
-        $resultArr = array();
+    $tempStr = '';
+    $resultArr = array();
 
-        // 每次处理一个字符；
-        for ($i = 0; $i < $strLen - 1; $i = $i + 2) {
-            $lowByte = $str[$i];
-            $highByte = $str[$i + 1];
+    // 每次处理一个字符；
+    for ($i = 0; $i < $strLen - 1; $i = $i + 2) {
+      $lowByte = $str[$i];
+      $highByte = $str[$i + 1];
 
-            // 按位转换并填充；
-            $lowByteEncoded = str_pad(base_convert(ord($lowByte), 10, 16), 2, 0, STR_PAD_LEFT);
-            $highByteEncoded = str_pad(base_convert(ord($highByte), 10, 16), 2, 0, STR_PAD_LEFT);
-            $hexStr = $lowByteEncoded . $highByteEncoded;
-            $value = hexdec($hexStr);
+      // 按位转换并填充；
+      $lowByteEncoded = str_pad(base_convert(ord($lowByte), 10, 16), 2, 0, STR_PAD_LEFT);
+      $highByteEncoded = str_pad(base_convert(ord($highByte), 10, 16), 2, 0, STR_PAD_LEFT);
+      $hexStr = $lowByteEncoded . $highByteEncoded;
+      $value = hexdec($hexStr);
 
-            // 创建临时字符；
-            $tempStr = iconv('UTF-8', 'UCS-2', "A");
-            $tempStr[0] = $lowByte;
-            $tempStr[1] = $highByte;
+      // 创建临时字符；
+      $tempStr = iconv('UTF-8', 'UCS-2', "A");
+      $tempStr[0] = $lowByte;
+      $tempStr[1] = $highByte;
 
-            // 编码；
-            $char = iconv('UCS-2', 'UTF-8', $tempStr);
-            
-            if($value >= 65 && $value <= 122) {
-                // Latin 字母；
-                $resultArr['Latin字母'][] = $char;
-            }
+      // 编码；
+      $char = iconv('UCS-2', 'UTF-8', $tempStr);
+      
+      if($value >= 65 && $value <= 122) {
+        // Latin 字母；
+        $resultArr['Latin字母'][] = $char;
+      }
 
-            if($value >= 48 && $value <= 57) {
-                // Latin 数字；
-                $resultArr['Latin数字'][] = $char;
-            }
+      if($value >= 48 && $value <= 57) {
+        // Latin 数字；
+        $resultArr['Latin数字'][] = $char;
+      }
 
-            if(($value >= 33 && $value <= 47) || ($value >= 58 && $value <= 64)) {
-                // Latin 符号；
-                $resultArr['Latin符号'][] = $char;
-            }
+      if(($value >= 33 && $value <= 47) || ($value >= 58 && $value <= 64)) {
+        // Latin 符号；
+        $resultArr['Latin符号'][] = $char;
+      }
 
-            if(($value >= 1536 && $value <= 1791)) {
-                // 阿拉伯语；
-                $resultArr['阿拉伯语'][] = $char;
-            }
+      if(($value >= 1536 && $value <= 1791)) {
+        // 阿拉伯语；
+        $resultArr['阿拉伯语'][] = $char;
+      }
 
-            if(($value >= 19968 && $value <= 40959)) {
-                // 汉字；
-                $resultArr['汉字字符'][] = $char;
-            }
-        }
-
-        return $resultArr;
+      if(($value >= 19968 && $value <= 40959)) {
+        // 汉字；
+        $resultArr['汉字字符'][] = $char;
+      }
     }
+
+    return $resultArr;
+  }
 }
 ```

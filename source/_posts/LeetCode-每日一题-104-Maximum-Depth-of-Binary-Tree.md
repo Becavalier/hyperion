@@ -27,15 +27,15 @@ LeetCode 每日一题系列。本文算法题目：给出一个二叉树和其�
 
 ```java
 public class Solution {
-    public int maxDepth(TreeNode root) {  
-        if (root == null) {  
-            return 0;  
-        }  
-        int res = 1;  
-        int left = maxDepth(root.left);  
-        int right = maxDepth(root.right);  
-        return left > right ? left + 1 : right + 1;  
+  public int maxDepth(TreeNode root) {  
+    if (root == null) {  
+      return 0;  
     }  
+    int res = 1;  
+    int left = maxDepth(root.left);  
+    int right = maxDepth(root.right);  
+    return left > right ? left + 1 : right + 1;  
+  }  
 }
 ```
 
