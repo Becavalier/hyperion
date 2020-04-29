@@ -399,7 +399,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-304. （Page：729）placement-new 的几种使用形式：
+304. （Page：729）标准库中 placement-new 的几种使用形式（对于其他需要传递给 new 的额外参数，可以自己重载 operator new 来实现）：
 
 ```text
 new (place_address) type;

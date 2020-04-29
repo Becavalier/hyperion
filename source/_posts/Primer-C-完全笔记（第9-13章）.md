@@ -238,10 +238,10 @@ int main(int argc, char **argv) {
 ![](2.png)
 
 126. （Page：）5类迭代器（层次依次上升，高层次支持低层次的所有操作）：
-* 输入迭代器；判断、++、*、->
-* 输出迭代器：只输出；
-* 前向迭代器：单向移动；
-* 双向迭代器：双向移动；
+* 输入迭代器；如 std::istream_iterator，只读；可进行判断、++、*、->；
+* 输出迭代器：如 std::ostream_iterator，只输出；可进行判断、++、*、->；
+* 前向迭代器：如 std::forward_list<T>::iterator，单向移动；
+* 双向迭代器：如 std::list<T>::iterator，双向移动；
 * 随机访问迭代器（除 std::list / std::forward_list）：常量时间访问序列元素，+=，-=、下标访问；
 
 127. （Page：369）对于 std::list 与 std::forward_list 来说，应该优先使用成员函数版本（改变节点间的链接）算法而非通用算法（需要交换元素，性能低）。

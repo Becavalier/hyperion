@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-04-26T14:08:38.721Z</updated>
+  <updated>2020-04-28T06:57:29.240Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>C++ 空基类优化（EBO）与私有继承</title>
+    <link href="https://www.yhspy.com/2020/04/27/C-%E7%A9%BA%E5%9F%BA%E7%B1%BB%E4%BC%98%E5%8C%96%EF%BC%88EBO%EF%BC%89%E4%B8%8E%E7%A7%81%E6%9C%89%E7%BB%A7%E6%89%BF/"/>
+    <id>https://www.yhspy.com/2020/04/27/C-%E7%A9%BA%E5%9F%BA%E7%B1%BB%E4%BC%98%E5%8C%96%EF%BC%88EBO%EF%BC%89%E4%B8%8E%E7%A7%81%E6%9C%89%E7%BB%A7%E6%89%BF/</id>
+    <published>2020-04-27T12:27:20.000Z</published>
+    <updated>2020-04-28T06:57:29.240Z</updated>
+    
+    <summary type="html">
+    
+      通常我们认为“私有继承”和“组合”都有着相同的应用层语义，即：派生类或包含类是通过继承的类或组合的类对象来实现的（is-implemented-in-terms-of）。但在 C++ 中，由于 EBO（Empty Base Optimization）机制的存在，某种情况下我们可能会更倾向于使用私有继承而非组合的方式。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>常用 C++ 高效开发范式（二）</title>
     <link href="https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-04-26T13:28:21.000Z</published>
-    <updated>2020-04-26T14:08:38.721Z</updated>
+    <updated>2020-04-29T08:00:57.361Z</updated>
     
     <summary type="html">
     
@@ -59,7 +78,7 @@
     <link href="https://www.yhspy.com/2020/04/24/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/24/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-04-24T13:59:46.000Z</published>
-    <updated>2020-04-26T13:04:03.404Z</updated>
+    <updated>2020-04-27T04:40:18.414Z</updated>
     
     <summary type="html">
     
@@ -78,7 +97,7 @@
     <link href="https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-16T12:43:00.000Z</published>
-    <updated>2020-04-21T07:10:40.551Z</updated>
+    <updated>2020-04-29T07:48:05.281Z</updated>
     
     <summary type="html">
     
@@ -116,7 +135,7 @@
     <link href="https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-12T09:28:14.000Z</published>
-    <updated>2020-04-22T05:49:46.921Z</updated>
+    <updated>2020-04-29T03:01:43.475Z</updated>
     
     <summary type="html">
     
@@ -578,27 +597,6 @@
       <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
     
       <category term="女装" scheme="https://www.yhspy.com/tags/%E5%A5%B3%E8%A3%85/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>记：阿里 2019 第一届本地生活黑客松</title>
-    <link href="https://www.yhspy.com/2019/03/10/%E8%AE%B0%EF%BC%9A%E9%98%BF%E9%87%8C-2019-%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%86%B3%E8%B5%9B/"/>
-    <id>https://www.yhspy.com/2019/03/10/%E8%AE%B0%EF%BC%9A%E9%98%BF%E9%87%8C-2019-%E6%9C%AC%E5%9C%B0%E7%94%9F%E6%B4%BB%E9%BB%91%E5%AE%A2%E6%9D%BE%E5%86%B3%E8%B5%9B/</id>
-    <published>2019-03-09T16:21:57.000Z</published>
-    <updated>2019-06-28T07:56:25.527Z</updated>
-    
-    <summary type="html">
-    
-      同往年一样，2019 年的饿了么黑客松还是如期而至。而与往年不同的是，自融合一年后，今年的参赛同学中又迎来了集团“口碑”的小伙伴们。决定和超哥（川青）等小伙伴组队，队名定为“代达罗斯之殇”，本着以“友谊第一，比赛第二”交流学习的愿景来参赛，但没想到杨哥（以宁）稍微发力便轻松进入了决赛，这下“决赛夺冠，请客吃饭”的机会可不能放过了。自初赛结束又过了几日，川青、不滞、沐雨、以宁和曜彤的决赛之路在杭州 Z 空间开始了。
-    
-    </summary>
-    
-    
-    
-      <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-      <category term="黑客松" scheme="https://www.yhspy.com/tags/%E9%BB%91%E5%AE%A2%E6%9D%BE/"/>
     
   </entry>
   
