@@ -2115,7 +2115,7 @@ self.__precacheManifest = [
   },
   {
     "url": "author/index.html",
-    "revision": "89872816078eaafe1b6d9cd9fbb25653"
+    "revision": "28ca6eb986ec6626b55d4ef041f640c9"
   },
   {
     "url": "books/index.html",
@@ -2739,7 +2739,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "3087c105400b3eaabe51b50517876908"
+    "revision": "f1019a85174e455cfd7aa1220e374e70"
   },
   {
     "url": "tags/Java/index.html",

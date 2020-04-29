@@ -90,7 +90,7 @@ about:
   name: 于航 (曜彤 / Jason Yu)
   intro1: Male, @PayPal.
   intro2: The author of 《深入浅出 WebAssembly》, QCon/GMTC speaker & host.
-  skills: Web Frontend, WebAssembly, Serverless, LLVM, Product, Piano
+  skills: Web Frontend, WebAssembly, Virtual Machine, Product, Piano
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /me
