@@ -609,6 +609,16 @@ hr
             width 35%
             margin .5em .5em .5em 0
 
+@media (max-width 1024px)
+
+  body
+    main
+      article
+        .books-container
+            .book-item
+              span.progress
+                display none
+
 @media (max-width 900px)
 
   body
@@ -645,6 +655,10 @@ hr
               margin 15px 0
             &.catelog-items li
               margin 10px 0
+        .books-container
+          .book-item
+            span.progress
+              display none
       article:not([post-id])     
         &.full
           ul   
@@ -828,6 +842,7 @@ article
     margin 20px 0
     .book-item
       display flex
+      align-items center
       border-bottom solid 1px #ddd
       padding 15px 0
       &:last-child
@@ -835,10 +850,11 @@ article
       span
         flex 1
         &.state
-          flex 0 0 80px
+          flex 0 0 60px
+          margin 0 10px
         &.progress
           flex 0 0 80px
-          margin-right 10px
+          margin 0 10px
           progress
             width 100%
             vertical-align middle
