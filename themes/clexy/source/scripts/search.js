@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async e => {
         target.innerText = '搜索';
       }
     } else {
-      alert("STOP! Please check your input fields.");
+      alert(":( Nothing to search!");
     }
   });
 

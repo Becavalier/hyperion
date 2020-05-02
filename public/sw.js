@@ -2643,11 +2643,11 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/search.js",
-    "revision": "a43ea3c0fefd0e6033f17e0fd2a8daa6"
+    "revision": "94b858847df9d6b16bed1ea672707d68"
   },
   {
     "url": "search/index.html",
-    "revision": "ea71647762acad93a9decf9fd40b6d58"
+    "revision": "6b9158c590a1975c4dc15f795f235bf9"
   },
   {
     "url": "styles/fontawesome.min.css",
@@ -2659,7 +2659,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "81742e56d72f78ab58f50c8e03697fa5"
+    "revision": "f4232f042fde55e2c500df6245c2e328"
   },
   {
     "url": "tags/Android/index.html",
@@ -2739,7 +2739,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "18c86271a042127202ab44e8504d40da"
+    "revision": "28e37428cc879cdc3aeb597d197ab61e"
   },
   {
     "url": "tags/Java/index.html",
