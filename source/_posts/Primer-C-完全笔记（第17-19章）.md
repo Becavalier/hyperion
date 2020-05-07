@@ -254,7 +254,7 @@ try {
 ```
 
 280. （Page：688）throw 会对其参数进行拷贝，因此只能抛出可拷贝对象（**拷贝或移动构造函数不是 delete 的类对象**）。
-281. （Page：690）函数 try 语句块：
+281. （Page：690）函数 try 语句块，可用于在委派构造函数中捕获目标构造函数（以初始值列表形式调用的）中发生的异常：
 
 ```cpp
 struct B {
@@ -364,7 +364,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-302. （Page：727）new 和 delete 运算符在标准库中的 8 个重载版本：
+302. （Page：727）new 和 delete 运算符在标准库中的 8 个重载版本，其中 delete 均为不抛出异常的版本，以适用在析构函数中：
 
 ```cpp
 // 可能抛出异常版本；
@@ -585,7 +585,7 @@ class Token {
   Token(const Token &t): tok(t.tok) { copyUnion(t); }
   Token &operator=(const Token&);
   // 手动销毁，析构函数不清楚 union 存储什么类型，因此类对象成员需要通过判别式手动释放；
-  ~Token() { if (tok == STR) sval.~string(); }
+  ~Token() { if (tok == STR) sval.~basic_string(); }
   // 若当前为 std::string，也需先手动释放；
   Token &operator=(const std::string&);
   Token &operator=(char);
@@ -626,7 +626,13 @@ Token& Token::operator=(const std::string &s) {
     // 8 bits: unused
     unsigned int b1 : 5, : 11, b2 : 6, b3 : 2;
   };
-  printf("%zu\n",sizeof(struct S)); // usually prints 4；
+  int main(int argc, char **argv) {
+    S s;
+    s.b1 = 10;
+    s.b2 = 63;
+    printf("%zu\n",sizeof(struct S)); // usually prints 4；
+    return 0;
+  }
 
 3、volatile 限定符：确切意思与机器有关，一般表示对象的值可能在程序的控制或检测之外被更改（语法用法同 const）；
 

@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-04-28T06:57:29.240Z</updated>
+  <updated>2020-05-07T08:13:47.651Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ 聚合类与 POD</title>
+    <link href="https://www.yhspy.com/2020/05/06/C-%E8%81%9A%E5%90%88%E7%B1%BB%E4%B8%8E-POD/"/>
+    <id>https://www.yhspy.com/2020/05/06/C-%E8%81%9A%E5%90%88%E7%B1%BB%E4%B8%8E-POD/</id>
+    <published>2020-05-06T09:54:58.000Z</published>
+    <updated>2020-05-07T08:13:47.651Z</updated>
+    
+    <summary type="html">
+    
+      POD 在 C++ 中一直是一个没有很直观代码体现的概念，但其存在却涉及到了 C++ 中诸如字节赋值、内存布局、静态初始化安全甚至是有关 EBO 优化等相关的内容，而本文我们将对 POD 的概念进行总结，并同时对比其与“聚合类”之间的关系。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>C++ 空基类优化（EBO）与私有继承</title>
@@ -97,7 +116,7 @@
     <link href="https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-16T12:43:00.000Z</published>
-    <updated>2020-04-29T07:48:05.281Z</updated>
+    <updated>2020-05-06T10:24:00.563Z</updated>
     
     <summary type="html">
     
@@ -154,7 +173,7 @@
     <link href="https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-10T05:20:03.000Z</published>
-    <updated>2020-04-21T07:10:19.802Z</updated>
+    <updated>2020-05-07T07:50:09.419Z</updated>
     
     <summary type="html">
     
@@ -483,7 +502,7 @@
     <link href="https://www.yhspy.com/2019/04/28/%E2%80%9CCSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E2%80%9D%E5%86%85%E5%AE%B9%E5%B0%8F%E7%BB%93/"/>
     <id>https://www.yhspy.com/2019/04/28/%E2%80%9CCSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E2%80%9D%E5%86%85%E5%AE%B9%E5%B0%8F%E7%BB%93/</id>
     <published>2019-04-28T12:53:11.000Z</published>
-    <updated>2020-04-25T07:12:31.096Z</updated>
+    <updated>2020-05-06T13:55:19.968Z</updated>
     
     <summary type="html">
     
@@ -576,27 +595,6 @@
       <category term="创业" scheme="https://www.yhspy.com/tags/%E5%88%9B%E4%B8%9A/"/>
     
       <category term="风投" scheme="https://www.yhspy.com/tags/%E9%A3%8E%E6%8A%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>女装之路 — 完全大揭秘</title>
-    <link href="https://www.yhspy.com/2019/03/17/%E5%A5%B3%E8%A3%85%E4%B9%8B%E8%B7%AF-%E5%AE%8C%E5%85%A8%E5%A4%A7%E6%8F%AD%E7%A7%98/"/>
-    <id>https://www.yhspy.com/2019/03/17/%E5%A5%B3%E8%A3%85%E4%B9%8B%E8%B7%AF-%E5%AE%8C%E5%85%A8%E5%A4%A7%E6%8F%AD%E7%A7%98/</id>
-    <published>2019-03-17T13:56:23.000Z</published>
-    <updated>2020-04-16T06:25:49.079Z</updated>
-    
-    <summary type="html">
-    
-      一转眼，距离入坑已经过去了2年多。总觉得是时候应该写点什么来把曾经的故事和经验留存下来。本系列将分为两个部分：第一部分为过去的经历，这里我将讲述从入坑到现在这期间发生的事情以及“升级”的过程；第二部分为经验总结，在这部分内容里，我将介绍这两年来我通过实践积累下来的女装经验，以减少后人的入坑成本。世界每天都在变化，而唯一不变的是保持生活新鲜感的好奇心。
-    
-    </summary>
-    
-    
-    
-      <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-      <category term="女装" scheme="https://www.yhspy.com/tags/%E5%A5%B3%E8%A3%85/"/>
     
   </entry>
   

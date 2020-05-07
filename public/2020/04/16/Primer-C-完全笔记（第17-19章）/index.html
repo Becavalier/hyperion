@@ -227,7 +227,7 @@ std::cout << showpoint << 10.0 << noshowpoint << std::endl;  // 是否显示小�
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="280">
 <li>（Page：688）throw 会对其参数进行拷贝，因此只能抛出可拷贝对象（<strong>拷贝或移动构造函数不是 delete 的类对象</strong>）。</li>
-<li>（Page：690）函数 try 语句块：</li>
+<li>（Page：690）函数 try 语句块，可用于在委派构造函数中捕获目标构造函数（以初始值列表形式调用的）中发生的异常：</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> B <span class="token punctuation">{</span>
   <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -338,7 +338,7 @@ std::cout << showpoint << 10.0 << noshowpoint << std::endl;  // 是否显示小�
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="302">
-<li>（Page：727）new 和 delete 运算符在标准库中的 8 个重载版本：</li>
+<li>（Page：727）new 和 delete 运算符在标准库中的 8 个重载版本，其中 delete 均为不抛出异常的版本，以适用在析构函数中：</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// 可能抛出异常版本；</span>
 <span class="token keyword">void</span><span class="token operator">*</span> <span class="token keyword">operator</span> <span class="token keyword">new</span><span class="token punctuation">(</span>size_t<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -546,7 +546,7 @@ new (place_address) type [size] { braced initializer list };
   <span class="token function">Token</span><span class="token punctuation">(</span><span class="token keyword">const</span> Token <span class="token operator">&amp;</span>t<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">tok</span><span class="token punctuation">(</span>t<span class="token punctuation">.</span>tok<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token function">copyUnion</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
   Token <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> Token<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// 手动销毁，析构函数不清楚 union 存储什么类型，因此类对象成员需要通过判别式手动释放；</span>
-  <span class="token operator">~</span><span class="token function">Token</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>tok <span class="token operator">==</span> STR<span class="token punctuation">)</span> sval<span class="token punctuation">.</span><span class="token operator">~</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token operator">~</span><span class="token function">Token</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>tok <span class="token operator">==</span> STR<span class="token punctuation">)</span> sval<span class="token punctuation">.</span><span class="token operator">~</span><span class="token function">basic_string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
   <span class="token comment" spellcheck="true">// 若当前为 std::string，也需先手动释放；</span>
   Token <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token operator">::</span>string<span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   Token <span class="token operator">&amp;</span><span class="token keyword">operator</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -586,7 +586,13 @@ Token<span class="token operator">&amp;</span> Token<span class="token operator"
     // 8 bits: unused
     unsigned int b1 : 5, : 11, b2 : 6, b3 : 2;
   };
-  printf("%zu\n",sizeof(struct S)); // usually prints 4；
+  int main(int argc, char **argv) {
+    S s;
+    s.b1 = 10;
+    s.b2 = 63;
+    printf("%zu\n",sizeof(struct S)); // usually prints 4；
+    return 0;
+  }
 
 3、volatile 限定符：确切意思与机器有关，一般表示对象的值可能在程序的控制或检测之外被更改（语法用法同 const）；
 
@@ -596,7 +602,7 @@ Token<span class="token operator">&amp;</span> Token<span class="token operator"
 
   extern "C" typedef void FC(int);  // FC 是一个指向 C 函数的指针；
   void f2(FC*);  // f2 是一个 C++ 函数，参数为 C 函数指针；
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="322">
 <li>（Page：760）可以用于判断编译类型（C/C++）的宏： </li>
 </ol>
@@ -604,4 +610,4 @@ Token<span class="token operator">&amp;</span> Token<span class="token operator"
 <span class="token comment" spellcheck="true">// 此时源码被编译为 C++；</span>
 <span class="token macro property">#<span class="token directive keyword">endif</span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-04-16T12:43:00.000Z"> 2020 / 04 / 29, 15:48:05</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/04/14/Primer-C-完全笔记（第14-16章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/04/24/常用-C-高效开发范式（一）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-04-16T12:43:00.000Z"> 2020 / 05 / 06, 18:24:00</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/04/14/Primer-C-完全笔记（第14-16章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/04/24/常用-C-高效开发范式（一）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
