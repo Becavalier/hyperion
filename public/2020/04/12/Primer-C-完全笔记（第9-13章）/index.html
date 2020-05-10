@@ -16,15 +16,13 @@
 <li>（Page：299）可以将普通的 iterator 赋值给 const_iterator，反之则不行。</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> x <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>const_iterator it <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+std<span class="token operator">::</span>list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>const_iterator it <span class="token operator">=</span> x<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="97">
 <li>（Page：300）通过迭代器进行容器元素拷贝：</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">></span> snippets <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"an"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// 对于输入范围的每一个元素，都会隐式调用 string 的构造函数；</span>
-std<span class="token operator">::</span>forward_list<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">words</span><span class="token punctuation">(</span>snippets<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> snippets<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+std<span class="token operator">::</span>forward_list<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token function">words</span><span class="token punctuation">(</span>snippets<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> snippets<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="98">
 <li>（Page：301）内置数组不能进行拷贝和赋值操作，但标准库的 std::array 容器类型却可以，但需保证目标容器的大小和元素类型与当前容器相同。</li>
 <li>（Page：302）std::array 类型不支持 assign。<strong>assign 和赋值会导致左侧容器内部的迭代器、引用和指针失效</strong>。而 swap 交换容器内容则不会（array 和 string 除外）。<strong>swap 两个 array 会真正交换它们的元素</strong>（速度较慢，效率与元素数目成正比），因此指针、引用和迭代器绑定的元素保持不变，但值发生了变化。<strong>其他容器则是指向了新的交换后的元素</strong>（元素本身并未交换，只是容器内部数据结构被交换，因此交换时间是<strong>常数级别</strong>）。</li>
@@ -39,8 +37,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     iter <span class="token operator">=</span> lst<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span>iter<span class="token punctuation">,</span> word<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 在给定位置之前插入元素，指向新插入元素的迭代器；</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="102">
 <li>（Page：309）使用 emplace \ emplace_back \ emplace_front 可以直接在容器内指定位置构造对象，减少拷贝构造的过程。</li>
 <li>（Page：309）begin() / end() 返回迭代器，front() / back() 返回元素的引用。</li>
@@ -58,8 +55,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
       prev <span class="token operator">=</span> curr<span class="token operator">++</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="106">
 <li>（Page：315）deque 可以用来判断回文。</li>
 <li>（Page：316）容器 erase() 方法<strong>返回删除元素之后</strong>元素的迭代器；insert() 方法在给定元素之前插入元素，然后<strong>返回指向新元素的迭代器</strong>。</li>
@@ -69,8 +65,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   std<span class="token operator">::</span>string str <span class="token operator">=</span> <span class="token string">"Hello, world!"</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// str.reserve(120);</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> str<span class="token punctuation">.</span><span class="token function">capacity</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="109">
 <li>（Page：328）巧用 find_first_of() 进行字符数字转换：</li>
 </ol>
@@ -80,8 +75,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     str<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>  <span class="token comment" spellcheck="true">// 获得子字符串；</span>
       str<span class="token punctuation">.</span><span class="token function">find_first_of</span><span class="token punctuation">(</span><span class="token string">"+-.0123456789"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回第一个匹配的位置；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> d<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="110">
 <li>（Page：330）容器适配器，基于已有的顺序容器来模拟其他数据结构：stack（deque）、queue（deque）、priority_queue（vector）。</li>
 <li>（Page：337）泛型算法一般通过遍历“<strong>一个左闭右开 [i, j) 的迭代器范围</strong>”来操作容器中的元素。</li>
@@ -91,8 +85,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token keyword">auto</span> result <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">find</span><span class="token punctuation">(</span>lst<span class="token punctuation">.</span><span class="token function">cbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lst<span class="token punctuation">.</span><span class="token function">cend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>result<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回指向目标元素的迭代器；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="112">
 <li>（Page：339）算法和元素类型：</li>
 </ol>
@@ -101,8 +94,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   std<span class="token operator">::</span>string sum <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">accumulate</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">cbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">cend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token operator">::</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 最后参数决定返回值类型，和使用的“+”运算符；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> sum <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="113">
 <li>（Page：339）那些只接受一个单一迭代器来表示第二个序列的算法，都<strong>假定第二个序列至少与第一个序列一样长</strong>。</li>
 <li>（Page：340）fill() / fill_n() 不能在空容器（size 为 0）上进行，<strong>算法不会执行容器操作，因此它们自身不可能改变容器大小</strong>。但 fill_n() 可以配合<strong>插入迭代器</strong>向空容器插入元素：</li>
@@ -111,8 +103,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vec<span class="token punctuation">;</span>
   std<span class="token operator">::</span><span class="token function">fill_n</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">back_inserter</span><span class="token punctuation">(</span>vec<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="115">
 <li>（Page：342）std::replace 的 copy 版本与 in-place 版本：</li>
 </ol>
@@ -122,13 +113,11 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   std<span class="token operator">::</span><span class="token function">replace</span><span class="token punctuation">(</span>lst<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lst<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// in-place 版替换；</span>
   std<span class="token operator">::</span><span class="token function">replace_copy</span><span class="token punctuation">(</span>lst<span class="token punctuation">.</span><span class="token function">cbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> lst<span class="token punctuation">.</span><span class="token function">cend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token operator">::</span><span class="token function">back_inserter</span><span class="token punctuation">(</span>vec<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//生成新副本版替换；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="116">
 <li>（Page：346）lambda 表达式是内联函数，不能有默认实参：</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">[capture list](params) -> return type { body };
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">[capture list](params) -> return type { body };<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="117">
 <li>（Page：348）一个 lambda 只有在其捕获列表中捕获一个它<strong>所在函数中的局部变量</strong>，才能够在函数体中使用该变量。</li>
 <li>（Page：350）lambda 会实例化生成对应的类对象，并将捕获列表中的变量变成该类对象的数据成员。lambda 值捕获的变量是在 lambda 创建时进行拷贝，因此一旦创建成功后其值便不会再改变，为此可以使用<strong>引用捕获</strong>。</li>
@@ -142,8 +131,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token punctuation">[</span><span class="token operator">=</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>y<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> y <span class="token operator">+</span><span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 混合捕获；</span>
   <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">,</span> x<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> cout <span class="token operator">&lt;&lt;</span> y <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 混合捕获；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="120">
 <li>（Page：352）lambda 的非 cosnt 捕获值拷贝（闭包和匿名函数经常被用作同义词。但严格来说，匿名函数就是字面意义上没有被赋予名称的函数，而闭包则实际上是一个函数的实例，也就是说它是存在于内存里的某个结构体。如果从实现上来看的话，匿名函数如果没有捕捉自由变量，那么它其实可以被实现为一个函数指针，或者直接内联到调用点，如果它捕捉了自由变量那么它将是一个闭包；而闭包则意味着同时包括函数指针和环境两个关键元素。在编译优化当中，没有捕捉自由变量的闭包可以被优化成普通函数，这样就无需分配闭包结构体，这种编译技巧被称为函数跃升）：</li>
 </ol>
@@ -157,8 +145,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 101；</span>
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 102；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 100；</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="121">
 <li>（Page：355）使用 bind 装饰 lambda 和普通函数：</li>
 </ol>
@@ -168,8 +155,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     std<span class="token operator">::</span>placeholders<span class="token operator">::</span>_1<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 固定匿名 lambda 的第二个参数；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="122">
 <li>（Page：357）bind 参数以引用形式传递（默认是值传递）：</li>
 </ol>
@@ -181,8 +167,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token function">foo</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="123">
 <li>（Page：358）insert() 和 inserter 插入迭代器的区别：前者返回插入新元素的迭代器位置，后者扔指向原位置（在给定位置前插入元素，但不移动）。</li>
 <li>（Page：360）流迭代器：</li>
@@ -196,12 +181,11 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token punctuation">}</span>
   <span class="token comment" spellcheck="true">// cout &lt;&lt; std::accumulate(in_iter, eof, 0) &lt;&lt; endl;  // 调用泛型算法；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="125">
 <li>（Page：363）反向迭代器：递增一个反向迭代器会移动到前一个元素；除了 forward_list，其他容器元素均支持该迭代器；无论是正向还是反向迭代器，其对应的首尾迭代器均构成“<strong>左闭右开</strong>”的区间。</li>
 </ol>
-<p><img src="1.png" alt></p>
+<p><img src="1.png" alt=""></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>string line <span class="token operator">=</span> <span class="token string">"FIRST,MIDDLE,LAST"</span><span class="token punctuation">;</span>
   <span class="token keyword">auto</span> rcomma <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">find</span><span class="token punctuation">(</span>line<span class="token punctuation">.</span><span class="token function">crbegin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> line<span class="token punctuation">.</span><span class="token function">crend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -209,17 +193,16 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token comment" spellcheck="true">// base() 将反向迭代器便为普通迭代器；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span><span class="token function">string</span><span class="token punctuation">(</span>rcomma<span class="token punctuation">.</span><span class="token function">base</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> line<span class="token punctuation">.</span><span class="token function">cend</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// LAST；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="2.png" alt></p>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="2.png" alt=""></p>
 <ol start="126">
 <li>（Page：）5类迭代器（层次依次上升，高层次支持低层次的所有操作）：</li>
 </ol>
 <ul>
 <li>输入迭代器；如 std::istream_iterator，只读；可进行判断、++、*、-&gt;；</li>
 <li>输出迭代器：如 std::ostream_iterator，只输出；可进行判断、++、*、-&gt;；</li>
-<li>前向迭代器：如 std::forward_list<t>::iterator，单向移动；</t></li>
-<li>双向迭代器：如 std::list<t>::iterator，双向移动；</t></li>
+<li>前向迭代器：如 std::forward_list<T>::iterator，单向移动；</li>
+<li>双向迭代器：如 std::list<T>::iterator，双向移动；</li>
 <li>随机访问迭代器（除 std::list / std::forward_list）：常量时间访问序列元素，+=，-=、下标访问；</li>
 </ul>
 <ol start="127">
@@ -247,8 +230,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="134">
 <li>（Page：381）关联容器常用类型别名：</li>
 </ol>
@@ -271,8 +253,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>begin <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="140">
 <li>（Page：391）可以使用 equal_range() 来代替 lower_bound() 与 upper_bound() 的组合。</li>
 </ol>
@@ -283,8 +264,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>iters<span class="token punctuation">.</span>first <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="141">
 <li>（Page：395）<strong>无序容器</strong>使用桶来保存具有相同 hash 值的元素，对于 std::unordered_multimap，具有相同关键字的元素会在同一个桶中。因此当桶内元素过多时，按顺序寻找特定元素的过程将会变慢。</li>
 <li>（Page：396）自定义类型在使用<strong>无序容器</strong>时需要自定义对应的 hash 函数以及 “==” 运算符的实现。</li>
@@ -310,8 +290,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   std<span class="token operator">::</span>unordered_multiset<span class="token operator">&lt;</span>A<span class="token operator">></span> mset <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> mset<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="143">
 <li>（Page：397）无论在有序容器还是无序容器中，<strong>具有相同关键字的元素都是相邻存储</strong>的。</li>
 <li>（Page：400）三种内存类型：</li>
@@ -339,8 +318,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   gw <span class="token operator">=</span> sp1<span class="token punctuation">;</span>
   cout <span class="token operator">&lt;&lt;</span> gw<span class="token punctuation">.</span><span class="token function">use_count</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 2；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="147">
 <li>（Page：403）如果将 std::shared_ptr 存放于一个容器中，而后不再需要全部元素，而只使用其中一部分，要记得用 erase() 删除不需要的元素。</li>
 <li>（Page：404）使用动态内存的一个常见原因是允许多个对象共享相同的状态。</li>
@@ -351,8 +329,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token keyword">auto</span> p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 默认初始化，内置类型值未定义；类类型默认构造函数初始化；</span>
   <span class="token keyword">auto</span> p2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 值初始化为 0；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="151">
 <li>（Page：408）对于单一的初始化器可以使用 <strong>auto</strong> 来推断类型：</li>
 </ol>
@@ -362,30 +339,30 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token keyword">auto</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">auto</span><span class="token punctuation">(</span><span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">typeid</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "P1B"；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="152">
 <li>（Page：408）动态分配 const 对象：</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">const</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 只读；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="153">
-<li>（Page：411）delete 之后重置指针：对于普通指向动态内存的指针来说，在 delete 之后还需将其值重置为 nullptr，以防悬挂指针被使用。</li>
-<li>（Page：412）接受指针参数的智能指针构造函数是 explicit 的，因此不能执行由普通指针到智能指针的隐式转换。</li>
+<li><p>（Page：411）delete 之后重置指针：对于普通指向动态内存的指针来说，在 delete 之后还需将其值重置为 nullptr，以防悬挂指针被使用。</p>
+</li>
+<li><p>（Page：412）接受指针参数的智能指针构造函数是 explicit 的，因此不能执行由普通指针到智能指针的隐式转换。</p>
+</li>
 <li><p>（Page：412）从 new 指针生成智能指针可能会有性能损耗。在一个典型的实现中 std::shared_ptr 包含有<strong>两个指针</strong>：1、指向<strong>动态对象</strong>（get()）的指针；2、指向一个“<strong>控制块</strong>”的指针；其中“控制块”主要用于维护与 std::shared_ptr 有关的比如：删除器、分配器、托管对象的智能指针引用数量以及引用托管对象的 std::weak_ptr 的数量。当通过 std::make_shared 生成指针时，上述两个指针对应的堆内存将在<strong>一次内存分配</strong>中完成，因此性能较好。而通过 std::shared_ptr 构造函数初始化的智能指针，上述两个对象将在<strong>两次堆内存分配</strong>中完成。注意其中控制块堆内存的释放与引用托管对象的 std::weak_ptr 的数量有关。</p>
 </li>
 <li><p>（Page：413）不要混用智能指针与原始指针（原始指针可能被智能指针提前释放，无法很好地控制其生命周期）。</p>
 </li>
-<li>（Page：416）为 std::shared_ptr 设置自定义删除器：</li>
+<li><p>（Page：416）为 std::shared_ptr 设置自定义删除器：</p>
+</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> B <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>shared_ptr<span class="token operator">&lt;</span>B<span class="token operator">></span> <span class="token function">sp</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span>B<span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">delete</span> b<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="158">
 <li>（Page：417）std::unique_ptr <strong>不支持普通的拷贝和赋值</strong>，某一时刻只能有一个 std::unique_ptr 指向一个给定对象。可以在 C++14 之后使用 std::make_unique 创建 std::unique_ptr。</li>
 <li>（Page：418）release() 返回 std::unique_ptr 当前保存的指针并将其变量置为空指针，但不会释放内存，<strong>一般用于重新初始化其他类型的智能指针</strong>；reset() 接受一个指针参数，重置对应的 std::unique_ptr 指针，<strong>原指针对应的对象将被释放</strong>。std::unique_ptr 无法被拷贝，但可以作为函数参数或返回值（被移动）。</li>
@@ -403,8 +380,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token keyword">auto</span> moveUp <span class="token operator">=</span> <span class="token function">move</span><span class="token punctuation">(</span>up2<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 不需要再对 up2 进行 reset()，默认会变为 nullptr；</span>
   cout <span class="token operator">&lt;&lt;</span> moveUp<span class="token operator">-</span><span class="token operator">></span>x <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 10；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="160">
 <li>（Page：420）std::weak_ptr 不控制所指向对象的生存期，指向由一个 std::shared_ptr 管理的对象。一般用于做 std::shared_ptr 的辅助类来观察对应智能指针的存活状态。</li>
 </ol>
@@ -417,8 +393,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>np <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="161">
 <li>（Page：424）动态数组初始化可以使用列表初始化：std::unique_ptr 可以直接支持管理动态数组，<strong>而 std::shared_ptr 则需要提供自定义的删除器以支持动态数组</strong>：</li>
 </ol>
@@ -428,8 +403,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token keyword">auto</span> sp <span class="token operator">=</span> shared_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span>e<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">delete</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> p<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 自定义 deleter；</span>
   <span class="token keyword">auto</span> up <span class="token operator">=</span> unique_ptr<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="162">
 <li>（Page：429）使用 std::allocator 类将内存分配与对象构造分离：</li>
 </ol>
@@ -447,8 +421,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   <span class="token punctuation">}</span>
   alloc<span class="token punctuation">.</span><span class="token function">deallocate</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 释放内存；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="163">
 <li>（Page：429）使用<strong>伴随算法</strong>填充 std::allocator 分配的未初始化的内存：</li>
 </ol>
@@ -460,8 +433,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1；</span>
   <span class="token comment" spellcheck="true">// uninitialized_fill_n(p, vi.size(), 10);  // 直接填充；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="164">
 <li>（Page：444）对于内置数组类型，编译器生成的拷贝构造函数可以正常地对其进行拷贝构造。</li>
 </ol>
@@ -473,8 +445,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   B <span class="token function">x</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// y 从 x 拷贝构造生成；</span>
   cout <span class="token operator">&lt;&lt;</span> y<span class="token punctuation">.</span>arr<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="165">
 <li>（Page：445）析构函数默认会按照构造函数初始化成员顺序（成员定义的先后顺序）的逆序来销毁成员。</li>
 <li>（Page：448）三五法则：<strong>如果类需要析构函数，则同时需要拷贝构造函数以及拷贝赋值函数（否则多个对象会指向同一个将被销毁的堆内存）</strong>；</li>
@@ -518,8 +489,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
     cout <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> <span class="token string">' '</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token punctuation">(</span>y<span class="token punctuation">.</span>arr <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="171">
 <li>（Page：471）右值引用指向将要被销毁的对象。变量是左值，因此不能将一个右值引用直接绑定到一个变量上，即使这个变量是右值引用类型。我们可以销毁一个移后源对象，也可以赋予它新值，但<strong>不能使用一个移后源对象的值</strong>。要区分“引用了一个右值”和“右值”的区别：引用一个右值就是表示一个右值引用，<strong>这个变量本身还是一个左值</strong>；而右值表示“将亡值”或“纯右值”。</li>
 <li>（Page：473）移动构造函数会帮我们自动接管内存，但需要我们自己处理新对象指针的指向，以防止接管内存被原对象释放。</li>
@@ -541,8 +511,7 @@ std<span class="token operator">::</span>forward_list<span class="token operator
   b<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   cout <span class="token operator">&lt;&lt;</span> <span class="token function">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">eval</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="179">
 <li>（Page：485）如果一个成员函数有引用限定符，则具有相同参数列表的所有版本都必须有引用限定符（必须互不相同）。</li>
 </ol>

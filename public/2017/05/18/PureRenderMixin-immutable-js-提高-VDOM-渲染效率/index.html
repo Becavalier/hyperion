@@ -12,11 +12,10 @@
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>className<span class="token punctuation">}</span><span class="token operator">></span>foo<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>“PureRenderMixin” 的原理就是它实现了 <code>shouldComponentUpdate</code>。在 <code>shouldComponentUpdate</code> 内部，它比较当前的 <code>props</code> 和 <code>state</code> 和接下来的 <code>props</code> 以及 <code>state</code>，当两者相等的时候返回 <code>false</code>，这样组件就不会进行 Virtual DOM 上的 Diff 计算了。但 “PureRenderMixin” 仅进行简单的浅比较，对简单数据类型有效，如果需要对复杂数据类型进行比较来决定是否需要更新 UI，则需要从另一方面来考虑比较两个复杂数据结构所花费的成本和构建 VD 计算 Diff 所花费的成本哪个更大了。如果一定需要对复杂结构的数据来进行差异比较，也可以使用 immutable.js 来帮助我们提高性能。</p>
 <p>总的来说，immutable.js 可以帮助我们提高深拷贝的性能，也即在深度比较两个复杂数据类型时会有更高的性能。immutable.js 提供了7种数据结构，并且这些数据结构均是“不可变数据”，即操作改变这些元素的值时会返回一个新的元素，而原先元素的值不受影响。不仅如此，immutable.js 基于“哈希映射树”和“向量映射树”，在克隆一个数据结构时只会克隆改变的节点以及该节点的所有子节点，因此对于其上层的父节点可以得到完全的复用，这样也可以大大提高“深拷贝”的效率。</p>
-<p><img src="1.gif" alt></p>
+<p><img src="1.gif" alt=""></p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">shouldComponentUpdate<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token function">deepCompare</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -25,8 +24,7 @@
 
 <span class="token keyword">function</span> <span class="token function">deepCompare</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> nextProps<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">!</span>Immutable<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>props<span class="token punctuation">,</span> nextProps<span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span>Immutable<span class="token punctuation">.</span><span class="token function">is</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>state<span class="token punctuation">,</span> nextState<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但使用 immutable.js 也有相对应以下几点的缺点与不足：</p>
 <ol>
 <li>导致最后打包编译的源码体积增大；</li>

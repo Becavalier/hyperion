@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async e => { 
-  const response = (await axios.get('/graphql', {
+  const response = (await axios.get('/auth-graphql', {
     params: {
       query: `
         query {
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async e => {
       return `
         <div class="book-item">
           <span>《${i.name}》</span>
+          <span class="progress-pages">${i.currentPages} / ${i.totalPages}</span>
           <span class="progress"><progress value="${progress}" max="100"></span>
           <span class="state">${progress}%</span>
           <button class="action-read" data-url="${i.url}" data-id="${i.id}" data-page="${i.currentPages}">阅读</button>

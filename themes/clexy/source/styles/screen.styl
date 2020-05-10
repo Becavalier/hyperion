@@ -609,14 +609,14 @@ hr
             width 35%
             margin .5em .5em .5em 0
 
-@media (max-width 1024px)
+@media (max-width 1248px)
 
   body
     main
       article
         .books-container
             .book-item
-              span.progress
+              span.progress, span.progress-pages
                 display none
 
 @media (max-width 900px)
@@ -657,7 +657,7 @@ hr
               margin 10px 0
         .books-container
           .book-item
-            span.progress
+            span.progress, span.progress-pages
               display none
       article:not([post-id])     
         &.full
@@ -852,6 +852,9 @@ article
         &.state
           flex 0 0 60px
           margin 0 10px
+        &.progress-pages
+          flex 0 0 80px
+          text-align center
         &.progress
           flex 0 0 80px
           margin 0 10px
@@ -916,7 +919,7 @@ article
       text-indent 0
   p
     margin 25px 0
-    line-height 2.8rem
+    line-height 2.9rem
     word-break break-all
     text-indent 2em
     text-align justify

@@ -10,8 +10,7 @@
 <span class="token property">border-right</span><span class="token punctuation">:</span>solid <span class="token number">100</span>px orange<span class="token punctuation">;</span>
 <span class="token property">border-bottom</span><span class="token punctuation">:</span>solid <span class="token number">100</span>px blue<span class="token punctuation">;</span>
 <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="7-如何修改-Chrome-记住密码后自动填充表单的黄色背景？"><a href="#7-如何修改-Chrome-记住密码后自动填充表单的黄色背景？" class="headerlink" title="7. 如何修改 Chrome 记住密码后自动填充表单的黄色背景？"></a>7. 如何修改 Chrome 记住密码后自动填充表单的黄色背景？</h4><p>浏览器自动添加了 <code>input: -webkit-autofill</code> 这个私有属性。</p>
 <h4 id="8-浏览器是怎样解析-CSS-选择器的？"><a href="#8-浏览器是怎样解析-CSS-选择器的？" class="headerlink" title="8. 浏览器是怎样解析 CSS 选择器的？"></a>8. 浏览器是怎样解析 CSS 选择器的？</h4><p>CSS 选择器是<strong>从右往左解析</strong>的，这样效率较高，从子元素向上寻找父元素的情况在大多数正常情况下都比正向从父元素查找子元素要快得多，从左到右的查找在大多数规则读到最后（最右）才会发现是不匹配的，这样会做费时耗能，最后有很多都是无用的。</p>
 <p>浏览器渲染过程：</p>
@@ -120,11 +119,11 @@
 <li>加载图片等外部文件；</li>
 <li>页面加载完毕； // <strong>load</strong>；</li>
 </ol>
-<h4 id="32-DOM-树上的各种操作："><a href="#32-DOM-树上的各种操作：" class="headerlink" title="32. DOM 树上的各种操作："></a>32. DOM 树上的各种操作：</h4><p><img src="1.jpg" alt></p>
+<h4 id="32-DOM-树上的各种操作："><a href="#32-DOM-树上的各种操作：" class="headerlink" title="32. DOM 树上的各种操作："></a>32. DOM 树上的各种操作：</h4><p><img src="1.jpg" alt=""></p>
 <h4 id="33-children-和-childNodes-的区别？"><a href="#33-children-和-childNodes-的区别？" class="headerlink" title="33. children 和 childNodes 的区别？"></a>33. children 和 childNodes 的区别？</h4><p><code>children</code> 只会包含元素节点，不会包含文字节点。<code>childNodes</code> 会包含所有子节点。</p>
 <h4 id="34-nextElementSibling-和-nextSibling-的区别？"><a href="#34-nextElementSibling-和-nextSibling-的区别？" class="headerlink" title="34. nextElementSibling 和 nextSibling 的区别？"></a>34. nextElementSibling 和 nextSibling 的区别？</h4><p><code>nextElementSibling</code> 只包含元素兄弟节点。<code>nextSibling</code> 会包含文字节点。</p>
 <h4 id="35-CSS-DOM-概览："><a href="#35-CSS-DOM-概览：" class="headerlink" title="35. CSS DOM 概览："></a>35. CSS DOM 概览：</h4><p><code>window.getComputedStyle([element]);</code> // 可以获得一个元素计算后的样式 CSSStyleDeclaration 对象；</p>
-<p><img src="2.png" alt></p>
+<p><img src="2.png" alt=""></p>
 <h4 id="36-DOM-属性访问器访问属性和-“g-setAttribute”-访问属性的区别？"><a href="#36-DOM-属性访问器访问属性和-“g-setAttribute”-访问属性的区别？" class="headerlink" title="36. DOM 属性访问器访问属性和 “g/setAttribute” 访问属性的区别？"></a>36. DOM 属性访问器访问属性和 “g/setAttribute” 访问属性的区别？</h4><ul>
 <li><strong>DOM 属性访问器：</strong>通用性差，扩展性差；但取到的是一个“<strong>实用对象</strong>”结构；</li>
 <li><strong>g/setAttribute：</strong>取到的只是字符串，通用性强；</li>
@@ -135,7 +134,7 @@
 <li><strong>IE8 及以下：</strong><code>attachEvent</code>、<code>detachEvent</code>、<code>fireEvent</code>；没有捕获阶段；</li>
 </ul>
 <h4 id="38-onerror-事件的常用场景："><a href="#38-onerror-事件的常用场景：" class="headerlink" title="38. onerror 事件的常用场景："></a>38. onerror 事件的常用场景：</h4><p>在 img 标签加入 <code>onerror=&quot;this.src=&#39;default.png&#39;&quot;</code> 可以设置图片出错时显示的默认图片。</p>
-<h4 id="39-HTML-模块化构建："><a href="#39-HTML-模块化构建：" class="headerlink" title="39. HTML 模块化构建："></a>39. HTML 模块化构建：</h4><p><img src="3.jpg" alt></p>
+<h4 id="39-HTML-模块化构建："><a href="#39-HTML-模块化构建：" class="headerlink" title="39. HTML 模块化构建："></a>39. HTML 模块化构建：</h4><p><img src="3.jpg" alt=""></p>
 <h4 id="40-position-属性各个值的分层关系："><a href="#40-position-属性各个值的分层关系：" class="headerlink" title="40. position 属性各个值的分层关系："></a>40. position 属性各个值的分层关系：</h4><p>static 不能通过 z-index 分层；relative、absolute 和 fixed 可以通过 z-index 分层。</p>
 <p>首先是遵循 DOM 规则，同级的后面居上。一般有定位属性的元素会高于无定位属性的同级元素。</p>
 <p>都有定位属性的同级元素，z-index 大者居上；</p>

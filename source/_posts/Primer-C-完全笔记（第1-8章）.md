@@ -552,6 +552,10 @@ int main(int argc, char **agv) {
 class Debug {
  public:
   // 必须同时符合构造函数和 constexpr 函数的要求，因此一般没有函数体；
+  /**
+   * 1、构造函数体必须为空；
+   * 2、初始值列表只能由常量表达式来赋值； 
+   */
   constexpr Debug(bool b = true) : hw(b), io(b), other(b) {}
   constexpr Debug(bool h, bool i, bool o) : hw(h), io(i), other(o) {}
   constexpr bool any() const { return hw || io || other; }

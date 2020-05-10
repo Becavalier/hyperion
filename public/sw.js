@@ -23,11 +23,11 @@ workbox.core.skipWaiting();
 self.__precacheManifest = [
   {
     "url": "2014/12/23/数据结构-线性顺序表/index.html",
-    "revision": "d7bba0f375df27b88845ad85489bd64d"
+    "revision": "0aff1894de42691a86076c91ac54f851"
   },
   {
     "url": "2014/12/24/Android-以-Post-方式发送-Http-请求/index.html",
-    "revision": "7ffb0d8090b69daf0da4aeea44d4e32a"
+    "revision": "78a1a25731fd4410423803f9fd63e2bb"
   },
   {
     "url": "2014/12/25/简单理解-HTTP-协议/0.png",
@@ -35,7 +35,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2014/12/25/简单理解-HTTP-协议/1.png",
-    "revision": "c465eede7944f377dff26bdfdfd2d782"
+    "revision": "97efe83645577e4db1f971a682b11ba8"
   },
   {
     "url": "2014/12/25/简单理解-HTTP-协议/2.png",
@@ -43,7 +43,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2014/12/25/简单理解-HTTP-协议/index.html",
-    "revision": "720989f2396dc8074e283d51d3452033"
+    "revision": "9f90154761ae9760db265067de910f60"
   },
   {
     "url": "2014/12/26/浅谈-SEO/index.html",
@@ -51,7 +51,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2014/12/27/简谈-JavaScript-中的数据类型/index.html",
-    "revision": "85db06f8f57c7bf32db1d01ec5413d6d"
+    "revision": "90f85ec486caf9ba719b636d7fcd0c2d"
   },
   {
     "url": "2015/01/02/IT-行业的入门与精通/index.html",
@@ -71,7 +71,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/01/12/Prism-js-在-AJAX-下的应用问题/index.html",
-    "revision": "8fc95cd2c00a187ab82a1117524fbeac"
+    "revision": "bdb491ff951030594c6a71b18559d9ce"
   },
   {
     "url": "2015/01/26/编码与“锟斤拷”的故事/1.jpg",
@@ -83,15 +83,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/02/13/event-target-与-event-srcElement/index.html",
-    "revision": "761a24230f9c228d7e348388f3e57ba4"
+    "revision": "fe2265b276d3b117fc4431eda85d0fde"
   },
   {
     "url": "2015/02/18/JavaScript-浏览器自动化/1.jpg",
-    "revision": "eef0e8af28059e60987f9eb7757edb84"
+    "revision": "b1b376755e48c4955da6e6516649ccf2"
   },
   {
     "url": "2015/02/18/JavaScript-浏览器自动化/2.jpg",
-    "revision": "75a924861edd216d42bc1977de3eba9e"
+    "revision": "1d39a3c095ebe59e35567c12f5257a36"
   },
   {
     "url": "2015/02/18/JavaScript-浏览器自动化/3.jpg",
@@ -99,7 +99,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/02/18/JavaScript-浏览器自动化/index.html",
-    "revision": "10db8df17ea00dd2280c38e9e150236f"
+    "revision": "8923b565ad0bf04ec5ddf035cfbfa434"
   },
   {
     "url": "2015/03/12/利用-ab-命令进行简单压测/1.png",
@@ -111,23 +111,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/03/12/利用-ab-命令进行简单压测/index.html",
-    "revision": "f2f4645e12682e5629bc8c444ac0d2cd"
+    "revision": "842ffd62d7eb51a3ae08d4812388a28b"
   },
   {
     "url": "2015/03/20/基于-PHP-实现的优化盐值加密算法/index.html",
-    "revision": "22ca2d10fcba585576c6f468f46da3a6"
+    "revision": "b6c7ce3d29c8c4035b6fc06536c96d1a"
   },
   {
     "url": "2015/03/22/为-Swing-控件-JList-动态添加元素/index.html",
-    "revision": "4e58f3dba8edd6634cf04c7eda914abe"
+    "revision": "6d3fefed1817281afc5f81500d9961f2"
   },
   {
     "url": "2015/03/22/图像扫描及-OCR-技术开发-SDK-Asprise/index.html",
-    "revision": "ad6904b145ce23fdd3dcad906c3aa343"
+    "revision": "9da3f40a9644d4927902c53c71f255f4"
   },
   {
     "url": "2015/03/24/Git-你需要具备的基础知识/index.html",
-    "revision": "279ceb6ceb5ff0ba92601dc4880a2253"
+    "revision": "f0c0ec66e7f02605be892b6c2819f7e8"
   },
   {
     "url": "2015/07/21/GeekBank-C-线下班学习心得（一）/index.html",
@@ -135,19 +135,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/07/25/GeekBank-C-线下班学习心得（二）/index.html",
-    "revision": "7a9009dcb6045fe85c53ae555cf28738"
+    "revision": "f350f5976b58b10e56cbd2c37b95381d"
   },
   {
     "url": "2015/08/01/GeekBank-C-线下班学习心得（三）/index.html",
-    "revision": "aeefc49ad0a7321f701e87a9a88d35b6"
+    "revision": "258736202e236b67d12edb43cc9e1286"
   },
   {
     "url": "2015/08/11/浅谈-CORS：跨域资源共享/index.html",
-    "revision": "911b54912d778ae8f622ea622c4e0433"
+    "revision": "2d6e3d10a187ec6d8fa0fcea1c35361f"
   },
   {
     "url": "2015/08/12/不得不防范的-iframe-非法嵌入/index.html",
-    "revision": "3629a9695debc79818a0e360773d2dd2"
+    "revision": "04f24a26c963c51bb4fe65d305b8fe4e"
   },
   {
     "url": "2015/11/08/SVG-技术之-路径/1.png",
@@ -155,7 +155,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/11/08/SVG-技术之-路径/index.html",
-    "revision": "138cbfde2e72b1958359ce9809ab9910"
+    "revision": "bbf113782ad0ff10f572b0593aec8f1f"
   },
   {
     "url": "2015/11/24/前端那些事儿-表单域的-MIME-编码/1.jpg",
@@ -167,43 +167,43 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/11/24/前端那些事儿-表单域的-MIME-编码/index.html",
-    "revision": "11a13aa1bc0bfd51106808005ea60027"
+    "revision": "9737fc4836e0494899cc03ca72e784a5"
   },
   {
     "url": "2015/11/30/前端那些事儿-JavaScript-函数之-IIFE/index.html",
-    "revision": "8a4a6b80a3d475561ce6eacbbf6ec363"
+    "revision": "8a9d0510b816413890ccba922a8d9893"
   },
   {
     "url": "2016/01/06/前端那些事儿-三字节-BOM-头/index.html",
-    "revision": "cad500f6498709a0347572f1c66fef89"
+    "revision": "6c5a2b03731ae0e15ee90ee44139c70c"
   },
   {
     "url": "2016/01/08/ECMAScript6-新特性-迭代器和-for-of-循环/index.html",
-    "revision": "fd8a0fa210595e0fd086d1d6279ac2ad"
+    "revision": "dc651a5d99c39c8f1ca5d7cab3c69fb8"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/1.png",
-    "revision": "188886c285100fd8e307c6fa30812117"
+    "revision": "22f933e7c7290c85583254b7d5986b79"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/2.png",
-    "revision": "5b4993930c454d9f9604a77e5002a030"
+    "revision": "ea94ef8a2decb34e34d7b7b96daa0fe4"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/3.png",
-    "revision": "cfb7822c2088c597534307e0bb2964ac"
+    "revision": "c0d367deb98c2df9c3bba4175d497509"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/4.png",
-    "revision": "13312e45355b07a7c4d9afa3a592ad1d"
+    "revision": "310f2bd1f80749915ce2ff6d1cc24db0"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/5.png",
-    "revision": "306a03a16461a3c18ad2f6d252e4a507"
+    "revision": "69db65bdc6dfe7238dbee9a1ce5f8e4b"
   },
   {
     "url": "2016/02/09/前端那些事儿-Console-对象/index.html",
-    "revision": "14323cb9d94778dbd6ad9dc31d1e701d"
+    "revision": "a5c811369f38d970ddbceca5bec3bed9"
   },
   {
     "url": "2016/02/12/技术是成功的“绊脚石”/index.html",
@@ -211,27 +211,27 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/02/19/UCS-2-编码的妙用/index.html",
-    "revision": "934bec2a1d176604248fdb986f13d04d"
+    "revision": "255724ff7d4508aa6e443d60dc1cc13d"
   },
   {
     "url": "2016/03/16/LAMP-架构之升级-PHP-版本/index.html",
-    "revision": "e0da2a223cbed02b806e252222d183c2"
+    "revision": "3505c3b90dba5f626cfc8051444dbd9c"
   },
   {
     "url": "2016/03/20/Java-基础语法特性记录/index.html",
-    "revision": "b4cd4ebc59d710699a2dc2442691fb5a"
+    "revision": "086901694786fdf731dee31a21bc979a"
   },
   {
     "url": "2016/03/26/JavaScript-核心特性揭秘（一）/index.html",
-    "revision": "b28b694b9b0f0397e322c95de9da84a4"
+    "revision": "e7f212df0824b86f30ac3b355a60e54b"
   },
   {
     "url": "2016/03/29/JavaScript-核心特性揭秘（二）/index.html",
-    "revision": "45b308293f4a7e0831c5078b59f16967"
+    "revision": "7a6954cee6fe21288678e2259f3eedbe"
   },
   {
     "url": "2016/04/03/JavaScript-核心特性揭秘（三）/index.html",
-    "revision": "ddc709ac1b51de8d01d87a2eef229c2d"
+    "revision": "6704bed74ddfe6596fd4ac2fb0fd70ae"
   },
   {
     "url": "2016/04/09/五分钟算法-二分法查找（Binary-Search）/1.jpg",
@@ -239,91 +239,91 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/04/09/五分钟算法-二分法查找（Binary-Search）/index.html",
-    "revision": "44c6a9f25800592170e7ccdf08721582"
+    "revision": "bece7aae4d90f78f80999665de572dda"
   },
   {
     "url": "2016/04/11/LeetCode-每日一题-1-Two-Sum/index.html",
-    "revision": "46fd62becd321ea4afba15ff52f944a0"
+    "revision": "1a3422461affe4cb780e3d5dce52b690"
   },
   {
     "url": "2016/04/12/LeetCode-每日一题-283-Move-Zeroes/index.html",
-    "revision": "f98d938cbbce42f94f2f4c58973e7f01"
+    "revision": "6060f9d1db95195e207e14c8d84aa2e7"
   },
   {
     "url": "2016/04/13/LeetCode-每日一题-217-Contains-Duplicate/index.html",
-    "revision": "716b430107c8a862c49a09dfe5e7ab99"
+    "revision": "6a4bc7eace872e35577b75e0cac6a464"
   },
   {
     "url": "2016/04/14/LeetCode-每日一题-219-Contains-Duplicate-II/index.html",
-    "revision": "7041f47242c5f6b6af66051679115614"
+    "revision": "0834a0e6be18402d89f482e6c8ebe9b2"
   },
   {
     "url": "2016/04/16/LeetCode-每日一题-169-Majority-Element/index.html",
-    "revision": "a7e8952c49e362bd1912f01d06f5b041"
+    "revision": "e04eb6f235e57f3d9b2ef9c2c1635af9"
   },
   {
     "url": "2016/04/17/LeetCode-每日一题-121-Best-Time-to-Buy-and-Sell-Stock/index.html",
-    "revision": "779863295be2b71a0fe99bbe9cf02183"
+    "revision": "fd3062d86f762fdc6859752c6219271f"
   },
   {
     "url": "2016/04/19/LeetCode-每日一题-189-Rotate-Array/index.html",
-    "revision": "a07c4af5fc10dc25a56720293656e5cb"
+    "revision": "3ff8d6ff84fb71bbf59d8506bc21a41d"
   },
   {
     "url": "2016/04/20/LeetCode-每日一题-70-Climbing-Stairs/index.html",
-    "revision": "a565480d0605ab3bc43900872611dda8"
+    "revision": "3892532958dbb434be9c17de2627c9ca"
   },
   {
     "url": "2016/04/21/LeetCode-每日一题-168-Excel-Sheet-Column-Title/index.html",
-    "revision": "2402002c1f04a6617cf9a926de106888"
+    "revision": "63de58e72fa3769cfbae3b8c1f36538d"
   },
   {
     "url": "2016/04/25/LeetCode-每日一题-342-Power-of-Four/index.html",
-    "revision": "9f8d951fdd9c28daf83d0fcf8fdd9e24"
+    "revision": "7ba15a198179ab9c51e8bffeab55f495"
   },
   {
     "url": "2016/05/05/LeetCode-每日一题-344-Reverse-String/index.html",
-    "revision": "40579037acaf80fdf9ab4b781edbbc58"
+    "revision": "01f504c5767f4f7ffb46056c94051e61"
   },
   {
     "url": "2016/05/06/LeetCode-每日一题-258-Add-Digits/index.html",
-    "revision": "84e9729f081a2ef45889b946cf5926b4"
+    "revision": "7fadd0ef4048edfbc80832d60fd941ba"
   },
   {
     "url": "2016/05/08/LeetCode-每日一题-6-ZigZag-Conversion/index.html",
-    "revision": "7f90def5f6c49425ae878728ebba86ac"
+    "revision": "519a8453a8af52796636b9b88380c3d9"
   },
   {
     "url": "2016/05/10/LeetCode-每日一题-7-Reverse-Integer/index.html",
-    "revision": "8081a5cfba8aac776696223726a29d5c"
+    "revision": "09007176366d981ccffb10d9aa1698b4"
   },
   {
     "url": "2016/05/12/LeetCode-每日一题-9-Palindrome-Number/index.html",
-    "revision": "07fced1e83fcb37602198a823e2aa8ed"
+    "revision": "a8bef007433de01e22f7ab4b8845ab7f"
   },
   {
     "url": "2016/05/12/前端那些事儿-URL-对象/index.html",
-    "revision": "d4d5041e81b0b1b45a383b253a2b0e4e"
+    "revision": "1ce933b2261540e010cae008662a5210"
   },
   {
     "url": "2016/05/24/LeetCode-每日一题-27-Remove-Element/index.html",
-    "revision": "48e2667a469fd15855118056f9a2eec5"
+    "revision": "57fae88c3048e6cad131e4410a09b8e8"
   },
   {
     "url": "2016/06/15/LeetCode-每日一题-203-Remove-Linked-List-Elements/index.html",
-    "revision": "b2bd1aaa31d2a6546bf1fab247cb7846"
+    "revision": "a094f73275aee83622a46e2cfb177c97"
   },
   {
     "url": "2016/06/16/LeetCode-每日一题-136-Single-Number/index.html",
-    "revision": "f8ca5816a3c43d8155c527475074f0d3"
+    "revision": "e3ddce4a3e326920360499e4666e52a3"
   },
   {
     "url": "2016/07/07/LeetCode-每日一题-100-Same-Tree/index.html",
-    "revision": "ad422b2dba985bdeb3c54f6800c816b5"
+    "revision": "86df3002ca08a9b99cf0ffa6ac4d0056"
   },
   {
     "url": "2016/07/14/Linux-后台运行任务/index.html",
-    "revision": "2b1a7cb5fe62a35720d246d374b46898"
+    "revision": "075c2373a78927e922ee4b355e92d80a"
   },
   {
     "url": "2016/07/16/设计模式速谈：一、序论/index.html",
@@ -331,87 +331,87 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/07/17/设计模式速谈：二、简单工厂模式/1.png",
-    "revision": "1c7adc8c151f21fe25e3f30f4f4ff131"
+    "revision": "9eb0a025dde35a4d75e6fb0d03584ded"
   },
   {
     "url": "2016/07/17/设计模式速谈：二、简单工厂模式/2.png",
-    "revision": "c9bd76f0f54b2b9db21e184419fe1871"
+    "revision": "5e64a705ded126413633c3f4bb840840"
   },
   {
     "url": "2016/07/17/设计模式速谈：二、简单工厂模式/index.html",
-    "revision": "7e631e0004e6e3f29d52c880200904b6"
+    "revision": "4fa2fd4a864d836e44ff130c9e7a47c9"
   },
   {
     "url": "2016/07/19/设计模式速谈：三、工厂模式/1.png",
-    "revision": "de2755cf29c3351d6699c1cc6ffdd83e"
+    "revision": "ec5559b3f472a72c3abf4d9f4f43fd06"
   },
   {
     "url": "2016/07/19/设计模式速谈：三、工厂模式/index.html",
-    "revision": "29f5276d601756700c7f859e5d99f5fd"
+    "revision": "8db6ed1283ffef45b7d40a14fe0740f9"
   },
   {
     "url": "2016/07/21/设计模式速谈：四、抽象工厂模式/1.png",
-    "revision": "1559428d28b9fee731441c61508d6fc8"
+    "revision": "5fa0c5ea83a3071c5948a132a6354f75"
   },
   {
     "url": "2016/07/21/设计模式速谈：四、抽象工厂模式/index.html",
-    "revision": "8b49d33f6a0ff2a6cef2ab7d4cdc9ecf"
+    "revision": "e018abd14ecd02f217b36da8437006b3"
   },
   {
     "url": "2016/07/23/设计模式速谈：五、建造者模式/1.png",
-    "revision": "3c6ef7954b0fdf80e98869b83e193397"
+    "revision": "0dd4704ba51c2240a13e749fc5c17020"
   },
   {
     "url": "2016/07/23/设计模式速谈：五、建造者模式/index.html",
-    "revision": "e6a21b41a455e0e883e0e1f215b31efa"
+    "revision": "3d6940b2e8222bafb2ba1e6374c82033"
   },
   {
     "url": "2016/07/25/设计模式速谈：六、单例模式/1.png",
-    "revision": "321de221166a2b4ac5127ebe8991f4b9"
+    "revision": "93c73ed38c7f09f6ab4169170b66b0b1"
   },
   {
     "url": "2016/07/25/设计模式速谈：六、单例模式/index.html",
-    "revision": "ace192c8f222cdff582aa5428d52949b"
+    "revision": "15768ed5065d28285db67ca623dcc255"
   },
   {
     "url": "2016/07/27/HTML5-随记录/index.html",
-    "revision": "1b7ddab36f60e65397126a72c08ea634"
+    "revision": "bcb37f417375000ebd1c8acc7b161265"
   },
   {
     "url": "2016/08/16/基于-AWS-探索-Shadowsocks/1.png",
-    "revision": "e3f6748aa76afbddf39c2bfff5b2ebfe"
+    "revision": "e0cf78029d0601b6f5a4f6ff885b4bed"
   },
   {
     "url": "2016/08/16/基于-AWS-探索-Shadowsocks/2.png",
-    "revision": "fe4196cf3c33c5fc50b0d840d6f2a83a"
+    "revision": "0f6c7a0d5f32d12fdca854f4cacf218c"
   },
   {
     "url": "2016/08/16/基于-AWS-探索-Shadowsocks/3.png",
-    "revision": "82c26cba80613dc37876693d1069b20d"
+    "revision": "7ab08e9d8bae5346451ff1c8cff1b9e2"
   },
   {
     "url": "2016/08/16/基于-AWS-探索-Shadowsocks/index.html",
-    "revision": "5e33290901fbcb57224cdebe2579920f"
+    "revision": "01081f8dcf8e64f47fd7139fd3ac5f36"
   },
   {
     "url": "2016/09/16/Zoomage-js-正式版-V1-0-0-核心原理介绍/index.html",
-    "revision": "725e6acc1c1f8112443f602255c79ba1"
+    "revision": "fbe9bd871e99385b055f9f1f0bc5b37c"
   },
   {
     "url": "2016/09/17/LeetCode-每日一题-104-Maximum-Depth-of-Binary-Tree/index.html",
-    "revision": "a81d2d6931fd6c1c9333e43404994cd2"
+    "revision": "70189d9a404483f6dcda3e643b12ca7e"
   },
   {
     "url": "2016/09/17/LeetCode-每日一题-58-Length-of-Last-Word/index.html",
-    "revision": "0c0ef8993537b3fb995725ffcc253f75"
+    "revision": "8b5f6eb95afa8d20c3734924936e38f9"
   },
   {
     "url": "2016/09/18/算法基础-常用排序算法（上）/index.html",
-    "revision": "8c95f497cc1282d694729fb8466317e4"
+    "revision": "39e7358d164f6afa19694e29cbd87118"
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "7ca5b8f0b134af630a717273e99785e7"
+    "revision": "50a46d99e09ff42820dee003bb669b78"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/1.jpg",
@@ -419,7 +419,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/2.png",
-    "revision": "a5127f1adefa208a5c4318fb72488d6e"
+    "revision": "d734f73c2b2c65e8b2d3e1ab251fcd9f"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/3.jpg",
@@ -427,11 +427,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/index.html",
-    "revision": "83bb93e4ee4e5c27383e35aba9f41282"
+    "revision": "f569ea78b766c0cd9d4e047d4c34bfc8"
   },
   {
     "url": "2016/12/13/前端常见技术点-HTML/index.html",
-    "revision": "f3e28d8403bc92c07a0b22d3a7123c8d"
+    "revision": "b0b3dd9a98008c98df3a94794b822c23"
   },
   {
     "url": "2016/12/13/前端常见技术点-JavaScript/1.jpg",
@@ -455,7 +455,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/13/前端常见技术点-JavaScript/index.html",
-    "revision": "a56966b2dede14b506eb63182c22c8e9"
+    "revision": "12ab245796404de64a1a85c2065ee30a"
   },
   {
     "url": "2016/12/14/前端项目规划与团队管理/1.jpg",
@@ -463,7 +463,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/14/前端项目规划与团队管理/index.html",
-    "revision": "f540d7395a3c9abbca3caf48e134afc2"
+    "revision": "f359b637bd5a43d8efe9b52b0c00fe0e"
   },
   {
     "url": "2016/12/15/CSS-常用布局解决方案/1.jpg",
@@ -527,23 +527,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/12/15/CSS-常用布局解决方案/index.html",
-    "revision": "02e6f409e2b298669bde77c24562d0a9"
+    "revision": "4fe338fc0aeaac45fce9fe32a0ccf1f0"
   },
   {
     "url": "2016/12/18/ES-6-ES-2015-常用知识点归纳/1.png",
-    "revision": "9fa4f264f9d03b8feb72382abf0ab768"
+    "revision": "967edd52dab29739af7f40270682b640"
   },
   {
     "url": "2016/12/18/ES-6-ES-2015-常用知识点归纳/index.html",
-    "revision": "8931c73dc49874cd32a2ae4160fafcc4"
+    "revision": "25c0161f079560638ca0c92a408f156d"
   },
   {
     "url": "2016/12/22/Promise-浅谈/index.html",
-    "revision": "d07ef12e96f20daa73c982080fb97e26"
+    "revision": "9573e62e943f21eecae8f1c001e037e7"
   },
   {
     "url": "2016/12/29/jQuery-源码江湖-初入江湖/index.html",
-    "revision": "a5fdf62ebb298ac0fca162ac1d47efb9"
+    "revision": "9cd4c603734e4d5f4ee8f3a0a8418855"
   },
   {
     "url": "2017/01/16/2017-开篇/index.html",
@@ -551,15 +551,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/01/29/CentOS-7-2-之-MySQL-到-MariaDB-的迁移/index.html",
-    "revision": "d3df55388ee406dd85c3a1aa3d533d33"
+    "revision": "19b4aa3b7e69d0ade61a5d21fecbd79a"
   },
   {
     "url": "2017/02/28/Promise-A-调用详谈/index.html",
-    "revision": "54bb1a87a9a3b58ee422bcbf69f9435c"
+    "revision": "3911a1be5d68104ea78091a193f3cb79"
   },
   {
     "url": "2017/03/09/HTTP-基础整理/index.html",
-    "revision": "1799ff98d3814b088a5f10d4c9d3122b"
+    "revision": "90464b8615ef774cb69645d219a26b13"
   },
   {
     "url": "2017/03/21/一道面试题的思考/index.html",
@@ -575,11 +575,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/04/24/BigPipe-原理实现与使用场景分析/1.png",
-    "revision": "44e931b7b3e63f231daf0f3cb282e414"
+    "revision": "d8042c2f203587a3c0f1ff033585f589"
   },
   {
     "url": "2017/04/24/BigPipe-原理实现与使用场景分析/2.png",
-    "revision": "90109fd8e0f5ff0dd0ca08d167ea2f4f"
+    "revision": "80b741c007f031cd2726454455f2687f"
   },
   {
     "url": "2017/04/24/BigPipe-原理实现与使用场景分析/3.jpg",
@@ -587,11 +587,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/04/24/BigPipe-原理实现与使用场景分析/index.html",
-    "revision": "8fa2cbaae1001b0767204900adfe38bf"
+    "revision": "b8ca3287c2193fd4d54c2a7b75a3f63e"
   },
   {
     "url": "2017/04/26/淘宝网的-BigRender/index.html",
-    "revision": "fc75a4e8b5283434cd7e468309f1a49a"
+    "revision": "98467df7c37dffb5a4229e46676c9d4a"
   },
   {
     "url": "2017/04/29/“大型网站技术架构”总结：一，概述/1.jpg",
@@ -599,7 +599,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/04/29/“大型网站技术架构”总结：一，概述/index.html",
-    "revision": "e2e9ff67a46d925a42bd8501c6283b30"
+    "revision": "a96598a1b7e2a6f407ef075ed33b4d7c"
   },
   {
     "url": "2017/04/30/“大型网站技术架构”总结：二，网站的高性能架构/index.html",
@@ -611,7 +611,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/05/02/“大型网站技术架构”总结：三，网站的高可用架构/index.html",
-    "revision": "fce1c520d61c87a123e2052d89ce85e6"
+    "revision": "05731bf3448a7c9a858938faf917013b"
   },
   {
     "url": "2017/05/06/STC-与-PTC/1.jpg",
@@ -619,11 +619,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/05/06/STC-与-PTC/index.html",
-    "revision": "7249cc9504154e8b6bbc606504e47d57"
+    "revision": "0a4e6263cac40027af3977511199b9c5"
   },
   {
     "url": "2017/05/08/“函数柯里化”常见使用场景记录/index.html",
-    "revision": "3762569120d9e2d4d99b648284051d1c"
+    "revision": "e02d7fb7590ccd092a680dc48bb06abc"
   },
   {
     "url": "2017/05/08/前端-DCE-策略之-—-Tree-Shaking/1.jpg",
@@ -639,11 +639,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/05/08/前端-DCE-策略之-—-Tree-Shaking/index.html",
-    "revision": "215e9ac9a27e0836337561297eaa36a0"
+    "revision": "d5e7f2d67a1d2b44910749d8644f5f16"
   },
   {
     "url": "2017/05/16/常用-Shell-知识点和技巧/index.html",
-    "revision": "b0b9662c39e70ae800e52f36aefb39d2"
+    "revision": "70284b57566970a41874b9e0620318af"
   },
   {
     "url": "2017/05/18/PureRenderMixin-immutable-js-提高-VDOM-渲染效率/1.gif",
@@ -651,103 +651,103 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/05/18/PureRenderMixin-immutable-js-提高-VDOM-渲染效率/index.html",
-    "revision": "412ea2d1035299f041667f6e83cdb770"
+    "revision": "906668f2a664866907166a541177e200"
   },
   {
     "url": "2017/05/26/基于-NumPy-和-TensorFlow-的简单-KNN-实现/index.html",
-    "revision": "69c7296160bf6b2f8c6b80feb3c122f3"
+    "revision": "4f00d3ba51ef99aabf380bff992700ad"
   },
   {
     "url": "2017/06/09/WebAssembly-尝试研究报告（一）/1.png",
-    "revision": "b3dcc2fe15f6337f47f646703883f78c"
+    "revision": "38b799dd89e5720c222464dd7f40f71e"
   },
   {
     "url": "2017/06/09/WebAssembly-尝试研究报告（一）/2.png",
-    "revision": "71b4cdf45b2bd37005327cf3ede568a5"
+    "revision": "2621eb66e298d6f1beda3febf22a9ec6"
   },
   {
     "url": "2017/06/09/WebAssembly-尝试研究报告（一）/index.html",
-    "revision": "3e483ac49d6434d889d8388f19ff3e71"
+    "revision": "0483cdf9abcb996dfa9cd9f716030551"
   },
   {
     "url": "2017/06/10/WebAssembly-尝试研究报告（二）/index.html",
-    "revision": "f5928ce94d3b689966ad8b843c74432f"
+    "revision": "63c1c7ae4645652bbcb3a533b47a6afa"
   },
   {
     "url": "2017/06/11/WebAssembly-尝试研究报告（三）/1.png",
-    "revision": "3592ac733a85df6f3c8e7ef467582c10"
+    "revision": "e969c50a45d342bef1744e47e86e9296"
   },
   {
     "url": "2017/06/11/WebAssembly-尝试研究报告（三）/2.png",
-    "revision": "ddfbe3f00ffb76699874ea0cb941d92e"
+    "revision": "dfeff581ff7c0e53274e993be3a1f4c3"
   },
   {
     "url": "2017/06/11/WebAssembly-尝试研究报告（三）/3.png",
-    "revision": "41fe699bc06971a1cb762269bec6b0e9"
+    "revision": "e2c9d84db1c78c18c15bbfd6a54703b9"
   },
   {
     "url": "2017/06/11/WebAssembly-尝试研究报告（三）/index.html",
-    "revision": "ffbb62806b0b6d4f3186c80d3f635a8f"
+    "revision": "cb27d892542416d3d354e2ec94a95d9b"
   },
   {
     "url": "2017/06/13/WebAssembly-尝试研究报告-错误处理/index.html",
-    "revision": "7df87d5de7df2e82a877abb02eb9897f"
+    "revision": "ba6402f32dd5d51608526b32676c8443"
   },
   {
     "url": "2017/06/14/WebAssembly-尝试研究报告-API-之初始化、内存和表的分配/1.png",
-    "revision": "691f40e3524461089e5e6869653ff7bd"
+    "revision": "4f4b276824fa0f5688d59db9719e09d1"
   },
   {
     "url": "2017/06/14/WebAssembly-尝试研究报告-API-之初始化、内存和表的分配/index.html",
-    "revision": "af192cba2cb78287c9626be6ec0a0c9c"
+    "revision": "ab870cc9c008dcd25e3b409be1b94249"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-DIP-实践/1.png",
-    "revision": "dccde2ad3f3f4b5dd71d4db662640544"
+    "revision": "97c1242830ca81289051fd76df8e11dd"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-DIP-实践/2.png",
-    "revision": "feb12ca888557ae043e7bc58f068604f"
+    "revision": "6ab5339568d65e7a31fbcea5a6ca4fec"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-DIP-实践/3.png",
-    "revision": "abd51e0f115cf0ad5acab991d23eaa36"
+    "revision": "6a6c7adccb91bebdb97a366d02e3d98d"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-DIP-实践/index.html",
-    "revision": "f1d77ca6fb6f9db05ab0e440740eb2f8"
+    "revision": "d9308826b40fe51ab38ec6ab6c0f8c74"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-本地存储与转移/index.html",
-    "revision": "58a1bdc5988061644e4e1bbe96701fd0"
+    "revision": "63a8fe8b8439a05460ea7f7de73c4901"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/1.png",
-    "revision": "ec299a48f3faa762a95c8dbf277f19f2"
+    "revision": "77b0aa80bdf2c30ecd17042e1cba2e8a"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/2.png",
-    "revision": "7ebb5d502b8f6184419a9e608084bc9d"
+    "revision": "1087112f361f8c02cf1a364f15d4d0a4"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/3.png",
-    "revision": "b683df1c25c0e8ef828173e7c670caa7"
+    "revision": "db3ecc0ae9e0a0d1232342efaf3e9091"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/4.png",
-    "revision": "bf986f66fe069c811bc3cdf58d2f225c"
+    "revision": "8006111476035f10b68e6f52e6fe1f34"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/5.png",
-    "revision": "d669f152adffcbaf13d5535c72671c70"
+    "revision": "3db40a3bd6ad516217eb37f9d106cb38"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/6.png",
-    "revision": "ef8bf1227f747bb6a3fde59bedce3244"
+    "revision": "71c3436932dcf23021b18ed77ad76926"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/index.html",
-    "revision": "4de4362b9025077021d073105155be54"
+    "revision": "b8f3ee23573df97a0af209dc5b36b057"
   },
   {
     "url": "2017/06/28/WebAssembly-深入研究报告-安全性/index.html",
@@ -755,39 +755,39 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/06/29/Common-Lisp-全记录（一）/index.html",
-    "revision": "569dd0378241768eee681076905691bc"
+    "revision": "80fcd55ec0ed64c91ddfabee1acaf230"
   },
   {
     "url": "2017/06/29/Mac-配置-Commom-Lisp-开发环境/index.html",
-    "revision": "3ee8d8f38ce76f0c8af68abad8fb6bc9"
+    "revision": "dfc43a8ac91c280bdf6f2bf8887e1164"
   },
   {
     "url": "2017/07/06/ES-8-新特性一览/index.html",
-    "revision": "d46ebf1e61d2d62c84429e171bd228fc"
+    "revision": "c0e154c3d87295e8e2ba78ed0143e601"
   },
   {
     "url": "2017/07/06/使用-Noteflight-来快速作曲和-MusicXML-导出/1.png",
-    "revision": "8720304381688f251833d31e0ab65c9b"
+    "revision": "a532e70f35182e3719b6ff073413da51"
   },
   {
     "url": "2017/07/06/使用-Noteflight-来快速作曲和-MusicXML-导出/2.png",
-    "revision": "4a903fe5fc0273644c7f34c29f0e74c8"
+    "revision": "fe2d83d20846da3c3791e70c506ebae5"
   },
   {
     "url": "2017/07/06/使用-Noteflight-来快速作曲和-MusicXML-导出/index.html",
-    "revision": "dccb96e4372d43b2804ae12c907ac0f0"
+    "revision": "0931f6d31fabd70031320f8ac5e6010f"
   },
   {
     "url": "2017/07/13/Python-小记/index.html",
-    "revision": "b81b7094f2f71c1ce48a9796613a4a40"
+    "revision": "a97cc63b8f7126b6b449acc43b12c7af"
   },
   {
     "url": "2017/07/19/WebAssembly-深入研究报告-碎片知识/index.html",
-    "revision": "4e196a8cfb31d530e32eddf163d2f0e0"
+    "revision": "d8a094dd8ec54d6c7d087fcfff12b46c"
   },
   {
     "url": "2017/07/20/Python-高级用法/index.html",
-    "revision": "afb8a47243014534571f96cb6de6053c"
+    "revision": "9235c07f73a95dbfd0b3cd4bfd790e75"
   },
   {
     "url": "2017/08/22/Redis-源码之内存管理-zmalloc-zfree/1.jpg",
@@ -799,11 +799,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/08/22/Redis-源码之内存管理-zmalloc-zfree/index.html",
-    "revision": "74fdcc7c7b4c965325bab088e3b167d7"
+    "revision": "345e0a1bfa9dd46500379aa01c3492b8"
   },
   {
     "url": "2017/09/02/C-小记录/index.html",
-    "revision": "a3a01976d2c864afbafafed635f82231"
+    "revision": "07c52423e7d816746ce42b811d08e815"
   },
   {
     "url": "2017/09/04/大数据基础架构概述/index.html",
@@ -811,23 +811,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/1.png",
-    "revision": "fbeb7c269902955ccc1870b8e914c982"
+    "revision": "5509911237b6842cce87082c07f42cf9"
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/2.png",
-    "revision": "50649acab3758e1fe3da527aa8863063"
+    "revision": "b5277005410ed34bcdc925946b34a822"
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/3.png",
-    "revision": "5bd6666b2e0e49d3f6b0923a97cbf108"
+    "revision": "b3c380e374659785449a580892d6ed41"
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/4.png",
-    "revision": "9f5885938ef7e01eae812c0a4a72d1bb"
+    "revision": "e5857094adb734bc617898f4e6d1a7f4"
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/index.html",
-    "revision": "75d6f5998e50fdd52f521ddf648c7c25"
+    "revision": "c96ce652d25672bb6306d74f4c2fee6d"
   },
   {
     "url": "2017/09/30/一种新的共享计算力模式/1.png",
@@ -835,7 +835,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/09/30/一种新的共享计算力模式/2.png",
-    "revision": "0db67347508d96dc5eafbe69d2f2db74"
+    "revision": "95b07970293f2d3f4cb651e169cc8c3f"
   },
   {
     "url": "2017/09/30/一种新的共享计算力模式/3.png",
@@ -843,83 +843,83 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/09/30/一种新的共享计算力模式/index.html",
-    "revision": "555a4d1178876bd83e8272d12e678270"
+    "revision": "d170152546e0ddc0765910bf0300dfb0"
   },
   {
     "url": "2017/11/04/Docker-最佳实践（一）/1.png",
-    "revision": "a956fdd0ece111ac181049917da36056"
+    "revision": "480962da5a3a85a577d4d59dd6f90a5e"
   },
   {
     "url": "2017/11/04/Docker-最佳实践（一）/2.png",
-    "revision": "1b573df3f7392c96a7409f2e6ad8afa8"
+    "revision": "547c10ce0bc8e8c91c3892722d06cd67"
   },
   {
     "url": "2017/11/04/Docker-最佳实践（一）/3.png",
-    "revision": "1a62928ae3ed8ed5a6f781f97cb14df1"
+    "revision": "ad87ecac404b51443450d766c5b8c926"
   },
   {
     "url": "2017/11/04/Docker-最佳实践（一）/index.html",
-    "revision": "7e4dda36445ad7b2c7019fda4fdff73f"
+    "revision": "7b1a41ef345dc3a143c96d2506207e2f"
   },
   {
     "url": "2017/11/07/Docker-最佳实践（二）/1.png",
-    "revision": "0749070511fea71acd95d06206d2f237"
+    "revision": "acb7807a930b5ada93f9b7a2c4c4ed5b"
   },
   {
     "url": "2017/11/07/Docker-最佳实践（二）/2.png",
-    "revision": "b6cf269a8c6ccf1dab5808d8c367cbfc"
+    "revision": "d47c87d03cfe511756dd0e1c3141cb6e"
   },
   {
     "url": "2017/11/07/Docker-最佳实践（二）/3.png",
-    "revision": "f1eb0494385f8b14d45e5281d9646eaa"
+    "revision": "cdb3d0ceb875240cc0672305ab584bb0"
   },
   {
     "url": "2017/11/07/Docker-最佳实践（二）/4.png",
-    "revision": "8b00aaa335ed7808dedff920c9f46e45"
+    "revision": "a4db1ade6f36e19ed7ae94a8301c2f3b"
   },
   {
     "url": "2017/11/07/Docker-最佳实践（二）/index.html",
-    "revision": "0ff5d465433f7621ea269bd2f63a5fab"
+    "revision": "1bd9243de6c085985ac472baa9298083"
   },
   {
     "url": "2017/11/09/Docker-最佳实践（三）/1.png",
-    "revision": "b0a038c00f5b0ae86721215b394f8a01"
+    "revision": "abdbe53a40b09d4b001c94fff45490df"
   },
   {
     "url": "2017/11/09/Docker-最佳实践（三）/index.html",
-    "revision": "b255d140ccdc65c047163ffb30b72b2d"
+    "revision": "25b3a9f243667f6cebab4a94297ac294"
   },
   {
     "url": "2017/11/12/The-Twelve-Factor-App/index.html",
-    "revision": "8cc08bcc634557b9904b18d8f4db2161"
+    "revision": "e434d9c0f3c838009dd27a57a04b8ecd"
   },
   {
     "url": "2017/12/17/Web-新时代与挑战/1.png",
-    "revision": "dff5a52bd4ba881ccccced24e9b4f9c2"
+    "revision": "cf8d816311ac5ede8628230ae3afeaf1"
   },
   {
     "url": "2017/12/17/Web-新时代与挑战/2.png",
-    "revision": "ff0f2f68f13cafe189883f5dd076d55a"
+    "revision": "ff0f83d4e7d79ce262d4eaf7cdcfe0d1"
   },
   {
     "url": "2017/12/17/Web-新时代与挑战/index.html",
-    "revision": "2999cabd8e56d72bd80880083acb27df"
+    "revision": "d40b93f6820550da465de37a90470414"
   },
   {
     "url": "2018/01/08/Flush-Reload-Attack-与-Meltdown/1.png",
-    "revision": "723f52c0ed3c450ef6f4806ba4c0e0c2"
+    "revision": "ac23722d6c281d738d14e170ad1aba87"
   },
   {
     "url": "2018/01/08/Flush-Reload-Attack-与-Meltdown/2.png",
-    "revision": "53ebbe0d4a09942bdc38bdd1ef8de04e"
+    "revision": "905c9c396526486ba945934a623cbd25"
   },
   {
     "url": "2018/01/08/Flush-Reload-Attack-与-Meltdown/3.png",
-    "revision": "45ca8790313d1efdbcf1f8cab7295e95"
+    "revision": "3814ea7e852e6a38ba21c287ec43bc07"
   },
   {
     "url": "2018/01/08/Flush-Reload-Attack-与-Meltdown/index.html",
-    "revision": "5316360d95163b589b76eee148e7aa93"
+    "revision": "2370d882a5c32883afd5a70c8eb020e0"
   },
   {
     "url": "2018/11/01/我的新书《深入浅出-WebAssembly》出版啦-｡･ω･｡-ﾉ/index.html",
@@ -927,7 +927,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2018/11/29/Git-最佳实践/index.html",
-    "revision": "0c221560ae8b2291458766f6069026b4"
+    "revision": "33310880f99d508c6669c22a9952f489"
   },
   {
     "url": "2019/01/05/“增长黑客：创业公司的用户与收入增长秘籍” 读书笔记/index.html",
@@ -1019,7 +1019,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/27.png",
-    "revision": "294ea94ba62061b21ddc5cb72bc1717f"
+    "revision": "cfa389cf3eb5d50c8c7640c1f50ba1cf"
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/28.jpg",
@@ -1027,7 +1027,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/29.png",
-    "revision": "98505981b1795cfa9648815111307fab"
+    "revision": "db1a7e9cd19aa8029e2ed6de19d1c185"
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/3.jpg",
@@ -1035,11 +1035,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/30.png",
-    "revision": "eeb1f2c56b9f388b514841da8a82415d"
+    "revision": "14dcd43af9440cf7291cabeabfaf02b0"
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/31.png",
-    "revision": "3c1ce65fdc18ce51bf8e39949a744a80"
+    "revision": "305d19e016398e2c8bf57d91036bc8d6"
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/4.jpg",
@@ -1067,7 +1067,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/index.html",
-    "revision": "e83c0b07e7ca9fb475ccf2ca1be3e6bb"
+    "revision": "137a3e869f09da8fb0c9bb8d1a8ebf84"
   },
   {
     "url": "2019/02/28/今日商业评论—瑞幸咖啡VS星巴克，如何互补？/index.html",
@@ -1075,11 +1075,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/03/GraphQL-设计艺术/1.png",
-    "revision": "c7566a8f0a70286ef883655e4da6c095"
+    "revision": "323507f15aa52392be0f7dcd7ce82c44"
   },
   {
     "url": "2019/03/03/GraphQL-设计艺术/index.html",
-    "revision": "3b4f99243c5a96dc5bf207c159825cf1"
+    "revision": "7021744e82f47979b7bc7f2af84342e4"
   },
   {
     "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/1.jpg",
@@ -1091,7 +1091,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/index.html",
-    "revision": "5f5b67ade54fbae1920b729eed630e4e"
+    "revision": "5d679d43a320c85548c0bc4e5b871856"
   },
   {
     "url": "2019/03/17/女装之路-完全大揭秘/1.jpg",
@@ -1119,7 +1119,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/03/17/女装之路-完全大揭秘/index.html",
-    "revision": "a3c46e99f04fa65582342a6c386ab6dc"
+    "revision": "4fe65955f5f2306e21b1bd77aab011ff"
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
@@ -1127,23 +1127,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/10/浅谈前端代码加密/1.png",
-    "revision": "7c58a4febdef2db9eb86ae871cd83bf0"
+    "revision": "00cc74524a8a2adaf94fcec8ced92d78"
   },
   {
     "url": "2019/04/10/浅谈前端代码加密/2.png",
-    "revision": "4409d3eac1b56a08c55f977f3b25ba61"
+    "revision": "bdebdffa01c953e27cb390ab7cb037ff"
   },
   {
     "url": "2019/04/10/浅谈前端代码加密/index.html",
-    "revision": "03e7977af676eb262853e155cd32b5ff"
+    "revision": "b70b3003316787101385906bf83c99df"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/1.png",
-    "revision": "61b60f01679cf74eb7426e1ab5019246"
+    "revision": "3f83d9179dd721fb6a7b34457dd741ef"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/2.png",
-    "revision": "ac513044f534142518c03c219a9d4500"
+    "revision": "1a46b714300e13063750f673ed7bab61"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/3.jpeg",
@@ -1159,7 +1159,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/index.html",
-    "revision": "bdd8f628f014502d8896c6b650bac3fb"
+    "revision": "77cc4a6c3efba9caebe13b7f841e0b6a"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/封面.jpeg",
@@ -1167,7 +1167,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/26/React-知识点整理/index.html",
-    "revision": "fc315524b5e879c48cab229f058cb243"
+    "revision": "1c4b676b48fc61a25113d3f8dd0cfac0"
   },
   {
     "url": "2019/04/28/“CSS-权威指南”内容小结/index.html",
@@ -1175,7 +1175,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/30/基本算法概括/index.html",
-    "revision": "f85925a27494b4fe8b69fcd1b8d08574"
+    "revision": "898cc562971eefb551582926674f99ed"
   },
   {
     "url": "2019/07/11/Frequently-used-TOEFL-oral-short-sentences/index.html",
@@ -1183,11 +1183,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/1.png",
-    "revision": "b2c6235a98874e7ff25d36528678ce01"
+    "revision": "1f0e9f1d6e21383672f9b1f93a6d101a"
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/index.html",
-    "revision": "316c79fe5e7cf42a82fb9a1c2122e0e7"
+    "revision": "88150715f9d55a3a378dc1e3d9d8856f"
   },
   {
     "url": "2019/08/23/54th-day-at-PayPal/index.html",
@@ -1195,35 +1195,35 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/08/31/C-11-好用的新语法特性/index.html",
-    "revision": "79908e31b2c4884affa234400deb9964"
+    "revision": "16bd5641b991479d7b38241cc32b14d2"
   },
   {
     "url": "2019/08/31/C-左值、右值与右值引用/index.html",
-    "revision": "95dc5b0b334c9358de2a16a1f37bdc8a"
+    "revision": "897e5008aaaf694b6253d60cc9707222"
   },
   {
     "url": "2019/09/01/C-编译器优化之-RVO-与-NRVO/index.html",
-    "revision": "38e48996a64dec1897fb8ad6e59d3e54"
+    "revision": "f685b97409de3d8a9013f35b9db517c9"
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/1.png",
-    "revision": "8b3328386b454987e409e0142147a9bc"
+    "revision": "8ff928e5eb4bfed077edae5452816c7f"
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/2.png",
-    "revision": "32341d794cf9b582f50794595415552b"
+    "revision": "3b7c92dd42f56c7eb8a82894a285292e"
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/index.html",
-    "revision": "fcd4ef334ddeb76f6fef50fd79f78791"
+    "revision": "6ee05225d2f8900ac6c4048819531783"
   },
   {
     "url": "2019/09/13/Privacy-Policy-for-TOVD/index.html",
-    "revision": "792c0a7a1e89941a2daf5c549c1c3164"
+    "revision": "c3061abfda54c8be9718a132efaf90d9"
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "4d2223d1ed1e20e88db2e2bdbb47d512"
+    "revision": "ffb1e4cb07ba6f1749d5833525d75f3b"
   },
   {
     "url": "2019/10/11/SICP-计算机程序的构造和解释（一）/index.html",
@@ -1235,19 +1235,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/11/22/C-中的移动构造与-noexcept/1.png",
-    "revision": "30e3c35133c11ad5837c11ea39330b39"
+    "revision": "54faa2e133cf59314a74655fa22c4539"
   },
   {
     "url": "2019/11/22/C-中的移动构造与-noexcept/index.html",
-    "revision": "2ce5a1ba52228ae2e65776cf51abae93"
+    "revision": "a4e10ffdebf5f68de0630aebb1f4e7d9"
   },
   {
     "url": "2019/11/22/C-编码准则之-“The-Rule-of-Three”/1.png",
-    "revision": "ad8fd2930dca749e1cb1e3fdeaab17f8"
+    "revision": "637b35c4631bfb9443cba0d4bc396dca"
   },
   {
     "url": "2019/11/22/C-编码准则之-“The-Rule-of-Three”/index.html",
-    "revision": "ea1ac7c8b64f5e0bfc6de3296f9775b3"
+    "revision": "3d7f2353b47177a171f50bd6e3b0e7e2"
   },
   {
     "url": "2020/03/11/WebAssembly-Summit-2020-—-议题深度解析（上）/1.png",
@@ -1295,7 +1295,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/2.png",
-    "revision": "cac1adcca39149483e0152a05655d737"
+    "revision": "dc9f0c270189ba5f59c29e17993f9a4c"
   },
   {
     "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/3.png",
@@ -1323,59 +1323,63 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/04/10/Primer-C-完全笔记（第1-8章）/1.png",
-    "revision": "5da48b608ccda683dc42afc9ae0c6dd0"
+    "revision": "8b305b1c86aa5a39088c25fc3be36ce9"
   },
   {
     "url": "2020/04/10/Primer-C-完全笔记（第1-8章）/index.html",
-    "revision": "8489fe9c87584a97b6a17f0338ffbfa5"
+    "revision": "aba2e1f133cc42e3e3a5a8fa7fc7ea8e"
   },
   {
     "url": "2020/04/12/Primer-C-完全笔记（第9-13章）/1.png",
-    "revision": "c922442e516e724d262e92706cd96b5e"
+    "revision": "9e114df64a3c5671f522ded51d70079f"
   },
   {
     "url": "2020/04/12/Primer-C-完全笔记（第9-13章）/2.png",
-    "revision": "7a1e3193ee4d5a5008a37a05aa4242fb"
+    "revision": "9d401f55126e8de191793a7c2ef89573"
   },
   {
     "url": "2020/04/12/Primer-C-完全笔记（第9-13章）/index.html",
-    "revision": "74811c10549e97e5ffec7bc20b3bcbb0"
+    "revision": "70cf899d380f0ac53ca1f09737937332"
   },
   {
     "url": "2020/04/14/Primer-C-完全笔记（第14-16章）/index.html",
-    "revision": "4b8ce8b378084fed19ac025dd39a68b2"
+    "revision": "4dd4f49ec964cb703b31f8723914ab95"
   },
   {
     "url": "2020/04/16/Primer-C-完全笔记（第17-19章）/index.html",
-    "revision": "3afd9d5f88459dd229a35552f3e53bfe"
+    "revision": "8640de9f588ad784184ee22f1cb73717"
   },
   {
     "url": "2020/04/24/常用-C-高效开发范式（一）/1.png",
-    "revision": "3e315511be2694de760f516bc5fd3c95"
+    "revision": "3bd88472e00084e2638f3231a4eb0b8a"
   },
   {
     "url": "2020/04/24/常用-C-高效开发范式（一）/index.html",
-    "revision": "5957481783e1b8955d8b61bc44dfaf03"
+    "revision": "fd3b9e81e790e8b03bf805b8ca7478d3"
   },
   {
     "url": "2020/04/26/C-未限定名字查找与-ADL/index.html",
-    "revision": "66e99bc26a2a033f39ffefe320655912"
+    "revision": "6f8f8b4d52ecf745796de747b23f24a0"
   },
   {
     "url": "2020/04/26/常用-C-高效开发范式（二）/1.png",
-    "revision": "a87ae67eeffb2e101807b65e1a2d67c9"
+    "revision": "b8ed87513ee0450bebc6bf0656a5a7f4"
   },
   {
     "url": "2020/04/26/常用-C-高效开发范式（二）/index.html",
-    "revision": "65480e65f8dfb7e8eede43b383154c22"
+    "revision": "b0f004b4f370231608b38cf12733f8ba"
   },
   {
     "url": "2020/04/27/C-空基类优化（EBO）与私有继承/index.html",
-    "revision": "f1be3047fce052a0721649e4897aee23"
+    "revision": "b9ab7e7a09c1aac6fb304a7f7daf981b"
   },
   {
     "url": "2020/05/06/C-聚合类与-POD/index.html",
-    "revision": "d353b3a2b1c3716f74f60c8f252f2e03"
+    "revision": "b086b919f283b31ce30fd66756b7f6ff"
+  },
+  {
+    "url": "2020/05/09/“深入理解-C-11：新特性解析与应用” 读书笔记/index.html",
+    "revision": "4fff982e77fac58c53b34ecca1ce21c8"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1795,335 +1799,335 @@ self.__precacheManifest = [
   },
   {
     "url": "archives/2014/12/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2014/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/01/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/02/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/03/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/07/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/08/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/11/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2015/page/3/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/01/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/02/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/03/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/04/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/04/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/05/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/06/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/07/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/08/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/09/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/12/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/page/3/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/page/4/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/page/5/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2016/page/6/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/01/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/02/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/03/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/04/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/05/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/06/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/06/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/07/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/08/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/09/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/11/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/12/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/page/3/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/page/4/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2017/page/5/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2018/01/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2018/11/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2018/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/01/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/02/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/03/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/04/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/07/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/08/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/09/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/10/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/11/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2019/page/3/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2020/03/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2020/04/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2020/05/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2020/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/2020/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/10/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/11/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/12/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/13/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/14/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/15/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/16/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/17/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/2/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/3/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/4/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/5/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/6/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/7/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/8/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "archives/page/9/index.html",
-    "revision": "f1bc903dff149ca234a96dfa770f8a8b"
+    "revision": "d0fa7d4583bd7fc921fad44615ab7e1e"
   },
   {
     "url": "articles/index.html",
-    "revision": "8d6b059e215972024f4aeebe8ccae828"
+    "revision": "e0d3a4195d5b30e9eb98c064c7d13652"
   },
   {
     "url": "author/index.html",
@@ -2463,7 +2467,7 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "me-en/css/font-awesome.min.css",
@@ -2579,71 +2583,71 @@ self.__precacheManifest = [
   },
   {
     "url": "page/10/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/11/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/12/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/13/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/14/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/15/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/16/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/17/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/2/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/3/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/4/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/5/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/6/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/7/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/8/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "page/9/index.html",
-    "revision": "abb825a2aa87d59d7910615b23b21bda"
+    "revision": "f447c3e359432241182ac8dbe144fbeb"
   },
   {
     "url": "scripts/book.js",
-    "revision": "9eb5f97d95b706a7e761f5eb98036512"
+    "revision": "8d9ce61b7d89ebf8c6f27265b2df399a"
   },
   {
     "url": "scripts/index.js",
@@ -2671,7 +2675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "32889c2de5ce983f4a9a7cb0bc4c663d"
+    "revision": "608863ac42a04bc94f9def833d2ab51d"
   },
   {
     "url": "tags/Android/index.html",
@@ -2695,11 +2699,11 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/C/index.html",
-    "revision": "c1bf40ccfc7b8c2e18a0c54b26fcfe89"
+    "revision": "3a70016a2f5a759299521e8def48434f"
   },
   {
     "url": "tags/C/page/2/index.html",
-    "revision": "c1bf40ccfc7b8c2e18a0c54b26fcfe89"
+    "revision": "3a70016a2f5a759299521e8def48434f"
   },
   {
     "url": "tags/CSS/index.html",
@@ -2751,7 +2755,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "058ed7ad1864367a28dae2a7155e35c6"
+    "revision": "fb11b07b5f49aeae5536ea5469be8001"
   },
   {
     "url": "tags/Java/index.html",

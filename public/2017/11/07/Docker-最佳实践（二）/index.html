@@ -9,27 +9,23 @@ RUN <span class="token function">apt-get</span> -yqq update <span class="token o
 RUN <span class="token function">mkdir</span> -p /var/www/html/website <span class="token comment" spellcheck="true"># 容器内创建文件夹；</span>
 ADD nginx/global.conf /etc/nginx/conf.d/ <span class="token comment" spellcheck="true"># 复制本地配置文件到镜像中；</span>
 ADD nginx/nginx.conf /etc/nginx/nginx.conf 
-EXPOSE 80 <span class="token comment" spellcheck="true"># 打开 80 端口；</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+EXPOSE 80 <span class="token comment" spellcheck="true"># 打开 80 端口；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>构建镜像：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">docker build -t becavalier/nginx
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">docker build -t becavalier/nginx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>通过镜像来构建可用容器：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 运行容器，并使用 `-v` 参数来挂载本地目录到容器卷，卷可以在容器间进行共享；</span>
 docker run -d -p 80 --name<span class="token operator">=</span><span class="token string">"website"</span> -v <span class="token variable">$PWD</span>/website:/var/www/html/website:rw becavalier/nginx nginx
-<span class="token comment" spellcheck="true"># 常用于多个不同的系统环境，多个不同的框架环境，多个不同的运行环境，公用同一份代码；</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="2、基于-Docker-的微服务容器关联："><a href="#2、基于-Docker-的微服务容器关联：" class="headerlink" title="2、基于 Docker 的微服务容器关联："></a>2、基于 Docker 的微服务容器关联：</h4><p><img src="1.png" alt></p>
-<pre class="line-numbers language-bash"><code class="language-bash">ip a show docker0 <span class="token comment" spellcheck="true"># docker0 网络接口，docker0 是一个虚拟的以太网桥，用来连接容器和本地宿主网络；</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>Docker 每创建一个容器就会创建一组互联的网络接口，两端分别连接容器里的 eth0 接口和宿主机的 veth<em> 接口，这些所有的 veth</em> 接口最后会被绑定到 docker0 的网桥上。</p>
-<p><img src="2.png" alt></p>
+<span class="token comment" spellcheck="true"># 常用于多个不同的系统环境，多个不同的框架环境，多个不同的运行环境，公用同一份代码；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="2、基于-Docker-的微服务容器关联："><a href="#2、基于-Docker-的微服务容器关联：" class="headerlink" title="2、基于 Docker 的微服务容器关联："></a>2、基于 Docker 的微服务容器关联：</h4><p><img src="1.png" alt=""></p>
+<pre class="line-numbers language-bash"><code class="language-bash">ip a show docker0 <span class="token comment" spellcheck="true"># docker0 网络接口，docker0 是一个虚拟的以太网桥，用来连接容器和本地宿主网络；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>Docker 每创建一个容器就会创建一组互联的网络接口，两端分别连接容器里的 eth0 接口和宿主机的 veth* 接口，这些所有的 veth* 接口最后会被绑定到 docker0 的网桥上。</p>
+<p><img src="2.png" alt=""></p>
 <p>如果我们在容器内通过 <code>traceroute</code> 来跟踪一个 TCP 请求的路由节点，会发现所有在容器内发送的请求都会先发送到由 docker0 创建的虚拟子网的网关地址上。</p>
-<p><img src="3.png" alt></p>
+<p><img src="3.png" alt=""></p>
 <ol>
 <li><strong>通过硬编码 IP 地址进行 Docker 容器之间的互联（如何访问 Container1 的 Http 服务）</strong>：</li>
 </ol>
-<p><img src="4.png" alt></p>
+<p><img src="4.png" alt=""></p>
 <ol start="2">
 <li><strong>通过 Docker Networking（Docker V1.9 以上）</strong>：</li>
 </ol>
@@ -45,8 +41,7 @@ docker network connect <span class="token operator">&lt;</span>network<span clas
 docker run -d --net<span class="token operator">=</span>app --name<span class="token operator">=</span>static_web becavalier/static_web
 
 <span class="token comment" spellcheck="true"># 在桥接网络内的容器通过以下方式即可互相访问；</span>
-<span class="token function">ping</span> <span class="token operator">&lt;</span>network<span class="token operator">></span>.<span class="token operator">&lt;</span>container<span class="token operator">></span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">ping</span> <span class="token operator">&lt;</span>network<span class="token operator">></span>.<span class="token operator">&lt;</span>container<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li><strong>通过 Docker 链接（Docker V1.9 以下推荐）</strong>：</li>
 </ol>
@@ -54,8 +49,7 @@ docker run -d --net<span class="token operator">=</span>app --name<span class="t
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 启动“服务”方；</span>
 docker run -d --name redis becavalier/redis
 <span class="token comment" spellcheck="true"># “客户” 链接 “服务”；</span>
-docker run -p 4567 --name webapp --link redis:db -t -i -v <span class="token punctuation">..</span>.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+docker run -p 4567 --name webapp --link redis:db -t -i -v <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="3、Docker-用于-CI："><a href="#3、Docker-用于-CI：" class="headerlink" title="3、Docker 用于 CI："></a>3、Docker 用于 CI：</h4><p>构建运行 Docker 的 Jenkins 服务器 -&gt; Docker 递归（Docker in Docker）运行。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 用于构建 Jenkins 的 Dockerfile；</span>
 FROM ubuntu:14.04
@@ -66,10 +60,8 @@ RUN <span class="token function">apt-get</span> update -qq <span class="token op
 RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 
 <span class="token punctuation">..</span>.
 VOLUME /var/lib/docker <span class="token comment" spellcheck="true"># Docker 用来存储容器的目录；</span>
-<span class="token punctuation">..</span>.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建 Docker-Jenkins 容器；</span>
 <span class="token comment" spellcheck="true"># --privileged 标志给予 Docker-Jenkins 足够的权限；</span>
-docker run -p 8080:8080 --name<span class="token operator">=</span>jenkins --privileged -d becavalier_jenkins
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+docker run -p 8080:8080 --name<span class="token operator">=</span>jenkins --privileged -d becavalier_jenkins<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-11-07T05:52:09.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/11/04/Docker-最佳实践（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/11/09/Docker-最佳实践（三）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

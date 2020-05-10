@@ -4,8 +4,7 @@
 <p>Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.</p>
 </blockquote>
 <p><strong>Example：</strong></p>
-<pre class="line-numbers language-text"><code class="language-text">Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>0. 题目大意：</strong></p>
 <p>给定一个非负整数，将其各个分位的数字相加得到一个整数 N，若 N 为一个个位数则返回 N，否则继续将 N 的各个分位的数字继续相加循环上述过程，直到相加的结果为一个个位数为止。实际上，事实上，该算法即为计算给定整数的数根。</p>
 <p><strong>1. 基本方法，递归：</strong></p>
@@ -24,21 +23,18 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> Main<span class="token punctuation">.</span><span class="token function">addDigits</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>2. 优化的方法，公式推导：</strong></p>
 <p>我们可以直接利用推导出的专门用来求给定数字“数根”的公式，下边会给出推导方法。时间复杂度 “O(1)”。代码如下所示：</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">addDigitsOptimize</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// Use formula；</span>
   <span class="token keyword">return</span> num <span class="token operator">-</span> <span class="token number">9</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>num <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>附：数根推导</strong>：</li>
 </ul>
 <p>我们可以很容易的发现，任何一个正整数的数根都<strong>不会超过数字9</strong>，例如：11 的数根为 2，而 11 为 9 之后的第二个数字；2035 的数根为 1，而 (2035 - 1) 为 9 的倍数；因此我们可以通过 <strong>floor 函数</strong>（向下取整）来得出数根计算公式如下。</p>
-<pre class="line-numbers language-text"><code class="language-text">dr(n) = 1 + ((n - 1) mod 9);
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">dr(n) = 1 + ((n - 1) mod 9);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>附：数根特性</strong>：</li>
 </ul>
@@ -49,7 +45,6 @@ dr(n) = 0 => n = 0;
 
 dr(n) > 0 => n > 0;
 
-dr(n) = n => n ∈ {1, 9};
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+dr(n) = n => n ∈ {1, 9};<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><a href="https://en.wikipedia.org/wiki/Digital_root#Significance_and_formula_of_the_digital_root" target="_blank" rel="noopener">维基百科：数根（Digital Root）。</a></p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2016-05-06T10:35:40.000Z"> 2020 / 04 / 25, 14:58:46</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2016/05/05/LeetCode-每日一题-344-Reverse-String/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2016/05/08/LeetCode-每日一题-6-ZigZag-Conversion/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -51,15 +51,18 @@ hexo.extend.filter.register('before_exit', function(data) {
       const absolutePath = path.resolve(__dirname, '../public', relativePath);
 
       try {
-        const files = await imagemin([absolutePath], path.dirname(absolutePath), {
+        const files = await imagemin([absolutePath], {
+          destination: path.dirname(absolutePath),
           plugins: [
             imageminMozjpeg({
               quality: 50
             }),
-            imageminPngquant({quality: [.5, .6]})
+            imageminPngquant({quality: [.5, .6]}),
           ]
         });
-        files[DEFAULT_INDEX] && console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['path']}`);
+        if (files[DEFAULT_INDEX]) {
+          console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['sourcePath']}`);
+        }
       } catch (e) {
         console.error(e)
       }

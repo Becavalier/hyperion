@@ -11,6 +11,7 @@ const {
 const dayjs = require('dayjs');
 const randToken = require('rand-token');
 const crypto = require('crypto');
+var auth = require('basic-auth')
 const { TOVDValidateToken } = require('./helpers/tovd');
 const escape = require('escape-html');
 require('dayjs/locale/zh-cn'); 
@@ -187,15 +188,19 @@ module.exports = app => {
           }
         });
       },
-      async fetchAllBookRecord(parent, args) {
+      async fetchAllBookRecord(parent, args, { req }) {
         try {
-          return (await BookShelf.findAll()).map(i => ({
-            id: i.id,
-            name: i.name,
-            url: i.url,
-            totalPages: i.total_pages,
-            currentPages: i.current_page,
-          }));
+          if (!req.session.authToken) {
+            return [];
+          } else {
+            return (await BookShelf.findAll()).map(i => ({
+              id: i.id,
+              name: i.name,
+              url: i.url,
+              totalPages: i.total_pages,
+              currentPages: i.current_page,
+            }));
+          }
         } catch(e) {
           console.error(e);
           return [];
@@ -468,15 +473,17 @@ module.exports = app => {
       }
     }
   };
-  
 
   const server = new ApolloServer({ 
     typeDefs, 
     resolvers,
-    context: ({ req }) => ({
-      token: req.get('token'),
-      ipAddr: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-    }),
+    context: ({ req }) => {
+      return {
+        req,
+        token: req.get('token'),
+        ipAddr: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+      };
+    },
     formatError: error => {
       console.error(error);
       return error;

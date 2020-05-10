@@ -5,6 +5,8 @@ const http = require('http');
 const fs = require('fs');
 const compression = require('compression');
 const helmet = require('helmet');
+const session = require('express-session');
+const useBasicAuth = require('./middlewares/basic-auth');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
 const setupChallengesRoute = require('./routers/challenges');
@@ -29,13 +31,25 @@ global.hexoMeta = {
 
 // helmet;
 app.use(helmet());
-
-// configurations;
 app.use((req, res, next) => {
   req.isProd = isProd;
   req.port = port;
   next();
 });
+
+// session;
+const sess = {
+  secret: 'vFHXckZtepQpqpiHdN5TMNsr3xeKfCBfX1jU5mCEyVoB5DXjXEx6bk66NaAH84Y5hCrhX6gEYjgBwzBhtlssfjqUFhZqQnIZtoRPZFhr0j1vh2ex6fKNESOjB05G4QfL',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: 60 * 1000 },
+};
+if (isProd) {
+  app.use(session(sess));
+}
+// use session;
+app.use(session(sess));
+useBasicAuth(app);
 
 // set static folder;
 app.use(express.static(path.resolve(__dirname, '../..', 'public')));

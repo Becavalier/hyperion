@@ -8,15 +8,13 @@
     <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>为什么不合适的递归会造成堆栈溢出呢？因为递归在每一次调用自身时都会保留上一层调用的环境参数（局部变量、返回地址入口等），如果递归层数太多就会造成堆栈段内存溢出。比如对于上述的斐波那契数列计算函数，我们举例 <code>fibonacci(4)</code>，其堆栈大致示意图如下：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">fibonacci(4)
 fibonacci(3) + fibonacci(2)
 fibonacci(2) + fibonacci(1) + fibonacci(1) + fibonacci(0)
 fibonacci(1) + fibonacci(0) + 1 + 1 + 0
-1 + 0 + 1 + 1 + 0
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+1 + 0 + 1 + 1 + 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面给出一个求斐波那契数列第 N 项值函数的尾递归版本：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> num1 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> num2 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -25,19 +23,17 @@ fibonacci(1) + fibonacci(0) + 1 + 1 + 0
     <span class="token keyword">return</span> num1<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token function">fibonacci</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> num2<span class="token punctuation">,</span> num1 <span class="token operator">+</span> num2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其对应的调用栈如下所示：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">fibonacci(4)
 fibonacci(3, 1, 2)
 fibonacci(2, 2, 3)
 fibonacci(1, 3, 5)
-3
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>尾递归的本质实际上就是将每层递归需要的参数以<strong>传参</strong>的方式直接传入下一次的调用过程之中，这样之前的堆栈信息便可以不再保留，并被即时的释放掉。但这样带来的问题是参数没办法语义化，对外的接口不够友好，因此在使用尾递归时需要用 <strong>ES6 的默认参数</strong>或者<strong>函数柯理化</strong>等方式进行优化。</p>
 <p>其实从根本上来讲，递归操作这种比较重型的密集计算不适合在前端进行，对于单线程的浏览器引擎，如果在主线程运行很有可能导致页面失去响应。因此可以考虑利用 Web Worker 放到单独的计算线程中进行，同时还要做好必要的尾递归优化。</p>
 <h4 id="二、PTC-Proper-Tail-Call-："><a href="#二、PTC-Proper-Tail-Call-：" class="headerlink" title="二、PTC (Proper Tail Call)："></a>二、PTC (Proper Tail Call)：</h4><p>PTC 是在 ES6 中提出的尾递归优化草案，该草案只能在严格模式下实现。草案对应的功能仍然在 TC39 标准委员会中进行讨论，现在还并没有部署到各个浏览器的 JavaScript 引擎上。</p>
-<p><img src="1.jpg" alt></p>
+<p><img src="1.jpg" alt=""></p>
 <p>ES6 草案中定义了 PTC 规范，其规定在严格模式下的尾递归调用绝对不会出现堆栈溢出的问题。但 PTC 目前还存在一些问题比如：</p>
 <ol>
 <li>PTC 标准性能在各个 JS 引擎上的实现并不统一；</li>
@@ -52,12 +48,9 @@ fibonacci(1, 3, 5)
     <span class="token keyword">return</span> acc<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token keyword">continue</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-javascript"><code class="language-javascript">#<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* all calls in tail position are tail calls */</span> <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">#<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* all calls in tail position are tail calls */</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
   <span class="token operator">!</span><span class="token keyword">return</span> expr<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-05-06T15:56:05.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/05/02/“大型网站技术架构”总结：三，网站的高可用架构/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/05/08/“函数柯里化”常见使用场景记录/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
