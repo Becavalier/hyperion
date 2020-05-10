@@ -1,5 +1,5 @@
 node_modules/
-.db-secret.json
+.*.json
 .well-known/
 .vscode/
 **/files/*.pdf

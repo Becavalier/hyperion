@@ -1,8 +1,15 @@
 module.exports = {
-  "globDirectory": "public/",
-  "globPatterns": [
-    "**/*.{html,png,jpg,gif,css,otf,svg,ttf,woff,woff2,eot,jpeg,ico,js}"
+  globDirectory: "public/",
+  globPatterns: [
+    '**/*.{html,json,js,css}'
   ],
-  "swDest": "public/sw.js",
-  "skipWaiting": true
+  swDest: "public/sw.js",
+  skipWaiting: true,
+  runtimeCaching: [{
+    urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+    handler: 'CacheFirst',
+  }, {
+    urlPattern: /\.(?:html|js|css|json)$/,
+    handler: 'NetworkFirst',
+  }],
 };
