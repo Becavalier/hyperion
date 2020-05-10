@@ -13,7 +13,11 @@
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-workbox.core.skipWaiting();
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -1259,7 +1263,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "c991e7527e5e505fe9885ba2f65dd039"
+    "revision": "d3d12d8a48ca1f7cdbcd4af99f69d3f9"
   },
   {
     "url": "tags/Java/index.html",

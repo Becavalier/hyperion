@@ -4,7 +4,7 @@ module.exports = {
     '**/*.{html,json,js,css}'
   ],
   swDest: "public/sw.js",
-  skipWaiting: true,
+  skipWaiting: false,
   runtimeCaching: [{
     urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
     handler: 'CacheFirst',
