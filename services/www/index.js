@@ -6,6 +6,7 @@ const fs = require('fs');
 const compression = require('compression');
 const helmet = require('helmet');
 const session = require('express-session');
+const constants = require('./constants');
 const useBasicAuth = require('./middlewares/basic-auth');
 const expressEnforcesSSL = require('express-enforces-ssl');
 const setInterfaceEntrance = require('./graphql-server');
@@ -39,10 +40,10 @@ app.use((req, res, next) => {
 
 // session;
 const sess = {
-  secret: 'vFHXckZtepQpqpiHdN5TMNsr3xeKfCBfX1jU5mCEyVoB5DXjXEx6bk66NaAH84Y5hCrhX6gEYjgBwzBhtlssfjqUFhZqQnIZtoRPZFhr0j1vh2ex6fKNESOjB05G4QfL',
+  secret: constants.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: 60 * 1000 },
+  cookie: { secure: false, maxAge: constants.COOKIE_EXPIRE_TIME },
 };
 if (isProd) {
   app.use(session(sess));
@@ -89,8 +90,8 @@ app.listen = function(port) {
 
   if (isProd) {
     server = https.createServer({
-      key: fs.readFileSync('/etc/letsencrypt/live/yhspy.com/privkey.pem'),
-      cert: fs.readFileSync('/etc/letsencrypt/live/yhspy.com/fullchain.pem')
+      key: fs.readFileSync(constants.PATH_SSL_PRIVATE_KEY),
+      cert: fs.readFileSync(constants.PATH_SSL_CERT),
     }, this);
   } else {
     server = http.createServer(this);
