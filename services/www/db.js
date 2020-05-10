@@ -37,7 +37,7 @@ const PostComments = sequelize.define('t_post_comments', {
     'defaultValue': '',
   },
   ip_addr: {
-    'type': Sequelize.STRING(16),
+    'type': Sequelize.STRING(128),
     'allowNull': false,
     'defaultValue': '',
   },
