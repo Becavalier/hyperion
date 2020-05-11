@@ -3,6 +3,10 @@ My Hexo blog system (deeply customized).
 
 ### Components
 
+* **Nginx**:
+
+A backward proxy for quick dealing with static files.
+
 * **Hexo**:
 
 Generating static pages according to */source/_posts*.
@@ -30,4 +34,4 @@ PWA supported.
 
 ### TODO
 
-- [ ] Migrate to HTTP2;
+- [x] Migrate to HTTP2;
