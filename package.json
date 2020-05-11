@@ -12,7 +12,7 @@
     "generate-sw": "workbox generateSW workbox-config.js",
     "sync": "git pull --rebase origin master && pm2 reload all",
     "preview": "cd ./public && browser-sync start --server --files .",
-    "nginx-bp": "nginx -c ./nginx.conf"
+    "nginx-bp": "nginx -c $(pwd)/nginx.conf"
   },
   "dependencies": {
     "apollo-server-express": "^2.13.0",

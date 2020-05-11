@@ -73,9 +73,6 @@ if (isProd) {
   // force https;
   app.enable('trust proxy');
   app.use(expressEnforcesSSL());
-
-  // listen 80;
-  http.createServer(app).listen(80);
 }
 
 // gzip compress;

@@ -1,6 +1,6 @@
 apps:
   - script: ./services/www/index.js
-    name: Article
+    name: Hyperion
     instances: max
     watch: true
     exec_mode: cluster
