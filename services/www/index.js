@@ -15,7 +15,7 @@ const setupChallengesRoute = require('./routers/challenges');
 const app = express();
 
 const isProd = process.env.state === 'production';
-const port = isProd ? 443 : 80;
+const port = isProd ? 5000 : 80;
 
 console.info(`[info] server selected port :${port}.`);
 
