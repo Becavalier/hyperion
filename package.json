@@ -10,7 +10,7 @@
     "serve": "node ./services/www/index.js",
     "daemon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW workbox-config.js",
-    "sync": "git pull --rebase origin master && pm2 reload all",
+    "sync": "git pull --rebase origin master && pm2 reload all && service nginx reload",
     "preview": "cd ./public && browser-sync start --server --files .",
     "nginx-bp": "nginx -c $(pwd)/nginx.conf"
   },
