@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-05-10T13:28:53.370Z</updated>
+  <updated>2020-05-12T13:03:13.456Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记</title>
-    <link href="https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9A%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9A%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记（二）</title>
+    <link href="https://www.yhspy.com/2020/05/12/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/05/12/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-05-12T08:21:23.000Z</published>
+    <updated>2020-05-12T13:03:13.456Z</updated>
+    
+    <summary type="html">
+    
+      文接上回，由于接下来关于“变长模板”、“原子类型与原子操作”等的内容会比较多，为了保证阅读体验，因此这里将分为两篇博文来分别记录。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-05-09T02:22:12.000Z</published>
-    <updated>2020-05-10T13:28:53.370Z</updated>
+    <updated>2020-05-12T08:22:50.758Z</updated>
     
     <summary type="html">
     
@@ -572,27 +591,6 @@
       <category term="访谈" scheme="https://www.yhspy.com/tags/%E8%AE%BF%E8%B0%88/"/>
     
       <category term="FCC" scheme="https://www.yhspy.com/tags/FCC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈前端代码加密</title>
-    <link href="https://www.yhspy.com/2019/04/10/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%8A%A0%E5%AF%86/"/>
-    <id>https://www.yhspy.com/2019/04/10/%E6%B5%85%E8%B0%88%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81%E5%8A%A0%E5%AF%86/</id>
-    <published>2019-04-10T08:58:34.000Z</published>
-    <updated>2019-06-28T07:56:25.521Z</updated>
-    
-    <summary type="html">
-    
-      说到 Web 前端开发，我们首先能够想到的是浏览器、HTML、CSS 以及 JavaScript 这些开发时所必备使用的软件工具和编程语言。而在这个专业领域中，作为开发者我们众所周知的是，所有来自前端的数据都是“不可信”的，由于构成前端业务逻辑和交互界面的所有相关代码都是可以被用户直接查看到的，因此我们无法保证我们所确信的某个从前端传递到后端的数据没有被用户曾经修改过。那么是否有办法可以将前端领域中那些与业务有关的代码（比如数据处理逻辑、验证逻辑等。通常是 JavaScript 代码）进行加密以防止用户进行恶意修改呢？本文我们将讨论这方面的内容。
-    
-    </summary>
-    
-    
-    
-      <category term="前端" scheme="https://www.yhspy.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-      <category term="加密" scheme="https://www.yhspy.com/tags/%E5%8A%A0%E5%AF%86/"/>
     
   </entry>
   

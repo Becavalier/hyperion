@@ -43,7 +43,7 @@ const sess = {
   secret: constants.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false, maxAge: constants.COOKIE_EXPIRE_TIME },
+  cookie: { secure: false, },
 };
 if (isProd) {
   app.use(session(sess));
