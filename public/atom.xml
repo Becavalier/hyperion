@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-05-12T13:03:13.456Z</updated>
+  <updated>2020-05-14T11:59:05.703Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“Effective Modern C++” 读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/05/14/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/05/14/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-05-14T02:32:16.000Z</published>
+    <updated>2020-05-14T11:59:05.703Z</updated>
+    
+    <summary type="html">
+    
+      《Effective Modern C++》这本书主要介绍了 C++11 与 C++14 中的一些新的语言特性及编码建议。由于这段时间忙于它事，看书的速度会放缓，因此关于这本书的内容就一边读一边整理记录了。同《Effective C++ 3th》一样，这本书的行文也是按照“建议条目”的方式通过几个大的主题分门别类进行介绍的，其中部分之前博客文章中已经提到过得内容将不再赘述。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记（二）</title>
@@ -150,11 +169,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 5th 完全笔记（第17-19章）</title>
+    <title>“Primer C++ 5th” 完全笔记（第17-19章）</title>
     <link href="https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/16/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC17-19%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-16T12:43:00.000Z</published>
-    <updated>2020-05-06T10:24:00.563Z</updated>
+    <updated>2020-05-14T10:06:24.840Z</updated>
     
     <summary type="html">
     
@@ -169,11 +188,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 5th 完全笔记（第14-16章）</title>
+    <title>“Primer C++ 5th” 完全笔记（第14-16章）</title>
     <link href="https://www.yhspy.com/2020/04/14/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC14-16%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/14/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC14-16%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-14T14:24:37.000Z</published>
-    <updated>2020-04-22T14:03:03.479Z</updated>
+    <updated>2020-05-14T10:06:18.338Z</updated>
     
     <summary type="html">
     
@@ -188,11 +207,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 5th 完全笔记（第09-13章）</title>
+    <title>“Primer C++ 5th” 完全笔记（第09-13章）</title>
     <link href="https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/12/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC9-13%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-12T09:28:14.000Z</published>
-    <updated>2020-04-29T03:01:43.475Z</updated>
+    <updated>2020-05-14T10:06:13.035Z</updated>
     
     <summary type="html">
     
@@ -207,11 +226,11 @@
   </entry>
   
   <entry>
-    <title>Primer C++ 5th 完全笔记（第01-08章）</title>
+    <title>“Primer C++ 5th” 完全笔记（第01-08章）</title>
     <link href="https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/04/10/Primer-C-%E5%AE%8C%E5%85%A8%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC1-8%E7%AB%A0%EF%BC%89/</id>
     <published>2020-04-10T05:20:03.000Z</published>
-    <updated>2020-05-09T03:27:21.099Z</updated>
+    <updated>2020-05-14T10:06:06.416Z</updated>
     
     <summary type="html">
     
@@ -570,27 +589,6 @@
     
     
       <category term="React" scheme="https://www.yhspy.com/tags/React/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>FCC China DevTalk 访谈实录</title>
-    <link href="https://www.yhspy.com/2019/04/21/FCC-China-DevTalk-%E8%AE%BF%E8%B0%88%E5%AE%9E%E5%BD%95/"/>
-    <id>https://www.yhspy.com/2019/04/21/FCC-China-DevTalk-%E8%AE%BF%E8%B0%88%E5%AE%9E%E5%BD%95/</id>
-    <published>2019-04-21T01:58:59.000Z</published>
-    <updated>2019-06-28T07:56:25.385Z</updated>
-    
-    <summary type="html">
-    
-      FCC DevTalk 是一档访谈栏目，邀请资深开发者、互联网从业者分享学习编程的经验、工作经历以及其他有趣的故事。作为这个栏目的主持人，我会给每一位嘉宾的访谈稿写一段引言。本期嘉宾是于航，目前就职于饿了么。我和于航也是在 freeCodeCamp 社区认识的，但是这里我不想去写他在社区中做了哪些贡献，也不需要写他是多么的和蔼可亲（想不到更好的词了，你们知道我想表达的意思叭），大家应该比我更了解你们的于老师啦。
-    
-    </summary>
-    
-    
-    
-      <category term="访谈" scheme="https://www.yhspy.com/tags/%E8%AE%BF%E8%B0%88/"/>
-    
-      <category term="FCC" scheme="https://www.yhspy.com/tags/FCC/"/>
     
   </entry>
   
