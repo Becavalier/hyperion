@@ -248,13 +248,13 @@ namespace NS {
       o.v = v;
       v = t;
     }
-    A(const A&& o) { v = o.v; }
-    A& operator=(const A&& o) { v = o.v; return *this; }
+    A(const A&& o) noexcept { v = o.v; }
+    A& operator=(const A&& o) noexcept { v = o.v; return *this; }
   };
-  void swap(A& x, A& y) { x.swap(y); }
+  void swap(A& x, A& y) noexcept { x.swap(y); }
 }
 namespace std {
-  template<> void swap(NS::A& x, NS::A& y) { x.swap(y); }
+  template<> void swap(NS::A& x, NS::A& y) noexcept { x.swap(y); }
 }
 int main(int argc, char** argv) {
   NS::A x(10), y(20);
@@ -262,6 +262,6 @@ int main(int argc, char** argv) {
   swap(x, y);  // 优先调用 A 所在命名空间内的 swap，若没有定义则调用标准库中全特化的版本；
   std::cout << x.getV() << std::endl;  // 20；
   std::cout << y.getV() << std::endl;  // 10；
-  return 0;	
+  return 0;    
 }
 ```
