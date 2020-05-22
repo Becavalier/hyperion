@@ -691,7 +691,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/14/Effective-Modern-C-读书笔记（一）/index.html",
-    "revision": "786098f5148251704ebe334d8279f8f5"
+    "revision": "edc750314cea32de361dd5eb165f1849"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1159,7 +1159,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "3b45d410bb888625552f176a775c0d52"
+    "revision": "647b4d8f6538f3e592109ff9d5eb85c9"
   },
   {
     "url": "scripts/book.js",
@@ -1271,7 +1271,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "f964b132520d179ddced2257290420f4"
+    "revision": "9407fcc416924803e64ab15f79c2d9f0"
   },
   {
     "url": "tags/Java/index.html",
