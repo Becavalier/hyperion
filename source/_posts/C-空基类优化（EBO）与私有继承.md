@@ -43,7 +43,7 @@ class A {
   void foo() {}
   static int globalVal;
 };
-class B : public A { int x;};
+class B : public A { int x; };
 int main(int argc, char **argv) {
   std::cout << sizeof(A) << std::endl;  // 1；
   std::cout << std::boolalpha 

@@ -34,8 +34,8 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
             span(itemprop='category')
               for tag in post.tags.data
                 a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name}
-                |,&nbsp;
-            time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), ' MM/DD')
+                |&nbsp;|&nbsp;
+            time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
       else
         li
           a(href=config.root + post.path) 《#{post.title}》
@@ -111,10 +111,10 @@ else if is_page() && page.title.toLowerCase() =='readings'
     h1(itemprop='headline')=page.title
     span(class="meta")='列在此处的书/论文均已读完至少一遍，绝大多数都会有相应的笔记，可以在“文章”栏目里寻找。'
     h3='- C++'
-    a(target="_blank", href="https://book.douban.com/subject/25708312/")='《C++ Primer 中文版（第5版）》—  #C++ | 04/02/2020'
-    a(target="_blank", href="https://book.douban.com/subject/1842426/")='《Effective C++ 第3版》—  #C++ | 04/28/2020'
-    a(target="_blank", href="https://book.douban.com/subject/24738301/")='《深入理解 C++11：C++11 新特性解析与应用》—  #C++ | 05/14/2020'
-    a(target="_blank", href="https://book.douban.com/subject/25923597/")='《Effective Modern C++》—  #C++ | 05/23/2020'
+    a(target="_blank", href="https://book.douban.com/subject/25708312/")='《C++ Primer 中文版（第5版）》—  #C++ | 04/2020'
+    a(target="_blank", href="https://book.douban.com/subject/1842426/")='《Effective C++ 第3版》—  #C++ | 04/2020'
+    a(target="_blank", href="https://book.douban.com/subject/24738301/")='《深入理解 C++11：C++11 新特性解析与应用》—  #C++ | 05/2020'
+    a(target="_blank", href="https://book.douban.com/subject/25923597/")='《Effective Modern C++》—  #C++ | 05/2020'
 
 else if is_page() && page.title.toLowerCase() =='search'
   script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
