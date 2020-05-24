@@ -699,7 +699,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/24/C-字符串拷贝优化策略：Eager-Copy、SSO-与-COW/index.html",
-    "revision": "eae0c2323919552606c16ed9f74364bc"
+    "revision": "72071b4c0e8fc64efe6f2d583d2a85b1"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1279,7 +1279,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "d25e0d24a8b9d87ca4e201322a520481"
+    "revision": "d745eed4ea2b2de50c103a6432e5885c"
   },
   {
     "url": "tags/Java/index.html",

@@ -119,6 +119,7 @@ class String {
   const static size_t kLocalSize = 2 * sizeof(nullptr);  // 默认使用 2 * sizeof(nullptr) 大小的栈缓存；
   char buffer[kLocalSize];
   size_t size;
+  // ... 其他相关的成员变量（这里仅为举例所以省略了）；
  public:
   String() = default;
   String(const char* str) : size(std::strlen(str)) {
@@ -143,3 +144,5 @@ BTW. Facebook 自研的 ***[FBString](https://github.com/facebook/folly/blob/mas
 * Small strings (<= 23 chars) are stored in-situ without memory allocation.
 * Medium strings (24 - 255 chars) are stored in malloc-allocated memory and copied eagerly.
 * Large strings (> 255 chars) are stored in malloc-allocated memory and copied lazily.
+
+写了一个 std::string 较为完整的自定义实现，具体可以参考这里：***https://github.com/Becavalier/YHString***
