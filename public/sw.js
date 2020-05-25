@@ -699,7 +699,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/24/C-字符串拷贝优化策略：Eager-Copy、SSO-与-COW/index.html",
-    "revision": "e307877deb59cb1023b4c7739b44017c"
+    "revision": "914409cee139dd5116220129f8f1e4eb"
   },
   {
     "url": "2020/05/25/C-17-部分新特性一览/index.html",
@@ -1295,7 +1295,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "cfe93832987497c9248c5ecf5ef9baf4"
+    "revision": "fc8c6b41a9a0cf1eb08b1108d02517cd"
   },
   {
     "url": "tags/Java/index.html",

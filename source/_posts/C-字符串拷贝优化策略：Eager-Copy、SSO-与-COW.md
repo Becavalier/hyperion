@@ -144,3 +144,5 @@ BTW. Facebook 自研的 ***[FBString](https://github.com/facebook/folly/blob/mas
 * Small strings (<= 23 chars) are stored in-situ without memory allocation.
 * Medium strings (24 - 255 chars) are stored in malloc-allocated memory and copied eagerly.
 * Large strings (> 255 chars) are stored in malloc-allocated memory and copied lazily.
+
+写了一个基本的实现，可以参考***[这里](https://github.com/Becavalier/YHString)***。
