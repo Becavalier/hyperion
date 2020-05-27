@@ -278,7 +278,7 @@ int main(int argc, char **argv) {
 136. （Page：387）对 std::map 使用下标操作，对于**不存在的元素将会添加一个具有此关键字的元素**；相反可以使用 at() 作为替代，对于容器中不存在的元素则会抛出异常。
 137. （Page：389）std::map / std::unordered_map 的下标操作会产生副作用：对于不在容器中的元素 [] 访问时会插入默认值，可以使用 std::find 来查找特定元素是否在容器中。
 138. （Page：389）在 std::multimap 与 std::multiset 中，**同名元素相邻存储**。因此在查找到第一个元素的迭代器时，可以通过递增迭代器来访问其他的同名元素。但此时也要保证递增的步数小于等于 count() 方法查找到的目标元素个数。
-139. （Page：390）关联容器的 lower_bound() 与 upper_bound 可以构成一个“[)”的迭代器范围，当两者相等时目标元素不存在。
+139. （Page：390）关联容器的 lower_bound() 与 upper_bound() 可以构成一个“[)”的迭代器范围，当两者相等时目标元素不存在。
 
 ```cpp
 int main(int argc, char **argv) {

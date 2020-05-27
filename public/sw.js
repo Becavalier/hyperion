@@ -255,7 +255,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/07/16/设计模式速谈：一、序论/index.html",
-    "revision": "64c8530a4834004712004f7725882bc8"
+    "revision": "34b5c6057e9a165c4820168d14fb3561"
   },
   {
     "url": "2016/07/17/设计模式速谈：二、简单工厂模式/index.html",
@@ -651,7 +651,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/04/12/Primer-C-完全笔记（第9-13章）/index.html",
-    "revision": "935a086cc7ecb75358103de75b6f922f"
+    "revision": "ebf4e9a98a63f324d7685964d27d96f4"
   },
   {
     "url": "2020/04/14/Primer-C-完全笔记（第14-16章）/index.html",
@@ -699,7 +699,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/24/C-字符串拷贝优化策略：Eager-Copy、SSO-与-COW/index.html",
-    "revision": "914409cee139dd5116220129f8f1e4eb"
+    "revision": "79a361c8c9fb760a03170222b45dee2a"
   },
   {
     "url": "2020/05/25/C-17-部分新特性一览/index.html",
@@ -1295,7 +1295,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "fc8c6b41a9a0cf1eb08b1108d02517cd"
+    "revision": "ea93e8bd8046b297689e5ad914c8137d"
   },
   {
     "url": "tags/Java/index.html",
