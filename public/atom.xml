@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-05-25T11:10:53.294Z</updated>
+  <updated>2020-05-28T11:53:59.621Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“组件协作类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/05/28/%E2%80%9C%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/05/28/%E2%80%9C%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-05-28T03:40:48.000Z</published>
+    <updated>2020-05-28T11:53:59.621Z</updated>
+    
+    <summary type="html">
+    
+      该类设计模式主要用于解决组件之间的协作问题。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>C++17 部分新特性一览</title>
@@ -568,27 +589,6 @@
     
     
       <category term="职业发展" scheme="https://www.yhspy.com/tags/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Frequently used TOEFL oral short sentences</title>
-    <link href="https://www.yhspy.com/2019/07/11/Frequently-used-TOEFL-oral-short-sentences/"/>
-    <id>https://www.yhspy.com/2019/07/11/Frequently-used-TOEFL-oral-short-sentences/</id>
-    <published>2019-07-11T08:28:21.000Z</published>
-    <updated>2019-10-05T13:53:51.526Z</updated>
-    
-    <summary type="html">
-    
-      Some of frequently used oral short sentences in TOEFL examination. Reocrding here for further recap and exercise in the future. Totally about 900 items without classification.
-    
-    </summary>
-    
-    
-    
-      <category term="English" scheme="https://www.yhspy.com/tags/English/"/>
-    
-      <category term="TOEFL" scheme="https://www.yhspy.com/tags/TOEFL/"/>
     
   </entry>
   
