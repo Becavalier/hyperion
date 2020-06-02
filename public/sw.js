@@ -707,19 +707,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/28/“组件协作类”设计模式（C-）/index.html",
-    "revision": "f7de3679d00c6a7d06383a071e78561f"
+    "revision": "b718807494f646b36d658ada7f17313f"
   },
   {
     "url": "2020/05/29/“单一职责类”设计模式（C-）/index.html",
-    "revision": "eaa36c5e15cedf873ff1aee2533752a8"
+    "revision": "be3f1810be57fb1dfe1c378c4793abd7"
   },
   {
     "url": "2020/06/01/“对象创建类”设计模式（C-）/index.html",
-    "revision": "798bf3146597edc71713fb47a1bc7be7"
+    "revision": "3972636bb66a98caf2086e996033f5e3"
   },
   {
     "url": "2020/06/02/“对象性能类”设计模式（C-）/index.html",
-    "revision": "d0ffee67493448dfc0f3deb08a2e004d"
+    "revision": "31954294e36e6d9fe7e8e97640bbadde"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1275,7 +1275,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "4a9519e63b7666e20bc06cbe19735e24"
+    "revision": "dabd31f6433b69c131e271d9edbf14b6"
   },
   {
     "url": "scripts/book.js",
@@ -1391,7 +1391,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "01b111aeb37dc8f89ff5d5480f49c80f"
+    "revision": "43ef460f9ca7aeb7a7e6c66f2abb6e33"
   },
   {
     "url": "tags/Java/index.html",
