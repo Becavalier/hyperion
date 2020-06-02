@@ -127,3 +127,103 @@ int main(int argc, char** argv) {
 * 如果没有应对“**多系列对象构建**”的需求变化，则没有必要使用该模式，这时候使用简单的工厂模式即可以；
 * “系列对象”指的是在某一特定系列下的对象之间有相互依赖、或作用的关系。不同系列的对象之间不能相互依赖；
 * 抽象工厂模式主要在于应对“新系列”的需求变动。**其缺点在于难以应对“新对象”的需求变动**。
+
+
+### 原型模式（Prototype Method）
+
+在软件系统中，经常面临着“**某些结构复杂的对象**”（即无法通过工厂模式简单创建的）的创建工作；由于需求的变化，这些对象经常面临着剧烈的变化，但是它们却拥有比较稳定一致的接口。如何应对这种变化？如何向“客户程序（使用这些对象的程序）”隔离出“这些易变对象”，从而使得“依赖这些易变对象的客户程序”不随着需求改变而改变？
+
+![](3.png)
+
+模式定义：
+
+```cpp
+struct Strategy {
+  ~Strategy() {}
+  virtual void strategy() = 0;
+  virtual std::shared_ptr<Strategy> clone() = 0;  // 通过克隆自己创建对象；
+};
+struct StrategyA : public Strategy {
+  std::shared_ptr<Strategy>clone() {
+    return std::make_shared<StrategyA>(*this);  // 通过 copy-constructor 拷贝自己；
+  }
+  void strategy() {
+    std::cout << "[Strategy A]" << std::endl;
+  }
+};
+class Application {
+  std::shared_ptr<Strategy> prototype;  // 使用原型来创建新对象；
+ public:
+  Application(std::shared_ptr<Strategy> prototype) : prototype(prototype) {}
+  void run() {
+    prototype->clone()->strategy();  // 创建新对象并调用方法；
+    std::cout << "[Application]" << std::endl;
+  }
+};
+int main(int argc, char** argv) {
+  auto strategyA = std::make_shared<StrategyA>();
+  Application app(strategyA);
+  app.run();
+  return 0;
+}
+```
+
+总结：
+* 原型模式同样用于隔离类对象的使用者和具体类型（易变类）之间的耦合关系，它同样要求这些“易变类”拥有“稳定的接口”；
+* 原型模式对于“如何创建易变类的实体对象”采用“原型克隆”的方式，它使得我们可以非常灵活地动态创建“拥有某些稳定接口”的新对象 —— 所需工作仅仅是注册一个新类的对象（即原型），然后再任何需要的地方 Clone；
+* 原型模式中的 Clone 方法可以利用某些框架中的序列化来实现深拷贝；
+
+
+### 构建器模式（Builder Method）
+
+在软件系统中，有时候面临着“一个复杂对象”的创建工作，其通常由各个部分的子对象用一定的算法构成；由于需求的变化，这个复杂对象的**各个部分经常面临着剧烈的变化**，但是将**它们组合在一起的算法却相对稳定**。如何应对这种变化？如何提供一种“封装机制”来隔离出“复杂对象的各个部分”的变化？从而保持系统中的“稳定构建算法”不随着需求改变而改变？
+
+![](4.png)
+
+模式定义：将一个复杂对象的**构建与其表示相分离**，使得同样的**构建过程**（稳定）可以创建不同的表示（变化）。
+
+```cpp
+struct House {};
+struct HouseA : public House {};
+struct Builder {
+  Builder(std::shared_ptr<House> pHouse) : pHouse(pHouse) {}
+  ~Builder() {}
+  std::shared_ptr<House> getBuildResult() {
+    return pHouse;
+  }
+  virtual void buildStepA() = 0;
+  virtual void buildStepB() = 0;
+ private:
+  std::shared_ptr<House> pHouse;
+};
+struct HouseABuilder : public Builder {
+  HouseABuilder() : Builder(std::make_shared<HouseA>()) {}
+  void buildStepA() {
+    // 可以直接使用基类的 pHouse 指针；
+    std::cout << "[BuilderA - StepA]" << std::endl;
+  };
+  void buildStepB() {
+    std::cout << "[BuilderA - StepB]" << std::endl;
+  };
+};
+struct BuilderDirector {
+  BuilderDirector(std::shared_ptr<Builder> builder) : builder(builder) {}
+  std::shared_ptr<House> build() {
+    builder->buildStepA();
+    builder->buildStepB();
+    return builder->getBuildResult();
+  }
+ private:
+  std::shared_ptr<Builder> builder;
+};
+int main(int argc, char** argv) {
+  auto director = std::make_shared<BuilderDirector>(std::make_shared<HouseABuilder>());
+  director->build();
+  return 0;
+}
+```
+
+总结：
+* 构建器模式主要用于“分步骤构建一个复杂对象”。在这其中“分步骤”是一个稳定的算法，而复杂对象的各个部分则经常变化；
+* 变化点在哪里，封装哪里 —— 构建器模式主要在于应对“复杂对象各个部分”的频繁需求变动。其缺点在于难以应对“分步骤构建算法”的需求变动；
+* 在构建器模式中，要注意不同语言中构建器内调用虚函数的差别（C++ vs. Java）。
