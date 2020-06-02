@@ -15,20 +15,18 @@ hexo.extend.filter.register('before_post_render', data => {
   return data;
 });
 
-
 // compress;
-hexo.extend.filter.register('after_render:js', function(str, data) {
+hexo.extend.filter.register('after_render:js', (str, data) => {
   return UglifyES.minify(str).code;
 });
 
-hexo.extend.filter.register('after_render:css', function(str, data) {
+hexo.extend.filter.register('after_render:css', (str, data) => {
   return csso.minify(str).css;
 });
 
-
 // minify images;
 hexo.assetsContainer = {};
-hexo.extend.filter.register('before_post_render', function(data) {
+hexo.extend.filter.register('before_post_render', data => {
   const reg = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/i;
   const regGlobal = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/ig;
   
@@ -36,14 +34,13 @@ hexo.extend.filter.register('before_post_render', function(data) {
   if (Array.isArray(items) && items.length > 0) {
     hexo.assetsContainer[data.path] = items.map(i => {
       let result = reg.exec(i);
-      return result ? result[1] : [];
+      return result ? result[DEFAULT_INDEX + 1] : [];
     });
   }
-  
   return data;
 });
 
-hexo.extend.filter.register('before_exit', function(data) {
+hexo.extend.filter.register('before_exit', data => {
   for (let key in hexo.assetsContainer) {
     const items = hexo.assetsContainer[key];
     items.forEach(async i => {
@@ -64,7 +61,7 @@ hexo.extend.filter.register('before_exit', function(data) {
           console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['sourcePath']}`);
         }
       } catch (e) {
-        console.error(e)
+        console.error(e);
       }
     });
   }

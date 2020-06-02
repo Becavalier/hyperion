@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-05-30T07:18:02.798Z</updated>
+  <updated>2020-06-01T11:41:50.435Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>“对象创建类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/01/%E2%80%9C%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/01/%E2%80%9C%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-01T09:17:37.000Z</published>
+    <updated>2020-06-01T11:41:50.435Z</updated>
+    
+    <summary type="html">
+    
+      通过“对象创建”模式绕开 new，来避免对象创建（new）过程中所导致的紧耦合（依赖具体类），从而支持对象创建的稳定。它是接口抽象之后的第一步工作。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>“单一职责类”设计模式（C++）</title>
     <link href="https://www.yhspy.com/2020/05/29/%E2%80%9C%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/05/29/%E2%80%9C%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
     <published>2020-05-29T07:37:37.000Z</published>
-    <updated>2020-05-30T07:18:02.798Z</updated>
+    <updated>2020-05-30T07:25:01.997Z</updated>
     
     <summary type="html">
     
@@ -570,27 +591,6 @@
     
     
       <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>54th day at PayPal</title>
-    <link href="https://www.yhspy.com/2019/08/23/54th-day-at-PayPal/"/>
-    <id>https://www.yhspy.com/2019/08/23/54th-day-at-PayPal/</id>
-    <published>2019-08-23T10:25:33.000Z</published>
-    <updated>2019-09-05T16:31:34.322Z</updated>
-    
-    <summary type="html">
-    
-      Hello guys, It’s been a while since the last article. I have resigned from Alibaba at the end of June and turned to another job in which the company’s name is PayPal. There are a lot of things I want to tell you guys since this new job is different from the previous one. Time goes on so fast. It’s already eight weeks since I joined this new company. I don’t want to talk much about the business background of PayPal, but the working style and life here instead.
-    
-    </summary>
-    
-    
-    
-      <category term="日记" scheme="https://www.yhspy.com/tags/%E6%97%A5%E8%AE%B0/"/>
-    
-      <category term="English" scheme="https://www.yhspy.com/tags/English/"/>
     
   </entry>
   

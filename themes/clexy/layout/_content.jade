@@ -15,7 +15,7 @@ if is_home()
 //- articles page;
 if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
   article.full
-    h1(itemprop='headline')=page.title
+    h1(itemprop='headline')=page.title + ' (' + site.posts.length + ')'
       a(href=config.root + 'search/')
         i(class='fa fa-search')
     !=page.content
@@ -110,30 +110,10 @@ else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
     h1(itemprop='headline')=page.title
     span(class="meta")='列在此处的书/论文均已读完至少一遍，部分书籍会有相应的笔记，可以在“文章”栏目里寻找。'
-    h4='- C++'
-    a(target="_blank", href="https://book.douban.com/subject/25708312/")='《C++ Primer 中文版（第5版）》—  #C++ | 04/2020'
-    a(target="_blank", href="https://book.douban.com/subject/1842426/")='《Effective C++ 第3版》—  #C++ | 04/2020'
-    a(target="_blank", href="https://book.douban.com/subject/24738301/")='《深入理解 C++11：C++11 新特性解析与应用》—  #C++ | 05/2020'
-    a(target="_blank", href="https://book.douban.com/subject/25923597/")='《Effective Modern C++》—  #C++ | 05/2020'
-    h4='- 前端'
-    a(target="_blank", href="https://book.douban.com/subject/33477112/")='《前端架构：从入门到微前端》—  #前端 | 10/2019'
-    h4='- 后端'
-    a(target="_blank", href="https://book.douban.com/subject/30465267/")='《深入浅出 Serverless：技术原理与应用实践》—  #后端 | 07/2019'
-    h4='- 产品'
-    a(target="_blank", href="https://book.douban.com/subject/26608585/")='《重新定义团队：谷歌如何工作》—  #产品 | 01/2019'
-    a(target="_blank", href="https://book.douban.com/subject/4118751/")='《阿米巴经营》—  #产品 | 01/2019'
-    a(target="_blank", href="https://book.douban.com/subject/26270679/")='《零售的哲学》—  #产品 | 01/2019'
-    a(target="_blank", href="https://book.douban.com/subject/26541801/")='《增长黑客：创业公司的用户与收入增长秘籍》—  #产品 | 01/2019'
-    a(target="_blank", href="https://book.douban.com/subject/27132072/")='《OKR 工作法：谷歌、领英等顶级公司的高绩效秘籍》—  #产品 | 12/2018'
-    h4='-计算机'
-    a(target="_blank", href="https://book.douban.com/subject/26397183/")='《计算机是怎样跑起来的》—  #计算机 | 11/2019'
-    a(target="_blank", href="https://book.douban.com/subject/25863515/")='《图解 HTTP》—  #计算机 | 12/2018'
-    h4='- 其他'
-    a(target="_blank", href="https://book.douban.com/subject/25857941/")='《病毒来袭 - 如何应对下一场流行病的暴发》—  #生物学 | 01/2019'
-    a(target="_blank", href="https://book.douban.com/subject/26324497/")='《支付战争 - 互联网金融创世纪》—  #历史 | 07/2019'
-    a(target="_blank", href="https://book.douban.com/subject/30356081/")='《奈非文化手册》—  #创业 | 06/2019'
-    a(target="_blank", href="https://book.douban.com/subject/24335672/")='《淘宝技术这十年 - 淘宝技术大学校长解密淘宝十年》—  #创业 | 12/2018'
-
+    each val, key in site.pages.filter(i => i.page === 'readings').reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
+      h5='- ' + key
+      for book in val.sort((x, y) => y.date - x.date)
+        a(target="_blank", href=book.douban)=book.title + '—  #' + book.tags.join(', ') + ' | ' + full_date(new Date(book.date), 'MM / YYYY')
 
 else if is_page() && page.title.toLowerCase() =='search'
   script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
