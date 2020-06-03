@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-06-02T13:26:32.803Z</updated>
+  <updated>2020-06-03T12:11:04.241Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“接口隔离类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/03/%E2%80%9C%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/03/%E2%80%9C%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-03T02:33:31.000Z</published>
+    <updated>2020-06-03T12:11:04.241Z</updated>
+    
+    <summary type="html">
+    
+      在组件构建过程中，某些接口之间直接的依赖常常会带来很多问题、甚至根本无法实现。采用添加一层间接（稳定）接口，来隔离本来相互紧密关联的接口是一种常见的解决方案。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>“对象性能类”设计模式（C++）</title>
@@ -568,25 +589,6 @@
     <summary type="html">
     
       RVO 即 “Return Value Optimization”，是一种编译器优化技术，通过该技术编译器可以减少函数返回时生成临时值值（对象）的个数，从某种程度上可以提高程序的运行效率，对需要分配大量内存的类对象其值复制过程十分友好。NRVO 全称为 “Named Return Value Optimization”，该优化的大致流程与 RVO 类似。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++11 好用的新语法特性</title>
-    <link href="https://www.yhspy.com/2019/08/31/C-11-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%96%B0%E8%AF%AD%E6%B3%95%E7%89%B9%E6%80%A7/"/>
-    <id>https://www.yhspy.com/2019/08/31/C-11-%E5%A5%BD%E7%94%A8%E7%9A%84%E6%96%B0%E8%AF%AD%E6%B3%95%E7%89%B9%E6%80%A7/</id>
-    <published>2019-08-31T08:17:08.000Z</published>
-    <updated>2019-09-01T09:32:49.435Z</updated>
-    
-    <summary type="html">
-    
-      C++ 语言自1983年发展至今已经过去了36年之久。从 C++98 标准到2017年的第五个标准也就是 C++17，C++ 语言的发展逐渐“脱离”了人们能够熟练驾驭它的速度。不仅如此，由于 C++ 语言在它设计之初，就秉承着这样一个设计理念：即要成为一种“能够直接和广泛地支持多种程序设计风格的语言，比如函数式编程、OOP 范式等”，并且在此之上还需要同时尽可能地与 C 语言的语法特性进行兼容。由于这些种种约束，导致 C++ 语言体系变得较为复杂和混乱，当然上述提到的只是造成这种问题的一部分原因。虽然 C++ 标准中有很多不是那么容易理解且学习路线陡峭的语法特性，但相对的，也有很多十分好用且易学的语法特性。今天，我们就来介绍几个在 C++11 标准中新增的，简单易用的语法特性。
     
     </summary>
     
