@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-06-03T12:11:04.241Z</updated>
+  <updated>2020-06-04T07:37:49.596Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“状态变化类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/04/%E2%80%9C%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/04/%E2%80%9C%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-04T00:43:45.000Z</published>
+    <updated>2020-06-04T07:37:49.596Z</updated>
+    
+    <summary type="html">
+    
+      在组件构建过程中，某些对象的状态经常面临变化，如何对这些变化进行有效的管理？同时又维持高层模块的稳定？“状态变化”模式为这一问题提供了一种解决方案。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>“接口隔离类”设计模式（C++）</title>
@@ -576,25 +597,6 @@
     
     
       <category term="JavaScript" scheme="https://www.yhspy.com/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++ 编译器优化之 RVO 与 NRVO</title>
-    <link href="https://www.yhspy.com/2019/09/01/C-%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E4%B9%8B-RVO-%E4%B8%8E-NRVO/"/>
-    <id>https://www.yhspy.com/2019/09/01/C-%E7%BC%96%E8%AF%91%E5%99%A8%E4%BC%98%E5%8C%96%E4%B9%8B-RVO-%E4%B8%8E-NRVO/</id>
-    <published>2019-09-01T09:32:04.000Z</published>
-    <updated>2020-04-14T00:41:09.371Z</updated>
-    
-    <summary type="html">
-    
-      RVO 即 “Return Value Optimization”，是一种编译器优化技术，通过该技术编译器可以减少函数返回时生成临时值值（对象）的个数，从某种程度上可以提高程序的运行效率，对需要分配大量内存的类对象其值复制过程十分友好。NRVO 全称为 “Named Return Value Optimization”，该优化的大致流程与 RVO 类似。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
     
   </entry>
   
