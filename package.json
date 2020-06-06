@@ -15,7 +15,7 @@
     "nginx-bp": "nginx -c $(pwd)/nginx.conf"
   },
   "dependencies": {
-    "apollo-server-express": "^2.13.0",
+    "apollo-server-express": "^2.14.2",
     "basic-auth": "^2.0.1",
     "compression": "^1.7.3",
     "dayjs": "^1.8.26",
