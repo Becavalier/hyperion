@@ -1111,7 +1111,7 @@ self.__precacheManifest = [
   },
   {
     "url": "author/index.html",
-    "revision": "de399ef3160ef8ce6db697abfddeb38f"
+    "revision": "12eda5fa32ed41cc969d9ece113c6e83"
   },
   {
     "url": "books/index.html",
@@ -1271,7 +1271,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "0db57d1f6e9d92b2f915ced210e8e1cb"
+    "revision": "4cf694d9b966eba1f45da96fe209e213"
   },
   {
     "url": "resume/css/font-awesome.min.css",
@@ -1403,7 +1403,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "f2aa11398f3b57501570e426dae79af0"
+    "revision": "aecf8c6ce974c5f51793530a9fedb747"
   },
   {
     "url": "tags/Java/index.html",
