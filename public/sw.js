@@ -707,7 +707,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/28/“组件协作类”设计模式（C-）/index.html",
-    "revision": "b718807494f646b36d658ada7f17313f"
+    "revision": "ed4bb7c90023b12d04b8679b3931a2c7"
   },
   {
     "url": "2020/05/29/“单一职责类”设计模式（C-）/index.html",
@@ -715,7 +715,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/01/“对象创建类”设计模式（C-）/index.html",
-    "revision": "3972636bb66a98caf2086e996033f5e3"
+    "revision": "c5048455297b641ae91111e9ca7a823b"
   },
   {
     "url": "2020/06/02/“对象性能类”设计模式（C-）/index.html",
@@ -1130,30 +1130,6 @@ self.__precacheManifest = [
     "revision": "97320d878896239c3bc26e721d3657bc"
   },
   {
-    "url": "me-en/css/font-awesome.min.css",
-    "revision": "bb53ad7bffecc0014d64553e96501dce"
-  },
-  {
-    "url": "me-en/css/style.min.css",
-    "revision": "e604fdf6f2206918ea2cd304baa80507"
-  },
-  {
-    "url": "me-en/index.html",
-    "revision": "8bcf91aa14f2fc9213c22cc01f92d461"
-  },
-  {
-    "url": "me/css/font-awesome.min.css",
-    "revision": "bb53ad7bffecc0014d64553e96501dce"
-  },
-  {
-    "url": "me/css/style.min.css",
-    "revision": "e604fdf6f2206918ea2cd304baa80507"
-  },
-  {
-    "url": "me/index.html",
-    "revision": "aa331d7488803bfd88380c305d177b16"
-  },
-  {
     "url": "page/10/index.html",
     "revision": "97320d878896239c3bc26e721d3657bc"
   },
@@ -1295,7 +1271,23 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "6327e4f9d2be467a91df9149234195eb"
+    "revision": "0db57d1f6e9d92b2f915ced210e8e1cb"
+  },
+  {
+    "url": "resume/css/font-awesome.min.css",
+    "revision": "4e8a32562b8d4c0aad9e81b140ae5d99"
+  },
+  {
+    "url": "resume/css/style.min.css",
+    "revision": "e604fdf6f2206918ea2cd304baa80507"
+  },
+  {
+    "url": "resume/me-en/index.html",
+    "revision": "3fb83f682f806f0149da2b8a311aabe6"
+  },
+  {
+    "url": "resume/me/index.html",
+    "revision": "9f8ab148571c7340606271cddc2e92b9"
   },
   {
     "url": "scripts/book.js",
@@ -1411,7 +1403,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "92ac849d4556f56b95104c48862d83e5"
+    "revision": "f2aa11398f3b57501570e426dae79af0"
   },
   {
     "url": "tags/Java/index.html",

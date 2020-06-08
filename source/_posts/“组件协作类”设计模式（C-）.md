@@ -68,17 +68,17 @@ class StrategyA : public Strategy {
   }
 };
 class Application {
-  Strategy* strategy;
+  std::shared_ptr<Strategy> strategy;
  public:
-  Application() : strategy(new StrategyA()) {}  // 可以使用工厂模式进行改进；
-  ~Application() { delete strategy; }
+  Application(std::shared_ptr<Strategy> strategy) : strategy(strategy) {}
   void run() {
     std::cout << "[User] Application is running..." << std::endl;
     strategy->strategy();
   }
 };
 int main(int argc, char **argv) {
-  auto app = new Application();
+  auto strategy = std::make_shared<StrategyA>();  // 可以使用工厂模式进行改进；
+  auto app = new Application(strategy);
   app->run();
   delete app;
   return 0;
