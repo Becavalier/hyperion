@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-06-04T07:37:49.596Z</updated>
+  <updated>2020-06-08T07:53:56.879Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>“领域规则类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/08/%E2%80%9C%E9%A2%86%E5%9F%9F%E8%A7%84%E5%88%99%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/08/%E2%80%9C%E9%A2%86%E5%9F%9F%E8%A7%84%E5%88%99%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-08T06:57:27.000Z</published>
+    <updated>2020-06-08T07:53:56.879Z</updated>
+    
+    <summary type="html">
+    
+      在特定领域中，某些变化虽然频繁，但可以抽象为某种规则。这时候，结合特定领域，将问题抽象为语法规则，从而给出在该领域下的一般性解决方案。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“行为变化类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/08/%E2%80%9C%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/08/%E2%80%9C%E8%A1%8C%E4%B8%BA%E5%8F%98%E5%8C%96%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-08T04:17:52.000Z</published>
+    <updated>2020-06-08T06:52:46.911Z</updated>
+    
+    <summary type="html">
+    
+      在组件的构建过程中，组件行为的变化经常导致组件本身剧烈的变化。“行为变化”模式将组件的行为和组件本身进行解耦，从而支持组件行为的变化，实现两者之间的松耦合。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>“数据结构类”设计模式（C++）</title>
+    <link href="https://www.yhspy.com/2020/06/07/%E2%80%9C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/07/%E2%80%9C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
+    <published>2020-06-07T15:53:32.000Z</published>
+    <updated>2020-06-08T04:52:27.882Z</updated>
+    
+    <summary type="html">
+    
+      常常有一些组件在内部具有特定的数据结构，如果让客户程序依赖这些特定的数据结构，将极大地破坏组件的复用。这时候，将这些特定数据结构封装在内部，在外部提供统一的接口，来实现与特定数据结构无关的访问，是一种行之有效的解决方案。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>“状态变化类”设计模式（C++）</title>
@@ -42,7 +105,7 @@
     <link href="https://www.yhspy.com/2020/06/03/%E2%80%9C%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/06/03/%E2%80%9C%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
     <published>2020-06-03T02:33:31.000Z</published>
-    <updated>2020-06-03T12:11:04.241Z</updated>
+    <updated>2020-06-07T16:00:11.898Z</updated>
     
     <summary type="html">
     
@@ -540,63 +603,6 @@
     
     
       <category term="SICP" scheme="https://www.yhspy.com/tags/SICP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>English key Points Conclusion .1</title>
-    <link href="https://www.yhspy.com/2019/09/16/English-key-Points-Conclusion-1/"/>
-    <id>https://www.yhspy.com/2019/09/16/English-key-Points-Conclusion-1/</id>
-    <published>2019-09-16T02:02:52.000Z</published>
-    <updated>2019-10-20T03:59:05.376Z</updated>
-    
-    <summary type="html">
-    
-      English knowledge series, key points conclusion .1
-    
-    </summary>
-    
-    
-    
-      <category term="English" scheme="https://www.yhspy.com/tags/English/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Privacy Policy for TOVD</title>
-    <link href="https://www.yhspy.com/2019/09/13/Privacy-Policy-for-TOVD/"/>
-    <id>https://www.yhspy.com/2019/09/13/Privacy-Policy-for-TOVD/</id>
-    <published>2019-09-13T14:05:42.000Z</published>
-    <updated>2019-09-13T14:18:42.005Z</updated>
-    
-    <summary type="html">
-    
-      This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for TOVD is created with the help of the Free Privacy Policy Generator.
-    
-    </summary>
-    
-    
-    
-      <category term="Others" scheme="https://www.yhspy.com/tags/Others/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript 杂记：全等、indexOf 语义与 Membrane</title>
-    <link href="https://www.yhspy.com/2019/09/09/JavaScript-%E6%9D%82%E8%AE%B0%EF%BC%9A%E5%85%A8%E7%AD%89%E3%80%81indexOf-%E8%AF%AD%E4%B9%89%E4%B8%8E-Membrane/"/>
-    <id>https://www.yhspy.com/2019/09/09/JavaScript-%E6%9D%82%E8%AE%B0%EF%BC%9A%E5%85%A8%E7%AD%89%E3%80%81indexOf-%E8%AF%AD%E4%B9%89%E4%B8%8E-Membrane/</id>
-    <published>2019-09-09T12:06:50.000Z</published>
-    <updated>2019-10-05T14:20:25.181Z</updated>
-    
-    <summary type="html">
-    
-      专门写篇文章来记录最近一段时间遇到的几个小问题。本文主要介绍 JavaScript 中全等（“===”）运算符和 “Array.prototype.indexOf” 方法在 ECMA262 标准中的语义以及 JavaScript Membrane 的定义。其中 “JavaScript Membrane” 是 TC39 官方给出的对 ES6 中新增的 Proxy 特性正确使用场景的代码描述。
-    
-    </summary>
-    
-    
-    
-      <category term="JavaScript" scheme="https://www.yhspy.com/tags/JavaScript/"/>
     
   </entry>
   
