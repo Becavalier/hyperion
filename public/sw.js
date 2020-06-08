@@ -739,7 +739,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/08/“领域规则类”设计模式（C-）/index.html",
-    "revision": "d2cbfb85bf8f4852d54f911402eae4f2"
+    "revision": "0336933d059a2850486e69d28e324ec6"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1271,7 +1271,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "4cf694d9b966eba1f45da96fe209e213"
+    "revision": "ca4c999d39ec4a814cac39ba97fb4640"
   },
   {
     "url": "resume/css/font-awesome.min.css",
@@ -1403,7 +1403,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "aecf8c6ce974c5f51793530a9fedb747"
+    "revision": "79b6d16242b288d8172396dac30659f6"
   },
   {
     "url": "tags/Java/index.html",
