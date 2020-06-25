@@ -129,7 +129,7 @@ void foo(std::vector<int> v) {
   for (const auto& i : v) { std::cout << i << std::endl; }
 }
 template<typename ...Arg>
-void forwardFunc(Arg ...args) { foo(std::forward<Arg...>(args...)); }
+void forwardFunc(Arg&& ...args) { foo(std::forward<Arg...>(args...)); }
 int main(int argc, char** argv) {
   auto p = {1, 2, 3};
   forwardFunc(p);

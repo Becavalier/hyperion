@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>链接、装载与库相关记录（二） | 曜彤.手记</title><meta name="description" content="本文承接上文“链接、装载与库相关记录（一）”。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="ae10e62f1bc7194b5a33b0f4dc668773" class="full"><h1 itemprop="headline" class="post-heading">链接、装载与库相关记录（二）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-06-21T14:00:50.000Z"> 2020 / 06 / 21, 22:00:50</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><p>本文承接上文“链接、装载与库相关记录（一）”。</p>
+<h3 id="第七章：动态链接"><a href="#第七章：动态链接" class="headerlink" title="第七章：动态链接"></a>第七章：动态链接</h3><ol start="75">
+<li>（Page：204）在静态链接情况下，可执行文件中包含着需要用到模块对应的目标文件副本。因此，<strong>多个可执行文件之间可能会有多份对同一个模块目标文件中段的副本，这在一定程度上浪费了磁盘和内存空间</strong>。同时静态链接对程序依赖模块的更新也不友好。<strong>每次依赖模块有更新时，都需要重新链接、发布整个程序</strong>。当依赖的模块越多时，程序的更新频率也会越快。</li>
+<li>（Page：205）当同一块物理内存被频繁访问时，该部分数据将可能被移至 CPU 缓存，以提高访问效率。</li>
+<li>（Page：206）Linux 下的动态链接文件被称为动态共享对象（DSO），一般以 “.so” 为扩展名。Windows 下通常以 “.dll” 为扩展名。</li>
+<li>（Page：207）当使用了动态链接方式的程序运行时，系统的<strong>动态链接器（Dynamic Loader）</strong>会将程序所需要的所有动态链接库全部装载到进程的地址空间，并将程序中所有未决议的符号绑定到相应的动态链接库中，并进行符号重定位工作。</li>
+<li>（Page：207）动态链接相较于静态链接，会导致程序在性能上的一些损失。但可以通过应用诸如 PLT 延迟绑定等方式来进行优化。据估算，动态链接相较于静态链接，性能损失大约在 5% 以下。</li>
+<li>（Page：209）如果某个函数是一个定义于其他静态目标中的函数，则链接器将会按照静态链接的规则，将目标文件中的符号地址进行引用重定位；而若函数是一个定义于其他动态共享对象中的函数，那么链接器就会将这个符号的引用标记为一个动态链接符号，不对它进行地址重定位，而是<strong>把这个过程留到装载时进行</strong>。</li>
+<li>（Page：210）使用了动态链接的应用程序其入口为<strong>加载到其 VAS</strong> 中的操作系统<strong>动态链接器</strong>。<strong>由它完成对共享库的加载和处理，然后将控制权交还给程序继续执行</strong>。</li>
+<li>（Page：211）共享对象的最终装载地址在编译时是不确定的（<strong>程序头中第一个 LOAD 段的 VirtAddr 地址为 0x0</strong>），而是在装载时，装载器根据当前地址空间的空闲情况，动态分配一块足够大小的虚拟地址空间给相应的共享对象。</li>
+<li>（Page：213）默认情况下单纯的“装载时重定位（基址重置）”无法解决共享库指令部分在多个进程间的共享，是由于装载时重定位需要修改指令，<strong>因此没法做到同一份指令被多个进程共享</strong>。</li>
+</ol>
+<ul>
+<li><strong>-fPIC</strong>：地址无关代码。可以把共享库中<strong>那些需要修改的代码部分分离出来，跟数据部分放在一起</strong>，这样指令部分就可以保持不变，而数据部分可以在每个进程中拥有一个副本；</li>
+<li><strong>-fpic</strong>：功能与 -fPIC 类似，但该选项<strong>在某些平台上会有一些限制</strong>，比如全局符号的数量或者代码的长度等。大部分情况使用 -fPIC；</li>
+</ul>
+<ol start="84">
+<li>（Page：214）共享模块（.so）内的四种基本地址引用方式：</li>
+</ol>
+<ul>
+<li>模块内部的函数调用、跳转等：不考虑对象全局符号介入的话，不需要重定位；</li>
+<li>模块内部的数据访问，如模块内的全局变量、静态变量：相对寻址，不需要重定位；</li>
+<li>模块外部的函数调用、跳转等：利用 GOT；</li>
+<li>模块外部的数据访问，如其他模块中定义的全局变量：利用 GOT；</li>
+</ul>
+<ol start="85">
+<li>（Page：217）GOT 全局偏移表中存放了<strong>指向外部变量的指针数组</strong>。整个 GOT 被初始化在 .data 数据段中，因此可以在模块装载时被修改，且每个进程都可以有独立的副本，互不影响。</li>
+<li>（Page：218）查看 ELF 可执行文件/共享库的 GOT 内容：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">objdump -R <span class="token operator">&lt;</span>file<span class="token operator">></span>
+readelf -r <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="87">
+<li>（Page：221）ELF 共享库在编译时，会把<strong>对外部符号的引用以及共享库使用到的全局变量</strong>通过 GOT 来进行动态重定向处理。而且该类型的共享库必须以 PIC 的形式进行编译。</li>
+<li>（Page：223）使用 PLT 来实现<strong>延迟绑定</strong>，即：当函数第一次被用到时才进行绑定（进行符号查找、重定位等），如果没有用到则不进行绑定。</li>
+<li>（Page：224）.got 用来保存全局变量引用的地址；.got.plt 用来保存函数引用的地址。.got.plt 表的前三项是有特殊意义的：</li>
+</ol>
+<ul>
+<li>第一项保存的是 .dynamic 段的地址，这个段描述了本模块动态链接相关的信息；</li>
+<li>第二项是本模块的 ID；</li>
+<li>第三项是函数 _dl_runtime_resolve() 的地址；</li>
+</ul>
+<p>默认情况下，.got.plt 中<strong>从第四项开始</strong>的表项最初存放的是对应该符号在 .plt 中的第二条 “push n” 指令的地址，此处的 n 为该符号在 .rel.plt 重定位表中的索引。当程序引用符号时，该处指令会将符号索引以及模块 ID 压入栈中，然后调用 _dl_runtime_resolve() 方法来解析符号地址。解析结束后，对应 .got.plt 的表项的值会变成该符号的地址，并且当符号再次通过 .plt 解析时会直接引用到该 .got.plt 中的地址，而不需要再次解析。</p>
+<p><img src="2.png" alt=""></p>
+<ol start="90">
+<li>（Page：227）在动态链接的 <strong>ELF 可执行文件</strong>中，有一个专门的 “<strong>.interp</strong>” 段用来存放需要的动态链接器的路径。</li>
+<li>（Page：228）“.dynamic” 段中保存了动态链接器所需要的基本信息。</li>
+<li>（Page：228）查看 .dynamic 段的内容：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">readelf -d <span class="token operator">&lt;</span>file<span class="token operator">></span>
+ldd <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 ELF 可执行程序/共享库的依赖树； </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="1.png" alt=""></p>
+<ol start="93">
+<li>（Page：230）“.dynsym” 为动态符号表，<strong>表示了动态链接模块之间的符号导入导出关系</strong>，只保存与动态链接相关的符号；而 “symtab” 中一般会保存所有的符号。为了辅助 “.dynsym”，一般还会设置 “.dynstr” 动态符号字符串表以保存符号名对应的字符串。而为了加快符号在程序运行时的查找过程，一般还会设有符号哈希表（.hash）。</li>
+<li>（Page：231）使用了 PIC 模式的共享对象也需要进行符号重定位，即通过动态重定位表 “.rel.dyn” 与 “.rel.plt”。<strong>前者是对数据引用的修正，它修正的位置位于 “.got” 以及数据段；而后者是对函数引用的修正，修正位置位于 “.got.plt”</strong>。</li>
+</ol>
+<ul>
+<li>.rel.dyn -&gt; .got/.data；</li>
+<li>.rel.plt -&gt; .got.plt；</li>
+</ul>
+<ol start="95">
+<li>（Page：234）应用程序的进程堆栈中还保存了<strong>动态链接器需要的一些辅助信息数组</strong>（Elf32_auxv_t）。</li>
+<li>（Page：237）动态链接器的自举：动态链接器本身不可以依赖于其他任何共享对象，且其自身所需要的全局和静态变量的重定位工作由它本身完成。</li>
+<li>（Page：238）在动态链接器完成自举后，其会将可执行文件与链接器本身的符号表都合并到一个符号表中，即“<strong>全局符号表</strong>”。随后链接器会通过可执行文件的 .dynamic 段中的 DT_NEEDED 入口来递归加载（<strong>图的广度优先遍历</strong>）所有依赖的共享库，并将其符号表合并至全局符号表中。</li>
+<li>（Page：241）全局符号介入（Global Symbol Interpose）：<strong>当一个符号被加入到全局符号表时，如果相同的符号名已经存在，则后加入的符号被忽略</strong>（此为动态链接器的行为）。</li>
+<li>（Page：243）Linux 内核在执行 execve() 系统调用时并不关心 ELF 文件是否是可执行的（e_type），它只是简单按照程序头表里的描述对文件进行装载然后把控制权交给 ELF 的入口（有 “.interp” 段就是动态链接器的 e_entry，否则是 ELF 文件的 e_entry）。因此共享库其实与可执行文件区别不大，甚至也可以被执行。</li>
+<li>（Page：245）常用的动态库操作系统调用：<strong>dlopen</strong>（打开）、<strong>dlsym</strong>（查找符号）、<strong>dlerror</strong>（错误处理）、<strong>dlclose</strong>（关闭）；</li>
+</ol>
+<h3 id="第八章：Linux-共享库的组织"><a href="#第八章：Linux-共享库的组织" class="headerlink" title="第八章：Linux 共享库的组织"></a>第八章：Linux 共享库的组织</h3><ol start="101">
+<li>（Page：253）ABI 对于不同的语言来说，主要包括一些诸如函数调用的堆栈结构、符号命名、参数规则、数据结构的内存分布等。</li>
+<li>（Page：255）Linux 下的共享库命名规范：<strong>libname.so.x.y.z</strong>；其中，“x” 表示主版本号，重大升级；“y” 表示次版本号，增量升级；“z” 表示发布版本号，错误修复和性能改进。一般只有主版本号不同才可能会产生向下兼容的问题。名称中的 “name” 为共享库的<strong>链接名</strong>，可以在编译时使用：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># -lname 指定链接时需要查找库 libname.so 的最新版；</span>
+clang++ main.cc -o main.so -fPIC -shared -lname -L. <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="103">
+<li>（Page：257）Linux 下使用 <strong>SO-NAME 机制</strong>来管理共享库的版本。如一个共享库版本为 libfoo.so.2.6.1，则其 SO-NAME 为 libfoo.so.2，操作系统并根据该名称产生一个<strong>指向最新版本（次版本号和发布版本不同）共享库的软链接</strong>。同样的，为了保持兼容性，在输出 ELF 时也会将 .dynamic 中 DT_NEEDED 类型保存为所依赖库的 SO-NAME。</li>
+<li>（Page：258）Linux 下可以使用 <strong>ldconfig 来更新共享库 SO-NAME 的软连接</strong>。</li>
+<li>（Page：259）Solaris 下的符号版本机制：使用符号版本脚本文件来控制共享库中的符号版本。</li>
+<li>（Page：264）FHS（File Hierarchy Standard）标准，该标准规定了一个系统中的系统文件应该如何存放，包括各个目录的结构、组织和作用。目前包括 Linux 在内的大多数开源操作系统都遵循该标准。</li>
+<li>（Page：264）GUN 标准推荐<strong>第三方程序应该默认将库安装到 “/usr/local/lib” 下</strong>。“/lib” 与 “/usr/lib” 下是一些很常用的、成熟的，一般是系统本身需要的库；而 “/usr/local/lib” 是非系统所需的第三方程序的共享库。</li>
+<li>（Page：265）如果 DT_NEEDED 中保存的是绝对路径，则动态链接器会搜索以下位置来查找目标动态库：</li>
+</ol>
+<ul>
+<li>/lib；</li>
+<li>/usr/lib；</li>
+<li>/etc/ld.so.conf 中指定的目录；</li>
+</ul>
+<p>ldconfig 会将各个共享库的 SO-NAME 与对应的共享库文件位置缓存在 <strong>/etc/ld.so.cache</strong> 文件中，以加快动态链接器的查找速度。</p>
+<ol start="109">
+<li>（Page：266）动态链接器的共享对象（目标文件）查找顺序：</li>
+</ol>
+<ul>
+<li>由环境变量 <strong>LD_LIBRARY_PATH</strong> 指定的路径（一般可用于调试）；</li>
+<li>由路径缓存文件 /etc/ld.so.cache 指定的路径；</li>
+<li>/etc/ld.so.conf 中指定的目录，以及 /usr/lib 和 /lib；</li>
+</ul>
+<ol start="110">
+<li>（Page：267）可以利用 <strong>LD_DEBUG=all</strong> 环境变量来打开动态链接器的调试功能，以查看完整的动态链接过程。该环境变量的可选值：</li>
+</ol>
+<ul>
+<li><strong>bindings</strong>：显式动态链接的符号绑定过程；</li>
+<li><strong>libs</strong>：显式共享库的查找过程；</li>
+<li><strong>versions</strong>：显式符号的版本依赖关系；</li>
+<li><strong>reloc</strong>：显式重定位过程；</li>
+<li><strong>symbols</strong>：显式符号表查找过程；</li>
+<li><strong>statistics</strong>：显式动态链接过程中的各种统计信息；</li>
+<li><strong>all</strong>：显式以上所有信息；</li>
+<li><strong>help</strong>：显式上述可选值的帮助信息；</li>
+</ul>
+<p><img src="3.png" alt=""></p>
+<ol start="111">
+<li>（Page：268）为生成的共享库<strong>指定 SO-NAME</strong>（-Xlinker 只能传递一对参数；-Wl 可以同时传递多个参数）：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">clang lib.c -o lib.so -shared -fPIC -Wl,-soname,lib.so.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="112">
+<li>（Page：269）清除共享库/可执行文件中的所有符号和调试信息：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">strip <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="113">
+<li>（Page：271）为共享库指定构造/析构函数（<strong>具体执行实际依实现而定，不保证可以使用标准库中的对象</strong>）：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span>constructor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span>destructor<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>设定优先级（构造函数数字小的将在数字大的之前运行，析构函数与之相反）：</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">destructor</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="114">
+<li>（Page：271）<strong>共享库脚本</strong>：共享库本身是一个符合特定规则的<strong>脚本文件</strong>，即：可以把几个现有的共享库通过一定方式组合起来，从用户角度看就是一个新的共享库。比如 libC.so 的内容可以为以下的文本内容：</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">GROUP( libA.so libB.so )<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="第九章：Windows-下的动态链接"><a href="#第九章：Windows-下的动态链接" class="headerlink" title="第九章：Windows 下的动态链接"></a>第九章：Windows 下的动态链接</h3><p>（略）</p>
+<h3 id="第十章：内存"><a href="#第十章：内存" class="headerlink" title="第十章：内存"></a>第十章：内存</h3><ol start="115">
+<li>（Page：308）大多数操作系统都会将内存空间中的一部分（<strong>高地址</strong>）挪给内核使用，而应用程序则无法直接访问这一段内存，这一部分被称为内核空间。在剩下的用户空间中，也有如下一些特殊区域：</li>
+</ol>
+<ul>
+<li><strong>栈</strong>：维护函数调用的上下文，通常在用户空间的最高地址处分配；</li>
+<li><strong>堆</strong>：用来容纳应用程序动态分配的内存区域，位于栈下方的相对低地址处；</li>
+<li><strong>可执行文件映像</strong>：存放可执行文件在内存里的映像；</li>
+<li><strong>保留区</strong>：即对内存中受保护内存区域的总称，如极小的地址段；</li>
+</ul>
+<ol start="116">
+<li>（Page：310）在计算机系统中，栈总是向下增长的。在 i386 下，栈顶由名为 <strong>ESP</strong>（X86_64 下为 <strong>RSP</strong> 寄存器）的寄存器进行定位。压栈操作使栈顶地址减小，弹出使栈顶地址增大。根据栈的增长方向，栈底实际位于高地址处。</li>
+<li>（Page：310）栈保存了一个函数调用所需要的维护信息，即：<strong>堆栈帧/活动记录</strong>。其中包括如下几方面内容：</li>
+</ol>
+<ul>
+<li><strong>相关参数</strong>：函数的返回地址和参数；</li>
+<li><strong>临时变量</strong>：包括函数的非静态局部变量以及编译器自动生成的其他临时变量；</li>
+<li><strong>保存的上下文</strong>：包括在函数调用前后需要保持不变的寄存器；</li>
+</ul>
+<ol start="118">
+<li>（Page：311）在 i386 中，一个函数的活动记录用 EBP 与 ESP 这两个寄存器划定范围。ESP 指向栈的顶部，即活动记录顶部。而 EBP 指向了函数活动记录中存放调用函数之 EBP 值的位置，EBP 又被称为“<strong>帧指针</strong>”。</li>
+</ol>
+<p><img src="4.png" alt=""></p>
+<ol start="119">
+<li>（Page：311）i386 下的函数调用规则：</li>
+</ol>
+<ul>
+<li>把所有或一部分参数压入栈中，如果有其他参数没有入栈，则使用某些特定的寄存器传递；</li>
+<li>把当前指令的下一条指令（函数返回地址）的地址压入栈中；</li>
+<li>跳转到函数体执行；</li>
+</ul>
+<ol start="120">
+<li>（Page：312）尽量不要使用 GCC 的 “<strong>-fomit-frame-pointer</strong>” 参数。该参数会取消帧指针，而是通过 ESP 直接计算帧上变量的位置。其好处是可以多出一个 EBP 寄存器，坏处则是会使帧上寻址速度变慢等。</li>
+<li>（Page：316）函数的调用方（操作系统：处理参数）和被调用方（函数本身：在函数体中拿出并使用参数）。</li>
+<li>（Page：316）一个 Calling Convention 通常会规定如下几方面内容：</li>
+</ol>
+<ul>
+<li>函数参数的传递顺序和方式（使用栈/寄存器传参？）；</li>
+<li>栈的维护方式（由哪一方来清理栈？）；</li>
+<li>Name-Mangling 的策略（为了在链接时对不同的调用惯例进行区分）；</li>
+</ul>
+<ol start="123">
+<li>（Page：317）<strong>cdecl（C declaration）调用惯例</strong>：即 C 语言<strong>默认</strong>在 8086/IA32 下使用的调用惯例。它固定<strong>参数传递从右至左</strong>的顺序压入栈中；<strong>由函数调用方从栈中取出参数</strong>；<strong>名字修饰会在函数名称前加 “_”</strong>（目前 GCC/Clang 已经默认不会为 C 的符号添加 Leading-Underscore）。</li>
+<li>（Page：318）在进入函数执行之前，需要先向栈中压入函数需要的参数，以及函数的返回地址。进入函数体后，则会保存旧 EBP 的值，为局部变量在栈上分配空间等。</li>
+<li>（Page：321）i386 下其他常见的调用惯例：stdcall、fastcall、pascal。</li>
+</ol>
+<p><img src="5.png" alt=""></p>
+<ol start="126">
+<li>（Page：321）C++ thiscall 调用惯例：专用于类成员函数的调用。</li>
+</ol>
+<blockquote>
+<p>在调用 C++ 非静态成员函数时使用此约定。基于所使用的编译器和函数是否使用可变参数，有两个主流版本的 thiscall。 对于 GCC 编译器，thiscall 几乎与 cdecl 等同：调用者清理堆栈，参数从右到左传递。差别在于 this 指针，thiscall 会在最后把 this 指针推入栈中，即相当于在函数原型中是隐式的左数第一个参数。</p>
+</blockquote>
+<blockquote>
+<p>在微软 Visual C++ 编译器中，this 指针通过 ECX 寄存器传递，其余同cdecl 约定。当函数使用可变参数，此时调用者负责清理堆栈。thiscall 约定只在微软 Visual C++ 2005 及其之后的版本被显式指定。其他编译器中，thiscall 并不是一个关键字。</p>
+</blockquote>
+<ol start="127">
+<li>（Page：327）对于函数返回值，一般 4 字节以内用 EAX 返回，5-8 字节用 EAX+EDX，即 EAX 存储低四字节，EDX 存储高四字节的方式。对于更大尺寸的对象，C 语言通常会使用一个临时的栈上对象作为中转，因此性能会有所损失（i386）。</li>
+<li>（Page：328）为什么需要堆？因为栈上的数据在函数返回时就会被释放掉，所以无法将数据传递至函数外部。而<strong>全局变量（以及静态变量被存放在 .data 段中，直接映射到进程的 VAS 中）</strong>没有办法动态地生成，只能在编译时定义，且缺乏表现力。</li>
+<li>（Page：329）进程的堆空间一般由程序的运行库进行管理，其动态申请的过程<strong>也并非是直接系统调用的方式，因为这种方式的性能开销过大</strong>。而一般情况下是程序向操作系统申请一块大小适当的堆空间，然后由程序自己（<strong>运行库</strong>）管理这块空间。</li>
+<li>（Page：330）两个用来分配堆空间的系统调用：brk() 与 mmap()。</li>
+</ol>
+<ul>
+<li><strong>brk()</strong>：主要通过设置进程数据段（.data + .bss）的结束地址，即把数据段的结束地址向高地址移动，来扩大空间。将这部分扩大出来的空间来作为堆空间使用。</li>
+<li><strong>mmap()</strong>：向操作系统申请一段虚拟地址空间，这部分空间可以映射到某个文件，也可以不映射而成为<strong>匿名空间</strong>，以作堆空间之用。</li>
+</ul>
+<ol start="131">
+<li>（Page：330）Glibc 中的 malloc 函数是这样处理用户的空间请求的：对于小于 128KB 的请求会<strong>在现有的堆空间中，通过堆分配算法</strong>为它分配一块空间并返回；对于大于 128KB 的请求会<strong>通过 mmap() 系统调用分配一块匿名空间</strong>，然后在这个匿名空间中为用户分配空间。</li>
+<li>（Page：338）常用的堆分配算法：</li>
+</ol>
+<ul>
+<li><strong>空闲链表</strong>：把堆中各个空闲的块按照<strong>链表</strong>的方式连接起来，当用户请求一块空间时，可以遍历整个链表，直到找到大小合适的块并将它拆分；当用户释放空间时将它合并到空闲链表中；</li>
+<li><strong>位图</strong>：将整个堆划分为大量的块，每个块大小相同。用户请求内存时，总是分配整数个块给用户，第一个块称为已分配区域的头，其余称为已分配区域的主体。可以用一个整数数组来记录块的使用情况，用两位数表示一个块的状态（头\主体\空闲）。</li>
+<li><strong>对象池</strong>：如果每一次分配的空间大小都一样，那么就可以按照这个每次请求分配的大小作为一个单位，把整个堆空间划分为大量的小块，每次请求的时候只需要找到一个小块就可以了。</li>
+</ul>
+<h3 id="第十一章：运行库"><a href="#第十一章：运行库" class="headerlink" title="第十一章：运行库"></a>第十一章：运行库</h3><ol start="133">
+<li>（Page：342）典型的程序运行步骤：</li>
+</ol>
+<ul>
+<li>操作系统创建进程后，把控制权交到了程序入口，<strong>该入口通常为运行库中的某个入口函数</strong>；</li>
+<li>入口函数对运行库和程序运行环境进行初始化，包括堆、IO、线程、全局变量构造等；</li>
+<li>入口函数在完成初始化后，调用 main 函数，正式开始执行程序主体部分；</li>
+<li>main 函数执行完毕后，返回到入口函数，入口函数进行清理工作，包括全局变量析构、堆销毁、关闭 IO 等，然后进行系统调用结束进程（调用 std::quick_exit 则不会进行清理工作，而是直接结束进程）；</li>
+</ul>
+<ol start="134">
+<li>（Page：343）Glibc 的程序入口 _start 由汇编实现，并且和平台相关。在调用 _start 之前，装载器会把用户的参数和环境变量压入栈中，栈顶元素为 argc，接下来是 argv 和环境变量的数组。以下为 i386 对应的代码实现：</li>
+</ol>
+<pre class="line-numbers language-asm"><code class="language-asm">...
+_start:
+    /* Clear the frame pointer.  The ABI suggests this be done, to mark
+       the outermost frame obviously.  */
+    xorl %ebp, %ebp
+
+    /* Extract the arguments as encoded on the stack and set up
+       the arguments for `main': argc, argv.  envp will be determined
+       later in __libc_start_main.  */
+    popl %esi        /* 将 argc 的值存入 %esi */
+    movl %esp, %ecx        /* 将栈顶地址（argv + env）存入 %ecx */
+
+    /* Before pushing the arguments align the stack to a 16-byte
+    (SSE needs 16-byte alignment) boundary to avoid penalties from
+    misaligned accesses.  Thanks to Edward Seidl <seidl@janed.com>
+    for pointing this out.  */
+    andl $0xfffffff0, %esp
+    pushl %eax        /* Push garbage because we allocate
+                   28 more bytes.  */
+
+    /* Provide the highest stack address to the user code (for stacks
+       which grow downwards).  */
+    pushl %esp
+
+    pushl %edx        /* Push address of the shared library
+                   termination function.  */
+
+#ifdef SHARED
+    /* Load PIC register.  */
+    call 1f
+    addl $_GLOBAL_OFFSET_TABLE_, %ebx
+
+    /* Push address of our own entry points to .fini and .init.  */
+    leal __libc_csu_fini@GOTOFF(%ebx), %eax
+    pushl %eax
+    leal __libc_csu_init@GOTOFF(%ebx), %eax
+    pushl %eax
+
+    pushl %ecx        /* Push second argument: argv.  */
+    pushl %esi        /* Push first argument: argc.  */
+
+    pushl BP_SYM (main)@GOT(%ebx)
+
+    /* Call the user's main function, and exit with its value.
+       But let the libc call main.    */
+    call BP_SYM (__libc_start_main)@PLT
+#else
+    /* Push address of our own entry points to .fini and .init.  */
+    pushl $__libc_csu_fini
+    pushl $__libc_csu_init
+
+    pushl %ecx        /* Push second argument: argv.  */
+    pushl %esi        /* Push first argument: argc.  */
+
+    pushl $BP_SYM (main)
+
+    /* Call the user's main function, and exit with its value.
+       But let the libc call main.    */
+    call BP_SYM (__libc_start_main)
+#endif
+
+    hlt            /* Crash if somehow `exit' does return.  */
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>整个执行流程为：_start -&gt; __libc_start_main -&gt; (…) -&gt; exit -&gt; _exit;</p>
+<p>其中 <strong>__libc_start_main()</strong> 内部主要完成以下事情：</p>
+<ul>
+<li>如果有效用户 ID 与真实用户 ID 不同，则执行任何必要的安全检查:</li>
+<li>初始化线程子系统；</li>
+<li>注册 rtld_fini() 以便在动态共享库退出（或卸载）时释放资源；</li>
+<li>注册 fini() 处理程序以在程序退出时运行；</li>
+<li>调用初始化函数（*init)()；</li>
+<li>用适当的参数调用用户侧的 main()；</li>
+<li>使用 main() 的返回值调用 exit() 系统调用；</li>
+</ul>
+<ol start="135">
+<li>（Page：344）查看所有系统环境变量：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">export</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="136">
+<li>（Page：351）在 Linux 下，内核中每一个进程都有一个私有的“<strong>打开文件表</strong>”，这个表是一个指针数组，每个元素都指向一个内核的打开文件对象。而 fd 就是这个表的下标。当用户打开一个文件时，内核会在内部生成一个打开文件对象，并在该表中找到一个空项，让这一项指向生成的打开文件对象并返回下标。<strong>由于该表处于内核，因此用户无法访问，即便拥有 fd，也只能通过系统提供的函数来操作</strong>。</li>
+<li>（Page：358）一个 C 语言运行库（<strong>CRT</strong>）大致包括如下功能：</li>
+</ol>
+<ul>
+<li><strong>启动与退出</strong>：包括入口函数及入口函数所依赖的其他函数等；</li>
+<li><strong>标准函数</strong>：由 C 语言标准规定的 C 语言标准库所拥有的函数实现；</li>
+<li><strong>IO</strong>：IO 功能的封装和实现；</li>
+<li><strong>堆</strong>：堆的封装和实现；</li>
+<li><strong>语言实现</strong>：语言中一些特殊功能的实现；</li>
+<li><strong>调试</strong>：实现调试功能的代码；</li>
+</ul>
+<ol start="138">
+<li>（Page：361）i386 下变长参数的实现得益于 C 语言默认的 cdecl 调用惯例的<strong>参数自右向左压栈</strong>传递方式，以及<strong>由调用方清除堆栈</strong>两个条件。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// !! can be only used under X86_32 aka i386 !!;</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+
+<span class="token keyword">int</span> __cdecl <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>num <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> ret <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span>num<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    ret <span class="token operator">+</span><span class="token operator">=</span> <span class="token operator">*</span>p<span class="token operator">++</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>*</strong> i386 与 X86_64 体系下在 Linux 中有着不同的 Calling Convention。在 X86_64 下，更多的参数将使用寄存器来传递，而非直接 push 到栈中。在各个体系下的可用调用规范如下表所示：</p>
+<p><img src="6.png" alt=""></p>
+<ol start="139">
+<li>（Page：364）<strong>运行库是平台相关的</strong>，它们与操作系统结合的十分紧密。Glibc 与 MSVCRT 事实上是标准 C 语言运行库的超集，它们各自对 C 标准库进行了一些扩展（比如增加了线程相关的函数）。</li>
+<li>（Page：367）<strong>crt1.o</strong> 中包含的是程序的入口函数 _start；crti.o 与 crtn.o 内提供了用于初始化函数的指令，分别用于辅助输出文件中的 .init 与 .finit 段（<strong>_init()</strong> / <strong>_finit()</strong>）以进行全局的构造和析构。而将普通函数直接放入 .init 会破坏该段的结构，普通函数的 ret 指令会另 _init() 函数提前返回，而无法完成正常的初始化过程。<strong>crti.o</strong> 与 <strong>crtn.o</strong> 提供了可以在 main() 之前和之后运行代码的机制，而真正的全局构造和析构是由 GCC 中的 <strong>crtbeginT.o</strong> 与 <strong>crtend.o</strong> 来实现的。</li>
+</ol>
+<h3 id="第十二章：系统调用"><a href="#第十二章：系统调用" class="headerlink" title="第十二章：系统调用"></a>第十二章：系统调用</h3><ol start="141">
+<li>（Page：407）系统调用是应用程序（包括运行库）与操作系统内核之间的接口。</li>
+<li>（Page：408）在 X86_32 下，Linux 使用 0x80 号中断作为系统调用的接口；<strong>EAX 寄存器用于表示系统调用的接口号</strong>。每个系统调用都对应于<strong>内核源码中的一个以 “sys_” 开头的函数</strong>。当系统调用返回时，EAX 又作为调用结果的返回值（X86_64 下为 RAX 寄存器）。注：目前 i386 使用 <strong>SYSENTER</strong> 指令进行系统调用；X86_64 使用 <strong>SYSCALL</strong> 指令系统调用，两者本身内部仍然是通过中断的方式进行的，只不过不需要再经过“中断向量表”的查询。</li>
+<li>（Page：412）中断：中断号 -&gt; 中断处理程序（ISR, Interrupt Service Routine）；内核中存在着“<strong>中断向量表</strong>”记录着中断号与中断处理程序的对应关系。硬件中断一般来自于硬件的异常或其他事件的发生，比如电源掉电、键盘被按下等；软件中断通常是一条指令。</li>
+<li>（Page：413）系统调用号（X86_64，Linux）：/usr/include/asm-generic/unistd.h</li>
+<li>（Page：418）系统调用实现源码查询，点<strong><a href="https://filippo.io/linux-syscall-table/" target="_blank" rel="noopener">此处</a></strong>。</li>
+</ol>
+<pre class="line-numbers language-asm"><code class="language-asm">          global    _start
+
+          section   .text
+_start:   mov       rax, 1                  ; system call for write
+          mov       rdi, 1                  ; file handle 1 is stdout
+          mov       rsi, message            ; address of string to output
+          mov       rdx, 13                 ; number of bytes
+          syscall                           ; invoke operating system to do the write
+          mov       rax, 60                 ; system call for exit
+          xor       rdi, rdi                ; exit code 0
+          syscall                           ; invoke operating system to exit
+
+          section   .rodata
+message:  db        "Hello, world!", 11      ; note the newline at the end<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里给出一个基于 <strong><a href="https://cs.lmu.edu/~ray/notes/nasmtutorial/" target="_blank" rel="noopener">NASM 汇编</a></strong>的 X86_64 Linux 上可以编译运行的 “Hello, world!” 实现（NASM 是一款基于英特尔 x86 架构的汇编与反汇编工具，十分好用，这里先吹一波）。这里首先将 <strong>RAX</strong> 寄存器设置为 1，对应 <strong>sys_write</strong> 系统调用的序号；然后然通过 <strong>RDI</strong>、<strong>RSI</strong> 和 <strong>RDX</strong> 来设置系统调用函数的参数，即 fd（0）、要写入的字符串以及长度信息。最后再通过调用 syscall 指令来触发系统调用（写入 + 退出）。</p>
+<h3 id="第十三章：运行库实现"><a href="#第十三章：运行库实现" class="headerlink" title="第十三章：运行库实现"></a>第十三章：运行库实现</h3><p>（略）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-21T14:00:50.000Z"> 2020 / 06 / 25, 13:27:07</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/19/ld-链接控制脚本与默认脚本/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/23/Linux-共享库应用-version-script/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
