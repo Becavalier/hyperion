@@ -35,14 +35,14 @@ int main(void) {
 _start:   mov       rax, 1                  ; system call for write
           mov       rdi, 1                  ; file handle 1 is stdout
           mov       rsi, message            ; address of string to output
-          mov       rdx, 13                 ; number of bytes
+          mov       rdx, 14                 ; number of bytes
           syscall                           ; invoke operating system to do the write
           mov       rax, 60                 ; system call for exit
           xor       rdi, rdi                ; exit code 0
           syscall                           ; invoke operating system to exit
 
           section   .rodata
-message:  db        "Hello, YHSPY!", 11      ; note the newline at the end
+message:  db        "Hello, YHSPY!", 10      ; note the newline at the end
 ```
 
 这里对代码的结构我们不再赘述。接下来，我们通过 NASM 将这段代码编译成目标文件，在通过 ld 以静态链接的方式生成 ELF 可执行文件。
