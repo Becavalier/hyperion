@@ -1,5 +1,5 @@
 ---
-title: “Effective Modern C++” 读书笔记（一）
+title: 《Effective Modern C++》读书笔记（一）
 intro: 《Effective Modern C++》这本书主要介绍了 C++11 与 C++14 中的一些新的语言特性及编码建议。由于这段时间忙于它事，看书的速度会放缓，因此关于这本书的内容就一边读一边整理记录了。同《Effective C++ 3th》一样，这本书的行文也是按照“建议条目”的方式通过几个大的主题分门别类进行介绍的，其中部分之前博客文章中已经提到过得内容将不再赘述。
 comments: true
 date: 2020-05-14 10:32:16

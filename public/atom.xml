@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-06-26T07:16:22.642Z</updated>
+  <updated>2020-07-08T16:15:34.430Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,15 +17,72 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>“Low-Level Programming” 读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
-    <published>2020-06-25T08:15:36.000Z</published>
-    <updated>2020-06-26T07:16:22.642Z</updated>
+    <title>《Low-Level Programming》读书笔记（三）</title>
+    <link href="https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <published>2020-07-06T09:55:14.000Z</published>
+    <updated>2020-07-08T16:15:34.430Z</updated>
     
     <summary type="html">
     
-      无意间找到的一本好书，主要介绍 X86_64 体系下的 C 和汇编。其中第二章关于 “C Programming Language” 的内容就简单略过了。
+      内容还是太多，所以还是继续书接上文。
+    
+    </summary>
+    
+    
+    
+      <category term="汇编" scheme="https://www.yhspy.com/tags/%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Low-Level Programming》读书笔记（二）</title>
+    <link href="https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-06-28T16:28:35.000Z</published>
+    <updated>2020-07-08T12:40:25.974Z</updated>
+    
+    <summary type="html">
+    
+      内容太多，所以分成多篇来记录了，书接上文。
+    
+    </summary>
+    
+    
+    
+      <category term="汇编" scheme="https://www.yhspy.com/tags/%E6%B1%87%E7%BC%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Advanced Design and Implementation of VMs》读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/06/26/%E2%80%9CAdvanced-Design-and-Implementation-of-Virtual-Machines%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/26/%E2%80%9CAdvanced-Design-and-Implementation-of-Virtual-Machines%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-06-26T08:42:01.000Z</published>
+    <updated>2020-07-08T16:15:45.443Z</updated>
+    
+    <summary type="html">
+    
+      也是很久之前无意间搜罗到的一本关于 VM 的好书，趁此疫情 WFH 期间时间充足，赶紧读起来。PS. 果然国人写的英语书籍就是比外国人写的好读很多，主要是因为 —— 废话少。
+    
+    </summary>
+    
+    
+    
+      <category term="虚拟机" scheme="https://www.yhspy.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Low-Level Programming》读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-06-25T08:15:36.000Z</published>
+    <updated>2020-07-08T04:04:03.656Z</updated>
+    
+    <summary type="html">
+    
+      无意间找到的一本好书，主要介绍 X86_64 体系下的 C 和汇编。其中第十二章关于“编程语言设计”部分的内容，以及第十三章关于“良好编码规范”的内容就简单略过了。
     
     </summary>
     
@@ -40,7 +97,7 @@
     <link href="https://www.yhspy.com/2020/06/25/NASM-%E5%B0%8F%E8%AE%B0%E5%BD%95/"/>
     <id>https://www.yhspy.com/2020/06/25/NASM-%E5%B0%8F%E8%AE%B0%E5%BD%95/</id>
     <published>2020-06-25T05:42:46.000Z</published>
-    <updated>2020-06-25T16:18:54.315Z</updated>
+    <updated>2020-07-04T08:50:54.907Z</updated>
     
     <summary type="html">
     
@@ -74,15 +131,15 @@
   </entry>
   
   <entry>
-    <title>链接、装载与库相关记录（二）</title>
+    <title>《程序员的自我修养 — 链接、装载与库》读书笔记（二）</title>
     <link href="https://www.yhspy.com/2020/06/21/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/06/21/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-06-21T14:00:50.000Z</published>
-    <updated>2020-06-25T05:27:07.584Z</updated>
+    <updated>2020-07-07T12:25:40.877Z</updated>
     
     <summary type="html">
     
-      本文承接上文“链接、装载与库相关记录（一）”。
+      书接上文。
     
     </summary>
     
@@ -226,11 +283,11 @@
   </entry>
   
   <entry>
-    <title>链接、装载与库相关记录（一）</title>
+    <title>《程序员的自我修养 — 链接、装载与库》读书笔记（一）</title>
     <link href="https://www.yhspy.com/2020/06/16/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/06/16/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-06-16T11:15:02.000Z</published>
-    <updated>2020-06-25T05:24:57.687Z</updated>
+    <updated>2020-07-07T04:20:21.521Z</updated>
     
     <summary type="html">
     
@@ -472,11 +529,11 @@
   </entry>
   
   <entry>
-    <title>“Effective Modern C++” 读书笔记（二）</title>
+    <title>《Effective Modern C++》读书笔记（二）</title>
     <link href="https://www.yhspy.com/2020/05/23/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/05/23/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-05-23T09:19:08.000Z</published>
-    <updated>2020-06-11T06:26:16.948Z</updated>
+    <updated>2020-07-07T04:07:29.961Z</updated>
     
     <summary type="html">
     
@@ -491,11 +548,11 @@
   </entry>
   
   <entry>
-    <title>“Effective Modern C++” 读书笔记（一）</title>
+    <title>《Effective Modern C++》读书笔记（一）</title>
     <link href="https://www.yhspy.com/2020/05/14/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/05/14/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-05-14T02:32:16.000Z</published>
-    <updated>2020-05-23T09:27:38.707Z</updated>
+    <updated>2020-07-07T04:07:24.342Z</updated>
     
     <summary type="html">
     
@@ -510,11 +567,11 @@
   </entry>
   
   <entry>
-    <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记（二）</title>
+    <title>《深入理解 C++11：C++11 新特性解析与应用》读书笔记（二）</title>
     <link href="https://www.yhspy.com/2020/05/12/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/05/12/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-05-12T08:21:23.000Z</published>
-    <updated>2020-05-12T13:03:13.456Z</updated>
+    <updated>2020-07-07T04:05:06.265Z</updated>
     
     <summary type="html">
     
@@ -529,72 +586,15 @@
   </entry>
   
   <entry>
-    <title>“深入理解 C++11：C++11 新特性解析与应用” 读书笔记（一）</title>
+    <title>《深入理解 C++11：C++11 新特性解析与应用》读书笔记（一）</title>
     <link href="https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-05-09T02:22:12.000Z</published>
-    <updated>2020-05-12T08:22:50.758Z</updated>
+    <updated>2020-07-07T04:05:01.460Z</updated>
     
     <summary type="html">
     
       作为一本之前已经读过两遍的书，终于决定在第三次“复习”的时候做下读书笔记了。鉴于之前已经完整读过《Primer C++ 5th》、《Effective C++ 3th》两本书，因此本文仅作为查缺补漏之用，对于前两本书中没有提到一些诸如“最小垃圾回收”、以及“原子类型与原子操作”等内容进行回顾与记录。整个 C++ 系列还有一本想完整仔细阅读的《Effective Modern C++ - 42 Specific Ways to Improve Your Use of C++11 and C++14》可能会稍微往后放了，由于 C++14 仅作为 C++11 的微小改进和补充，对于一些常用的特性其实已经在实际项目中开始使用了。而对于诸如 std::future 以及 std::promise 等特性，由于其涉及异步和并发相关场景，因此可以参考《C++ Concurrency in Action 2th》一书，暂时没有实际需求便先不打算进行了解。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++ 聚合类与 POD</title>
-    <link href="https://www.yhspy.com/2020/05/06/C-%E8%81%9A%E5%90%88%E7%B1%BB%E4%B8%8E-POD/"/>
-    <id>https://www.yhspy.com/2020/05/06/C-%E8%81%9A%E5%90%88%E7%B1%BB%E4%B8%8E-POD/</id>
-    <published>2020-05-06T09:54:58.000Z</published>
-    <updated>2020-05-23T08:41:24.948Z</updated>
-    
-    <summary type="html">
-    
-      POD 在 C++ 中一直是一个没有很直观代码体现的概念，但其存在却涉及到了 C++ 中诸如字节赋值、内存布局、静态初始化安全甚至是有关 EBO 优化等相关的内容，而本文我们将对 POD 的概念进行总结，并同时对比其与“聚合类”之间的关系。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++ 空基类优化（EBO）与私有继承</title>
-    <link href="https://www.yhspy.com/2020/04/27/C-%E7%A9%BA%E5%9F%BA%E7%B1%BB%E4%BC%98%E5%8C%96%EF%BC%88EBO%EF%BC%89%E4%B8%8E%E7%A7%81%E6%9C%89%E7%BB%A7%E6%89%BF/"/>
-    <id>https://www.yhspy.com/2020/04/27/C-%E7%A9%BA%E5%9F%BA%E7%B1%BB%E4%BC%98%E5%8C%96%EF%BC%88EBO%EF%BC%89%E4%B8%8E%E7%A7%81%E6%9C%89%E7%BB%A7%E6%89%BF/</id>
-    <published>2020-04-27T12:27:20.000Z</published>
-    <updated>2020-05-23T08:35:45.865Z</updated>
-    
-    <summary type="html">
-    
-      通常我们认为“私有继承”和“组合”都有着相同的应用层语义，即：派生类或包含类是通过继承的类或组合的类对象来实现的（is-implemented-in-terms-of）。但在 C++ 中，由于 EBO（Empty Base Optimization）机制的存在，某种情况下我们可能会更倾向于使用私有继承而非组合的方式。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用 C++ 高效开发范式（二）</title>
-    <link href="https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/04/26/%E5%B8%B8%E7%94%A8-C-%E9%AB%98%E6%95%88%E5%BC%80%E5%8F%91%E8%8C%83%E5%BC%8F%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
-    <published>2020-04-26T13:28:21.000Z</published>
-    <updated>2020-04-29T08:00:57.361Z</updated>
-    
-    <summary type="html">
-    
-      文接上回，本文将继续记录常见的 C++ 高效开发范式，这些范式均总结于《Effective C++ 3th》一书。由于该书出版年代较为久远，因此对于书中条款的不适用之处，作者将尽量予以纠正并给出自己的建议。
     
     </summary>
     

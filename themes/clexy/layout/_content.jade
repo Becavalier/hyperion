@@ -28,7 +28,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
         h4=lastyear
         | <ul class="catelog-items">
         li(itemprop='name')
-          a(href=config.root + post.path, itemprop='url') 《#{post.title}》
+          a(href=config.root + post.path, itemprop='url') #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
@@ -38,7 +38,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
             time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
       else
         li
-          a(href=config.root + post.path) 《#{post.title}》
+          a(href=config.root + post.path) #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
@@ -200,14 +200,14 @@ else if is_tag()
         h4=lastyear
         | <ul class="catelog-items">
         li(itemprop='name')
-          a(href=config.root + post.path, itemprop='url') 《#{post.title}》
+          a(href=config.root + post.path, itemprop='url') #{post.title}
           |  &nbsp; &mdash; &nbsp;&nbsp;
           for tag in post.tags.data
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}
             | &nbsp;&nbsp;
       else
         li
-          a(href=config.root + post.path) 《#{post.title}》
+          a(href=config.root + post.path) #{post.title}
           |  &nbsp; &mdash; &nbsp;&nbsp;
           for tag in post.tags.data
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}
