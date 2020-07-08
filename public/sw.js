@@ -791,7 +791,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/26/“Advanced-Design-and-Implementation-of-Virtual-Machines”-读书笔记（一）/index.html",
-    "revision": "0cc1099f02602b2675ecc6cd993cc9d0"
+    "revision": "847ae48d256b36d06ef5c057ea4d171a"
   },
   {
     "url": "2020/06/29/“Low-Level-Programming”-读书笔记（二）/index.html",
@@ -1379,7 +1379,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "951e18577ab23cd13e42db7e591984db"
+    "revision": "f2ac17e2e5531fb9dc7f4125cd6c1594"
   },
   {
     "url": "resume/css/font-awesome.min.css",
@@ -1427,7 +1427,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "0b8c0a1d5cf00b811b27fc13f335d504"
+    "revision": "ff1abe19cde78bd3d95362395b6c5362"
   },
   {
     "url": "tags/Android/index.html",
@@ -1511,7 +1511,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "e48ef8dda53043ec9cd16b7915bf6f9d"
+    "revision": "6ada699b46d25ec200a0e7b5417a0a7c"
   },
   {
     "url": "tags/Java/index.html",
