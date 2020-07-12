@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-07-08T16:15:34.430Z</updated>
+  <updated>2020-07-12T08:31:21.994Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>std::optional 与 Optional References</title>
+    <link href="https://www.yhspy.com/2020/07/11/std-optional-%E4%B8%8E-Optional-References/"/>
+    <id>https://www.yhspy.com/2020/07/11/std-optional-%E4%B8%8E-Optional-References/</id>
+    <published>2020-07-11T03:30:44.000Z</published>
+    <updated>2020-07-12T08:31:21.994Z</updated>
+    
+    <summary type="html">
+    
+      std::optional 是 C++17 中新添加的一个类模板，用来表示**一个值可能存在一种“不可用”的状态**。这类的场景需求很多，比如“搜索一个字符串中的所有字符，并返回其中出现的第一个数字值”。针对这个需求，我们可能获得多个不同的结果，但其中一个相对特殊的结果是“字符串中没有可返回的数字值”。那么这个时候，std::optional 就可以派上用场了。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>《Low-Level Programming》读书笔记（三）</title>
@@ -59,7 +78,7 @@
     <link href="https://www.yhspy.com/2020/06/26/%E2%80%9CAdvanced-Design-and-Implementation-of-Virtual-Machines%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/06/26/%E2%80%9CAdvanced-Design-and-Implementation-of-Virtual-Machines%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-06-26T08:42:01.000Z</published>
-    <updated>2020-07-08T16:27:28.806Z</updated>
+    <updated>2020-07-09T15:09:55.594Z</updated>
     
     <summary type="html">
     
@@ -576,25 +595,6 @@
     <summary type="html">
     
       文接上回，由于接下来关于“变长模板”、“原子类型与原子操作”等的内容会比较多，为了保证阅读体验，因此这里将分为两篇博文来分别记录。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《深入理解 C++11：C++11 新特性解析与应用》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/05/09/%E2%80%9C%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3-C-11%EF%BC%9AC-11-%E6%96%B0%E7%89%B9%E6%80%A7%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E2%80%9D%20%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
-    <published>2020-05-09T02:22:12.000Z</published>
-    <updated>2020-07-07T04:05:01.460Z</updated>
-    
-    <summary type="html">
-    
-      作为一本之前已经读过两遍的书，终于决定在第三次“复习”的时候做下读书笔记了。鉴于之前已经完整读过《Primer C++ 5th》、《Effective C++ 3th》两本书，因此本文仅作为查缺补漏之用，对于前两本书中没有提到一些诸如“最小垃圾回收”、以及“原子类型与原子操作”等内容进行回顾与记录。整个 C++ 系列还有一本想完整仔细阅读的《Effective Modern C++ - 42 Specific Ways to Improve Your Use of C++11 and C++14》可能会稍微往后放了，由于 C++14 仅作为 C++11 的微小改进和补充，对于一些常用的特性其实已经在实际项目中开始使用了。而对于诸如 std::future 以及 std::promise 等特性，由于其涉及异步和并发相关场景，因此可以参考《C++ Concurrency in Action 2th》一书，暂时没有实际需求便先不打算进行了解。
     
     </summary>
     
