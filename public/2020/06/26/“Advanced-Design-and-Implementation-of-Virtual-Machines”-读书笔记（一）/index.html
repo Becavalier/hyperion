@@ -5,8 +5,8 @@
 </ol>
 <ul>
 <li><strong>全指令集（ISA）虚拟机</strong>：提供针对某个实际 ISA 的全套指令集的模拟和虚拟化，可以让客户操作系统或应用运行其上。如 VirtualBox、QEMU 等；</li>
-<li><strong>应用二进制接口（ABI）虚拟机</strong>：提供针对客户程序的 ABI 模拟功能，可以让符合该 ABI 的应用运行在有着其他类型 ABI 的宿主机上。如 IA-32 Execution Layer；</li>
-<li><strong>V-ISA 虚拟机</strong>：该虚拟机用于执行虚拟指令集，此类虚拟机通常不要求模拟完整的计算机系统；</li>
+<li><strong>应用二进制接口（ABI）虚拟机</strong>：提供针对客户程序的 ABI 模拟功能，可以让符合该 ABI 的应用运行在有着其他类型 ABI 的宿主机上。如 IA-32 Execution Layer（可以理解为适配层）；</li>
+<li><strong>V-ISA 虚拟机</strong>：该虚拟机用于执行<strong>虚拟指令集</strong>，此类虚拟机通常不要求模拟完整的计算机系统；</li>
 <li><strong>语言虚拟机</strong>：直接解释执行源语言的虚拟机，源语言通常以文本代码的形式存在。此类虚拟机通常还需要支持诸如“内存管理”等由语言抽象出的其他功能。</li>
 </ul>
 <ol start="2">
@@ -14,25 +14,25 @@
 <li>（Page：5）安全型语言的特征：</li>
 </ol>
 <ul>
-<li><strong>内存安全</strong>：内存中的某个<strong>数据必须遵守它所属类型对应的规范</strong>；如：指针类型不会指向非法值、数组不会有超出范围的元素等；</li>
+<li><strong>内存安全</strong>：内存中的某个<strong>数据必须遵守它所属类型对应的规范</strong>；如：指针类型不会指向非法值、数组不会有超出其有效范围的元素等；</li>
 <li><strong>操作安全</strong>：操作安全性可确保<strong>对某种类型数据进行的操作始终遵循对该类型的限制</strong>。如：指针类型变量不允许参与算术运算等；</li>
 <li><strong>控制结构安全</strong>：控制安全性可确保<strong>代码执行流永远不会被阻塞，或到达任何不可控区域</strong>。如：跳转到恶意代码段。控制安全可以被认为是一种特殊的操作安全。</li>
 </ul>
 <ol start="4">
-<li>（Page：6）存在着通过<strong>硬件实现</strong>的基于 V-ISA 的虚拟机。</li>
-<li>（Page：6）可以通过静态单分配（SSA）表示形式构建的控制流图（CFG）来进行更高级的 IR 优化（如 Type Specialization、Inline Function、DCE 等）。</li>
+<li>（Page：6）存在着通过<strong>硬件实现</strong>的 V-ISA 虚拟机。</li>
+<li>（Page：6）可以通过以静态单分配（SSA）表示形式构建的控制流图（CFG）来进行更高级的 IR 优化（如 Type Specialization、Inline Function、DCE 等）。</li>
 </ol>
 <h3 id="Chapter-2：走入虚拟机内部"><a href="#Chapter-2：走入虚拟机内部" class="headerlink" title="Chapter 2：走入虚拟机内部"></a>Chapter 2：走入虚拟机内部</h3><ol start="6">
 <li>（Page：9）VM 的核心组成主要包括：</li>
 </ol>
 <ul>
-<li><strong>加载器</strong>：解析程序文件到具体的数据格式、加载应用需要的额外资源；加载器还需要检测程序的完整性，在某些实现中，此步骤可能会推迟到执行引擎；</li>
+<li><strong>加载器</strong>：解析程序文件到具体的数据格式、加载应用需要的额外资源；加载器还需要检测程序的完整性，在某些实现中，此步骤可能会推迟到执行引擎中进行，如 “java.lang.Runtime.loadLibrary”；</li>
 <li><strong>动态链接器</strong>：动态链接器尝试将所有引用的符号解析为可访问的内存地址。如果引用了尚未加载的符号，则可能会触发加载器来加载符号对应的数据和代码；</li>
 <li><strong>执行引擎</strong>：执行已被加载和动态链接的程序；</li>
-<li><strong>内存管理器</strong>：维护应用的动态数据，以确保内存安全。或提供诸如 GC 的能力；</li>
-<li><strong>线程调度器以</strong>：用以提供多线程支持；</li>
+<li><strong>内存管理器</strong>：维护应用的动态数据，以确保内存安全。或提供诸如 GC 等能力；</li>
+<li><strong>线程调度器</strong>：用以提供多线程支持；</li>
 <li><strong>运行时服务</strong>：可以以 C/S 的方式来实现，服务提供方不一定与应用在同一个进程，甚至不太同一台机器。如：浏览器上的 BOM 对象为 JS 虚拟机提供了可以操作网页元素的能力；实现方式可以为 APIs、运行时对象甚至环境变量；</li>
-<li><strong>语言扩展</strong>：即 FFI（Foreign Language Interface），跨语言调用。部分以库的形式提供给虚拟机上的应用程序使用；</li>
+<li><strong>语言扩展</strong>：即 FFI（Foreign Function Interface），跨语言函数调用。部分以库的形式提供给虚拟机上的应用程序使用；</li>
 </ul>
 <ol start="7">
 <li>（Page：14）虚拟机模型：</li>
@@ -40,7 +40,7 @@
 <p><img src="1.png" alt=""></p>
 <ol start="8">
 <li>（Page：15）V-ISA（Wasm、Java 字节码）一般仅作为其他高级语言的<strong>编译目标</strong>。JavaScript 既可以作为一种源语言，又可以被作为其他语言的编译目标（如 Emscripten）。</li>
-<li>（Page：15）源语言、虚拟机与字节码之间的关系：字节码（OpCode 的二进制形式）作为一种编译目标与源语言（比如 Java）没有直接关系；虚拟机类比于 i386 的 CPU 来执行 X86 指令；而任何类型的源语言都有可能被编译成某种特定的字节码目标。</li>
+<li>（Page：15）源语言、虚拟机与字节码之间的关系：字节码（OpCode 的二进制形式）作为一种编译目标<strong>与源语言（比如 Java）没有直接关系</strong>；虚拟机类比于 i386 的 CPU 来执行 X86 指令；而任何类型的源语言都有可能被编译成某种特定的字节码目标。</li>
 </ol>
 <p><img src="2.png" alt=""></p>
 <ol start="10">
@@ -50,7 +50,7 @@
 </ol>
 <p><img src="3.png" alt=""></p>
 <h3 id="Chapter-3：虚拟机内部数据结构"><a href="#Chapter-3：虚拟机内部数据结构" class="headerlink" title="Chapter 3：虚拟机内部数据结构"></a>Chapter 3：虚拟机内部数据结构</h3><ol start="13">
-<li>（Page：21）JVM 语言具有两种数据类型：<strong>基本类型</strong>（保存一个直接值）和<strong>引用类型</strong>（包含指向对象的指针）。其中类 <em>Object</em> 是所有类的<strong>基类</strong>（所有类都是 <em>Object</em> 的派生类），类 <em>Class</em> 是所有其他类的<strong>类型</strong>（所有类都是 <em>Class</em> 的一个实例），即所有其他类都是一种 <em>Class</em> 类型。其中的某些 Instance-Of 和 Subclass-Of 的关系是由 VM 来维护的。</li>
+<li>（Page：21）JVM 语言具有两种数据类型：<strong>基本类型</strong>（保存一个直接值）和<strong>引用类型</strong>（包含指向对象的指针）。其中类 <em>Object</em> 是所有类的<strong>基类</strong>（所有类都是 <em>Object</em> 的派生类。<em>Object</em> 含有一个 <code>getClass()</code> 方法可以获得一个 java.lang.Class 对象，其中含有关于该类的一些信息），类 <em>Class</em> 是所有其他类的<strong>类型</strong>（所有类都是 <em>Class</em> 的一个实例），即所有其他类都是一种 <em>Class</em> 类型。其中的某些 Instance-Of 和 Subclass-Of 的关系是由 VM 来维护的。</li>
 </ol>
 <p><img src="4.png" alt=""></p>
 <ol start="14">
@@ -97,15 +97,16 @@
 <li>（Page：30）<strong>基于函数的 JIT</strong>：流程与 ELF 共享库的动态链接过程类似，函数索引表可以类比为 PLT。当第一次调用函数时，索引表中对应项（函数指针或其他方式）会先调用内部编译器来编译函数，并生成对应的的机器码；然后，待编译完成后，<strong>用生成机器码的入口地址作为索引表项的内容</strong>，并将该地址返回给调用者，这样后续再次调用该函数时将直接使用函数的机器码（Code Cache）。</li>
 </ol>
 <p><img src="6.png" alt=""></p>
+<p>该方式的问题在于：<strong>JIT 粒度较为粗糙，热代码的命中率较低</strong>（比如函数体内耗时的循环结构无法捕捉）。</p>
 <ol start="19">
 <li>（Page：31）当多个线程要调用同一方法并触发该方法的 JIT 编译时，VM 需要确保<strong>相互排斥对同一方法的编译</strong>（比如使用单例模式的“双检查锁”，或“自旋锁”）。</li>
 <li>（Page：32）<u><strong><a href="https://en.wikipedia.org/wiki/Tracing_just-in-time_compilation" target="_blank" rel="noopener">基于 Trace 的 JIT</a></strong></u>：Trace 是指在运行时所执行的一段热代码的路径，而该种 JIT 方式只<strong>编译位于该路径上的代码</strong>。其几个重要步骤如下：</li>
 </ol>
 <ul>
-<li><strong>识别 Trace</strong>：可以通过在<strong>函数体</strong>（颗粒度一般不够）、<strong>循环头</strong>（这里可以进行很多优化，比如“循环不变代码外提”、“循环并行化和向量化”等；循环结构的识别可以通过对编译时构建的 CFG 进行深度优先遍历来识别）以及<strong>基本块</strong>（指的是具有单个入口点和单个出口点的代码段）中添加<strong>计数器</strong>来判断代码是否 Hot；</li>
+<li><strong>识别 Trace</strong>：可以通过在<strong>函数体</strong>（颗粒度一般不够）、<strong>循环头</strong>（这里可以进行很多优化，比如“循环不变代码外提”、“循环并行化和向量化”等；循环结构的识别可以通过对编译时构建的 CFG 进行深度优先遍历来识别）以及<strong>基本块</strong>（指的是具有单个入口点和单个出口点，且中间没有分支语句的代码段）中添加<strong>计数器</strong>来判断代码是否 Hot；</li>
 <li><strong>形成 Trace</strong>：当热代码被识别之后，就可以通过在下次执行流程进入到热代码入口时记录相关操作来形成 Trace；</li>
-<li><strong>编译 Trace 并缓存生成的二进制代码</strong>：在此步骤中可以进行诸如 DCE 等常规优化；</li>
-<li><strong>适应性地管理 Trace</strong>：Trace 在执行过程中，也需要确保该 Trace 必须满足的执行条件（Guard）没有发生变化，否则需要无痛地退回到非 Trace 路径以继续执行；</li>
+<li><strong>编译 Trace 并缓存生成的二进制代码</strong>：在此步骤中可以进行诸如 DCE，“函数内联”等常规优化；</li>
+<li><strong>适应性地管理 Trace</strong>：在执行过程中，也需要确保该 Trace 必须满足的执行条件（Guard）没有发生变化，否则需要无痛地退回到非 Trace 路径以继续执行；</li>
 </ul>
 <p>一个例子（Python）：</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">square</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -120,20 +121,42 @@ y <span class="token operator">=</span> <span class="token number">0</span>
     i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应的 Trace（伪代码，方法 square 可以被<strong>内联</strong>）：</p>
 <pre class="line-numbers language-text"><code class="language-text">loopstart(i1, y1)
-  i2 = int_mul(i1, i1)  # x*x
-  y2 = int_add(y1, i2)  # y += i*i
+  i2 = int_mul(i1, i1)  # x * x;
+  y2 = int_add(y1, i2)  # y += i * i;
   b1 = int_gt(y2, 100000)
   guard_false(b1)
-  i3 = int_add(i1, 1)        # i = i+1
+  i3 = int_add(i1, 1)        # i = i + 1;
   jump(i3, y2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>* 由于普遍性能较差或高性能版本带来的实现复杂度，<strong>截止 2015 年，所有知名 VM 实现都已经不再使用基于 Trace 的 JIT 方案。</strong></p>
+<p>* 由于普遍性能较差且高性能 JIT 的实现复杂度，<strong>截止 2015 年，大部分知名 VM 实现都已经不再使用基于 Trace 的 JIT 方案。</strong></p>
 <ol start="21">
 <li>（Page：35）基于“循环”和“基本块”的 Tracing-JIT 均<strong>无法很好地处理递归调用</strong>（直接/间接）结构；</li>
-<li>（Page：）</li>
-<li>（Page：）</li>
-<li>（Page：）</li>
-<li>（Page：）</li>
-<li>（Page：）</li>
-<li>（Page：）</li>
+<li>（Page：36）Region-Based JIT：以 “<strong>tracelet</strong>” 为单位进行的、“Outlining”（将函数实现的一部分进行分离，分离的部分将被编译成新的函数，并代替原代码的位置进行调用）方式的 JIT。</li>
+<li>（Page：39）JIT 和 AOT 的区别：</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-26T08:42:01.000Z"> 2020 / 07 / 09, 23:09:55</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/25/“Low-Level-Programming”-读书笔记（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/29/“Low-Level-Programming”-读书笔记（二）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<ul>
+<li>AOT 编译<strong>通常不会实际执行应用程序或提交执行结果</strong>。即应用程序不会处于“运行时”状态。AOT 编译可能会执行应用程序的某些代码，但是其执行原因仅是为了获取某些实现 AOT 所需的必要信息；</li>
+<li>由于缺乏运行时信息，AOT 编译本身并<strong>不清楚所编译的方法是否会实际被执行</strong>。而 JIT 仅会编译被实际执行到的代码；</li>
+<li><strong>AOT 编译和应用程序执行是两个严格分开的阶段</strong>。在需要时，AOT 阶段可以将编译的结果保存在一个位置，稍后的执行阶段可以在另一个位置使用这些结果，而无需再次编译；</li>
+<li>对于某些语言的<strong>动态特性</strong>（如：反射、弱类型、eval() 以及 GC 等，都仅能够在运行时来进行），AOT 方式可能<strong>无法实现</strong>；</li>
+<li>AOT 编译一般<strong>不具有多 ISA 下的可移植性</strong>；</li>
+</ul>
+<h3 id="Chapter-5：GC-的设计"><a href="#Chapter-5：GC-的设计" class="headerlink" title="Chapter 5：GC 的设计"></a>Chapter 5：GC 的设计</h3><ol start="24">
+<li>（Page：45）静态生存期分析（Liveness Analysis）的问题：</li>
+</ol>
+<ul>
+<li>静态生存期分析<strong>只能分析位于函数内部的局部变量</strong>，而函数之间的对象传递导致了难以被分析到的变量生存路径；</li>
+<li>静态生存期分析的<strong>结果可能不准确</strong>；</li>
+<li>静态生存期分析<strong>对于动态语言来说不友好</strong>。对于某些需要运行时信息辅助的复杂逻辑难以进行准确的分析；</li>
+</ul>
+<ol start="25">
+<li>（Page：46）引用计数（Reference Counting）的常用原语：</li>
+</ol>
+<p><img src="7.png" alt=""></p>
+<p>RC 相关原语的 OpCode 需要 Compiler <strong>在编译源代码到字节码的过程中插入到程序的特定位置</strong>。其中的 “updSlot” 主要用于支持赋值语句中对象引用的变化情况。</p>
+<ol start="26">
+<li>（Page：48）当 RC 的计数将要溢出时，VM 可以选择放弃后续的计数过程，并假设该引用对应的资源将永远不会被释放。常用的 RC 变量大小可以选择为<strong>1 字节</strong>。当然也可以选择为 1 位，即所有对象仅能拥有在创建时生成的一个引用，超过该引用次数，则资源永远不会被释放。</li>
+<li>（Page：48）在多线程环境中，可以选择使用<strong>原子性的 RC 更新</strong>；或者选择<strong>在多个线程更新同一个变量的 RC 时，将资源永久化</strong>。做法需要 RC 保存其创建时对应的线程 ID，然在线程更新 RC 时判断该线程 ID 与自己保存的创建线程 ID 是否相同，若相同则更新 RC，否则直接溢出，使资源永久化。</li>
+<li>（Page：48）RC 的一个问题在于“<strong>循环引用</strong>”的存在。并且插入到目标文件中的 GC 原语也会使<strong>文件的体积增大</strong>，这对于一些存储空间有限的场景来说可能并不友好。</li>
+<li>（Page：49）对象跟踪（Object Tracing）：标记-清除、标记-整理、标记-拷贝。</li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-26T08:42:01.000Z"> 2020 / 07 / 15, 17:53:13</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/25/“Low-Level-Programming”-读书笔记（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/29/“Low-Level-Programming”-读书笔记（二）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

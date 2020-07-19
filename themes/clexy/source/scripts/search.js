@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async e => {
         results.forEach(i => {
           dom += (`
             <li itemprop="name">
-              <a href="${i.url}" itemprop="url">《${i.title}》</a> &nbsp;—&nbsp;<time itemprop="datePublished" datetime="${i.rawDate}"> ${i.date}</time>
+              <a href="${i.url}" itemprop="url">${i.title}</a> &nbsp;—&nbsp;<time itemprop="datePublished" datetime="${i.rawDate}"> ${i.date}</time>
             </li>
           `);
         });

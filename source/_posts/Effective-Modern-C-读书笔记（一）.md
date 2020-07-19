@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 
 ```cpp
 template<size_t N>
-constexpr  size_t arrSize(int(&)[N]) { return N; }
+constexpr size_t arrSize(int(&)[N]) { return N; }
 int main(int argc, char** argv) {
   int arr[] = {1, 2, 3, 4};
   std::cout << arrSize(arr) << std::endl; 
