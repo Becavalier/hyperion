@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-07-19T04:19:59.924Z</updated>
+  <updated>2020-07-28T04:11:50.713Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《C++17 STL Cookbook》读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-07-21T16:08:03.000Z</published>
+    <updated>2020-07-28T04:11:50.713Z</updated>
+    
+    <summary type="html">
+    
+      看到知乎上有人推荐的一本书。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
   
   <entry>
     <title>老生常谈之：switch-case VS if-else</title>
@@ -576,25 +595,6 @@
     <summary type="html">
     
       在 C++ 中，对于一个类型为 std::string 的字符串对象来说，可以有多种方式来拷贝它所对应的资源。而在这些方法中，最常见的三种为：Eager-Copy、SSO 以及 COW。其中最为广泛使用的是 “SSO”，而其他方式则已大都不再被编译器所使用。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《Effective Modern C++》读书笔记（二）</title>
-    <link href="https://www.yhspy.com/2020/05/23/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/05/23/Effective-Modern-C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
-    <published>2020-05-23T09:19:08.000Z</published>
-    <updated>2020-07-07T04:07:29.961Z</updated>
-    
-    <summary type="html">
-    
-      文接上回，本文为上一文的第二篇。
     
     </summary>
     
