@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-08-11T01:10:10.686Z</updated>
+  <updated>2020-08-11T12:10:03.719Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/</id>
     <published>2020-08-09T02:25:05.000Z</published>
-    <updated>2020-08-11T01:10:10.686Z</updated>
+    <updated>2020-08-11T12:10:03.719Z</updated>
     
     <summary type="html">
     
-      Enter intro here to display on home page
+      ASM.js 是 JavaScript 的严格子集，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对内存不安全语言（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。
     
     </summary>
     
@@ -78,7 +78,7 @@
     <link href="https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
     <published>2020-08-06T05:24:05.000Z</published>
-    <updated>2020-08-11T12:06:21.989Z</updated>
+    <updated>2020-08-11T12:06:29.574Z</updated>
     
     <summary type="html">
     

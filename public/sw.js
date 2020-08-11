@@ -827,7 +827,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/06/《C-17-STL-Cookbook》读书笔记（四）/index.html",
-    "revision": "7bc7974ba3343666d5b16decce20c2b2"
+    "revision": "351964331e95278f2d0f92080dfb2755"
   },
   {
     "url": "2020/08/06/CRTP-与常见用例/index.html",
@@ -839,7 +839,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/09/ASM-js-标准草案分析（18-August-2014）/index.html",
-    "revision": "4a13f2ff3236e6abec42f81370c3a8bd"
+    "revision": "3a09dc4b3e5e0b051688e8787339fcd3"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1267,87 +1267,87 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/10/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/11/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/12/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/13/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/14/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/15/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/16/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/17/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/18/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/19/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/2/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/20/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/21/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/3/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/4/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/5/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/6/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/7/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/8/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "page/9/index.html",
-    "revision": "7ddd45d0c493d07802772bced18e53d9"
+    "revision": "bbd40007422ba2615126fc089c00a1cc"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1371,7 +1371,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "ce7f8eb053619c7a75d2430645c0504f"
+    "revision": "3a3f411f65fa9de722a454dbb7a294fa"
   },
   {
     "url": "readings/Low-Level Programming.html",
@@ -1583,7 +1583,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "19f7607c19f9cc014e8cdc0286f6d337"
+    "revision": "6e3b45ed461543d7fccfbe7ca3accf5a"
   },
   {
     "url": "tags/Java/index.html",
