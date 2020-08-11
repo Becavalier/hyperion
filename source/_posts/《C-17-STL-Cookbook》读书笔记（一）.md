@@ -45,7 +45,6 @@ int main(int argc, char **argv) {
 }
 ```
 
-**一些说明**：
 * 可用于 std::pair \ std::tuple \ struct（只能用于非静态成员）\ array；
 * **std::tuple 与 C-struct 的结构类似**，可以有引用类型的成员；而 std::vector 等则需要使用 **std::reference_wrapper** 将引用类型包装成对象的形式来存放；
 * **std::make_tuple 在默认情况下会将 T&& 退化到 T**：
@@ -187,7 +186,6 @@ int main(int argc, char **argv) {
 }
 ```
 
-**一些说明**：
 * 在 C++17 之前，需要借助 **std::enable_if_t<condition, type>** 基于 **SFINAE** 来支持诸如返回值类型选择等过程；
 
 <h5>全局变量内联</h5>
@@ -202,7 +200,7 @@ int main(int argc, char **argv) {
   return 0;
 }
 ```
-**一些说明**：
+
 * 可用于生成 “**Header-Only**”（不需要先将 .h 与 .cc 编译成 .o 然后再链接的过程）的 C++ 库；
 * ODR-use（One Definition Rule）；
 * 对于标记为 inline 的全局变量，**编译器在链接时会选择使用第一次出现的符号**（编译器会假设其他符号与该符号的定义相同）；

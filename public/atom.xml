@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-07-28T04:11:50.713Z</updated>
+  <updated>2020-08-11T01:10:10.686Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,125 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ASM.js 标准草案分析（18 August 2014）</title>
+    <link href="https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/</id>
+    <published>2020-08-09T02:25:05.000Z</published>
+    <updated>2020-08-11T01:10:10.686Z</updated>
+    
+    <summary type="html">
+    
+      Enter intro here to display on home page
+    
+    </summary>
+    
+    
+    
+      <category term="ASM.js" scheme="https://www.yhspy.com/tags/ASM-js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vtable 与 vptr</title>
+    <link href="https://www.yhspy.com/2020/08/07/vtable-%E4%B8%8E-vptr/"/>
+    <id>https://www.yhspy.com/2020/08/07/vtable-%E4%B8%8E-vptr/</id>
+    <published>2020-08-07T01:51:38.000Z</published>
+    <updated>2020-08-09T02:05:06.797Z</updated>
+    
+    <summary type="html">
+    
+      这个大众话题一直被放在 TODO 列表里，今天终于有时间来稍微写一下了。问题是之前有人在群里问能不能直接在 C/C++ 代码里访问类的 Virtual Table（后面简称 vtable），但事实情况是由于编译器的 ABI 不同，实际上对于 vtable 的具体结构和内存布局没有标准化的说明，因此不能按照想当然的方式来访问。本文我们来具体深入探究一下。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CRTP 与常见用例</title>
+    <link href="https://www.yhspy.com/2020/08/06/CRTP-%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%94%A8%E4%BE%8B/"/>
+    <id>https://www.yhspy.com/2020/08/06/CRTP-%E4%B8%8E%E5%B8%B8%E8%A7%81%E7%94%A8%E4%BE%8B/</id>
+    <published>2020-08-06T09:02:38.000Z</published>
+    <updated>2020-08-06T16:04:33.519Z</updated>
+    
+    <summary type="html">
+    
+      CRTP 的全称为 “Curiously Recurring Template Pattern”，是一种 C++ 模板编程中的常用模式。其形式是将派生类作为基类的模板参数。从“类型理论”上来讲，这是一类 “F-bounded polymorphism”。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《C++17 STL Cookbook》读书笔记（四）</title>
+    <link href="https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <published>2020-08-06T05:24:05.000Z</published>
+    <updated>2020-08-11T12:06:21.989Z</updated>
+    
+    <summary type="html">
+    
+      还是继续接上篇。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《C++17 STL Cookbook》读书笔记（三）</title>
+    <link href="https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <published>2020-07-31T13:19:12.000Z</published>
+    <updated>2020-08-06T08:10:53.695Z</updated>
+    
+    <summary type="html">
+    
+      继续接上篇。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《C++17 STL Cookbook》读书笔记（二）</title>
+    <link href="https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-07-28T04:14:05.000Z</published>
+    <updated>2020-08-01T01:19:11.157Z</updated>
+    
+    <summary type="html">
+    
+      接上篇。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《C++17 STL Cookbook》读书笔记（一）</title>
     <link href="https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-07-21T16:08:03.000Z</published>
-    <updated>2020-07-28T04:11:50.713Z</updated>
+    <updated>2020-07-28T04:16:24.100Z</updated>
     
     <summary type="html">
     
@@ -479,128 +593,6 @@
       <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
     
       <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>“对象性能类”设计模式（C++）</title>
-    <link href="https://www.yhspy.com/2020/06/02/%E2%80%9C%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/02/%E2%80%9C%E5%AF%B9%E8%B1%A1%E6%80%A7%E8%83%BD%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
-    <published>2020-06-02T02:28:53.000Z</published>
-    <updated>2020-06-02T13:26:32.803Z</updated>
-    
-    <summary type="html">
-    
-      OOP 很好地解决了“抽象”的问题，但是必不可免地要付出一定的代价。对于通常情况来讲，面向对象的成本大都可以忽略不计。但是对于某些情况，其所带来的成本必须被谨慎处理。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>“对象创建类”设计模式（C++）</title>
-    <link href="https://www.yhspy.com/2020/06/01/%E2%80%9C%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/01/%E2%80%9C%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
-    <published>2020-06-01T09:17:37.000Z</published>
-    <updated>2020-06-08T09:16:09.837Z</updated>
-    
-    <summary type="html">
-    
-      通过“对象创建”模式绕开 new，来避免对象创建（new）过程中所导致的紧耦合（依赖具体类），从而支持对象创建的稳定。它是接口抽象之后的第一步工作。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>“单一职责类”设计模式（C++）</title>
-    <link href="https://www.yhspy.com/2020/05/29/%E2%80%9C%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/05/29/%E2%80%9C%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
-    <published>2020-05-29T07:37:37.000Z</published>
-    <updated>2020-06-02T06:12:58.157Z</updated>
-    
-    <summary type="html">
-    
-      在软件组件的设计中，如果责任划分的不清晰，使用继承得到的结果往往是：随着需求的变化，子类急剧膨胀，同时充斥着重复代码的。而这时候的关键则是划清责任。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>“组件协作类”设计模式（C++）</title>
-    <link href="https://www.yhspy.com/2020/05/28/%E2%80%9C%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/05/28/%E2%80%9C%E7%BB%84%E4%BB%B6%E5%8D%8F%E4%BD%9C%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
-    <published>2020-05-28T03:40:48.000Z</published>
-    <updated>2020-06-08T08:05:20.977Z</updated>
-    
-    <summary type="html">
-    
-      该类设计模式主要用于解决组件之间的协作问题。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++17 部分新特性一览</title>
-    <link href="https://www.yhspy.com/2020/05/25/C-17-%E9%83%A8%E5%88%86%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/"/>
-    <id>https://www.yhspy.com/2020/05/25/C-17-%E9%83%A8%E5%88%86%E6%96%B0%E7%89%B9%E6%80%A7%E4%B8%80%E8%A7%88/</id>
-    <published>2020-05-25T06:36:45.000Z</published>
-    <updated>2020-07-15T02:41:22.312Z</updated>
-    
-    <summary type="html">
-    
-      C++17 又称 C++1z，是 C++ 的现行标准的非正式名称，正式名称为 “International Standard ISO/IEC Programming Language C++”。C++17 旨在作为大型扩展，最终的投票期于2017年结束。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++ 字符串拷贝优化策略：Eager-Copy、SSO 与 COW</title>
-    <link href="https://www.yhspy.com/2020/05/24/C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%B7%E8%B4%9D%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%EF%BC%9AEager-Copy%E3%80%81SSO-%E4%B8%8E-COW/"/>
-    <id>https://www.yhspy.com/2020/05/24/C-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%B7%E8%B4%9D%E4%BC%98%E5%8C%96%E7%AD%96%E7%95%A5%EF%BC%9AEager-Copy%E3%80%81SSO-%E4%B8%8E-COW/</id>
-    <published>2020-05-24T01:31:12.000Z</published>
-    <updated>2020-05-26T04:40:53.452Z</updated>
-    
-    <summary type="html">
-    
-      在 C++ 中，对于一个类型为 std::string 的字符串对象来说，可以有多种方式来拷贝它所对应的资源。而在这些方法中，最常见的三种为：Eager-Copy、SSO 以及 COW。其中最为广泛使用的是 “SSO”，而其他方式则已大都不再被编译器所使用。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
     
   </entry>
   
