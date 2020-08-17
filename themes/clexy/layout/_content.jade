@@ -28,24 +28,24 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
         h4=lastyear
         | <ul class="catelog-items">
         li(itemprop='name')
+          time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
+          |&nbsp;|&nbsp;
           a(href=config.root + post.path, itemprop='url') #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
               for tag in post.tags.data
-                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name}
-                |&nbsp;|&nbsp;
-            time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
+                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} 
       else
         li
+          time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
+          |&nbsp;|&nbsp;
           a(href=config.root + post.path) #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
               for tag in post.tags.data
                 a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name}
-                |&nbsp;|&nbsp;
-            time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
     if site.posts.toArray().length != 0
       | </ul>
 else if is_page() && page.title.toLowerCase() =='books'

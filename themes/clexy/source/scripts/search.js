@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', async e => {
     wrapSearchPostResultSnippet: results => {
       if (results.length > 0) {
         let dom = `
-          <h4>文章结果</h4>
+          <h4>文章</h4>
           <ul class="catelog-items">
         `;
         results.forEach(i => {
           dom += (`
             <li itemprop="name">
-              <a href="${i.url}" itemprop="url">${i.title}</a> &nbsp;—&nbsp;<time itemprop="datePublished" datetime="${i.rawDate}"> ${i.date}</time>
+              <time itemprop="datePublished" datetime="${i.rawDate}">${i.date}</time> &nbsp;|&nbsp; <a href="${i.url}" itemprop="url">${i.title}</a>
             </li>
           `);
         });
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     wrapSearchTagResultSnippet: results => {
       if (results.length > 0) {
         let dom = `
-          <h4>标签结果</h4>
+          <h4>标签</h4>
           <div class="tag-item">
         `;
         results.forEach(i => {
