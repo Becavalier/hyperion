@@ -48,4 +48,6 @@ int main(int argc, char **argv) {
 
 ![](1.png)
 
-需要注意的是，vtable 的实际结构是**由 ABI 决定**的，比如对于 **Itanium 64-bit** 来说，vtable 的结构和布局可以参考【***[这里](https://refspecs.linuxbase.org/cxxabi-1.83.html#vtable)***】。
+需要注意的是，vtable 的实际结构是**由 ABI 决定**的，比如对于 **Itanium 64-bit** 来说，vtable 的结构和布局可以参考【**[这里](https://refspecs.linuxbase.org/cxxabi-1.83.html#vtable)**】。
+
+

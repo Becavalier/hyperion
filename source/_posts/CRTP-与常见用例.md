@@ -122,3 +122,36 @@ int main(int argc, char **argv) {
 ```
 
 * **std::enable_shared_from_this**；
+
+一种 std::enable_shared_from_this 的常见实现方式是：**保留对 this 的弱引用（例如通过 std::weak_ptr）**。当 std::shared_ptr 的构造函数检测到 std::enable_shared_from_this 这个基类的存在时，会将新创建的 std::shared_ptr 分配给内部存储的弱引用。**\***为已经由另一个 std::shared_ptr 管理的对象构造另一个 std::shared_ptr 不会检查内部存储的弱引用，因此会导致未定义的行为。
+
+```cpp
+#include <memory>
+#include <iostream>
+ 
+struct Good : std::enable_shared_from_this<Good> {  // CRTP.
+  std::shared_ptr<Good> getptr() {
+    return shared_from_this();
+  }
+};
+ 
+struct Bad {
+  std::shared_ptr<Bad> getptr() {
+    return std::shared_ptr<Bad>(this);
+  }
+  ~Bad() { std::cout << "Bad::~Bad() called\n"; }
+};
+ 
+int main(int argc, char** argv) {
+    // Good: the two shared_ptr's share the same object.
+    std::shared_ptr<Good> gp1(new Good);
+    std::shared_ptr<Good> gp2 = gp1->getptr();
+    std::cout << "gp2.use_count() = " << gp2.use_count() << '\n';
+ 
+    // Bad, each shared_ptr thinks it's the only owner of the object.
+    std::shared_ptr<Bad> bp1(new Bad);
+    std::shared_ptr<Bad> bp2 = bp1->getptr();
+    std::cout << "bp2.use_count() = " << bp2.use_count() << '\n';
+    return 0;
+} // UB: double-delete of Bad.
+```

@@ -35,7 +35,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
               for tag in post.tags.data
-                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} 
+                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} &nbsp;
       else
         li
           time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
@@ -45,7 +45,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
               for tag in post.tags.data
-                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name}
+                a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} &nbsp;
     if site.posts.toArray().length != 0
       | </ul>
 else if is_page() && page.title.toLowerCase() =='books'
