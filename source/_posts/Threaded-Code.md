@@ -1,13 +1,13 @@
 ---
 title: 【译】Threaded Code
-intro: 本文用于记录有关 Threaded Code 的一些内容。
+intro: 本文用于记录有关 Threaded Code 的一些内容。此文原文较老（2003），仅供参考。
 comments: true
 date: 2020-08-21 07:01:46
 tags:
 - 虚拟机
 ---
 
-本文用于记录有关 Threaded Code 的一些内容。翻译自“[这里](http://www.complang.tuwien.ac.at/forth/threaded-code.html)”。
+本文用于记录有关 Threaded Code 的一些内容，翻译自“[这里](http://www.complang.tuwien.ac.at/forth/threaded-code.html)”。**此文原文较老（2003），仅供参考。**
 
 ### Threaded Code 有什么好处？
 
@@ -62,7 +62,7 @@ nop           # 填补分支延迟间隙（Branch Delayed Slot，MIPS / SPARC �
 #define NEXT goto **ip++
 #define guard(n) asm("#" #n)
 
-int main() {
+main() {
   /* this has 50% mispredictions (50-60% is typical in large benchmarks) */
   static void* prog[] = {&&next1, &&next2, &&next1, &&next3, &&next1, &&next4, &&next1, &&next5, &&next1, &&loop};
   void** ip = prog;
@@ -131,7 +131,7 @@ j    $3       # 跳转到对应地址执行指令；
 nop
 ```
 
-传统上，Forth 是使用 *indirect-threaded code* 实现的。因此，*direct-threaded code* 与 *indirect-threaded code* 两者在实现上有很多共同点：非原语类型具有一个代码段（code-field），但是现在它包含一个跳转到实际代码的 “jump”，而不是其地址信息。在大多数处理器上，此跳转比 *indirect-threaded code* 的额外负载花费更多的时间，因此 *direct-threaded code* 在执行原语时会具有性能优势。在 486 上，相对的提速是 2％-8％。
+传统上，Forth 是使用 *indirect-threaded code* 实现的。因此，*direct-threaded code* 与 *indirect-threaded code* 两者在实现上有很多共同点：非原语（Non-primitive）具有一个代码段（code-field），但是现在它包含一个跳转到实际代码的 “jump”，而不是其地址信息。在大多数处理器上，此跳转比 *indirect-threaded code* 的额外负载花费更多的时间，因此 *direct-threaded code* 在执行原语（primitive）时会具有性能优势。在 486 上，相对的提速是 2％-8％。（原语和非原语的区别？）
 
 一个基于 C 语言的简单实现如下所示：
 
@@ -139,7 +139,7 @@ nop
 #define NEXT goto ***ip++
 #define guard(n) asm("#" #n)
 
-int main() {
+main() {
   /* this has 50% mispredictions (50-60% is typical in large benchmarks) */
   static void* cf[] = {&&next1, &&next2, &&next3, &&next4, &&next5, &&loop};
   static void** prog[] = {cf, (cf + 1), cf, (cf + 2), cf, (cf + 3), cf, (cf + 4), cf, (cf + 5)};
@@ -190,7 +190,7 @@ int main() {
 #define NEXT break
 #define guard(n) asm("#" #n)
 
-int main() {
+main() {
   static int prog[] = {0, 1, 0, 2, 0, 3, 0, 4, 0, 5};
   int* ip = prog;
   int count = 10000000;
@@ -283,7 +283,7 @@ void loop() {
 
 Inst prog[] = {next1, next2, next1, next3, next1, next4, next1, next5, next1, loop};
 
-int main() {
+main() {
   ip = prog;
   for (;;)
     NEXT;

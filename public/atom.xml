@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-08-24T10:35:01.902Z</updated>
+  <updated>2020-08-24T13:54:22.299Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,15 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>常用 Threading Models 的伪代码示例</title>
+    <link href="https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
+    <id>https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
+    <published>2020-08-24T11:45:11.000Z</published>
+    <updated>2020-08-24T13:54:22.299Z</updated>
+    
+    <summary type="html">
+    
+      RT。
+    
+    </summary>
+    
+    
+    
+      <category term="虚拟机" scheme="https://www.yhspy.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【译】Threaded Code</title>
     <link href="https://www.yhspy.com/2020/08/21/Threaded-Code/"/>
     <id>https://www.yhspy.com/2020/08/21/Threaded-Code/</id>
     <published>2020-08-20T23:01:46.000Z</published>
-    <updated>2020-08-24T10:35:01.902Z</updated>
+    <updated>2020-08-24T12:13:56.322Z</updated>
     
     <summary type="html">
     
-      本文用于记录有关 Threaded Code 的一些内容。
+      本文用于记录有关 Threaded Code 的一些内容。此文原文较老（2003），仅供参考。
     
     </summary>
     
@@ -564,27 +583,6 @@
     
     
       <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>“领域规则类”设计模式（C++）</title>
-    <link href="https://www.yhspy.com/2020/06/08/%E2%80%9C%E9%A2%86%E5%9F%9F%E8%A7%84%E5%88%99%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/08/%E2%80%9C%E9%A2%86%E5%9F%9F%E8%A7%84%E5%88%99%E7%B1%BB%E2%80%9D%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88C-%EF%BC%89/</id>
-    <published>2020-06-08T06:57:27.000Z</published>
-    <updated>2020-06-08T09:47:16.834Z</updated>
-    
-    <summary type="html">
-    
-      在特定领域中，某些变化虽然频繁，但可以抽象为某种规则。这时候，结合特定领域，将问题抽象为语法规则，从而给出在该领域下的一般性解决方案。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-      <category term="设计模式" scheme="https://www.yhspy.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
