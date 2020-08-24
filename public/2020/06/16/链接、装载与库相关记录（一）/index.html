@@ -314,7 +314,7 @@ namespace std { inline namespace __1 { } }
 </ol>
 <p><img src="4.png" alt=""></p>
 <p>因此，根据进程中的栈内存分布，我们便可以直接利用 argc 参数的地址来访问随后位于栈中的其他参数以及环境变量（X86_64 Linux 存储环境变量的方式有所变化。<strong>X86_64 下函数调用会通过诸如 rdi / rsi 寄存器传递，main 函数内会将对应的 argc / argv 参数再存放到栈上的相邻位置</strong>）：</p>
-<pre class="line-numbers language-asm"><code class="language-asm">0000000000401130 <main>:
+<pre class="line-numbers language-asm"><code class="language-asm">0000000000401130 main:
   401130:    55                       push   rbp
   401131:    48 89 e5                 mov    rbp, rsp
   401134:    48 83 ec 20              sub    rsp, 0x20
@@ -361,4 +361,4 @@ namespace std { inline namespace __1 { } }
 <ol start="74">
 <li>（Page：198）<strong>EIP 寄存器（X86_64 下为 RIP 寄存器）</strong>：CPU 通过 EIP 寄存器读取即将要执行的指令。每次 CPU 执行完相应的汇编指令之后，EIP 寄存器的值就会增加。</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-16T11:15:02.000Z"> 2020 / 07 / 07, 12:20:21</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/08/“领域规则类”设计模式（C-）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/17/Linux 下的 ELF 完整结构分析/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-16T11:15:02.000Z"> 2020 / 08 / 22, 18:17:47</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/08/“领域规则类”设计模式（C-）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/17/Linux 下的 ELF 完整结构分析/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
