@@ -1,11 +1,13 @@
 ---
 title: WebAssembly Weekly 集合整理（2020 / 08）
-intro: Enter intro here to display on home page
+intro: 整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
 comments: true
 date: 2020-08-25 10:21:49
 tags:
 - WebAssembly
 ---
+
+整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
 
 #### 语言（Language）
 

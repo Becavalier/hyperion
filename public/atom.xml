@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-08-25T05:27:14.831Z</updated>
+  <updated>2020-08-25T05:55:02.370Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -21,11 +21,11 @@
     <link href="https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/</id>
     <published>2020-08-25T02:21:49.000Z</published>
-    <updated>2020-08-25T05:27:14.831Z</updated>
+    <updated>2020-08-25T05:55:02.370Z</updated>
     
     <summary type="html">
     
-      Enter intro here to display on home page
+      整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
     
     </summary>
     

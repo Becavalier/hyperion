@@ -863,7 +863,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/index.html",
-    "revision": "6dbd65d7d838b7f2bd6c62d8f953dabf"
+    "revision": "58b64246a343b07495b56df4b0ec3e3b"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1295,91 +1295,91 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/10/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/11/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/12/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/13/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/14/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/15/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/16/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/17/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/18/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/19/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/2/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/20/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/21/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/22/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/3/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/4/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/5/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/6/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/7/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/8/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "page/9/index.html",
-    "revision": "36ade8b4aaa053f88b23e3399a858558"
+    "revision": "28b9c79e2e75a5d5e3cef5272923844c"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1403,7 +1403,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "fe7508beb99f899db4391cb2beab427e"
+    "revision": "2a0900dfed5529f997ef59276c041318"
   },
   {
     "url": "readings/Low-Level Programming.html",
@@ -1523,7 +1523,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "ca34aa5a9a0a0cea65854d85f75340ed"
+    "revision": "26a63a2eb56c2d375f31a3da15a6a863"
   },
   {
     "url": "tags/Android/index.html",
@@ -1615,7 +1615,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "89e02a25b832b7353cf1001adb14058a"
+    "revision": "073fece2272617ac07781a56c2f8da60"
   },
   {
     "url": "tags/Java/index.html",
