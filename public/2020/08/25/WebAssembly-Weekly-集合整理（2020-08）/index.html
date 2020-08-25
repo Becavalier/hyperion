@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>WebAssembly Weekly 集合整理（2020 / 08） | 曜彤.手记</title><meta name="description" content="Enter intro here to display on home page"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="ca69f7ca28c2b4927802cf328ae01068" class="full"><h1 itemprop="headline" class="post-heading">WebAssembly Weekly 集合整理（2020 / 08）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-08-25T02:21:49.000Z"> 2020 / 08 / 25, 10:21:49</time></span><span class="page-tag-anchor"><a href="/tags/WebAssembly" itemprop="url">#WebAssembly</a>&nbsp;&nbsp;</span></div><br><h4 id="语言（Language）"><a href="#语言（Language）" class="headerlink" title="语言（Language）"></a>语言（Language）</h4><ul>
+<li><strong><a href="https://github.com/ballercat/walt" target="_blank" rel="noopener">Walt</a></strong> - 用于 WAT 的类 JavaScript 语法（比 WAT 再抽象一层）；</li>
+</ul>
+<pre class="line-numbers language-text"><code class="language-text">let counter: i32 = 0;
+
+export function decrement(): i32 {
+  counter -= 1;
+  return counter;
+}
+
+export function increment(): i32 {
+  counter += 1;
+  return counter;
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong><a href="https://github.com/astrolang/astro" target="_blank" rel="noopener">Astro</a></strong> - 一个用于 Wasm 的多范式语言；</li>
+<li><strong><a href="https://github.com/grain-lang/grain" target="_blank" rel="noopener">Grain</a></strong> - 一个可以被编译到 Wasm 的语言，内部借助了 Binaryen；</li>
+<li><strong><a href="https://github.com/lys-lang/lys" target="_blank" rel="noopener">Lys</a></strong> - 一个可以被编译到 Wasm 的语言；</li>
+</ul>
+<h4 id="多媒体处理（Multimedia-Processing）"><a href="#多媒体处理（Multimedia-Processing）" class="headerlink" title="多媒体处理（Multimedia Processing）"></a>多媒体处理（Multimedia Processing）</h4><ul>
+<li><strong><a href="https://github.com/msafronov/glitchbitch" target="_blank" rel="noopener">GlitchBitch</a></strong> - 用于在图片上制作“毛刺”效果的 JavaScript 插件；</li>
+<li><strong><a href="https://github.com/novoselrok/color-palette-wasm" target="_blank" rel="noopener">Color Palette</a></strong> - 基于 K-Means 实现的图像调色板（从图像上选取主题色）应用；</li>
+<li><strong><a href="https://github.com/yushulx/zxing-cpp-emscripten" target="_blank" rel="noopener">WebAssembly ZXing</a></strong> - 基于 Wasm 的 Zxing Web 实现（用于二维码扫描和识别）；</li>
+<li><strong><a href="https://github.com/jsdw/wasm-fractal" target="_blank" rel="noopener">WASM Fractal Generator</a></strong> - 基于 Wasm 的分形发生器；</li>
+<li><strong><a href="https://squoosh.app/" target="_blank" rel="noopener">Squoosh</a></strong> - 在线图片处理工具；</li>
+<li><strong><a href="https://github.com/lynnagara/draw-app" target="_blank" rel="noopener">draw-app</a></strong> - 简易的在线画图应用；</li>
+<li><strong><a href="https://github.com/silvia-odwyer/photon" target="_blank" rel="noopener">Photon</a></strong> - 可用于 Web 应用的在线图像处理库；</li>
+</ul>
+<h4 id="仿真器（Emulator）"><a href="#仿真器（Emulator）" class="headerlink" title="仿真器（Emulator）"></a>仿真器（Emulator）</h4><ul>
+<li><strong><a href="https://github.com/workhorsy/SaltyNES" target="_blank" rel="noopener">SaltyNES</a></strong> - 一个 NES 仿真器；</li>
+<li><strong><a href="https://github.com/koute/pinky/tree/master/pinky-web" target="_blank" rel="noopener">Pinky</a></strong> - 基于 Rust 构建的 NES 仿真器；</li>
+<li><strong><a href="https://github.com/torch2424/wasmBoy" target="_blank" rel="noopener">wasmboy</a></strong> - 基于 AssemblyScript 编写的 Game Boy 仿真器；</li>
+<li><strong><a href="https://github.com/AntoineViau/tweetx86" target="_blank" rel="noopener">TweetX86</a></strong> - 基于 Nasm 等构建的 X86 汇编仿真器；</li>
+<li><strong><a href="https://github.com/djhworld/gomeboycolor-wasm" target="_blank" rel="noopener">gomeboycolor</a></strong> - Game Boy Color 仿真器；</li>
+<li><strong><a href="https://github.com/shlomnissan/chip8-wasm" target="_blank" rel="noopener">chip8-wasm</a></strong> - Chip-8 仿真器；</li>
+<li><strong><a href="https://github.com/ruffle-rs/ruffle" target="_blank" rel="noopener">Ruffle</a></strong> - Flash Player 仿真器；</li>
+<li><strong><a href="https://github.com/takahirox/nes-rust" target="_blank" rel="noopener">nes-rust</a></strong> - NES 仿真器；</li>
+</ul>
+<h4 id="Web-前端框架（Web-Frontend）"><a href="#Web-前端框架（Web-Frontend）" class="headerlink" title="Web 前端框架（Web Frontend）"></a>Web 前端框架（Web Frontend）</h4><ul>
+<li><strong><a href="https://github.com/yewstack/yew" target="_blank" rel="noopener">Yew</a></strong> - 一个可以使用 Rust 构建 Web 前端应用的框架；</li>
+<li><strong><a href="https://github.com/finos/perspective/" target="_blank" rel="noopener">Perspective</a></strong> - 基于 Wasm 的实时数据可视化组件；</li>
+<li><strong><a href="https://www.qt.io/blog/2018/05/22/qt-for-webassembly" target="_blank" rel="noopener">QT</a></strong> - Wasm 版 QT；</li>
+<li><strong><a href="https://www.lesarde.com/" target="_blank" rel="noopener">Frogui</a></strong> - 基于 C# 和 .NET 实现的 UI 框架；</li>
+<li><strong><a href="https://github.com/prism-rb/prism" target="_blank" rel="noopener">Prism</a></strong> - 使用 Ruby 构建 Web 应用的前端框架；</li>
+</ul>
+<h4 id="库（Library）"><a href="#库（Library）" class="headerlink" title="库（Library）"></a>库（Library）</h4><ul>
+<li><strong><a href="https://maierfelix.github.io/glmw/" target="_blank" rel="noopener">GLMW</a></strong> - 一个基于 Wasm 的矩阵和向量生成库；</li>
+<li><strong><a href="https://github.com/Microsoft/onnxjs" target="_blank" rel="noopener">ONNX.js</a></strong> - 可以在 JavaScript 中运行 ONNX 模型的库；</li>
+</ul>
+<h4 id="物联网（IOT）"><a href="#物联网（IOT）" class="headerlink" title="物联网（IOT）"></a>物联网（IOT）</h4><ul>
+<li><strong><a href="https://github.com/nebulet/nebulet" target="_blank" rel="noopener">Nebulet</a></strong> - 一个可以在 Ring0 中运行的，基于 Wasm 实现的“用户模式”微内核；</li>
+</ul>
+<h4 id="编译器（Compiler）"><a href="#编译器（Compiler）" class="headerlink" title="编译器（Compiler）"></a>编译器（Compiler）</h4><ul>
+<li><strong><a href="https://www.leaningtech.com/pages/cheerp.html" target="_blank" rel="noopener">Cheerp</a></strong> - Wasm 编译器；</li>
+<li><strong><a href="https://wasdk.github.io/WasmFiddle/" target="_blank" rel="noopener">WasmFiddle</a></strong> - Wasm 在线 C/C++ 编译器；</li>
+<li><strong><a href="https://github.com/NectarJS/nectarjs" target="_blank" rel="noopener">NectarJS</a></strong> - JavaScript Native 编译器，可以将 JavaScript 编译为 Native Code；</li>
+<li><strong><a href="https://webassembly.studio/" target="_blank" rel="noopener">WebAssembly Studio</a></strong> - 在线的 Wasm 开发 IDE；</li>
+<li><strong><a href="https://github.com/verdie-g/brainfuck2wasm" target="_blank" rel="noopener">brainfuck2wasm</a></strong> - 一个 BrainFuck 到 Wasm 的编译器；</li>
+<li><strong><a href="https://github.com/i-net-software/JWebAssembly" target="_blank" rel="noopener">JWebAssembly</a></strong> - 一个 Java 字节码到 Wasm 的编译器；</li>
+<li><strong><a href="https://github.com/mirkosertic/Bytecoder" target="_blank" rel="noopener">Bytecoder</a></strong> - 可于将 Java 字节码解释并转换为如 Wasm 等其他语言；</li>
+<li><strong><a href="https://github.com/remko/waforth" target="_blank" rel="noopener">WAForth</a></strong> - 用于 Wasm 的 Forth 解释器和编译器；</li>
+<li><strong><a href="https://github.com/wwwg/wasmdec" target="_blank" rel="noopener">wasmdec</a></strong> - 一个 Wasm 到 C 编译器；</li>
+<li><strong><a href="https://tinygo.org/" target="_blank" rel="noopener">TINYGO</a></strong> - 一个 Go 到 Wasm 编译器；</li>
+<li><strong><a href="https://github.com/tsavola/wag" target="_blank" rel="noopener">wag</a></strong> - 一个使用 Go 实现的 Wasm 编译器（字节码 -&gt; 机器码）；</li>
+</ul>
+<h4 id="虚拟机-运行时（Virtual-Machine-Runtime）"><a href="#虚拟机-运行时（Virtual-Machine-Runtime）" class="headerlink" title="虚拟机/运行时（Virtual Machine / Runtime）"></a>虚拟机/运行时（Virtual Machine / Runtime）</h4><ul>
+<li><strong><a href="https://github.com/WAVM/WAVM" target="_blank" rel="noopener">WAVM</a></strong> - Wasm 虚拟机；</li>
+<li><strong><a href="https://github.com/perlin-network/life" target="_blank" rel="noopener">Life</a></strong> - Go 语言编写的安全、快速的 Wasm 虚拟机。主要用于分布式应用程序；</li>
+<li><strong><a href="https://github.com/kenny-ngo/wasmjit" target="_blank" rel="noopener">Wasmjit</a></strong> - 用于 Linux 的内核模式 Wasm 运行时；</li>
+<li><strong><a href="https://wasmer.io/" target="_blank" rel="noopener">Wasmer</a></strong> - 带有包管理能力的 Wasm 虚拟机；</li>
+<li><strong><a href="https://github.com/bytecodealliance/lucet" target="_blank" rel="noopener">Lucet</a></strong> - 支持 WASI 的 Wasm 编译器/虚拟机；</li>
+<li><strong><a href="https://github.com/bytecodealliance/wasm-micro-runtime" target="_blank" rel="noopener">WAMR</a></strong> - Wasm 轻量级编译器/虚拟机；</li>
+<li><strong><a href="https://github.com/wasm3/wasm3" target="_blank" rel="noopener">Wasm3</a></strong> - 基于 C 编写的高性能 Wasm 解释器；</li>
+<li><strong><a href="https://github.com/oracle/graal/tree/master/wasm" target="_blank" rel="noopener">GraalWasm</a></strong> - GraalVM 系列中用于 Wasm 的引擎；</li>
+<li><strong><a href="https://github.com/lsds/Faasm" target="_blank" rel="noopener">Faasm</a></strong> - 一个无状态的 Serverless Wasm 运行时;</li>
+<li><strong><a href="https://github.com/bytecodealliance/wasmtime" target="_blank" rel="noopener">wasmtime</a></strong> - 使用 Cranelift 构建的独立的 Wasm 运行时引擎;</li>
+</ul>
+<h4 id="游戏引擎（Game-Engine）"><a href="#游戏引擎（Game-Engine）" class="headerlink" title="游戏引擎（Game Engine）"></a>游戏引擎（Game Engine）</h4><ul>
+<li><strong><a href="https://forum.defold.com/t/defold-1-2-141-has-been-released/33996" target="_blank" rel="noopener">Defold</a></strong> - 一个用于 Web 和移动端的游戏开发引擎；</li>
+<li><strong><a href="https://github.com/gabrielcuvillier/d3wasm" target="_blank" rel="noopener">d3wasm</a></strong> - Tech4 / Doom3 基于 Wasm 的移植版；</li>
+</ul>
+<h4 id="工具（Tool）"><a href="#工具（Tool）" class="headerlink" title="工具（Tool）"></a>工具（Tool）</h4><ul>
+<li><strong><a href="https://github.com/danleh/wasabi" target="_blank" rel="noopener">Wasabi</a></strong> - 一个用于 Wasm 的动态分析框架；</li>
+<li><strong><a href="https://github.com/innative-sdk/innative" target="_blank" rel="noopener">inNative</a></strong> - 一个用于 Wasm 的 Native 嵌入层；</li>
+<li><strong><a href="https://github.com/wasienv/wasienv" target="_blank" rel="noopener">Wasienv</a></strong> - 用于 C/C++ 的 WASI 开发工具；</li>
+<li><strong><a href="https://github.com/WebAssembly/wabt" target="_blank" rel="noopener">WABT</a></strong> - Wasm 二进制工具集；</li>
+<li><strong><a href="https://github.com/WebAssembly/binaryen" target="_blank" rel="noopener">Binaryen</a></strong> - Wasm 编译器基础设施和工具链；</li>
+</ul>
+<h4 id="教学（Education）"><a href="#教学（Education）" class="headerlink" title="教学（Education）"></a>教学（Education）</h4><ul>
+<li><strong><a href="https://wasdk.github.io/wasmcodeexplorer/" target="_blank" rel="noopener">WebAssembly Code Explorer</a></strong> - 以直观的方式探索 Wasm 二进制模块的字节组成方式；</li>
+</ul>
+<h4 id="性能测试（Benchmark）"><a href="#性能测试（Benchmark）" class="headerlink" title="性能测试（Benchmark）"></a>性能测试（Benchmark）</h4><ul>
+<li><strong><a href="https://github.com/mtharrison/wasm-raytracer" target="_blank" rel="noopener">wasm-raytracer</a></strong> - 自定义用于 Wasm 的光线追踪器测试集；</li>
+<li><strong><a href="https://github.com/bojan88/WASM-vs-JS-Pitch-detector" target="_blank" rel="noopener">WASM-vs-JS-Pitch-detector</a></strong> - 基于 McLeod 音高检测算法的测试；</li>
+<li><strong><a href="https://pspdfkit.com/blog/2018/a-real-world-webassembly-benchmark/" target="_blank" rel="noopener">PSPDFKit</a></strong> - 基于 PSPDFKit 的 Wasm 性能测试；</li>
+</ul>
+<h4 id="其他（Others）"><a href="#其他（Others）" class="headerlink" title="其他（Others）"></a>其他（Others）</h4><ul>
+<li><strong><a href="https://github.com/ColinEberhardt/d3-wasm-force" target="_blank" rel="noopener">d3-wasm-force</a></strong> - 基于 Wasm 重写的 d3-force；</li>
+<li><strong><a href="https://github.com/ewasm/design" target="_blank" rel="noopener">ewasm</a></strong> - Wasm 版“以太坊”；</li>
+<li><strong><a href="https://github.com/rhysd/vim.wasm" target="_blank" rel="noopener">vim.wasm</a></strong> - Wasm 版 VIM 编辑器；</li>
+<li><strong><a href="https://github.com/tomaka/redshirt" target="_blank" rel="noopener">redshirt</a></strong> - 基于 Wasm 的操作系统；</li>
+<li><strong><a href="https://github.com/jameslittle230/stork" target="_blank" rel="noopener">Stork</a></strong> - 用于静态页面的内容搜索工具；</li>
+<li><strong><a href="https://github.com/tinysearch/tinysearch" target="_blank" rel="noopener">tinysearch</a></strong> - 用于静态页面全文本搜索引擎；</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-08-25T02:21:49.000Z"> 2020 / 08 / 25, 13:27:14</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/24/常用-Threading-Models-的伪代码示例/" itemprop="url">Older Post ⇒</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

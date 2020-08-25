@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-08-24T13:54:22.299Z</updated>
+  <updated>2020-08-25T05:27:14.831Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebAssembly Weekly 集合整理（2020 / 08）</title>
+    <link href="https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/</id>
+    <published>2020-08-25T02:21:49.000Z</published>
+    <updated>2020-08-25T05:27:14.831Z</updated>
+    
+    <summary type="html">
+    
+      Enter intro here to display on home page
+    
+    </summary>
+    
+    
+    
+      <category term="WebAssembly" scheme="https://www.yhspy.com/tags/WebAssembly/"/>
+    
+  </entry>
   
   <entry>
     <title>常用 Threading Models 的伪代码示例</title>
@@ -558,25 +577,6 @@
     <summary type="html">
     
       本文我们将以如下这段代码为例，来分析其对应 ELF Object / Executable 文件在 Linux 下的完整数据结构，以及各结构在操作系统源码中的实际类型定义。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《程序员的自我修养 — 链接、装载与库》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/06/16/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/16/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/</id>
-    <published>2020-06-16T11:15:02.000Z</published>
-    <updated>2020-08-22T10:17:47.170Z</updated>
-    
-    <summary type="html">
-    
-      本文内容主要摘自《程序员的自我修养 — 链接、装载与库》一书。
     
     </summary>
     
