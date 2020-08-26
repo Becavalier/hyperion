@@ -9,7 +9,7 @@ tags:
 
 整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
 
-#### 语言（Language）
+#### 新兴语言（Emerging Language）
 
 * **[Walt](https://github.com/ballercat/walt)** - 用于 WAT 的类 JavaScript 语法（比 WAT 再抽象一层）；
 
@@ -56,34 +56,52 @@ export function increment(): i32 {
 #### Web 前端框架（Web Frontend）
 
 * **[Yew](https://github.com/yewstack/yew)** - 一个可以使用 Rust 构建 Web 前端应用的框架；
+* **[Seed](https://github.com/seed-rs/seed)** - 一个可以使用 Rust 构建 Web 前端应用的框架；
+* **[Vugu](https://github.com/vugu/vugu)** - 一个可以使用 Go 构建 Web 应用的 UI 框架；
+* **[Vecty](https://github.com/hexops/vecty)** - 一个可以使用 Go 构建响应式、动态的 Web 框架；
 * **[Perspective](https://github.com/finos/perspective/)** - 基于 Wasm 的实时数据可视化组件；
 * **[QT](https://www.qt.io/blog/2018/05/22/qt-for-webassembly)** - Wasm 版 QT；
 * **[Frogui](https://www.lesarde.com/)** - 基于 C# 和 .NET 实现的 UI 框架；
 * **[Prism](https://github.com/prism-rb/prism)** - 使用 Ruby 构建 Web 应用的前端框架；
+* **[asm-dom](https://github.com/mbasso/asm-dom)** - 基于 C++ 构建的 V-DOM，可用于构建 Web 应用；
+* **[go-vdom-wasm](https://github.com/mfrachet/go-vdom-wasm)** - 基于 Go 构建的 V-DOM，可用于构建 Web 应用；
 
 
 #### 库（Library）
 
 * **[GLMW](https://maierfelix.github.io/glmw/)** - 一个基于 Wasm 的矩阵和向量生成库；
 * **[ONNX.js](https://github.com/Microsoft/onnxjs)** - 可以在 JavaScript 中运行 ONNX 模型的库；
+* **[WASM-PDF](https://github.com/jussiniinikoski/wasm-pdf)** - 可以使用 Wasm 和 JavaScript 生成 PDF 文件的库；
+* **[webm-wasm](https://github.com/GoogleChromeLabs/webm-wasm)** - 可以使用 Wasm 和 JavaScript 生成 webm 视频的库；
+* **[argon2-browser](https://github.com/antelle/argon2-browser)** - Wasm 移植版的密码哈希函数库 Argon2；
+
 
 #### 物联网（IOT）
 
 * **[Nebulet](https://github.com/nebulet/nebulet)** - 一个可以在 Ring0 中运行的，基于 Wasm 实现的“用户模式”微内核；
+* **[wasmachine](https://github.com/piranna/wasmachine)** - 基于 FPGA 实现的 Wasm 规范；
 
 #### 编译器（Compiler）
 
+* **[WasmFiddle](https://wasdk.github.io/WasmFiddle/)** - 支持 C/C++ 的 Wasm 在线编译器；
+* **[WebAssembly Studio](https://webassembly.studio/)** - 功能齐全的 Wasm 在线开发 IDE；
+* **[WasmExplorer](https://mbebenita.github.io/WasmExplorer/)** - 支持 C/C++ 的 Wasm 在线编译器，可生成 X86 汇编代码；
+* **[wat2wasm](https://cdn.rawgit.com/WebAssembly/wabt/fb986fbd/demo/wat2wasm/)** - 一个 WAT 到 Wasm 在线编译器；
+* **[wasm2wat](https://cdn.rawgit.com/WebAssembly/wabt/fb986fbd/demo/wasm2wat/)** - 一个 Wasm 到 WAT 编译器（需从本地上传 Wasm 二进制模块文件）；
 * **[Cheerp](https://www.leaningtech.com/pages/cheerp.html)** - Wasm 编译器；
-* **[WasmFiddle](https://wasdk.github.io/WasmFiddle/)** - Wasm 在线 C/C++ 编译器；
 * **[NectarJS](https://github.com/NectarJS/nectarjs)** - JavaScript Native 编译器，可以将 JavaScript 编译为 Native Code；
-* **[WebAssembly Studio](https://webassembly.studio/)** - 在线的 Wasm 开发 IDE；
 * **[brainfuck2wasm](https://github.com/verdie-g/brainfuck2wasm)** - 一个 BrainFuck 到 Wasm 的编译器；
 * **[JWebAssembly](https://github.com/i-net-software/JWebAssembly)** - 一个 Java 字节码到 Wasm 的编译器；
-* **[Bytecoder](https://github.com/mirkosertic/Bytecoder)** - 可于将 Java 字节码解释并转换为如 Wasm 等其他语言；
+* **[Bytecoder](https://github.com/mirkosertic/Bytecoder)** - 可于将 Java 字节码解释并转换为如 Wasm 等其他语言的编译器；
 * **[WAForth](https://github.com/remko/waforth)** - 用于 Wasm 的 Forth 解释器和编译器；
 * **[wasmdec](https://github.com/wwwg/wasmdec)** - 一个 Wasm 到 C 编译器；
 * **[TINYGO](https://tinygo.org/)** - 一个 Go 到 Wasm 编译器；
 * **[wag](https://github.com/tsavola/wag)** - 一个使用 Go 实现的 Wasm 编译器（字节码 -> 机器码）；
+* **[Emscripten](https://emscripten.org/)** - 人尽皆知的强大 Wasm 编译工具链；
+* **[ilwasm](https://github.com/kg/ilwasm)** - 一个 CIL 到 Wasm 编译器；
+* **[Asterius](https://github.com/tweag/asterius)** - 一个 Haskell 到 Wasm 编译器；
+* **[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)** - 一个 AssemblyScript 到 Wasm 编译器；
+* **[Asmble](https://github.com/cretz/asmble)** - 一个 Wasm 到 JVM 字节码编译器；
 
 
 #### 虚拟机/运行时（Virtual Machine / Runtime）
@@ -98,11 +116,26 @@ export function increment(): i32 {
 * **[GraalWasm](https://github.com/oracle/graal/tree/master/wasm)** - GraalVM 系列中用于 Wasm 的引擎；
 * **[Faasm](https://github.com/lsds/Faasm)** - 一个无状态的 Serverless Wasm 运行时;
 * **[wasmtime](https://github.com/bytecodealliance/wasmtime)** - 使用 Cranelift 构建的独立的 Wasm 运行时引擎;
+* **[wac](https://github.com/kanaka/wac)** -  基于 C 编写的高性能 Wasm 解释器；
+* **[warpy](https://github.com/kanaka/warpy)** -  基于 Python 编写的 Wasm 解释器；
+* **[pywasm](https://github.com/mohanson/pywasm)** -  基于 Python 编写的 Wasm 解释器；
+* **[SSVM](https://github.com/second-state/SSVM)** -  专注于 AI、区块链应用的 Wasm 虚拟机；
+
+
+#### 云（Cloud）
+
+* **[waSCC Host](https://github.com/wascc/wascc-host)** - Wasm 安全能力连接器；
+* **[Krustlet](https://github.com/deislabs/krustlet)** - 支持 Wasm 的 Kubernetes Kubelet；
+* **[embly](https://github.com/embly/embly)** - 一个基于 Wasm 的 Serverless Web 应用框架；
+* **[olin](https://github.com/Xe/olin)** - Wasm 云代码分析工具（跟踪诸如使用了多少指令，进行了多少次系统调用以及使用了多少内存等情况）；
+
 
 #### 游戏引擎（Game Engine）
 
 * **[Defold](https://forum.defold.com/t/defold-1-2-141-has-been-released/33996)** - 一个用于 Web 和移动端的游戏开发引擎；
 * **[d3wasm](https://github.com/gabrielcuvillier/d3wasm)** - Tech4 / Doom3 基于 Wasm 的移植版；
+* **[ammo.js](https://github.com/kripken/ammo.js)** - Bullet 物理引擎的 Wasm 移植版；
+* **[Oryol](https://github.com/floooh/oryol)** - 一个小型可移植的 C++ 3D 开发框架；
 
 #### 工具（Tool）
 
@@ -121,7 +154,8 @@ export function increment(): i32 {
 
 * **[wasm-raytracer](https://github.com/mtharrison/wasm-raytracer)** - 自定义用于 Wasm 的光线追踪器测试集；
 * **[WASM-vs-JS-Pitch-detector](https://github.com/bojan88/WASM-vs-JS-Pitch-detector)** - 基于 McLeod 音高检测算法的测试；
-* **[PSPDFKit](https://pspdfkit.com/blog/2018/a-real-world-webassembly-benchmark/)** - 基于 PSPDFKit 的 Wasm 性能测试；
+* **[PSPDFKit](https://pspdfkit.com/blog/2018/a-real-world-webassembly-benchmark)** - 基于 PSPDFKit 的 Wasm 性能测试；
+* **[WebAssembly-benchmark](https://github.com/takahirox/WebAssembly-benchmark)** - 简单的 JavaScript 与 Wasm 性能对比测试集；
 
 
 #### 其他（Others）

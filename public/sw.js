@@ -863,7 +863,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/index.html",
-    "revision": "58b64246a343b07495b56df4b0ec3e3b"
+    "revision": "1f03ab1310b08dded38e1d1dc4d4d53c"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1403,7 +1403,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "2a0900dfed5529f997ef59276c041318"
+    "revision": "30df9ec9d20b2b0ce4ba018a58d52a00"
   },
   {
     "url": "readings/Low-Level Programming.html",
@@ -1615,7 +1615,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "073fece2272617ac07781a56c2f8da60"
+    "revision": "0501d77f1cfc70ef1800eb9e0b69992d"
   },
   {
     "url": "tags/Java/index.html",
