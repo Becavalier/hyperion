@@ -25,7 +25,8 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
         if index != 0
           | </ul>
         - lastyear = post.date.format('YYYY')
-        h4=lastyear
+        - count = site.posts.reduce((p, v) => (p + Number(v.date.format('YYYY') === lastyear)), 0)
+        h4=lastyear + ' (' + count + ' 篇)'
         | <ul class="catelog-items">
         li(itemprop='name')
           time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')

@@ -40,6 +40,8 @@ export function increment(): i32 {
 * **[Squoosh](https://squoosh.app/)** - 在线图片处理工具；
 * **[draw-app](https://github.com/lynnagara/draw-app)** - 简易的在线画图应用；
 * **[Photon](https://github.com/silvia-odwyer/photon)** - 可用于 Web 应用的在线图像处理库；
+* **[ogv.js](https://github.com/brion/ogv.js)** - JavaScript 媒体播放器（Ogg / Vorbis / Theora / Opus / WebM）；
+* **[WXInlinePlayer](https://github.com/qiaozi-tech/WXInlinePlayer)** - 高效的 FLV 流媒体解码器（H.264/H.265）；
 
 
 #### 仿真器（Emulator）
@@ -74,6 +76,7 @@ export function increment(): i32 {
 * **[WASM-PDF](https://github.com/jussiniinikoski/wasm-pdf)** - 可以使用 Wasm 和 JavaScript 生成 PDF 文件的库；
 * **[webm-wasm](https://github.com/GoogleChromeLabs/webm-wasm)** - 可以使用 Wasm 和 JavaScript 生成 webm 视频的库；
 * **[argon2-browser](https://github.com/antelle/argon2-browser)** - Wasm 移植版的密码哈希函数库 Argon2；
+* **[tensorflow.js](https://blog.tensorflow.org/2020/03/introducing-webassembly-backend-for-tensorflow-js.html)** - Tensorflow H5 版本；
 
 
 #### 物联网（IOT）
@@ -100,7 +103,7 @@ export function increment(): i32 {
 * **[Emscripten](https://emscripten.org/)** - 人尽皆知的强大 Wasm 编译工具链；
 * **[ilwasm](https://github.com/kg/ilwasm)** - 一个 CIL 到 Wasm 编译器；
 * **[Asterius](https://github.com/tweag/asterius)** - 一个 Haskell 到 Wasm 编译器；
-* **[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)** - 一个 AssemblyScript 到 Wasm 编译器；
+* **[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)** - 一个 TypeScript 到 Wasm 编译器；
 * **[Asmble](https://github.com/cretz/asmble)** - 一个 Wasm 到 JVM 字节码编译器；
 
 
@@ -136,6 +139,9 @@ export function increment(): i32 {
 * **[d3wasm](https://github.com/gabrielcuvillier/d3wasm)** - Tech4 / Doom3 基于 Wasm 的移植版；
 * **[ammo.js](https://github.com/kripken/ammo.js)** - Bullet 物理引擎的 Wasm 移植版；
 * **[Oryol](https://github.com/floooh/oryol)** - 一个小型可移植的 C++ 3D 开发框架；
+* **[ammo.js](https://github.com/kripken/ammo.js)** - Bullet 物理引擎的 Wasm 移植版；
+* **[Unity](https://blogs.unity3d.com/2018/08/15/webassembly-is-here/)** - Unity；
+* **[Unreal Engine](https://docs.unrealengine.com/en-US/Platforms/HTML5/GettingStarted/index.html)** - Unreal Engine
 
 #### 工具（Tool）
 

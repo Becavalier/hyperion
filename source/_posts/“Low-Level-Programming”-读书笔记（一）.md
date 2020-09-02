@@ -169,9 +169,9 @@ _start:
 
 19. （Page：24）lea 与 mov 的区别（大部分情况下 **mov 操作的是值**，**lea 操作的是地址**）：
 * mov rsi, codes：codes 的地址存放到 rsi；
-* mov rsi, [codes]：codes 地址开始的 8 字节内存内容存放到 ris；
+* mov rsi, [codes]：codes 地址开始的 8 字节内存内容存放到 rsi；
 * les rsi, [codes]：codes 的地址存放到 rsi；
-* mov rsi, [codes + rax]：codes + rax 地址开始的 8 字节内存内容存放到 ris；
+* mov rsi, [codes + rax]：codes + rax 地址开始的 8 字节内存内容存放到 rsi；
 * lea rsi, [codes + rax]：codes 的地址加 rax 值存放到 rsi
 
 20. （Page：24）常用的跳转指令：
