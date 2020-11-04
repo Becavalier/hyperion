@@ -462,7 +462,7 @@ int main(int argc, char** argv) {
 } 
 ```
 
-```shell
+```bash
 # 编译命令：
 clang++ --std=c++14 mian.cc Impl.cc -I. -o main
 ```

@@ -31,7 +31,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
         li(itemprop='name')
           time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
           |&nbsp;|&nbsp;
-          a(href=config.root + post.path, itemprop='url') #{post.title}
+          a(target="_blank", href=config.root + post.path, itemprop='url') #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
@@ -41,7 +41,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
         li
           time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
           |&nbsp;|&nbsp;
-          a(href=config.root + post.path) #{post.title}
+          a(target="_blank", href=config.root + post.path) #{post.title}
           if (post.tags.data !== undefined && post.tags.data.length > 0)
             | &nbsp;&mdash;&nbsp;&nbsp;
             span(itemprop='category')
@@ -62,12 +62,12 @@ else if is_page() && page.title.toLowerCase() =='author'
     .avatar
     if (config.about !== undefined)
       .avatar-name
-        | #{config.about.name}
-      .avatar-description
-        | #{config.about.intro1}
-      if (config.about.intro2 != undefined)
+        span
+          | #{config.about.name}
+      for intro in config.about.intros.split(' | ')
         .avatar-description
-          | #{config.about.intro2}
+          span
+            | #{intro}
       if (config.about.skills != undefined)
         .avatar-skills-block
           for skill in config.about.skills.split(', ')
@@ -201,14 +201,18 @@ else if is_tag()
         h4=lastyear
         | <ul class="catelog-items">
         li(itemprop='name')
-          a(href=config.root + post.path, itemprop='url') #{post.title}
+          time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
+          |&nbsp;|&nbsp;
+          a(target="_blank", href=config.root + post.path, itemprop='url') #{post.title}
           |  &nbsp; &mdash; &nbsp;&nbsp;
           for tag in post.tags.data
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}
             | &nbsp;&nbsp;
       else
         li
-          a(href=config.root + post.path) #{post.title}
+          time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
+          |&nbsp;|&nbsp;
+          a(target="_blank", href=config.root + post.path) #{post.title}
           |  &nbsp; &mdash; &nbsp;&nbsp;
           for tag in post.tags.data
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}

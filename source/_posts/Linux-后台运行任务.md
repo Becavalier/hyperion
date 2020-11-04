@@ -17,7 +17,7 @@ tags:
 
 `nohup` 命令的使用是十分简单方便的，只需在要处理的命令前加上 `nohup` 即可，标准输出和标准错误缺省会被重定向到当前目录的 “nohup.out” 文件中，即该文件起到了监视日志的作用。一般我们可在结尾加上 **"&"** 符号来将命令同时放入后台运行，同时也可以使用 `">filename 2>&1"` 来更改缺省的重定向文件名（0、1和2分别表示**标准输入**、**标准输出**和**标准错误信息输出**， `>filename` 即将标准输出重定向到文件 “filename” 中， `2>&1`：即将错误信息重定向到标准输出）。用法示例如下：
 
-```shell
+```bash
 [root@pvcent107 ~]# nohup ping www.ibm.com &
 [1] 3059
 nohup: appending output to 'nohup.out'
@@ -31,7 +31,7 @@ root      3067   984  0 21:06 pts/3    00:00:00 grep 3059
 
 **nohup** 命令无疑能够通过忽略 HUP 信号来使我们的进程避免中途被中断。但我们可以换个角度思考，如果我们的进程**不属于**接受 HUP 信号的终端的子进程，那么自然也就不会受到 HUP 信号的影响了。**setsid** 命令就能帮助我们做到这一点。用法示例如下：
 
-```shell
+```bash
 [root@pvcent107 ~]# setsid ping www.ibm.com
 [root@pvcent107 ~]# ps -ef | grep www.ibm.com
 root     31094     1  0 07:28 ?        00:00:00 ping www.ibm.com
@@ -74,7 +74,7 @@ root     16278 15362  0 14:13 pts/4    00:00:00 grep www.ibm.com
 
 * 示例1：（如果提交命令时已经用 “&” 将命令放入后台运行，则可以直接使用 “disown”）
 
-```shell
+```bash
 [root@pvcent107 build]# cp -r testLargeFile largeFile &
 [1] 4825
 [root@pvcent107 build]# jobs
@@ -88,7 +88,7 @@ root      4853   968  0 09:46 pts/4    00:00:00 grep largeFile
 
 * 示例2：（如果提交命令时未使用 “&” 将命令放入后台运行，可使用 CTRL-z 和 “bg” 将其放入后台，再使用 “disown”）
 
-```shell
+```bash
 [root@pvcent107 build]# cp -r testLargeFile largeFile2
 
 [1]+  Stopped                 cp -i -r testLargeFile largeFile2
@@ -119,7 +119,7 @@ root      5824  5577  0 10:05 pts/3    00:00:00 grep largeFile2
 
 * 示例：
 
-```shell
+```bash
 [root@pvcent107 ~]# screen -dmS Urumchi
 [root@pvcent107 ~]# screen -list
 There is a screen on:
@@ -133,7 +133,7 @@ There is a screen on:
 
 1. 未使用 `screen` 时新进程的进程树：
 
-```shell
+```bash
 [root@pvcent107 ~]# ping www.google.com &
 [1] 9499
 [root@pvcent107 ~]# pstree -H 9499
@@ -149,7 +149,7 @@ init─┬─Xvnc`
 
 2. 使用了 `screen` 后新进程的进程树：
 
-```shell
+```bash
 [root@pvcent107 ~]# screen -r Urumchi
 [root@pvcent107 ~]# ping www.ibm.com &
 [1] 9488

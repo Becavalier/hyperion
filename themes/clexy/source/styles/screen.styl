@@ -338,7 +338,7 @@ main
       margin auto
     ol
       li
-        margin 7px 0
+        margin 10px 0
         line-height 2.8rem;
       ul
         padding-inline-start 4em
@@ -347,7 +347,7 @@ main
       list-style none
       margin 15px auto
       li
-        margin 12px 0
+        margin 10px 0
         line-height 2.8rem
         &:before
           content "■ "
@@ -575,8 +575,13 @@ hr
 // 5. Media Queries
 // ===========================================================================
 
+@media (min-width 2000px)
+  body
+    main
+      article
+        max-width 1248px
+      
 @media (min-width 830px)
-
   body
     display flex
     flex-direction row
@@ -612,7 +617,6 @@ hr
             margin .5em .5em .5em 0
 
 @media (max-width 1248px)
-
   body
     main
       article
@@ -622,7 +626,6 @@ hr
                 display none
 
 @media (max-width 900px)
-
   body
     main
       article:not([post-id])     
@@ -634,7 +637,6 @@ hr
               white-space nowrap
 
 @media (max-width 580px)
-
   body
     main
       article

@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-08-27T03:33:07.208Z</updated>
+  <updated>2020-11-04T12:59:56.616Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《Pro Git - 2nd Edition》读书笔记（二）</title>
+    <link href="https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-11-02T09:21:35.000Z</published>
+    <updated>2020-11-04T12:59:56.616Z</updated>
+    
+    <summary type="html">
+    
+      书接上回。
+    
+    </summary>
+    
+    
+    
+      <category term="Git" scheme="https://www.yhspy.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《Pro Git - 2nd Edition》读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-10-19T13:26:29.000Z</published>
+    <updated>2020-11-02T14:22:44.395Z</updated>
+    
+    <summary type="html">
+    
+      旧书清理系列。
+    
+    </summary>
+    
+    
+    
+      <category term="Git" scheme="https://www.yhspy.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《垃圾回收算法与实现》读书笔记（一）</title>
+    <link href="https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-10-05T13:59:48.000Z</published>
+    <updated>2020-11-04T13:01:00.272Z</updated>
+    
+    <summary type="html">
+    
+      为了进一步了解 Wasm GC 提案，遂找本书来看看。
+    
+    </summary>
+    
+    
+    
+      <category term="GC" scheme="https://www.yhspy.com/tags/GC/"/>
+    
+  </entry>
   
   <entry>
     <title>WebAssembly Weekly 集合整理（2020 / 08）</title>
@@ -40,7 +97,7 @@
     <link href="https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
     <id>https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
     <published>2020-08-24T11:45:11.000Z</published>
-    <updated>2020-08-24T13:54:22.299Z</updated>
+    <updated>2020-10-06T06:47:58.977Z</updated>
     
     <summary type="html">
     
@@ -344,7 +401,7 @@
     <link href="https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-06-28T16:28:35.000Z</published>
-    <updated>2020-07-08T12:40:25.974Z</updated>
+    <updated>2020-10-06T06:47:58.976Z</updated>
     
     <summary type="html">
     
@@ -520,63 +577,6 @@
     <summary type="html">
     
       本文将以两个具体的例子来剖析 ELF 目标文件（.o）和动态库文件（.so）在分别进行静态链接和动态链接时的具体流程。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Clang 下的 weak 与 weakref</title>
-    <link href="https://www.yhspy.com/2020/06/18/Clang-%E4%B8%8B%E7%9A%84-weak-%E4%B8%8E-weakref/"/>
-    <id>https://www.yhspy.com/2020/06/18/Clang-%E4%B8%8B%E7%9A%84-weak-%E4%B8%8E-weakref/</id>
-    <published>2020-06-18T05:24:56.000Z</published>
-    <updated>2020-06-18T09:23:18.079Z</updated>
-    
-    <summary type="html">
-    
-      符号表结构中 st_info 字段的高 28 位决定了 ST_BIND 的值，而它的一种枚举值 STB_WEAK 表示了一种特殊类型的符号，即“弱符号”。而对应的一种抽象关系便称为“弱引用”。同时相对的，也有着“强符号”和“强引用”的定义。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 objcopy 为 ELF 加入自定义 Section</title>
-    <link href="https://www.yhspy.com/2020/06/17/%E4%BD%BF%E7%94%A8-objcopy-%E4%B8%BA-ELF-%E5%8A%A0%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89-Section/"/>
-    <id>https://www.yhspy.com/2020/06/17/%E4%BD%BF%E7%94%A8-objcopy-%E4%B8%BA-ELF-%E5%8A%A0%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89-Section/</id>
-    <published>2020-06-17T07:42:53.000Z</published>
-    <updated>2020-06-18T05:21:49.787Z</updated>
-    
-    <summary type="html">
-    
-      我们可以使用 objcopy 工具为一个 ELF 文件加入自定义的 Section 信息，并在主程序中访问该目标文件中这些自定义的 Section 内的数据。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 下的 ELF 完整结构分析</title>
-    <link href="https://www.yhspy.com/2020/06/17/Linux%20%E4%B8%8B%E7%9A%84%20ELF%20%E5%AE%8C%E6%95%B4%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/"/>
-    <id>https://www.yhspy.com/2020/06/17/Linux%20%E4%B8%8B%E7%9A%84%20ELF%20%E5%AE%8C%E6%95%B4%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90/</id>
-    <published>2020-06-17T06:23:58.000Z</published>
-    <updated>2020-06-23T05:57:33.381Z</updated>
-    
-    <summary type="html">
-    
-      本文我们将以如下这段代码为例，来分析其对应 ELF Object / Executable 文件在 Linux 下的完整数据结构，以及各结构在操作系统源码中的实际类型定义。
     
     </summary>
     

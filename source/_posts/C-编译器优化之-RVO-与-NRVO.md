@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
 
 首先我们使用下述命令来编译并执行这段 C++ 代码。
 
-```shell
+```bash
 clang++ rvo_nrvo.cc -o rvo_nrvo --std=c++11 && ./rvo_nrvo
 ```
 
@@ -60,7 +60,7 @@ clang++ rvo_nrvo.cc -o rvo_nrvo --std=c++11 && ./rvo_nrvo
 
 可以看到这里一共只执行了一次构造函数和一次析构函数，对于临时对象的拷贝构造过程并没有被进行。在正常情况下，编译器一般会默认启用 RVO 优化，接下来使用下面命令重新编译并执行上述代码，这里我们关闭了 RVO 优化，对应使用的编译器参数是 **“-fno-elide-constructors”**。
 
-```shell
+```bash
 clang++ rvo_nrvo.cc -o rvo_nrvo --std=c++11 -fno-elide-constructors && ./rvo_nrvo
 ```
 

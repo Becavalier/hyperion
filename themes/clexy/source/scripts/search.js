@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', async e => {
   const wrapFuncs = {
     wrapSearchPostResultSnippet: results => {
       if (results.length > 0) {
+        results.sort((x, y) => new Date(y.date).getTime() - new Date(x.date).getTime())
         let dom = `
           <h4>文章</h4>
           <ul class="catelog-items">
@@ -93,18 +94,18 @@ document.addEventListener('DOMContentLoaded', async e => {
           }
         } = response;
 
-        let t = [];
+        let _t = [];
         mountDOMs.forEach(dom => {
           const { type } = dom.dataset;
-          t.push({
+          _t.push({
             html: wrapFuncs[`wrapSearch${type}ResultSnippet`].call(this, searchKeys[`search${type}sByKey`]),
-            type
+            type,
           });
         });
 
-        if (t.filter(i => i.html).length === 0) {
+        if (_t.filter(i => i.html).length === 0) {
           mountDOMs.forEach(dom => {
-            dom.innerHTML = '';
+            dom.insertAdjacentHTML('afterbegin', '');
           });
           emptySignDOM.style.display = 'block';
         } else {
@@ -112,8 +113,8 @@ document.addEventListener('DOMContentLoaded', async e => {
           // mount;
           mountDOMs.forEach(dom => {
             const { type } = dom.dataset;
-            const html = t.filter(i => i.type === type)[DEFAULT_INDEX].html;
-            html && (dom.innerHTML = html);
+            const html = _t.filter(i => i.type === type)[DEFAULT_INDEX].html;
+            if (html) dom.insertAdjacentHTML('afterbegin', html);
           });
         }
       } catch(e) {
@@ -126,5 +127,4 @@ document.addEventListener('DOMContentLoaded', async e => {
       alert(":( Nothing to search!");
     }
   });
-
 });

@@ -29,7 +29,7 @@ function fibonacci(n) {
 为什么不合适的递归会造成堆栈溢出呢？因为递归在每一次调用自身时都会保留上一层调用的环境参数（局部变量、返回地址入口等），如果递归层数太多就会造成堆栈段内存溢出。比如对于上述的斐波那契数列计算函数，我们举例 `fibonacci(4)`，其堆栈大致示意图如下：
 
 
-```shell
+```bash
 fibonacci(4)
 fibonacci(3) + fibonacci(2)
 fibonacci(2) + fibonacci(1) + fibonacci(1) + fibonacci(0)
@@ -56,7 +56,7 @@ function fibonacci(n, num1 = 1, num2 = 1) {
 其对应的调用栈如下所示：
 
 
-```shell
+```bash
 fibonacci(4)
 fibonacci(3, 1, 2)
 fibonacci(2, 2, 3)
