@@ -1423,7 +1423,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "7bad5789d212f1a54e512c0fa61cd94a"
+    "revision": "cc2a3df498f481e99ed6b287cfc50a6c"
   },
   {
     "url": "readings/Low-Level Programming.html",
@@ -1547,7 +1547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "cd56e74303030f144fc8b32000433159"
+    "revision": "e8d2ad59135606deb56ec2477a46ad39"
   },
   {
     "url": "tags/Android/index.html",
@@ -1643,7 +1643,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "b69d71cb080251cc06421359aaee8d0b"
+    "revision": "5b30fee07602de791f7ea80542425255"
   },
   {
     "url": "tags/Java/index.html",
