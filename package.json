@@ -12,7 +12,8 @@
     "generate-sw": "workbox generateSW workbox-config.js",
     "sync": "git pull --rebase origin master && pm2 reload all && nginx -s reload -c /www/Hyperion/nginx.conf",
     "preview": "cd ./public && browser-sync start --server --files .",
-    "nginx-bp": "nginx -c $(pwd)/nginx.conf"
+    "nginx-bp": "nginx -c $(pwd)/nginx.conf",
+    "update-ssl": "nginx -s stop && certbot-auto renew -q --no-self-upgrade && npm run nginx-bp"
   },
   "dependencies": {
     "apollo-server-express": "^2.14.2",

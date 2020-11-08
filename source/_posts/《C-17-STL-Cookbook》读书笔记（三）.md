@@ -9,7 +9,7 @@ tags:
 
 继续接上篇。
 
-## Chapter 5: STL Algorithm Basics
+### Chapter 5: STL Algorithm Basics
 
 <h5>容器拷贝算法</h5>
 
@@ -303,11 +303,11 @@ int main(int argc, char **argv) {
 }
 ```
 
-## Chapter 6: Advanced Use of STL Algorithms
+### Chapter 6: Advanced Use of STL Algorithms
 
 （略）
 
-## Chapter 7: Strings, Stream Classes, and Regular Expressions
+### Chapter 7: Strings, Stream Classes, and Regular Expressions
 
 ![](2.png)
 

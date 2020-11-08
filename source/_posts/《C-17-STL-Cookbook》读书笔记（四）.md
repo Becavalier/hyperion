@@ -9,7 +9,7 @@ tags:
 
 还是继续接上篇。
 
-## Chapter 8: Utility Classes
+### Chapter 8: Utility Classes
 
 <h5>使用 std::ratio 转换不同的时间单位</h5>
 
@@ -439,14 +439,14 @@ int main(int argc, char **argv) {
 （略）
 
 
-## Chapter 9: Parallelism and Concurrency
+### Chapter 9: Parallelism and Concurrency
 
 * C++17 的一个重要的扩展，是对标准函数的执行策略进行了修改。69个标准算法都能**并行到不同的核上运行，甚至是向量化**。
 * Clang++ **暂未实现** “Standardization of Parallelism TS”。
 
 （略）
 
-## Chapter 10: Filesystem
+### Chapter 10: Filesystem
 
 * 部分特性仅在 **macOS 10.15 及以上**的系统中可用；
 

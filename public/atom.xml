@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-11-04T12:59:56.616Z</updated>
+  <updated>2020-11-08T03:46:06.900Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《现代 C++ 教程：高速上手 C++11/14/17/20》读书笔记</title>
+    <link href="https://www.yhspy.com/2020/11/05/%E3%80%8A%E7%8E%B0%E4%BB%A3-C-%E6%95%99%E7%A8%8B%EF%BC%9A%E9%AB%98%E9%80%9F%E4%B8%8A%E6%89%8B-C-11-14-17-20%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://www.yhspy.com/2020/11/05/%E3%80%8A%E7%8E%B0%E4%BB%A3-C-%E6%95%99%E7%A8%8B%EF%BC%9A%E9%AB%98%E9%80%9F%E4%B8%8A%E6%89%8B-C-11-14-17-20%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-11-05T15:06:57.000Z</published>
+    <updated>2020-11-08T03:46:06.900Z</updated>
+    
+    <summary type="html">
+    
+      又一本知乎上推荐的 C++ 书籍，本身只有不到 100 页，因此可以用来花点时间快速查缺补漏一下。
+    
+    </summary>
+    
+    
+    
+      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《Pro Git - 2nd Edition》读书笔记（二）</title>
     <link href="https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-11-02T09:21:35.000Z</published>
-    <updated>2020-11-04T12:59:56.616Z</updated>
+    <updated>2020-11-05T15:26:46.237Z</updated>
     
     <summary type="html">
     
@@ -40,11 +59,11 @@
     <link href="https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-10-19T13:26:29.000Z</published>
-    <updated>2020-11-02T14:22:44.395Z</updated>
+    <updated>2020-11-05T15:26:25.004Z</updated>
     
     <summary type="html">
     
-      旧书清理系列。
+      旧书清理系列。这本书自 2017 年看了一半后一直没有后续，作为一个有强迫症的天秤座，对于这种事情肯定是无法接受的。
     
     </summary>
     
@@ -59,7 +78,7 @@
     <link href="https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-10-05T13:59:48.000Z</published>
-    <updated>2020-11-04T13:01:00.272Z</updated>
+    <updated>2020-11-05T15:29:12.675Z</updated>
     
     <summary type="html">
     
@@ -249,7 +268,7 @@
     <link href="https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
     <published>2020-08-06T05:24:05.000Z</published>
-    <updated>2020-08-11T12:06:29.574Z</updated>
+    <updated>2020-11-05T15:27:27.133Z</updated>
     
     <summary type="html">
     
@@ -268,7 +287,7 @@
     <link href="https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
     <published>2020-07-31T13:19:12.000Z</published>
-    <updated>2020-08-06T08:10:53.695Z</updated>
+    <updated>2020-11-05T15:27:17.450Z</updated>
     
     <summary type="html">
     
@@ -287,7 +306,7 @@
     <link href="https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
     <published>2020-07-28T04:14:05.000Z</published>
-    <updated>2020-08-01T01:19:11.157Z</updated>
+    <updated>2020-11-05T15:27:22.399Z</updated>
     
     <summary type="html">
     
@@ -306,7 +325,7 @@
     <link href="https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-07-21T16:08:03.000Z</published>
-    <updated>2020-07-28T04:16:24.100Z</updated>
+    <updated>2020-11-05T15:27:11.605Z</updated>
     
     <summary type="html">
     
@@ -558,25 +577,6 @@
     <summary type="html">
     
       在 GCC 下，我们可以通过 `__attribute__((common))` 扩展参数来控制编译器对 C 源码中的未初始化全局变量的处理方式。默认情况下，GCC 将采用 COMMON 块来存放未初始化全局变量，这里注意是 C 源代码。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ELF 静态 / 动态链接流程解析</title>
-    <link href="https://www.yhspy.com/2020/06/18/ELF-%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/"/>
-    <id>https://www.yhspy.com/2020/06/18/ELF-%E9%9D%99%E6%80%81-%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90/</id>
-    <published>2020-06-18T11:24:18.000Z</published>
-    <updated>2020-06-24T22:13:06.841Z</updated>
-    
-    <summary type="html">
-    
-      本文将以两个具体的例子来剖析 ELF 目标文件（.o）和动态库文件（.so）在分别进行静态链接和动态链接时的具体流程。
     
     </summary>
     

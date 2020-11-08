@@ -9,7 +9,7 @@ tags:
 
 接上篇。
 
-## Chapter 3: Iterators
+### Chapter 3: Iterators
 
 <h5>迭代器类别</h5>
 
@@ -270,7 +270,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-## Chapter 4: Lambda Expressions
+### Chapter 4: Lambda Expressions
 
 
 <h5>使用 lambda 表达式</h5>

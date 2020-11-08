@@ -9,7 +9,7 @@ tags:
 
 看到知乎上有人推荐的一本书。
 
-## Chapter 1: The New C++17 Features
+### Chapter 1: The New C++17 Features
 
 <h5>结构化绑定（Structured Bindings / Unpacking）</h5>
 
@@ -279,7 +279,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-## Chapter 2: STL Containers
+### Chapter 2: STL Containers
 
 * `std::vector` 使用了堆内存，以提供可随时增长容器大小的特性；
 * `std::unordered_set` 和 `std::unordered_set` 基于 Hash Table 实现；

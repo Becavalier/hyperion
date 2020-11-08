@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', async e => {
 
         if (_t.filter(i => i.html).length === 0) {
           mountDOMs.forEach(dom => {
-            dom.insertAdjacentHTML('afterbegin', '');
+            dom.innerHTML = '';
           });
           emptySignDOM.style.display = 'block';
         } else {
