@@ -28,7 +28,7 @@ int main(void) {
 
 正如我们在“**链接、装载与库相关记录（二）**”一文的末尾处所介绍的那样，我们可以通过 NASM 来避开编译器，直接以汇编的形式来书写我们这个最小的 ELF 可执行程序，首先给出一样的汇编代码如下（main.asm）：
 
-```asm
+```nasm
           global    _start
 
           section   .text

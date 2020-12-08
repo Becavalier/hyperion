@@ -643,27 +643,27 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/index.html",
-    "revision": "81762cf097d57994ab56d91af1649543"
+    "revision": "dd682d3a9edbd26f04d244b0a1dafc72"
   },
   {
-    "url": "2020/04/10/Primer-C-完全笔记（第1-8章）/index.html",
-    "revision": "dc8b15ebb03ebff42e7bf6d5eb9e5ab5"
+    "url": "2020/04/10/Primer-C-完全笔记（第 1-8 章）/index.html",
+    "revision": "e06f88b522328058747f17e4a00de7c4"
   },
   {
-    "url": "2020/04/12/Primer-C-完全笔记（第9-13章）/index.html",
-    "revision": "aa3392d90cc2dcfc4410a4919d9ca5c0"
+    "url": "2020/04/12/Primer-C-完全笔记（第 9-13 章）/index.html",
+    "revision": "a22b17c5d058ef597ce8b1958a70e668"
   },
   {
-    "url": "2020/04/14/Primer-C-完全笔记（第14-16章）/index.html",
-    "revision": "d02e3ca713d3f5e96b7c95ed7aae3a56"
+    "url": "2020/04/14/Primer-C-完全笔记（第 14-16 章）/index.html",
+    "revision": "b7ae9155263e65cfe0dc43b8f6306c68"
   },
   {
-    "url": "2020/04/16/Primer-C-完全笔记（第17-19章）/index.html",
-    "revision": "0da5266516602f3256c85a26e601793f"
+    "url": "2020/04/16/Primer-C-完全笔记（第 17-19 章）/index.html",
+    "revision": "53eaae611efda80e10e4aa167f9de1b6"
   },
   {
     "url": "2020/04/24/常用-C-高效开发范式（一）/index.html",
-    "revision": "7c7fb6e5a86dfe198f668317aec2880b"
+    "revision": "097d446c1b5d63d63a68ef868c648235"
   },
   {
     "url": "2020/04/26/C-未限定名字查找与-ADL/index.html",
@@ -739,15 +739,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/08/“领域规则类”设计模式（C-）/index.html",
-    "revision": "bb644d5f7f1e8083b3fc18dab5a9e56f"
+    "revision": "695a3ad45a162b3f8c40459a8fe446de"
   },
   {
-    "url": "2020/06/16/链接、装载与库相关记录（一）/index.html",
-    "revision": "0ae20c3d1d7e6518bc5dbfd12318acfd"
+    "url": "2020/06/16/链接、装载与库相关记录（第 1-6 章）/index.html",
+    "revision": "f56c1dd19d71f11c014cc16eb32c5104"
   },
   {
     "url": "2020/06/17/Linux 下的 ELF 完整结构分析/index.html",
-    "revision": "87803b2d989b24a9374fabd3edb1b66e"
+    "revision": "bf6e849ffb79a5d581cf64a9e0bb21df"
   },
   {
     "url": "2020/06/17/使用-objcopy-为-ELF-加入自定义-Section/index.html",
@@ -759,7 +759,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/18/ELF-静态-动态链接流程解析/index.html",
-    "revision": "3f99c55cd06934bdb48b652ee0bd3966"
+    "revision": "af9db12502432acbd334065b162b0a14"
   },
   {
     "url": "2020/06/19/GCC-下的-COMMON-块控制/index.html",
@@ -767,71 +767,71 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/19/ld-链接控制脚本与默认脚本/index.html",
-    "revision": "8567e2a3bbb6d042ba26f365767466cc"
+    "revision": "2516e30efbd128ef6b270534aef18799"
   },
   {
     "url": "2020/06/19/尝试构建体积最小的-ELF-可执行程序/index.html",
-    "revision": "ddff6450237b4267696c38af2104de38"
+    "revision": "5dc210cc30122da4785fcddf571e56bf"
   },
   {
-    "url": "2020/06/21/链接、装载与库相关记录（二）/index.html",
-    "revision": "16f81a56531d379377f3180eff3c419a"
+    "url": "2020/06/21/链接、装载与库相关记录（第 7-12 章）/index.html",
+    "revision": "26112ab701e9c70445e42cb53df69a1e"
   },
   {
     "url": "2020/06/23/Linux-共享库应用-version-script/index.html",
-    "revision": "e8dfcea90c07a08633d8dfac997b0303"
+    "revision": "d53e853f8f1bd346edc9d07672162385"
   },
   {
-    "url": "2020/06/25/“Low-Level-Programming”-读书笔记（一）/index.html",
-    "revision": "cef7ab9154fc44fd6ef959756086d905"
+    "url": "2020/06/25/“Low-Level-Programming”-读书笔记（第 1-4 章）/index.html",
+    "revision": "be4e8c60cb2a865254976c571e0f21e5"
   },
   {
     "url": "2020/06/25/NASM-小记录/index.html",
-    "revision": "29587cf50c96de2ac5f8fc1d2d668e5e"
+    "revision": "8f95fe7cdf170226d5cdbdcce18b64a6"
   },
   {
     "url": "2020/06/26/“Advanced-Design-and-Implementation-of-Virtual-Machines”-读书笔记（一）/index.html",
-    "revision": "da2721f0a823babd8fdce9ed52130817"
+    "revision": "fca13fa58483a56135158d890d56b078"
   },
   {
-    "url": "2020/06/29/“Low-Level-Programming”-读书笔记（二）/index.html",
-    "revision": "8afa787094874ecfee12e3cfa474fe27"
+    "url": "2020/06/29/“Low-Level-Programming”-读书笔记（第 5-13 章）/index.html",
+    "revision": "a6dfb34fdaabcc6cc3ec817bf3ec0d36"
   },
   {
-    "url": "2020/07/06/“Low-Level-Programming”-读书笔记（三）/index.html",
-    "revision": "4dd920a0f8b3bbe715ecc1656d47708c"
+    "url": "2020/07/06/“Low-Level-Programming”-读书笔记（第 14-17 章）/index.html",
+    "revision": "2c2d1c5082fb5abfe94dae977bbdb8ca"
   },
   {
     "url": "2020/07/11/std-optional-与-Optional-References/index.html",
-    "revision": "b0588fad49890f6abe30b47a3c780e83"
+    "revision": "cb9d6283afe391ff1e73f2d484410166"
   },
   {
     "url": "2020/07/15/《虚拟机系统与进程的通用平台》基础概述/index.html",
-    "revision": "63546878cf94eb0a738f1c5549c29064"
+    "revision": "c47480a84c4f33d0352bfed8d583fdc6"
   },
   {
     "url": "2020/07/18/老生常谈之：switch-case-VS-if-else/index.html",
-    "revision": "00eea8f344a4c0caf09203e6ac76688b"
+    "revision": "75ba53cf8f85a02e0cf631df1fe20210"
   },
   {
-    "url": "2020/07/22/《C-17-STL-Cookbook》读书笔记（一）/index.html",
-    "revision": "37788a1b9ddd47a0f69442daee347c73"
+    "url": "2020/07/22/《C-17-STL-Cookbook》读书笔记（第 1-2 章）/index.html",
+    "revision": "2a31a7f0d9a4b32d8f23c8426b45752b"
   },
   {
-    "url": "2020/07/28/《C-17-STL-Cookbook》读书笔记（二）/index.html",
-    "revision": "757782a349d1a3cdfc9c5e53e619e0d9"
+    "url": "2020/07/28/《C-17-STL-Cookbook》读书笔记（第 3-4 章）/index.html",
+    "revision": "295b2f017e1f9f1e8cdf72948ad7473d"
   },
   {
-    "url": "2020/07/31/《C-17-STL-Cookbook》读书笔记（三）/index.html",
-    "revision": "e55be86d316aa8dc90d51ef6b92f69e1"
+    "url": "2020/07/31/《C-17-STL-Cookbook》读书笔记（第 5-7 章）/index.html",
+    "revision": "97222cc247b0c7814de4212fa81989c1"
   },
   {
-    "url": "2020/08/06/《C-17-STL-Cookbook》读书笔记（四）/index.html",
-    "revision": "0cfb9be60a6e15e80f173d9a843bb6ed"
+    "url": "2020/08/06/《C-17-STL-Cookbook》读书笔记（第 8-10 章）/index.html",
+    "revision": "06d4817df16b2d96923d3d6902a159b0"
   },
   {
     "url": "2020/08/06/CRTP-与常见用例/index.html",
-    "revision": "3b709dff95e56c95cf83648d73c01be6"
+    "revision": "5cea7c458e82e7ae0c7a045d1941bc4c"
   },
   {
     "url": "2020/08/07/vtable-与-vptr/index.html",
@@ -851,15 +851,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/18/Wasm3-架构剖析/index.html",
-    "revision": "7a0f7e306232f08e814c1e56dff8219f"
+    "revision": "f74d5b171bbf642293f43de78462b46c"
   },
   {
     "url": "2020/08/21/Threaded-Code/index.html",
-    "revision": "a66891895a0383b7914fd265975cdccb"
+    "revision": "440f1f8f3a41c3e740bc63f06a8cfd6c"
   },
   {
     "url": "2020/08/24/常用-Threading-Models-的伪代码示例/index.html",
-    "revision": "c65207e5a28276a0d1287916ca100eb4"
+    "revision": "0f6ff43730fe3627f752781be24593ac"
   },
   {
     "url": "2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/index.html",
@@ -867,19 +867,39 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/10/05/《垃圾回收算法与实现》读书笔记（一）/index.html",
-    "revision": "fb3ba00191ba839c5d21e65a619e7491"
+    "revision": "8631e29a7465ed487bfc99b695a44085"
   },
   {
-    "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（一）/index.html",
-    "revision": "cb5ec7c8cac4f46e859aab1d91ffec42"
+    "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/index.html",
+    "revision": "52a5df5a0acd17ef47b52f64c2795396"
   },
   {
-    "url": "2020/11/02/《Pro-Git-2nd-Edition》读书笔记（二）/index.html",
-    "revision": "807355456ca327796db9e365403813c9"
+    "url": "2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/index.html",
+    "revision": "e52ec82d05d80020eeafa92c5458f043"
   },
   {
     "url": "2020/11/05/《现代-C-教程：高速上手-C-11-14-17-20》读书笔记/index.html",
-    "revision": "848da164837731482350554bcc35b6d3"
+    "revision": "5e6ca9af55924f304ee81bc1eeedc44f"
+  },
+  {
+    "url": "2020/11/11/《X86-X64-体系探索及编程》读书笔记/index.html",
+    "revision": "4638990c18d2a2f2565cdf6b687825ff"
+  },
+  {
+    "url": "2020/11/13/《CSAPP-第三版》读书笔记（第 1-3 章）/index.html",
+    "revision": "2688f7b2b64502d92b1d53be3dcb2d46"
+  },
+  {
+    "url": "2020/11/23/《CSAPP-第三版》读书笔记（第-4-5-章）/index.html",
+    "revision": "f76e97ad7df606bf0870fbc0ed0b1789"
+  },
+  {
+    "url": "2020/11/30/《CSAPP-第三版》读书笔记（第-6-8-章）/index.html",
+    "revision": "490909ca140874aea047335599a398b4"
+  },
+  {
+    "url": "2020/12/04/《CSAPP-第三版》读书笔记（第-9-12-章）/index.html",
+    "revision": "c3b98694df8852fccfab6141e74966db"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -907,403 +927,407 @@ self.__precacheManifest = [
   },
   {
     "url": "archives/2014/12/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2014/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/01/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/02/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/03/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/07/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/08/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2015/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/01/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/02/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/03/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/04/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/04/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/05/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/06/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/07/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/08/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/09/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/12/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/page/4/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/page/5/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2016/page/6/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/01/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/02/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/03/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/04/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/05/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/06/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/06/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/07/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/08/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/09/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/12/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/page/4/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2017/page/5/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2018/01/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2018/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2018/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/01/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/02/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/03/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/04/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/07/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/08/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/09/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/10/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2019/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/03/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/04/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/05/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/06/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/06/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/06/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/07/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/08/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/10/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
+  },
+  {
+    "url": "archives/2020/12/index.html",
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/4/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/5/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/6/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/2020/page/7/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/10/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/11/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/12/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/13/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/14/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/15/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/16/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/17/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/18/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/19/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/2/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/20/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/21/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/22/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/3/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/4/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/5/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/6/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/7/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/8/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "archives/page/9/index.html",
-    "revision": "cdb8dbbcb2bb6db3553416aa79337ada"
+    "revision": "6360d1f0cd887977957f4ad7273c5ad2"
   },
   {
     "url": "articles/index.html",
-    "revision": "0a9db578648f9844c1487d882bb236c9"
+    "revision": "7d831dd498e90c71cbd1c64aa85ffa0c"
   },
   {
     "url": "author/index.html",
@@ -1323,91 +1347,91 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/10/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/11/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/12/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/13/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/14/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/15/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/16/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/17/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/18/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/19/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/2/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/20/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/21/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/22/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/3/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/4/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/5/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/6/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/7/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/8/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "page/9/index.html",
-    "revision": "8e17c773c53abd69f2a93c7329769510"
+    "revision": "7ad8ef4ea42cf12fc3fe941816a24bb6"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1431,7 +1455,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "acbb9e193073db51805c6b09e2471c34"
+    "revision": "29b0f6a91d80eb943f2a237f1f36269d"
   },
   {
     "url": "readings/Low-Level Programming.html",
@@ -1444,6 +1468,10 @@ self.__precacheManifest = [
   {
     "url": "readings/Pro Git (Second Edition).html",
     "revision": "5e6f536f0507d4824499aa76a05c503c"
+  },
+  {
+    "url": "readings/X86-X64-体系探索及编程.html",
+    "revision": "ace90a3c0bc1fc613cb21bce7921b06a"
   },
   {
     "url": "readings/前端架构：从入门到微前端.html",
@@ -1480,6 +1508,10 @@ self.__precacheManifest = [
   {
     "url": "readings/深入理解 C++11：C++11 新特性解析与应用.html",
     "revision": "567eb22a908d2c8b2be1b8262e1bc329"
+  },
+  {
+    "url": "readings/深入理解计算机系统.html",
+    "revision": "c2acc7daac4f9112d0fc1791d0685b1e"
   },
   {
     "url": "readings/现代 C++ 教程：高速上手 C++.html",
@@ -1559,7 +1591,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "1d5f39ae1cbc0eedfdb1bf7bce9042ac"
+    "revision": "7e41f7143834c749b8cca0fc117bec23"
   },
   {
     "url": "tags/Android/index.html",
@@ -1587,23 +1619,23 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/C/index.html",
-    "revision": "d88e500477b3a91ae03f4547d87f446c"
+    "revision": "8eba8f81e1062f6a6dcc0a67c8c55400"
   },
   {
     "url": "tags/C/page/2/index.html",
-    "revision": "d88e500477b3a91ae03f4547d87f446c"
+    "revision": "8eba8f81e1062f6a6dcc0a67c8c55400"
   },
   {
     "url": "tags/C/page/3/index.html",
-    "revision": "d88e500477b3a91ae03f4547d87f446c"
+    "revision": "8eba8f81e1062f6a6dcc0a67c8c55400"
   },
   {
     "url": "tags/C/page/4/index.html",
-    "revision": "d88e500477b3a91ae03f4547d87f446c"
+    "revision": "8eba8f81e1062f6a6dcc0a67c8c55400"
   },
   {
     "url": "tags/C/page/5/index.html",
-    "revision": "d88e500477b3a91ae03f4547d87f446c"
+    "revision": "8eba8f81e1062f6a6dcc0a67c8c55400"
   },
   {
     "url": "tags/CSS/index.html",
@@ -1643,7 +1675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/Git/index.html",
-    "revision": "ce2bc5c99b61af3dd6232464d2c4e313"
+    "revision": "965a6d61c077c2cbe7f3ad884ba7e816"
   },
   {
     "url": "tags/GraphQL/index.html",
@@ -1659,7 +1691,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "bd196a1945d7a32a970606c408b70c73"
+    "revision": "c87d8e482b82e18a380e4f35a863f4d4"
   },
   {
     "url": "tags/Java/index.html",
@@ -1778,6 +1810,14 @@ self.__precacheManifest = [
     "revision": "301495438ebb53bb5308a704c6b749e3"
   },
   {
+    "url": "tags/X64/index.html",
+    "revision": "6b7430a826bed948daa1dc2edeb2ad9a"
+  },
+  {
+    "url": "tags/X86/index.html",
+    "revision": "7255bb62031bb26b7d6d7b1c40419904"
+  },
+  {
     "url": "tags/互联网/index.html",
     "revision": "ed6153d999c4be51040599ec9971c4f4"
   },
@@ -1847,7 +1887,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/汇编/index.html",
-    "revision": "e0065a4d36c76c95e64158f4b0dabc96"
+    "revision": "ac0d0e181d8eadd9dcc7ed2d43bb8795"
   },
   {
     "url": "tags/漏洞/index.html",
@@ -1891,7 +1931,11 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/计算机/index.html",
-    "revision": "80e7abea9ea637f72b43aef0767f6e72"
+    "revision": "aae3675e5e037f27a7532fea99edb991"
+  },
+  {
+    "url": "tags/计算机/page/2/index.html",
+    "revision": "aae3675e5e037f27a7532fea99edb991"
   },
   {
     "url": "tags/设计模式/index.html",

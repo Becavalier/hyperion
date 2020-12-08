@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2020-11-08T03:46:06.900Z</updated>
+  <updated>2020-12-08T04:25:06.523Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -17,15 +17,114 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>《CSAPP 第三版》读书笔记（第 9-12 章）</title>
+    <link href="https://www.yhspy.com/2020/12/04/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-9-12-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/12/04/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-9-12-%E7%AB%A0%EF%BC%89/</id>
+    <published>2020-12-04T02:23:11.000Z</published>
+    <updated>2020-12-08T04:25:06.523Z</updated>
+    
+    <summary type="html">
+    
+      书接上文，本文为第 9-12 章的笔记。其中最后三章（10-12），由于其主题本身的内容（系统级 I/O、网络编程、C++ 并发编程）可以通过讲解的更为深入的其他整本书籍来进行学习，因此这里先不花时间记录，后面如果有需要再回来了解。
+    
+    </summary>
+    
+    
+    
+      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《CSAPP 第三版》读书笔记（第 6-8 章）</title>
+    <link href="https://www.yhspy.com/2020/11/30/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-8-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/11/30/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-8-%E7%AB%A0%EF%BC%89/</id>
+    <published>2020-11-30T14:47:39.000Z</published>
+    <updated>2020-12-04T04:58:35.114Z</updated>
+    
+    <summary type="html">
+    
+      书接上文，本文为第 6-8 章的笔记。
+    
+    </summary>
+    
+    
+    
+      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《CSAPP 第三版》读书笔记（第 4-5 章）</title>
+    <link href="https://www.yhspy.com/2020/11/23/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-4-5-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/11/23/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-4-5-%E7%AB%A0%EF%BC%89/</id>
+    <published>2020-11-23T14:57:32.000Z</published>
+    <updated>2020-11-30T14:48:07.364Z</updated>
+    
+    <summary type="html">
+    
+      书接上文，本文为第 4-5 章的笔记。
+    
+    </summary>
+    
+    
+    
+      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《CSAPP 第三版》读书笔记（第 1-3 章）</title>
+    <link href="https://www.yhspy.com/2020/11/13/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-3%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/11/13/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-3%20%E7%AB%A0%EF%BC%89/</id>
+    <published>2020-11-13T03:01:50.000Z</published>
+    <updated>2020-12-01T04:31:56.437Z</updated>
+    
+    <summary type="html">
+    
+      旧书清理系列，今年年初计划要看完的一本书，属于程序员必读系列。据说内容与《程序员的自我修养 — 链接、装载与库》有部分重合，但整体内容规划应该会更加全面。注：笔记超长。
+    
+    </summary>
+    
+    
+    
+      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《X86/X64 体系探索及编程》读书笔记</title>
+    <link href="https://www.yhspy.com/2020/11/11/%E3%80%8AX86-X64-%E4%BD%93%E7%B3%BB%E6%8E%A2%E7%B4%A2%E5%8F%8A%E7%BC%96%E7%A8%8B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://www.yhspy.com/2020/11/11/%E3%80%8AX86-X64-%E4%BD%93%E7%B3%BB%E6%8E%A2%E7%B4%A2%E5%8F%8A%E7%BC%96%E7%A8%8B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-11-11T00:19:13.000Z</published>
+    <updated>2020-11-13T03:01:09.628Z</updated>
+    
+    <summary type="html">
+    
+      又一本“砖头”，在 Intel 手册的基础之上讨论 X86/X64 处理器组成及相关编程方式的一本书。限于精力，有选择性地读一读吧。
+    
+    </summary>
+    
+    
+    
+      <category term="汇编" scheme="https://www.yhspy.com/tags/%E6%B1%87%E7%BC%96/"/>
+    
+      <category term="X86" scheme="https://www.yhspy.com/tags/X86/"/>
+    
+      <category term="X64" scheme="https://www.yhspy.com/tags/X64/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《现代 C++ 教程：高速上手 C++11/14/17/20》读书笔记</title>
     <link href="https://www.yhspy.com/2020/11/05/%E3%80%8A%E7%8E%B0%E4%BB%A3-C-%E6%95%99%E7%A8%8B%EF%BC%9A%E9%AB%98%E9%80%9F%E4%B8%8A%E6%89%8B-C-11-14-17-20%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.yhspy.com/2020/11/05/%E3%80%8A%E7%8E%B0%E4%BB%A3-C-%E6%95%99%E7%A8%8B%EF%BC%9A%E9%AB%98%E9%80%9F%E4%B8%8A%E6%89%8B-C-11-14-17-20%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2020-11-05T15:06:57.000Z</published>
-    <updated>2020-11-08T03:46:06.900Z</updated>
+    <updated>2020-11-13T03:36:55.328Z</updated>
     
     <summary type="html">
     
-      又一本知乎上推荐的 C++ 书籍，本身只有不到 100 页，因此可以用来花点时间快速查缺补漏一下。
+      又一本知乎上推荐的 C++ 书籍，只有不到 100 页，因此可以用来花点时间快速查缺补漏一下。
     
     </summary>
     
@@ -36,11 +135,11 @@
   </entry>
   
   <entry>
-    <title>《Pro Git - 2nd Edition》读书笔记（二）</title>
-    <link href="https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <title>《Pro Git - 2nd Edition》读书笔记（第 7-10 章）</title>
+    <link href="https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-11-02T09:21:35.000Z</published>
-    <updated>2020-11-05T15:26:46.237Z</updated>
+    <updated>2020-11-22T12:08:50.485Z</updated>
     
     <summary type="html">
     
@@ -55,11 +154,11 @@
   </entry>
   
   <entry>
-    <title>《Pro Git - 2nd Edition》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <title>《Pro Git - 2nd Edition》读书笔记（第 1-6 章）</title>
+    <link href="https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-10-19T13:26:29.000Z</published>
-    <updated>2020-11-05T15:26:25.004Z</updated>
+    <updated>2020-11-22T12:09:22.793Z</updated>
     
     <summary type="html">
     
@@ -116,7 +215,7 @@
     <link href="https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
     <id>https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
     <published>2020-08-24T11:45:11.000Z</published>
-    <updated>2020-10-06T06:47:58.977Z</updated>
+    <updated>2020-12-04T02:31:20.518Z</updated>
     
     <summary type="html">
     
@@ -135,7 +234,7 @@
     <link href="https://www.yhspy.com/2020/08/21/Threaded-Code/"/>
     <id>https://www.yhspy.com/2020/08/21/Threaded-Code/</id>
     <published>2020-08-20T23:01:46.000Z</published>
-    <updated>2020-08-24T12:13:56.322Z</updated>
+    <updated>2020-11-11T05:01:52.596Z</updated>
     
     <summary type="html">
     
@@ -173,7 +272,7 @@
     <link href="https://www.yhspy.com/2020/08/18/Wasm3-%E6%9E%B6%E6%9E%84%E5%89%96%E6%9E%90/"/>
     <id>https://www.yhspy.com/2020/08/18/Wasm3-%E6%9E%B6%E6%9E%84%E5%89%96%E6%9E%90/</id>
     <published>2020-08-18T02:49:59.000Z</published>
-    <updated>2020-08-18T08:51:46.242Z</updated>
+    <updated>2020-11-11T05:01:52.596Z</updated>
     
     <summary type="html">
     
@@ -264,11 +363,11 @@
   </entry>
   
   <entry>
-    <title>《C++17 STL Cookbook》读书笔记（四）</title>
-    <link href="https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E5%9B%9B%EF%BC%89/</id>
+    <title>《C++17 STL Cookbook》读书笔记（第 8-10 章）</title>
+    <link href="https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%208-10%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/08/06/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%208-10%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-08-06T05:24:05.000Z</published>
-    <updated>2020-11-05T15:27:27.133Z</updated>
+    <updated>2020-11-22T12:18:05.299Z</updated>
     
     <summary type="html">
     
@@ -283,11 +382,11 @@
   </entry>
   
   <entry>
-    <title>《C++17 STL Cookbook》读书笔记（三）</title>
-    <link href="https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <title>《C++17 STL Cookbook》读书笔记（第 5-7 章）</title>
+    <link href="https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%205-7%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/31/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%205-7%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-07-31T13:19:12.000Z</published>
-    <updated>2020-11-05T15:27:17.450Z</updated>
+    <updated>2020-11-22T12:17:12.039Z</updated>
     
     <summary type="html">
     
@@ -302,11 +401,11 @@
   </entry>
   
   <entry>
-    <title>《C++17 STL Cookbook》读书笔记（二）</title>
-    <link href="https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <title>《C++17 STL Cookbook》读书笔记（第 3-4 章）</title>
+    <link href="https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%203-4%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/28/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%203-4%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-07-28T04:14:05.000Z</published>
-    <updated>2020-11-05T15:27:22.399Z</updated>
+    <updated>2020-11-22T12:16:57.530Z</updated>
     
     <summary type="html">
     
@@ -321,11 +420,11 @@
   </entry>
   
   <entry>
-    <title>《C++17 STL Cookbook》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <title>《C++17 STL Cookbook》读书笔记（第 1-2 章）</title>
+    <link href="https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-2%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/22/%E3%80%8AC-17-STL-Cookbook%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-2%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-07-21T16:08:03.000Z</published>
-    <updated>2020-11-05T15:27:11.605Z</updated>
+    <updated>2020-11-22T12:15:19.911Z</updated>
     
     <summary type="html">
     
@@ -363,7 +462,7 @@
     <link href="https://www.yhspy.com/2020/07/15/%E3%80%8A%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%80%9A%E7%94%A8%E5%B9%B3%E5%8F%B0%E3%80%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/"/>
     <id>https://www.yhspy.com/2020/07/15/%E3%80%8A%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%B3%BB%E7%BB%9F%E4%B8%8E%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%80%9A%E7%94%A8%E5%B9%B3%E5%8F%B0%E3%80%8B%E5%9F%BA%E7%A1%80%E6%A6%82%E8%BF%B0/</id>
     <published>2020-07-15T10:09:30.000Z</published>
-    <updated>2020-08-18T12:48:57.123Z</updated>
+    <updated>2020-11-21T08:50:05.714Z</updated>
     
     <summary type="html">
     
@@ -397,11 +496,11 @@
   </entry>
   
   <entry>
-    <title>《Low-Level Programming》读书笔记（三）</title>
-    <link href="https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <title>《Low-Level Programming》读书笔记（第 14-17 章）</title>
+    <link href="https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2014-17%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/07/06/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2014-17%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-07-06T09:55:14.000Z</published>
-    <updated>2020-07-08T16:15:34.430Z</updated>
+    <updated>2020-11-22T12:22:46.394Z</updated>
     
     <summary type="html">
     
@@ -416,11 +515,11 @@
   </entry>
   
   <entry>
-    <title>《Low-Level Programming》读书笔记（二）</title>
-    <link href="https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
+    <title>《Low-Level Programming》读书笔记（第 5-13 章）</title>
+    <link href="https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%205-13%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/29/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%205-13%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-06-28T16:28:35.000Z</published>
-    <updated>2020-10-06T06:47:58.976Z</updated>
+    <updated>2020-11-22T12:21:15.626Z</updated>
     
     <summary type="html">
     
@@ -454,15 +553,15 @@
   </entry>
   
   <entry>
-    <title>《Low-Level Programming》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <title>《Low-Level Programming》读书笔记（第 1-4 章）</title>
+    <link href="https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-4%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2020/06/25/%E2%80%9CLow-Level-Programming%E2%80%9D-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-4%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-06-25T08:15:36.000Z</published>
-    <updated>2020-09-01T02:11:09.510Z</updated>
+    <updated>2020-11-22T13:55:47.517Z</updated>
     
     <summary type="html">
     
-      无意间找到的一本好书，主要介绍 X86_64 体系下的 C 和汇编。其中第十二章关于“编程语言设计”部分的内容，以及第十三章关于“良好编码规范”的内容就简单略过了。
+      无意间找到的一本好书，主要介绍 X86-64 体系下的 C 和汇编。其中第十二章关于“编程语言设计”部分的内容，以及第十三章关于“良好编码规范”的内容就简单略过了。
     
     </summary>
     
@@ -477,7 +576,7 @@
     <link href="https://www.yhspy.com/2020/06/25/NASM-%E5%B0%8F%E8%AE%B0%E5%BD%95/"/>
     <id>https://www.yhspy.com/2020/06/25/NASM-%E5%B0%8F%E8%AE%B0%E5%BD%95/</id>
     <published>2020-06-25T05:42:46.000Z</published>
-    <updated>2020-07-04T08:50:54.907Z</updated>
+    <updated>2020-11-21T08:50:05.687Z</updated>
     
     <summary type="html">
     
@@ -488,101 +587,6 @@
     
     
       <category term="NASM" scheme="https://www.yhspy.com/tags/NASM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux 共享库应用 --version-script</title>
-    <link href="https://www.yhspy.com/2020/06/23/Linux-%E5%85%B1%E4%BA%AB%E5%BA%93%E5%BA%94%E7%94%A8-version-script/"/>
-    <id>https://www.yhspy.com/2020/06/23/Linux-%E5%85%B1%E4%BA%AB%E5%BA%93%E5%BA%94%E7%94%A8-version-script/</id>
-    <published>2020-06-23T10:18:37.000Z</published>
-    <updated>2020-06-23T11:25:51.863Z</updated>
-    
-    <summary type="html">
-    
-      我们知道，传统 Linux 共享库的 SO-NAME 机制无法解决当依赖共享库的次版本号不同时所可能带来的符号不兼容问题。为此，我们可以为共享库添加 Version Script 以标记其中各符号所对应的次版本号，当所依赖版本符号不存在时便可以给出相对友好的提示信息。不仅如此，借助 Version Script 我们还可以向应用程序屏蔽共享库的一些内部工具符号。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《程序员的自我修养 — 链接、装载与库》读书笔记（二）</title>
-    <link href="https://www.yhspy.com/2020/06/21/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/06/21/%E9%93%BE%E6%8E%A5%E3%80%81%E8%A3%85%E8%BD%BD%E4%B8%8E%E5%BA%93%E7%9B%B8%E5%85%B3%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/</id>
-    <published>2020-06-21T14:00:50.000Z</published>
-    <updated>2020-07-07T12:25:40.877Z</updated>
-    
-    <summary type="html">
-    
-      书接上文。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ld 链接控制脚本与默认脚本</title>
-    <link href="https://www.yhspy.com/2020/06/19/ld-%E9%93%BE%E6%8E%A5%E6%8E%A7%E5%88%B6%E8%84%9A%E6%9C%AC%E4%B8%8E%E9%BB%98%E8%AE%A4%E8%84%9A%E6%9C%AC/"/>
-    <id>https://www.yhspy.com/2020/06/19/ld-%E9%93%BE%E6%8E%A5%E6%8E%A7%E5%88%B6%E8%84%9A%E6%9C%AC%E4%B8%8E%E9%BB%98%E8%AE%A4%E8%84%9A%E6%9C%AC/</id>
-    <published>2020-06-19T10:02:50.000Z</published>
-    <updated>2020-06-19T10:17:04.344Z</updated>
-    
-    <summary type="html">
-    
-      我们可以通过 `ld -verbose` 命令来查看 GNU 链接器 ld 默认使用的内部链接控制脚本。这里直接列出该控制脚本的内容。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>尝试构建体积最小的 ELF 可执行程序</title>
-    <link href="https://www.yhspy.com/2020/06/19/%E5%B0%9D%E8%AF%95%E6%9E%84%E5%BB%BA%E4%BD%93%E7%A7%AF%E6%9C%80%E5%B0%8F%E7%9A%84-ELF-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F/"/>
-    <id>https://www.yhspy.com/2020/06/19/%E5%B0%9D%E8%AF%95%E6%9E%84%E5%BB%BA%E4%BD%93%E7%A7%AF%E6%9C%80%E5%B0%8F%E7%9A%84-ELF-%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F/</id>
-    <published>2020-06-19T07:44:56.000Z</published>
-    <updated>2020-06-26T01:03:41.373Z</updated>
-    
-    <summary type="html">
-    
-      本文将尝试构建一个代码量最少、体积最小的 ELF 可执行程序，程序运行时会向 stdout 输出字符串 “Hello, YHSPY!”。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GCC 下的 COMMON 块控制</title>
-    <link href="https://www.yhspy.com/2020/06/19/GCC-%E4%B8%8B%E7%9A%84-COMMON-%E5%9D%97%E6%8E%A7%E5%88%B6/"/>
-    <id>https://www.yhspy.com/2020/06/19/GCC-%E4%B8%8B%E7%9A%84-COMMON-%E5%9D%97%E6%8E%A7%E5%88%B6/</id>
-    <published>2020-06-19T03:18:27.000Z</published>
-    <updated>2020-06-19T05:56:29.129Z</updated>
-    
-    <summary type="html">
-    
-      在 GCC 下，我们可以通过 `__attribute__((common))` 扩展参数来控制编译器对 C 源码中的未初始化全局变量的处理方式。默认情况下，GCC 将采用 COMMON 块来存放未初始化全局变量，这里注意是 C 源代码。
-    
-    </summary>
-    
-    
-    
-      <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
   </entry>
   

@@ -2,110 +2,110 @@
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="ecae875e8a8faae76468359423a18ecb" class="full"><h1 itemprop="headline" class="post-heading">常用 Threading Models 的伪代码示例</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-08-24T11:45:11.000Z"> 2020 / 08 / 24, 19:45:11</time></span><span class="page-tag-anchor"><a href="/tags/虚拟机" itemprop="url">#虚拟机</a>&nbsp;&nbsp;</span></div><br><p>RT。</p>
 <h3 id="常用模型"><a href="#常用模型" class="headerlink" title="常用模型"></a>常用模型</h3><h4 id="Direct-threading"><a href="#Direct-threading" class="headerlink" title="Direct threading"></a>Direct threading</h4><p>在该 threading 模型中的地址是指机器语言的地址。这种形式很简单，但是可能会产生额外的开销，因为 thread 仅由机器地址组成，因此所有<strong>其他参数都必须从内存中间接加载</strong>。一些 Forth 系统会生成 <em>direct-threaded code<em>。在许多计算机上，</em>direct-threaded code</em> 会比 <em>subroutine-threaded code</em> 要快（请参见下面的参考）。</p>
 <p>假设一个堆栈机可能执行序列 “push A; push B; add;”。可以将其转换为如下伪代码。其中 ip 初始化为了标记 “thread” 的地址（存储着 pushA 所在的地址）。（这里，next 例程被内联了）</p>
-<pre class="line-numbers language-asm"><code class="language-asm">start:
-  ip = &thread  // ip points to &pushA (which points to the first instruction of pushA).
-  jump *ip++  // send control to first instruction of pushA and advance ip to &pushB.
-thread:
-  &pushA
-  &pushB
-  &add
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">start:</span>
+  ip <span class="token operator">=</span> <span class="token operator">&amp;</span>thread  <span class="token operator">/</span><span class="token operator">/</span> ip points to <span class="token operator">&amp;</span>pushA (which points to the first instruction of pushA).
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span>  <span class="token operator">/</span><span class="token operator">/</span> send control to first instruction of pushA and advance ip to <span class="token operator">&amp;</span>pushB.
+<span class="token label function">thread:</span>
+  <span class="token operator">&amp;</span>pushA
+  <span class="token operator">&amp;</span>pushB
+  <span class="token operator">&amp;</span>add
   ...
-pushA:
-  *sp++ = A
-  jump *ip++ // send control where ip says to (i.e. to pushB) and advance ip.
-pushB:
-  *sp++ = B
-  jump *ip++
-add:
-  addend = *--sp
-  *sp++ = *--sp + addend
-  jump *ip++<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token label function">pushA:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> A
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">/</span><span class="token operator">/</span> send control where ip says to (i.e. to pushB) and advance ip.
+<span class="token label function">pushB:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> B
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span>
+<span class="token label function">add:</span>
+  addend <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span> <span class="token operator">+</span> addend
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>或者，操作数也可以包含在代码中。这可以删除上面需要的一些间接调用，但是会使代码量变大：</p>
-<pre class="line-numbers language-asm"><code class="language-asm">start:
-  ip = &thread
-  jump *ip++
-thread:
-  &push
-  &A  // address where A is stored, not literal A.
-  &push
-  &B
-  &add
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">start:</span>
+  ip <span class="token operator">=</span> <span class="token operator">&amp;</span>thread
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span>
+<span class="token label function">thread:</span>
+  <span class="token operator">&amp;</span>push
+  <span class="token operator">&amp;</span>A  <span class="token operator">/</span><span class="token operator">/</span> address where A is stored, not literal A.
+  <span class="token operator">&amp;</span>push
+  <span class="token operator">&amp;</span>B
+  <span class="token operator">&amp;</span>add
   ...
-push:
-  *sp++ = *ip++  // must move ip past operand address, since it is not a subroutine address.
-  jump *ip++
-add:
-  addend = *--sp
-  *sp++ = *--sp + addend
-  jump *ip++<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token label function">push:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span>  <span class="token operator">/</span><span class="token operator">/</span> must move ip past operand address, since it is not a subroutine address.
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span>
+<span class="token label function">add:</span>
+  addend <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span> <span class="token operator">+</span> addend
+  jump <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Indirect-threading"><a href="#Indirect-threading" class="headerlink" title="Indirect threading"></a>Indirect threading</h4><p><em>indirect-threading</em> 使用依次指向机器代码位置的指针。间接指针后面可以跟随操作数，这些操作数存储在间接“块”中，而不是将其重复存储在 thread 中。因此，<em>indirect-threaded code</em> 通常比 <em>direct-threaded code</em> 更紧凑。尽管间接跳转通常会使它变慢，但通常仍比字节码解释器快。如果处理程序操作数包含值和类型，则与 <em>direct-threaded code</em> 相比，可以节省更大的空间。较旧的Forth 系统通常会生成 <em>indirect-threaded code</em>。</p>
 <p>例如，如果目标是执行 “push A; push B; add;”，则可以使用以下方式。在这里，<code>ip</code> 被初始化为地址 <code>＆thread</code>，借助 <code>ip</code> 和一个“间接块”，通过两次间接跳转，可以找到每个代码片段（<code>push</code>，<code>add</code>）。片段的任何操作数都可以在片段地址后的间接块中找到。这要求将当前子例程保留在 <code>ip</code> 中，而这与之前的所有示例都包含要调用的下一个子例程不同。（<strong>抽象</strong>+<strong>封装</strong>）</p>
-<pre class="line-numbers language-asm"><code class="language-asm">start:
-  ip = &thread  // points to '&i_pushA'.
-  jump *(*ip)  // follow pointers to 1st instruction of 'push', DO NOT advance ip yet.
-thread:
-  &i_pushA
-  &i_pushB
-  &i_add
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">start:</span>
+  ip <span class="token operator">=</span> <span class="token operator">&amp;</span>thread  <span class="token operator">/</span><span class="token operator">/</span> points to <span class="token string">'&amp;i_pushA'</span>.
+  jump <span class="token operator">*</span>(<span class="token operator">*</span>ip)  <span class="token operator">/</span><span class="token operator">/</span> follow pointers to 1st instruction of <span class="token string">'push'</span>, DO NOT advance ip yet.
+<span class="token label function">thread:</span>
+  <span class="token operator">&amp;</span>i_pushA
+  <span class="token operator">&amp;</span>i_pushB
+  <span class="token operator">&amp;</span>i_add
   ...
-i_pushA:
-  &push
-  &A
-i_pushB:
-  &push
-  &B
-i_add:
-  &add
-push:
-  *sp++ = *(*ip + 1)  // look 1 past start of indirect block for operand address.
-  jump *(*++ip)  // advance ip in thread, jump through next indirect block to next subroutine.
-add:
-  addend = *--sp
-  *sp++ = *--sp + addend
-  jump *(*++ip)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token label function">i_pushA:</span>
+  <span class="token operator">&amp;</span>push
+  <span class="token operator">&amp;</span>A
+<span class="token label function">i_pushB:</span>
+  <span class="token operator">&amp;</span>push
+  <span class="token operator">&amp;</span>B
+<span class="token label function">i_add:</span>
+  <span class="token operator">&amp;</span>add
+<span class="token label function">push:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span>(<span class="token operator">*</span>ip <span class="token operator">+</span> <span class="token number">1</span>)  <span class="token operator">/</span><span class="token operator">/</span> look <span class="token number">1</span> past start of indirect block for operand address.
+  jump <span class="token operator">*</span>(<span class="token operator">*</span><span class="token operator">+</span><span class="token operator">+</span>ip)  <span class="token operator">/</span><span class="token operator">/</span> advance ip in thread, jump through next indirect block to next subroutine.
+<span class="token label function">add:</span>
+  addend <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span> <span class="token operator">+</span> addend
+  jump <span class="token operator">*</span>(<span class="token operator">*</span><span class="token operator">+</span><span class="token operator">+</span>ip)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Subroutine-threading"><a href="#Subroutine-threading" class="headerlink" title="Subroutine threading"></a>Subroutine threading</h4><p>所谓的 “<em>subroutine-threaded code<em>”（也称为 “</em>call-threaded code*”）是由一系列机器语言的“调用”指令（或将被“调用”的函数地址）组成，与 *direct-threaded code</em> 所使用 “jump” 正相反。用于 ALGOL、Fortran、Cobol 和某些 Forth 系统的早期编译器通常会生成 <em>subroutine-threaded code</em>。在许多这样的系统中，代码都是在后进先出（LIFO）操作数堆栈上操作的，为此，编译器理论得到了很好的发展。大多数现代处理器都对子例程的 “call” 和 “return” 指令具有特殊的硬件支持，因此每次分派额外一条机器指令的开销有所减少。</p>
 <p>Gforth 编译器的共同创建者 Anton Ertl 曾说：“与流行的神话相反，<em>subroutine-threading</em> 通常比 <em>direct-threading</em> 慢”。然而，Ertl 的最新测试显示，在 25 个测试用例中，有 15 个使用了 <em>subroutine-threading</em> 的用例比 <em>direct-threading</em> 更快。更具体地说，他发现 <em>direct-threading</em> 是 Xeon，Opteron 和 Athlon 处理器上最快的 threading 模型，<em>indirect-threading</em> 在 Pentium M 处理器上最快，而 <em>subroutine-threading</em> 在 Pentium 4，Pentium III 和 PPC 处理器上最快。</p>
 <p>作为 “push A; push B; add;” 的 <em>call-threading</em> 的示例：</p>
-<pre class="line-numbers language-asm"><code class="language-asm">thread:
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">thread:</span>
   call pushA
   call pushB
   call add
   ret
-pushA:
-  *sp++ = A
+<span class="token label function">pushA:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> A
   ret
-pushB:
-  *sp++ = B
+<span class="token label function">pushB:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> B
   ret
-add:
-  addend = *--sp
-  *sp++ = *--sp + addend
+<span class="token label function">add:</span>
+  addend <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span> <span class="token operator">+</span> addend
   ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="Token-threading"><a href="#Token-threading" class="headerlink" title="Token threading"></a>Token threading</h4><p><em>token-threaded code</em> 使用指向指针表的 8 或 12 位索引的列表。它非常紧凑，通常是其他 threading 大小的一半到四分之三，它们本身是非线程代码的四分之一到八分之一。该表的指针可以是间接的也可以是直接的。一些 Forth 编译器会生成 <em>token-threaded code</em>。</p>
 <p>从历史上看，一种常见的方法是字节码，它使用 8 位操作码，并且通常使用基于堆栈的虚拟机。典型的解释器称为“<strong>解码和调度解释器</strong>”，格式如下：</p>
-<pre class="line-numbers language-asm"><code class="language-asm">start:
-  vpc = &thread
-top:
-  i = decode(vpc++)  /* may be implemented simply as:  return *vpc */
-  addr = table[i]
-  jump *addr
-thread:  /* Contains bytecode, not machine addresses.  Hence it is more compact. */
-  1 /*pushA*/
-  2 /*pushB*/
-  0 /*add*/
-table:
-  &add    /* table[0] = address of machine code that implements bytecode 0 */
-  &pushA  /* table[1] ... */
-  &pushB  /* table[2] ... */
-pushA:
-  *sp++ = A
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">start:</span>
+  vpc <span class="token operator">=</span> <span class="token operator">&amp;</span>thread
+<span class="token label function">top:</span>
+  i <span class="token operator">=</span> decode(vpc<span class="token operator">+</span><span class="token operator">+</span>)  <span class="token operator">/</span><span class="token operator">*</span> may be implemented simply as:  return <span class="token operator">*</span>vpc <span class="token operator">*</span><span class="token operator">/</span>
+  addr <span class="token operator">=</span> table<span class="token operator">[</span>i<span class="token operator">]</span>
+  jump <span class="token operator">*</span>addr
+<span class="token label function">thread:</span>  <span class="token operator">/</span><span class="token operator">*</span> Contains bytecode, not machine addresses.  Hence it is more compact. <span class="token operator">*</span><span class="token operator">/</span>
+  <span class="token number">1</span> <span class="token operator">/</span><span class="token operator">*</span>pushA<span class="token operator">*</span><span class="token operator">/</span>
+  <span class="token number">2</span> <span class="token operator">/</span><span class="token operator">*</span>pushB<span class="token operator">*</span><span class="token operator">/</span>
+  <span class="token number">0</span> <span class="token operator">/</span><span class="token operator">*</span>add<span class="token operator">*</span><span class="token operator">/</span>
+<span class="token label function">table:</span>
+  <span class="token operator">&amp;</span>add    <span class="token operator">/</span><span class="token operator">*</span> table<span class="token operator">[</span><span class="token number">0</span><span class="token operator">]</span> <span class="token operator">=</span> address of machine code that implements bytecode <span class="token number">0</span> <span class="token operator">*</span><span class="token operator">/</span>
+  <span class="token operator">&amp;</span>pushA  <span class="token operator">/</span><span class="token operator">*</span> table<span class="token operator">[</span><span class="token number">1</span><span class="token operator">]</span> ... <span class="token operator">*</span><span class="token operator">/</span>
+  <span class="token operator">&amp;</span>pushB  <span class="token operator">/</span><span class="token operator">*</span> table<span class="token operator">[</span><span class="token number">2</span><span class="token operator">]</span> ... <span class="token operator">*</span><span class="token operator">/</span>
+<span class="token label function">pushA:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> A
   jump top
-pushB:
-  *sp++ = B
+<span class="token label function">pushB:</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> B
   jump top
-add:
-  addend = *--sp
-  *sp++ = *--sp + addend
+<span class="token label function">add:</span>
+  addend <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span>
+  <span class="token operator">*</span><span class="token register variable">sp</span><span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">=</span> <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span><span class="token register variable">sp</span> <span class="token operator">+</span> addend
   jump top<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果虚拟机仅使用字节大小（1 Byte）的指令，则 <code>decode()</code> 可以直接从 <code>thread</code> 中获取，但是通常有一些会使用，常用的 1 字节指令外加一些不太常见的多字节指令，在这种情况下 <code>decode()</code> 的执行便会比较复杂。<strong>单字节操作码的解码可以通过，将操作码（OpCode）直接作为索引</strong>来非常简单有效地进行处理。</p>
 <p>对于单个操作十分简单的指令（例如 “push” 和 “add”），决定执行什么（分支预测）所涉及的开销大于实际执行它的成本，因此此类解释器通常比机器代码慢得多。但是，对于更复杂的（“复合”）指令，开销会相对地降低。</p>
@@ -127,14 +127,14 @@ add:
 <li>next；</li>
 </ol>
 <p>在一个 <em>indirect-threaded code</em> 的虚拟机中，此处对应的操作是：</p>
-<pre class="line-numbers language-asm"><code class="language-asm">next:
-  *ip++ -> w
-  jump **w++
-nest:
-  ip -> *rp++
-  w -> ip
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token label function">next:</span>
+  <span class="token operator">*</span>ip<span class="token operator">+</span><span class="token operator">+</span> <span class="token operator">-</span><span class="token operator">></span> w
+  jump <span class="token operator">*</span><span class="token operator">*</span>w<span class="token operator">+</span><span class="token operator">+</span>
+<span class="token label function">nest:</span>
+  ip <span class="token operator">-</span><span class="token operator">></span> <span class="token operator">*</span>rp<span class="token operator">+</span><span class="token operator">+</span>
+  w <span class="token operator">-</span><span class="token operator">></span> ip
   next
-unnest:
-  *--rp -> ip
+<span class="token label function">unnest:</span>
+  <span class="token operator">*</span><span class="token operator">-</span><span class="token operator">-</span>rp <span class="token operator">-</span><span class="token operator">></span> ip
   next<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-08-24T11:45:11.000Z"> 2020 / 10 / 06, 14:47:58</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/21/Threaded-Code/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-08-24T11:45:11.000Z"> 2020 / 12 / 04, 10:31:20</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/21/Threaded-Code/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

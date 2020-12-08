@@ -51,7 +51,7 @@ void *Operation_Whatever(pc_t pc, u64 * sp, u8 * mem, reg_t r0, f64 fp0);
 
 例如，这是在 X86 上编译的 M3 中的“按位或”运算。
 
-```asm
+```nasm
 m3`op_u64_Or_sr:
     0x1000062c0 <+0>:  movslq (%rdi), %rax             ; load operand stack offset.
     0x1000062c3 <+3>:  orq    (%rsi,%rax,8), %rcx      ; or r0 with stack operand.

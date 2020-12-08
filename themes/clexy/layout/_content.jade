@@ -110,7 +110,7 @@ else if is_page() && page.title.toLowerCase() =='works'
 else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
     h1(itemprop='headline')=page.title
-    span(class="meta")='列在此处的书/论文均已读完至少一遍，部分书籍会有相应的笔记，可以在“文章”栏目里寻找。'
+    span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里寻找。'
     each val, key in site.pages.filter(i => i.page === 'readings').reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
       h5='- ' + key
       for book in val.sort((x, y) => y.date - x.date)

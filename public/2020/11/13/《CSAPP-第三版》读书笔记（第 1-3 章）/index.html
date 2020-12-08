@@ -1,0 +1,598 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《CSAPP 第三版》读书笔记（第 1-3 章） | 曜彤.手记</title><meta name="description" content="旧书清理系列，今年年初计划要看完的一本书，属于程序员必读系列。据说内容与《程序员的自我修养 — 链接、装载与库》有部分重合，但整体内容规划应该会更加全面。注：笔记超长。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="a7d24aebd2c41276563f6cbdaf1e30ba" class="full"><h1 itemprop="headline" class="post-heading">《CSAPP 第三版》读书笔记（第 1-3 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-11-13T03:01:50.000Z"> 2020 / 11 / 13, 11:01:50</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><p>旧书清理系列，今年年初计划要看完的一本书，属于程序员必读系列。据说内容与《程序员的自我修养 — 链接、装载与库》有部分重合，但整体内容规划应该会更加全面。注：笔记超长。</p>
+<h3 id="第一章、计算机系统漫游"><a href="#第一章、计算机系统漫游" class="headerlink" title="第一章、计算机系统漫游"></a>第一章、计算机系统漫游</h3><ol>
+<li>（Page：2）在不同的上下文中，一个同样的字节序列可能表示一个整数、浮点数、字符串或机器指令。</li>
+<li>（Page：2）<strong>C 语言的成功离不开当初 Unix（由 C 语言编写）所获得巨大成功</strong>。C 语言的设计十分简洁，以至于 K&amp;R 这本经典书籍仅用了 261 页便完整描述了 C 语言及其标准库。</li>
+<li>（Page：3）编译系统（流程）：</li>
+</ol>
+<p><img src="1.png" alt=""></p>
+<ol start="4">
+<li>（Page：4）GNU 是 “<strong>GNU’s Not Unix</strong>” 的缩写。</li>
+<li>（Page：6）一个典型系统的硬件组成：</li>
+</ol>
+<p><img src="2.png" alt=""></p>
+<ul>
+<li><strong>总线</strong>：<strong>负责携带信息字节并在各个部件间进行传递</strong>。其一次可以传递的信息大小为一个“字”。字长通常为 4 个字节或 8 个字节；</li>
+<li><strong>I/O 设备</strong>：每一个 I/O 设备都通过一个<strong>控制器</strong>或<strong>适配器</strong>与 I/O 总线相连。控制器是 I/O 设备本身或者系统的主印制电路板上的芯片组。而适配器则是一块插在主板插槽上的卡；</li>
+<li><strong>主存</strong>：用来存放程序和程序处理的数据；</li>
+<li><strong>处理器</strong>：即 CPU，主要用于解释存储在主存中的指令。其核心是一个大小为一个字的存储设备（或寄存器），称为程序计数器（PC）。在任何时候，PC 都指向主存中的某条机器语言指令（的地址）。</li>
+</ul>
+<ol start="6">
+<li>（Page：7）处理器的<strong>指令集架构</strong>与<strong>微体系架构</strong>：前者描述的是<strong>每条机器代码指令的效果</strong>；后者描述的是<strong>处理器实际上是如何实现</strong>的。</li>
+<li>（Page：8）利用“直接存储器存取（<strong>DMA</strong>）”技术，数据可以不通过 CPU 处理器而直接从磁盘到达主存。</li>
+<li>（Page：9）为了弥补处理器与主存之间的数据读取效率差异，系统设计者采用了更小更快的存储设备“<strong>高速缓存存储器</strong>”来<strong>存储处理器近期可能会需要的信息</strong>（Locality）。现代系统可能存在三级高速缓存（使用 SRAM 实现）：L1 \ L2 \ L3，其可存储容量依次降低。</li>
+</ol>
+<p><img src="3.png" alt=""></p>
+<ul>
+<li>CPU 寄存器：数据访问可以在 <strong>0</strong> 个周期内实现；</li>
+<li>高速缓存：数据访问可以在 <strong>4~75</strong> 个周期内实现；</li>
+<li>主存：数据访问可以在<strong>上百</strong>个周期内实现；</li>
+<li>磁盘：数据访问可以在<strong>几千万</strong>个周期内实现；</li>
+</ul>
+<ol start="9">
+<li>（Page：10）操作系统通过几个基本的<strong>抽象</strong>概念来管理硬件与应用程序：</li>
+</ol>
+<p><img src="7.png" alt=""></p>
+<ol start="10">
+<li>（Page：11）POSIX 标准：<strong>IEEE 曾努力标准化的 Unix 开发，由 Richard Stallman 命名</strong>。标准涵盖了包括：Unix 系统调用的 C 语言接口、Shell 程序和工具、线程与网络编程等多方面内容。</li>
+<li>（Page：12）进程的上下文切换（由<strong>内核</strong>进行管理）：</li>
+</ol>
+<p><img src="4.png" alt=""></p>
+<ol start="12">
+<li>（Page：12）<strong>线程共享同一进程的代码和全局数据</strong>（非 Thread-Local 数据）。</li>
+<li>（Page：13）进程虚拟地址空间（<strong>VAS</strong>）：</li>
+</ol>
+<p><img src="5.png" alt=""></p>
+<ul>
+<li><strong><em>程序代码和数据</em></strong>：对于所有的进程，代码是从同一固定地址开始的。紧接着是和 C 全局变量相对应的数据位置；</li>
+<li><strong><em>堆</em></strong>：由<strong>低地址位向高地址位增长</strong>。由 <code>std::malloc</code> 等函数动态分配；</li>
+<li><strong><em>共享库</em></strong>：存放诸如 C 标准库和数学库等动态库（.so / .dylib）的代码及数据；</li>
+<li><strong><em>栈</em></strong>：由<strong>高地址位向低地址位增长</strong>。用于存放函数调用的栈帧、局部变量的值等；</li>
+<li><strong><em>内核虚拟内存</em></strong>：为内核保留。</li>
+</ul>
+<ol start="14">
+<li>（Page：14）<strong>每个 I/O 设备，包括磁盘、键盘、显示器，甚至网络，都可以看成是文件</strong>。系统中的所有输入输出都是通过使用一小组称为 Unix I/O 的系统函数调用读写文件实现的。</li>
+<li>（Page：16）<strong>Amdahl 定律</strong>（Amdahl’s Law）：当我们对系统的某个部分加速时，其对系统整体性能的影响取决于该部分的重要性和加速程度。<strong>要想显著加速整个系统，必须提升全系统中相当大部分的速度</strong>。</li>
+<li>（Page：17）<strong>并发</strong>（concurrency）和<strong>并行</strong>（parallelism）的三个层次（由高到低）：</li>
+</ol>
+<ul>
+<li><strong><em>线程级并发</em></strong>：构建在“进程”抽象之上。在多核心处理器的基础上，可以实现并行计算；</li>
+<li><strong><em>指令级并行</em></strong>：处理器可以同时执行多条指令。如果一个处理器可以达到“比一个周期一条指令更快的执行效率”，就称之为“<strong>超标量</strong>”处理器（基于流水线）；</li>
+<li><strong><em>单指令，多数据并行</em></strong>（SIMD）：基于特殊的硬件，允许一条指令产生多个可以并行执行的操作。</li>
+</ul>
+<ol start="17">
+<li>（Page：18）多核处理器结构：</li>
+</ol>
+<p><img src="6.png" alt=""></p>
+<ul>
+<li>每个核有自己的 L1 与 L2 高速缓存，它们共享 L3 缓存；</li>
+<li>可以配合“<strong>超线程</strong>”技术来并行地执行多个控制流。</li>
+</ul>
+<h3 id="第二章、信息的表示和处理"><a href="#第二章、信息的表示和处理" class="headerlink" title="第二章、信息的表示和处理"></a>第二章、信息的表示和处理</h3><ol start="18">
+<li>（Page：22）<strong>由于表示的精度优先，浮点数是不可结合的</strong>。整数的表示只能编码一个相对较小的数值范围，但却是准确的；而浮点数虽然可以编码一个较大的数值范围，但表示却是近似的。</li>
+<li>（Page：24）C 编译器维护着指针和该指针对应的类型信息，但实际生成的<strong>机器级程序却并不包含数据类型的信息</strong>。</li>
+<li>（Page：27）<strong>字长</strong>：指明<strong>指针数据的标称大小</strong>（决定了虚拟地址空间 VAS 的最大大小。<em>w</em> 位 -&gt; 可寻址范围 <em>0~2^w-1</em>）。</li>
+<li>（Page：27）（32位 / 64位）程序：区别在于该程序是<strong>如何编译</strong>的，而不是其运行的机器类型。</li>
+<li>（Page：28）<strong>ISO C99</strong> 引入了一类数据类型，其数据大小是固定的，不随编译器和机器设置而变化，如：int32_t \ int64_t 等。</li>
+<li>（Page：29）<strong>对象的地址为所使用字节中最小的地址</strong>（低地址端）。</li>
+<li>（Page：29）许多较新的微处理器采用<strong>双端法</strong>，即可以将它们配置成小端或大端两种模式，但实际情况是<strong>一旦选择了特定的操作系统，那么字节序也就固定了下来</strong>。属于“小端”和“大端”来自于《格列佛游记》一书，其中交战的两个派别无法就应该从哪一端打开一个半熟的鸡蛋达成一致。</li>
+<li>（Page：33）通过命令 <code>man ascii</code> 可以得到一张 ASCII 字符码的表。</li>
+<li>（Page：36）“位向量”的一个应用是可以用于<strong>表示“有限集合”</strong>：</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">a = [01101001] -> A = {0, 3, 5, 6}
+b = [01010101] -> B = {0, 2, 4, 6}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>布尔运算 “|” 用于求得上述集合的<strong>并</strong>；</li>
+<li>布尔运算 “&amp;” 用于求得上述集合的<strong>交</strong>；</li>
+<li>布尔运算 “~” 用于求得上述集合的<strong>补</strong>；</li>
+</ul>
+<ol start="27">
+<li>（Page：40）<strong>逻辑右移</strong>与<strong>算数右移</strong>：前者在最高位<strong>补 0</strong>；而后者在最高位<strong>补最高有效位的值</strong>（可保持符号性）。几乎所有的编译器/机器都对有符号数使用算数右移，而无符号数则使用逻辑右移。Java 会对右移的类型进行明确的区分（&gt;&gt; 与 &gt;&gt;&gt;）。</li>
+<li>（Page：44）补码（Two’s-complement）：其中最高有效位称为“符号位”，其“权重”为 <strong><em>-2^(w-1)</em></strong>（w 为位向量的长度）。</li>
+</ol>
+<p><img src="8.png" alt=""></p>
+<ul>
+<li>一个“补码”对应的数值为其所有<strong>负权重位（符号位）值与正权重位值的和</strong>；</li>
+<li><em>w</em> 位补码所能表示的值范围：[10…0] … [01…1]。前者只有负权重位，正权重位均为零；后者负权重位为零，正权重位均为一。计算可得，其表示范围的符号性不对称。<strong>可表示负值多于正值</strong>（也可理解为“负零”被替换成了多一个的负数）。</li>
+<li><em>UMax(w) = 2TMax(w) + 1</em>，最大的无符号数值刚好比补码的最大值的两倍大一点。</li>
+</ul>
+<p><img src="9.png" alt=""></p>
+<ul>
+<li><strong>反码</strong>（Ones’ Complement）：除了 MSB 的权为 <strong><em>-(2^(w-1)-1)</em></strong> 以外，它和补码是一样的。<strong>原码</strong>（Sign-Magnitude）：最高有效位是符号位，用来确定剩下的位应该取负权还是正权。这两种表示方式都无法区分“正零”和“负零”；</li>
+<li>Two’s Complement：对于非负数 x，我们用 <em>2^w-x</em>（一个 2）来计算 -x 的 w 位表示；Ones’ Complement：用 <em>[111…1]-x</em>（多个 1）来计算 -x 的反码表示。</li>
+</ul>
+<pre class="line-numbers language-text"><code class="language-text">  1111（[111...1]）
+- 0101 原码（5）
+------------------
+  1010 反码（-5）
+
+ 10000（2^w）
+- 0101 补码（5）
+------------------
+  1011 补码（-5）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="29">
+<li>（Page：49）<strong>强制类型转换的结果保持位值不变，只是改变了解释这些位的方式</strong>。</li>
+</ol>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">short</span> <span class="token keyword">int</span> v <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">12345</span><span class="token punctuation">;</span>
+  <span class="token keyword">unsigned</span> <span class="token keyword">short</span> uv <span class="token operator">=</span> <span class="token keyword">static_cast</span><span class="token operator">&lt;</span><span class="token keyword">unsigned</span> <span class="token keyword">short</span><span class="token operator">></span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> uv <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 53191（与 -12345 的补码表示完全一致）.</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="30">
+<li>（Page：50）补码与无符号数的相互转换：</li>
+</ol>
+<p><img src="12.png" alt=""></p>
+<ul>
+<li>补码转换为无符号数：</li>
+</ul>
+<p><img src="10.png" alt=""></p>
+<ul>
+<li>无符号数转换为补码：</li>
+</ul>
+<p><img src="11.png" alt=""></p>
+<ol start="31">
+<li>（Page：54）<strong>符号扩展</strong>（Sign Extension）与<strong>零扩展</strong>（Zero Extension）：前者在扩展时<strong>填充最高有效位的值</strong>；后者在扩展时<strong>填充 0</strong>。两者可以分别对应到算数右移与逻辑右移相似的逻辑。</li>
+<li>（Page：56）C 语言类型转换会<strong>先转换数据大小，再转换符号性</strong>：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">short</span> sx <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">12345</span><span class="token punctuation">;</span>
+<span class="token keyword">unsigned</span> uy <span class="token operator">=</span> sx<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// (unsigned)(int)sx.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="33">
+<li>（Page：57）数字的截断：</li>
+</ol>
+<p><img src="13.png" alt=""></p>
+<ul>
+<li>利用的一个性质：<strong>对于任何 i &gt;= k，2^i mod 2^k = 0</strong>；</li>
+<li>补码在截断时需要将最高位转换为符号位，因此值的符号性可能会发生改变。</li>
+</ul>
+<ol start="34">
+<li>（Page：59）<code>size_t</code> 通常被定义为<strong>无符号</strong>类型。</li>
+<li>（Page：61）无符号数加法：</li>
+</ol>
+<p><img src="14.png" alt=""></p>
+<ul>
+<li>检测两个无符号数的和是否产生溢出：</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">isUnsignedAdditionOverflow</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">short</span> x<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> <span class="token keyword">short</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">unsigned</span> <span class="token keyword">short</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+  <span class="token keyword">return</span> sum <span class="token operator">&lt;</span> x <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="36">
+<li>（Page：63）补码加法：</li>
+</ol>
+<p><img src="15.png" alt=""></p>
+<ul>
+<li>检测两个有无符号数的和是否产生溢出：</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">isSignedAdditionOverflow</span><span class="token punctuation">(</span><span class="token keyword">short</span> x<span class="token punctuation">,</span> <span class="token keyword">short</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">short</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> y <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> sum <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 正溢出；</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> y <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> sum <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 负溢出；</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="37">
+<li>（Page：66）对于 <em>w</em> 位的补码加法来说，<strong><em>TMin(w)</em> 是自己的加法的逆</strong>。</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">TMin(w) + TMin(w) = -2^(w-1) + -2^(w-1) = -2^w (Overflow) = -2^w + 2^w = 0 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="38">
+<li>（Page：66）执行位级补码非（<strong>逆</strong>）的几种方式：</li>
+</ol>
+<ul>
+<li>对每一位求补集，然后再对结果加一（<strong>所有二进制位取反，结果加一</strong>）；</li>
+<li>对最后一个 “1” 所在位置（不包括该位）左侧所有的位进行取反；</li>
+</ul>
+<ol start="39">
+<li>（Page：67）无符号乘法（截断为结果的低 <em>w</em> 位）：</li>
+</ol>
+<p><img src="16.png" alt=""></p>
+<ol start="40">
+<li>（Page：67）补码乘法（截断为结果的低 <em>w</em> 位）：</li>
+</ol>
+<p><img src="17.png" alt=""></p>
+<ul>
+<li><strong>对于无符号和补码乘法来说，乘法运算的位级表示都是一样的</strong>（指截断后的剩余部分，即两个乘数与结果）。</li>
+</ul>
+<ol start="41">
+<li><p>（Page：70）由于整数乘法相当慢（需要 3-10 个时钟周期），因此可以选择使用“<strong>位移+加法</strong>”组合的方式来实现：<strong>左移一个数值等价于执行一个与 2 的幂相乘的无符号乘法</strong>。</p>
+</li>
+<li><p>（Page：71）常数乘法优化：</p>
+</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">// 一个乘法替换为三个位移和两个加法；
+x*14 -> x*(2^3 + 2^2 + 2^1) -> (x<<3)+(x<<2)+(x<<1)
+// 一个乘法替换为两个位移和一个减法；
+x*14 -> x*(2^4 - 2^1) -> (x<<4)-(x<<1)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="43">
+<li>（Page：72）在大多数机器上，整数除法要比整数乘法更慢 — 需要<strong>30个或更多的时钟周期</strong>。</li>
+</ol>
+<ul>
+<li>无符号除法（除以 2 的幂）：逻辑右移 k 位。正数向下舍入；</li>
+<li>补码除法（除以 2 的幂）：先加入偏置量（2^k - 1），再算数右移 k 位。负数向上舍入。</li>
+</ul>
+<ol start="44">
+<li>（Page：76）小数的二进制表示法只能表示那些能够被写成 <strong><em>x \</em> 2^y*</strong> 的数，其他的值只能够被<strong>近似</strong>表示。而增加二进制表示的长度可以提高表示的精度。</li>
+</ol>
+<p><img src="18.png" alt=""></p>
+<ol start="45">
+<li>（Page：78）IEEE-754 浮点数<strong>单精度浮点</strong>表示（其他类似）：</li>
+</ol>
+<p><img src="19.png" alt=""></p>
+<ul>
+<li><strong>偏置形式</strong>：阶码值为 <em>E=e-Bias</em>，其中 Bias 的值为 2^(k-1)-1。单精度 E 范围为 -126~+127，双精度为 -1022~+1023（e 为阶码部分表示的<strong>无符号整数值</strong>，k 为阶码部分的位数）；</li>
+<li>隐式以 “1” 开头的尾数：尾数定义 <em>M=1+f</em>，其中的 “1” 被隐式表示，并没有占用尾数的精度位；</li>
+<li>非规格化数：阶码值为 <strong><em>E=1-Bias</em></strong>，尾数为 <strong><em>M=f</em></strong>（无隐式 “1”）。该类型的值可用于<strong>表示值 “0”</strong>，但由于符号位的存在，会得到 “+0” 与 “-0”。另一个用途可用于<strong>表示非常接近 0.0 的数</strong>；</li>
+<li>特殊值：无穷大值和 NaN；</li>
+<li>IEEE-754 对浮点数值的格式设计（偏置阶码+尾数）可以让我们<strong>通过整数排序函数来排序浮点数</strong>。</li>
+</ul>
+<p><img src="20.png" alt=""></p>
+<ul>
+<li>浮点数 0.0 与整数 0 的位模式完全一样。</li>
+</ul>
+<ol start="46">
+<li>（Page：82）整数到浮点数的转换：</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">12345（原始十进制数）
+[11000000111001]（展开二进制）
+12345 = 1.1000000111001 * 2^13（浮点数二进制表示）
+[10000001110010000000000]（丢弃个位数 “1”，补充小数字段）
+[1000110010000001110010000000000]（计算阶码字段，幂+偏置阶码）
+[01000110010000001110010000000000]（添加符号位）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="47">
+<li>（Page：82）浮点数的<strong>舍入</strong>（Rounding）：</li>
+</ol>
+<p><img src="21.png" alt=""></p>
+<ul>
+<li>向偶数舍入（向最接近的值舍入）：可以<strong>避免大量浮点类型数据在进行舍入时引入的统计偏差</strong>。在二进制小数中，0 位被认为是偶数，1 位被认为是奇数。只有对形如 <code>XX...X.YY...Y100..</code>（最右的 Y 是要被舍入的位置）的二进制位模式的数，这种舍入方式才有效。</li>
+</ul>
+<ol start="48">
+<li>（Page：85）IEEE-754 中定义 1/-0 将得到负无穷，而 1/+0 将得到正无穷；“无穷”和 NaN 无逆元。</li>
+<li>（Page：85）<strong>浮点数的乘法和加法是不可结合</strong>的（指全范围内）：</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">// 超过最大安全数（小数位全为 1）的范围；
+(3.14 + 1e209) - 1e209  // 0.
+3.14 + (1e209 - 1e209)  // 3.14.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="第三章、程序的机器级表示"><a href="#第三章、程序的机器级表示" class="headerlink" title="第三章、程序的机器级表示"></a>第三章、程序的机器级表示</h3><ol start="50">
+<li>（Page：109）编译器基于<strong>编程语言的规则</strong>、<strong>目标机器的指令集</strong>（ISA）和<strong>操作系统遵循的惯例</strong>（Calling Convention），经过一系列的阶段生成机器代码。</li>
+<li>（Page：110）IA32 为 X86-64 的 32 位前身，是 Intel 于 1985 年提出的。</li>
+<li>（Page：110）当前的 64 位机器能够使用多达 256TB（2^48 字节）的内容空间，而且很容易就可以扩展至 16EB（2^64 字节）。在目前的实现中，<strong>虚拟地址的高 16 位必须设置为 0</strong>。</li>
+<li>（Page：111）8087 协处理器（FPU）建立了 X86 系列的<strong>浮点模型</strong>，通常被称为 “<strong>X87</strong>”。浮点运算寄存器：SSE -&gt; SSE2 -&gt; AVX（这些也同时被作为 SIMD 寄存器，最初的为 MMX）。</li>
+<li>（Page：115）生成汇编代码（<strong>-S</strong>）：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">clang++ -S -std<span class="token operator">=</span>c++2a <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="55">
+<li>（Page：116）X86-64 的指令长度为 <strong>1-15</strong> 个字节不等。</li>
+<li>（Page：119）由于是从 16 位体系结构扩展成 32 位的，Intel <strong>用术语“字（word）”来表示 16 位数据类型</strong>。因此 32 位数为“<strong>双字</strong>”，64 位数为“<strong>四字</strong>”。</li>
+</ol>
+<p><img src="22.png" alt=""></p>
+<ul>
+<li>后缀 “<strong>l</strong>” 用来表示<strong>双字</strong>，因为 32 位整数被看成是“长字（<strong>long</strong> word）”；</li>
+</ul>
+<ol start="57">
+<li>（Page：120）通用目标寄存器：</li>
+</ol>
+<p><img src="23.png" alt=""></p>
+<ul>
+<li>可用来<strong>保存整数或指针</strong>（从位模式上来讲也可以存储浮点数，但浮点数的计算和操作有专门的特殊寄存器）；</li>
+<li>生成 1 字节和 2 字节数字的指令会保持剩下的字节不变；<strong>生成 4 字节数字的指令会把高 4 字节置零，如 <em>movl</em> 指令</strong>（作为 IA32 到 X86-64 的扩展）；</li>
+<li>Callee-saved 寄存器 rbx \ rbp \ r12-r15 必须<strong>由被调用方保存状态，并在结束前重置</strong>（指如果在函数调用过程中被修改的话。其中 rsp 不推荐使用）；Caller-saved 寄存器 r10 \ r11 的内容<strong>视情况保存和恢复</strong>。</li>
+</ul>
+<ol start="58">
+<li>（Page：121）操作数格式（R 表示寄存器的值，M 表示将该值作为地址，即该地址存放的值）：</li>
+</ol>
+<p><img src="24.png" alt=""></p>
+<ul>
+<li><em>Imm(rb, ri, s)</em> 是最常用的内存寻址格式，其中 Imm 为偏移（displacement）<strong>立即数</strong>，rb 为<strong>基址寄存器</strong>，ri 为<strong>变址寄存器</strong>，<strong>比例因子</strong>为 s，其取值必须为 1 / 2 / 4 / 8；</li>
+</ul>
+<pre class="line-numbers language-nasm"><code class="language-nasm">mov <span class="token register variable">rax</span>, <span class="token operator">[</span><span class="token register variable">rdx</span> <span class="token operator">+</span> <span class="token number">8</span> <span class="token operator">*</span> <span class="token register variable">rcx</span> <span class="token operator">+</span> <span class="token number">42</span><span class="token operator">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; ATT 汇编；</span>
+movl <span class="token operator">$</span><span class="token number">0x4050</span>, <span class="token operator">%</span><span class="token register variable">eax</span>
+movw <span class="token operator">%</span><span class="token register variable">bp</span>, <span class="token operator">%</span><span class="token register variable">sp</span>
+movb (<span class="token operator">%</span><span class="token register variable">rdi</span>, <span class="token operator">%</span><span class="token register variable">rcx</span>), <span class="token operator">%</span><span class="token register variable">al</span>
+movb <span class="token operator">$</span><span class="token number">-17</span>, (<span class="token operator">%</span><span class="token register variable">rsp</span>)
+movq <span class="token operator">%</span><span class="token register variable">rax</span>, <span class="token number">-12</span>(<span class="token operator">%</span><span class="token register variable">rbp</span>)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="59">
+<li>（Page：122）数据传送指令：</li>
+</ol>
+<p><img src="25.png" alt=""></p>
+<ul>
+<li>X86-64 下<strong>传送指令的两个操作数不能都指向内存位置</strong>；</li>
+<li>除上述之外，还存在诸如 <code>movzbw</code>（<strong>零扩展，字节到字</strong>）与 <code>movsbl</code>（<strong>符号扩展，字节到双字</strong>）等用于将较小的源值（<strong>寄存器/内存</strong>）复制到较大的目的<strong>寄存器</strong>时使用的指令；<ul>
+<li>零扩展移动：<code>movzbw</code> / <code>movzbl</code> / <code>movzbq</code>；</li>
+<li>符号扩展移动：<code>movsbw</code> / <code>movwbl</code> / <code>movwbl</code>；</li>
+</ul>
+</li>
+<li><code>movq</code> <strong>无法直接移动 64 位的立即数</strong>，它只能以表示为 32 位补码数字的立即数作为源操作数，然后将这个值“符号扩展”得到 64 位的值，放到目的位置。取而代之可以使用 <code>movabsq</code> 但目的只能为寄存器（因此，将一个 64 位立即数放到内存中需要两条指令）；</li>
+<li><strong>没有用于零扩展双字到四字（<em>movzlq</em>）的指令</strong>，因为可以直接用 <code>movl</code> 指令来实现（默认情况下，64 位寄存器的高 4 字节会自动置零）；</li>
+<li><code>cltq</code> 指令没有操作数，它可以直接将 %eax 的值符号扩展并存放到 %rax 中。相较其他指令的相同实现，编码更加紧凑。</li>
+</ul>
+<ol start="60">
+<li>（Page：127）栈操作：</li>
+</ol>
+<p><img src="26.png" alt=""></p>
+<ul>
+<li>栈向低地址增长；</li>
+<li><code>push</code> 和 <code>pop</code> 可以由相应的移动和算数指令来实现，但前者的编码仅需要<strong>一个字节</strong>。</li>
+</ul>
+<ol start="61">
+<li>（Page：129）算数和逻辑操作：</li>
+</ol>
+<p><img src="27.png" alt=""></p>
+<ul>
+<li>除加载有效地址指令 <code>leaq</code> 外的其他指令均<strong>有着对应的针对不同操作数大小的变种</strong>，如 <code>addb</code>、<code>addw</code> 等；</li>
+<li><code>leaq</code> 也可被用于与“加载有效地址”无关的操作，比如“<strong>简单算数操作</strong>”，但不会改变 rflags 寄存器；</li>
+</ul>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; R(%rax) = 5R(%rdx) + 7.</span>
+leaq <span class="token number">7</span>(<span class="token operator">%</span><span class="token register variable">rdx</span>, <span class="token operator">%</span><span class="token register variable">rdx</span>, <span class="token number">4</span>), <span class="token operator">%</span><span class="token register variable">rax</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>二元操作的第一个操作数可以是立即数、寄存器或内存位置。第二个操作数可以是寄存器或内存位置(即：<strong>所有符合语义的用法都支持</strong>)；</li>
+</ul>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; 从 %rdx 中减去 %rax；</span>
+subq <span class="token operator">%</span><span class="token register variable">rax</span>, <span class="token operator">%</span><span class="token register variable">rdx</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>移位操作的移位量可以是一个立即数，或者放在单字节寄存器 <strong>%cl</strong> 中。后者的有效移位量是由其低 m 位决定的，而 <em>2^m = w</em>（w 为数据位长，比如 <code>salb</code> 对应的 8 位，<code>salw</code> 对应的 16 位等）。</li>
+</ul>
+<ol start="62">
+<li>（Page：133）特殊的算数操作：</li>
+</ol>
+<p><img src="28.png" alt=""></p>
+<ul>
+<li><code>imulq</code> 指令有两种不同的形式。第一种为<strong>双</strong>操作数，<strong>不区分符号</strong>，用于从两个 64 位操作数中产生一个 64 位的乘积（<strong>截断</strong>）；另一种为<strong>单</strong>操作数，用于计算两个 64 位值的<strong>全 128 位乘积</strong>（要求一个参数必须在 %rax 中，结果分别放置在 <strong>%rdx</strong> 与 <strong>%rax</strong> 中）；</li>
+<li>类似单操作数乘法，有符号除法指令 <code>idivq</code> 将寄存器 <strong>%rdx</strong>（高 64 位）与 <strong>%rax</strong>（低 64 位）联合组成的 128 位数作为<strong>被除数</strong>。除数作为操作数给出，结果的商存放在 %rax 中，余数存储在 %rdx 中。指令 <code>cqto</code> 可用于将 %rdx 填充为 %rax 的符号位（当仅需要 64 位被除数时）。无符号除法使用 <code>divq</code> 指令，寄存器 %rdx 会被事先设置为 0。</li>
+</ul>
+<ol start="63">
+<li>（Page：136）<strong>CMP</strong> 指令（<code>cmpb</code> \ <code>cmpw</code> \ <code>cmpl</code> \ <code>cmpq</code>）与 <strong>SUB</strong> 指令的行为是一致的（判断基于<strong>减法的结果值</strong>），只是前者不会更改目的寄存器的值。</li>
+<li>（Page：136）<strong>TEST</strong> 指令（<code>testb</code> \ <code>testw</code> \ <code>testl</code> \ <code>testq</code>）与 <strong>AND</strong> 指令的行为是一致的（判断基于“<strong>算数与的结果值</strong>”），只是前者不会更改目的寄存器的值。典型的用法是：<strong>两个操作数是一样的</strong>；<strong>或其中一个是一个掩码</strong>，用来指示哪些位应该被测试。</li>
+<li>（Page：136）条件码的三种使用方式：</li>
+</ol>
+<ul>
+<li><strong>根据条件码的某种组合，将一个字节（寄存器低位或某个内存位置）设置为 0 或 1</strong>。<ul>
+<li>有符号比较与无符号比较会使用不同的标志位；</li>
+<li>比较指令（<strong>CMP</strong>）可用于影响全部的 SET 命令；</li>
+<li>以 <code>setg</code> 为例，其设置条件 “<del>(SF^OF)&amp;</del>ZF” 对于有符号数分为两种情况，即：<strong>结果是正数且无溢出，或结果是负数且上溢出（向上超过了 2^(w-1)-1）</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="29.png" alt=""></p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; int comp(data_t a, data_t b)</span>
+<span class="token comment" spellcheck="true">; a in %rdi, b in %rsi.</span>
+<span class="token label function">comp:</span>
+  cmpq <span class="token operator">%</span><span class="token register variable">rsi</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>  <span class="token comment" spellcheck="true">; Compare a:b.</span>
+  setl <span class="token operator">%</span><span class="token register variable">al</span>  <span class="token comment" spellcheck="true">; Set low-order byte of %eax to 0 or 1.</span>
+  movzbl <span class="token operator">%</span><span class="token register variable">al</span>, <span class="token operator">%</span><span class="token register variable">eax</span>  <span class="token comment" spellcheck="true">; Clear rest of %eax (and rest of %rax).</span>
+  ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>可以<strong>条件跳转</strong>到程序的某个其他部分：<ul>
+<li>跳转指令的 “<strong>PC 相对</strong>”（PC-relative）编码：将目标指令的地址与紧跟在跳转指令后面那条指令的地址<strong>之间的差</strong>作为编码。指令编码很简洁，且目标代码可以不做更改就移动到内存的不同位置；</li>
+<li>跳转指令的“<strong>绝对地址</strong>”编码：用 4 个字节直接指定目标；</li>
+<li><code>jmp *Operand</code> 中的 Operand 指定了一个内存位置，如 <code>jmp *.L4(,%rsi,8)</code> 表明跳转到由 .L4 所在地址加上偏移 “R(%rsi) * 8” 位置处的值所代表的地址处。</li>
+</ul>
+</li>
+</ul>
+<p><img src="30.png" alt=""></p>
+<ul>
+<li>可以有条件地<strong>传送数据</strong>：<ul>
+<li>性能会比基于条件控制转移的代码要好（处理器<strong>无需预测</strong>就可以执行条件传送）；</li>
+<li>汇编器可以从目标寄存器的名字推断出条件传送指令的操作数长度，因此对于所有的操作数长度，都可以使用同一个指令名字；</li>
+<li>每个条件传送指令都有两个操作数：源寄存器或内存地址 S，和目的寄存器 R；</li>
+<li><strong>需要对所有分支进行求值</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="31.png" alt=""></p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; long absdiff(long x, long y)</span>
+<span class="token comment" spellcheck="true">; x in %rdi, y in %rsi.</span>
+<span class="token label function">absdiff:</span>
+  movq <span class="token operator">%</span><span class="token register variable">rsi</span>, <span class="token operator">%</span><span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; y.</span>
+  subq <span class="token operator">%</span><span class="token register variable">rdi</span>, <span class="token operator">%</span><span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; rval = y-x.</span>
+  movq <span class="token operator">%</span><span class="token register variable">rdi</span>, <span class="token operator">%</span><span class="token register variable">rdx</span>
+  subq <span class="token operator">%</span><span class="token register variable">rsi</span>, <span class="token operator">%</span><span class="token register variable">rdx</span>  <span class="token comment" spellcheck="true">; eval = x-y.</span>
+  cmpq <span class="token operator">%</span><span class="token register variable">rsi</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>  <span class="token comment" spellcheck="true">; Compare x:y.</span>
+  cmovge <span class="token operator">%</span><span class="token register variable">rdx</span>, <span class="token operator">%</span><span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; If >=, rval = eval.</span>
+  ret  <span class="token comment" spellcheck="true">; Return tval.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="66">
+<li>（Page：152）while 语句的两种实现方式（for 循环可以用类似的方式实现）：</li>
+</ol>
+<ul>
+<li><strong>jump-to-middle</strong>：通过无条件跳转跳到循环结尾处的测试，来首先执行初始的测试。</li>
+</ul>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; long fact_while(long n)</span>
+<span class="token comment" spellcheck="true">; n in %rdi.</span>
+<span class="token label function">fact_while:</span>
+  movl <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">eax</span>     <span class="token comment" spellcheck="true">; Set result = 1.</span>
+  jmp .L5           <span class="token comment" spellcheck="true">; Goto test.</span>
+<span class="token label function">.L6:</span>              <span class="token comment" spellcheck="true">; loop:</span>
+  imulq <span class="token operator">%</span><span class="token register variable">rdi</span>, <span class="token operator">%</span><span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; Compute result *= n.</span>
+  subq <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>     <span class="token comment" spellcheck="true">; Decrement n.</span>
+<span class="token label function">.L5:</span>              <span class="token comment" spellcheck="true">; test:</span>
+  cmpq <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>     <span class="token comment" spellcheck="true">; Compare n:1</span>
+  jg .L6            <span class="token comment" spellcheck="true">; If >, goto loop.</span>
+  rep<span class="token comment" spellcheck="true">; ret          ; Return.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>guarded-do</strong>（高优化等级使用的策略）：首先用条件分支，如果初始条件不成立就跳过循环，把代码变换成 do-while 循环。</li>
+</ul>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; long fact_while(long n)</span>
+<span class="token comment" spellcheck="true">; n in %rdi.</span>
+<span class="token label function">fact_while:</span>
+  cmpq <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>     <span class="token comment" spellcheck="true">; Compare n:1.</span>
+  jle .L7           <span class="token comment" spellcheck="true">; If &lt;=, goto done.</span>
+  movl <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">eax</span>     <span class="token comment" spellcheck="true">; Set result = 1.</span>
+<span class="token label function">.L6:</span>              <span class="token comment" spellcheck="true">; loop:</span>
+  imulq <span class="token operator">%</span><span class="token register variable">rdi</span>, <span class="token operator">%</span><span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; Compute result *= n.</span>
+  subq <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>     <span class="token comment" spellcheck="true">; Decrement n.</span>
+  cmpq <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">rdi</span>     <span class="token comment" spellcheck="true">; Compare n:1.</span>
+  jne .L6           <span class="token comment" spellcheck="true">; If !=, goto loop.</span>
+  rep<span class="token comment" spellcheck="true">; ret          ; Return.</span>
+<span class="token label function">.L7:</span>              <span class="token comment" spellcheck="true">; done:</span>
+  movl <span class="token number">$1</span>, <span class="token operator">%</span><span class="token register variable">eax</span>     <span class="token comment" spellcheck="true">; Compute result = 1.</span>
+  ret               <span class="token comment" spellcheck="true">; Return.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="67">
+<li>（Page：159）Switch 语句可以使用“<strong>跳转表</strong>”（Jump Table）来实现。跳转表是一个数组，表项 i 是一个代码段的地址，这个代码段实现当开关索引值等于 i 时程序应该采取的动作。<strong>当 case 子句大于 4 且值的范围跨度较小时，就会使用跳转表</strong>。</li>
+</ol>
+<p><img src="32.png" alt=""></p>
+<ul>
+<li>上述右侧代码中的数组 “jt” 会被放置在可执行文件的 <strong>.rodata</strong> 段中；</li>
+<li>将会使用<strong>间接跳转</strong>的方式来跳转到某一“跳转表”项所指定的位置。</li>
+</ul>
+<ol start="68">
+<li>（Page：165）通过寄存器，“过程”之间可以<strong>最多传递 6 个整数值</strong>。许多函数甚至不需要“栈帧”，当所有的局部变量都可以保存在寄存器，而且该函数不会调用任何其他函数时（叶子过程），便可以这样处理。</li>
+<li>（Page：165）转移控制指令：</li>
+</ol>
+<p><img src="33.png" alt=""></p>
+<ul>
+<li><code>callq</code> 指令会将调用者的返回地址（紧跟在 <code>callq</code> 之后的地址）<strong>压入栈</strong>中，并将 PC 设置为新函数的起始地址。对应的 <code>retq</code> 指令会从栈中<strong>弹出一个地址，并将 PC 设置为该地址</strong>；</li>
+<li>通过栈传递参数时，所有分配的数据大小都向 <strong>8 的倍数</strong>对齐。而存放参数的具体顺序，则依据不同的“调用约定”而不同。在 cdecl 下是“从右往左”（RTL）的。</li>
+</ul>
+<ol start="70">
+<li>（Page：177）数组引用及对应汇编代码：</li>
+</ol>
+<p><img src="34.png" alt=""></p>
+<ul>
+<li>数组元素在内存中按照“<strong>行优先</strong>”的顺序排列。即在内存中首先排列着索引 “0” 对应的一行元素，接下来是索引 “1”，以此类推；</li>
+<li>编译器对于<strong>定长数组之间的计算</strong>，可以通过优化来减少局部变量的使用（去掉局部索引变量、将数组引用替换为指针间接引用等）；</li>
+<li>对于 C99 中的“动态数组（VLA）”，编译器需要使用“<strong>乘法指令</strong>”来对引用的数组地址进行伸缩。而在循环结构中使用时，编译器常常可以利用访问模式的规律性来优化索引的计算，比如直接识别出访问多维数组的步长，从而避免使用乘法指令进行计算的过程，以提高性能。</li>
+</ul>
+<ol start="71">
+<li>（Page：187）一个<strong>联合</strong>（union）的总大小等于它<strong>最大字段的大小</strong>。可以用来以一个对象来表示多个不同的“互斥量”。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 一个二叉树节点；</span>
+<span class="token keyword">typedef</span> <span class="token keyword">enum</span> <span class="token punctuation">{</span> N_LEAF<span class="token punctuation">,</span> N_INTERNAL <span class="token punctuation">}</span> nodetype_t<span class="token punctuation">;</span>
+<span class="token keyword">struct</span> node_t <span class="token punctuation">{</span>
+  nodetype_t type<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 标记当前联合的类型；</span>
+  <span class="token keyword">union</span> <span class="token punctuation">{</span>
+    <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+      <span class="token keyword">struct</span> node_t <span class="token operator">*</span>left<span class="token punctuation">;</span>
+      <span class="token keyword">struct</span> node_t <span class="token operator">*</span>right<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> internal<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 内部节点；</span>
+    <span class="token keyword">double</span> data<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 叶子节点；</span>
+  <span class="token punctuation">}</span> info<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>当用联合来<strong>将各种不同大小的数据类型结合到一起时</strong>，字节顺序（<strong>大小端</strong>）问题就变得很重要了。</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">double</span> <span class="token function">uu2double</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> wordA<span class="token punctuation">,</span> <span class="token keyword">unsigned</span> wordB<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">union</span> <span class="token punctuation">{</span>
+    <span class="token keyword">double</span> d<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> u<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> temp<span class="token punctuation">;</span>
+  temp<span class="token punctuation">.</span>u<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> wordA<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 小端，则为低 4 位；</span>
+  temp<span class="token punctuation">.</span>u<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> wordB<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 小端，则为高 4 位；</span>
+  <span class="token keyword">return</span> temp<span class="token punctuation">.</span>d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="72">
+<li>（Page：189）数据对齐：原则是任何 <strong>K 字节的基本对象的起始地址</strong>必须是 <strong>K 的倍数</strong>。另外，编译器还会对结构体的末尾进行一些填充，以满足在结构体数组中每个元素的对齐要求。</li>
+</ol>
+<pre class="line-numbers language-nasm"><code class="language-nasm">.align <span class="token number">8</span>  <span class="token comment" spellcheck="true">; 保证后面数据的起始地址为 8 的倍数；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">struct</span> S <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 偏移 0 字节；</span>
+  <span class="token keyword">char</span> c<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 偏移 4 字节；</span>
+  <span class="token keyword">int</span> j<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 对齐到 8 字节（填充 3 字节）；</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>某些型号的 Intel 和 AMD 处理器<strong>对 SSE 指令集的操作，有强制的 16 字节对齐要求</strong>。因此导致：<ul>
+<li>任何内存分配函数生成的块的起始地址必须是 16 的倍数；</li>
+<li>大多数函数的栈帧边界必须是 16 的倍数。</li>
+</ul>
+</li>
+</ul>
+<ol start="73">
+<li>（Page：192）指针相关：</li>
+</ol>
+<ul>
+<li>指针类型不是机器代码的一部分（仅映射到不同的指令）；</li>
+<li>取地址 “&amp;” 一般通过 <code>leaq</code> 指令来实现；</li>
+<li>强制类型转换的一个效果是<strong>改变指针运算的伸缩</strong>；</li>
+<li>函数指针的值时该函数机器代码表示中<strong>第一条指令的地址</strong>。</li>
+</ul>
+<ol start="74">
+<li>（Page：196）使用 <strong>fgets</strong> 函数代替 gets 函数以防止“缓冲区溢出”错误（可通过溢出来替换栈上的返回地址，达到攻击的效果）。</li>
+<li>（Page：198）一些<strong>对抗缓冲区溢出攻击的机制</strong>：</li>
+</ol>
+<ul>
+<li><strong>栈随机化</strong>：是 ASLR 技术（程序每次运行时，包括程序段、代码段、栈、全局变量和堆都会被加载到内存的不同区域）的一种，<strong>使得栈的位置在程序每次运行时都有变化</strong>。实现方式是：程序开始时，在栈上分配一段 0~n 字节之间的随机大小的空间。程序不使用这段空间，但会使程序每次执行时后续的栈位置发生变化。但 “<strong>nop sled</strong>” 却可以瓦解这种保护（利用长串的 <code>nop</code> 指令使返回地址的命中率升高，而一旦栈帧返回到了该指令中，则随着指令的执行，%rip 一定会执行到后面紧跟的恶意代码部分）：</li>
+</ul>
+<p><img src="35.png" alt=""></p>
+<ul>
+<li><strong>栈破坏检测</strong>：在栈帧中任何局部缓冲区与栈状态之间存储一个特殊的“<strong>金丝雀</strong>”值（每次程序运行时产生）。而在从<strong>函数返回之前，程序会检查这个值是否被修改</strong>，若是则程序异常中止。金丝雀值会被存放在特殊的段中，并被标记为“只读”。</li>
+<li><strong>限制可执行代码区域</strong>：通过分页表中的 “<strong>EXB/NX</strong>” 位来标记内存段是否可执行，这样可以将栈区域设置为“不可执行”。而检查页是否可执行是由硬件来进行的，没有效率损失。          </li>
+</ul>
+<ol start="76">
+<li>（Page：201）在不使用 %rbp（栈帧寄存器、基指针）时，编译器必须能够计算出在退出“子函数”前需要释放的栈高度，这需要能够<strong>在静态分析情况下分析出子函数局部变量的内存使用情况</strong>。否则，则需要通过 %rbp 来释放栈。（在较早的 X86 代码中，每个函数都使用基指针，但现在仅在<strong>栈帧长度可变</strong>的情况下才会使用）</li>
+</ol>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; 等同于 leave；</span>
+movq <span class="token operator">%</span><span class="token register variable">rbp</span>, <span class="token operator">%</span><span class="token register variable">rsp</span>
+popq <span class="token operator">%</span><span class="token register variable">rbp</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="77">
+<li>（Page：204）<strong>浮点体系结构与寄存器</strong>：</li>
+</ol>
+<ul>
+<li>MMX（<strong>MM</strong> 寄存器，64 位）；</li>
+<li>SSE（Streaming SIMD Extension，流式 SIMD 扩展。<strong>XMM</strong> 寄存器，128 位）；</li>
+<li>AVX（Advanced Vector Extension，高级向量扩展。<strong>YMM</strong> 寄存器，256 位）；</li>
+</ul>
+<p><img src="36.png" alt=""></p>
+<ul>
+<li>XMM 寄存器 %xmm0~%xmm7 最多可以传递 8 个浮点参数，多余的可以通过栈进行传递；</li>
+<li>所有的 XMM 寄存器都是 Caller-saved 的，即<strong>被调用者可以不用保存就 覆盖这些寄存器的值</strong>；</li>
+<li><strong>浮点数返回值放置在 %xmm0 中</strong>。</li>
+</ul>
+<ol start="78">
+<li>（Page：206）<strong>浮点传送和转换操作</strong>（以下均为 <strong>AVX2</strong> 浮点指令集）：</li>
+</ol>
+<p><img src="37.png" alt=""></p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; float float_mov(float v1, float* src, float* dst)</span>
+<span class="token comment" spellcheck="true">; v1 in %mm0, src in %rdi, dst in %rsi.</span>
+<span class="token label function">float_mov:</span>
+  vmovaps <span class="token operator">%</span><span class="token register variable">xmm0</span>, <span class="token operator">%</span><span class="token register variable">xmm1</span>  <span class="token comment" spellcheck="true">; Copy v1.</span>
+  vmovss (<span class="token operator">%</span><span class="token register variable">rdi</span>), <span class="token operator">%</span><span class="token register variable">xmm0</span>  <span class="token comment" spellcheck="true">; Read v2 from src.</span>
+  vmovss <span class="token operator">%</span><span class="token register variable">xmm1</span>, (<span class="token operator">%</span><span class="token register variable">rsi</span>)  <span class="token comment" spellcheck="true">; Write v1 to dst.</span>
+  ret                   <span class="token comment" spellcheck="true">; Return v2 in %xmm0.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>vmovaps</code> 中的 “a” 表示 “aligned”；</li>
+</ul>
+<p><img src="38.png" alt=""></p>
+<ul>
+<li>三操作数浮点转换整数指令中的<strong>第二个源</strong>，仅影响结果的<strong>高位字节</strong>。常用的场景下，该参数与第三个参数相同；</li>
+<li><code>vcvtss2sd</code> 用于将单精度转换为双精度值；<code>vcvtsd2ss</code> 用于将双精度转换为单精度值。</li>
+</ul>
+<ol start="79">
+<li>（Page：210）<strong>浮点运算操作</strong>：</li>
+</ol>
+<p><img src="39.png" alt=""></p>
+<ul>
+<li>第一个源操作数 S1 可以是一个 XMM 寄存器或一个内存位置，第二个源操作数和目的操作数必须是 XMM 寄存器。</li>
+</ul>
+<ol start="80">
+<li>（Page：212）<strong>浮点数常量</strong>：AVX 浮点数操作<strong>不能以立即数作为操作数</strong>。因此，编译器必须为所有的常量值分配和初始化存储空间，然后使用时从内存中读取。</li>
+</ol>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token comment" spellcheck="true">; double cel2fahr(double temp)</span>
+<span class="token comment" spellcheck="true">; temp in %xmm0.</span>
+<span class="token label function">cel2fahr:</span>
+  vmulsd .LC2(<span class="token operator">%</span>rip), <span class="token operator">%</span><span class="token register variable">xmm0</span>, <span class="token operator">%</span><span class="token register variable">xmm0</span>  <span class="token comment" spellcheck="true">; Multiply by 1.8.</span>
+  vaddsd .LC3(<span class="token operator">%</span>rip), <span class="token operator">%</span><span class="token register variable">xmm0</span>, <span class="token operator">%</span><span class="token register variable">xmm0</span>  <span class="token comment" spellcheck="true">; Add 32.0.</span>
+  ret
+<span class="token label function">.LC2:</span>
+  .long <span class="token number">3435973837</span>                 <span class="token comment" spellcheck="true">; Low-order 4 bytes of 1.8.</span>
+  .long <span class="token number">1073532108</span>                 <span class="token comment" spellcheck="true">; High-order 4 bytes of 1.8.</span>
+<span class="token label function">.LC3:</span>
+  .long <span class="token number">0</span>                          <span class="token comment" spellcheck="true">; Low-order 4 bytes of 32.0.</span>
+  .long <span class="token number">1077936128</span>                 <span class="token comment" spellcheck="true">; High-order 4 bytes of 32.0.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="81">
+<li>（Page：212）<strong>浮点数的位级操作</strong>：</li>
+</ol>
+<p><img src="40.png" alt=""></p>
+<ul>
+<li>这些指令<strong>更新整个目的 XMM 寄存器</strong>，即对两个源寄存器的所有位都实施指定的位级操作。</li>
+</ul>
+<ol start="82">
+<li>（Page：213）<strong>浮点数的比较操作</strong>：</li>
+</ol>
+<p><img src="41.png" alt=""></p>
+<ul>
+<li>参数 S2 必须在 XMM 寄存器中，而 S1 可以在 XMM 寄存器中，也可以在内存中；</li>
+<li>浮点比较指令会设置：零标志位 ZF \ 进位标志位 CF \ 奇偶标志位 PF（<strong>当两个操作数中任一个为 NaN 时被置位</strong>）；</li>
+<li><code>jp</code> 指令（<strong>jump on parity，正好对应 PF</strong>）可用于当浮点比较得到一个“<strong>无序</strong>”结果（任意操作数为 NaN）时进行跳转。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-11-13T03:01:50.000Z"> 2020 / 12 / 01, 12:31:56</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/11/11/《X86-X64-体系探索及编程》读书笔记/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/11/23/《CSAPP-第三版》读书笔记（第-4-5-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

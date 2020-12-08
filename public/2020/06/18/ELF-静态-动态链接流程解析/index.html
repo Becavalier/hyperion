@@ -83,13 +83,13 @@ Idx Name          Size      VMA               LMA               File off  Algn
 
 RELOCATION RECORDS FOR [.text]:
 OFFSET           TYPE              VALUE 
-000000000000001c R_X86_64_64       shared
-0000000000000025 R_X86_64_PLT32    _Z4swapPiS_-0x0000000000000004
+000000000000001c R_X86-64_64       shared
+0000000000000025 R_X86-64_PLT32    _Z4swapPiS_-0x0000000000000004
 
 
 RELOCATION RECORDS FOR [.eh_frame]:
 OFFSET           TYPE              VALUE 
-0000000000000020 R_X86_64_PC32     .text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0000000000000020 R_X86-64_PC32     .text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，符号 shared 和 swap 在 .text 段中的引用地址偏移（OFFSET）。 在重定位过程中，每个重定位入口都是对一个符号的引用，那么当链接器需要对某个符号的引用进行重定位时，它就会去查找由所有输入目标文件的符号表组成的<strong>全局符号表</strong>，找到相应的符号后进行重定位。</p>
 <p>在重定位的过程中，链接器需要修改符号的实际引用地址，但<strong>不同处理器指令</strong>对于地址的格式和使用方式都不相同。比如，常见的几种重定位类型（TYPE，即 r_info 字段的高 8 位）如下所示：</p>
 <p><img src="1.png" alt=""></p>
@@ -98,7 +98,7 @@ OFFSET           TYPE              VALUE
 <li><strong>全局符号表</strong>：符号与对应虚拟地址；</li>
 <li><strong>重定向表</strong>：需要重定向的符号在各个段的具体位置，及其重定向方式；</li>
 </ul>
-<p>以上述符号 shared 为例，我们来看下符号重定向的结果：首先重定向表中第一行表示对 main.o 目标文件中的 .text 段中的 shared 符号进行 R_X86_64_64 类型的引用地址重定向。通过查看该目标文件的重定位表，我们可以发现符号 shared 在 .text 的重定向偏移位置为 <strong>0x1c</strong>，对照着反编译后的汇编代码，我们可以看到当前位置的符号值，即 A 为 “00 00 00 00 00 00 00 00”，如下所示：</p>
+<p>以上述符号 shared 为例，我们来看下符号重定向的结果：首先重定向表中第一行表示对 main.o 目标文件中的 .text 段中的 shared 符号进行 R_X86-64_64 类型的引用地址重定向。通过查看该目标文件的重定位表，我们可以发现符号 shared 在 .text 的重定向偏移位置为 <strong>0x1c</strong>，对照着反编译后的汇编代码，我们可以看到当前位置的符号值，即 A 为 “00 00 00 00 00 00 00 00”，如下所示：</p>
 <pre class="line-numbers language-text"><code class="language-text">...
    b:    48 89 75 f0              mov    %rsi,-0x10(%rbp)
    f:    c7 45 ec 64 00 00 00     movl   $0x64,-0x14(%rbp)
@@ -106,7 +106,7 @@ OFFSET           TYPE              VALUE
   1a:    48 be 00 00 00 00 00     movabs $0x0,%rsi
   21:    00 00 00 
 ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>R_X86_64_64 类型重定向的计算规则为：<strong>S + A，即符号的新地址值加上其原来被修正位置的值</strong>。而通过查看“可执行文件”内的符号表可以发现，符号 shared 的虚拟地址为 “0x404000”，如下所示为 <code>nm main</code> 命令的结果。</p>
+<p>R_X86-64_64 类型重定向的计算规则为：<strong>S + A，即符号的新地址值加上其原来被修正位置的值</strong>。而通过查看“可执行文件”内的符号表可以发现，符号 shared 的虚拟地址为 “0x404000”，如下所示为 <code>nm main</code> 命令的结果。</p>
 <pre class="line-numbers language-text"><code class="language-text">0000000000404004 D __bss_start
 0000000000404004 D _edata
 0000000000404008 D _end
@@ -123,4 +123,4 @@ OFFSET           TYPE              VALUE
   401021:    00 00 00 
 ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h4><p>（懒得加了，请参考“链接、装载与库相关记录（二）”一文）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-18T11:24:18.000Z"> 2020 / 06 / 25, 06:13:06</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/18/Clang-下的-weak-与-weakref/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/19/GCC-下的-COMMON-块控制/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-18T11:24:18.000Z"> 2020 / 11 / 21, 16:50:05</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/18/Clang-下的-weak-与-weakref/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/19/GCC-下的-COMMON-块控制/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

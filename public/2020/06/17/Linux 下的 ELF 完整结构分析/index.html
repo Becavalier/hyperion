@@ -95,7 +95,7 @@ Section Headers:
        0000000000000020  0000000000000001  MS       0     0     1
   <span class="token punctuation">[</span> 8<span class="token punctuation">]</span> .note.GNU-stack   PROGBITS         0000000000000000  000000d8
        0000000000000000  0000000000000000           0     0     1
-  <span class="token punctuation">[</span> 9<span class="token punctuation">]</span> .eh_frame         X86_64_UNWIND    0000000000000000  000000d8
+  <span class="token punctuation">[</span> 9<span class="token punctuation">]</span> .eh_frame         X86-64_UNWIND    0000000000000000  000000d8
        0000000000000058  0000000000000000   A       0     0     8
   <span class="token punctuation">[</span>10<span class="token punctuation">]</span> .rela.eh_frame    RELA             0000000000000000  000002e0
        0000000000000030  0000000000000018          12     9     8
@@ -185,16 +185,16 @@ Key to Flags:
 <pre class="line-numbers language-bash"><code class="language-bash">readelf -r main.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text"><code class="language-text">Relocation section '.rela.text' at offset 0x268 contains 5 entries:
   Offset          Info           Type           Sym. Value    Sym. Name + Addend
-000000000010  000700000001 R_X86_64_64       0000000000000000 .rodata.str1.1 + 0
-00000000001b  000900000004 R_X86_64_PLT32    0000000000000000 _Z5printPKcz - 4
-000000000049  00050000000b R_X86_64_32S      0000000000000000 .data + 4
-000000000050  00060000000b R_X86_64_32S      0000000000000000 .bss + 4
-00000000005d  000800000004 R_X86_64_PLT32    0000000000000000 _Z3fooi - 4
+000000000010  000700000001 R_X86-64_64       0000000000000000 .rodata.str1.1 + 0
+00000000001b  000900000004 R_X86-64_PLT32    0000000000000000 _Z5printPKcz - 4
+000000000049  00050000000b R_X86-64_32S      0000000000000000 .data + 4
+000000000050  00060000000b R_X86-64_32S      0000000000000000 .bss + 4
+00000000005d  000800000004 R_X86-64_PLT32    0000000000000000 _Z3fooi - 4
 
 Relocation section '.rela.eh_frame' at offset 0x2e0 contains 2 entries:
   Offset          Info           Type           Sym. Value    Sym. Name + Addend
-000000000020  000400000002 R_X86_64_PC32     0000000000000000 .text + 0
-000000000040  000400000002 R_X86_64_PC32     0000000000000000 .text + 30<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+000000000020  000400000002 R_X86-64_PC32     0000000000000000 .text + 0
+000000000040  000400000002 R_X86-64_PC32     0000000000000000 .text + 30<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重定位表主要记录了目标文件中所有需要重定位的符号所在的段以及相对（相对于该段开始）偏移位置。每一个 sh_flags 为 SHT_RELA / SHT_REL 的重定位段都对应一个需要被符号重定位的段（一般为代码段和数据段）。在这些重定位段中，记录着对应段需要被重定位的所有符号信息。重定位表项是由名为 Elf32_Rel 结构体所组成的数组，该结构体的定义如下：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/* Relocation table entry without addend (in section of type SHT_REL).  */</span>
 
@@ -361,4 +361,4 @@ Relocation section '.rela.eh_frame' at offset 0x2e0 contains 2 entries:
    on 64-bit platforms and vice versa.  */</span>
     <span class="token punctuation">}</span> a_un<span class="token punctuation">;</span>
 <span class="token punctuation">}</span> Elf64_auxv_t<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-17T06:23:58.000Z"> 2020 / 06 / 23, 13:57:33</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/16/链接、装载与库相关记录（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/17/使用-objcopy-为-ELF-加入自定义-Section/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-17T06:23:58.000Z"> 2020 / 11 / 21, 16:50:05</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/16/链接、装载与库相关记录（第 1-6 章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/17/使用-objcopy-为-ELF-加入自定义-Section/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

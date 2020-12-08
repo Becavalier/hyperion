@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《程序员的自我修养 — 链接、装载与库》读书笔记（第 1-6 章） | 曜彤.手记</title><meta name="description" content="本文内容主要摘自《程序员的自我修养 — 链接、装载与库》一书。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="e30f45461921f9908d8890b47b870a67" class="full"><h1 itemprop="headline" class="post-heading">《程序员的自我修养 — 链接、装载与库》读书笔记（第 1-6 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-06-16T11:15:02.000Z"> 2020 / 06 / 16, 19:15:02</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><p>本文内容主要摘自《程序员的自我修养 — 链接、装载与库》一书。</p>
+<h3 id="第一章：温故而知新"><a href="#第一章：温故而知新" class="headerlink" title="第一章：温故而知新"></a>第一章：温故而知新</h3><ol>
+<li>（Page：30）传统的采用 PCI/ISA 及南北桥（北桥负责高速芯片，南桥负责低速芯片）设计的硬件架构。通过南北桥设计来解决高速设备（CPU、内存以及图形设备等）与低速设备（磁盘、USB、键盘以及鼠标等）的协作问题。</li>
+<li>（Page：31）对称多处理器 SMP 与多核处理器的区别：前者指每一个 CPU 在系统中所处的地位和所发挥的功能都是一样的，是<strong>相互对称</strong>的。而后者常应用在个人电脑中，指将多个处理器打包在一起，这些处理器之间<strong>共享比较昂贵的缓存部件，只保留多个核心</strong>，相当于 SMP 的简化版。</li>
+<li>（Page：33）系统调用接口在实现中往往以软件中断的方式提供。</li>
+<li>（Page：34）几种 CPU 使用策略：</li>
+</ol>
+<ul>
+<li><strong>多道程序</strong>：当某个程序暂时无需使用 CPU 时，监控程序把另外正在等待 CPU 资源的程序启动，使得 CPU 能够充分利用起来（调度策略较粗糙）；</li>
+<li><strong>分时系统</strong>：每个程序运行一段时间后都主动让出 CPU 给其他程序，使得一段时间内每个程序都有机会运行一小段时间；</li>
+<li><strong>多任务系统</strong>：即抢占式 CPU 分配。操作系统接管所有硬件资源，所有应用程序都以“进程”的方式运行在比操作系统权限更低的级别。CPU 由操作系统统一分配，每个进程根据优先级高低都有机会得到 CPU，但若运行超过一定时间操作系统会暂停该程序；</li>
+</ul>
+<ol start="5">
+<li>（Page：35）硬件的驱动程序通常由硬件厂商提供，然后只要符合特定操作系统指定的接口和框架，便可在该操作系统上使用。</li>
+<li>（Page：38）进程间的隔离：进程有独立的虚拟地址空间（VMA），且每个进程只能访问自己的地址空间。其大小与计算机地址总线的长度有关，比如 32 位机器，有 32 条（实际是 36 条）地址线，便对应 4G 可寻址大小。</li>
+<li>（Page：39）内存分段：进程在其虚拟地址空间内使用的地址最后会由硬件映射到实际物理内存空间的地址。对应用程序来说，可以使用的内存是连续且透明的（不用关心最后映射到物理内存的位置）。<strong>但分段的方式是以整个进程为单位进行的，若内存不足，被换入换出到磁盘的都是整个程序，效率低下</strong>。</li>
+<li>（Page：40）内存分页：进程虚拟空间（虚拟页）、物理空间（物理页）与磁盘（磁盘页）之间通过分页来管理资源。通过分页，我们可以把常用的数据和代码页装载到内存中，把不常用的部分保存在磁盘中，但需要用到时再取出即可。不仅如此，每个页也可以设置独立的权限属性，以保护操作系统和进程。对于大多数 CPU 来说，会使用 MMU（Memory Management Unit，一般被集成在 CPU 内部）来进行“页映射”即：转换 CPU 发出的虚拟地址到物理地址。</li>
+<li>（Page：42）一个标准的线程是由：线程 ID、当前指令指针（PC）、寄存器集合以及堆栈组成。线程的私有资源：栈、TLS 线程局部存储资源以及某些寄存器。一般来说，一个进程由一个到多个线程组成，各个线程之间共享程序的内存空间（代码段、数据段、堆等）和一些进程级资源（打开文件和信号等）。</li>
+<li>（Page：44）线程的三种状态（<strong>所有运行的线程都只能从“就绪”状态进入</strong>）：</li>
+</ol>
+<ul>
+<li><strong>运行</strong>：此时线程正在执行。时间片用尽后将进入“就绪”状态；</li>
+<li><strong>就绪</strong>：此时线程可以立刻执行，但 CPU 已经被占用。被 CPU 选中则进入“运行”状态；</li>
+<li><strong>等待</strong>：此时线程正在等待某一事件（通常是 IO 或者同步）发生，无法执行。等待完成后进入“就绪”状态；</li>
+</ul>
+<ol start="11">
+<li>（Page：44）线程调度：<strong>优先级调度</strong>（根据线程优先级进行调度）与<strong>轮转法</strong>（各个线程轮流执行一小段时间）。</li>
+<li>（Page：45）<strong>IO 密集型线程总是比 CPU 密集型线程容易得到优先级的提升</strong>。因为当一个 CPU 密集型的线程获得较高优先级时，其他的低优先级进程就很可能被“饿死”。而为了避免“饿死”，调度系统也会逐步提升那些等待了过长时间的得不到执行的线程的优先级。</li>
+<li>（Page：48）一般把单指令的 CPU 操作称为“原子的”。</li>
+<li>（Page：49）常见的同步与锁策略：</li>
+</ol>
+<p><strong>多元信号量（Binary Semaphore）</strong>：允许多个线程并发访问资源。一个初始值为 N 的信号量允许 N 个线程并发访问。线程访问资源时先获取信号量：</p>
+<ul>
+<li>将信号量值减一；</li>
+<li>如果信号量值小于 0，则线程进入等待状态，否则继续执行；</li>
+</ul>
+<p>访问完资源后，线程将释放信号量，进行如下操作：</p>
+<ul>
+<li>将信号量值加一；</li>
+<li>如果信号量值小于 0，则唤醒一个等待中的线程；</li>
+</ul>
+<p><strong>互斥量（Mutex）</strong>：资源仅同时允许一个线程访问。与信号量不同的是，互斥量要求哪个线程获取哪个线程负责释放这个锁，其他线程无法干涉。</p>
+<p><strong>临界区（Critical Section）</strong>：比互斥量更加严格的同步手段。把临界区的锁的获取称为进入临界区，锁的释放称为离开临界区。<strong>临界区的作用域仅限于本进程，其他进程无法获取该锁</strong>。</p>
+<p><strong>读写锁</strong>：锁分为两种方式：共享的和独占的。可用于优化读取频繁，而仅仅偶尔写入的情况。</p>
+<p><strong>条件变量</strong>：可以让多个线程一起等待某个事件的发生，当事件发生时（条件变量被唤醒），所有的线程可以一起恢复执行。</p>
+<ol start="15">
+<li>（Page：51）成为可重入函数（表明该函数每次被重入后都不会产生任何不良后果，尤其是在多线程竞争的情况下）的要求：</li>
+</ol>
+<ul>
+<li>不使用任何（局部）静态或全局的非 const 变量；</li>
+<li>不返回任何（局部）静态或全局的非 const 变量指针；</li>
+<li>仅依赖于调用方提供的参数；</li>
+<li>不依赖任何单个资源的锁（mutex 等）；</li>
+<li>不调用任何不可重入的函数；</li>
+</ul>
+<ol start="16">
+<li>（Page：53）可以通过 C++ 中的 memory_order 对象来控制 CPU 对内存栅栏的插入。</li>
+<li>（Page：53）内存模型：表示机器指令是以什么样的顺序被处理器执行的。</li>
+<li>（Page：53）三种线程模型：</li>
+</ol>
+<ul>
+<li><strong>一对一模型</strong>：一个用户线程唯一对应一个内核线程；</li>
+<li><strong>多对一模型</strong>：多个用户线程映射到一个内核线程，线程间的切换由用户态的代码来进行；好处在于高效的上下文切换和几乎无限制的线程数量，缺点在于如果一个用户线程阻塞，那么所有的线程都将无法执行。</li>
+<li><strong>多对多模型</strong>：多个用户线程对应多个内核线程；</li>
+</ul>
+<h3 id="第二章：编译和链接"><a href="#第二章：编译和链接" class="headerlink" title="第二章：编译和链接"></a>第二章：编译和链接</h3><ol start="19">
+<li>（Page：62）预编译阶段：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash">clang++ -E ./main.cc -std<span class="token operator">=</span>c++17 -o main.i <span class="token comment" spellcheck="true"># -E 表示只进行预编译；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>将所有 “#define” 删除，并且展开所有宏定义；</li>
+<li>处理所有条件预编译指令；</li>
+<li>处理 “#include” 预编译指令，将被包含的文件的内容插入到该预编译指令的位置（递归进行）。</li>
+<li>删除所有注释；</li>
+<li>添加行号和文件名标识，以便于编译器产生行号信息，用于错误和警告的提示；</li>
+<li>保留所有 “#pragma” 指令，以便编译器使用；</li>
+</ul>
+<p>经过预编译后的中间文件内容：</p>
+<pre class="line-numbers language-text"><code class="language-text"># 1 "./main.cc"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 418 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "./main.cc" 2
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory" 1 3
+# 652 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory" 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 1 3
+# 57 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 3
+# 874 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 3
+namespace std { inline namespace __1 { } }
+# 653 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory" 2 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits" 1 3
+# 405 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits" 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 1 3
+# 406 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/type_traits" 2 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef" 1 3
+# 37 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef" 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 1 3
+# 38 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef" 2 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__cxx_version" 1 3
+# 104 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__cxx_version" 3
+# 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 1 3
+# 105 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__cxx_version" 2 3
+# 108 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__cxx_version" 3
+# 39 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef" 2 3
+# 42 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/cstddef" 3
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="20">
+<li>（Page：64）.o 文件由汇编器输出，是在进行链接前的中间文件，一般称为“目标文件”。</li>
+<li>（Page：70）词法分析 -&gt; 语法分析 -&gt; 语义分析（分析语句是否有意义。检测声明和类型是否匹配、类型的转换有效性等）-&gt; 生成中间 IR -&gt; 优化（基于 IR）-&gt; 生成目标代码 -&gt; 优化（基于目标代码优化指令生成）；</li>
+<li>（Page：74）链接的过程主要包括：地址和空间分配、符号决议以及重定位。</li>
+</ol>
+<h3 id="第三章：目标文件里有什么"><a href="#第三章：目标文件里有什么" class="headerlink" title="第三章：目标文件里有什么"></a>第三章：目标文件里有什么</h3><ol start="23">
+<li>（Page：79）常见的可执行文件格式 PE（Portable Executable）以及 ELF（Executable Linkable Format）均是 COFF（Common File Format）的变种。其他不常见的格式还有 OMF（Object Module Format）等格式。</li>
+<li>（Page：79）动态链接库（.dll / .so）以及静态链接库（.lib / .a）也都按照可执行文件格式存储。即：Windows 下为 PE/COFF 格式，Linux 下为 ELF 格式。其中<strong>静态链接库主要是把多个目标文件捆绑在一起形成一个文件，再加上一些索引</strong>。</li>
+<li>（Page：80）Linux 下的四种 ELF 文件格式：</li>
+</ol>
+<ul>
+<li><strong>可重定位文件</strong>：这类文件包含了代码和数据，可以被用来链接成可执行文件或共享目标文件，静态链接库也可以归为这一类（.lib / .a）；</li>
+<li><strong>可执行文件</strong>：这类文件包含了可以直接执行的程序（.exe）；</li>
+<li><strong>共享目标文件</strong>：包含了代码和数据，可以和一个可重定位文件链接生成新的目标文件；或者和可执行文件结合，作为进程映像的一部分来运行；</li>
+<li><strong>核心转储文件</strong>：当进程意外终止时，系统可以将该进程的<strong>地址空间的内容</strong>及终止时的一些其他信息转储到核心转储文件（core dump）；</li>
+</ul>
+<p>可以使用 <code>file</code> 命令来查看文件类型：</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">file</span> main <span class="token comment" spellcheck="true"># main: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="26">
+<li>（Page：81）ELF 文件的主要 Section 结构：</li>
+</ol>
+<ul>
+<li><strong>ELF 文件头</strong>：描述整个文件的文件属性，如：文件是否可以执行、静态链接还是动态链接以及入口地址、目标硬件、目标操作系统等。除此之外，还包含一个“段表（Section Table）”，给出了各个段在文件中的偏移位置及其属性；</li>
+<li><strong>ELF 代码段（.code / .text）</strong>：主要存放编译后的机器指令；</li>
+<li><strong>ELF 数据段（.data）</strong>：存放已经初始化的全局变量和局部静态变量数据；</li>
+<li><strong>ELF 只读数据段（.rodata）</strong>：存放只读数据（const），比如字符串常量；</li>
+<li><strong>ELF BSS 段（.bss）</strong>：存放未初始化的全局变量和局部静态变量（该段只是为未初始化的全局变量及局部静态变量预留位置而已，因此只有一个长度信息，不占用文件的大小）；</li>
+</ul>
+<ol start="27">
+<li>（Page：83）ELF 数据和指令分段存放的意义：</li>
+</ol>
+<ul>
+<li>数据（可读写）和指令（只读）部分<strong>对于进程</strong>来说有着不同的读写权限，因此需要被分开；</li>
+<li>可以提高 CPU 对数据和指令的缓存命中率；</li>
+<li>当运行程序的多个副本时，可以<strong>保证指令部分被共享</strong>（即在物理内存中只保留一份实体数据，通过 MMU 从进程地址空间进行映射即可），而数据部分则不同；</li>
+</ul>
+<ol start="28">
+<li>（Page：91）在 GCC 中，可以使用 “<strong><strong>attribute</strong>((section(“FOO”)))</strong>” 的方式来指定变量所处的段（Clang 不支持该方式）。</li>
+<li>（Page：108）ld 在其链接脚本中提供的一些程序可以使用的特殊符号（具体定义取决于不同的链接器）：</li>
+</ol>
+<ul>
+<li>__executable_start 程序起始地址（非入口地址）；</li>
+<li>__etext / _etext / etext 代码段结束地址；</li>
+<li>_edata / edata 数据段结束地址；</li>
+<li>_end / end 程序结束地址；</li>
+</ul>
+<p>以上地址均指进程 VMA 的虚拟地址。使用方式如下：</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">extern</span> <span class="token string">"C"</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extern</span> <span class="token keyword">char</span> __executable_start<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/*
+    默认的链接脚本里指定符号 __executable_start 的默认值为程度在 VMA 中的载入基地址，即 32 位：0x08048000，64 位：0x400000；
+    ...
+    {
+      PROVIDE (__executable_start = SEGMENT_START("text-segment", 0x400000)); . = SEGMENT_START("text-segment", 0x400000) + SIZEOF_HEADERS;
+    ...
+  */</span>
+  std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>hex <span class="token operator">&lt;&lt;</span> __executable_start <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "ELF";</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="30">
+<li>（Page：110）在现代 Linux 下的 GCC/Clang 编译器中，默认情况下已经去掉了在 C 语言符号前加 “_” 的方式。</li>
+<li>（Page：111）使用 <strong>c++filt</strong> 来查看被 Name Mangling 处理过的符号的原始形态。</li>
+<li>（Page：118）DWARF（Debug With Arbitrary Record Format）调试信息格式。可以用 <code>strip</code> 来去除 ELF 中的调试信息。</li>
+</ol>
+<h3 id="第四章：静态链接"><a href="#第四章：静态链接" class="headerlink" title="第四章：静态链接"></a>第四章：静态链接</h3><ol start="33">
+<li>（Page：122）通常对于 X86 硬件来说，段（Segment）的装载地址和空间的对齐单位是页，也就是 4096 字节。</li>
+<li>（Page：123）空间分配包含两个概念：一个是诸如 .bss 段在 ELF 文件中不占用空间，这是指从文件存储的角度。而当 ELF 被装载后，.bss 需要在虚拟内存地址中分配对应大小的内存空间，这是从运行时的 VMA 的角度。</li>
+<li>（Page：124）两步链接：</li>
+</ol>
+<ul>
+<li>空间与地址分配：扫描所有输入的目标文件，并获得它们中各个段的长度、属性和位置，并且将输入目标文件中的符号表中的所有符号定义和引用收集起来，统一放到<strong>全局符号表</strong>；</li>
+<li>符号解析与重定位：使用上一步中收集到的所有信息，读取输入文件中段的数据、重定位信息，并且进行符号解析与重定位、调整代码中的地址等；</li>
+</ul>
+<ol start="36">
+<li>（Page：125）通常情况下 VMA（Virtual Memory Address）与 LMA（Load Memory Address）的值应该是一致的。</li>
+<li>（Page：130）ELF 中每一个需要符号重定位的段都有一个对应的重定位表（比如：.text 对应的 .rel.text，.data 对应的 .rel.data）。</li>
+<li>（Page：134）COMMON 块的概念来自早期的 Fortran，早期的 Fortran 没有动态分配空间的机制，程序员必须事先声明它所需要的临时使用空间大小。Fortran 把这种空间叫做 COMMON 块，<strong>当不同的目标文件需要的 COMMON 块空间大小不一致时，以最大的那块为准</strong>。</li>
+<li>（Page：135）链接器在处理弱符号时会采用与 COMMON 块一样的机制，选择同名符号中占用空间最大的那个。直接导致需要 COMMON 机制的原因是编译器和链接器允许不同类型的弱符号存在，但本质原因还是由于链接器不支持符号类型。对于 C 代码中的未初始化的全局变量，编译器会将其默认放置于 COMMON 块中，而<strong>在最终的可执行文件中，这些符号仍会被存放于 .bss 段</strong>。而一旦一个未初始化的全局变量不是以 COMMON 块的形式存在，那么它默认就相当于一个<strong>强符号</strong>。</li>
+<li>（Page：136）编译器及链接器对 C++ 模板实例化的优化：<strong>使用 Link Once 段</strong>。即在每一个编译单元中将每一个模板的实例代码都单独地存放在一个段里，且每个段只包含一个模板实例。链接器在最后链接时便可以区分这些相同的模板实例段，然后进行合并优化。</li>
+<li>（Page：137）函数级别链接：为目标文件中的每一个函数都设置一个单独的段，在链接时去掉没有使用到的段，以减小可执行文件的大小。GCC 中有这样的选项可以将每个函数和变量分别保持到独立的段中。</li>
+</ol>
+<pre class="line-numbers language-text"><code class="language-text">  -fdata-sections         Place each data in its own section (ELF Only)
+  -fdebug-types-section   Place debug types in their own section (ELF Only)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="42">
+<li>（Page：137）C++ 全局对象的构造函数在 main 函数之前被执行，析构函数在 main 函数之后被执行。Linux 系统下一般程序的入口是 “_start”。</li>
+<li>（Page：138）ELF 文件的两个特殊的段：</li>
+</ol>
+<ul>
+<li><strong>.init</strong>：保存可执行指令，构成了进程的初始化代码。会在 main 函数之前被调用；</li>
+<li><strong>.fini</strong>：保存进程终止代码指令。main 函数正常退出时，会执行这个段中的代码；</li>
+</ul>
+<ol start="44">
+<li>（Page：138）如果要使两个编译器编译出来的目标文件能够相互链接，那么它们需要满足如下条件：采用同样的目标文件格式、拥有相同的符号修饰标准、变量的内存分布方式相同、函数调用方式相同等。上述这些跟可执行代码二进制兼容性相关的内容组成了 <strong>ABI</strong>。<strong>ABI 的兼容程度比 API 更为严格</strong>。</li>
+<li>（Page：140）目标文件二进制兼容的几个方面：</li>
+</ol>
+<p><strong>C</strong>：</p>
+<ul>
+<li>内置类型的大小和在存储器中的放置方式（大端、小端、对齐方式等）；</li>
+<li>组合类型的存储方式和内存分布；</li>
+<li>外部符号与用户定义符号之间的命名方式和解析方式；</li>
+<li>函数调用方式，比如参数入栈顺序、返回值如何保持等；</li>
+<li>寄存器使用约定，比如函数调用时那些寄存器可以被修改，哪些需要保存等。</li>
+</ul>
+<p><strong>C++</strong>：</p>
+<ul>
+<li>继承类体系的内存分布，如基类、虚基类在继承类中的位置等；</li>
+<li>指向成员函数的指针的内存分布，如何通过指向成员函数的指针来调用成员函数，如何传递 this 指针。</li>
+<li>如何调用虚函数，虚函数表的内容和分布形式，虚函数指针在目标文件中的位置等。</li>
+<li>模板如何实例化；</li>
+<li>外部符号的修饰；</li>
+<li>全局对象的构造和析构；</li>
+<li>异常的产生和捕获机制；</li>
+<li>标准库的细节问题，RTTI 如何实现等；</li>
+<li>内联函数的访问细节；</li>
+</ul>
+<ol start="46">
+<li>（Page：140）LSB（Linux Standard Base）标准的出现将<strong>提高 Linux 发行版之间的兼容性</strong>，并使软件应用程序甚至可以二进制形式（ABI 兼容）在任何兼容系统上运行。</li>
+<li>（Page：142）在一个静态库文件（.a）中实际上包含了多个属于同一种类/目录的目标文件（.o）。我们可以使用 <code>ar</code> 命令来查看静态库中含有的目标文件。</li>
+<li>（Page：146）一般链接器采用如下三种方式来控制链接过程：</li>
+</ol>
+<ul>
+<li>使用命令行参数；</li>
+<li>将链接指令存放在目标文件里，比如放到单独的一个段中（.drectve）；</li>
+<li>使用链接控制脚本；</li>
+</ul>
+<ol start="49">
+<li>（Page：147）使用 <code>ld -verbose</code> 可以查看链接器的默认内部控制脚本。</li>
+<li>（Page：149）main 函数在 return 语句执行时会将返回的值传递给 EXIT 系统调用。</li>
+<li>（Page：152）ld 有多种方法设置程序入口地址，即进程执行的第一条用户空间的指令在进程地址空间的地址：</li>
+</ol>
+<ul>
+<li>ld 命令的 -e 选项；</li>
+<li>链接脚本的 <strong>ENTRY(symbol)</strong> 命令；</li>
+<li>如果定义了 _start 符号，则使用该符号的值；</li>
+<li>如果存在 .text 段，则使用该段的第一字节地址；</li>
+<li>使用值 0；</li>
+</ul>
+<ol start="52">
+<li>（Page：154）BFD（Binary File Descriptor Library）库为 ELF 标准与具体的目标文件类型之间加入了一个抽象层，隔离了类型和标准之间的差异。开发文档链接：<strong><em><a href="https://ftp.gnu.org/pub/old-gnu/Manuals/bfd-2.9.1/html_mono/bfd.html#SEC5" target="_blank" rel="noopener">文档</a></em></strong>。</li>
+<li>（Page：157）PE（Portable Executable）文件与 ELF 同属于从 COFF（Common Object File Format）发展而来的。一般而言，Windows 上的可执行文件采用 PE 格式，而目标文件仍为 COFF 格式。</li>
+</ol>
+<h3 id="第五章：Windows-PE-COFF"><a href="#第五章：Windows-PE-COFF" class="headerlink" title="第五章：Windows PE/COFF"></a>第五章：Windows PE/COFF</h3><p>（略）</p>
+<h3 id="第六章：可执行文件的装载与进程"><a href="#第六章：可执行文件的装载与进程" class="headerlink" title="第六章：可执行文件的装载与进程"></a>第六章：可执行文件的装载与进程</h3><ol start="54">
+<li>（Page：173）CPU 的位数决定了每个进程虚拟地址空间（VAS）的最大理论上限。比如32位为 4GB 大小。从程序的角度来看，在大部分情况下（除了早期的 MSC 体系）我们可以通过判断 C 语言程序中指针所占用的空间来计算虚拟地址空间的大小。</li>
+<li>（Page：174）“Segment Fault” 错误通常是因为进程访问了未经操作系统授权的地址。</li>
+<li>（Page：175）PAE（Physical Address Extension）：通过适当地扩展地址总线来获得可以访问更多物理内存的能力。但同时要保持应用程序当前的虚拟地址空间大小，通过使用“窗口映射”的方式来将 VAS 中的一块内存区域映射到扩展的物理内存上。<strong>在 Linux 下，可以通过 mmap() 系统调用来实现</strong>。</li>
+<li>（Page：176）内存动态装载即将程序中最常用的那部分内部驻留在内存中，而将不太常用的部分暂时存放在磁盘中。主要分为以下两种方法：</li>
+</ol>
+<ul>
+<li><strong>覆盖装入</strong>：早期应用，现在已很少使用。即通过自定义的覆盖管理器来管理程序中各个模块的加载时机。</li>
+<li><strong>页映射</strong>；<strong>“页”为单位来进行内存的释放和分配</strong>。</li>
+</ul>
+<ol start="58">
+<li>（Page：179）进程的创建步骤：</li>
+</ol>
+<ul>
+<li>创建一个独立的虚拟地址空间（VAS），这一步主要是<strong>创建映射函数</strong>（VAS 到物理内存）的数据结构（如页表，<strong>页表 PTE 中的 P 字段表明是否存在对应的物理内存，若没有，则触发“页错误 #PF”来加载对应的缺失页到物理内存</strong>）；</li>
+<li>读取可执行文件头，并且<strong>建立虚拟地址空间与可执行文件的映射关系</strong>（不实际分配内存，仅建立关系，并存放在特定的数据结构中）；</li>
+<li>将 CPU 的指令寄存器设置成可执行文件的入口地址，启动运行（<strong>至此可执行文件的指令和数据扔尚未被装入内存</strong>）；</li>
+</ul>
+<ol start="59">
+<li>（Page：182）Linux 中将进程虚拟地址空间（VAS）中的一个段叫做虚拟内存区域（<strong>VMA</strong>, Virtual Memory Area）。</li>
+<li>（Page：182）VMA 的实际物理内存分配是在发生“<strong>页错误</strong>”时才会进行的。在这一步中需要 MMU 的帮助来管理 VMA 到实际物理内存的转换关系，这其中也将涉及到 TLB 对地址转换规则的缓存。</li>
+<li>（Page：182）在完成上述进程创建步骤后，操作系统会通过检测“<strong>页错误</strong>”来不断装载需要的页内容。</li>
+</ol>
+<p><img src="1.png" alt=""></p>
+<ol start="62">
+<li>（Page：184）ELF 文件中，段权限的几种组合（可读、可写、可执行三种权限的组合）：</li>
+</ol>
+<ul>
+<li>以代码段为代表的权限为可读可执行的段；</li>
+<li>以数据段和 BSS 段为代表的权限为可读可写的段；</li>
+<li>以只读数据段为代表的权限为只读的段；</li>
+</ul>
+<ol start="63">
+<li>（Page：184）ELF 可执行文件中会以 “<strong>Segment</strong>” 的方式来组织各个 Section 在 VMA 中的分布，比如<strong>将某些权限相同的 Section 合并在一个 Segment 中，然后按页进行组织</strong>，这样可以在某种程度上节省内存空间。</li>
+</ol>
+<p><img src="2.png" alt=""></p>
+<ol start="64">
+<li>（Page：186）描述 “Section” 属性的结构叫做<strong>段表（Section Header Table）</strong>，即“链接视图”的视角；而描述 “Segment” 结构的叫做<strong>程序头表（Program Header Table）</strong>，即“执行视图”的视角。可以通过 <code>readelf -l</code> 来查看 ELF 可执行文件内的程序头表。</li>
+<li>（Page：188）ELF 共享库文件内也具有由 Segment 段组成的程序头表。</li>
+<li>（Page：188）在 Segment 中，BSS 段可能会被合并到其他 Section 中，而只需要增加该段对应 Segment 的 “p_memse” 大小即可（在 VMA 中的占用长度）。</li>
+<li>（Page：189）<strong>Linux 下</strong>查看进程的虚拟地址空间分布：</li>
+</ol>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /proc/<span class="token operator">&lt;</span>pid<span class="token operator">></span>/maps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="68">
+<li>（Page：189）进程在运行时所使用的堆和栈也被存放在其 VMA 中。其中第一列是 VMA 的地址范围；第二列是 VMA 的权限；第三列表示 VMA 对应 Segment 在映像文件中的偏移。最后的 “<strong>[vdso]</strong>” 是一个内核的模块，进程可以通过它来与内核进行交互。</li>
+</ol>
+<p><img src="3.png" alt=""></p>
+<ol start="69">
+<li>（Page：190）一个进程可以分为如下几种 VMA 区域：</li>
+</ol>
+<ul>
+<li>代码 VMA，权限只读、可执行；有映像文件；</li>
+<li>数据 VMA，权限可读写、可执行；有映像文件；</li>
+<li>堆 VMA，权限可读写、可执行；      无映像文件，匿名，<strong>可向上扩展</strong>；</li>
+<li>栈 VMA，权限可读写、不可执行；无映像文件，匿名，<strong>可向下扩展</strong>；</li>
+</ul>
+<ol start="70">
+<li>（Page：194）在某些 Unix 系统下，装载进程数据的一个物理内存页面可能包含两个甚至多个 Segment 的数据，以减少内存碎片。</li>
+<li>（Page：195）进程初始化后会将环境变量参数以及传递给该进程的参数存放到进程虚拟空间（VAS）的<strong>栈</strong>中。然后将其中位于栈顶的参数个数和参数指针传递给应用 main 函数的两个参数（argc，argv）。<strong>ESP 指针将一直指向 VAS 中的进程栈顶</strong>。</li>
+</ol>
+<p><img src="4.png" alt=""></p>
+<p>因此，根据进程中的栈内存分布，我们便可以直接利用 argc 参数的地址来访问随后位于栈中的其他参数以及环境变量（X86-64 Linux 存储环境变量的方式有所变化。<strong>X86-64 下函数调用会通过诸如 rdi / rsi 寄存器传递，main 函数内会将对应的 argc / argv 参数再存放到栈上的相邻位置</strong>）：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token number">0000000000401130</span> main:
+  <span class="token number">401130</span>:    <span class="token number">55</span>                       push   <span class="token register variable">rbp</span>
+  <span class="token number">401131</span>:    <span class="token number">48</span> <span class="token number">89</span> e5                 mov    <span class="token register variable">rbp</span>, <span class="token register variable">rsp</span>
+  <span class="token number">401134</span>:    <span class="token number">48</span> <span class="token number">83</span> ec <span class="token number">20</span>              sub    <span class="token register variable">rsp</span>, <span class="token number">0x20</span>
+  <span class="token number">401138</span>:    c7 <span class="token number">45</span> fc <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span> <span class="token number">00</span>     mov    DWORD PTR <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x4</span><span class="token operator">]</span>, <span class="token number">0x0</span>
+  40113f:    <span class="token number">89</span> <span class="token number">7d</span> f8                 mov    DWORD PTR <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x8</span><span class="token operator">]</span>, <span class="token register variable">edi</span>  <span class="token comment" spellcheck="true">; argc -> [rbp-0x8]；</span>
+  <span class="token number">401142</span>:    <span class="token number">48</span> <span class="token number">89</span> <span class="token number">75</span> f0              mov    QWORD PTR <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x10</span><span class="token operator">]</span>, <span class="token register variable">rsi</span>  <span class="token comment" spellcheck="true">; argv -> [rbp-0x10]；</span>
+  <span class="token number">401146</span>:    <span class="token number">48</span> <span class="token number">8d</span> <span class="token number">45</span> f8              lea    <span class="token register variable">rax</span>, <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x8</span><span class="token operator">]</span>  <span class="token comment" spellcheck="true">; ABS 地址值 rbp-0x8 -> rax；</span>
+  40114a:    <span class="token number">48</span> <span class="token number">89</span> <span class="token number">45</span> e8              mov    QWORD PTR <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x18</span><span class="token operator">]</span>, <span class="token register variable">rax</span>  <span class="token comment" spellcheck="true">; ABS 地址值 rbx-0x8 -> [rbp-0x18]；</span>
+  40114e:    <span class="token number">48</span> 8b <span class="token number">45</span> e8              mov    <span class="token register variable">rax</span>, QWORD PTR <span class="token operator">[</span><span class="token register variable">rbp</span><span class="token number">-0x18</span><span class="token operator">]</span>  <span class="token comment" spellcheck="true">; ABS 地址值 rbx-0x8 -> rax；</span>
+  <span class="token number">401152</span>:    8b <span class="token number">30</span>                    mov    <span class="token register variable">esi</span>, DWORD PTR <span class="token operator">[</span><span class="token register variable">rax</span><span class="token operator">]</span>  <span class="token comment" spellcheck="true">; argc -> esi(rsi)；</span>
+  <span class="token number">401154</span>:    <span class="token number">48</span> bf <span class="token number">04</span> <span class="token number">20</span> <span class="token number">40</span> <span class="token number">00</span> <span class="token number">00</span>     movabs <span class="token register variable">rdi</span>, <span class="token number">0x402004</span>  <span class="token comment" spellcheck="true">; "%d\n"；</span>
+...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+
+<span class="token keyword">extern</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> environ<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// used for accessing env variables;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// argc + argv; </span>
+  <span class="token comment" spellcheck="true">// argc is passed by reference;</span>
+  <span class="token keyword">auto</span> pArgv <span class="token operator">=</span> <span class="token keyword">reinterpret_cast</span><span class="token operator">&lt;</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>argc <span class="token operator">+</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token punctuation">(</span>argv <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="72">
+<li>（Page：195）<strong>ESP 寄存器（X86-64 下为 RSP 寄存器）</strong>：</li>
+</ol>
+<ul>
+<li><strong>一直指向程序栈的顶部</strong>；</li>
+<li>当程序将数据添加到栈时，栈从高地址向低地址扩展;</li>
+<li>当从栈中取出数据时，栈从低地址向上收缩到高地址；</li>
+</ul>
+<ol start="73">
+<li>（Page：196）Linux 装载 ELF 过程：</li>
+</ol>
+<ul>
+<li>bash 调用 fork() 系统调用创建新的进程;</li>
+<li>进程调用 execve() 系统调用执行指定的 ELF 文件；</li>
+<li>调用 sys_execve() 内核系统调用，检查参数；</li>
+<li>调用 do_execve() 读取文件前 128 个字节以判断文件类型等；</li>
+<li>调用 search_binary_handle() 搜索合适的 ELF 文件装载过程；</li>
+<li>调用 load_elf_binary() 装载 ELF 文件，检查有效性、段数量等。<strong>并设置系统调用的返回地址为 ELF 文件的入口点（e_entry / 动态链接器）</strong>；</li>
+</ul>
+<ol start="74">
+<li>（Page：198）<strong>EIP 寄存器（X86-64 下为 RIP 寄存器）</strong>：CPU 通过 EIP 寄存器读取即将要执行的指令。每次 CPU 执行完相应的汇编指令之后，EIP 寄存器的值就会增加。</li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-16T11:15:02.000Z"> 2020 / 12 / 02, 11:32:53</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/08/“领域规则类”设计模式（C-）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/17/Linux 下的 ELF 完整结构分析/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
