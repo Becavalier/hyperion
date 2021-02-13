@@ -114,7 +114,10 @@ document.addEventListener('DOMContentLoaded', async e => {
           mountDOMs.forEach(dom => {
             const { type } = dom.dataset;
             const html = _t.filter(i => i.type === type)[DEFAULT_INDEX].html;
-            if (html) dom.insertAdjacentHTML('afterbegin', html);
+            if (html) {
+              dom.innerHTML = '';
+              dom.insertAdjacentHTML('afterbegin', html);
+            }
           });
         }
       } catch(e) {

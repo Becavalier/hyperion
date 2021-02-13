@@ -147,7 +147,7 @@ struct Strategy {
   virtual std::shared_ptr<Strategy> clone() = 0;  // 通过克隆自己创建对象；
 };
 struct StrategyA : public Strategy {
-  std::shared_ptr<Strategy>clone() {
+  std::shared_ptr<Strategy> clone() {
     return std::make_shared<StrategyA>(*this);  // 通过 copy-constructor 拷贝自己；
   }
   void strategy() {

@@ -40,29 +40,29 @@ hexo.extend.filter.register('before_post_render', data => {
   return data;
 });
 
-hexo.extend.filter.register('before_exit', data => {
-  for (let key in hexo.assetsContainer) {
-    const items = hexo.assetsContainer[key];
-    items.forEach(async i => {
-      const relativePath = key + i;
-      const absolutePath = path.resolve(__dirname, '../public', relativePath);
+// hexo.extend.filter.register('before_exit', data => {
+//   for (let key in hexo.assetsContainer) {
+//     const items = hexo.assetsContainer[key];
+//     items.forEach(async i => {
+//       const relativePath = key + i;
+//       const absolutePath = path.resolve(__dirname, '../public', relativePath);
 
-      try {
-        const files = await imagemin([absolutePath], {
-          destination: path.dirname(absolutePath),
-          plugins: [
-            imageminMozjpeg({
-              quality: 50
-            }),
-            imageminPngquant({quality: [.5, .6]}),
-          ]
-        });
-        if (files[DEFAULT_INDEX]) {
-          console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['sourcePath']}`);
-        }
-      } catch (e) {
-        console.error(e);
-      }
-    });
-  }
-});
+//       try {
+//         const files = await imagemin([absolutePath], {
+//           destination: path.dirname(absolutePath),
+//           plugins: [
+//             imageminMozjpeg({
+//               quality: 50
+//             }),
+//             imageminPngquant({quality: [.5, .6]}),
+//           ]
+//         });
+//         if (files[DEFAULT_INDEX]) {
+//           console.info(`[Hexo Minify] ${files[DEFAULT_INDEX]['sourcePath']}`);
+//         }
+//       } catch (e) {
+//         console.error(e);
+//       }
+//     });
+//   }
+// });

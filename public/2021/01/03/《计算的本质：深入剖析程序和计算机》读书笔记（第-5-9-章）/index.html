@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《计算的本质：深入剖析程序和计算机》读书笔记（第 5-9 章） | 曜彤.手记</title><meta name="description" content="书接上回，本文为第 5-9 章的笔记。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="24f573553e501c9d1fdf269dbe09fafd" class="full"><h1 itemprop="headline" class="post-heading">《计算的本质：深入剖析程序和计算机》读书笔记（第 5-9 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2021-01-03T14:09:13.000Z"> 2021 / 01 / 03, 22:09:13</time></span><span class="page-tag-anchor"><a href="/tags/编程语言" itemprop="url">#编程语言</a>&nbsp;&nbsp;</span></div><br><p>书接上回，本文为第 5-9 章的笔记。</p>
+<h3 id="第-5-章-终极机器"><a href="#第-5-章-终极机器" class="headerlink" title="第 5 章 - 终极机器"></a>第 5 章 - 终极机器</h3><ol start="18">
+<li>（Page：125）<strong>确定型图灵机</strong>（DTM）：</li>
+</ol>
+<ul>
+<li>PDA 的限制：<ul>
+<li>只能使用“栈顶”资源，对于栈顶字符之下的内容没有办法随机访问；</li>
+<li>栈的先进后出属性也会引起信息存储和获取的问题；</li>
+<li>没有像样的“输出”，只有接受与否。</li>
+</ul>
+</li>
+<li><strong>图灵机</strong>：能访问一条无限长纸带（既做<strong>存储</strong>又做<strong>输入</strong>）的有限状态机；<ul>
+<li>机器在某一时刻可能有着不同的状态；</li>
+<li>拥有一个“<strong>纸带头</strong>”，指向纸带的一个特定位置，并且只能在这个位置读取或写入字符。每一步计算之后，纸带头都可以向左或右移动一个方格。</li>
+</ul>
+</li>
+<li>一种灵活的 DTM 规则格式：<ul>
+<li>机器的当前状态；</li>
+<li>必须出现在纸带头当前位置的字符；</li>
+<li>机器的下一状态；</li>
+<li>要写入纸带头当前位置的字符；</li>
+<li>写入纸带之后纸带头的移动方向（左/右）。</li>
+</ul>
+</li>
+<li>DTM 的确定性：“<strong>当前状态</strong>”和“<strong>纸带头下读到的字符</strong>”两者组合对应唯一的规则；</li>
+</ul>
+<p>- <strong><em>一个例子</em></strong>：</p>
+<p><img src="1.png" alt=""></p>
+<ol start="19">
+<li>（Page：136）<strong>非确定型图灵机</strong>（NTM）：</li>
+</ol>
+<ul>
+<li>不确定性：每个“状态”和“纸带下字符”的组合，会允许多于一个的规则；</li>
+<li><strong>NTM 不会比 DTM 拥有更多的能力</strong>；</li>
+<li>*通过升级图灵机规范（随机内部存储、子例程、多纸带、多维纸带）以使其更强大的任何尝试都注定失败；<ul>
+<li>使用“多状态”可以代替“随机内部存储”；</li>
+<li>可以直接扩张机器的规模来实现任意大小和复杂度的图灵机，无需任何对“子例程”的明确支持；</li>
+<li>“多纸带”和“多维纸带”不会为图灵机增加额外的能力。</li>
+</ul>
+</li>
+</ul>
+<ol start="20">
+<li>（Page：142）<strong>通用机器</strong>（UTM）：</li>
+</ol>
+<ul>
+<li>相当于“其他机器的规则手册解释器”；</li>
+<li>读取一个 DFA 的设计（规则、起始状态以及接受状态），然后遍历 DFA 执行的每一步，同时使用另一部分纸带跟踪模拟机器的当前状态和剩余的输入（<strong>读取设计 -&gt; 做事情</strong>）；</li>
+</ul>
+<h3 id="第-6-章-从零开始编程"><a href="#第-6-章-从零开始编程" class="headerlink" title="第 6 章 - 从零开始编程"></a>第 6 章 - 从零开始编程</h3><ol start="21">
+<li>（Page：150）<strong>无类型 lambda 演算</strong>（untyped lambda calculus）：</li>
+</ol>
+<ul>
+<li>“lambda 演算”是一种新的“编程语言”，它只有三种表达式：“<strong>变量</strong>”、“<strong>函数定义</strong>”，以及“<strong>函数调用</strong>”；</li>
+<li>计算模型不一定看起来像机器（比如“图灵机”），它们可以看起来像编程语言；</li>
+<li><strong>邱奇（“lambda 演算”发明者）编码</strong>：<strong>将数据表示为纯代码的技术</strong>（邱奇数、邱奇布尔值、邱奇有序对）。</li>
+</ul>
+<p>- <strong><em>数字</em></strong>（邱奇数）：<strong>某个动作的重复</strong>。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># def to_integer(proc)</span>
+<span class="token comment" spellcheck="true">#   proc[ -> n { n + 1 }][0]</span>
+<span class="token comment" spellcheck="true"># end</span>
+<span class="token constant">ZERO</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token constant">ONE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token constant">TWO</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token constant">THREE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <strong><em>布尔值</em></strong>（邱奇布尔值）：<strong>两个值中选择其一</strong>。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># def to_boolean(proc)</span>
+<span class="token comment" spellcheck="true">#   proc[true][false]</span>
+<span class="token comment" spellcheck="true"># end</span>
+<span class="token constant">TRUE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token constant">FALSE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> y <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <strong><em>有序对</em></strong>（邱奇有序对）：存储两个值，并在之后根据需要再次提供。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">PAIR</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token constant">LEFT</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> p<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
+<span class="token constant">RIGHT</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> p<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> y <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
+my_pair <span class="token operator">=</span> <span class="token constant">PAIR</span><span class="token punctuation">[</span><span class="token constant">THREE</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token constant">FIVE</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <strong><em>Y-组合子</em></strong>：用于计算（高阶）函数的不动点，使得 lambda 演算可以定义“<strong>匿名递归函数</strong>”。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Y</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>- <strong><em>Z-组合子</em></strong>：Y 组合子对于像 Ruby 这样严格语言的变化。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Z</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="第-7-章-通用性无处不在"><a href="#第-7-章-通用性无处不在" class="headerlink" title="第 7 章 - 通用性无处不在"></a>第 7 章 - 通用性无处不在</h3><p>（*以下这些系统都具有模拟图灵机的能力）</p>
+<ol start="22">
+<li>（Page：193）<strong>lambda 演算</strong>：可以模拟包括“通用图灵机”在内的任何图灵机（<strong>图灵完备</strong>）；</li>
+<li>（Page：196）<strong>部分递归函数</strong>：</li>
+</ol>
+<ul>
+<li>由四个部分组成：<ul>
+<li>零；</li>
+<li>递增；</li>
+<li>递归；</li>
+<li>最小化。</li>
+</ul>
+</li>
+</ul>
+<p>（<em>SKI 组合子演算、Iota、标签系统、循环标签系统、Conway、Wolfram 2,3 图灵机，等略</em>）</p>
+<h3 id="第-8-章-不可能的程序"><a href="#第-8-章-不可能的程序" class="headerlink" title="第 8 章 - 不可能的程序"></a>第 8 章 - 不可能的程序</h3><ol start="24">
+<li>（Page：236）计算机的实际目的是“<strong>执行算法</strong>”，但必须满足以下条件：</li>
+</ol>
+<ul>
+<li><strong><em>有限</em></strong>：指令的数量是有限的；</li>
+<li><strong><em>简单</em></strong>：指令要足够简单；</li>
+<li><strong><em>终止</em></strong>：对于任何输入，一个遵守指令执行的人都会在有限步骤内终止；</li>
+<li><strong><em>正确</em></strong>：对于任何输入，一个遵守指令执行的人都将得到正确的答案。</li>
+</ul>
+<ol start="25">
+<li>（Page：238）任何算法都能被一台机器（特别是一台 DTM）执行的思想叫作“<strong>邱奇-图灵</strong>”论题。</li>
+<li>（Page：241）任何强大到足以通用的系统（能对自身求值），都不可避免地允许我们<strong>构建永不停机一直循环的计算</strong>。</li>
+</ol>
+<ul>
+<li><strong><em>完全编程语言</em></strong>：被仔细设计以保证它们的程序一定总是能停机的语言（无法解释自身）；</li>
+<li><strong><em>部分编程语言</em></strong>：与上述相反的语言。</li>
+</ul>
+<p>- <strong><em>一个解释自身的例子</em></strong>：</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># does_it_say_no.rb</span>
+<span class="token keyword">require</span> <span class="token string">'stringio'</span>
+
+<span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+  old_stdin<span class="token punctuation">,</span> old_stdout <span class="token operator">=</span> <span class="token variable">$stdin</span><span class="token punctuation">,</span> <span class="token variable">$stdout</span>
+  <span class="token variable">$stdin</span><span class="token punctuation">,</span> <span class="token variable">$stdout</span> <span class="token operator">=</span> <span class="token constant">StringIO</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>output <span class="token operator">=</span> <span class="token constant">StringIO</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">)</span>
+  <span class="token keyword">begin</span>
+    eval program
+  <span class="token keyword">rescue</span> <span class="token builtin">Exception</span> <span class="token operator">=</span><span class="token operator">></span> e
+    output<span class="token punctuation">.</span><span class="token function">puts</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+  <span class="token keyword">ensure</span>
+    <span class="token variable">$stdin</span><span class="token punctuation">,</span> <span class="token variable">$stdout</span> <span class="token operator">=</span> old_stdin<span class="token punctuation">,</span> old_stdout
+  <span class="token keyword">end</span>
+  output<span class="token punctuation">.</span>string
+<span class="token keyword">end</span>
+<span class="token keyword">def</span> <span class="token function">evaluate_on_itself</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span> 
+  <span class="token function">evaluate</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> program<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+
+program <span class="token operator">=</span> <span class="token variable">$stdin</span><span class="token punctuation">.</span>read
+<span class="token keyword">if</span> <span class="token function">evaluate_on_itself</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'no'</span> 
+  print <span class="token string">'yes'</span>
+<span class="token keyword">else</span>
+  print <span class="token string">'no'</span>
+<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ruby does_it_say_no.rb <span class="token operator">&lt;</span> does_it_say_no.rb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="27">
+<li>（Page：250）<strong>可判定问题</strong>：如果存在一个算法，对任何可能的输入都能保证在<strong>有限时间</strong>内解决一个判定性问题，那么这个问题就是“可判定（可计算）”的。</li>
+<li>（Page：251）<strong>不可判定问题</strong>：</li>
+</ol>
+<ul>
+<li><strong>停机问题</strong>：<strong>对拥有一条特定纸带的特定图灵机，判定它的执行是否能够停机</strong>。（给定一个包含 Ruby 程序源代码的字符串，还有一个数据的字符串可以让程序从标准输入中读取，那么运行这个程序最终会得到一个答案作为结果，还是只会无限循环下去呢？）<ul>
+<li>如果停机问题可以判定，则“哥德巴赫猜想”便可以被证伪（写一个程序查找反例，并判定能否停机）。</li>
+</ul>
+</li>
+</ul>
+<p>- <strong><em>不可避免的矛盾</em></strong>：</p>
+<ul>
+<li><em>halts?</em> 的分析结果与代码的实际运行结果是矛盾的（要么给出错误答案、要么陷入无限循环）；</li>
+<li>可以类比为自然语言中的“<strong>说谎者悖论</strong>”，即：<strong>可否判断“我现在说的这句话是谎话”这句话的真假？</strong></li>
+</ul>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># do_the_opposite.rb</span>
+<span class="token keyword">def</span> halts<span class="token operator">?</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> input<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true"># 解析程序；</span>
+  <span class="token comment" spellcheck="true"># 分析程序；</span>
+  <span class="token comment" spellcheck="true"># 如果程序在输入上停机，就返回 true，否则返回 false。</span>
+<span class="token keyword">end</span>
+<span class="token keyword">def</span> halts_on_itself<span class="token operator">?</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span>
+  halts<span class="token operator">?</span><span class="token punctuation">(</span>program<span class="token punctuation">,</span> program<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+program <span class="token operator">=</span> <span class="token variable">$stdin</span><span class="token punctuation">.</span>read
+<span class="token keyword">if</span> halts_on_itself<span class="token operator">?</span><span class="token punctuation">(</span>program<span class="token punctuation">)</span>
+  <span class="token keyword">while</span> <span class="token keyword">true</span>
+    <span class="token comment" spellcheck="true"># 什么也不做；</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ruby do_the_opposite.rb <span class="token operator">&lt;</span> do_the_opposite.rb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><strong>程序行为为何难以预测？</strong><ul>
+<li>任何拥有足够能力引用自身的系统，都无法正确回答每一个关于自身的问题（<em>哥德尔第一不完备定理</em>）；</li>
+<li>对于通用编程语言，不存在更强大的系统来解决第一个问题。</li>
+</ul>
+</li>
+</ul>
+<ol start="29">
+<li>（Page：259）<strong>Rice 定理</strong>：<strong>程序行为的任何“非平凡性质”都是不可判定的</strong>，因为停机问题总是能被规约成判定这个属性是否为 true 的问题；</li>
+</ol>
+<h3 id="第-9-章-在“玩偶国”中编程"><a href="#第-9-章-在“玩偶国”中编程" class="headerlink" title="第 9 章 - 在“玩偶国”中编程"></a>第 9 章 - 在“玩偶国”中编程</h3><p>（略）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-01-03T14:09:13.000Z"> 2021 / 01 / 07, 11:45:31</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/12/30/《计算的本质：深入剖析程序和计算机》读书笔记（第-3-4-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/01/10/《正则指引（第二版）》读书笔记/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

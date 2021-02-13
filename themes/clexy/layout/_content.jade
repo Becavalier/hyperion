@@ -122,7 +122,7 @@ else if is_page() && page.title.toLowerCase() =='search'
   article(class='full search-page')
     h1(itemprop='headline')=page.title
     div(class='search-container')
-      input(class='input-search', autofocus, type='text', placeholder="请输入搜索关键字/正则 ...")
+      input(class='input-search', autofocus, type='text', placeholder="请输入搜索关键字 ...")
       button.submit-search
         | 搜索
     div.no-result

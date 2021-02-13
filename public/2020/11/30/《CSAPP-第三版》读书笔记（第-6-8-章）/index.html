@@ -1,5 +1,5 @@
-<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《CSAPP 第三版》读书笔记（第 6-8 章） | 曜彤.手记</title><meta name="description" content="书接上文，本文为第 6-8 章的笔记。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="http://www.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="874f94b00bfb9c25a525f1d2bb320433" class="full"><h1 itemprop="headline" class="post-heading">《CSAPP 第三版》读书笔记（第 6-8 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-11-30T14:47:39.000Z"> 2020 / 11 / 30, 22:47:39</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><h3 id="第六章、存储器层次结构"><a href="#第六章、存储器层次结构" class="headerlink" title="第六章、存储器层次结构"></a>第六章、存储器层次结构</h3><ol start="118">
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《CSAPP（第三版）》读书笔记（第 6-8 章） | 曜彤.手记</title><meta name="description" content="书接上文，本文为第 6-8 章的笔记。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, VB, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/works" alt="作品" title="作品" itemprop="url">作品</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="50e19b907966b74760b32b31b5c36e5b" class="full"><h1 itemprop="headline" class="post-heading">《CSAPP（第三版）》读书笔记（第 6-8 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-11-30T14:47:39.000Z"> 2020 / 11 / 30, 22:47:39</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><h3 id="第六章、存储器层次结构"><a href="#第六章、存储器层次结构" class="headerlink" title="第六章、存储器层次结构"></a>第六章、存储器层次结构</h3><ol start="118">
 <li>（Page：400）随机访问存储器（<strong>RAM</strong>）：</li>
 </ol>
 <p><img src="1.png" alt=""></p>
@@ -83,10 +83,15 @@
 <ol start="126">
 <li>（Page：422）存储器层次结构中各层之间的通信：对于每个 k，位于 k 层的更快更小的存储设备作为位于 k+1 层更大更慢存储设备的<strong>缓存</strong>。数据总是以“<strong>块大小</strong>”为传送单元（带来了“空间局部性”优势），在两个层次之间来回复制。通常来说，<strong>层次结构中较低层的设备访问时间较长，因此为了补偿这些较长的访问时间，倾向于使用较大的块</strong>。</li>
 </ol>
-<p>- <strong><em>当程序需要第 k+1 层的某个数据对象时</em></strong>：</p>
+<p>- <strong><em>当程序需要第 k+1 层（慢速层）的某个数据对象时</em></strong>：</p>
 <ul>
 <li><strong><em>缓存命中</em></strong>：可以在第 k 层中找到对应的数据，速度更快；</li>
-<li><strong><em>缓存不命中</em></strong>：第 k 层的缓存会从第 k+1 层缓存中取出包含数据的那个块，并<strong>缓存在第 k 层</strong>。在缓存时若当前缓存已满，则会根据“缓存替换策略”来<strong>替换</strong>某个块。</li>
+<li><strong><em>缓存不命中</em></strong>：第 k 层的缓存会从第 k+1 层缓存中取出包含数据的那个块，并<strong>缓存在第 k 层</strong>。在缓存时若当前缓存已满，则会根据“缓存替换策略”来<strong>替换</strong>某个块。<ul>
+<li><strong><em>冷不命中</em></strong>：即缓存冷启动时不存在，属于短暂事件，在缓存稳定后不会再次出现；</li>
+<li><strong><em>冲突不命中</em></strong>：每次从 k+1 层映射存放到 k 层的缓存块都会被替换掉（比如由于某种固有的映射关系）；</li>
+<li><strong><em>容量不命中</em></strong>：缓存太小，无法处理工作集。</li>
+</ul>
+</li>
 </ul>
 <ol start="127">
 <li>（Page：425）现代计算机系统中的<strong>缓存体系</strong>：</li>
@@ -127,8 +132,13 @@
 <li>（Page：438）“<strong>写回</strong>”与“<strong>写分配</strong>”：</li>
 </ol>
 <ul>
-<li><strong><em>写回</em></strong>：假设要写一个已经缓存了的字 w，在高速缓存更新了它的 w 副本之后，如何更新 w 在高速缓存较低层次中的副本呢？“写回”，即<strong>尽可能地推迟更新，只有当替换算法要驱逐这个更新过的块时，才把它写到紧接着的低一层中</strong>；</li>
-<li><strong><em>写分配</em></strong>：若写不命中，“写分配”会<strong>加载相应的低一层中的块到当前层级的高速缓存中，然后再更新这个高速缓存块</strong>（与写回相对应）。</li>
+<li><strong><em>写命中</em></strong>：假设要写一个已经缓存了的字 w，在高速缓存更新了它的 w 副本之后，如何更新 w 在高速缓存较低层次中的副本呢？“写回”，即<strong>尽可能地推迟更新，只有当替换算法要驱逐这个更新过的块时，才把它写到紧接着的低一层中</strong>。“直写”：立即将高速缓冲块的内容写回紧接的低一层中（会频繁引起总线流量）；</li>
+<li><strong><em>写不命中</em></strong>：若写不命中，“写分配”会<strong>加载相应的低一层中的块到当前层级的高速缓存中，然后再更新这个高速缓存块</strong>。“非写分配”：避开高速缓存，直接把字写到低一层中。</li>
+</ul>
+<p>-基本逻辑：</p>
+<ul>
+<li>较高层次：（直写 &lt;-&gt; 非写分配）</li>
+<li>较低层次：（写回 &lt;-&gt; 写分配）</li>
 </ul>
 <p>-原则：<strong>*保持局部性，优先保障高层次高速缓存内的数据更新</strong>。一般而言，高速缓存越往下层，越可能使用写回而不是直写。</p>
 <ol start="132">
@@ -165,9 +175,9 @@
 <li>（Page：464）链接：<strong>将各种代码和数据片段收集并组合成一个单一文件的过程</strong>。</li>
 </ol>
 <ul>
-<li>编译时：源代码被翻译成机器代码时，<strong>静态链接</strong>；</li>
-<li>加载时：被“动态链接器”加载时，<strong>动态链接</strong>；</li>
-<li>运行时：<code>dlopen</code>；</li>
+<li><strong><em>编译时</em></strong>：源代码被翻译成机器代码时，<strong>静态链接</strong>；</li>
+<li><strong><em>加载时</em></strong>：被“动态链接器”加载时，<strong>动态链接</strong>；</li>
+<li><strong><em>运行时</em></strong>：<code>dlopen</code>；</li>
 </ul>
 <ol start="137">
 <li>（Page：465）一个示例程序：</li>
@@ -204,7 +214,7 @@
 <li><strong><em>ELF 文件头</em></strong>（ELF header）：16 字节。描述了生成该文件的系统的字大小和字节顺序。剩下的部分包含 ELF 头大小、目标文件类型（可重定向、可执行或共享的）、机器类型、节头部表（Section Header Table）的文件偏移，以及该表中<strong>条目（不同 Section）的大小和数量</strong>；</li>
 <li><strong><em>.text</em></strong>：已编译程序的机器代码；</li>
 <li><strong><em>.rodata</em></strong>：只读数据；</li>
-<li><strong><em>.data</em></strong>：<strong>已初始化的全局和静态 C 变量</strong>。局部变量在运行时被保存在栈中；</li>
+<li><strong><em>.data</em></strong>：<strong>已初始化的全局和静态 C 变量</strong>。局部变量在运行时被保存在寄存器或栈中；</li>
 <li><strong><em>.bss</em></strong>（Block Storage Start）：<strong>未初始化的全局和静态 C 变量，以及所有被初始化为 0 的全局或静态变量</strong>。在目标文件中该节不占据实际的空间，仅是一个占位符，只有一个长度信息（提升空间使用效率）；</li>
 <li><strong><em>.symtab</em></strong>：符号表，<strong>存放程序中定义和引用的函数和全局变量</strong>信息。和编译器中的符号表不同，.symtab 中不包含局部变量的条目；<ul>
 <li><strong><em>当前模块全局符号</em></strong>：定义在当前模块内的可以由其他模块引用的全局符号；</li>
@@ -264,7 +274,7 @@
 <li>如果有一个强符号和多个弱符号同名，则<strong>选择强符号</strong>；</li>
 <li>如果有多个弱符号同名，则<strong>从这些弱符号中任意选一个</strong>。</li>
 </ul>
-<p>- <strong><em>一个由于强弱符号规则引发的运行时错误代码</em></strong>： </p>
+<p>- <strong><em>一个由于强弱符号规则引发的运行时错误代码</em></strong>：（全局变量定义为同名但不同类型） </p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// main.c</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -281,8 +291,7 @@
   x <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.0</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>lib.c 中对变量 x 的赋值<strong>将用负零的双精度浮点表示覆盖内存中 x 和 y 位置上的值</strong>（x、y 的大小在 main.c 中为 4 个字节，而在 lib.c 中的浮点操作将为 x 替换连续的 8 个字节，因此会覆盖掉 y）；</li>
-<li></li>
+<li>上述 lib.c 中对变量 x 的赋值<strong>将用负零的双精度浮点表示覆盖内存中 x 和 y 位置上的值</strong>（x、y 的大小在 main.c 中为 4 个字节，而在 lib.c 中的浮点操作将为 x 替换连续的 8 个字节，因此会覆盖掉 y）。</li>
 </ul>
 <ol start="142">
 <li>（Page：476）<strong>静态库</strong>：</li>
@@ -292,7 +301,7 @@
 <li>一个静态库文件（.a）中实际上<strong>包含了多个属于同一种类/目录的目标文件（.o）</strong>。可以使用 <code>ar</code> 命令来查看静态库中含有的目标文件；</li>
 <li>链接器会从静态库文件中挑选程序使用到的目标文件进行链接，而不会链接多余的内容；</li>
 <li>GCC 下使用静态库：<code>gcc -static -o &lt;output&gt; -L. -l&lt;lib&gt;</code>；</li>
-<li>静态库解析的外部<strong>引用规则</strong>（即：左边文件引用右边文件中定义的符号）：在符号解析阶段，链接器<strong>从左到右</strong>扫描命令行中出现的可重定位目标文件（.c 文件会被自动翻译为 .o）与静态库文件，扫描过程中，链接器会维护一个<strong>集合 E（所有输入文件）</strong>、<strong>集合 U（引用但未定义的符号）</strong>、<strong>集合 D（在前面输入文件中已定义的符号集合）</strong>：<ul>
+<li>静态库解析的<strong>外部引用规则</strong>（即：左边文件引用右边文件中定义的符号）：在符号解析阶段，链接器<strong>从左到右</strong>扫描命令行中出现的可重定位目标文件（.c 文件会被自动翻译为 .o）与静态库文件，扫描过程中，链接器会维护一个<strong>集合 E（所有输入文件）</strong>、<strong>集合 U（引用但未定义的符号）</strong>、<strong>集合 D（在前面输入文件中已定义的符号集合）</strong>：<ul>
 <li>对于命令行上的每个输入文件 f，链接器会判断 f 是一个目标文件还是一个存档文件。若 f 是一个目标文件，则链接器会把 f 添加到 E，修改 U 和 D 来反映 F 中的符号定义和引用，并继续下一个输入文件；</li>
 <li>如果 f 是一个静态库文件，那么链接器会尝试匹配 U 中未解析的符号和由静态库成员定义的符号。如果某个静态库成员 m，定义了一个符号来解析 U 中的一个引用，那么就将 m 加入到 E 中，并且链接器修改 U 和 D 来反映 m 中的符号定义和引用（<strong>意味着如果该符号也引用了外部的其他符号，这个外部符号也会被加入到 U 中</strong>）。对静态库文件中的所有成员目标文件都依次进行这个过程，直到 U 和 D 不再发生改变。此时，任何不包含在 E 中的成员目标文件都简单地被丢弃，而链接器将继续处理下一个输入文件；</li>
 <li>如果当链接器完成对命令行上输入文件的扫描后，U 是非空的，那么链接器就会输出错误并终止。否则会合并并<strong>重定位</strong> E 中的目标文件，输出可执行文件。</li>
@@ -323,7 +332,7 @@
 <ul>
 <li>每个 Linux 进程对应于一个运行时内存映像；</li>
 <li>从 VAS 的地址 0x400000 处开始加载。VAS 的最高地址段为内核保留（操作系统驻留在内存中的部分）；</li>
-<li>加载器从 <strong>_start</strong> 函数（ctrl.o）开始执行代码，然后调用系统启动函数 <strong>__libc_start_main</strong>（libc.so），然后执行 main 函数；</li>
+<li>加载器从 <strong>_start</strong> 函数（ctr1.o）开始执行代码，然后调用系统启动函数 <strong>__libc_start_main</strong>（libc.so），然后执行 main 函数；</li>
 <li><strong><em>加载细节</em></strong>：当 Shell 运行一个程序时，父 Shell 进程生成一个子进程，它是父进程的一个复制。子进程通过 <code>execve</code> 系统调用启动加载器。加载器删除子进程现有的虚拟内存段，并创建一组新的代码、数据、堆和栈段。新的栈和堆被初始化为 0。通过将 VAS 中的页映射到可执行文件的页大小的片，新的代码和数据段被初始化为可执行文件的内容。然后，加载器从 _start 开始执行代码。<strong>除了一些头部信息，在加载过程中没有任何从磁盘到内存的数据复制。直到 CPU 引用一个被映射的虚拟页时才会进行复制，此时，操作系统利用它的页面调度机制自动将页面从磁盘传送到内存</strong>。</li>
 </ul>
 <ol start="144">
@@ -358,7 +367,7 @@
 </ol>
 <ul>
 <li><strong><em>编译时打桩</em></strong>：利用编译时的 “-I.” 参数，让编译器优先在本地目录查找共享库的头文件，然后在该头文件中，我们使用宏来替换实际运行的函数；</li>
-<li><strong><em>链接时打桩</em></strong>：利用 Linux 静态链接器的 “<strong>–wrap f</strong>” 标志。这个标志告诉链接器，把对符号 f 的引用解析为 __wrap_f，并且把对符号 __real_f 的引用解析为 f；</li>
+<li><strong><em>链接时打桩</em></strong>：利用 Linux 静态链接器的 “<strong>--wrap f</strong>” 标志。这个标志告诉链接器，把对符号 f 的引用解析为 __wrap_f，并且把对符号 __real_f 的引用解析为 f；</li>
 <li><strong><em>运行时打桩</em></strong>：利用动态链接器的 “<strong>LD_PRELOAD</strong>” 环境变量。如果该变量被设置为一个共享库路径名的列表，则当加载和执行一个程序时，需要解析未定义引用时，<strong>动态链接器会优先搜索 LD_PRELOAD 指定的库</strong>。</li>
 </ul>
 <h3 id="第八章、异常控制流"><a href="#第八章、异常控制流" class="headerlink" title="第八章、异常控制流"></a>第八章、异常控制流</h3><ol start="146">
@@ -376,12 +385,12 @@
 <ul>
 <li><strong><em>中断</em></strong>（一般指“I/O 硬件中断”）：在当前指令完成后，处理器注意到中断引脚电压升高，就从系统总线读取异常号，然后调用“<strong>中断处理程序</strong>”进行处理；</li>
 <li><strong><em>陷阱和系统调用</em></strong>：是有意的异常，是执行一条指令的结果。其最重要的用途是<strong>在用户程序与内核之间提供一个接口</strong>。<code>syscall</code> 指令会导致一个到异常处理程序的陷阱，这个程序解析参数，并调用适当的内核程序；</li>
-<li><strong><em>故障</em></strong>：由错误情况引起，可能能够被故障处理程序修正。常见的一个示例是“<strong>缺页异常</strong>”，即指令引用一个虚拟地址，而与之相对的物理页面不在内存中。其他的还有“除零错误”等。</li>
+<li><strong><em>故障</em></strong>：由错误情况引起，可能能够被故障处理程序修正。常见的一个示例是“<strong>缺页异常</strong>”，即指令引用一个虚拟地址，而与之相对的物理页面不在内存中。其他的还有“除零错误”等；</li>
 <li><strong><em>终止</em></strong>：不可恢复的致命错误造成的，通常是硬件错误；</li>
 </ul>
 <p>* 0~31 的异常号对应的是由 Intel 架构师定义的异常，这些异常通常会被分别映射到 Linux 内核的不同信号上（比如 “<strong>SIGSEGV</strong>” 信号导致的 “Segmentation Fault”）。 </p>
 <ol start="148">
-<li>（Page：508）进程：</li>
+<li>（Page：508）<strong>进程</strong>：</li>
 </ol>
 <p>- <strong><em>提供给应用程序的抽象</em></strong>：</p>
 <ul>
@@ -397,7 +406,7 @@
 <ul>
 <li><strong><em>进程上下文</em></strong>：内核重新启动一个被抢占的进程所需的状态（<em>通用目的寄存器、浮点寄存器、程序计数器、用户栈、状态寄存器、内核栈、描述地址空间的页表、包含有关当前进程信息的进程表，以及已打开文件的“文件表”等</em>）；</li>
 <li><strong><em>上下文切换</em></strong>：<ul>
-<li>由<strong>内核</strong>中的“调度器”执行；</li>
+<li>由<strong>内核</strong>中的“调度器”执行，执行时会发生<strong>时钟中断</strong>（维持系统时间、促使环境的切换，保证所有进程共享 CPU 时间片）或其他类型中断；</li>
 <li>保存当前进程上下文；</li>
 <li>恢复某个先前被抢占进程被保存的上下文；</li>
 <li>将控制传递给这个新恢复的进程。</li>
@@ -412,7 +421,12 @@
 <ul>
 <li><strong><em>运行</em></strong>：在 CPU 上执行，或在等待被执行；</li>
 <li><strong><em>停止</em></strong>：进程的执行被挂起，且不会被调度。当收到 SIGSTOP、SIGTSTP、SIGTTIN 或 SIGTTOU 信号时，进程会停止直到收到 <strong>SIGCONT</strong> 信号；</li>
-<li><strong><em>终止</em></strong>：进程永远地停止了。原因可能为：(1) 收到一个信号，其默认行为是终止进程；(2) 从主程序返回；(3) 调用 <code>exit</code> 函数。</li>
+<li><strong><em>终止</em></strong>：进程永远地停止了。原因可能为：<ul>
+<li>(1) 收到一个信号，其默认行为是终止进程；</li>
+<li>(2) 从主程序返回；</li>
+<li>(3) 调用 <code>exit</code> 函数。</li>
+</ul>
+</li>
 </ul>
 <ol start="149">
 <li>（Page：512）系统调用的<strong>错误处理</strong>：</li>
@@ -453,12 +467,12 @@ pid_t <span class="token function">getppid</span><span class="token punctuation"
 <li>子进程得到<strong>与父进程用户级虚拟地址空间相同的一份副本</strong>，同时子进程还<strong>获得与父进程中任何打开文件描述符相同的副本</strong>；</li>
 <li><code>fork</code> 函数调用一次，返回两次。一次是在父进程中，一次在子进程中。<strong>子进程中该函数的返回值永远为 0，父进程中返回子进程的实际 PID</strong>；</li>
 <li>进程并发执行。内核交替执行它们的逻辑控制流中的指令；</li>
-<li>地址空间独立。地址空间内容（<em>用户栈、本地变量值、堆、全局变量和代码</em>）相同但是独立。</li>
+<li>父子进程地址空间独立。地址空间内容（<em>用户栈、本地变量值、堆、全局变量和代码</em>）相同但是独立。</li>
 </ul>
 <p>- <strong><em>回收子进程</em></strong>（<code>waitpid</code> / <code>wait</code>）：</p>
 <ul>
 <li>当进程终止时，内核并<strong>不会立即把它从系统中清除</strong>。此时，该进程被称为“<strong>僵死进程</strong>”，它被保持在一种已终止的状态中，直到被它的父进程回收。当父进程回收已终止的子进程时，内核<strong>将子进程的退出状态传递给父进程</strong>，然后抛弃已终止的进程；</li>
-<li><strong>init 进程是所有进程的祖先，它是在系统启动时由内核创建的，其 PID 为 1</strong>。在特殊情况下，它会代替父进程来回收僵死的子进程。</li>
+<li><strong>类 Unix 操作系统中，init 进程是所有进程的祖先，它是在系统启动时由内核创建的，其 PID 为 1</strong>。在特殊情况下，它会代替父进程来回收僵死的子进程。</li>
 </ul>
 <p>- <strong><em>让进程休眠</em></strong>（<code>sleep</code> / <code>pause</code>）：</p>
 <ul>
@@ -520,8 +534,10 @@ pid_t <span class="token function">getppid</span><span class="token punctuation"
 <li>（Page：546）非本地跳转：C 语言提供的一种<strong>用户级的异常控制流形式</strong>，它<strong>将控制直接从一个函数转移到另一个当前正在执行的函数</strong>，而不需经过正常的“调用-返回”序列。非本地跳转是通过 <code>setjmp</code> 与 <code>longjmp</code> 函数来提供的。</li>
 </ol>
 <ul>
+<li><em>setjmp</em>：在 env 缓冲区中保存当前调用环境（程序计数器、栈指针以及通用寄存器）。该函数会<strong>返回两次</strong>；</li>
+<li><em>longjmp</em>：从 env 缓冲区中恢复当前调用环境，并<strong>触发一个最近一次初始化 env 的 setjmp 调用的返回</strong>。该函数<strong>从不返回</strong>；</li>
 <li>一个应用 — <em>从深层错误中快速返回</em>：<strong>允许从一个深层嵌套的函数调用中立即返回</strong>（如检测到某个错误），而不需要解开整个栈（stack unwinding）;</li>
 <li>一个应用 — <em>软重启</em>：使用专用于信号处理的 <code>sigsetjmp</code> 与 <code>siglongjmp</code> 函数。这两个函数不是“异步信号安全”的；</li>
 <li>由于 longjmp 会跳过所有中间调用，因此<strong>可能会产生内存泄露</strong>。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-11-30T14:47:39.000Z"> 2020 / 12 / 04, 12:58:35</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/11/23/《CSAPP-第三版》读书笔记（第-4-5-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/12/04/《CSAPP-第三版》读书笔记（第-9-12-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-11-30T14:47:39.000Z"> 2021 / 01 / 25, 11:50:49</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/11/23/《CSAPP-第三版》读书笔记（第-4-5-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/12/04/《CSAPP-第三版》读书笔记（第-9-12-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
