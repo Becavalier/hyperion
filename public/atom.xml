@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-02-14T03:54:52.215Z</updated>
+  <updated>2021-02-19T09:53:29.143Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 特性小结（v17.0.1）</title>
+    <link href="https://www.yhspy.com/2021/02/17/React-%E7%89%B9%E6%80%A7%E5%B0%8F%E7%BB%93%EF%BC%88v17-0-1%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/02/17/React-%E7%89%B9%E6%80%A7%E5%B0%8F%E7%BB%93%EF%BC%88v17-0-1%EF%BC%89/</id>
+    <published>2021-02-17T06:27:54.000Z</published>
+    <updated>2021-02-19T09:53:29.143Z</updated>
+    
+    <summary type="html">
+    
+      记录一些之前理解了然后又忘了的知识点。
+    
+    </summary>
+    
+    
+    
+      <category term="React" scheme="https://www.yhspy.com/tags/React/"/>
+    
+  </entry>
   
   <entry>
     <title>2020 年度总结（Jason Yu）</title>
@@ -40,7 +59,7 @@
     <link href="https://www.yhspy.com/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/</id>
     <published>2021-02-05T10:12:23.000Z</published>
-    <updated>2021-02-13T12:31:42.267Z</updated>
+    <updated>2021-02-17T04:29:50.486Z</updated>
     
     <summary type="html">
     
@@ -230,7 +249,7 @@
     <link href="https://www.yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-14T14:42:30.000Z</published>
-    <updated>2020-12-29T16:33:05.213Z</updated>
+    <updated>2021-02-19T08:47:46.074Z</updated>
     
     <summary type="html">
     
@@ -249,7 +268,7 @@
     <link href="https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-08T10:28:35.000Z</published>
-    <updated>2021-01-27T20:00:52.743Z</updated>
+    <updated>2021-02-19T08:42:18.686Z</updated>
     
     <summary type="html">
     
@@ -424,7 +443,7 @@
     <link href="https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/</id>
     <published>2020-10-19T13:26:29.000Z</published>
-    <updated>2020-11-22T12:09:22.793Z</updated>
+    <updated>2021-02-19T10:04:21.808Z</updated>
     
     <summary type="html">
     
@@ -568,25 +587,6 @@
     
     
       <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ASM.js 标准草案分析（18 August 2014）</title>
-    <link href="https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/08/09/ASM-js-%E6%A0%87%E5%87%86%E8%8D%89%E6%A1%88%E5%88%86%E6%9E%90%EF%BC%8818-August-2014%EF%BC%89/</id>
-    <published>2020-08-09T02:25:05.000Z</published>
-    <updated>2020-08-18T10:11:58.121Z</updated>
-    
-    <summary type="html">
-    
-      ASM.js 是 JavaScript 的严格子集，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对内存不安全语言（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。
-    
-    </summary>
-    
-    
-    
-      <category term="ASM.js" scheme="https://www.yhspy.com/tags/ASM-js/"/>
     
   </entry>
   

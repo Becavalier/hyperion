@@ -78,7 +78,7 @@ console.log(Object.is(NaN, NaN));  // true.
 ```
 
 * **解构操作**：
-  * 解构会将原始值转换为对象，根据标准 null 和 undefined 无法被解构；
+\- 解构会将原始值转换为对象，根据标准 null 和 undefined 无法被解构；
 
 ```javascript
 let person = {
@@ -89,7 +89,7 @@ let { name: personName, age: personAge, job: personJob = 'engineer' } = person;
 console.log(personName, personAge, personJob);
 ```
 
-  * 在解构过程中，如果**为了给事先声明的变量赋值，则赋值表达式必须被包含在一对括号中**；
+\- 在解构过程中，如果**为了给事先声明的变量赋值，则赋值表达式必须被包含在一对括号中**；
 
 ```javascript
 let personName, personAge, personJob;
@@ -101,7 +101,7 @@ let person = {
 console.log(personName, personAge, personJob);
 ```
 
-  * 解构也可以用在函数参数中。
+\- 解构也可以用在函数参数中。
 
 ```javascript
 let person = {

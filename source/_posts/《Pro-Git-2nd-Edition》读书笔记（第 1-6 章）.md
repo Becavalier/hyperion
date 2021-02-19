@@ -15,7 +15,7 @@ tags:
 2. （Page：11）Git 的诞生源于 2005 年 Linux 内核社区在结束与 BitKeeper 的合作关系后，对维护内核补丁提交与归档等繁琐事务的急切需求。而 *Linus Torvalds* 则担起了这个重任。
 3. （Page：12）传统版本控制系统保存的是基本文件和每个文件随时间逐步积累的**差异**。而 Git 则在每次存在更新时，对当时的全部文件制作一个**快照**，并保存该快照的索引。
 4. （Page：13）Git 使用 **SHA-1** 来进行快照的完整性校验。
-5. （Page：14）Git 的三种状态：**已提交**（Commited）、**已修改**（Modified）、**已暂存**（Staged）。
+5. （Page：14）Git 的三种状态：**已修改**（Modified）、**已暂存**（Staged）、**已提交**（Commited）。
 
 ![](1.png)
 
@@ -71,7 +71,7 @@ git remote add origin <upstream>
 git diff --staged
 ```
 
-14. （Page：31）**跳过使用暂存区**（不建议使用）：
+14. （Page：31）**跳过使用暂存区**，仅对非新增文件的改动生效（不建议使用）：
 
 ```bash
 git commit -a -m <message>

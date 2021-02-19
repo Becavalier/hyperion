@@ -5,7 +5,7 @@
 <li>（Page：11）Git 的诞生源于 2005 年 Linux 内核社区在结束与 BitKeeper 的合作关系后，对维护内核补丁提交与归档等繁琐事务的急切需求。而 <em>Linus Torvalds</em> 则担起了这个重任。</li>
 <li>（Page：12）传统版本控制系统保存的是基本文件和每个文件随时间逐步积累的<strong>差异</strong>。而 Git 则在每次存在更新时，对当时的全部文件制作一个<strong>快照</strong>，并保存该快照的索引。</li>
 <li>（Page：13）Git 使用 <strong>SHA-1</strong> 来进行快照的完整性校验。</li>
-<li>（Page：14）Git 的三种状态：<strong>已提交</strong>（Commited）、<strong>已修改</strong>（Modified）、<strong>已暂存</strong>（Staged）。</li>
+<li>（Page：14）Git 的三种状态：<strong>已修改</strong>（Modified）、<strong>已暂存</strong>（Staged）、<strong>已提交</strong>（Commited）。</li>
 </ol>
 <p><img src="1.png" alt=""></p>
 <ol start="6">
@@ -57,7 +57,7 @@
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> --staged<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="14">
-<li>（Page：31）<strong>跳过使用暂存区</strong>（不建议使用）：</li>
+<li>（Page：31）<strong>跳过使用暂存区</strong>，仅对非新增文件的改动生效（不建议使用）：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit -a -m <span class="token operator">&lt;</span>message<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="15">
@@ -304,4 +304,4 @@
 <li><strong><em>refs/pull/&lt;pr#&gt;/merge</em></strong>：合并请求的引用，该引用表示合并后生成的对应提交记录。</li>
 </ul>
 <p>* <strong>可以通过添加 “refspec” 的方式来把远程的名称映射到本地 .git 目录</strong>。</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-19T13:26:29.000Z"> 2020 / 11 / 22, 20:09:22</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/10/05/《垃圾回收算法与实现》读书笔记（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-19T13:26:29.000Z"> 2021 / 02 / 19, 18:04:21</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/10/05/《垃圾回收算法与实现》读书笔记（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -174,10 +174,91 @@ obj.cool();
 
 12. （Page：79）在任何情况下，**this 都不指向函数的词法作用域**。
 13. （Page：84）**当被调用函数体处于严格模式下时，其内部的 this 无法绑定到全局对象**。
-14. （Page：93）
+14. （Page：90）`new` 操作符的具体流程：
 
-15. （Page：）
-16. （Page：）
-17. （Page：）
-18. （Page：）
-19. （Page：）
+```javascript
+function Person(name) {
+  this.name = name;
+}
+// new Person('YHSPY');
+var person = {};
+person.__proto__ = Person.prototype;
+Person.call(person, 'YHSPY');
+```
+
+15. （Page：99）箭头函数的 this 会**由外层作用域来决定**（词法作用域），当外层函数被绑定到固定的 this 后，内存箭头函数在调用时的 this 便无法再被更改。
+16. （Page：101）判断 this 的绑定对象：
+
+* 由 `new` 调用？ - 绑定到新创建的对象；
+* 由 `call` / `apply` / `bind` 调用？ - 绑定到指定对象；
+* 由上下文对象调用？ - 绑定到该上下文对象；
+* 默认：严格模式下绑定到 undefined，否则为全局对象。
+
+17. （Page：106）**在对象中，属性名永远都是字符串**。当使用 string 类型之外的其他值作为属性名时，该值会被引擎自动转换为一个字符串，包括数字。
+18. （Page：109）当为数组添加字符串数字值时，该值会被转化为一个数字索引：
+
+```javascript
+var arr = [];
+arr['1'] = 1;
+console.log(arr);  // (2) [empty, 1].
+```
+
+19. （Page：114）对象（浅）不变性：
+
+* **只影响目标对象和直接属性**；
+* 当需要用到“深不变性”时，需要考虑程序设计是否有问题。
+
+\- ***对象常量属性***：不可修改、重定义或删除。
+
+```javascript
+var myObject = {};
+Object.defineProperty(myObject, 'key', {
+  value: 4,
+  writable: false,
+  configurable: false,
+});
+```
+
+\- ***禁止扩展***：禁止添加新属性且保留已有属性。
+
+```javascript
+var myObject = { existingKey: 2 };
+Object.preventExtensions(myObject);
+```
+
+\- ***密封***：不能添加新属性，也不能重新配置或删除现有属性（可以修改值）。
+
+```javascript
+var myObject = { existingKey: 2 };
+Object.seal(myObject);
+```
+
+\- ***冻结***：不能添加新属性，不能重新配置或删除现有属性，也无法修改属性值。
+
+```javascript
+var myObject = { existingKey: 2 };
+Object.freeze(myObject);
+```
+
+20. （Page：118）访问描述符 getter 与 setter：
+
+```javascript
+var myObject = {
+  get v() {
+    return this.__v__;
+  },
+  set v(val) {
+    this.__v__ = val;
+  }
+};
+myObject.v = 1;
+console.log(myObject.v);
+```
+
+21. （Page：121）`in` 与 `for..in` 均会查找对象的原型链。
+22. （Page：145）对象“属性屏蔽”的复杂性：如果 foo 不直接存在于 myObject 中而是存在于原型链上层时 `myObject.foo = "bar"` 会出现的三种情况：
+
+* 如果在原型链上层存在名为 foo 的普通数据访问属性，并且没有被标记为只读，那就会直接在 myObject 中添加一个名为 foo 的新属性，它是屏蔽属性；
+* 如果在原型链上层存在 foo，但是它被标记为只读，那么 无法修改已有属性或者在 myObject 上创建屏蔽属性。如果运行在严格模式下，会抛出错误。否则，这条赋值语句会被忽略；
+* 如果在原型链上层存在 foo 并且它是一个 setter，那就一定会调用这个 setter。foo 不会被添加到 myObject，也不会重新定义 foo 这个 setter。
+
