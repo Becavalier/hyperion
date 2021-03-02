@@ -461,36 +461,32 @@ class Mouse extends React.PureComponent {
     this.handleMouseMove = this.handleMouseMove.bind(this);
     this.state = { x: 0, y: 0 };
   }
-
   handleMouseMove(event) {
     this.setState({
       x: event.clientX,
       y: event.clientY
     });
   }
-
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
-        {// render the props component;}
-        {this.props.render(this.state)}
-      </div>
+      <>
+        <div className="screen" onMouseMove={this.handleMouseMove}>
+          {this.props.children(this.state)}
+        </div>
+      </>
     );
   }
 }
-// HOC.
-function withMouse(Component) {
-  return class extends React.Component {
-    renderTheComponent(mouse) {
-      return <Component {...this.props} mouse={mouse} />;
-    }
-  
-    render() {
-      return (
-        // a function will return corresponding rendered component;
-        <Mouse render={this.renderTheComponent}/>
-      );
-    }
+class App extends React.Component {
+  render() {
+    // will only be rendered once.
+    return (
+      <Mouse render={this.renderTheComponent}>
+        {
+          ({x, y}) => <><span>{x}</span>, <span>{y}</span></>
+        }
+      </Mouse>
+    );
   }
 }
 ```
