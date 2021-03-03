@@ -1547,7 +1547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "a550f30fbf991edc61cfddeedd92a448"
+    "revision": "554bb36b711ac927dd57b997623bbe06"
   },
   {
     "url": "readings/JavaScript 语言精髓与编程实战（第三版）.html",
@@ -1815,7 +1815,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "e6f995c51b52db9856ce313c2539595d"
+    "revision": "02fe3867908726f01f1965ba71e6b071"
   },
   {
     "url": "tags/Java/index.html",
