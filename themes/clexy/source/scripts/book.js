@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', async e => {
         <div class="book-item ${i.complete ? 'complete' : ''}">
           <span>《${i.name}》</span>
           <span class="progress-pages">${i.currentPages} / ${i.totalPages}</span>
-          <button class="action-read" data-url="${i.url}" data-id="${i.id}" data-page="${i.currentPages}">阅读</button>
-          <button class="action-note" data-id="${i.id}">笔记</button>
+          <button class="action-read" data-url="${i.url}" data-id="${i.id}" data-page="${i.currentPages}">读</button>
+          <button class="action-note" data-id="${i.id}">记</button>
         </div>`;
     }).join(''));
 

@@ -1547,7 +1547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "0807beaebba5ea00be5c69acf0f13003"
+    "revision": "a550f30fbf991edc61cfddeedd92a448"
   },
   {
     "url": "readings/JavaScript 语言精髓与编程实战（第三版）.html",
@@ -1687,7 +1687,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "d5ce951b78e21f5471b511d133afd93d"
+    "revision": "85b0b66b44ebd82bc9a5e025b66e0f93"
   },
   {
     "url": "scripts/index.js",
@@ -1715,7 +1715,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "093a2903aca4c24259e19a477d39cd88"
+    "revision": "ebf25d179b488a660ccb0ab43e1f0bb7"
   },
   {
     "url": "tags/Android/index.html",
@@ -1815,7 +1815,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "caf5d0a082517a3163d48b64af27e851"
+    "revision": "e6f995c51b52db9856ce313c2539595d"
   },
   {
     "url": "tags/Java/index.html",
