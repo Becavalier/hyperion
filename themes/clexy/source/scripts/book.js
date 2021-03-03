@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', async e => {
             url
             totalPages
             currentPages
+            complete
           }
         }`
     }
@@ -19,11 +20,9 @@ document.addEventListener('DOMContentLoaded', async e => {
     container.insertAdjacentHTML('afterbegin', response.map(i => {
       const progress = (Number(i.currentPages / i.totalPages) * 100).toFixed(2);
       return `
-        <div class="book-item">
+        <div class="book-item ${i.complete ? 'complete' : ''}">
           <span>《${i.name}》</span>
           <span class="progress-pages">${i.currentPages} / ${i.totalPages}</span>
-          <span class="progress"><progress value="${progress}" max="100"></span>
-          <span class="state">${progress}%</span>
           <button class="action-read" data-url="${i.url}" data-id="${i.id}" data-page="${i.currentPages}">阅读</button>
           <button class="action-note" data-id="${i.id}">笔记</button>
         </div>`;

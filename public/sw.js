@@ -375,7 +375,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/04/29/《大型网站技术架构 - 核心原理与案例分析》读书笔记/index.html",
-    "revision": "1b3054836e956759f7410ed87b7acb50"
+    "revision": "6821bbc011947a39350ac4bb2bf9d172"
   },
   {
     "url": "2017/05/06/STC-与-PTC/index.html",
@@ -859,11 +859,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/index.html",
-    "revision": "63b84f623ab5aabf8e409c3ac3d39fe0"
+    "revision": "75fbdfa7bbbbf9ea729e6c00e69025ea"
   },
   {
     "url": "2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/index.html",
-    "revision": "bbfcc2e4b5057c06aa81f585b0c1e83b"
+    "revision": "c20621277ec62d86e5c9263b4f9199dc"
   },
   {
     "url": "2020/11/05/《现代-C-教程：高速上手-C-11-14-17-20》读书笔记/index.html",
@@ -895,19 +895,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/12/08/《JavaScript-高级程序设计（第四版）》读书笔记（第-1-7-章）/index.html",
-    "revision": "8d636683fcfe46b28ee84c26e4edbbc1"
+    "revision": "10ef0a725606069fd5418bc2e0b24be1"
   },
   {
     "url": "2020/12/14/《JavaScript-高级程序设计（第四版）》读书笔记（第-8-11-章）/index.html",
-    "revision": "20c4a4e929ecf46538f8bd0d6bbb2364"
+    "revision": "70e6e746d79fdf3a1e5c70b459186afa"
   },
   {
     "url": "2020/12/18/《JavaScript-高级程序设计（第四版）》读书笔记（第-12-17-章）/index.html",
-    "revision": "10cece92ed437433d5912642c5c45df4"
+    "revision": "ec49af369bec9b526e38c3f10f65db10"
   },
   {
     "url": "2020/12/24/《JavaScript-高级程序设计（第四版）》读书笔记（第-18-28-章）/index.html",
-    "revision": "b7ccfeb26730793ac2aba7b2808c3fb9"
+    "revision": "edd03e84ce8fc679e7772dd3ee1cefe3"
   },
   {
     "url": "2020/12/25/《计算的本质：深入剖析程序和计算机》读书笔记（第-1-2-章）/index.html",
@@ -939,7 +939,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/02/05/《你不知道的 JavaScript》读书笔记（上）/index.html",
-    "revision": "4b467d0918a193c71d6bf474de220765"
+    "revision": "dc41c9f0df353878b9a960ea4c8cdf82"
   },
   {
     "url": "2021/02/10/2020-年度总结（Jason-Yu）/index.html",
@@ -947,15 +947,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/02/17/React-特性小结（v17-0-1）/index.html",
-    "revision": "7eedf687c7fcfee2238e97ff9e79dd2f"
+    "revision": "9923c7b5914dfe049d95c25bc3395094"
   },
   {
     "url": "2021/02/19/《HTTP-权威指南》读书笔记（第-1-6-章）/index.html",
-    "revision": "fe32492e54d9ef92bcb897242fb7788a"
+    "revision": "1aa19a887493ac6e3d63d0c0b3f46681"
   },
   {
     "url": "2021/02/22/《HTTP-权威指南》读书笔记（第-7-14-章）/index.html",
-    "revision": "f202672b47f1645bcd80b956bfb59cb5"
+    "revision": "f779fb9707732296ffcd6214e59c4d94"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1411,7 +1411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "author/index.html",
-    "revision": "dac34f21ba37638574c7ebb3980995c2"
+    "revision": "728293d601211436e922719403483e21"
   },
   {
     "url": "books/index.html",
@@ -1547,7 +1547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "0f1deca5fdeb5af5864237a960c6713d"
+    "revision": "0807beaebba5ea00be5c69acf0f13003"
   },
   {
     "url": "readings/JavaScript 语言精髓与编程实战（第三版）.html",
@@ -1687,7 +1687,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/book.js",
-    "revision": "8d9ce61b7d89ebf8c6f27265b2df399a"
+    "revision": "d5ce951b78e21f5471b511d133afd93d"
   },
   {
     "url": "scripts/index.js",
@@ -1715,7 +1715,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "0d0a3d4347fd11750586c002787f7a43"
+    "revision": "093a2903aca4c24259e19a477d39cd88"
   },
   {
     "url": "tags/Android/index.html",
@@ -1815,7 +1815,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "1e169feaae4895462f48aa75f05a303b"
+    "revision": "caf5d0a082517a3163d48b64af27e851"
   },
   {
     "url": "tags/Java/index.html",

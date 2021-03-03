@@ -117,6 +117,7 @@ module.exports = app => {
       url: String!
       totalPages: Int!
       currentPages: Int
+      complete: Int
     }
     type BookNoteRecord {
       id: Int!
@@ -199,6 +200,7 @@ module.exports = app => {
               url: i.url,
               totalPages: i.total_pages,
               currentPages: i.current_page,
+              complete: i.complete,
             }));
           }
         } catch(e) {

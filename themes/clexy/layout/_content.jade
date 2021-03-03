@@ -59,21 +59,22 @@ else if is_page() && page.title.toLowerCase() =='books'
 else if is_page() && page.title.toLowerCase() =='author'
   article.full
     h1(itemprop='headline')=page.title
-    .avatar
-    if (config.about !== undefined)
-      .avatar-name
-        span
-          | #{config.about.name}
-      for intro in config.about.intros.split(' | ')
-        .avatar-description
+    div.author-container
+      div.avatar
+      if (config.about !== undefined)
+        div.avatar-name
           span
-            | #{intro}
-      if (config.about.skills != undefined)
-        .avatar-skills-block
-          for skill in config.about.skills.split(', ')
-            .avatar-skills
-              span
-                | #{skill}
+            | #{config.about.name}
+        for intro in config.about.intros.split(' | ')
+          div.avatar-description
+            span
+              | #{intro}
+        if (config.about.skills != undefined)
+          .avatar-skills-block
+            for skill in config.about.skills.split(', ')
+              .avatar-skills
+                span
+                  | #{skill}
       br
       .social-container
         if (config.about.linkedin !== undefined)
@@ -103,6 +104,11 @@ else if is_page() && page.title.toLowerCase() =='author'
         if (config.about.resume !== undefined)
           a(target="_blank", href=config.about.resume)
             span(class="fa fa-id-card icons" aria-hidden="true")
+      .extra-container
+        a(target="_blank", href=config.about.books)
+          span(class="fa fa-book icons" aria-hidden="true")
+        a(target="_blank", href=config.about.interview)
+          span(class="fa fa-sticky-note icons" aria-hidden="true")
 else if is_page() && page.title.toLowerCase() =='works'
   article.full
     h1(itemprop='headline')=page.title
@@ -110,11 +116,13 @@ else if is_page() && page.title.toLowerCase() =='works'
 else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
     h1(itemprop='headline')=page.title
-    span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里寻找。'
+    span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。'
     each val, key in site.pages.filter(i => i.page === 'readings').reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
       h5='- ' + key
-      for book in val.sort((x, y) => y.date - x.date)
-        a(target="_blank", href=book.douban)=book.title + '—  #' + book.tags.join(', ') + ' | ' + full_date(new Date(book.date), 'MM / YYYY')
+      ul.book-list
+        for book in val.sort((x, y) => y.date - x.date)
+          li
+            a(target="_blank", href=book.douban)=book.title + '—  #' + book.tags.join(', ') + ' | ' + full_date(new Date(book.date), 'MM / YYYY')
 
 else if is_page() && page.title.toLowerCase() =='search'
   script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')

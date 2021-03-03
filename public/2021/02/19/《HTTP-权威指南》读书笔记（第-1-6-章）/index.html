@@ -67,7 +67,7 @@
 <h3 id="第-3-章-HTTP-报文"><a href="#第-3-章-HTTP-报文" class="headerlink" title="第 3 章 - HTTP 报文"></a>第 3 章 - HTTP 报文</h3><ol start="10">
 <li>（Page：48）HTTP 标准中规定<strong>起始行和首部的每一行都以 CRLF（回车符+换行符）结尾</strong>。但稳健的应用也应该接受单个换行符作为行终止符。</li>
 <li>（Page：50）有些 HTTP 版本（如 HTTP/1.1）中要求<strong>有效的请求或响应中必须包含特定的首部</strong>，即首部不能完全留空。</li>
-<li>（Page：51）常见请求方法：</li>
+<li>（Page：<a name="51" href="#51">51</a>）常见请求方法：</li>
 </ol>
 <p><img src="2.png" alt=""></p>
 <ul>
@@ -199,7 +199,7 @@ Content-Length: 8572
 Server: Test Server
   Version 1.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-4-章-连接管理"><a href="#第-4-章-连接管理" class="headerlink" title="第 4 章 - 连接管理"></a>第 4 章 - 连接管理</h3><ol start="15">
-<li>（Page：81）TCP 连接：</li>
+<li>（Page：<a name="81" href="#81">81</a>）TCP 连接：</li>
 </ol>
 <ul>
 <li>TCP 会<strong>按序、无差错</strong>地承载 HTTP 数据；</li>
@@ -255,7 +255,7 @@ Server: Test Server
 <li>“逐跳首部名”（仅应用于这一跳的首部）可以放入 Connection 首部中，以确保在发送到下一跳前删除该首部。</li>
 </ul>
 <ol start="17">
-<li>（Page：93）四种提高 HTTP 连接性能的技术：</li>
+<li>（Page：<a name="93" href="#93">93</a>）四种提高 HTTP 连接性能的技术：</li>
 </ol>
 <ul>
 <li><strong>并行连接</strong>：通过多条 TCP 连接发起并发的 HTTP 请求；</li>
@@ -330,4 +330,4 @@ Server: Test Server
 <li>（Page：162）TRACE 方法可用于跟踪报文在各个代理内的变化。当 TRACE 请求到达目的服务器时，整条请求报文都会被封装在一条 HTTP 响应的主体中回送给发送端。可以使用 <strong>Max-Forwards</strong> 首部来限制 TRACE 和 OPTIONS 请求所经过的代理跳数。Max-Forwards 每经过一个代理时会被减一，当其值为 0 时，则必须将 TRACE 报文回送给客户端。</li>
 <li>（Page：166）OPTIONS 请求可用于发现 Web 服务器上某个特定资源所支持的功能。请求成功后会返回一个包含各种首部字段的 200 响应，这些字段描述了服务器支持的，或资源可用的各种可选特性。HTTP/1.1 在响应中唯一指定的首部字段为 Allow 首部，其包含了服务器支持的方法列表。</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-02-19T11:45:04.000Z"> 2021 / 02 / 24, 20:32:36</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/02/17/React-特性小结（v17-0-1）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/02/22/《HTTP-权威指南》读书笔记（第-7-14-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-02-19T11:45:04.000Z"> 2021 / 03 / 03, 12:11:03</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/02/17/React-特性小结（v17-0-1）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/02/22/《HTTP-权威指南》读书笔记（第-7-14-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

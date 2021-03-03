@@ -88,11 +88,13 @@ deploy:
 # About page setting
 about:
   name: 于航 (曜彤 / Jason Yu)
-  intros: Male, @PayPal. | The author of 《深入浅出 WebAssembly》/《WebAssembly 入门课》. | QCon / GMTC / TLC conferences speaker & host. | TC39 member.
-  skills: JavaScript, WebAssembly, Virtual Machine, Piano
+  intros: Male, @PayPal. | Author of 《深入浅出 WebAssembly》/《WebAssembly 入门课》 | QCon / GMTC / TLC conferences speaker & host | TC39 delegate
+  skills: JavaScript, WebAssembly, Virtual Machine, Entrepreneurship
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /resume/me
+  books: /books
+  interview: /workspace/interview-template.md
 
 # PWA
 pwa: true

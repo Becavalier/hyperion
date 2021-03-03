@@ -78,6 +78,10 @@ const BookShelf = sequelize.define('t_book_shelf', {
     'type': Sequelize.INTEGER,
     'allowNull': true,
   },
+  complete: {
+    'type': Sequelize.TINYINT,
+    'allowNull': true,
+  },
   created_at: {
     'type': 'TIMESTAMP',
     'allowNull': false,
