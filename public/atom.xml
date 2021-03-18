@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-03-04T05:01:38.057Z</updated>
+  <updated>2021-03-18T10:57:29.125Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TLPI - File I/O</title>
+    <link href="https://www.yhspy.com/2021/03/15/TLPI-File-I-O/"/>
+    <id>https://www.yhspy.com/2021/03/15/TLPI-File-I-O/</id>
+    <published>2021-03-15T03:48:47.000Z</published>
+    <updated>2021-03-18T10:57:29.125Z</updated>
+    
+    <summary type="html">
+    
+      TLPI - I/O 相关章节记录。
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://www.yhspy.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《前端函数式演进》读书笔记</title>
+    <link href="https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <id>https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
+    <published>2021-03-13T13:19:44.000Z</published>
+    <updated>2021-03-18T10:52:28.361Z</updated>
+    
+    <summary type="html">
+    
+      近几年不知道是刮什么风，“函数式”这个概念在前端开发领域变得愈发火爆，仿佛你不懂一点函数式、Monad 相关的知识，就已经与这个圈子脱节。而对于一个短时间内不准备看 SICP 的人来说，希望能够通过这本“前东家”同事的著作，让自己入个 FP 的门。
+    
+    </summary>
+    
+    
+    
+      <category term="前端" scheme="https://www.yhspy.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="函数式" scheme="https://www.yhspy.com/tags/%E5%87%BD%E6%95%B0%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>《HTTP 权威指南》读书笔记（第 7-15、20 章）</title>
@@ -78,7 +118,7 @@
     <link href="https://www.yhspy.com/2021/02/10/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%EF%BC%88Jason-Yu%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/10/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%EF%BC%88Jason-Yu%EF%BC%89/</id>
     <published>2021-02-10T02:48:10.000Z</published>
-    <updated>2021-02-14T03:54:52.215Z</updated>
+    <updated>2021-03-11T13:53:15.055Z</updated>
     
     <summary type="html">
     
@@ -549,44 +589,6 @@
     
     
       <category term="虚拟机" scheme="https://www.yhspy.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【译】Threaded Code</title>
-    <link href="https://www.yhspy.com/2020/08/21/Threaded-Code/"/>
-    <id>https://www.yhspy.com/2020/08/21/Threaded-Code/</id>
-    <published>2020-08-20T23:01:46.000Z</published>
-    <updated>2020-11-11T05:01:52.596Z</updated>
-    
-    <summary type="html">
-    
-      本文用于记录有关 Threaded Code 的一些内容。此文原文较老（2003），仅供参考。
-    
-    </summary>
-    
-    
-    
-      <category term="虚拟机" scheme="https://www.yhspy.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++ Dependent Names、non-ADL 以及 ADL 查找</title>
-    <link href="https://www.yhspy.com/2020/08/18/C-Dependent-Names%E3%80%81non-ADL-%E4%BB%A5%E5%8F%8A-ADL-%E6%9F%A5%E6%89%BE/"/>
-    <id>https://www.yhspy.com/2020/08/18/C-Dependent-Names%E3%80%81non-ADL-%E4%BB%A5%E5%8F%8A-ADL-%E6%9F%A5%E6%89%BE/</id>
-    <published>2020-08-18T10:13:58.000Z</published>
-    <updated>2020-08-20T10:09:18.554Z</updated>
-    
-    <summary type="html">
-    
-      记录下 C++ 中对于 Dependent Names 在 non-ADL 以及 ADL 这两种情况下的名字查找规则。
-    
-    </summary>
-    
-    
-    
-      <category term="C++" scheme="https://www.yhspy.com/tags/C/"/>
     
   </entry>
   

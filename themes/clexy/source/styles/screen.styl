@@ -310,9 +310,24 @@ main
   article.item
     border-bottom 1px solid hsla(0, 0, 0, .15)
     color $body-color
-    padding 40px
+    padding 35px 20px
     text-align center
+    display flex
+    flex-direction row
+    align-items center
+    div.post-cover
+      height 150px
+      width 220px
+      background-size cover
+      margin-right 15px
+    div.post-intro
+      flex 1
+      display flex
+      flex-direction column
+      justify-content center
+      align-items center
     h2
+      font-size 32px
       break-word normal
       color $body-color
       margin-bottom 16px
@@ -320,7 +335,7 @@ main
     p.post-excerpt
       font-size 1.62rem
       line-height 2.1em
-      margin 16px 0 0 0
+      margin 16px 20px 0
     &:after
       display block
       content ''
@@ -365,6 +380,9 @@ main
       li
         margin 7px 0
         line-height 2.5rem
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         &:before
           content none
     a
@@ -589,6 +607,8 @@ hr
     main
       article
         max-width 1248px
+    header
+      max-width 400px !important
 
 @media (max-width 1248px)
   body
@@ -598,19 +618,11 @@ hr
             .book-item
               span.progress-pages
                 display none
+        &.item
+          div.post-cover
+            display none
 
-@media (max-width 900px)
-  body
-    main
-      article:not([post-id])     
-        &.full
-          ul   
-            li
-              overflow hidden
-              text-overflow ellipsis
-              white-space nowrap
-
-@media (min-width 830px)
+@media (min-width 1024px)
   body
     display flex
     flex-direction row
@@ -641,6 +653,25 @@ hr
           input[type="email"]
             width 35%
             margin .5em .5em .5em 0
+
+@media (max-width 1024px)
+  body
+    main
+      article
+        &.item
+          div.post-cover
+            display block
+
+@media (max-width 800px)
+  body
+    main 
+      article
+        &.full
+          ul.catelog-items, ul.book-list
+            padding-inline-start 0
+        &.item
+          div.post-cover
+            display none
 
 @media (max-width 700px)
   body
@@ -673,13 +704,6 @@ hr
           .avatar-description
             font-size 1.6rem
             margin 7px 0     
-
-@media (max-width 500px)
-  body
-    main 
-      article.full
-        ul.catelog-items, ul.book-list
-          padding-inline-start 0
 
 
 // ===========================================================================
@@ -880,6 +904,18 @@ article
     ul.book-list
       li
         margin 7px 0
+        line-height 2.5rem
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      span
+        &.score
+          font-weight 500
+          font-style italic
+        &.comment
+          font-style italic
+          color #666
+          font-size 14px
     span.meta
       font-size 14px
       font-style italic

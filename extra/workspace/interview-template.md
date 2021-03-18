@@ -91,6 +91,9 @@ function handleClick() {
 * `useEffect` 的执行时机？`useEffect` 模拟的 `componentDidMount` 生命周期方法可能有什么问题？
 * `useReducer` 适用于哪些场景？
 * `useCallback` 如何使用？
+* [Redux] 如何理解 “The Single Truth of Source”？
+* [Redux] 基本实现原理？发布-订阅。
+* [Redux] 何为“纯函数”？为什么 reducer 要使用纯函数？
 
 ### HTTP:
 
@@ -100,12 +103,12 @@ function handleClick() {
 * （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的“延迟确认”算法？
 * （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的慢启动？
 * （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#93">答</a>）HTTP/1.0 与 HTTP/1.1 支持“持久连接”的方式分别是什么？
-* （<a target="_blank" href="https://yhspy.com/2021/02/22/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-14-%E7%AB%A0%EF%BC%89/#185">答</a>）缓存 - 服务器指定资源有效期使用的首部有哪些？
-* （<a target="_blank" href="https://yhspy.com/2021/02/22/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-14-%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存“再验证”时使用的首部有哪些？
-* （<a target="_blank" href="https://yhspy.com/2021/02/22/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-14-%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存覆盖和强制重载机制时使用的首部有哪些？
-* （<a target="_blank" href="https://yhspy.com/2021/02/22/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-14-%E7%AB%A0%EF%BC%89/#217">答</a>）Web 隧道是什么？建立过程？SSL 隧道与 HTTP/HTTPS 网关的区别？
+* （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#185">答</a>）缓存 - 服务器指定资源有效期使用的首部有哪些？
+* （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存“再验证”时使用的首部有哪些？
+* （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存覆盖和强制重载机制时使用的首部有哪些？
+* （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#217">答</a>）Web 隧道是什么？建立过程？SSL 隧道与 HTTP/HTTPS 网关的区别？
 * CORS 对于简单请求和复杂请求的基本流程？
-* （<a target="_blank" href="https://yhspy.com/2021/02/22/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-14-%E7%AB%A0%EF%BC%89/#341">答</a>）HTTPS 中 SSL 握手的基本流程？
+* （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#341">答</a>）HTTPS 中 SSL 握手的基本流程？
 * HTTPS 能够防止中间人攻击吗？
 * 相比 HTTP1.1，HTTP2 有哪些优化？
 

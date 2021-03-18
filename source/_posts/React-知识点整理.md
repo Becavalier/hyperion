@@ -473,22 +473,29 @@ class Mouse extends React.PureComponent {
         <div className="screen" onMouseMove={this.handleMouseMove}>
           {this.props.children(this.state)}
         </div>
-      </>
+      </> 
     );
   }
 }
+
 class App extends React.Component {
+  renderTheComponent = ({x, y}) => {
+    return <><span>{x}</span>, <span>{y}</span></>
+  }
   render() {
     // will only be rendered once.
     return (
-      <Mouse render={this.renderTheComponent}>
+      // <Mouse render={this.renderTheComponent}>
+      <Mouse>
         {
-          ({x, y}) => <><span>{x}</span>, <span>{y}</span></>
+          this.renderTheComponent
         }
       </Mouse>
     );
   }
 }
+
+ReactDOM.render(<App/>, document.getElementById('root'));
 ```
 
 #### Strict Mode

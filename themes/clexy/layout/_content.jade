@@ -5,12 +5,14 @@ if is_home()
     if (index < config.index_generator.per_page)
       a.article(href=config.root + post.path)
         article.item(itemscope, itemprop='blogPost', itemtype='https://schema.org/BlogPosting')
-          h2(itemprop='headline')=post.title
-          span.post-meta
-            | Published on
-            time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), ' YYYY / MM / DD, HH:mm:ss')
-          p(itemprop='text').post-excerpt=post.intro ? post.intro : post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220)
-  h4.page-title See more? Please go to "Articles" page : )
+          div.post-cover(style=`background-image: url(${post.content.includes('<img src="1.png"') ? `${encodeURIComponent(config.root + post.path)}1.png` : '../images/default-doc-placeholder.png'})`)
+          div.post-intro
+            h2(itemprop='headline')=post.title
+            span.post-meta
+              | Published on
+              time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), ' YYYY / MM / DD, HH:mm:ss')
+            p(itemprop='text').post-excerpt=post.intro ? post.intro : post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220)
+  h4.page-title See more? Please go to the "Articles" page : )
 
 //- articles page;
 if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
@@ -116,13 +118,17 @@ else if is_page() && page.title.toLowerCase() =='works'
 else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
     h1(itemprop='headline')=page.title
-    span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。'
+    span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。标题最前面的个人打分仅供参考。'
     each val, key in site.pages.filter(i => i.page === 'readings').reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
       h5='- ' + key
       ul.book-list
         for book in val.sort((x, y) => y.date - x.date)
           li
-            a(target="_blank", href=book.douban)=book.title + '—  #' + book.tags.join(', ') + ' | ' + full_date(new Date(book.date), 'MM / YYYY')
+            span(class="score")=book.score
+            | &nbsp;-
+            a(target="_blank", href=book.douban)=book.title + '：'
+              span(class="comment")=book.comment
+              =' — ' + full_date(new Date(book.date), 'MM / YYYY')
 
 else if is_page() && page.title.toLowerCase() =='search'
   script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
