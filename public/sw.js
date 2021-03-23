@@ -827,7 +827,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/09/ASM-js-标准草案分析（18-August-2014）/index.html",
-    "revision": "ee793c217298a1abb8160be652eb1cef"
+    "revision": "8011437b874628406bc71077be44a034"
   },
   {
     "url": "2020/08/17/C-20-The-Big-Four/index.html",
@@ -1563,7 +1563,11 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "1d4e8803cbb88d52264086db9340ac40"
+    "revision": "57bf6f3933cdefe72c3f7fd100e59d88"
+  },
+  {
+    "url": "readings/JavaScript 二十年.html",
+    "revision": "9efaedec5742ebc63a632a4161be6b22"
   },
   {
     "url": "readings/JavaScript 语言精髓与编程实战（第三版）.html",
@@ -1839,7 +1843,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "ca684836b0dbdbd351adc4d888f96fd3"
+    "revision": "db1bddbb99deca0c178fb8fc39015ea7"
   },
   {
     "url": "tags/Java/index.html",

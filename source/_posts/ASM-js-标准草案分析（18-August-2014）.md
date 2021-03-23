@@ -293,3 +293,4 @@ ECMAScript 的语法规则指定了对 ASM.js 模块的验证细则，但从概�
 * ASM.js 使用了 Annotation（**形式上**。比如在 BNF 中 “|0” 直接表示一个**终结符**，而非运算符）与 Operator（**实际运算结果**）相结合的方式来保证继承自 C/C++ 的变量能够满足特定类型值的取值范围要求。比如 “x:Identifier**|0**” 可以确保 x:Identifier 是 int 类型。而 “x:Identifier **>>>** 0” 的**计算结果**可以保证 x:Identifier 是 unsigned 类型。
 * 怀疑 ASM.js 相较 Native Code 可能变慢的一个点是：C/C++ unsigned -> ASM.js (unsigned)((double) >>> 0)。运算符计算会产生额外的 Overhead？
 * **“|0”** 会将变量转换（cast）为一个 **Signed 类型的整数**；
+* JavaScript 的按位逻辑运算符会对编码为 IEEE-754 的浮点数进行计算。按位运算符首先将整数截断（32 位），然后在执行按位运算前为其操作数做**模转换**，获得 32 位二进制补码值。因此可以通过 `x|0` 或 `x >> 0`（**算数右移**）将数字值 x 强制转换为 32 位有符号整数值。对于无符号数，则可以通过 `x >>> 0`（**逻辑右移**）进行转换。
