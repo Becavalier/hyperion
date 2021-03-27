@@ -6,7 +6,7 @@
   <link href="//atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-03-18T10:57:29.125Z</updated>
+  <updated>2021-03-23T13:07:58.169Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>TLPI - File I/O</title>
-    <link href="https://www.yhspy.com/2021/03/15/TLPI-File-I-O/"/>
-    <id>https://www.yhspy.com/2021/03/15/TLPI-File-I-O/</id>
-    <published>2021-03-15T03:48:47.000Z</published>
-    <updated>2021-03-18T10:57:29.125Z</updated>
+    <link href="https://www.yhspy.com/2021/04/15/TLPI-File-I-O/"/>
+    <id>https://www.yhspy.com/2021/04/15/TLPI-File-I-O/</id>
+    <published>2021-04-15T03:48:47.000Z</published>
+    <updated>2021-03-23T13:07:58.169Z</updated>
     
     <summary type="html">
     
@@ -36,11 +36,30 @@
   </entry>
   
   <entry>
+    <title>《The Rust Programming Language》读书笔记（第 1-6 章）</title>
+    <link href="https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-1-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-1-%E7%AB%A0%EF%BC%89/</id>
+    <published>2021-03-23T13:07:38.000Z</published>
+    <updated>2021-03-27T13:08:21.137Z</updated>
+    
+    <summary type="html">
+    
+      2021 年的计划事项之一 - 学习 Rust。希望不会打击一个 C++er 的脆弱内心 :(
+    
+    </summary>
+    
+    
+    
+      <category term="Rust" scheme="https://www.yhspy.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《前端函数式演进》读书笔记</title>
     <link href="https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2021-03-13T13:19:44.000Z</published>
-    <updated>2021-03-18T10:52:28.361Z</updated>
+    <updated>2021-03-23T12:58:34.699Z</updated>
     
     <summary type="html">
     
@@ -570,25 +589,6 @@
     
     
       <category term="WebAssembly" scheme="https://www.yhspy.com/tags/WebAssembly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用 Threading Models 的伪代码示例</title>
-    <link href="https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/"/>
-    <id>https://www.yhspy.com/2020/08/24/%E5%B8%B8%E7%94%A8-Threading-Models-%E7%9A%84%E4%BC%AA%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B/</id>
-    <published>2020-08-24T11:45:11.000Z</published>
-    <updated>2020-12-04T02:31:20.518Z</updated>
-    
-    <summary type="html">
-    
-      RT。
-    
-    </summary>
-    
-    
-    
-      <category term="虚拟机" scheme="https://www.yhspy.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
     
   </entry>
   
