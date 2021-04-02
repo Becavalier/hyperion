@@ -117,9 +117,10 @@ else if is_page() && page.title.toLowerCase() =='works'
     | : ( 暂无内容，有空再加。
 else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
-    h1(itemprop='headline')=page.title
+    - var reading_posts = site.pages.filter(i => i.page === 'readings')
+    h1(itemprop='headline')=page.title + ' (' + reading_posts.length + ')'
     span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。标题最前面的个人打分仅供参考。'
-    each val, key in site.pages.filter(i => i.page === 'readings').reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
+    each val, key in reading_posts.reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
       h5='- ' + key
       ul.book-list
         for book in val.sort((x, y) => y.date - x.date)

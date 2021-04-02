@@ -399,10 +399,16 @@ fn main() {
     let r1 = &mut s;
     let r2 = &mut s;
     println!("{}, {}", r1, r2);  // !!! error occurs !!!
+
+    let mut a_s = String::from("world");
+    let ar1 = &a_s;
+    let ar2 = &a_s;
+    let ar3 = &mut a_s;  // !!! error occurs !!!
+    println!("{}, {}, {}", ar1, ar2, ar3);
 }
 ```
 
-* ***slice***（*&str*）：一种特殊的引用，可用于**引用集合类型内部的一段连续内存**，而非整个集合；
+* ***slice***（*&str*）：一种特殊的**引用**，可用于**引用集合类型内部的一段连续内存**，而非整个集合；
   * 字符串字面量值（*String Literal*）为可执行文件中对应字符串表中字符串的部分 slice，因此默认情况下是不可变的；
   * *slice* 语法可用于所有集合类型（*String*、*array*、*vector*）。
 
@@ -515,7 +521,7 @@ fn main() {
 }
 ```
 
-* struct 方法：包含**成员方法**和**关联方法**（类似 C/C++ 中的类静态方法），方法需定义在 `impl` 结构中；
+* struct 方法：包含**成员方法**和**关联方法**（类似 C/C++ 中的类静态方法，这里该方法内没有第一个 *&self* 参数），方法需定义在 `impl` 结构中；
   * Rust 在调用成员方法时实现了 *automatic referencing and dereferencing*，可以自动解引用并调用方法。
 
 ```rust

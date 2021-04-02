@@ -36,11 +36,49 @@
   </entry>
   
   <entry>
+    <title>《The Rust Programming Language》读书笔记（第 11-1 章）</title>
+    <link href="https://www.yhspy.com/2021/04/01/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-11-1-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/04/01/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-11-1-%E7%AB%A0%EF%BC%89/</id>
+    <published>2021-04-01T10:07:48.000Z</published>
+    <updated>2021-04-02T13:41:58.237Z</updated>
+    
+    <summary type="html">
+    
+      书接上回，第 11-10 章的笔记。
+    
+    </summary>
+    
+    
+    
+      <category term="Rust" scheme="https://www.yhspy.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>《The Rust Programming Language》读书笔记（第 7-10 章）</title>
+    <link href="https://www.yhspy.com/2021/03/27/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-10-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/03/27/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-10-%E7%AB%A0%EF%BC%89/</id>
+    <published>2021-03-27T13:11:50.000Z</published>
+    <updated>2021-04-01T12:16:35.177Z</updated>
+    
+    <summary type="html">
+    
+      书接上回，第 7-10 章的笔记。
+    
+    </summary>
+    
+    
+    
+      <category term="Rust" scheme="https://www.yhspy.com/tags/Rust/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《The Rust Programming Language》读书笔记（第 1-6 章）</title>
-    <link href="https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-1-%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-1-%E7%AB%A0%EF%BC%89/</id>
+    <link href="https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-03-23T13:07:38.000Z</published>
-    <updated>2021-03-27T13:08:21.137Z</updated>
+    <updated>2021-03-31T12:20:29.159Z</updated>
     
     <summary type="html">
     
@@ -551,44 +589,6 @@
     
     
       <category term="Git" scheme="https://www.yhspy.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《垃圾回收算法与实现》读书笔记（一）</title>
-    <link href="https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/10/05/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</id>
-    <published>2020-10-05T13:59:48.000Z</published>
-    <updated>2020-11-05T15:29:12.675Z</updated>
-    
-    <summary type="html">
-    
-      为了进一步了解 Wasm GC 提案，遂找本书来看看。
-    
-    </summary>
-    
-    
-    
-      <category term="GC" scheme="https://www.yhspy.com/tags/GC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>WebAssembly Weekly 集合整理（2020 / 08）</title>
-    <link href="https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/08/25/WebAssembly-Weekly-%E9%9B%86%E5%90%88%E6%95%B4%E7%90%86%EF%BC%882020-08%EF%BC%89/</id>
-    <published>2020-08-25T02:21:49.000Z</published>
-    <updated>2020-08-27T03:33:07.208Z</updated>
-    
-    <summary type="html">
-    
-      整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
-    
-    </summary>
-    
-    
-    
-      <category term="WebAssembly" scheme="https://www.yhspy.com/tags/WebAssembly/"/>
     
   </entry>
   
