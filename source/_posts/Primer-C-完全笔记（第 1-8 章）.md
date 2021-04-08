@@ -146,7 +146,7 @@ int main(int argc, char** argv) { ... }
 18. （Page：56）复杂指针解读：
 
 ```cpp
-// 从右向左分析：常量指针（本身值不能改）->（指向）const double（整型常量）；
+// 从右向左分析：常量指针（本身值不能改）->（指向）const int（整型常量）；
 const int *const pip = &pi;
 ```
 

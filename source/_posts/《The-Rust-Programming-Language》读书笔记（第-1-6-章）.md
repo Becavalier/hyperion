@@ -374,7 +374,20 @@ fn takes_and_gives_back(a_string: String) -> String {  // a_string comes into sc
 
 \- ***引用和借用（Reference & Borrowing）***：
 
-* Rust 中的“引用”同 C/C++ 类似，从语法形式上可以理解为指针（取地址）；
+* Rust 中的“引用”同 C/C++ 类似，从语法形式上可以理解为指针（取地址）。但不同点在于 Rust 中的引用可以被重新赋值，即重新引用到其他的变量上。并且借助“自动引用与解引用”机制，只有在赋值（产生副作用）时才需要显式解引用（**\***），而在使用引用所指向变量的值时则不需要。
+
+```rust
+fn main() {
+    let mut x = 10;
+    let mut k = 10;
+    let mut y = &mut x;
+    *y = 100;
+    y = &mut k;
+    *y = 100;
+    println!("x = {}, k = {}", &x, &k);
+}
+```
+
 * “**将引用作为函数参数的形式**”被称为 - “借用（*borrowing*）”；
 
 ```rust
