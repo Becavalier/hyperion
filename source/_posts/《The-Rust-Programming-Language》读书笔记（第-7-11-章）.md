@@ -1,13 +1,13 @@
 ---
-title: 《The Rust Programming Language》读书笔记（第 7-10 章）
-intro: 书接上回，第 7-10 章的笔记。
+title: 《The Rust Programming Language》读书笔记（第 7-11 章）
+intro: 书接上回，第 7-11 章的笔记。
 comments: true
 date: 2021-03-27 21:11:50
 tags:
 - Rust
 ---
 
-书接上回，第 7-10 章的笔记。
+书接上回，第 7-11 章的笔记。
 
 ### Chapter 7 - Managing Growing Projects with Packages, Crates, and Modules
 
@@ -449,7 +449,7 @@ enum Option<T> {
 27. （Page：196）**特质**（Trait）：
 
 * 一个 *trait* 可以告诉编译器一种特定类型所具有的“功能”，并且可以将这个“功能”共享给其他类型。我们可以使用 *trait* 以一种抽象的方式来定义类型之间的共享行为（与其他语言中的 *interface* 类似，但仍有些许区别）；
-* 内聚性（孤儿法则）：***triat* 的定义或者类型的定义，二者之一必须在本地**（当前 crate），才可以为某个类型实现某个 *triat*。（比如：无法为 *Vec\<T\>* 类型实现 *Display* trait）；
+* 内聚性（孤儿法则）：***triat* 的定义或者类型的定义，二者之一必须在本地**（当前 crate），才可以为某个类型实现某个 *triat*。（比如：无法为 `Vec<T>` 类型实现 *Display* trait）；
 
 ```rust
 // define a trait.
@@ -625,4 +625,124 @@ fn longest_with_an_announcement<'a, T> (
         y
     }
 }
+```
+
+### Chapter 11 - Writing Automated Tests
+
+30. （Page：223）如何编写**测试脚本**：
+
+* 一个测试函数通常执行**三个动作**：
+  * 设置需要的状态或数据；
+  * 运行需要测试的代码；
+  * 对得到的结果进行断言测试，以确定其符合预期。
+* 当使用 `cargo new --lib` 创建新的库项目时，**Rust 会默认生成一个测试 mod**，可以用来存放测试相关代码；
+* `cargo test` 会运行所有被标记为 `#[test]` 的函数；
+* 默认情况下，**所有的测试函数会通过线程并行执行**。
+
+```rust
+mod lib {
+    use std::fmt;
+    #[derive(Debug)]
+    pub struct Rectangle {
+        width: u32,
+        height: u32,
+    }
+    impl Rectangle {
+        pub fn can_hold(&self, other: &Rectangle) -> bool {
+            self.width > other.width && self.height > other.height
+        }
+        pub fn new(width: u32, height: u32) -> Rectangle {
+            Rectangle { width, height }
+        }
+    }
+    impl fmt::Display for Rectangle {
+        fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+            write!(f, "({}, {})", self.width, self.height)
+        }
+    }
+}
+
+// export to external env.
+pub use lib::Rectangle; 
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]  // indicate the next function is for test.
+    fn it_works() {
+        assert_eq!(2 + 2, 4);
+        assert_ne!(2 + 3, 4);
+    }
+    #[should_panic(expected = "it panics!")]  // makes a test pass if the code inside the function panics.
+    #[test]
+    fn it_panics() {
+        panic!("it panics!");
+    }
+    #[test]
+    fn larger_can_hold_smaller() {
+        let larger = Rectangle::new(8, 7);
+        let smaller = Rectangle::new(5, 1);
+        // with custom failure messages.
+        assert!(larger.can_hold(&smaller), "{}-{}", larger, smaller);
+    }
+    #[test]
+    fn with_result() -> Result<(), String> {  // we can use error-propagation way(?) here.
+        if 2 + 2 == 4 {
+            Ok(())  // test passed.
+        } else {
+            Err(String::from("two plus two does not equal four!"))  // test failed.
+        }
+    }
+}
+```
+
+31. （Page：241）**控制测试的运行**：
+
+* 设置可以使用的**测试线程数量**：`cargo test -- --test-threads=<num>`；
+* 默认情况下，**在成功的测试 case 中输出的内容（*printed-value*）不会显示在控制台中**，可以使用命令 `cargo test -- --show-output` 让 Rust 将该内容打印；
+* 执行**单个**测试函数：`cargo test <full_function_name>`；
+* 执行**多个**测试函数（模糊匹配）：`cargo test <partial_function_name/partial_mod_name>`；
+* 默认忽略执行某些测试函数：使用 `#[ignore]` 属性。若想同时执行所有这些被默认忽略的测试函数，可以通过 `cargo test -- --ignored`（可以添加函数名来分别执行）。
+
+```rust
+#[test]
+#[ignore]
+fn expensive_test() {}
+```
+
+32. （Page：248）测试体系：
+
+\- ***单元测试***：
+
+* 小且专注；
+* 每次单独测试一个模块，并且**可以测试私有接口**。
+* 一般**在每个源代码文件内部直接编写**，测试函数放置于 `mode test {}` 模块内部。该模块带有属性 `#[cfg(test)]` 用来告知 Rust 编译器仅在执行测试时运行该模块中的代码，并且在编译生成二进制文件时，忽略测试代码。***cfg* 表示 “configuration”**。
+
+\- ***集成测试***：
+
+* 只有 Library Crates 可以使用；
+* 独立于库代码；
+* 使用库暴露出的公有接口；
+* 测试时可能跨越多个模块；
+* 测试脚本需要放置于与 src 同级的 “tests” 文件夹内，**每个脚本文件会被编译成独立的 crate**；
+* 仅执行集成测试：`cargo test --test integration_test <partial_function_name>`；
+
+```rust
+// a case of integration test file.
+use my_test_lib::*;
+
+#[test]
+fn larger_can_hold_smaller() {
+    let larger = Rectangle::new(8, 7);
+    let smaller = Rectangle::new(5, 1);
+    // with custom failure messages.
+    assert!(larger.can_hold(&smaller), "{}-{}", larger, smaller);
+}
+```
+
+* 集成测试需要的**公共代码需要放到特定的 *tests/common/mod.rs* 文件中**，使用时通过 `mod` 将该模块内容引入所在测试脚本文件。
+
+```rust
+mod common;
+// ...
 ```
