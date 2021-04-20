@@ -586,8 +586,8 @@ impl ImportantExcerpt {
 
 * Rust 编译器默认情况下会使用以下三个规则（*lifetime-elision-rules*）来找出没有显式注释时引用的 *lifetime*。第一个规则应用于 *input-lifetime*（方法/函数**入参**），第二三个规则应用于 *output-lifetime*（方法/函数**返回值**）：
   * **第一条**：作为引用的每个参数都有自己的 *lifetime* 参数；
-  * **第二条**：如果仅存在一个输入参数的 *lifetime*，则将该 *lifetime* 分配给所有输出参数；
-  * **第三条**：如果有多个输入参数的 *lifetime*，但是其中一个是 `&self` 或 `&mut self`。会将 `self` 的 *lifetime* 分配给所有输出参数。
+  * **第二条**：如果仅存在一个输入参数的 *lifetime*，则将该其分配给所有输出参数；
+  * **第三条**：如果有多个输入参数，但是其中一个是 `&self` 或 `&mut self`。会将 `self` 的 *lifetime* 分配给所有输出参数。
 
 ```rust
 // we don't need to specify the lifetime for each parameter here explicitly due to the above rules.

@@ -418,7 +418,7 @@
 <li>原始指针：<code>*const T</code> 与 <code>*mut T</code>；<ul>
 <li>忽略“借用规则”，允许在一个位置同时拥有可变与不可变指针，或拥有多个可变指针；</li>
 <li>不保证会指向有效的内存；</li>
-<li>值可以为 <em>null</em>；</li>
+<li>值可以为 <em>null*（由标准库的包装类 *std::ptr::null()</em> 提供）；</li>
 <li>不会实现任何自动清理（比如 <code>Box&lt;T&gt;</code>）。</li>
 </ul>
 </li>
@@ -857,10 +857,15 @@
 </ol>
 <ul>
 <li><code>Debug</code>：可以在格式化字符串中使用调试格式 “<em>{:?}</em>”，以检查值的具体结构；</li>
-<li><code>PartialEq</code>：可以使类型实例进行相等性比较（<em>==*、</em>!=*）；</li>
-<li><code>Eq</code>：没有方法，其目的是表明每个被标记类型的值都等于其自身；</li>
-<li><code>PartialOrd</code>：可以使类型实例之间进行比较，以便于进行排序（*&lt;<em>、</em>&gt;=*）；</li>
-<li><code>Ord</code>：用于告知对于被标记的类型的任何两个值，将存在有效的顺序；</li>
+<li><code>PartialEq</code>：可以使类型实例进行相等性比较（<code>==</code>、<code>!=</code>）；</li>
+<li><code>Eq</code>：没有实现。其目的是用于表明每个被标记类型的值都等于其自身，既满足 “<em>equivalence relations</em>（自反性、对称性、传递性）”。而如“浮点数（如 NaN）”则不满足该关系，因此浮点数需要实现 PartialEq 而非 Eq；</li>
+<li><code>PartialOrd</code>（依赖 PartialEq）：可以使类型实例之间进行比较，以便于进行排序（<code>&lt;</code>、<code>&gt;=</code>）；比较的结果不一定存在（可能为 <em>None</em>）。</li>
+<li><code>Ord</code>（依赖 PartialOrd 与 Eq）：用于告知对于被标记类型的任何两个值，一定存在有效的<strong>全序</strong>（<em>total order</em>，即任何一对元素都是可相互比较的）。即对于集合 X 中的所有元素 a、b 和 c，存在：<ul>
+<li><strong>反对称性</strong>：若 a &lt;= b 且 b &lt;= a，则 a = b；</li>
+<li><strong>传递性</strong>：若 a &lt;= b 且 b &lt;= c，则 a &lt;= c；</li>
+<li><strong>完全性</strong>（蕴含“自反性”，如 “a &lt;= a”）：a &lt;= b 或 b &lt;= a。</li>
+</ul>
+</li>
 <li><code>Clone</code>：允许显式创建值的深层副本，并且复制过程可能涉及运行任意代码和复制堆数据；</li>
 <li><code>Copy</code>：允许仅复制存储在堆栈中的位来复制值（如指针）；</li>
 <li><code>Hash</code>：允许获取任意大小类型的实例，并使用哈希函数将该实例映射到固定大小的值；</li>
@@ -874,4 +879,4 @@
 <li><em>rustfix</em>：自动修复编译器警告。运行 <code>cargo fix</code> 以进行自动修复；</li>
 <li><em>clippy</em>：包含一系列 Linter，可以分析代码，以便捕获常见错误并改进 Rust 代码。运行 <code>cargo clippy</code> 以进行自动优化。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-04-08T15:48:43.000Z"> 2021 / 04 / 13, 00:47:54</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/04/01/《The-Rust-Programming-Language》读书笔记（第-12-16-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/04/15/TLPI-File-I-O/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-04-08T15:48:43.000Z"> 2021 / 04 / 18, 16:06:05</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/04/01/《The-Rust-Programming-Language》读书笔记（第-12-16-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/04/13/《The-Rustonomicon》读书笔记/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
