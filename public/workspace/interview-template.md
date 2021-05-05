@@ -1,6 +1,24 @@
-> 如果你来到了这里，以下内容仅供参考。不定期更新，总结于各种看过的书。
+> 如果你来到了这里，以下内容仅供参考。不定期更新，总结于个人经验和各种看过的书。
 
-### 前端基础：
+
+## 基本原则
+
+* **FTE**：
+  * *能力需求*：顺畅和谐的沟通、扎实的基本功、成熟完备的工程经验和能力、熟练的英语语言能力（视面试职级而定）；
+  * *面试重点*：侧重基本工程能力、算法，以及过往项目的实践情况；
+  * *角色职责*：企业核心人员，**负责长期技术规划和业务推进**。
+* **Vendor**：
+  * *能力需求*：顺畅和谐的沟通、基本的工程经验和能力；
+  * *面试重点*：侧重近期的工程经验，以及直接与项目相关的技能（技术点）是否匹配；
+  * *角色职责*：快速实施人员，**负责短期项目的低成本快速推进**。
+* **Intern**：
+  * *能力需求*：顺畅和谐的沟通、基本的知识储备（CS + 工程）、不错的学习能力；
+  * *面试重点*：侧重过往项目的实践情况、算法，以及个人未来规划；
+  * *角色职责*：公司人才储备，**负责独立项目的前期调研**（包括项目优化方案、POC 等）。
+
+## 技术问题
+
+### 前端基础
 
 * （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#93">答</a>）HTML \<script\> 标签上使用 async 和 defer 属性的区别？
 * （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#126">答</a>）`var` 和 `let` 的区别？
@@ -57,7 +75,7 @@ console.log(7)
 * （<a target="_blank" href="https://yhspy.com/2017/04/24/BigPipe-%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/">答</a>）BigPipe 的基本原理？
 
 
-### React:
+### React
 
 * （<a target="_blank" href="https://yhspy.com/2019/04/26/React-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">答</a>）什么是 HOC 高阶组件？和 Render Props 的区别？
 * React Fiber 的基本原理？
@@ -95,7 +113,7 @@ function handleClick() {
 * [Redux] 基本实现原理？发布-订阅。
 * [Redux] 何为“纯函数”？为什么 reducer 要使用纯函数？
 
-### HTTP:
+### HTTP
 
 * （<a target="_blank" href="https://yhspy.com/2017/03/09/HTTP-%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">答</a>）TCP 连接三次握手的流程？为什么断开连接需要四次握手？流程是什么？
 * （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#51">答</a>）PUT 和 POST 方法在语义上的差别？
@@ -112,7 +130,7 @@ function handleClick() {
 * HTTPS 能够防止中间人攻击吗？
 * 相比 HTTP1.1，HTTP2 有哪些优化？
 
-### 网站架构：
+### 网站架构
 
 * （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#99">答</a>）常见的 LB 模式？LB 算法？
 * （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#78">答</a>）CAP 原理是什么？一般会怎样取舍？
@@ -121,13 +139,13 @@ function handleClick() {
 * （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#39">答</a>）性能测试、负载测试、压力测试的侧重点？
 * （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#71">答</a>）集群的 Session 管理一般有哪几种方式？
 
-### CSS:
+### CSS
 
 * 什么是 CSS 盒模型？
 * 单位 em 与 rem 区别？
 * *position: relative* 属性的定位原点是？
 
-### Git：
+### Git
 
 * *git rebase* 和 *git merge* 的区别？
 * （<a target="_blank" href="https://yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#44">答</a>）*git fetch* 和 *git pull* 的区别？
@@ -137,12 +155,12 @@ function handleClick() {
 * 拣选提交使用的命令？*git cherry-pick*。
 * （<a target="_blank" href="https://yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/#415">答</a>）Git 分支、引用的本质？
 
-### 其他：
+### 其他
 
 * 平日的学习方式？
 * 对已有项目的讨论。
 
-### 口语：
+### 口语
 
 1. How do you improve your personal skills in your spare time?
 2. How is your life in the last year? What did you do?

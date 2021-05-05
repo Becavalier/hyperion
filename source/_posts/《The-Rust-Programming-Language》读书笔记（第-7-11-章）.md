@@ -542,6 +542,9 @@ impl<T: Display> ToString for T {}
 
 ![](1.png)
 
+* 两个常用形式：
+  * `T: 'a`: All references in `T` must outlive lifetime `'a`；
+  * `T: Trait + 'a`: Type `T` must implement trait `Trait` and all references in `T` must outlive `'a`。
 * Rust 中的每一个引用都有一个对应的 *lifetime*，Rust 编译器可以通过 *lifetime* 之间的相互关系来保证程序的内存安全（如避免“悬挂指针”）；
 * **当从函数中返回引用时，返回值的 *lifetime* 参数需要与输入参数中的至少一个相匹配**。
 
