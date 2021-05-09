@@ -228,10 +228,11 @@ pub struct Rect { x: f32, y: f32, width: f32, height: f32 }
 ### Chapter 3 - Ownership and Lifetimes
 
 9. （Page：21）**当变量或指针在同一时间指向了同一块发生重叠的内存区域时**，即可称它们发生了 *alias*。由于 Rust 的所有权机制可以避免这种情况的发生，因此编译器也可以进行相应的优化：
-  * 对于某些值，当其没有被指针引用时，可以被存放到寄存器中；
-  * 通过证明在上一次读操作后，内存没有被改变，来减少一些无用的内存读操作（多次读合并为一次）；
-  * 通过证明某块内存在下一次写入之前永远不会被读取，来消除重复无用的内存写操作（多次写合并为一次）；
-  * 对内存的读写操作进行重排序，前提是它们彼此并不相互依赖。
+
+* 对于某些值，当其没有被指针引用时，可以被存放到寄存器中；
+* 通过证明在上一次读操作后，内存没有被改变，来减少一些无用的内存读操作（多次读合并为一次）；
+* 通过证明某块内存在下一次写入之前永远不会被读取，来消除重复无用的内存写操作（多次写合并为一次）；
+* 对内存的读写操作进行重排序，前提是它们彼此并不相互依赖。
 
 \- ***优化前***：
 
@@ -508,7 +509,7 @@ struct Vec<T> {
   * 强制转换 `&` 到 `&mut` 是 UB；
   * 强制数字值到 `bool` 是 UB；
   * 强制转换到一个引用但是没有显式标注 lifetime 是 UB；
-  * 不同复合类型之间的转换需要保证两者的内存布局是相同的（<i>repr(C)</i> 或 <i>repr(transparent)</i>）；
+  * 不同复合类型之间的转换需要保证两者的内存布局是相同的（<i>repr(C)</i> 或 <i>repr(transparent)</i>）。
 
 ### Chapter 5 - Working With Uninitialized Memory
 
@@ -542,15 +543,18 @@ fn main() {
 ```rust
 let x: i32;
 loop {
-    // Rust doesn't understand that this branch will be taken unconditionally, // because it relies on actual values.
+    // Rust doesn't understand that this branch will be taken unconditionally, -
+    // because it relies on actual values.
     if true {
-        // but it does understand that it will only be taken once because // we unconditionally break out of it. Therefore `x` doesn't
+        // but it does understand that it will only be taken once because -
+        // we unconditionally break out of it. Therefore `x` doesn't -
         // need to be marked as mutable.
         x = 0;
         break; 
     }
 }
-// it also knows that it's impossible to get here without reaching the break. // And therefore that `x` must be initialized here!
+// it also knows that it's impossible to get here without reaching the break. 
+// And therefore that `x` must be initialized here!
 println!("{}", x);
 ```
 

@@ -1,13 +1,13 @@
 ---
-title: WebAssembly Weekly 集合整理（2020 / 08）
-intro: 整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
+title: WebAssembly Weekly 集合整理（2021 / 05）
+intro: 整理了一下 WebAssembly Weekly 上从 2017 年至 2021 年 5 月这段时间出现的，有关 Wasm 的一些技术实践和技术产品。
 comments: true
 date: 2020-08-25 10:21:49
 tags:
 - WebAssembly
 ---
 
-整理一下 WebAssembly Weekly 上从 2017 年至 2020 年 8 月这段期间出现的，关于 Wasm 的一些技术实践或者技术产品。
+整理了一下 WebAssembly Weekly 上从 2017 年至 2021 年 5 月这段时间出现的，有关 Wasm 的一些技术实践和技术产品。
 
 #### 新兴语言（Emerging Language）
 
@@ -29,7 +29,7 @@ export function increment(): i32 {
 
 * **[Astro](https://github.com/astrolang/astro)** - 一个用于 Wasm 的多范式语言；
 * **[Grain](https://github.com/grain-lang/grain)** - 一个可以被编译到 Wasm 的语言，内部借助了 Binaryen；
-* **[Lys](https://github.com/lys-lang/lys)** - 一个可以被编译到 Wasm 的语言；
+* **[Lys](https://github.com/lys-lang/lys)** - 一个可以被编译到 Wasm 的语言。
 
 #### 多媒体处理（Multimedia Processing）
 
@@ -42,6 +42,9 @@ export function increment(): i32 {
 * **[Photon](https://github.com/silvia-odwyer/photon)** - 可用于 Web 应用的在线图像处理库；
 * **[ogv.js](https://github.com/brion/ogv.js)** - JavaScript 媒体播放器（Ogg / Vorbis / Theora / Opus / WebM）；
 * **[WXInlinePlayer](https://github.com/qiaozi-tech/WXInlinePlayer)** - 高效的 FLV 流媒体解码器（H.264/H.265）；
+* **[MakePad](https://github.com/makepad/makepad)** - 基于 Wasm 的在线 Shader 编译器；
+* **[ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm)** - JavaScript 版本的 FFmpeg。
+
 
 
 #### 仿真器（Emulator）
@@ -53,7 +56,7 @@ export function increment(): i32 {
 * **[gomeboycolor](https://github.com/djhworld/gomeboycolor-wasm)** - Game Boy Color 仿真器；
 * **[chip8-wasm](https://github.com/shlomnissan/chip8-wasm)** - Chip-8 仿真器；
 * **[Ruffle](https://github.com/ruffle-rs/ruffle)** - Flash Player 仿真器；
-* **[nes-rust](https://github.com/takahirox/nes-rust)** - NES 仿真器；
+* **[nes-rust](https://github.com/takahirox/nes-rust)** - NES 仿真器。
 
 #### Web 前端框架（Web Frontend）
 
@@ -67,6 +70,7 @@ export function increment(): i32 {
 * **[Prism](https://github.com/prism-rb/prism)** - 使用 Ruby 构建 Web 应用的前端框架；
 * **[asm-dom](https://github.com/mbasso/asm-dom)** - 基于 C++ 构建的 V-DOM，可用于构建 Web 应用；
 * **[go-vdom-wasm](https://github.com/mfrachet/go-vdom-wasm)** - 基于 Go 构建的 V-DOM，可用于构建 Web 应用；
+* **[Blazor](https://github.com/dotnet/aspnetcore)** - 基于 C# 的 Wasm Web UI 框架。
 
 
 #### 库（Library）
@@ -77,12 +81,15 @@ export function increment(): i32 {
 * **[webm-wasm](https://github.com/GoogleChromeLabs/webm-wasm)** - 可以使用 Wasm 和 JavaScript 生成 webm 视频的库；
 * **[argon2-browser](https://github.com/antelle/argon2-browser)** - Wasm 移植版的密码哈希函数库 Argon2；
 * **[tensorflow.js](https://blog.tensorflow.org/2020/03/introducing-webassembly-backend-for-tensorflow-js.html)** - Tensorflow H5 版本；
+* **[hash-wasm](https://github.com/Daninet/hash-wasm)** - 基于 Wasm 的哈希高性能哈希函数；
+* **[wasm-jseval](https://github.com/maple3142/wasm-jseval)** - 基于 Wasm / Duktape / QuickJS 构建的安全的 JavaScript Eval 库。
+
 
 
 #### 物联网（IOT）
 
 * **[Nebulet](https://github.com/nebulet/nebulet)** - 一个可以在 Ring0 中运行的，基于 Wasm 实现的“用户模式”微内核；
-* **[wasmachine](https://github.com/piranna/wasmachine)** - 基于 FPGA 实现的 Wasm 规范；
+* **[wasmachine](https://github.com/piranna/wasmachine)** - 基于 FPGA 实现的 Wasm 规范。
 
 #### 编译器（Compiler）
 
@@ -105,6 +112,7 @@ export function increment(): i32 {
 * **[Asterius](https://github.com/tweag/asterius)** - 一个 Haskell 到 Wasm 编译器；
 * **[AssemblyScript](https://github.com/AssemblyScript/assemblyscript)** - 一个 TypeScript 到 Wasm 编译器；
 * **[Asmble](https://github.com/cretz/asmble)** - 一个 Wasm 到 JVM 字节码编译器；
+* **[CobWeb](https://github.com/cloudflare/cobweb)** - 一个 COBOL 到 Wasm 编译器。
 
 
 #### 虚拟机/运行时（Virtual Machine / Runtime）
@@ -123,6 +131,8 @@ export function increment(): i32 {
 * **[warpy](https://github.com/kanaka/warpy)** -  基于 Python 编写的 Wasm 解释器；
 * **[pywasm](https://github.com/mohanson/pywasm)** -  基于 Python 编写的 Wasm 解释器；
 * **[SSVM](https://github.com/second-state/SSVM)** -  专注于 AI、区块链应用的 Wasm 虚拟机；
+* **[Lunatic](https://github.com/lunatic-solutions/lunatic)** -  受 Erlang 语言启发的 Wasm 虚拟机。
+
 
 
 #### 云（Cloud）
@@ -131,6 +141,8 @@ export function increment(): i32 {
 * **[Krustlet](https://github.com/deislabs/krustlet)** - 支持 Wasm 的 Kubernetes Kubelet；
 * **[embly](https://github.com/embly/embly)** - 一个基于 Wasm 的 Serverless Web 应用框架；
 * **[olin](https://github.com/Xe/olin)** - Wasm 云代码分析工具（跟踪诸如使用了多少指令，进行了多少次系统调用以及使用了多少内存等情况）；
+* **[atmo](https://github.com/suborbital/atmo)** - 可用于编写基于函数（Runnable）的云原生应用。这些 Runnable 最后会被编译为 Wasm 格式来运行；
+* **[WAGI](https://github.com/deislabs/wagi)** - 使用 Wasm 格式代码作为 HTTP 请求的处理函数。
 
 
 #### 游戏引擎（Game Engine）
@@ -141,7 +153,7 @@ export function increment(): i32 {
 * **[Oryol](https://github.com/floooh/oryol)** - 一个小型可移植的 C++ 3D 开发框架；
 * **[ammo.js](https://github.com/kripken/ammo.js)** - Bullet 物理引擎的 Wasm 移植版；
 * **[Unity](https://blogs.unity3d.com/2018/08/15/webassembly-is-here/)** - Unity；
-* **[Unreal Engine](https://docs.unrealengine.com/en-US/Platforms/HTML5/GettingStarted/index.html)** - Unreal Engine
+* **[Unreal Engine](https://docs.unrealengine.com/en-US/Platforms/HTML5/GettingStarted/index.html)** - Unreal Engine。
 
 #### 工具（Tool）
 
@@ -149,11 +161,11 @@ export function increment(): i32 {
 * **[inNative](https://github.com/innative-sdk/innative)** - 一个用于 Wasm 的 Native 嵌入层；
 * **[Wasienv](https://github.com/wasienv/wasienv)** - 用于 C/C++ 的 WASI 开发工具；
 * **[WABT](https://github.com/WebAssembly/wabt)** - Wasm 二进制工具集；
-* **[Binaryen](https://github.com/WebAssembly/binaryen)** - Wasm 编译器基础设施和工具链；
+* **[Binaryen](https://github.com/WebAssembly/binaryen)** - Wasm 编译器基础设施和工具链。
 
 #### 教学（Education）
 
-* **[WebAssembly Code Explorer](https://wasdk.github.io/wasmcodeexplorer/)** - 以直观的方式探索 Wasm 二进制模块的字节组成方式；
+* **[WebAssembly Code Explorer](https://wasdk.github.io/wasmcodeexplorer/)** - 以直观的方式探索 Wasm 二进制模块的字节组成方式。
 
 
 #### 性能测试（Benchmark）
@@ -161,7 +173,7 @@ export function increment(): i32 {
 * **[wasm-raytracer](https://github.com/mtharrison/wasm-raytracer)** - 自定义用于 Wasm 的光线追踪器测试集；
 * **[WASM-vs-JS-Pitch-detector](https://github.com/bojan88/WASM-vs-JS-Pitch-detector)** - 基于 McLeod 音高检测算法的测试；
 * **[PSPDFKit](https://pspdfkit.com/blog/2018/a-real-world-webassembly-benchmark)** - 基于 PSPDFKit 的 Wasm 性能测试；
-* **[WebAssembly-benchmark](https://github.com/takahirox/WebAssembly-benchmark)** - 简单的 JavaScript 与 Wasm 性能对比测试集；
+* **[WebAssembly-benchmark](https://github.com/takahirox/WebAssembly-benchmark)** - 简单的 JavaScript 与 Wasm 性能对比测试集。
 
 
 #### 其他（Others）
@@ -172,3 +184,5 @@ export function increment(): i32 {
 * **[redshirt](https://github.com/tomaka/redshirt)** - 基于 Wasm 的操作系统；
 * **[Stork](https://github.com/jameslittle230/stork)** - 用于静态页面的内容搜索工具；
 * **[tinysearch](https://github.com/tinysearch/tinysearch)** - 用于静态页面全文本搜索引擎；
+* **[zellij](https://github.com/zellij-org/zellij)** - Rust 编写的命令行（其插件系统支持 Wasm 多语言）；
+* **[wasi-fs-access](https://github.com/GoogleChromeLabs/wasi-fs-access)** - 一个运行在浏览器中的命令行应用。借助于 WASI、Wasm 以及 Asyncify 构建。基于 File System Access 标准，它可以访问并修改用户的本地文件。
