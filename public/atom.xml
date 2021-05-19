@@ -6,7 +6,7 @@
   <link href="https://www.yhspy.com/atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-05-19T07:33:38.619Z</updated>
+  <updated>2021-05-19T08:04:35.698Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.yhspy.com/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/"/>
     <id>https://www.yhspy.com/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/</id>
     <published>2021-05-10T00:38:26.000Z</published>
-    <updated>2021-05-19T07:33:38.619Z</updated>
+    <updated>2021-05-19T08:04:35.698Z</updated>
     
     
     <summary type="html">本文主要介绍了基础编译技术中的 JIT Compilation 技术，以及如何使用 C++ 快速构建一个简单的 JIT Compiler。</summary>

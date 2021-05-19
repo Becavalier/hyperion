@@ -991,7 +991,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/10/JIT Compilation：理解与实现/index.html",
-    "revision": "a666bc383c0fe7f3f8fa92b2ddcac9e0"
+    "revision": "b9db167e5cf2ad20066013087a769b69"
   },
   {
     "url": "app-pdf-viewer/build/pdf.js",
@@ -1483,103 +1483,103 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/10/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/11/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/12/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/13/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/14/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/15/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/16/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/17/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/18/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/19/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/2/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/20/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/21/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/22/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/23/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/24/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/25/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/3/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/4/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/5/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/6/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/7/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/8/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "page/9/index.html",
-    "revision": "e2673e78bbf63528f24093d9697d466c"
+    "revision": "28270ff7118f16eb3ce405e61561bf21"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1607,7 +1607,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "774e3b7865f27a51cb9dcfd2b819de9e"
+    "revision": "b857b5b991531fe4459088aec50db8d2"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1911,7 +1911,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "dbad0ac03e6ccc0f64c215bd7e630ef2"
+    "revision": "ea6a29e65aba1e7854c1fa0231112f10"
   },
   {
     "url": "tags/Java/index.html",

@@ -257,7 +257,9 @@ void exec() {
 
 > On-stack-replacement (OSR) describes the ability to replace currently executing code with a different version, either a more optimized one (tiered execution) or a more general one (deoptimization to undo speculative optimization).
 
-实际上，对于 OSR 我们可以将其简单理解为“**从一个执行环境到另一个执行环境的转换过程**”。比如在我们的实例中，`VM::exec` 函数在执行时，它会将执行环境从 C++ 代码转移至动态生成的机器码，最后再以同样的方式转移回来。而这样的执行环境转换便可被视为 OSR 的过程。
+实际上，对于 OSR 我们可以将其简单理解为“**从一个执行环境到另一个执行环境的转换过程**”。比如在我们的实例中，`VM::exec` 函数在执行时，它会将执行环境从 C++ 代码转移至动态生成的机器码，最后再以同样的方式转移回来。而这样的执行环境转换便可被视为 OSR 的过程。下图是对上述 OSR 过程的一个形象展示。
+
+![](1.png)
 
 ### Benchmark
 
