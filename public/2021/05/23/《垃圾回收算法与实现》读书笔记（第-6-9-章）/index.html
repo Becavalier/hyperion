@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《垃圾回收算法与实现》读书笔记（第 6-9 章） | 曜彤.手记</title><meta name="description" content="书接上回，第 6-9 章的笔记。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/notes" alt="记录" title="记录" itemprop="url">记录</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938-2号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="9fca260cf946e2c82cf2f5c5b2694ad8" class="full"><h1 itemprop="headline" class="post-heading">《垃圾回收算法与实现》读书笔记（第 6-9 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 23, 22:17:23</time></span><span class="page-tag-anchor"><a href="/tags/GC" itemprop="url">#GC</a>&nbsp;&nbsp;</span></div><br><p>书接上回，第 6-9 章的笔记。</p>
+<h3 id="Chapter-6：保守式-GC（Conservative-GC）"><a href="#Chapter-6：保守式-GC（Conservative-GC）" class="headerlink" title="Chapter 6：保守式 GC（Conservative GC）"></a>Chapter 6：保守式 GC（Conservative GC）</h3><p>为了实现某一个 GC 算法，需要首先选择 GC 的种类。这里的种类指的是 “<em>保守式 GC</em>” 和 “<em>准确式 GC</em>”。其中，“保守式 GC” 指的是 “<strong>不能识别指针和非指针的 GC</strong>”。</p>
+<ol start="29">
+<li>（Page：120）不明确的根（<em>root</em>）：</li>
+</ol>
+<ul>
+<li>无法区分存储在下述位置的值是否为指针：<ul>
+<li>寄存器；</li>
+<li>调用栈；</li>
+<li>全局变量空间（.data）。</li>
+</ul>
+</li>
+<li>因此保守式 GC 仅遵循 GC 的基本原则 —— “<strong>不废弃活动对象</strong>”。对于非活动对象，在某些情况下可能不会被回收。</li>
+</ul>
+<ol start="30">
+<li>（Page：120）保守式 GC 在检查不明确的根时进行的基本项目：</li>
+</ol>
+<ul>
+<li>是不是被正确对齐的值？（如在 64 位 CPU 的情况下，为 8 的倍数）；</li>
+<li>是不是指着堆内？</li>
+<li>是不是指着堆内某个对象的开头？</li>
+</ul>
+<ol start="31">
+<li>（Page：122）保守式 GC 的优缺点：</li>
+</ol>
+<ul>
+<li><strong>优点</strong>：<em>语言处理程序不依赖于 GC</em>。</li>
+<li><strong>缺点</strong>：<ul>
+<li><em>识别指针和非指针需要付出成本</em>；</li>
+<li><em>错误识别指针会压迫堆</em>；</li>
+<li><em>能够使用的 GC 算法有限</em>（比如无法使用 GC 复制算法，因此这些算法会将根的值重写到新空间，可能会把非指针重写）；</li>
+</ul>
+</li>
+</ul>
+<ol start="32">
+<li>（Page：123）<strong>准确式 GC</strong>：能正确识别指针和非指针的 GC。</li>
+</ol>
+<ul>
+<li>实现上<strong>需要语言处理程序的支持</strong>；</li>
+<li>一些创建正确根的方法：<ul>
+<li><strong>打标签</strong>：利用“<em>编译器默认生成对齐地址引用</em>”这一条件，使用地址的低 1 位作为标签（<strong>对整数打标签，这样 LSB 位为 0 的数值便一定为指针</strong>）。</li>
+<li><strong>不把寄存器和栈等当做根</strong>：在处理程序的专门位置创建根。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：堆里只会留下活动对象；</li>
+<li><strong>缺点</strong>：语言处理程序必须对 GC 进行一些支援。</li>
+</ul>
+<ol start="33">
+<li>（Page：125）<strong>间接引用</strong>：可用于解决保守式 GC 无法使用“复制算法”的问题。</li>
+</ol>
+<p><img src="1.png" alt=""></p>
+<ul>
+<li><strong>思路</strong>：经由“句柄”来间接地处理对象。在移动引用的对象时，只需要修改句柄里的指针就可以了，而无需修改原引用的值。</li>
+<li><strong>缺点</strong>：因为必须将所有对象都间接引用，因此会拉低访问对象内数据的速度，这会关系到整个语言处理程序的速度。</li>
+</ul>
+<ol start="34">
+<li>（Page：127）<strong>MostlyCopyingGC</strong>：保守式 GC 复制算法，可在不明确的根的环境中运行 GC 复制算法。</li>
+</ol>
+<ul>
+<li><strong>思路</strong>：即把那些不明确的根指向的对象以外的对象都复制的 GC 算法。MostlyCopyingGC 会抛开那些不能移动的对象，而将其他“大部分”的对象都进行复制。</li>
+<li><strong>前提条件</strong>：<ul>
+<li>根是不明确的根；</li>
+<li>没有不明确的数据结构（GC 能够明确判断对象里的域是指针还是非指针）；</li>
+<li>对象大小随意。</li>
+</ul>
+</li>
+<li><strong>实现步骤</strong>：（略）；</li>
+<li><strong>实现细节</strong>：（略）；</li>
+<li><strong>优点</strong>：可以在保守式 GC 中使用 GC 复制算法；</li>
+<li><strong>缺点</strong>：在包含有从根引用的对象的页内，所有的对象都会被看成活动对象。一定程度上降低了内存的使用率。</li>
+</ul>
+<ol start="35">
+<li>（Page：139）<strong>黑名单</strong>：可以改善“指针错误识别”的问题。</li>
+</ol>
+<ul>
+<li>“黑名单”是一种创建“需要注意的地址的名单”的方法。名单中记录的是“<strong>不明确的根内的非指针，其指向的是有可能被分配对象的地址</strong>（比如堆内未使用对象的地址）”；</li>
+<li>在将对象分配到需要注意的地址时，所分配对象有着如下限制条件：<ul>
+<li>小对象；</li>
+<li>没有子对象的对象。</li>
+</ul>
+</li>
+<li>黑名单在“标记”阶段创建。</li>
+</ul>
+<h3 id="Chapter-7：分代垃圾回收（Generational-GC）"><a href="#Chapter-7：分代垃圾回收（Generational-GC）" class="headerlink" title="Chapter 7：分代垃圾回收（Generational GC）"></a>Chapter 7：分代垃圾回收（Generational GC）</h3><p>即在对象中引入了“<strong>年龄</strong>”的概念，通过优先回收容易成为垃圾的对象，提高垃圾回收的效率。这基于一个总结出的经验：“<strong>大部分的对象在生成后马上就变成了垃圾，很少有对象能活得很久</strong>。”</p>
+<ol start="36">
+<li>（Page：143）<strong>分代</strong>：</li>
+</ol>
+<ul>
+<li>刚生成的对象称为“<strong>新生代对象</strong>”，到达一定年龄的对象则称为“<strong>老年代对象</strong>”。对新对象执行的 GC 称为“新生代 GC”（<em>minor GC</em>），对老对象执行的 GC 称为“老生代 GC”（<em>major GC</em>）。新生代对象上升为老年代对象的情况称为“<strong>晋升</strong>”；</li>
+<li>新生代 GC 执行频率较高，老生代 GC 执行频率较低。</li>
+</ul>
+<ol start="37">
+<li>（Page：143）<strong>Ungar 的分代垃圾回收</strong>：</li>
+</ol>
+<p>- <strong><em>堆结构</em></strong>：</p>
+<p><img src="2.png" alt=""></p>
+<ul>
+<li>论文中，生成空间、幸存空间以及老年代空间的大小分别设为了 140K 字节、28K 字节和 940K 字节。</li>
+</ul>
+<p>- <strong><em>实现细节</em></strong>：</p>
+<ul>
+<li>对象头的结构：<ul>
+<li>对象的年龄（age）；</li>
+<li>已经复制完毕的标志（forwarded）；</li>
+<li>已经向记录集记录完毕的标志（remembered）；</li>
+<li>对象的种类；</li>
+<li>对象的大小。</li>
+</ul>
+</li>
+<li>生成空间中会分配新对象，<strong>当生成空间满时，新生代 GC 就会启动</strong>，将生成空间中的活动对象复制到幸存空间。2 个幸存空间与 GC 复制算法中的 From 空间、To 空间类似，当执行新生代 GC 时，活动对象就会被复制到另一个幸存空间。而生成空间和 From 幸存空间这两个空间内的活动对象都会被复制到 To 幸存空间中。</li>
+<li>从一定次数的新生代 GC 中存活下来的对象会被到晋升，被复制到老年 代空间去；</li>
+</ul>
+<p><img src="3.png" alt=""></p>
+<ul>
+<li>可能存在从老生代到新生代的引用，这部分引用会被记录在“<strong>记录集</strong>”中。而这部分引用也需要被当作根进行处理（用于搜索新生代的活动对象）；</li>
+<li>利用“<strong>写入屏障</strong>”将老年代对象记录到记录集中。三个条件：<ul>
+<li>发出引用的对象是不是老年代对象；</li>
+<li>指针更新后的引用的目标对象是不是新生代对象；</li>
+<li>发出引用的对象还没有被记录到记录集中。</li>
+</ul>
+</li>
+<li>当通过新生代 GC 得到晋升的对象把老年代空间占满后，便会执行“老生代 GC”。通过 GC 标记-清除算法清除老生代中的非存活对象。</li>
+<li><strong>优点</strong>：可以改善 GC 花费的时间。据实验表明，<strong>分代垃圾回收花费的时间是 GC 复制算法的 1/4</strong>；</li>
+<li><strong>缺点</strong>：对于对象会活得很久的程序来说，会产生以下问题：<ul>
+<li>新生代 GC 所花费的时间增多；</li>
+<li>老年代 GC 频繁运行。</li>
+</ul>
+</li>
+<li><strong>总结</strong>：只有当新生代 GC 带来的速度提升效果大于写入屏障对速度造成的影响时，分代垃圾回收才能够更好地发挥作用。</li>
+</ul>
+<ol start="38">
+<li>（Page：156）<strong>多代垃圾回收</strong>：除了最老的那一代之外，每代都有一个记录集。X 代的记录集只记录来自比 X 老的其他代的引用。综合来看，少设置一些分代能得到更优秀的吞吐量，<strong>据说分为 2 代或者 3 代是最好的</strong>。</li>
+<li>（Page：157）<strong>列车垃圾回收</strong>：（略）。</li>
+</ol>
+<h3 id="Chapter-8：增量式垃圾回收（Incremental-GC）"><a href="#Chapter-8：增量式垃圾回收（Incremental-GC）" class="headerlink" title="Chapter 8：增量式垃圾回收（Incremental GC）"></a>Chapter 8：增量式垃圾回收（Incremental GC）</h3><p>是将 GC 和 mutator 一点点交替运行的手法。</p>
+<ol start="40">
+<li>（Page：168）<strong>增量式 GC 标记-清除算法</strong>：</li>
+</ol>
+<ul>
+<li><strong>基本流程</strong>：<ul>
+<li><strong>根查找阶段</strong>：把能直接从根引用的对象涂成灰色；</li>
+<li><strong>标记阶段</strong>：查找灰色对象，将其子对象也涂成灰色，查找结束后将灰色对象涂成黑色；</li>
+<li><strong>清除阶段</strong>：查找堆，将白色对象连接到空闲链表，将黑色对象变回白色。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：缩短最大暂停时间；</li>
+<li><strong>缺点</strong>：降低了吞吐量（使用了“写入屏障”）。</li>
+</ul>
+<ol start="41">
+<li>（Page：174）Steele 算法 &amp; 汤浅算法：（略）。</li>
+</ol>
+<h3 id="Chapter-9：-RC-Immix-算法"><a href="#Chapter-9：-RC-Immix-算法" class="headerlink" title="Chapter 9： RC Immix 算法"></a>Chapter 9： RC Immix 算法</h3><p>（略）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 24, 13:48:21</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -369,9 +369,10 @@ main
     ul
       padding-inline-start 2em
       list-style none
-      margin 15px auto
+      margin-top 10px
+      margin-bottom 10px
       li
-        margin 10px 0
+        margin 5px 0
         line-height 2.8rem
         &:before
           content "■ "
@@ -399,8 +400,8 @@ main
     // Blockquotes within articles
     blockquote
       box-sizing border-box
-      margin 1.6em 0 1.6em 0
-      padding 0 0 0 1.6em
+      margin .5em 0 .5em 2em
+      padding 0 0 0 1em
       border-left $quote-accent-color .4em solid
       footer
         text-align left
@@ -900,6 +901,23 @@ article
         background none
         border none
         text-decoration underline
+  &.notes-page
+    ul.notes-list
+      padding-inline-start 0
+      > li:before
+        content none
+      div.title
+        cursor pointer
+        padding 10px
+        border solid 1px #ccc
+      div.content
+        background-color #eee
+        display none
+        flex-direction column
+        border-left solid 1px #ccc
+        border-right solid 1px #ccc
+        border-bottom solid 1px #ccc
+        padding 10px 20px
   &.readings-page
     ul.book-list
       li

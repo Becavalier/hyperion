@@ -26,8 +26,11 @@ const { models } = JSON.parse(
     encoding: 'utf8'
   }
 ));
+
 global.hexoMeta = {
-  Post: models.Post, Tag: models.Tag
+  Posts: models.Post, 
+  Tags: models.Tag,
+  Notes: models.Page.filter(i => i.page === 'notes'),
 };
 
 // helmet;

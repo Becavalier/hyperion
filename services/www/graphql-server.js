@@ -16,6 +16,8 @@ const { TOVDValidateToken } = require('./helpers/tovd');
 const escape = require('escape-html');
 require('dayjs/locale/zh-cn'); 
 
+const DEFAULT_INDEX = 0
+
 const md5 = value => crypto.createHash('md5').update(value).digest('hex');
 
 module.exports = app => {
@@ -42,6 +44,7 @@ module.exports = app => {
     type Query {
       postComments(postId: String!): [PostComment]!
       searchPostsByKey(key: String!): [PostSearchResult]!
+      getNoteContentById(id: String!): String!
       searchTagsByKey(key: String!): [TagSearchResult]!
       tovdSignInAccount(credential: TOVDCredential!): HTTPResult!
       tovdSignOutAccount: HTTPResult!
@@ -163,10 +166,14 @@ module.exports = app => {
           publishTime: i.created_at,
         }));;
       },
+      async getNoteContentById(parent, args) {
+        const { id } = args;
+        return global.hexoMeta.Notes.filter(note => note.id = id)[DEFAULT_INDEX].content
+      },
       async searchPostsByKey(parent, args) {
         const key = args.key;
         const reg = new RegExp(`${key}`, 'i');
-        return global.hexoMeta.Post.filter(post => {       
+        return global.hexoMeta.Posts.filter(post => {       
           return reg.test(post.raw) || reg.test(post.title)
         }).map(candidate => {
           const localDate = dayjs(candidate.date).locale('zh-cn').format('YYYY-MM-DD');
@@ -181,7 +188,7 @@ module.exports = app => {
       async searchTagsByKey(parent, args) {
         const key = args.key;
         const reg = new RegExp(`${key}`, 'i');
-        return global.hexoMeta.Tag.filter(tag => {       
+        return global.hexoMeta.Tags.filter(tag => {       
           return reg.test(tag.name)
         }).map(candidate => {
           return {

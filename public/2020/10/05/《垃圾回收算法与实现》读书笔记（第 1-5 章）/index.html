@@ -1,0 +1,416 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《垃圾回收算法与实现》读书笔记（第 1-5 章） | 曜彤.手记</title><meta name="description" content="为了进一步了解 Wasm GC 提案，遂找本书来看看。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/notes" alt="记录" title="记录" itemprop="url">记录</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938-2号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="67b8e299828a841af3cf596de409430d" class="full"><h1 itemprop="headline" class="post-heading">《垃圾回收算法与实现》读书笔记（第 1-5 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-10-05T13:59:48.000Z"> 2020 / 10 / 05, 21:59:48</time></span><span class="page-tag-anchor"><a href="/tags/GC" itemprop="url">#GC</a>&nbsp;&nbsp;</span></div><br><p>为了进一步了解 Wasm GC 提案，遂找本书来看看。</p>
+<p>所有涉及的 GC 算法（并没有全部了解完 :(</p>
+<ul>
+<li><strong>GC 标记-清除</strong>：<ul>
+<li><strong><em>多个空闲链表</em></strong>：可优化遍历空闲链表较慢的问题；</li>
+<li><strong><em>BiBOP 法</em></strong>：可优化“碎片化”问题；</li>
+<li><strong><em>位图标记</em></strong>：解决与 COW 不兼容的问题；</li>
+<li><strong><em>延迟清除法</em></strong>：可用于减小 GC 的最大暂停时间。</li>
+</ul>
+</li>
+<li><strong>引用计数法</strong>：<ul>
+<li><strong><em>延迟引用计数法</em></strong>：减轻了因根引用频繁变化而导致的计数器增减带来的额外负担；</li>
+<li><strong><em>Sticky 引用计数法</em></strong>：减少引用计数器的位宽；</li>
+<li><strong><em>1 位引用计数法</em></strong>：缓存友好，且一定程度上节省内存消耗；</li>
+<li><strong><em>部分标记-清除算法</em></strong>：解决“循环引用”问题。</li>
+</ul>
+</li>
+<li><strong>GC 复制算法</strong>：<ul>
+<li><strong><em>Cheney GC 复制算法</em></strong>：环境产生额外函数调用栈的问题；</li>
+<li><strong><em>近似深度优先搜索方法</em></strong>：缓存友好。可尽量保证处在相同页面上的对象之间是存在引用关系的；</li>
+<li><strong><em>多空间复制算法</em></strong>：有效利用了堆。</li>
+</ul>
+</li>
+<li><strong>GC 标记-压缩</strong>：<ul>
+<li><strong><em>Two-Finger 算法</em></strong>：内存使用效率较 LISP2 稍高；搜索次数只有 2 次，吞吐量稍高；</li>
+<li><strong><em>表格算法</em></strong>：缓存友好；</li>
+<li><strong><em>ImmixGC 算法</em></strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
+</ul>
+</li>
+<li><strong>保守式 GC</strong>：<ul>
+<li><strong><em>间接引用</em></strong>：让保守 GC 可以使用复制 GC 算法；</li>
+<li><strong><em>MostlyCopyingGC</em></strong>：可在不明确的根的环境中使用 GC 复制算法；</li>
+<li><strong><em>黑名单</em></strong>：可以改善“指针错误识别”的问题。</li>
+</ul>
+</li>
+<li><strong>分代垃圾回收</strong>：<ul>
+<li><strong><em>Ungar 分代垃圾回收算法</em></strong>：改善了 GC 花费的时间。分代垃圾回收花费的时间是 GC 复制算法的 1/4；；</li>
+<li><strong><em>多代垃圾回收</em></strong>：进一步改善 GC 花费的时间；</li>
+<li><strong><em>列车垃圾回收</em></strong>：（略）；</li>
+</ul>
+</li>
+<li><strong>增量式垃圾回收</strong>：<ul>
+<li><strong><em>Steele 算法</em></strong>：（略）；</li>
+<li><strong><em>汤浅算法</em></strong>：（略）；</li>
+</ul>
+</li>
+<li><strong>RC Immix 算法</strong>：（略）。</li>
+</ul>
+<h3 id="Chapter-0：序章"><a href="#Chapter-0：序章" class="headerlink" title="Chapter 0：序章"></a>Chapter 0：序章</h3><ol>
+<li>（Page：3）最初的 GC 算法是 John McCarthy（Lisp 之父）在 <strong>1960 年</strong>发布的。</li>
+<li>（Page：4）三种基本的 GC 算法：</li>
+</ol>
+<ul>
+<li>“<strong>标记-清除</strong>”算法；</li>
+<li>“<strong>引用计数</strong>”算法（无法回收“循环引用”）；</li>
+<li>“<strong>GC 复制</strong>“算法。</li>
+</ul>
+<h3 id="Chapter-1：学习-GC-之前"><a href="#Chapter-1：学习-GC-之前" class="headerlink" title="Chapter 1：学习 GC 之前"></a>Chapter 1：学习 GC 之前</h3><ol start="3">
+<li>（Page：12）GC 中的<strong>对象</strong>：即“<strong>通过应用程序利用的数据的集合</strong>”。对象配置在内存空间里，GC 根据情况将配置好的对象进行移动或销毁，是 GC 的基本单位。一个对象一般由以下两部分组成：</li>
+</ol>
+<ul>
+<li><strong>头</strong>（一个）：包含有对象的<strong>大小</strong>和<strong>种类</strong>信息，由 GC 算法进行控制和使用；</li>
+<li><strong>域</strong>（多个）：对象使用者可以直接访问的内存部分（可存放指针与非指针数据）。</li>
+</ul>
+<p><img src="1.png" alt=""></p>
+<ol start="4">
+<li>（Page：17）GC 中的“<strong>根</strong>”：是指向对象的指针的“起点”，可以被 <em>mutator</em> 直接引用（<u>调用栈</u>、<u>寄存器</u>、<u>全局变量空间</u>）。<em>mutator</em> 的本质即“应用程序”，其可进行两种操作 —— “<strong>生成对象</strong>”与“<strong>更新指针</strong>”。</li>
+<li>（Page：19）一些 GC 的评判标准：</li>
+</ol>
+<ul>
+<li><strong>吞吐量</strong>（<em>throughput</em>）：单位时间内的处理能力，即“堆内存大小 / GC 管理内存花费的时间”；</li>
+<li><strong>最大暂停时间</strong>：因执行 GC 而暂停 <em>mutator</em> 的最长时间；</li>
+<li><strong>堆使用效率</strong>：可用的堆空间越大，GC 运行越快；而越想有效地利用有限的堆，GC 花费的时间就越长；</li>
+<li><strong>访问局部性</strong>：把具有引用关系的对象安排在堆中较近的位置，就能够提高在缓存中读取所需数据的概率（通过 GC 对象重排）。</li>
+</ul>
+<h3 id="Chapter-2：“标记-清除”算法"><a href="#Chapter-2：“标记-清除”算法" class="headerlink" title="Chapter 2：“标记-清除”算法"></a>Chapter 2：“标记-清除”算法</h3><p>算法由“<strong>标记</strong>”以及“<strong>清除</strong>”两个阶段组成。其中，标记阶段负责把所有活动对象都做上标记；而清除阶段则是把那些没有被标记的对象（非活动对象）进行回收。在半个世纪后的今天，该算法依然是各种处理程序常用的 GC 算法。</p>
+<ol start="6">
+<li>（Page：26）标记阶段使用“<strong>深度优先搜索（DFS）</strong>”一般会比“广度优先搜索（BFS）”占用更低的内存使用量。因为 BFS 需要额外的栈来存放待遍历的子树（指针），最多需要存放<u>与最后一层子节点相同个数的子树</u>（指针）；相反，DFS 最多只会<u>有与树高度呈正比数量的节点（指针）在栈内存上</u>。</li>
+<li>（Page：26）“清除阶段”的一个 trick：当在整理需要清理的“空闲链表”时，如果某个对象需要被清理，则可以直接动态<strong>在该对象的域中分配一个字段</strong>（对象内容会被破坏）来存储链表下一个对象的位置（指针）。</li>
+<li>（Page：28）GC 内存再分配（从空闲链表）策略：</li>
+</ol>
+<ul>
+<li><strong>First-fit</strong>：在空闲链表中一旦发现 &gt;= 待分配大小的分块时便直接返回该分块；</li>
+<li><strong>Best-fit</strong>：遍历空闲链表，返回 &gt;= 待分配大小的<em>最小分块</em>；</li>
+<li><strong>Worst-fit</strong>（少用）：找出空闲链表中的最大分块，将其分割为待分配大小与剩余大小的两个分块。目的是将分割后的剩余分块最大化。</li>
+</ul>
+<ol start="9">
+<li>（Page：28）“标记-清除” GC 算法的几个阶段：</li>
+</ol>
+<ul>
+<li><strong>标记</strong>：标记活动对象（DFS / BFS）；</li>
+<li><strong>清除</strong>：遍历整个堆，通过整理空闲链表回收没有打上标记的对象，同时合并连续的碎片分块。除此之外，<u>重置所有对象的标记</u>；</li>
+<li><strong>分配</strong>：从“空闲链表”中分配需要的新内存。</li>
+</ul>
+<ol start="10">
+<li>（Page：29）“标记-清除” GC 算法的优缺点：</li>
+</ol>
+<ul>
+<li><strong>优点</strong>：<ul>
+<li>实现简单；</li>
+<li>与保守式 GC 算法兼容。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>碎片化（可用“<strong>压缩</strong>”或 “<strong>BiBOP</strong>” 法优化）；</li>
+<li>分配需遍历空闲链表，速度较慢（可用“<strong>多空闲链表</strong>”法优化）；</li>
+<li>与 COW 不兼容（可用“<strong>位图标记</strong>”法优化）。</li>
+</ul>
+</li>
+</ul>
+<ol start="11">
+<li>（Page：32）<strong>多空闲链表</strong>：可用于优化空闲链表查找速度。通常，该方法会为分块大小设定一个上限，分块如果大于等于这个大小，就全部采用单独的一个空闲链表来进行处理（基于 locality）。</li>
+</ol>
+<p><img src="2.png" alt=""></p>
+<ol start="12">
+<li>（Page：34）<strong>BiBOP</strong>（<em>Big Bag Of Pages</em>）：可用于解决 “GC 标记-清除” 算法中的“碎片化”问题。算法思想：<strong>将大小相近的对象整理成固定大小的块进行管理，即把堆分割成固定大小的块，让每个块只能够配置同样大小的对象</strong>。BiBOP 法原本是为了消除碎片化，提高堆使用效率而采用的方法。但像这样，在多个块中分散残留着同样大小的对象，反而会降低堆使用效率。</li>
+</ol>
+<p><img src="3.png" alt=""></p>
+<ol start="13">
+<li>（Page：35）<strong>位图标记</strong>：收集堆中各个对象的标志位并表格化，不跟对象本身一起管理。在标记时，不在对象头中置位，而是在“位图表格”中单独处理（实现方式：散列表、树形结构、数组等）。其优点在于：<strong>与 COW 兼容</strong>，且清除操作更加高效。</li>
+</ol>
+<p><img src="4.png" alt=""></p>
+<ul>
+<li><strong>一些注意事项</strong>：<ul>
+<li>位图表格中位的位置要和堆里的各个对象一一对应（比如一个字节对应一位）；</li>
+<li><u>打标时要先判断该标志是否已被置位，且只在没有被置位的情况下才做置位操作</u>，以避免循环引用问题。</li>
+</ul>
+</li>
+</ul>
+<ol start="14">
+<li>（Page：38）<strong>延迟清除</strong>：可用于减小 GC 的最大暂停时间。其基本原则是<strong>只在分配时执行必要的遍历</strong>。即每次需要分配内存时，直接遍历当前堆对象的头，查找是否有未被标记且大小合适的块可以返回，若有则返回。过程中，将遍历到的块置位。下次再分配时仍<strong>从上一次找到分块的右侧分块开始继续遍历</strong>，直到遍历完所有堆对象。若没有找到合适的块，则执行标记，然后再重新遍历。</li>
+</ol>
+<h3 id="Chapter-3：“引用计数”算法"><a href="#Chapter-3：“引用计数”算法" class="headerlink" title="Chapter 3：“引用计数”算法"></a>Chapter 3：“引用计数”算法</h3><ol start="15">
+<li>（Page：43）该方式<strong>将内存管理与 mutator 同时进行（运行）</strong>（而“标记-清除”法只会在没有分块的时候才将垃圾一并回收）。C++ 中的 <code>std::shared_ptr</code> 即采用此方式。</li>
+<li>（Page：43）对计数进行增减时需要“<strong>先增再减</strong>”，以避免当 <em>\</em>ptr* 与 <em>obj</em> 是同一对象时引发的“空指针引用”情况。</li>
+<li>（Page：44）“引用计数”算法的优缺点：</li>
+</ol>
+<ul>
+<li><strong>优点</strong>：<ul>
+<li>可即刻回收垃圾（当对象引用数值为 0 时会立刻将自身连接到空闲链表中）；</li>
+<li>最大暂停时间短（仅在 mutator 更新指针时进行 GC）；</li>
+<li>没有必要沿指针查找。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>计数器值的增减处理繁重；</li>
+<li>计数器需要占用很多位；</li>
+<li>实现繁琐复杂；</li>
+<li>循环引用无法回收。</li>
+</ul>
+</li>
+</ul>
+<ol start="18">
+<li>（Page：46）<strong>延迟引用计数</strong>（<em>Deferred Reference Counting<em>）：让从*</em>根引用的指针<strong>其变化不反映在计数器上。即使用 **ZCT</strong>（<em>Zero Count Table</em>）表结构存储引用计数变为 0 的对象。<strong>当只有在 ZCT 无法存放对象时</strong>，才会做 *root</em> 引用对象的计数变更，然后查找整个 ZCT 中引用计数仍然为 0 的对象，并进行释放操作。最后再将 <em>root</em> 引用对象的计数递减。</li>
+</ol>
+<p><img src="5.png" alt=""></p>
+<ul>
+<li><strong>优点</strong>：减轻了因根引用频繁变化而导致的计数器增减带来的额外负担；</li>
+<li><strong>缺点</strong>：损失了“引用计数”的一大优势 — 可立即回收垃圾。</li>
+</ul>
+<ol start="19">
+<li>（Page：50）<strong>Sticky 引用计数</strong>：减少引用计数器的位宽。对于溢出的计数，可以选择将其直接作为“<strong>永生对象</strong>”；或在适当的时机使用 “GC 标记-清除” 进行管理（此时会直接利用“计数是否大于 0”来作为标记）。</li>
+<li>（Page：52）<strong>1 位引用计数</strong>（1bit Reference Counting）：是 Sticky 引用计数法的一个极端例子，即引用<strong>计数器只有 1 位大小</strong>（0 表示被引用数为 1，用 1 表示被引用数大于等于 2）。</li>
+</ol>
+<p><img src="8.png" alt=""></p>
+<p><img src="6.png" alt=""></p>
+<ul>
+<li>实现细节：<ul>
+<li>不回收 MULTIPLE 指针的对象（溢出）；</li>
+<li><strong>计数跟随指针</strong>，而非对象；</li>
+<li>可以直接通过指针的“低二/三位”来存放这些信息（指针一般按照4/8字节对齐）。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：不容易出现高速缓存缺失，且一定程度上节省内存消耗；</li>
+<li><strong>缺点</strong>：需要单独处理计数器溢出的情况。</li>
+</ul>
+<ol start="21">
+<li>（Page：55）<strong>部分标记-清除</strong>（Partial Mark &amp; Sweep）：只对“<strong>可能有循环引用的对象群</strong>”使用 GC 标记-清除算法（这里用于<strong>查找非活动对象</strong>），而对其他对象进行内存管理时使用引用计数法。</li>
+</ol>
+<ul>
+<li>该算法中有四种对象类型，对应四种颜色。实现时需要往头中分配 2 位空间，用于保存这四种颜色类型：<ul>
+<li><strong>黑</strong>（BLACK）：绝对不是垃圾的对象（对象产生时的初始颜色）；</li>
+<li><strong>白</strong>（WHITE）：绝对是垃圾的对象；</li>
+<li><strong>灰</strong>（GRAY）：搜索完毕的对象；</li>
+<li><strong>阴影</strong>（HATCH）：可能是循环垃圾的对象。</li>
+</ul>
+</li>
+<li>实现细节：<ul>
+<li>算法会维护一个队列，以用于连接那些可能是循环引用的一部分的对象；</li>
+<li>查找环的<strong>主要流程</strong>：<ul>
+<li><em>scan_hatch_queue</em>：查找可能成环的节点；</li>
+<li><em>paint_gray</em>：将环中的对象，以及环中对象引用对象的计数器减量；</li>
+<li><em>scan_gray -&gt; paint_black</em>：标记环中对象;</li>
+<li><em>collect_white</em>：收集环中对象并释放。</li>
+</ul>
+</li>
+<li><em>paint_gray</em> 时需要<strong>先对目标对象的子节点进行计数器减量操作</strong>，这样当发现环的时候，目标对象的计数值同样会被递减。</li>
+</ul>
+</li>
+<li><strong>主要缺点</strong>：<u>从队列搜索对象的成本太大，且使引用计数法的一大优点 —— 最大暂停时间短荡然无存</u>。</li>
+</ul>
+<h3 id="Chapter-4：“GC-复制”算法"><a href="#Chapter-4：“GC-复制”算法" class="headerlink" title="Chapter 4：“GC 复制”算法"></a>Chapter 4：“GC 复制”算法</h3><ol start="22">
+<li>（Page：67）“GC 复制”算法的<strong>大致流程</strong>：只把某个空间内的活动对象复制到其他空间，再把原空间里的所有对象都回收掉。原空间一般被称为 “<strong>From 空间</strong>”，存放活动对象的新空间被称为 “<strong>To 空间</strong>”。GC 复制算法是利用 From 空间进行分配的，当 From 空间被完全占满时，GC 会将活动对象全部复制到 To 空间。当复制完成后，该算法会把 From 空间和 To 空间<strong>互换</strong>（即作用对调），GC 也就结束了。From 空间和 To 空间大小必须一致。这是为了保证能把 From 空间中的所有活动对象都收纳到 To 空间内。</li>
+</ol>
+<p><img src="7.png" alt=""></p>
+<ul>
+<li>实现细节：<ul>
+<li>每一个 From 空间的对象都会有<strong>两个字段</strong>：<ul>
+<li><em>tage</em>：标记该对象是否已被拷贝到 To 空间；</li>
+<li><em>forwarding</em>：一个指针，记录了拷贝后该对象的位置。</li>
+</ul>
+</li>
+<li>这两个字段可以是在进行 GC 时再动态分配在旧对象上的；</li>
+<li>搜索子对象时采用的是<strong>深度优先搜索</strong>（DFS）。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>由于只搜索并复制活动对象，因此<strong>吞吐量较大</strong>，且堆越大越明显（相较于 GC 标记-清除算法）；</li>
+<li>可实现<strong>高速分配</strong>；</li>
+<li><strong>不会发生碎片化</strong>，每次执行 GC 时都会进行压缩；</li>
+<li><strong>与缓存兼容</strong>。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>堆使用效率低下（堆被二等分）；</li>
+<li>不兼容保守式 GC 算法；</li>
+<li>递归调用函数的效率影响。</li>
+</ul>
+</li>
+</ul>
+<ol start="22">
+<li>（Page：74）来自 Cheney 的“<strong>迭代进行复制算法</strong>“：</li>
+</ol>
+<p><img src="9.png" alt=""></p>
+<ul>
+<li>实现细节：<ul>
+<li>引入了另一个指针 <em>scan</em>，用于搜索复制完成的对象；</li>
+<li>优先复制所有从根直接引用的对象；</li>
+<li>搜索子对象时采用的是<strong>广度优先搜索</strong>（BFS）；</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>采用了迭代而非递归，不会产生额外函数调用栈的问题；</li>
+<li>使用“堆”代替“队列”，省去了用于搜索的内存空间。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>具有引用关系的对象在堆中并不相邻，不能有效利用缓存。</li>
+</ul>
+</li>
+</ul>
+<ol start="23">
+<li>（Page：78）<strong>近似深度优先搜索方法</strong>：</li>
+</ol>
+<p><img src="10.png" alt=""></p>
+<ul>
+<li>实现细节：<ul>
+<li>四个重要变量：<ul>
+<li><em>page<em>：将堆分割成一个个页面的数组。</em>page[i]</em> 指向第 i 个页面的开头；</li>
+<li><em>local_scan<em>：将每个页面中搜索用的指针作为元素的数组。</em>local_scan[i]</em> 指向第 i 个页面中下一个应该搜索的位置；</li>
+<li><em>major_scan</em>：指向搜索尚未完成的页面开头的指针；</li>
+<li><em>free</em>：指向分块开头的指针。</li>
+</ul>
+</li>
+<li>被安排在页头的对象，会使用该页面的 <em>local_scan</em> 进行搜索；否则，继续按照 <em>major_scan</em> 所在页面的 <em>local_scan</em> 进行搜索；</li>
+<li>该算法可以尽量保证<strong>处在相同页面上的对象之间是存在引用关系的</strong>。</li>
+</ul>
+</li>
+</ul>
+<ol start="24">
+<li>（Page：83）<strong>多空间复制算法</strong>：把堆 N 等分，对其中 2 块空间执行 GC 复制算法，对剩下的 N-2 块空间执行 GC 标记-清除算法。</li>
+</ol>
+<p><img src="11.png" alt=""></p>
+<ul>
+<li><strong>优点</strong>：<ul>
+<li>有效利用了堆。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>（GC 标记-清除算法的既有问题）：<ul>
+<li>分配耗费时间；</li>
+<li>分块碎片化。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Chapter-5：“标记-压缩”算法"><a href="#Chapter-5：“标记-压缩”算法" class="headerlink" title="Chapter 5：“标记-压缩”算法"></a>Chapter 5：“标记-压缩”算法</h3><p>GC 标记-压缩算法由“标记阶段”和“压缩阶段”构成。其中的“标记”阶段与“标记-清除”算法中的同名阶段完全相同。接下来，需要搜索数次堆来进行压缩。压缩阶段通过数次搜索堆来<strong>重新装填活动对象</strong>。与 GC 复制算法不同的是，<strong>压缩算法不用牺牲半个堆</strong>。</p>
+<ol start="25">
+<li>（Page：89）<strong>LISP2 算法</strong>：</li>
+</ol>
+<p><img src="12.png" alt=""></p>
+<ul>
+<li>实现细节：<ul>
+<li><strong>标记阶段</strong>：与“标记-清除”算法类似。</li>
+<li><strong>压缩阶段</strong>：<ul>
+<li>设定 <em>forwarding</em> 指针；</li>
+<li>更新指针；</li>
+<li>移动对象。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>优点</strong>：有效利用了堆。不会只利用半个堆，且压缩过程可以使得堆上<strong>没有碎片</strong>。</li>
+<li><strong>缺点</strong>：压缩花费计算成本。<strong>整个压缩过程需要对整个堆进行 3 次搜索</strong>，因此其吞吐量要劣于其他算法。</li>
+</ul>
+<ol start="26">
+<li>（Page：95）<strong>Two-Finger 算法</strong>：需要搜索 2 次堆。</li>
+</ol>
+<p><img src="13.png" alt=""></p>
+<ul>
+<li><strong><em>制约条件</em></strong>：必须将所有对象整理成大小一致（才可以方便对象间的移动）；</li>
+<li>实现步骤：<ul>
+<li><em>移动对象</em>；</li>
+<li><em>更新指针</em>。</li>
+</ul>
+</li>
+<li>实现细节：<ul>
+<li>不需要提前为 <em>forwarding</em> 指针预留空间（即保留字段），可以在 GC 运行时直接在对象域上进行分配；</li>
+<li>名为 <em>live</em> 和 <em>free</em> 的两个指针依次从堆首和堆尾相向遍历，<em>live</em> 用于寻找活动对象（原空间）；<em>free</em> 用于寻址非活动对象（目标空间）；</li>
+<li>“更新指针”的过程只用处理原指针位置大于 <em>free</em> 的那些。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：<ul>
+<li>内存使用效率较 LISP2 稍高；</li>
+<li>搜索次数只有 2 次，吞吐量方面占优势。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：<ul>
+<li>缓存不友好（改变了对象的相对顺序）；</li>
+<li>对对象大小有限制。</li>
+</ul>
+</li>
+</ul>
+<ol start="27">
+<li>（Page：100）<strong>表格算法</strong>：</li>
+</ol>
+<p><img src="14.png" alt=""></p>
+<ul>
+<li>实现步骤：<ul>
+<li><em>移动对象（群）以及构筑间隙表格（break table）</em>；间隙表格由 <strong><em>(live, size)</em></strong> 组成；</li>
+<li><em>更新指针（通过 “bt”）</em>。</li>
+</ul>
+</li>
+<li>实现细节：<ul>
+<li>活动对象群的移动是<strong>连续的</strong>，其中 <em>scan</em> 指针用于寻找活动对象群；<em>free</em> 指针是指向对象群目标空间的指针；<em>live</em> 指针用于标记活动对象的原空间位置；</li>
+<li>随着对象的移动，“间隙表格”会被放在空闲空间里；随着“移动对象群”的过程进行，间隙表格也需要动态地在内存中调整位置；</li>
+<li>更新指针时，由于 <em>bt</em> 只记录了连续活动对象的移动信息，因此对于具体的各个分块指针来说，在这一步需要找到所属那个连续分块的 <em>bt*，以找到正确的 *size</em> 偏移值。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：缓存友好（GC 前后，对象相对顺序没有改变）。</li>
+<li><strong>缺点</strong>：<ul>
+<li><strong>维持间隙表格需要付出很高的代价</strong>（逻辑较复杂）；</li>
+<li>由于 <em>bt</em> 的在内存中的顺序并不固定，因此更新指针时搜索表格会有一定开销。</li>
+</ul>
+</li>
+</ul>
+<ol start="28">
+<li>（Page：106）<strong>ImmixGC 算法</strong>：将 GC 标记-清除算法与压缩组合在了一起。该算法被实现到了 JikesRVM 与 MMTk 中。</li>
+</ol>
+<ul>
+<li><strong>分配过程</strong>：</li>
+</ul>
+<p><img src="15.png" alt=""></p>
+<ul>
+<li>算法说明：<ul>
+<li>该算法把堆分为一定大小的“块”（<em>block</em>），再把每个块分成一定大小的“线”（<em>line</em>）。该算法<strong>以线为单位回收垃圾</strong>。</li>
+<li><strong>块最合适的大小是 32K 字节，线最合适的大小是 128 字节</strong>（来自论文陈述）；</li>
+<li>块的字段组成：<ul>
+<li><em>line[]</em>：每个块的线；</li>
+<li><em>mark_table[]</em>：与<strong>每个线对应</strong>的标记位串。可以对应四个值：<ul>
+<li><em>FREE</em>：没有对象；</li>
+<li><em>MARKED</em>：标记完成；</li>
+<li><em>ALLOCATED</em>：有对象；</li>
+<li><em>CONSERVATIVE</em>：保守标记。</li>
+</ul>
+</li>
+<li><em>status</em>：表示<strong>每个块</strong>中的使用情况。可对应三个值：<ul>
+<li><em>FREE</em>：所有线为空（默认情况）；</li>
+<li><em>RECYCLABLE</em>：一部分线为空；</li>
+<li><em>UNAVAILABLE</em>：没有空的线。</li>
+</ul>
+</li>
+<li><em>hole_cnt</em>：记录各个块的“孔”数。孔拥有连续的大于等于 1 个的空的线。该字段用于表示碎片化严重程度。</li>
+</ul>
+</li>
+<li>对象的分类：<ul>
+<li><em>小型对象</em>：线以下大小；</li>
+<li><em>中型对象</em>：比线大，但不到 8K 字节；</li>
+<li><em>大型对象</em>：大于等于 8K 字节（ImmixGC 不予管理）。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现步骤：<ul>
+<li><em>选定备用的 From 块</em>（只会在堆消耗严重的情况下执行）；</li>
+<li><em>搜索阶段</em>：从根搜索对象，根据对象存在于何种块里来分别进行标记操作（非 From 块中的对象）或复制操作（From 块中的对象）；</li>
+<li><em>清除阶段</em>：寻找没有被标记的线，按线回收非活动对象。</li>
+</ul>
+</li>
+<li>实现细节：<ul>
+<li>分配过程使用 <em>cursor</em> 与 <em>limit</em> 两个指针，它们各自指向 <strong>RECYCLABLE 块</strong>（优先）的孔的开头和末尾。小型对象会直接在这两个指针之间的 FREE 线中进行分配；</li>
+<li>当不能在 <em>cursor</em> 和 <em>limit</em> 之间分配中型对象时，<strong>就直接从 FREE 块里分配线</strong>（不走滑动的过程）；</li>
+<li><strong>分配时的标记操作</strong>：对于小对象而言，考虑到其可能会占据 <em>line[i+1]</em> 的情况（？），保守起见，当 <em>mark_table[i+1]</em> 是 FREE 时，把它定为 CONSERVATIVE；</li>
+<li>ImmixGC 的“压缩”过程启动条件：<ul>
+<li>存在 1 个或 1 个以上没有进行分配的 RECYCLABLE 块；</li>
+<li>在上次 GC 时能回收的线，其总大小减少了一定的量。</li>
+</ul>
+</li>
+<li><strong>搜索备用 From 块</strong>（可能有多个）：从孔数最多的块开始选择判断，寻找“<em>From 块中 ALLOCATED 线和 CONSERVATIVE 线的总数 &lt;= 除 From 以外的块中 FREE 线的总数</em>”这样的 From 块。</li>
+<li><strong>搜索阶段</strong>：从根开始搜索对象，根据对象分别进行标记处理或复制处理（将备用 From 块里的对象复制到 To 块，并进行压缩）；</li>
+<li><strong>清除阶段</strong>：以“线”为单位来判断对象是活动的还是非活动的，并置位 <em>mark_table[]</em>。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
+<li><strong>缺点</strong>：缓存不友好。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-05T13:59:48.000Z"> 2021 / 05 / 24, 13:56:48</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

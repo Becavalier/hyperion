@@ -25,20 +25,20 @@ hexo.extend.filter.register('after_render:css', (str, data) => {
 });
 
 // minify images;
-hexo.assetsContainer = {};
-hexo.extend.filter.register('before_post_render', data => {
-  const reg = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/i;
-  const regGlobal = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/ig;
+// hexo.assetsContainer = {};
+// hexo.extend.filter.register('before_post_render', data => {
+//   const reg = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/i;
+//   const regGlobal = /!\[\S+?\]?\((\d+[\.png|\.jpg]+)\)/ig;
   
-  let items = data.raw.match(regGlobal);
-  if (Array.isArray(items) && items.length > 0) {
-    hexo.assetsContainer[data.path] = items.map(i => {
-      let result = reg.exec(i);
-      return result ? result[DEFAULT_INDEX + 1] : [];
-    });
-  }
-  return data;
-});
+//   let items = data.raw.match(regGlobal);
+//   if (Array.isArray(items) && items.length > 0) {
+//     hexo.assetsContainer[data.path] = items.map(i => {
+//       let result = reg.exec(i);
+//       return result ? result[DEFAULT_INDEX + 1] : [];
+//     });
+//   }
+//   return data;
+// });
 
 // hexo.extend.filter.register('before_exit', data => {
 //   for (let key in hexo.assetsContainer) {

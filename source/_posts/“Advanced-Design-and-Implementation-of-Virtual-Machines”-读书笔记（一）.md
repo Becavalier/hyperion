@@ -1,6 +1,6 @@
 ---
 title: 《Advanced Design and Implementation of VMs》读书笔记（一）
-intro: 也是很久之前无意间搜罗到的一本关于 VM 的好书，趁此疫情 WFH 期间时间充足，赶紧读起来。PS. 果然国人写的英语书籍就是比外国人写的好读很多，主要是因为 —— 废话少。
+intro: 也是很久之前无意间搜罗到的一本介绍 VM 的好书，趁此疫情 WFH 期间时间充足，赶紧读起来。PS. 国人写的英语书籍就是比外国人写的好读很多，主要是因为 —— 废话少。
 comments: true
 date: 2020-06-26 16:42:01
 tags:
