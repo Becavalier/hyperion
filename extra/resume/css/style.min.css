@@ -235,6 +235,13 @@ section:last-child {
 	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
 	font-size: 1.5em;
 	margin-bottom: -2px;
+	display: flex;
+  align-items: center;
+}
+
+.sectionContent .logo-company {
+	height: 22px;
+	margin-right: 10px;
 }
 
 h2 .subDetails {

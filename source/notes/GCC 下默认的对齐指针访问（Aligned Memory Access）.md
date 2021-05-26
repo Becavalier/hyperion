@@ -11,7 +11,7 @@ date: 2021-05
 
 > if the resulting pointer is not correctly aligned for the referenced type, the behavior is undefined.
 
-* “**C 是可移植的汇编**”这一断言最初来自于 K&R 中；
+* “**C 是可移植的汇编**”这一断言最初来自于 K&R；
 * 曾经的 Alpha 与 SPARC 等 ISA 不允许未对齐的内存地址访问，而 X86-64 则没有这一限制；
 * 一个访问未对齐地址导致问题的例子（该问题仅出现在 GCC 中）：
   * 编译器在推导函数 `h` 的定义时，会默认参数 *p* 与 *q* 访问的是对齐到 32/64 位的地址；

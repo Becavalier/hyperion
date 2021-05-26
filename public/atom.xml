@@ -6,7 +6,7 @@
   <link href="https://www.yhspy.com/atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-05-24T05:48:21.995Z</updated>
+  <updated>2021-05-26T04:12:16.745Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GC：理解与实现（基于 Mark-and-Sweep）</title>
+    <link href="https://www.yhspy.com/2021/05/25/GC%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9F%BA%E4%BA%8E-Mark-and-Sweep%EF%BC%89/"/>
+    <id>https://www.yhspy.com/2021/05/25/GC%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9F%BA%E4%BA%8E-Mark-and-Sweep%EF%BC%89/</id>
+    <published>2021-05-25T08:02:13.000Z</published>
+    <updated>2021-05-26T04:12:16.745Z</updated>
+    
+    
+    <summary type="html">本文主要介绍了如何使用 C++ 快速构建一个简单的 Garbage Collector。为了简化实现过程，实践中我们将使用相对简单的 “Mark-and-Sweep” 算法，以及一些可选的算法变体（多空闲链表、位图标记）。</summary>
+    
+    
+    
+    
+    <category term="GC" scheme="https://www.yhspy.com/tags/GC/"/>
+    
+  </entry>
   
   <entry>
     <title>《垃圾回收算法与实现》读书笔记（第 6-9 章）</title>
@@ -507,23 +524,6 @@
     
     
     <summary type="html">书接上文，本文为第 9-12 章的笔记。其中最后三章（10-12），由于其主题本身的内容（系统级 I/O、网络编程、C++ 并发编程）可以通过讲解的更为深入的其他整本书籍来进行学习，因此这里先不花时间记录，后面如果有需要再回来了解。</summary>
-    
-    
-    
-    
-    <category term="计算机" scheme="https://www.yhspy.com/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《CSAPP（第三版）》读书笔记（第 6-8 章）</title>
-    <link href="https://www.yhspy.com/2020/11/30/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-8-%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.yhspy.com/2020/11/30/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-8-%E7%AB%A0%EF%BC%89/</id>
-    <published>2020-11-30T14:47:39.000Z</published>
-    <updated>2021-01-25T03:50:49.187Z</updated>
-    
-    
-    <summary type="html">书接上文，本文为第 6-8 章的笔记。</summary>
     
     
     

@@ -23,7 +23,7 @@ async function setupNoteContent(nextSibling) {
     const id = nextSibling.getAttribute('id')
     // fetch content if needed.
     const content = await fetchNoteContent(id);
-    nextSibling.insertAdjacentHTML('afterbegin', content);
+    nextSibling.insertAdjacentHTML('afterbegin', content || '（没拉到内容 TT）');
   }
 }
 
