@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/notes" alt="记录" title="记录" itemprop="url">记录</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938-2号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="9fca260cf946e2c82cf2f5c5b2694ad8" class="full"><h1 itemprop="headline" class="post-heading">《垃圾回收算法与实现》读书笔记（第 6-9 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 23, 22:17:23</time></span><span class="page-tag-anchor"><a href="/tags/GC" itemprop="url">#GC</a>&nbsp;&nbsp;</span></div><br><p>书接上回，第 6-9 章的笔记。</p>
 <h3 id="Chapter-6：保守式-GC（Conservative-GC）"><a href="#Chapter-6：保守式-GC（Conservative-GC）" class="headerlink" title="Chapter 6：保守式 GC（Conservative GC）"></a>Chapter 6：保守式 GC（Conservative GC）</h3><p>为了实现某一个 GC 算法，需要首先选择 GC 的种类。这里的种类指的是 “<em>保守式 GC</em>” 和 “<em>准确式 GC</em>”。其中，“保守式 GC” 指的是 “<strong>不能识别指针和非指针的 GC</strong>”。</p>
 <ol start="29">
-<li>（Page：120）不明确的根（<em>root</em>）：</li>
+<li>（Page：120）<strong>不明确的根</strong>（<em>root</em>）：</li>
 </ol>
 <ul>
 <li>无法区分存储在下述位置的值是否为指针：<ul>
@@ -39,7 +39,7 @@
 <ul>
 <li>实现上<strong>需要语言处理程序的支持</strong>；</li>
 <li>一些创建正确根的方法：<ul>
-<li><strong>打标签</strong>：利用“<em>编译器默认生成对齐地址引用</em>”这一条件，使用地址的低 1 位作为标签（<strong>对整数打标签，这样 LSB 位为 0 的数值便一定为指针</strong>）。</li>
+<li><strong>打标签</strong>：利用“<em>编译器默认生成对齐地址引用</em>”这一条件，使用地址的低 1 位作为标签（<strong>对整数打标签，比如“左移，最后一位置一”。这样 LSB 位为 0 的数值便一定为指针</strong>）。</li>
 <li><strong>不把寄存器和栈等当做根</strong>：在处理程序的专门位置创建根。</li>
 </ul>
 </li>
@@ -47,12 +47,12 @@
 <li><strong>缺点</strong>：语言处理程序必须对 GC 进行一些支援。</li>
 </ul>
 <ol start="33">
-<li>（Page：125）<strong>间接引用</strong>：可用于解决保守式 GC 无法使用“复制算法”的问题。</li>
+<li>（Page：125）<strong>间接引用</strong>：可解决保守式 GC 无法使用“复制算法”的问题。</li>
 </ol>
 <p><img src="1.png" alt=""></p>
 <ul>
-<li><strong>思路</strong>：经由“句柄”来间接地处理对象。在移动引用的对象时，只需要修改句柄里的指针就可以了，而无需修改原引用的值。</li>
-<li><strong>缺点</strong>：因为必须将所有对象都间接引用，因此会拉低访问对象内数据的速度，这会关系到整个语言处理程序的速度。</li>
+<li><strong>算法思路</strong>：经由“句柄”来<strong>间接</strong>地处理对象。在移动引用的对象时，只需修改句柄里的指针，而无需修改原本的引用值；</li>
+<li><strong>缺点</strong>：因为必须将所有对象都间接引用，因此会拉低访问对象内数据的速度，而这会关系到整个语言处理程序的速度。</li>
 </ul>
 <ol start="34">
 <li>（Page：127）<strong>MostlyCopyingGC</strong>：保守式 GC 复制算法，可在不明确的根的环境中运行 GC 复制算法。</li>
@@ -151,4 +151,4 @@
 <li>（Page：174）Steele 算法 &amp; 汤浅算法：（略）。</li>
 </ol>
 <h3 id="Chapter-9：-RC-Immix-算法"><a href="#Chapter-9：-RC-Immix-算法" class="headerlink" title="Chapter 9： RC Immix 算法"></a>Chapter 9： RC Immix 算法</h3><p>（略）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 24, 13:48:21</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 27, 12:14:37</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《垃圾回收算法与实现》读书笔记（第 1-5 章） | 曜彤.手记</title><meta name="description" content="为了进一步了解 Wasm GC 提案，遂找本书来看看。"><meta name="generator" content="曜彤.手记"><meta name="author" content="于航(曜彤)"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/notes" alt="记录" title="记录" itemprop="url">记录</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938-2号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="67b8e299828a841af3cf596de409430d" class="full"><h1 itemprop="headline" class="post-heading">《垃圾回收算法与实现》读书笔记（第 1-5 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-10-05T13:59:48.000Z"> 2020 / 10 / 05, 21:59:48</time></span><span class="page-tag-anchor"><a href="/tags/GC" itemprop="url">#GC</a>&nbsp;&nbsp;</span></div><br><p>为了进一步了解 Wasm GC 提案，遂找本书来看看。</p>
-<p>所有涉及的 GC 算法（并没有全部了解完 :(</p>
+<p>所有涉及的 GC 算法如下：</p>
 <ul>
 <li><strong>GC 标记-清除</strong>：<ul>
 <li><strong><em>多个空闲链表</em></strong>：可优化遍历空闲链表较慢的问题；</li>
@@ -25,7 +25,7 @@
 <li><strong>GC 标记-压缩</strong>：<ul>
 <li><strong><em>Two-Finger 算法</em></strong>：内存使用效率较 LISP2 稍高；搜索次数只有 2 次，吞吐量稍高；</li>
 <li><strong><em>表格算法</em></strong>：缓存友好；</li>
-<li><strong><em>ImmixGC 算法</em></strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
+<li><strong><em>ImmixGC 算法</em></strong>：堆的精细化管理，可以有效地解决碎片化问题（复杂度高）。</li>
 </ul>
 </li>
 <li><strong>保守式 GC</strong>：<ul>
@@ -315,37 +315,42 @@
 <li><strong>优点</strong>：该算法可以尽量保证<strong>处在相同页面上的对象之间是存在引用关系的</strong>。</li>
 </ul>
 <ol start="24">
-<li>（Page：83）<strong>多空间复制算法</strong>：把堆 N 等分，对其中 2 块空间执行 GC 复制算法，对剩下的 N-2 块空间执行 GC 标记-清除算法。</li>
+<li>（Page：83）<strong>多空间复制算法</strong>：把堆 N 等分，对其中 2 块空间执行 GC 复制算法（From 和 To），对剩下的 N-2 块空间执行 GC 标记-清除算法。</li>
 </ol>
 <p><img src="11.png" alt=""></p>
 <ul>
-<li><strong>优点</strong>：<ul>
-<li>有效利用了堆。</li>
+<li><strong>实现细节</strong>：<ul>
+<li>每次 GC 执行完毕，To 和 From 空间将会依次向右移动。</li>
 </ul>
 </li>
+<li><strong>优点</strong>：有效利用了堆。</li>
 <li><strong>缺点</strong>（GC 标记-清除算法的既有问题）：<ul>
 <li>分配耗费时间；</li>
 <li>分块碎片化。</li>
 </ul>
 </li>
 </ul>
-<h3 id="Chapter-5：“标记-压缩”算法"><a href="#Chapter-5：“标记-压缩”算法" class="headerlink" title="Chapter 5：“标记-压缩”算法"></a>Chapter 5：“标记-压缩”算法</h3><p>GC 标记-压缩算法由“标记阶段”和“压缩阶段”构成。其中的“标记”阶段与“标记-清除”算法中的同名阶段完全相同。接下来，需要搜索数次堆来进行压缩。压缩阶段通过数次搜索堆来<strong>重新装填活动对象</strong>。与 GC 复制算法不同的是，<strong>压缩算法不用牺牲半个堆</strong>。</p>
+<h3 id="Chapter-5：“标记-压缩”算法"><a href="#Chapter-5：“标记-压缩”算法" class="headerlink" title="Chapter 5：“标记-压缩”算法"></a>Chapter 5：“标记-压缩”算法</h3><p>GC 标记-压缩算法由“标记阶段”和“压缩阶段”构成。其中的“标记”阶段与“标记-清除”算法中的同名阶段完全相同。接下来的压缩阶段将通过数次搜索堆来<strong>重新装填活动对象</strong>。与 GC 复制算法不同的是，<strong>该算法不用牺牲半个堆</strong>。</p>
 <ol start="25">
 <li>（Page：89）<strong>LISP2 算法</strong>：</li>
 </ol>
 <p><img src="12.png" alt=""></p>
 <ul>
-<li>实现细节：<ul>
+<li><strong>实现细节</strong>：<ul>
 <li><strong>标记阶段</strong>：与“标记-清除”算法类似。</li>
 <li><strong>压缩阶段</strong>：<ul>
-<li>设定 <em>forwarding</em> 指针；</li>
-<li>更新指针；</li>
+<li>给活动对象设定 <em>forwarding</em> 指针（对象头中）；</li>
+<li>更新活动对象上的指针；</li>
 <li>移动对象。</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><strong>优点</strong>：有效利用了堆。不会只利用半个堆，且压缩过程可以使得堆上<strong>没有碎片</strong>。</li>
+<li><strong>优点</strong>：<ul>
+<li>可有效利用堆，不会只利用半个堆；</li>
+<li>且压缩过程可以使得堆上<strong>没有碎片</strong>。</li>
+</ul>
+</li>
 <li><strong>缺点</strong>：压缩花费计算成本。<strong>整个压缩过程需要对整个堆进行 3 次搜索</strong>，因此其吞吐量要劣于其他算法。</li>
 </ul>
 <ol start="26">
@@ -353,16 +358,18 @@
 </ol>
 <p><img src="13.png" alt=""></p>
 <ul>
-<li><strong><em>制约条件</em></strong>：必须将所有对象整理成大小一致（才可以方便对象间的移动）；</li>
-<li>实现步骤：<ul>
+<li><strong><em>制约条件</em></strong>：必须将所有对象整理成大小一致（方便对象间的移动）；</li>
+<li><strong>实现步骤</strong>：<ul>
+<li><em>标记对象</em>；</li>
 <li><em>移动对象</em>；</li>
-<li><em>更新指针</em>。</li>
+<li><em>更新指针并清理标记</em>（先根后堆）。</li>
 </ul>
 </li>
-<li>实现细节：<ul>
-<li>不需要提前为 <em>forwarding</em> 指针预留空间（即保留字段），可以在 GC 运行时直接在对象域上进行分配；</li>
-<li>名为 <em>live</em> 和 <em>free</em> 的两个指针依次从堆首和堆尾相向遍历，<em>live</em> 用于寻找活动对象（原空间）；<em>free</em> 用于寻址非活动对象（目标空间）；</li>
-<li>“更新指针”的过程只用处理原指针位置大于 <em>free</em> 的那些。</li>
+<li><strong>实现细节</strong>：<ul>
+<li>不需要提前为 <em>forwarding</em> 指针预留空间，可以在 GC 运行时直接在对象域上进行分配；</li>
+<li>名为 <em>live</em> 和 <em>free</em> 的两个指针依次从堆首和堆尾相向遍历。<em>live</em> 用于寻找活动对象（原空间）；<em>free</em> 用于寻址非活动对象（目标空间）；</li>
+<li>“更新指针”的过程只用处理原指针位置大于 <em>free</em> 的那些；</li>
+<li>GC 完成后，可直接使用 <em>free</em> 指针分配对象。</li>
 </ul>
 </li>
 <li><strong>优点</strong>：<ul>
@@ -372,7 +379,7 @@
 </li>
 <li><strong>缺点</strong>：<ul>
 <li>缓存不友好（改变了对象的相对顺序）；</li>
-<li>对对象大小有限制。</li>
+<li>对分配对象大小有限制。</li>
 </ul>
 </li>
 </ul>
@@ -381,18 +388,19 @@
 </ol>
 <p><img src="14.png" alt=""></p>
 <ul>
-<li>实现步骤：<ul>
-<li><em>移动对象（群）以及构筑间隙表格（break table）</em>；间隙表格由 <strong><em>(live, size)</em></strong> 组成；</li>
-<li><em>更新指针（通过 “bt”）</em>。</li>
+<li><strong>实现步骤</strong>：<ul>
+<li><em>标记对象</em>；</li>
+<li><em>移动连续对象（群）以及构筑间隙表格（break table, bt）</em>；间隙表格由 <strong><em>(活动对象群首地址 live, 移动分块总大小 size)</em></strong> 组成；</li>
+<li><em>更新指针（通过 “bt”）并清理标记</em>。</li>
 </ul>
 </li>
-<li>实现细节：<ul>
+<li><strong>实现细节</strong>：<ul>
 <li>活动对象群的移动是<strong>连续的</strong>，其中 <em>scan</em> 指针用于寻找活动对象群；<em>free</em> 指针是指向对象群目标空间的指针；<em>live</em> 指针用于标记活动对象的原空间位置；</li>
-<li>随着对象的移动，“间隙表格”会被放在空闲空间里；随着“移动对象群”的过程进行，间隙表格也需要动态地在内存中调整位置；</li>
+<li>“间隙表格”会被放在空闲空间里；随着“移动对象群”的过程进行，间隙表格也需要动态地在内存中调整位置；</li>
 <li>更新指针时，由于 <em>bt</em> 只记录了连续活动对象的移动信息，因此对于具体的各个分块指针来说，在这一步需要找到所属那个连续分块的 <em>bt*，以找到正确的 *size</em> 偏移值。</li>
 </ul>
 </li>
-<li><strong>优点</strong>：缓存友好（GC 前后，对象相对顺序没有改变）。</li>
+<li><strong>优点</strong>：缓存友好（GC 前后对象相对顺序没有改变）。</li>
 <li><strong>缺点</strong>：<ul>
 <li><strong>维持间隙表格需要付出很高的代价</strong>（逻辑较复杂）；</li>
 <li>由于 <em>bt</em> 的在内存中的顺序并不固定，因此更新指针时搜索表格会有一定开销。</li>
@@ -425,7 +433,7 @@
 <li><em>UNAVAILABLE</em>：没有空的线。</li>
 </ul>
 </li>
-<li><em>hole_cnt</em>：记录各个块的“孔”数。孔拥有连续的大于等于 1 个的空的线。该字段用于表示碎片化严重程度。</li>
+<li><em>hole_cnt*：记录各个块的“孔”数。孔拥有连续的大于等于 1 个的空的线。该字段用于表示碎片化严重程度。如果某个块 *hole_cnt</em> 的值很大，那么它里面的对象就不是标记对象，而是复制对象。</li>
 </ul>
 </li>
 <li>对象的分类：<ul>
@@ -444,14 +452,14 @@
 </li>
 <li>实现细节：<ul>
 <li>分配过程使用 <em>cursor</em> 与 <em>limit</em> 两个指针，它们各自指向 <strong>RECYCLABLE 块</strong>（优先）的孔的开头和末尾。小型对象会直接在这两个指针之间的 FREE 线中进行分配；</li>
-<li>当不能在 <em>cursor</em> 和 <em>limit</em> 之间分配中型对象时，<strong>就直接从 FREE 块里分配线</strong>（不走滑动的过程）；</li>
-<li><strong>分配时的标记操作</strong>：对于小对象而言，考虑到其可能会占据 <em>line[i+1]</em> 的情况（？），保守起见，当 <em>mark_table[i+1]</em> 是 FREE 时，把它定为 CONSERVATIVE；</li>
-<li>ImmixGC 的“压缩”过程启动条件：<ul>
+<li>当不能在当前的 <em>cursor</em> 和 <em>limit</em> 之间分配中型对象时，<strong>就直接从 FREE 块里分配线</strong>（不走滑动的过程）；</li>
+<li><strong>分配时的标记操作</strong>：<strong>对于小对象而言</strong>，考虑到其可能会占据 <em>line[i+1]</em> 的情况（连续多次小对象分配导致），保守起见，当 <em>mark_table[i+1]</em> 是 FREE 时，把它定为 CONSERVATIVE。这样做可以优化标记阶段的过程。</li>
+<li>ImmixGC 的“压缩”过程启动条件（无法执行时会略过该步骤）：<ul>
 <li>存在 1 个或 1 个以上没有进行分配的 RECYCLABLE 块；</li>
 <li>在上次 GC 时能回收的线，其总大小减少了一定的量。</li>
 </ul>
 </li>
-<li><strong>搜索备用 From 块</strong>（可能有多个）：从孔数最多的块开始选择判断，寻找“<em>From 块中 ALLOCATED 线和 CONSERVATIVE 线的总数 &lt;= 除 From 以外的块中 FREE 线的总数</em>”这样的 From 块。</li>
+<li><strong>压缩阶段 - 搜索备用 From 块</strong>（可能有多个）：从孔数最多的块开始选择判断，寻找“<u><em>From 块中 ALLOCATED 线和 CONSERVATIVE 线的总数 &lt;= 除 From 以外的块中 FREE 线的总数</em></u>”这样的 From 块。</li>
 <li><strong>搜索阶段</strong>：从根开始搜索对象，根据对象分别进行标记处理或复制处理（将备用 From 块里的对象复制到 To 块，并进行压缩）；</li>
 <li><strong>清除阶段</strong>：以“线”为单位来判断对象是活动的还是非活动的，并置位 <em>mark_table[]</em>。</li>
 </ul>
@@ -459,4 +467,4 @@
 <li><strong>优点</strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
 <li><strong>缺点</strong>：缓存不友好。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-05T13:59:48.000Z"> 2021 / 05 / 26, 18:58:18</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-05T13:59:48.000Z"> 2021 / 05 / 27, 12:10:49</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -847,7 +847,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/10/05/《垃圾回收算法与实现》读书笔记（第 1-5 章）/index.html",
-    "revision": "497092b0c47f7de49ce0c32b42738073"
+    "revision": "85fdcfc8b54f0d2a1e7f6245ad44f908"
   },
   {
     "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/index.html",
@@ -991,7 +991,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/23/《垃圾回收算法与实现》读书笔记（第-6-9-章）/index.html",
-    "revision": "43ba8ad875c7b88e90e74505ef300939"
+    "revision": "44f354beb23098536bf2eb25499b9ba0"
   },
   {
     "url": "2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/index.html",
@@ -1423,7 +1423,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "437669d542753f0cb30682fb361c689c"
+    "revision": "e4ee85976626c2d3bb339e2d47d461df"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1715,7 +1715,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "7d5071b04525eff3f592f220329d11e3"
+    "revision": "e2745d695949ce7def5fc764e5a04bd7"
   },
   {
     "url": "tags/Java/index.html",
