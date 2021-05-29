@@ -3,9 +3,9 @@ const path = require('path');
 const crypto = require('crypto');
 const UglifyES = require('uglify-es');
 const csso = require('csso');
-const imagemin = require('imagemin');
-const imageminMozjpeg = require('imagemin-mozjpeg');
-const imageminPngquant = require('imagemin-pngquant');
+// const imagemin = require('imagemin');
+// const imageminMozjpeg = require('imagemin-mozjpeg');
+// const imageminPngquant = require('imagemin-pngquant');
  
 const DEFAULT_INDEX = 0;
 

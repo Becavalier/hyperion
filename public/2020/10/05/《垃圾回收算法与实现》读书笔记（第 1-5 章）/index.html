@@ -37,15 +37,19 @@
 <li><strong>分代垃圾回收</strong>：<ul>
 <li><strong><em>Ungar 分代垃圾回收算法</em></strong>：改善了 GC 花费的时间。分代垃圾回收花费的时间是 GC 复制算法的 1/4；；</li>
 <li><strong><em>多代垃圾回收</em></strong>：进一步改善 GC 花费的时间；</li>
-<li><strong><em>列车垃圾回收</em></strong>：（略）；</li>
+<li><strong><em>列车垃圾回收</em></strong>：缩减了各老年代 GC 造成的 mutator 最大暂停时间。且可回收“循环垃圾”（引用贯穿各个空间）。</li>
 </ul>
 </li>
 <li><strong>增量式垃圾回收</strong>：<ul>
-<li><strong><em>Steele 算法</em></strong>：（略）；</li>
-<li><strong><em>汤浅算法</em></strong>：（略）；</li>
+<li><strong><em>Steele 算法</em></strong>：写入屏障更为严格；</li>
+<li><strong><em>汤浅算法</em></strong>：以 GC 开始时对象间的引用关系为基础。</li>
 </ul>
 </li>
-<li><strong>RC Immix 算法</strong>：（略）。</li>
+<li><strong>RC Immix 算法</strong>：<ul>
+<li><strong><em>合并型引用计数法</em></strong>：增加了吞吐量。将计数器的增减一并执行，而非每次变化；</li>
+<li><strong><em>RC Immix 算法</em></strong>：吞吐量得到了大幅改善。</li>
+</ul>
+</li>
 </ul>
 <h3 id="Chapter-0：序章"><a href="#Chapter-0：序章" class="headerlink" title="Chapter 0：序章"></a>Chapter 0：序章</h3><ol>
 <li>（Page：3）最初的 GC 算法是由 John McCarthy（Lisp 之父）在 <strong>1960 年</strong>发布的。</li>
@@ -168,7 +172,7 @@
 </li>
 </ul>
 <ol start="18">
-<li>（Page：46）<strong>延迟引用计数</strong>（<em>Deferred Reference Counting<em>）：让从*</em>根引用的指针<strong>（栈上对象）其变化不反映在计数器上（而堆上的引用改变任会计数）。即使用 **ZCT</strong>（<em>Zero Count Table</em>）表结构存储引用计数变为 0 的对象。<strong>当 ZCT 无法存放对象时</strong>，会进行 *root</em> 引用对象的计数变更，然后查找整个 ZCT 中引用计数仍然为 0 的对象，并进行释放操作。最后再将 <em>root</em> 引用对象的计数递减。</li>
+<li>（Page：46）<strong>延迟引用计数</strong>（<em>Deferred Reference Counting<em>）：让从*</em>根引用的指针<strong>（栈上对象）其变化不反映在计数器上（而堆上的引用改变扔会计数）。即使用 **ZCT</strong>（<em>Zero Count Table</em>）表结构存储引用计数变为 0 的对象。<strong>当 ZCT 无法存放对象时</strong>，会进行 *root</em> 引用对象的计数变更，然后查找整个 ZCT 中引用计数仍然为 0 的对象，并进行释放操作。最后再将 <em>root</em> 引用对象的计数递减。</li>
 </ol>
 <blockquote>
 <p>Deferred reference counting reduces the cost of maintaining reference counts by avoiding adjustments when the reference is stored on the stack.</p>
@@ -467,4 +471,4 @@
 <li><strong>优点</strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
 <li><strong>缺点</strong>：缓存不友好。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-05T13:59:48.000Z"> 2021 / 05 / 27, 12:10:49</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-05T13:59:48.000Z"> 2021 / 05 / 29, 11:30:43</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

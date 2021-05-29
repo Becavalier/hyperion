@@ -6,7 +6,7 @@
   <link href="https://www.yhspy.com/atom.xml" rel="self"/>
   
   <link href="https://www.yhspy.com/"/>
-  <updated>2021-05-26T04:12:16.745Z</updated>
+  <updated>2021-05-26T14:07:02.148Z</updated>
   <id>https://www.yhspy.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.yhspy.com/2021/05/25/GC%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9F%BA%E4%BA%8E-Mark-and-Sweep%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/05/25/GC%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%9F%BA%E4%BA%8E-Mark-and-Sweep%EF%BC%89/</id>
     <published>2021-05-25T08:02:13.000Z</published>
-    <updated>2021-05-26T04:12:16.745Z</updated>
+    <updated>2021-05-26T14:07:02.148Z</updated>
     
     
     <summary type="html">本文主要介绍了如何使用 C++ 快速构建一个简单的 Garbage Collector。为了简化实现过程，实践中我们将使用相对简单的 “Mark-and-Sweep” 算法，以及一些可选的算法变体（多空闲链表、位图标记）。</summary>
@@ -38,7 +38,7 @@
     <link href="https://www.yhspy.com/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-05-23T14:17:23.000Z</published>
-    <updated>2021-05-27T04:14:37.110Z</updated>
+    <updated>2021-05-29T03:30:45.713Z</updated>
     
     
     <summary type="html">书接上回，第 6-9 章的笔记。</summary>
@@ -55,7 +55,7 @@
     <link href="https://www.yhspy.com/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-05-19T09:18:20.000Z</published>
-    <updated>2021-05-19T14:49:06.121Z</updated>
+    <updated>2021-05-26T14:07:02.149Z</updated>
     
     
     <summary type="html">“The Linux Programming Interface”，内容如题。</summary>
@@ -72,7 +72,7 @@
     <link href="https://www.yhspy.com/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/"/>
     <id>https://www.yhspy.com/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/</id>
     <published>2021-05-10T00:38:26.000Z</published>
-    <updated>2021-05-19T11:37:10.607Z</updated>
+    <updated>2021-05-26T14:07:02.148Z</updated>
     
     
     <summary type="html">本文主要介绍了基础编译技术中的 JIT Compilation 技术，以及如何使用 C++ 快速构建一个简单的 JIT Compiler。</summary>
@@ -91,7 +91,7 @@
     <link href="https://www.yhspy.com/2021/05/06/Rust-Runtime-%E4%B8%8E-ABI/"/>
     <id>https://www.yhspy.com/2021/05/06/Rust-Runtime-%E4%B8%8E-ABI/</id>
     <published>2021-05-06T10:41:14.000Z</published>
-    <updated>2021-05-09T08:06:55.652Z</updated>
+    <updated>2021-05-15T00:49:29.500Z</updated>
     
     
     <summary type="html">本文主要介绍了 Rust 语言的 Runtime 与 ABI 的相关内容。由于这两个概念均较为底层且通用，而不会涉及诸如 `std::Vec` 等具体标准库应用层类型的实现细节，因此这里放到一起作为本文主要内容。</summary>
@@ -108,7 +108,7 @@
     <link href="https://www.yhspy.com/2021/04/22/Rust-and-WebAssembly/"/>
     <id>https://www.yhspy.com/2021/04/22/Rust-and-WebAssembly/</id>
     <published>2021-04-22T09:25:31.000Z</published>
-    <updated>2021-05-05T05:46:28.498Z</updated>
+    <updated>2021-05-15T00:49:29.500Z</updated>
     
     
     <summary type="html">记录一些 Rust 与 Wasm 的交互细节。</summary>
@@ -127,7 +127,7 @@
     <link href="https://www.yhspy.com/2021/04/13/%E3%80%8AThe-Rustonomicon%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.yhspy.com/2021/04/13/%E3%80%8AThe-Rustonomicon%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2021-04-12T16:56:32.000Z</published>
-    <updated>2021-05-09T07:22:20.856Z</updated>
+    <updated>2021-05-15T00:49:29.506Z</updated>
     
     
     <summary type="html">“The Dark Arts of Unsafe Rust”。</summary>
@@ -144,7 +144,7 @@
     <link href="https://www.yhspy.com/2021/04/08/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-17-21-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/04/08/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-17-21-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-04-08T15:48:43.000Z</published>
-    <updated>2021-04-18T08:06:05.287Z</updated>
+    <updated>2021-05-15T00:49:29.505Z</updated>
     
     
     <summary type="html">书接上回，第 17-21 章的笔记。</summary>
@@ -161,7 +161,7 @@
     <link href="https://www.yhspy.com/2021/04/01/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-16-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/04/01/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-16-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-04-01T10:07:48.000Z</published>
-    <updated>2021-04-11T13:54:21.247Z</updated>
+    <updated>2021-05-15T00:49:29.503Z</updated>
     
     
     <summary type="html">书接上回，第 12-16 章的笔记。</summary>
@@ -178,7 +178,7 @@
     <link href="https://www.yhspy.com/2021/03/27/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-11-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/03/27/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-11-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-03-27T13:11:50.000Z</published>
-    <updated>2021-04-24T13:54:53.075Z</updated>
+    <updated>2021-05-15T00:49:29.505Z</updated>
     
     
     <summary type="html">书接上回，第 7-11 章的笔记。</summary>
@@ -195,7 +195,7 @@
     <link href="https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/03/23/%E3%80%8AThe-Rust-Programming-Language%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-03-23T13:07:38.000Z</published>
-    <updated>2021-04-13T14:26:47.489Z</updated>
+    <updated>2021-05-15T00:49:29.503Z</updated>
     
     
     <summary type="html">2021 年的计划事项之一 - 学习 Rust。希望不会打击一个 C++er 的脆弱内心 :(</summary>
@@ -212,7 +212,7 @@
     <link href="https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.yhspy.com/2021/03/13/%E3%80%8A%E5%89%8D%E7%AB%AF%E5%87%BD%E6%95%B0%E5%BC%8F%E6%BC%94%E8%BF%9B%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2021-03-13T13:19:44.000Z</published>
-    <updated>2021-03-23T12:58:34.699Z</updated>
+    <updated>2021-04-02T14:45:04.578Z</updated>
     
     
     <summary type="html">近几年不知道是刮什么风，“函数式”这个概念在前端开发领域变得愈发火爆，仿佛你不懂一点函数式、Monad 相关的知识，就已经与这个圈子脱节。而对于一个短时间内不准备看 SICP 的人来说，希望能够通过这本“前东家”同事的著作，让自己入个 FP 的门。</summary>
@@ -231,7 +231,7 @@
     <link href="https://www.yhspy.com/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/</id>
     <published>2021-02-22T08:39:13.000Z</published>
-    <updated>2021-03-04T05:01:38.057Z</updated>
+    <updated>2021-04-02T14:45:04.535Z</updated>
     
     
     <summary type="html">书接上回，第 7-15、20 章的笔记。</summary>
@@ -248,7 +248,7 @@
     <link href="https://www.yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-02-19T11:45:04.000Z</published>
-    <updated>2021-03-03T04:11:03.438Z</updated>
+    <updated>2021-04-02T14:45:04.547Z</updated>
     
     
     <summary type="html">旧书清理计划。2012 年出版的书，暂时没有新版，选择性读读。</summary>
@@ -265,7 +265,7 @@
     <link href="https://www.yhspy.com/2021/02/17/React-%E7%89%B9%E6%80%A7%E5%B0%8F%E7%BB%93%EF%BC%88v17-0-1%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/17/React-%E7%89%B9%E6%80%A7%E5%B0%8F%E7%BB%93%EF%BC%88v17-0-1%EF%BC%89/</id>
     <published>2021-02-17T06:27:54.000Z</published>
-    <updated>2021-03-03T04:07:45.653Z</updated>
+    <updated>2021-04-02T14:45:04.330Z</updated>
     
     
     <summary type="html">记录一些之前理解了然后又忘了的知识点。</summary>
@@ -282,7 +282,7 @@
     <link href="https://www.yhspy.com/2021/02/10/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%EF%BC%88Jason-Yu%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/10/2020-%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%EF%BC%88Jason-Yu%EF%BC%89/</id>
     <published>2021-02-10T02:48:10.000Z</published>
-    <updated>2021-03-11T13:53:15.055Z</updated>
+    <updated>2021-04-02T14:45:04.236Z</updated>
     
     
     <summary type="html">第一次写年度总结。今年由于疫情原因，工作和生活都有了不同程度的变化。工作上班不再需要出门挤地铁，生活起居可以完全做到足不出户。一下子，“弹性”这一词变得重要了起来。而“如何做到既能优先完成工作，又能高效利用琐碎时间？”便成了 2020 年我的一个重要主题。</summary>
@@ -299,7 +299,7 @@
     <link href="https://www.yhspy.com/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/</id>
     <published>2021-02-05T10:12:23.000Z</published>
-    <updated>2021-03-03T04:04:00.643Z</updated>
+    <updated>2021-04-02T14:45:04.577Z</updated>
     
     
     <summary type="html">旧书清理系列。</summary>
@@ -316,7 +316,7 @@
     <link href="https://www.yhspy.com/2021/01/27/%E3%80%8A%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-4-6-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/01/27/%E3%80%8A%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-4-6-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-01-27T07:17:54.000Z</published>
-    <updated>2021-01-30T09:23:02.252Z</updated>
+    <updated>2021-04-02T14:45:04.612Z</updated>
     
     
     <summary type="html">书接上文，第 3-6 章的笔记。</summary>
@@ -333,7 +333,7 @@
     <link href="https://www.yhspy.com/2021/01/21/%E3%80%8A%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/01/21/%E3%80%8A%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-01-21T08:43:46.000Z</published>
-    <updated>2021-01-31T10:15:51.764Z</updated>
+    <updated>2021-04-02T14:45:04.603Z</updated>
     
     
     <summary type="html">旧书清理系列。别人安利的“操作系统”类书籍，主要看 1-6 章对应的重点部分。</summary>
@@ -350,7 +350,7 @@
     <link href="https://www.yhspy.com/2021/01/19/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%83%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/01/19/%E3%80%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88%E7%AC%AC%E4%B8%83%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-01-18T16:00:06.000Z</published>
-    <updated>2021-01-21T08:16:08.794Z</updated>
+    <updated>2021-04-02T14:45:04.624Z</updated>
     
     
     <summary type="html">旧书清理系列。这本书本科选修课学过，工作后也粗略看过。正好赶上 17 年的新版本发行，最后一遍就在这里整理一下吧。</summary>
@@ -367,7 +367,7 @@
     <link href="https://www.yhspy.com/2021/01/10/%E3%80%8A%E6%AD%A3%E5%88%99%E6%8C%87%E5%BC%95%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.yhspy.com/2021/01/10/%E3%80%8A%E6%AD%A3%E5%88%99%E6%8C%87%E5%BC%95%EF%BC%88%E7%AC%AC%E4%BA%8C%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2021-01-10T09:24:06.000Z</published>
-    <updated>2021-01-18T14:33:12.527Z</updated>
+    <updated>2021-04-02T14:45:04.593Z</updated>
     
     
     <summary type="html">旧书清理系列。正好赶上新出不久的第二版，年前暂时不读“板砖”了，找点薄的速读一下。</summary>
@@ -384,7 +384,7 @@
     <link href="https://www.yhspy.com/2021/01/03/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-5-9-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2021/01/03/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-5-9-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-01-03T14:09:13.000Z</published>
-    <updated>2021-01-07T03:45:31.822Z</updated>
+    <updated>2021-04-02T14:45:04.637Z</updated>
     
     
     <summary type="html">书接上回，本文为第 5-9 章的笔记。</summary>
@@ -401,7 +401,7 @@
     <link href="https://www.yhspy.com/2020/12/30/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-3-4-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/30/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-3-4-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-29T16:29:40.000Z</published>
-    <updated>2021-02-05T10:17:40.969Z</updated>
+    <updated>2021-04-02T14:45:04.629Z</updated>
     
     
     <summary type="html">书接上回，本文为第 3-4 章的笔记。</summary>
@@ -418,7 +418,7 @@
     <link href="https://www.yhspy.com/2020/12/25/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/25/%E3%80%8A%E8%AE%A1%E7%AE%97%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E6%B7%B1%E5%85%A5%E5%89%96%E6%9E%90%E7%A8%8B%E5%BA%8F%E5%92%8C%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-25T08:50:23.000Z</published>
-    <updated>2021-02-05T10:17:18.744Z</updated>
+    <updated>2021-04-02T14:45:04.629Z</updated>
     
     
     <summary type="html">旧书清理系列。“可计算理论”基础。</summary>
@@ -435,7 +435,7 @@
     <link href="https://www.yhspy.com/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-24T12:45:46.000Z</published>
-    <updated>2021-03-03T04:04:44.110Z</updated>
+    <updated>2021-04-02T14:45:04.556Z</updated>
     
     
     <summary type="html">书接上回，本文为第 18-28 章的笔记。</summary>
@@ -452,7 +452,7 @@
     <link href="https://www.yhspy.com/2020/12/18/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-17-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/18/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-17-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-18T15:24:24.000Z</published>
-    <updated>2021-03-03T04:00:47.049Z</updated>
+    <updated>2021-04-02T14:45:04.555Z</updated>
     
     
     <summary type="html">书接上回，本文为第 12-17 章的笔记。</summary>
@@ -469,7 +469,7 @@
     <link href="https://www.yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-14T14:42:30.000Z</published>
-    <updated>2021-03-03T04:00:28.155Z</updated>
+    <updated>2021-04-02T14:45:04.557Z</updated>
     
     
     <summary type="html">书接上回，本文为第 8-11 章的笔记。</summary>
@@ -486,7 +486,7 @@
     <link href="https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-08T10:28:35.000Z</published>
-    <updated>2021-03-03T04:02:14.721Z</updated>
+    <updated>2021-04-02T14:45:04.552Z</updated>
     
     
     <summary type="html">旧书清理系列。正好趁着第四版的推出，花点时间完整过一下。</summary>
@@ -503,7 +503,7 @@
     <link href="https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E8%AF%AD%E8%A8%80%E7%B2%BE%E9%AB%93%E4%B8%8E%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E8%AF%AD%E8%A8%80%E7%B2%BE%E9%AB%93%E4%B8%8E%E7%BC%96%E7%A8%8B%E5%AE%9E%E8%B7%B5%EF%BC%88%E7%AC%AC%E4%B8%89%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-08T04:47:25.000Z</published>
-    <updated>2020-12-29T05:37:42.607Z</updated>
+    <updated>2021-04-02T14:45:04.552Z</updated>
     
     
     <summary type="html">今年计划中的最后一本书，当然要以老本行相关的内容（JavaScript）作为收尾。</summary>
@@ -520,7 +520,7 @@
     <link href="https://www.yhspy.com/2020/12/04/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-9-12-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.yhspy.com/2020/12/04/%E3%80%8ACSAPP-%E7%AC%AC%E4%B8%89%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-9-12-%E7%AB%A0%EF%BC%89/</id>
     <published>2020-12-04T02:23:11.000Z</published>
-    <updated>2021-01-16T07:00:25.472Z</updated>
+    <updated>2021-04-02T14:45:04.525Z</updated>
     
     
     <summary type="html">书接上文，本文为第 9-12 章的笔记。其中最后三章（10-12），由于其主题本身的内容（系统级 I/O、网络编程、C++ 并发编程）可以通过讲解的更为深入的其他整本书籍来进行学习，因此这里先不花时间记录，后面如果有需要再回来了解。</summary>

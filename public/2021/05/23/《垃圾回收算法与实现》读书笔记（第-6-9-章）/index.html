@@ -55,40 +55,64 @@
 <li><strong>缺点</strong>：因为必须将所有对象都间接引用，因此会拉低访问对象内数据的速度，而这会关系到整个语言处理程序的速度。</li>
 </ul>
 <ol start="34">
-<li>（Page：127）<strong>MostlyCopyingGC</strong>：保守式 GC 复制算法，可在不明确的根的环境中运行 GC 复制算法。</li>
+<li>（Page：127）<strong>MostlyCopyingGC</strong>：保守式 GC 复制算法，可在不明确的根的环境中运行 GC 复制算法。思路是：把那些不明确的根指向的对象以外的对象都复制的 GC 算法。<strong>MostlyCopyingGC 会抛开那些不能移动的对象，而将其他“大部分”的对象都进行复制</strong>。</li>
 </ol>
 <ul>
-<li><strong>思路</strong>：即把那些不明确的根指向的对象以外的对象都复制的 GC 算法。MostlyCopyingGC 会抛开那些不能移动的对象，而将其他“大部分”的对象都进行复制。</li>
 <li><strong>前提条件</strong>：<ul>
 <li>根是不明确的根；</li>
 <li>没有不明确的数据结构（GC 能够明确判断对象里的域是指针还是非指针）；</li>
 <li>对象大小随意。</li>
 </ul>
 </li>
-<li><strong>实现步骤</strong>：（略）；</li>
-<li><strong>实现细节</strong>：（略）；</li>
+<li><strong>GC 执行步骤</strong>：<ul>
+<li>首先对 <em>next_space</em> 的值进行增量（GC 开始）；</li>
+<li>将保留有从根引用的对象的页“晋升”到 To 页（将页编号设定为 <em>next_space</em> 的值）。连续的跨页（CONTINUED）将被一起晋升；</li>
+<li>复制过程产生的新页默认被设定为 <em>next_space</em> 的值（To 页）；</li>
+<li>将 To 页里对象的子对象复制到 To 页的分块；</li>
+<li>将 <em>current_space</em> 的值设定为 <em>next_space</em>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="4.png" alt=""></p>
+<ul>
+<li><strong>实现细节</strong>：<ul>
+<li>堆被分成一定大小的页，每个页各有一个编号；</li>
+<li>两个变量 <em>current_space</em>（From）与 <em>next_space</em>（To）用于识别 From 页与 To 页；</li>
+<li>正在使用的页有两种标志：<ul>
+<li><em>OBJECT</em>：正在使用的页；</li>
+<li><em>CONTINUED</em>：当正在使用的页跨页时，设置在第2个页之后。</li>
+</ul>
+</li>
+<li>在分配新页时，当 “<u>正在使用的页 + 准备追加的页 &gt;= 堆总页的一半</u>”，则会启动 GC；</li>
+<li><strong>页的合适大小在 512 字节</strong>。</li>
+</ul>
+</li>
 <li><strong>优点</strong>：可以在保守式 GC 中使用 GC 复制算法；</li>
-<li><strong>缺点</strong>：在包含有从根引用的对象的页内，所有的对象都会被看成活动对象。一定程度上降低了内存的使用率。</li>
+<li><strong>缺点</strong>：不会回收包含有从根指向的对象，一定程度上降低了内存的使用率。可以通过适当缩小页（<strong>让非根指针尽量分配在其他页，可以被回收</strong>）来调节。</li>
 </ul>
 <ol start="35">
-<li>（Page：139）<strong>黑名单</strong>：可以改善“指针错误识别”的问题。</li>
+<li>（Page：139）<strong>黑名单</strong>：可改善“指针错误识别”的问题。</li>
 </ol>
 <ul>
-<li>“黑名单”是一种创建“需要注意的地址的名单”的方法。名单中记录的是“<strong>不明确的根内的非指针，其指向的是有可能被分配对象的地址</strong>（比如堆内未使用对象的地址）”；</li>
+<li>是一种创建“需要注意的地址的名单”的方法。名单中记录的是“<strong>不明确的根内的非指针，其指向的是有可能被分配对象的地址</strong>（比如堆内未使用对象的地址）”；</li>
 <li>在将对象分配到需要注意的地址时，所分配对象有着如下限制条件：<ul>
 <li>小对象；</li>
 <li>没有子对象的对象。</li>
 </ul>
 </li>
-<li>黑名单在“标记”阶段创建。</li>
+<li>以“GC 标记-清除”为例，黑名单在“标记”阶段创建。</li>
 </ul>
-<h3 id="Chapter-7：分代垃圾回收（Generational-GC）"><a href="#Chapter-7：分代垃圾回收（Generational-GC）" class="headerlink" title="Chapter 7：分代垃圾回收（Generational GC）"></a>Chapter 7：分代垃圾回收（Generational GC）</h3><p>即在对象中引入了“<strong>年龄</strong>”的概念，通过优先回收容易成为垃圾的对象，提高垃圾回收的效率。这基于一个总结出的经验：“<strong>大部分的对象在生成后马上就变成了垃圾，很少有对象能活得很久</strong>。”</p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 伪代码。若该对象地址未曾使用过，则将其加入黑名单；</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_used_object</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> 
+  obj<span class="token punctuation">.</span>next <span class="token operator">=</span> $blacklist 
+  $blacklist <span class="token operator">=</span> obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Chapter-7：分代垃圾回收（Generational-GC）"><a href="#Chapter-7：分代垃圾回收（Generational-GC）" class="headerlink" title="Chapter 7：分代垃圾回收（Generational GC）"></a>Chapter 7：分代垃圾回收（Generational GC）</h3><p>即在对象中引入了“<strong>年龄</strong>”的概念，通过优先回收容易成为垃圾的对象，提高垃圾回收的效率。这基于一个总结出的经验：“<strong>大部分对象在生成后马上就变成了垃圾，很少有对象能活得很久</strong>。”</p>
 <ol start="36">
 <li>（Page：143）<strong>分代</strong>：</li>
 </ol>
 <ul>
-<li>刚生成的对象称为“<strong>新生代对象</strong>”，到达一定年龄的对象则称为“<strong>老年代对象</strong>”。对新对象执行的 GC 称为“新生代 GC”（<em>minor GC</em>），对老对象执行的 GC 称为“老生代 GC”（<em>major GC</em>）。新生代对象上升为老年代对象的情况称为“<strong>晋升</strong>”；</li>
-<li>新生代 GC 执行频率较高，老生代 GC 执行频率较低。</li>
+<li>刚生成的对象称为“<strong>新生代对象</strong>”，到达一定年龄的对象则称为“<strong>老年代对象</strong>”。对新对象执行的 GC 称为“新生代 GC”（<em>minor GC</em>），对老对象执行的 GC 称为“老年代 GC”（<em>major GC</em>）。新生代对象上升为老年代对象的情况称为“<strong>晋升</strong>”；</li>
+<li>新生代 GC 执行频率较高，老年代 GC 执行频率较低。</li>
 </ul>
 <ol start="37">
 <li>（Page：143）<strong>Ungar 的分代垃圾回收</strong>：</li>
@@ -96,59 +120,171 @@
 <p>- <strong><em>堆结构</em></strong>：</p>
 <p><img src="2.png" alt=""></p>
 <ul>
-<li>论文中，生成空间、幸存空间以及老年代空间的大小分别设为了 140K 字节、28K 字节和 940K 字节。</li>
+<li>论文中，对各空间大小的设定：<ul>
+<li>生成空间（用于生成新对象，满时发生 GC）：140KB；</li>
+<li>幸存空间（用作 From 与 To 空间）：28KB；</li>
+<li>老年代空间：940KB。</li>
+</ul>
+</li>
 </ul>
 <p>- <strong><em>实现细节</em></strong>：</p>
 <ul>
-<li>对象头的结构：<ul>
-<li>对象的年龄（age）；</li>
-<li>已经复制完毕的标志（forwarded）；</li>
-<li>已经向记录集记录完毕的标志（remembered）；</li>
+<li><strong>记录集</strong>（<em>remembered set</em>）：记录了从老年代对象到新生代对象的引用。这部分引用也需要被当作根进行处理（用于搜索新生代的活动对象，每次新生代 GC 时创建。可以简化更新父子指针的复杂度）；</li>
+<li>对象头结构：<ul>
+<li>对象的年龄（<em>age</em>）：从新生代 GC 中存活下来的次数；</li>
+<li>已经复制完毕的标志（<em>forwarded</em>）；</li>
+<li>已经向记录集记录完毕的标志（<em>remembered</em>）；</li>
+<li><em>forwarding</em> 指针；</li>
 <li>对象的种类；</li>
 <li>对象的大小。</li>
 </ul>
 </li>
-<li>生成空间中会分配新对象，<strong>当生成空间满时，新生代 GC 就会启动</strong>，将生成空间中的活动对象复制到幸存空间。2 个幸存空间与 GC 复制算法中的 From 空间、To 空间类似，当执行新生代 GC 时，活动对象就会被复制到另一个幸存空间。而生成空间和 From 幸存空间这两个空间内的活动对象都会被复制到 To 幸存空间中。</li>
-<li>从一定次数的新生代 GC 中存活下来的对象会被到晋升，被复制到老年 代空间去；</li>
+<li><strong>新生代 GC</strong>：<strong>当生成空间满时启动</strong>。GC 过程会将生成空间中的活动对象复制到 To 幸存空间。同时，From 空间内的活动对象也会被复制到 To 幸存空间。</li>
 </ul>
 <p><img src="3.png" alt=""></p>
 <ul>
-<li>可能存在从老生代到新生代的引用，这部分引用会被记录在“<strong>记录集</strong>”中。而这部分引用也需要被当作根进行处理（用于搜索新生代的活动对象）；</li>
-<li>利用“<strong>写入屏障</strong>”将老年代对象记录到记录集中。三个条件：<ul>
+<li><strong>老年代 GC</strong>：老年代空间占满后触发。可通过 GC 标记-清除进行；</li>
+<li>从一定次数的新生代 GC 中存活下来的对象会被到晋升，被复制到老年代空间中；</li>
+<li><u>利用“<strong>写入屏障</strong>”将老年代对象记录到记录集中</u>。三个条件：<ul>
 <li>发出引用的对象是不是老年代对象；</li>
 <li>指针更新后的引用的目标对象是不是新生代对象；</li>
 <li>发出引用的对象还没有被记录到记录集中。</li>
 </ul>
 </li>
-<li>当通过新生代 GC 得到晋升的对象把老年代空间占满后，便会执行“老生代 GC”。通过 GC 标记-清除算法清除老生代中的非存活对象。</li>
-<li><strong>优点</strong>：可以改善 GC 花费的时间。据实验表明，<strong>分代垃圾回收花费的时间是 GC 复制算法的 1/4</strong>；</li>
+</ul>
+<blockquote>
+<p>A write barrier in a garbage collector is a fragment of code emitted by the compiler immediately before every store operation to ensure that (e.g.) generational invariants are maintained.</p>
+</blockquote>
+<ul>
+<li>对于无法被分配到生成空间的大对象，可以选择将其直接分配到老年代空间；</li>
+<li><strong>优点</strong>：可改善 GC 花费的时间。据实验表明，由于只将垃圾回收的重点放在新生代对象身上，因此<strong>分代垃圾回收花费的时间是 GC 复制算法的 1/4</strong>；</li>
 <li><strong>缺点</strong>：对于对象会活得很久的程序来说，会产生以下问题：<ul>
-<li>新生代 GC 所花费的时间增多；</li>
+<li>新生代 GC 花费的时间增多；</li>
 <li>老年代 GC 频繁运行。</li>
 </ul>
 </li>
 <li><strong>总结</strong>：只有当新生代 GC 带来的速度提升效果大于写入屏障对速度造成的影响时，分代垃圾回收才能够更好地发挥作用。</li>
 </ul>
 <ol start="38">
-<li>（Page：156）<strong>多代垃圾回收</strong>：除了最老的那一代之外，每代都有一个记录集。X 代的记录集只记录来自比 X 老的其他代的引用。综合来看，少设置一些分代能得到更优秀的吞吐量，<strong>据说分为 2 代或者 3 代是最好的</strong>。</li>
-<li>（Page：157）<strong>列车垃圾回收</strong>：（略）。</li>
+<li>（Page：154）一些可以替代“记录集”的方式（<strong>标记需要遍历的某一块老年代空间</strong>）：</li>
 </ol>
-<h3 id="Chapter-8：增量式垃圾回收（Incremental-GC）"><a href="#Chapter-8：增量式垃圾回收（Incremental-GC）" class="headerlink" title="Chapter 8：增量式垃圾回收（Incremental GC）"></a>Chapter 8：增量式垃圾回收（Incremental GC）</h3><p>是将 GC 和 mutator 一点点交替运行的手法。</p>
-<ol start="40">
+<ul>
+<li><strong>卡片标记</strong>：将老年代空间按照相等大小（论文中为 128 字节）分割成若干“卡片”，通过额外的“标记表格”来管理各个卡片内的的对象引用。GC 时会寻找标记表格。当找到设置了标志位的卡片时，就会从卡片开头开始寻找指向新生代空间的引用。<strong>因此整个位表只需要老年代空间的 1/1024 的空间即可</strong>；</li>
+<li><strong>页面标记</strong>：利用 OS 的机制，当对堆内的某一个页面进行写入操作时，OS 会设置跟这个页面对应的位。或利用 OS 的内存保护功能，在 mutator 写入老年代空间时，通过异常处理来检测出这项操作。而在异常处理函数的内部，事先设置与发生写入页面相对应的位。<strong>这种方法可能导致额外的遍历页面</strong>。</li>
+</ul>
+<ol start="39">
+<li>（Page：156）<strong>多代垃圾回收</strong>：可以相对减少在老年代对象上消耗的垃圾回收时间。除了最老的那一代之外，每代都有一个记录集。X 代的记录集只记录来自比 X 老的其他代的引用。综合来看，少设置一些分代能得到更优秀的吞吐量，<strong>据说分为 2 代或者 3 代是最好的</strong>。</li>
+<li>（Page：157）<strong>列车垃圾回收</strong>（<em>Train GC</em>）：为了在分代垃圾回收中利用老年代 GC 而采用的算法，可以控制老年代 GC 中暂停时间的增长。</li>
+</ol>
+<p>- <strong><em>堆结构</em></strong>：</p>
+<p><img src="5.png" alt=""></p>
+<p>- <strong><em>实现细节</em></strong>：</p>
+<ul>
+<li>老年代空间按一定大小划分，每个划分出来的空间称为车厢。每个列车和每个车厢都按其产生顺序被赋予编号，互相连接。<strong>1 次老年代 GC 是以 1 个车厢作为 GC 对象的</strong>；</li>
+<li>列车的记录集里记录的是来自其他列车的引用，车厢的记录集中记录的则是来自同一列车的其他车厢的引用（均是老年代对象）；</li>
+<li>对象结构和在 Ungar 的分代垃圾回收里用到的对象结构完全一致；</li>
+<li><strong>新生代 GC</strong>：新生代空间满时执行。会把根或者老年代对象引用的新生代对象<strong>复制到老年代空间里去</strong>；<ul>
+<li>新生代空间记录集中<strong>由老年代空间引用的对象</strong>，会被复制到老年代空间对象所属“列车”的最后一节车厢中。</li>
+</ul>
+</li>
+</ul>
+<p><img src="6.png" alt=""></p>
+<ul>
+<li><strong>老年代 GC</strong>：新生代 GC 结束后执行。以<strong>开头列车的开头车厢</strong>作为 GC 对象开始，将该对象所在车厢里的活动对象复制到其他车厢。<ul>
+<li>若当前列车所有车厢没有根引用，且该车厢记录集为空，则直接回收整个列车；</li>
+<li>否则，复制的目标车厢为“<strong>发出引用的对象所属列车最末尾的车厢</strong>”。若该车厢装不下这些对象，则新连接一节空车厢。</li>
+</ul>
+</li>
+</ul>
+<p><img src="7.png" alt=""></p>
+<ul>
+<li>若新生代空间的记录集满了，则必须执行新生代 GC 以清空新生代空间；若老年代空间中某个车厢的记录集满了，则可选择<strong>将该车厢排除到 GC 对象之外</strong>（类似永生对象）。</li>
+<li><strong>优点</strong>：<ul>
+<li>缩减了各老年代 GC 造成的 mutator 最大暂停时间；</li>
+<li>可回收循环的大型垃圾（要复制的对象与发出引用的对象被安排在同一辆“列车”上）。</li>
+</ul>
+</li>
+<li><strong>缺点</strong>：写入屏障成本更高，吞吐量方面较 Ungar 算法低。</li>
+</ul>
+<h3 id="Chapter-8：增量式垃圾回收（Incremental-GC）"><a href="#Chapter-8：增量式垃圾回收（Incremental-GC）" class="headerlink" title="Chapter 8：增量式垃圾回收（Incremental GC）"></a>Chapter 8：增量式垃圾回收（Incremental GC）</h3><p>是将 GC 和 mutator 一点点交替运行的手法，GC 的执行不会导致 mutator 的暂停。“<strong>停止型 GC</strong>（<em>Stop-The-World-GC</em>）” 与 “<strong>增量式 GC</strong>”。</p>
+<ol start="41">
 <li>（Page：168）<strong>增量式 GC 标记-清除算法</strong>：</li>
 </ol>
 <ul>
-<li><strong>基本流程</strong>：<ul>
-<li><strong>根查找阶段</strong>：把能直接从根引用的对象涂成灰色；</li>
-<li><strong>标记阶段</strong>：查找灰色对象，将其子对象也涂成灰色，查找结束后将灰色对象涂成黑色；</li>
-<li><strong>清除阶段</strong>：查找堆，将白色对象连接到空闲链表，将黑色对象变回白色。</li>
+<li><strong>三色标记</strong>：将 GC 中的对象按照各自的情况分为三种；<ul>
+<li><em>白色</em>：还未搜索过的对象；</li>
+<li><em>灰色</em>：正在搜索的对象（在栈中）；</li>
+<li><em>黑色</em>：搜索完成的对象（已出栈）。</li>
 </ul>
 </li>
-<li><strong>优点</strong>：缩短最大暂停时间；</li>
+<li><strong>实现流程</strong>：<ul>
+<li>GC 开始运行前所有的对象都是白色。</li>
+<li><strong>根查找阶段</strong>（执行一次）：把能直接从根引用的对象涂成灰色，然后堆到栈里；</li>
+<li><strong>标记阶段</strong>（执行多次）：查找（取出）栈中的灰色对象，将其子对象也涂成灰色，查找结束后将灰色对象涂成黑色；</li>
+<li><strong>清除阶段</strong>（执行多次）：查找堆，将白色对象连接到空闲链表，将黑色对象变回白色。</li>
+</ul>
+</li>
+<li><strong>实现细节</strong>：<ul>
+<li>在增量标记阶段，每次只从栈中取出一定数量（MARK_MAX）的对象进行标记。当标记完特定数量的对象后，mutator 继续执行；</li>
+<li>在增量清除阶段，每次只清除一定个数，然后中断 GC，再次运行 mutator。</li>
+<li><strong>写入屏障</strong>：用于在更新对象引用时检查其标记情况。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：缩短<strong>最大暂停时间</strong>；</li>
 <li><strong>缺点</strong>：降低了吞吐量（使用了“写入屏障”）。</li>
 </ul>
-<ol start="41">
-<li>（Page：174）Steele 算法 &amp; 汤浅算法：（略）。</li>
+<ol start="42">
+<li>（Page：174）<strong>Steele 算法</strong>：</li>
 </ol>
-<h3 id="Chapter-9：-RC-Immix-算法"><a href="#Chapter-9：-RC-Immix-算法" class="headerlink" title="Chapter 9： RC Immix 算法"></a>Chapter 9： RC Immix 算法</h3><p>（略）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 27, 12:14:37</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<ul>
+<li><strong>三色标记</strong>：<ul>
+<li><em>白色</em>：还未搜索过的对象；</li>
+<li><em>灰色</em>：正在搜索的对象（在栈中，未标记）；</li>
+<li><em>黑色</em>：搜索完成的对象（已出栈，设置了标记位）。</li>
+</ul>
+</li>
+<li><strong>实现细节</strong>：<ul>
+<li><strong>写入屏障</strong>：<strong>对发出引用的对象进行标记</strong>。通过限制标记对象来减少被标记的对象，从而防止了因疏忽造成垃圾残留的后果。</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 伪代码；</span>
+<span class="token function">write_barrier</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> field<span class="token punctuation">,</span> newobj<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>
+    $gc_phase <span class="token operator">==</span> GC_MARK <span class="token operator">&amp;&amp;</span> 
+    obj<span class="token punctuation">.</span>mark <span class="token operator">==</span> TRUE <span class="token operator">&amp;&amp;</span> 
+    newobj<span class="token punctuation">.</span>mark <span class="token operator">==</span> FALSE
+  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    obj<span class="token punctuation">.</span>mark <span class="token operator">=</span> FALSE  <span class="token comment" spellcheck="true">// 将当前对象标记为“灰色”；</span>
+    <span class="token function">push</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> $mark_stack<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 重新搜索；</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">*</span>field <span class="token operator">=</span> newobj
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="43">
+<li>（Page：176）<strong>汤浅的算法</strong>（又名“快照 GC”）：</li>
+</ol>
+<ul>
+<li><strong>原则</strong>：以 GC 开始时对象间的引用关系为基础。在 GC 开始时回收垃圾，保留 GC 开始时的活动对象和 GC 执行过程中被分配的对象；</li>
+<li>进入清除阶段前不会再搜索根（<em>incremental_mark_phase</em> 过程较为简单）。</li>
+</ul>
+<h3 id="Chapter-9：-RC-Immix-算法"><a href="#Chapter-9：-RC-Immix-算法" class="headerlink" title="Chapter 9： RC Immix 算法"></a>Chapter 9： RC Immix 算法</h3><ol start="44">
+<li>（Page：180）RC Immix 算法（合并型引用计数法 + Immix 算法）<strong>将引用计数法的一大缺点 — “吞吐量低”（由于引用计数频繁变化引起），改善到了实用级别</strong>。</li>
+<li>（Page：181）<strong>合并型引用计数法</strong>：将注意力放在某一时期最初和最后的状态上，在该期间内不进行计数器的增减。指针改动时的信息（对象和其子对象）会被注册到“<strong>更改缓冲区</strong>”（Modified Buffer）。当更改缓冲区满时，执行 GC 查找更改缓冲区，并正确设置计数器的值。</li>
+</ol>
+<p><img src="8.png" alt=""></p>
+<ul>
+<li><strong>优点</strong>：增加了吞吐量；</li>
+<li><strong>缺点</strong>：增加了 mutator 的暂停时间。</li>
+</ul>
+<ol start="46">
+<li>（Page：185）<strong>RC Immix 算法</strong>：</li>
+</ol>
+<ul>
+<li><strong>算法细节</strong>：<ul>
+<li>对象有计数器，线也有计数器，这样就可以获悉线内是否存在活动对象。<strong>对象的计数器表示的是指向这个对象的引用的数量，而线的计数器表示的是这个线里存在的活动对象的数量</strong>（对象生成和废弃的频率要低于对象间引用关系变化的频率）。</li>
+</ul>
+</li>
+<li><strong>优点</strong>：吞吐量得到了大幅改善；</li>
+<li><strong>缺点</strong>：暂停时间增长。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 05 / 29, 11:30:45</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
