@@ -168,7 +168,7 @@ module.exports = app => {
       },
       async getNoteContentById(parent, args) {
         const { id } = args;
-        return global.hexoMeta.Notes.filter(note => note.id = id)[DEFAULT_INDEX].content
+        return global.hexoMeta.Notes.filter(note => note.id === id)[DEFAULT_INDEX].content
       },
       async searchPostsByKey(parent, args) {
         const key = args.key;

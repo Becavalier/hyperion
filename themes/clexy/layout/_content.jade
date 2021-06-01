@@ -117,14 +117,14 @@ else if is_page() && page.title.toLowerCase() =='notes'
   article(class='full notes-page')
     - var notes_items = site.pages.filter(i => i.page === 'notes')
     h1(itemprop='headline')=page.title + ' (' + notes_items.length + ')'
-    each val, key in notes_items.sort((x, y) => y.category - x.category).reduce((prev, curr) => { if(!prev[curr.cateogry]) { prev[curr.cateogry] = [] } prev[curr.cateogry].push(curr); return prev; }, {})
+    each val, key in notes_items.sort((x, y) => y.category > x.category).reduce((prev, curr) => { if(!prev[curr.cateogry]) { prev[curr.cateogry] = [] } prev[curr.cateogry].push(curr); return prev; }, {})
       h5='- ' + key
       ul.notes-list
         for notes in val.sort((x, y) => y.date - x.date)
           li 
             div(class="title") （
               a(target="_blank", href=notes.link)
-                u 文章
+                u 链接
                 | ）
               span=notes.title + ' - ' + full_date(new Date(notes.date), 'MM / YYYY')
             div(class="content", id=notes.id)

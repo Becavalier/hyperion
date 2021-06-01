@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', e => {
     const { className, nextSibling, nodeName, parentNode } = e.target;
     if (className === 'title') {
       await setupNoteContent(nextSibling);
-      nextSibling.style.display = nextSibling.style.display ? '' : 'flex';
+      nextSibling.style.display = nextSibling.style.display ? '' : 'block';
     } else if (nodeName === 'SPAN') {
       const { nextSibling } = parentNode
       await setupNoteContent(nextSibling);
-      nextSibling.style.display = nextSibling.style.display ? '' : 'flex';
+      nextSibling.style.display = nextSibling.style.display ? '' : 'block';
     }
   });
 });
