@@ -120,7 +120,7 @@ else if is_page() && page.title.toLowerCase() =='notes'
     each val, key in notes_items.sort((x, y) => y.category > x.category).reduce((prev, curr) => { if(!prev[curr.cateogry]) { prev[curr.cateogry] = [] } prev[curr.cateogry].push(curr); return prev; }, {})
       h5='- ' + key
       ul.notes-list
-        for notes in val.sort((x, y) => y.date - x.date)
+        for notes in val.sort((x, y) => y.title < x.title)
           li 
             div(class="title") （
               a(target="_blank", href=notes.link)
