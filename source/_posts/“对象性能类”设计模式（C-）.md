@@ -82,7 +82,7 @@ Singleton* Singleton::getInstance() {  // 双检查锁；
       instance.store(_t, std::memory_order_relaxed);  // 一次性赋值；
     }
   }
-  return instance;
+  return _t;
 }
 ```
 

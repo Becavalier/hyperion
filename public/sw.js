@@ -267,7 +267,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/07/25/设计模式速谈：六、单例模式/index.html",
-    "revision": "e6bef129740295ac8b2378f72eb22d38"
+    "revision": "acd4aecd9a0dcb46135cdee260d74304"
   },
   {
     "url": "2016/07/27/HTML5-随记录/index.html",
@@ -699,7 +699,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/02/“对象性能类”设计模式（C-）/index.html",
-    "revision": "47ec2d92ca1566854a2b1d7030f877df"
+    "revision": "15d9ece50b293b1549d356f9d4b765ea"
   },
   {
     "url": "2020/06/03/“接口隔离类”设计模式（C-）/index.html",
@@ -987,7 +987,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/19/TLPI-读书笔记（第-1-2-章）/index.html",
-    "revision": "754080a802ac9cbc48be978dd2cbee38"
+    "revision": "bccd7e986cd3e9f8f3f0ba5b8d8e3318"
   },
   {
     "url": "2021/05/23/《垃圾回收算法与实现》读书笔记（第-6-9-章）/index.html",
@@ -1307,7 +1307,7 @@ self.__precacheManifest = [
   },
   {
     "url": "notes/index.html",
-    "revision": "3fe1c6975309bbe4a3763735066ddb92"
+    "revision": "af5ffa8de87a554aae7df7319df2b103"
   },
   {
     "url": "notes/Memory64 Proposal for WebAssembly.html",
@@ -1471,7 +1471,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "3bc31dd70c4c0689a173ad41500bd2d2"
+    "revision": "cd2c81f93ab33012e401e30c46da5da7"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1635,11 +1635,11 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/me-en/index.html",
-    "revision": "f0d5bd4ba1b7874318a3dd148a87a90b"
+    "revision": "4c8f1e2a9ca9cc0c421da39462bfaa87"
   },
   {
     "url": "resume/me/index.html",
-    "revision": "07a4b7ccf1a448997932ae90281d6dca"
+    "revision": "be192fc48e1a94354691a7e45350c084"
   },
   {
     "url": "scripts/book.js",
@@ -1763,7 +1763,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "a5fce26086152f35445eb49345ec88c8"
+    "revision": "0ff32ccfeb5332e56ddacee179fb1874"
   },
   {
     "url": "tags/Java/index.html",
