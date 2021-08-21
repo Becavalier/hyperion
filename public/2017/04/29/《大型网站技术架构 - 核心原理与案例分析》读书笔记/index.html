@@ -16,8 +16,8 @@
 <li>（Page：5）网站的访问特点符合二八定律，即：<strong>80% 的业务访问集中在 20% 的数据资源上</strong>。因此，对于这部分“热”资源，可以考虑使用<strong>缓存</strong>来加速访问。</li>
 <li>（Page：12）大型网站架构的“最终”演化结构：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
-<p>- <strong><em>基本演化流程</em></strong>：</p>
+<p><img src="1.png"></p>
+<p>- <em><strong>基本演化流程</strong></em>：</p>
 <ul>
 <li><strong>初始版本</strong>：单机应用（DB / 应用程序 / 文件系统）；</li>
 <li><strong>应用服务与数据服务分离</strong>：多机系统（DB、应用系统、文件系统各自独立部署到单独的机器）；</li>
@@ -44,7 +44,7 @@
 <ul>
 <li><strong>分层</strong>：在网站规模还很小时就应该采用分层架构。从逻辑上分层，将系统在<strong>横向</strong>纬度上划分成几个部分，每个部分负责一部分相对比较单一的职责，然后通过上层对下层的依赖和调用组成一个完整的系统。</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li><strong>分割</strong>：将不同的功能和服务进行<strong>纵向</strong>分割，包装成高内聚低耦合的模块单元，一方面有助于软件的开发和维护，另一方面便于不同模块的分布式部署。如不同的业务分割为不同的应用，由不同的团队负责，部署在不同的服务器上；</li>
 <li><strong>分布式</strong>：分布式可以将网站架构的所有资源模块化，每个模块有自己单独的资源池来为自己提供计算，同时分布式也可以增加网站的可用性，增强和提高资源的处理效率。但带来的问题是数据一致性难以保证。<ul>
@@ -54,7 +54,7 @@
 <li>分布式计算。</li>
 </ul>
 </li>
-<li><strong>集群</strong>：将分布式架构中的各个模块以“<strong>多机集群</strong>”的方式代替“单机”模式，这样的好处是可以利用即时的灾备服务，同时大大提高计算效率。每个集群通过一个 LB 透明化的对外提供服务。（<strong>*在使用集群的时候要注意对用户 Session 等信息的状态保存，不应该与应用服务器放到一起</strong>）。</li>
+<li><strong>集群</strong>：将分布式架构中的各个模块以“<strong>多机集群</strong>”的方式代替“单机”模式，这样的好处是可以利用即时的灾备服务，同时大大提高计算效率。每个集群通过一个 LB 透明化的对外提供服务。（*<strong>在使用集群的时候要注意对用户 Session 等信息的状态保存，不应该与应用服务器放到一起</strong>）。</li>
 <li><strong>缓存</strong>：使用缓存的两个前提条件：(1) 数据访问热点不均衡，把热点数据放入缓存；(2) 数据在某个时间段内有效，不会很快过期。<ul>
 <li>CDN；</li>
 <li>反向代理；</li>
@@ -88,7 +88,7 @@
 <h3 id="第-4-章-瞬时响应：网站的高性能架构"><a href="#第-4-章-瞬时响应：网站的高性能架构" class="headerlink" title="第 4 章 - 瞬时响应：网站的高性能架构"></a>第 4 章 - 瞬时响应：网站的高性能架构</h3><ol start="9">
 <li>（Page：36）常见系统操作响应时间：</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="10">
 <li>（Page：36）常见性能指标：</li>
 </ol>
@@ -113,8 +113,8 @@
 <li><strong>压力测试</strong>：在超过系统安全负载时继续施加压力，测试直到系统崩溃所用时间的长短；</li>
 <li><strong>稳定性测试</strong>：让系统在一定压力下运行一段时间，检测系统在不同时间点是否有资源的使用异常，以此来推断系统的稳定性。</li>
 </ul>
-<p>- <strong><em>性能测试曲线</em></strong>：</p>
-<p><img src="4.png" alt=""></p>
+<p>- <em><strong>性能测试曲线</strong></em>：</p>
+<p><img src="4.png"></p>
 <ol start="12">
 <li>（Page：45）<strong>缓存</strong>：</li>
 </ol>
@@ -122,17 +122,17 @@
 <li>网站性能优化第一定律：<strong>优先考虑使用缓存优化性能</strong>；</li>
 <li>缓存的本质是一个内存 Hash 表，主要用来存放那些<strong>读写比很高、很少变化</strong>的数据。</li>
 </ul>
-<p>- <strong><em>缓存优化相关问题</em></strong>：</p>
+<p>- <em><strong>缓存优化相关问题</strong></em>：</p>
 <p>系统的正常运行不应该依赖于缓存系统，初始的缓存系统可以先进行“<strong>缓存预热</strong>”，比如 Redis 在初始化时会从硬盘中读取数据放到内存。如果在日志中发现大量的无法命中缓存的请求，这可能是发生了“<strong>缓存穿透</strong>”，恶意用户持续高并发的访问系统不存在的资源，这些资源无法被缓存下来导致了穿透问题，一个简单的对策是将不存在的数据也缓存起来（设置其 value 值为 <em>null</em>）。</p>
-<p>- <strong><em>分布式缓存架构</em></strong>：</p>
+<p>- <em><strong>分布式缓存架构</strong></em>：</p>
 <ul>
 <li><strong>需更新同步</strong> - JBoss Cache：在集群中所有服务器中保存相同的缓存数据，当某台服务器有缓存数据改变时，会在所有机器更新。应用和缓存部署在同一台服务器上。常用于企业应用系统；</li>
 </ul>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ul>
 <li><strong>不互相通信</strong> - Memcached：采用集中式的缓存集群管理，缓存与应用分离部署，缓存服务器之间不通信，因此<strong>其线性伸缩不会影响缓存系统的性能</strong>。</li>
 </ul>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ol start="13">
 <li>（Page：52）其他常见的应用服务器优化方式：</li>
 </ol>
@@ -160,7 +160,7 @@
 <li><strong>RAID 5</strong>：上述方案的变种。校验数据螺旋式地写入所有磁盘；</li>
 <li><strong>RAID 6</strong>：更高可靠性的方案。数据只写入 N-2 块磁盘，并螺旋式地在两块磁盘中写入校验信息。</li>
 </ul>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <h3 id="第-5-章-万无一失：网站的高可用架构"><a href="#第-5-章-万无一失：网站的高可用架构" class="headerlink" title="第 5 章 - 万无一失：网站的高可用架构"></a>第 5 章 - 万无一失：网站的高可用架构</h3><ol start="16">
 <li>（Page：67）网站可用性度量（全年）：</li>
 </ol>
@@ -177,8 +177,8 @@
 <li>主要目标：<strong>保证服务器硬件故障时服务依然可用、数据依然保存并能被访问</strong>；</li>
 <li>主要手段：数据和服务的冗余备份及失效转移。</li>
 </ul>
-<p>- <strong><em>基本分层结构</em></strong>：</p>
-<p><img src="8.png" alt=""></p>
+<p>- <em><strong>基本分层结构</strong></em>：</p>
+<p><img src="8.png"></p>
 <p><strong>应用层</strong>负责业务逻辑处理，通常服务器通常为了应对高并发的请求，会通过 LB 组成集群来对外透明地提供服务。LB 会通过“心跳检测”来监控服务器状态，当发现不可用机器时将其从集群中剔除，并将该机器的路由设置为不可用，同时所有请求将转发到集群内的其他机器。</p>
 <p><strong>服务层</strong>的机器与应用层类似。这些服务器被上层通过分布式服务调用框架访问，框架会在应用层中实现软件负载均衡，并通过服务注册中心对提供服务的机器进行心跳检查，发现有服务不可用，会立即通知客户端程序修改服务访问列表，剔除不可用的服务器。</p>
 <p><strong>数据层</strong>的服务器比较特殊，为了保证数据不丢失，需要在数据写入时同时对集群内的其他服务器同步复制数据，以保证数据的一致性和可用性。</p>
@@ -188,23 +188,23 @@
 <ul>
 <li><strong>无状态性</strong>：即多个服务实例之间完全对等，请求提交到任意服务器，处理结果均完全一致；</li>
 </ul>
-<p>- <strong><em>基于 LB 的失效转移</em></strong>：</p>
+<p>- <em><strong>基于 LB 的失效转移</strong></em>：</p>
 <p>由于该层的无状态性质，可以利用 LB 服务器通过心跳检测及时发现失去响应的服务器，然后将请求转移到其他机器上；</p>
-<p>- <strong><em>Session 管理</em></strong>：</p>
+<p>- <em><strong>Session 管理</strong></em>：</p>
 <p>由于<strong>业务总是有状态的</strong>，单机情况下，会话信息可以交由服务器上的 Web 容器来管理。但对于集群环境来说，由于 LB 会将请求发送到集群中任意的服务器，所以通常使用以下几种方式来保证每次请求仍能获取正确的 Session：</p>
 <ul>
 <li><strong>Session 复制</strong>：所有应用服务器在本地共享同一套会话信息，且每次新增的会话都会在整个应用集群内进行复制。随着会话数量的增加及应用集群的扩大，系统压力会成倍增长，因此只适用于小型集群；</li>
 </ul>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ul>
 <li><strong>Session 绑定</strong>：利用 LB 服务器将同一 IP（或根据 Cookie 信息）来源的所有请求绑定在固定的应用服务器上，该方式又被称为“<strong>会话粘滞</strong>”，但其整体并不符合“高可用”的特性；</li>
 </ul>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ul>
 <li><strong>利用 Cookie 记录 Session</strong>：将用户的会话信息存储在客户端的浏览器中，安全性低、影响传输性能、且易受到浏览器限制：</li>
 <li><strong>Session 服务器</strong>：使用专门的 Session 集群单独处理状态。可以利用分布式缓存 / 数据库来进行包装。</li>
 </ul>
-<p><img src="11.png" alt=""></p>
+<p><img src="11.png"></p>
 <ol start="19">
 <li>（Page：76）<strong>高可用服务</strong>：高可用的服务一定是<strong>独立的</strong>、<strong>可复用的</strong>。服务的设计同样需要遵循几个原则：</li>
 </ol>
@@ -227,7 +227,7 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>CAP 原理</em></strong>：</p>
+<p>- <em><strong>CAP 原理</strong></em>：</p>
 <p>根据 CAP 原理，一个数据服务的存储系统是无法同时满足以下这些性质：</p>
 <ul>
 <li><strong>数据一致性</strong>（C）：所有应用都能访问到相同的数据；</li>
@@ -235,7 +235,7 @@
 <li><strong>分区耐受性</strong>（P）：系统可以跨网络分区线性伸缩。</li>
 </ul>
 <p>一般为了保证数据高可用，会牺牲“数据一致性”。而由于 A 和 P 两个指标较 C 更为重要，<strong>在放弃了“数据强一致性”情况下，退而求其次可以在不影响用户体验时，选择保障“数据用户一致性”</strong>。</p>
-<p>- <strong><em>数据备份</em></strong>：</p>
+<p>- <em><strong>数据备份</strong></em>：</p>
 <ul>
 <li><strong>冷备份</strong>：通过定期将数据复制到存储介质上并物理存档保存来保护数据。缺点是<strong>不能保证数据的最终一致性</strong>（最弱的一致性，即系统经过一段时间的自我恢复和修正最终达到一致），且在数据备份时需要宕机，也<strong>不能保证数据可用性</strong>；</li>
 <li><strong>热备份</strong>：<ul>
@@ -244,11 +244,11 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>失效转移</em></strong>：</p>
+<p>- <em><strong>失效转移</strong></em>：</p>
 <ul>
 <li><strong>失效确认</strong>：访问失败 -&gt; 失效报告 -&gt; 心跳检查 -&gt; 失效确认。</li>
 </ul>
-<p><img src="12.png" alt=""></p>
+<p><img src="12.png"></p>
 <ul>
 <li><strong>访问转移</strong>：将数据读写访问路由到其他服务器上；</li>
 <li><strong>数据恢复</strong>：系统从健康的服务器复制数据，将数据副本数恢复到设定值。</li>
@@ -256,12 +256,12 @@
 <ol start="21">
 <li>（Page：85）<strong>高可用软件质量保证</strong>：</li>
 </ol>
-<p>- <strong><em>预发布验证</em></strong>：</p>
+<p>- <em><strong>预发布验证</strong></em>：</p>
 <ul>
 <li>使用与生产环境完全一致的物理环境设置；</li>
 <li>服务器没有配置在 LB 上，外部用户无法访问。</li>
 </ul>
-<p>- <strong><em>灰度发布</em></strong>：</p>
+<p>- <em><strong>灰度发布</strong></em>：</p>
 <p>一段时间内只发布线上集群中的一部分机器，待观察一段时间没有问题后，再逐渐发布集群内的其他机器。在进行“灰度发布”的同时，我们甚至可以进行“A/B测试”，以新发布的机器作为对照组，查看新旧软件使用用户的反馈情况。</p>
 <h3 id="第-6-章-永无止境：网站的伸缩性架构"><a href="#第-6-章-永无止境：网站的伸缩性架构" class="headerlink" title="第 6 章 - 永无止境：网站的伸缩性架构"></a>第 6 章 - 永无止境：网站的伸缩性架构</h3><ol start="22">
 <li>（Page：<a name="99" href="#99">99</a>）常见<strong>负载均衡模式</strong>：</li>
@@ -269,33 +269,33 @@
 <ul>
 <li>可用于直接实现应用服务器的伸缩性。</li>
 </ul>
-<p>- <strong><em>HTTP 重定向负载均衡</em></strong>：</p>
-<p><img src="13.png" alt=""></p>
+<p>- <em><strong>HTTP 重定向负载均衡</strong></em>：</p>
+<p><img src="13.png"></p>
 <ul>
 <li>由 LB 服务器计算可以访问的真实服务器地址，然后通过设置 HTTP 请求头为 302 的方式让客户端跳转至对应的 IP；</li>
 <li>优点是比较简单；缺点是性能较差，重定向服务器可能成为性能瓶颈，且可能影响 SEO。</li>
 </ul>
-<p>- <strong><em>DNS 域名解析负载均衡</em></strong>：</p>
-<p><img src="14.png" alt=""></p>
+<p>- <em><strong>DNS 域名解析负载均衡</strong></em>：</p>
+<p><img src="14.png"></p>
 <ul>
 <li>在 DNS 服务器中配置多个 A 记录，每次域名解析请求都会根据负载均衡算法计算一个不同的 IP 地址返回；</li>
 <li>大型网站常用此方式<strong>作为第一级 LD 的手段</strong>；</li>
 <li>优点是省掉了网站管理维护 LD 服务器的麻烦，且许多 DNS 还支持<strong>基于地理位置的域名解析</strong>，可以将域名解析为距离用户最近的一个地址；缺点是 DNS 的多级缓存可能使下线记录的生效时间变长。</li>
 </ul>
-<p>- <strong><em>反向代理负载均衡</em></strong>：</p>
-<p><img src="15.png" alt=""></p>
+<p>- <em><strong>反向代理负载均衡</strong></em>：</p>
+<p><img src="15.png"></p>
 <ul>
 <li>由于转发请求在 HTTP 协议层面，因此属于应用层负载均衡；</li>
 <li>优点是和反向代理服务器功能集成在一起，部署简单；缺点是性能会成为瓶颈。</li>
 </ul>
-<p>- <strong><em>IP 负载均衡</em></strong>：</p>
-<p><img src="16.png" alt=""></p>
+<p>- <em><strong>IP 负载均衡</strong></em>：</p>
+<p><img src="16.png"></p>
 <ul>
 <li>在<strong>网络层</strong>通过修改请求目标地址进行负载均衡；</li>
 <li>优点是负载均衡在内核进程中完成数据分发，较反向代理有更好的处理性能；缺点是 LD 服务器可能成为瓶颈（请求和响应均需要从这里转发）。</li>
 </ul>
-<p>- <strong><em>数据链路层负载均衡</em></strong>（直接路由方式）：</p>
-<p><img src="17.png" alt=""></p>
+<p>- <em><strong>数据链路层负载均衡</strong></em>（直接路由方式）：</p>
+<p><img src="17.png"></p>
 <ul>
 <li>在<strong>数据链路层</strong>修改 MAC 地址进行负载均衡；</li>
 <li>使用“三角传输”，LD 分发过程中不修改 IP 地址（集群中机器的虚拟 IP 均相同），而响应数据将由集群网关直接发送回源，不需要经过 LD。</li>
@@ -316,28 +316,28 @@
 <ul>
 <li><strong>重要原则</strong>：新加入缓存服务器后应使整个缓存服务器集群中已经缓存的数据尽可能还被访问到。为此需要借助“<strong>分布式缓存的一致性 Hash 算法</strong>”。</li>
 </ul>
-<p>- <strong><em>基于 Memcached 的分布式缓存集群访问模型</em></strong>：</p>
-<p><img src="18.png" alt=""></p>
+<p>- <em><strong>基于 Memcached 的分布式缓存集群访问模型</strong></em>：</p>
+<p><img src="18.png"></p>
 <ul>
 <li>路由算法负责根据输入的 KEY 计算得到应该读写的服务器；</li>
 <li>在不需要伸缩的情况下，使用“<strong>余数 Hash 算法</strong>”可以满足大多数路由算法的场景。</li>
 </ul>
-<p>- <strong><em>分布式缓存的一致性 Hash 算法</em></strong>：</p>
-<p><img src="19.png" alt=""></p>
+<p>- <em><strong>分布式缓存的一致性 Hash 算法</strong></em>：</p>
+<p><img src="19.png"></p>
 <p>先构造一个长度为 0~2^32 的整数环（一致性 Hash 环），根据节点名称的 Hash 值将缓存服务器节点放置在这个环上。根据需要缓存数据的 KEY 值计算得到其 Hash 值，然后在环上<strong>顺时针</strong>（递增）查找距离这个 KEY 的 Hash 值最近的缓存服务器节点，完成 KEY 到服务器的 Hash 映射查找。</p>
 <p>当缓存服务器集群需要扩容时，只需将新加入的节点名称的 Hash 值放入一致性 Hash 环中，由于 KEY 是顺时针查找距离其最近的节点，因此新加入的节点只影响环中的一小段。一致性 Hash 环通常使用“<strong>二叉查找树</strong>”实现，查找过程实际上是在树中查找不小于查找数的最小数值。树的最右边叶子节点和最左边的叶子节点相连接，形成环。</p>
-<p><img src="20.png" alt=""></p>
+<p><img src="20.png"></p>
 <p>可以通过使用“虚拟节点”的方式来解决物理节点资源分配不均的问题。每个物理节点对应的虚拟节点越多，各个物理节点之间的负载越均衡。通常，<strong>一台物理服务器被虚拟为 150 个虚拟服务器会较为合适</strong>。</p>
 <ol start="25">
 <li>（Page：113）<strong>数据存储服务器集群</strong>的伸缩性设计：</li>
 </ol>
-<p>- <strong><em>关系数据库集群</em></strong>（以 Cobar 为例）：</p>
+<p>- <em><strong>关系数据库集群</strong></em>（以 Cobar 为例）：</p>
 <ul>
 <li>Cobar 服务器集群主要用于：SQL 分析、拆解（对于需要分片的表）、执行，以及对结果集的合并，因此可以当做一个无状态的应用服务器，直接通过 LB 进行伸缩；</li>
 <li>对于 MySQL 服务器，为了保证扩容后数据一致，负载均衡，则需要进行“<strong>数据迁移</strong>”，即将原有机器中的数据迁移至新添加的机器中（可利用一致性 Hash 算法来找出需要迁移的数据）。</li>
 </ul>
-<p>- <strong><em>NoSQL 数据库</em></strong>（以 HBash 为例）：</p>
-<p><img src="21.png" alt=""></p>
+<p>- <em><strong>NoSQL 数据库</strong></em>（以 HBash 为例）：</p>
+<p><img src="21.png"></p>
 <ul>
 <li>HMaster 中存放了所有 HRegion 的信息，整个集群通过 Zookeeper 保持多个 HMaster 节点简单的分布式一致；</li>
 <li>首先通过 Zookeeper 找到主 HMaster 节点；该节点根据输入的 KEY 找到对应的 HRegionServer 地址；然后再请求该 HRegionServer 上的 HRegion 以获取需要的数据（存储在 HFile 格式文件中）；</li>
@@ -346,10 +346,10 @@
 <h3 id="第-7-章-随需应变：网站的可扩展架构"><a href="#第-7-章-随需应变：网站的可扩展架构" class="headerlink" title="第 7 章 - 随需应变：网站的可扩展架构"></a>第 7 章 - 随需应变：网站的可扩展架构</h3><ol start="26">
 <li>（Page：123）使用分布式消息队列降低系统耦合性：</li>
 </ol>
-<p>- <strong><em>事件驱动架构</em></strong>（EDA）：</p>
+<p>- <em><strong>事件驱动架构</strong></em>（EDA）：</p>
 <p>通过在低耦合的模块之间传输事件消息，以保持模块的松散耦合，并借助事件消息的通信完成模块间合作。常见的架构就是操作系统中的“生产者-消费者”模式。网站架构中，常用的是“<strong>分布式消息队列</strong>”。</p>
-<p>- <strong><em>分布式消息队列</em></strong>：</p>
-<p><img src="22.png" alt=""></p>
+<p>- <em><strong>分布式消息队列</strong></em>：</p>
+<p><img src="22.png"></p>
 <ul>
 <li>消息队列服务器将消息按照“先进先出”的原则发送给订阅该消息的消费者程序；</li>
 <li>简单队列的实现可以基于 MySQL。</li>
@@ -360,12 +360,12 @@
 <ul>
 <li>服务的<strong>注册</strong>、<strong>发现</strong>与<strong>调用</strong>。</li>
 </ul>
-<p>- <strong><em>拆分</em></strong>：</p>
+<p>- <em><strong>拆分</strong></em>：</p>
 <ul>
 <li><strong>横向拆分</strong>：拆分出复用的业务，独立部署为分布式服务，新增业务只需调用这些服务，不需依赖具体的模块代码；</li>
 <li><strong>纵向拆分</strong>：将一个大应用拆分为多个小应用（业务之间进行剥离，成为独立应用）。</li>
 </ul>
-<p>- <strong><em>需求和特点</em></strong>：</p>
+<p>- <em><strong>需求和特点</strong></em>：</p>
 <ul>
 <li>负载均衡；</li>
 <li>失效转移；</li>

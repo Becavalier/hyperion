@@ -4,22 +4,23 @@
 <li>（Page：873）<code>window</code> 对象：</li>
 </ol>
 <ul>
-<li><strong><em>top / self / parent</em></strong>：分别指向“最上层”、“自身”以及“父层”窗口；</li>
-<li><strong><em>screenLeft / screenTop</em></strong>：表示窗口相对<strong>屏幕</strong>左侧、顶部的位置；</li>
-<li><strong><em>moveTo() / moveBy()</em></strong>：移动窗口（可能被禁用）；</li>
-<li><strong><em>resizeTo() / resizeBy()</em></strong>：缩放窗口（可能被禁用）；</li>
-<li><strong><em>scrollTo() / scrollBy()</em></strong>：滚动窗口；</li>
+<li><em><strong>top / self / parent</strong></em>：分别指向“最上层”、“自身”以及“父层”窗口；</li>
+<li><em><strong>screenLeft / screenTop</strong></em>：表示窗口相对<strong>屏幕</strong>左侧、顶部的位置；</li>
+<li>***moveTo() / moveBy()***：移动窗口（可能被禁用）；</li>
+<li>***resizeTo() / resizeBy()***：缩放窗口（可能被禁用）；</li>
+<li>***scrollTo() / scrollBy()***：滚动窗口；</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// scroll document to a fixed position (1000, 0).</span>
 window<span class="token punctuation">.</span><span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   left<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span> 
   top<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> 
   behavior<span class="token punctuation">:</span> <span class="token string">'smooth'</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>devicePixelRatio</em></strong>：表示物理像素与逻辑像素（CSS 像素）之间的缩放系数；</li>
-<li><strong><em>outerWidth / outerHeight</em></strong>：返回浏览器<strong>窗口自身</strong>的大小；</li>
-<li><strong><em>innerWidth / innerHeight</em></strong>：返回浏览器<strong>窗口中页面视口</strong>的大小（不包含浏览器边框和工具链）；</li>
+<li><em><strong>devicePixelRatio</strong></em>：表示物理像素与逻辑像素（CSS 像素）之间的缩放系数；</li>
+<li><em><strong>outerWidth / outerHeight</strong></em>：返回浏览器<strong>窗口自身</strong>的大小；</li>
+<li><em><strong>innerWidth / innerHeight</strong></em>：返回浏览器<strong>窗口中页面视口</strong>的大小（不包含浏览器边框和工具链）；</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// get the size of the viewport.</span>
 <span class="token keyword">let</span> <span class="token punctuation">{</span> innerWidth<span class="token punctuation">,</span> innerHeight <span class="token punctuation">}</span> <span class="token operator">=</span> window<span class="token punctuation">;</span>
@@ -31,15 +32,16 @@ window<span class="token punctuation">.</span><span class="token function">scrol
     innerWidth <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientWidth<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// &lt;body>.</span>
     innerHeight <span class="token operator">=</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>clientHeight<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>pageXOffset / pageYOffset</em></strong>：获得文档相对于当前视口的滚动距离（X/Y）；</li>
-<li><strong><em>open()</em></strong>：导航到指定 URL 或打开新浏览器窗口；</li>
-<li><strong><em>close()</em></strong>：关闭当前窗口；</li>
-<li><strong><em>closed</em></strong>：判断所引用窗口是否已关闭（<strong>常用于 window.open() 的返回窗口</strong>）；</li>
-<li><strong><em>opener</em></strong>：仅存在于新创建窗口返回的 window 对象上，<strong>指向打开它的窗口</strong>。将该属性设置为 null 表示新打开的标签页不需要与打开它的标签页通信，因此可以在独立进程中运行；</li>
-<li><strong><em>setTimeout() / setInterval()</em></strong>：函数第二个参数指定的时间为<strong>向异步队列添加新任务之前等待的时间</strong>（同步任务会优先执行）。被添加到队列中的任务会按照顺序执行；</li>
-<li><strong><em>alert() / confirm() / prompt()</em></strong>：系统对话框；</li>
+<li><em><strong>pageXOffset / pageYOffset</strong></em>：获得文档相对于当前视口的滚动距离（X/Y）；</li>
+<li>***open()***：导航到指定 URL 或打开新浏览器窗口；</li>
+<li>***close()***：关闭当前窗口；</li>
+<li><em><strong>closed</strong></em>：判断所引用窗口是否已关闭（<strong>常用于 window.open() 的返回窗口</strong>）；</li>
+<li><em><strong>opener</strong></em>：仅存在于新创建窗口返回的 window 对象上，<strong>指向打开它的窗口</strong>。将该属性设置为 null 表示新打开的标签页不需要与打开它的标签页通信，因此可以在独立进程中运行；</li>
+<li>***setTimeout() / setInterval()<em><strong>：函数第二个参数指定的时间为</strong>向异步队列添加新任务之前等待的时间</em>*（同步任务会优先执行）。被添加到队列中的任务会按照顺序执行；</li>
+<li>***alert() / confirm() / prompt()***：系统对话框；</li>
 </ul>
 <ol start="51">
 <li>（Page：895）<code>window.location</code> 对象：</li>
@@ -48,25 +50,25 @@ window<span class="token punctuation">.</span><span class="token function">scrol
 <li><code>window.location</code> 与 <code>document.location</code> <strong>指向同一个对象</strong>；</li>
 <li>除 hash 属性外，<strong>只要修改 location 的一个属性，就会导致页面重新加载新的 URL</strong>。</li>
 </ul>
-<p>- <strong><em>属性和方法</em></strong>：</p>
+<p>- <em><strong>属性和方法</strong></em>：</p>
 <ul>
-<li><strong><em>hash</em></strong>：URL 散列值；</li>
-<li><strong><em>host</em></strong>：服务器名及端口号；</li>
-<li><strong><em>hostname</em></strong>：服务器名；</li>
-<li><strong><em>href</em></strong>：当前页面完整 URL（同 <em>location.toString()</em>）。修改该值或 <em>window.location</em>，可以导航到特定的 URL；</li>
-<li><strong><em>assign()</em></strong>：导航到特定 URL；</li>
-<li><strong><em>replace()</em></strong>：导航到特定 URL（但不增加新历史记录，仅替换）；</li>
-<li><strong><em>reload()</em></strong>：重新加载当前页面。传递参数为 true 时会从服务器请求而不使用缓存；</li>
-<li><strong><em>pathname</em></strong>：URL 中的路径/文件名；</li>
-<li><strong><em>port</em></strong>：端口号；</li>
-<li><strong><em>protocol</em></strong>：页面使用的协议；</li>
-<li><strong><em>search</em></strong>：URL 的<strong>查询字符串</strong>（queries）；<ul>
+<li><em><strong>hash</strong></em>：URL 散列值；</li>
+<li><em><strong>host</strong></em>：服务器名及端口号；</li>
+<li><em><strong>hostname</strong></em>：服务器名；</li>
+<li><em><strong>href</strong></em>：当前页面完整 URL（同 *location.toString()*）。修改该值或 <em>window.location</em>，可以导航到特定的 URL；</li>
+<li>***assign()***：导航到特定 URL；</li>
+<li>***replace()***：导航到特定 URL（但不增加新历史记录，仅替换）；</li>
+<li>***reload()***：重新加载当前页面。传递参数为 true 时会从服务器请求而不使用缓存；</li>
+<li><em><strong>pathname</strong></em>：URL 中的路径/文件名；</li>
+<li><em><strong>port</strong></em>：端口号；</li>
+<li><em><strong>protocol</strong></em>：页面使用的协议；</li>
+<li><em><strong>search</strong></em>：URL 的<strong>查询字符串</strong>（queries）；<ul>
 <li>可以使用 <strong>URLSearchParams</strong> 接口来方便地检查和修改查询字符串；</li>
 </ul>
 </li>
-<li><strong><em>username</em></strong>：域名前指定的用户名；</li>
-<li><strong><em>password</em></strong>：域名前指定的密码；</li>
-<li><strong><em>origin</em></strong>：URL 的源地址。</li>
+<li><em><strong>username</strong></em>：域名前指定的用户名；</li>
+<li><em><strong>password</strong></em>：域名前指定的密码；</li>
+<li><em><strong>origin</strong></em>：URL 的源地址。</li>
 </ul>
 <ol start="52">
 <li>（Page：904）<code>window.navigator</code> 对象：</li>
@@ -74,11 +76,11 @@ window<span class="token punctuation">.</span><span class="token function">scrol
 <ul>
 <li>用于<strong>标识浏览器</strong>（描述了浏览器状态和标识）。</li>
 </ul>
-<p>- <strong><em>属性和方法</em></strong>：</p>
+<p>- <em><strong>属性和方法</strong></em>：</p>
 <ul>
-<li><strong><em>plugins</em></strong>：包含浏览器所安装插件的信息；</li>
-<li><strong><em>userAgent</em></strong>：获得用户代理信息；</li>
-<li><strong><em>registerProtocolHandler()</em></strong>：可以将某个网站注册为处理某种特定类型信息的应用程序；</li>
+<li><em><strong>plugins</strong></em>：包含浏览器所安装插件的信息；</li>
+<li><em><strong>userAgent</strong></em>：获得用户代理信息；</li>
+<li>***registerProtocolHandler()***：可以将某个网站注册为处理某种特定类型信息的应用程序；</li>
 </ul>
 <ol start="53">
 <li>（Page：914）<code>window.screen</code> 对象：保存着<strong>客户端显示器信息</strong>。</li>
@@ -87,24 +89,25 @@ window<span class="token punctuation">.</span><span class="token function">scrol
 <ul>
 <li>保存有当前窗口首次使用以来<strong>用户的导航历史记录</strong>。</li>
 </ul>
-<p>- <strong><em>属性和方法</em></strong>：</p>
+<p>- <em><strong>属性和方法</strong></em>：</p>
 <ul>
-<li><strong><em>go() / back() / forward()</em></strong>：可以在用户历史记录中进行导航；</li>
-<li><strong><em>length</em></strong>：返回当前历史记录中的条目数量；</li>
-<li><strong><em>pushState()</em></strong>：向当前浏览器会话的历史堆栈中<strong>添加一个状态，但不向服务器发送请求，同时触发 <code>popstate</code> 事件</strong>（浏览器地址栏会反映出新的状态）；</li>
+<li>***go() / back() / forward()***：可以在用户历史记录中进行导航；</li>
+<li><em><strong>length</strong></em>：返回当前历史记录中的条目数量；</li>
+<li>***pushState()<em><strong>：向当前浏览器会话的历史堆栈中</strong>添加一个状态，但不向服务器发送请求，同时触发 <code>popstate</code> 事件</em>*（浏览器地址栏会反映出新的状态）；</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> stateObj <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token punctuation">:</span> <span class="token string">'bar'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span>stateObj<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'baz.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span>stateObj<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token string">'baz.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>replaceState()</em></strong>：（同上）但不会创建新历史纪录，只会覆盖当前状态；</li>
-<li><strong><em>state</em></strong>：获取当前页面状态；</li>
+<li>***replaceState()***：（同上）但不会创建新历史纪录，只会覆盖当前状态；</li>
+<li><em><strong>state</strong></em>：获取当前页面状态；</li>
 </ul>
 <h3 id="第-13-章-客户端检测"><a href="#第-13-章-客户端检测" class="headerlink" title="第 13 章 - 客户端检测"></a>第 13 章 - 客户端检测</h3><p>（略）</p>
 <h3 id="第-14-章-DOM"><a href="#第-14-章-DOM" class="headerlink" title="第 14 章 - DOM"></a>第 14 章 - DOM</h3><ol start="55">
 <li>（Page：970）DOM：<strong>HTML 与 XML 文档的编程接口</strong>。DOM 表示由多层节点构成的文档，通过它开发者可以添加、删除和修改页面的各个部分。</li>
 </ol>
 <ul>
-<li><strong><em>DOM Level 1</em></strong>：1998 年成为 W3C 推荐标准，提供了基本文档结构和查询接口；</li>
+<li><em><strong>DOM Level 1</strong></em>：1998 年成为 W3C 推荐标准，提供了基本文档结构和查询接口；</li>
 <li>在 JavaScript 中，<strong>所有节点类型都继承 Node 类型</strong>；<ul>
 <li>HTMLElement（<strong>所有 HTML 元素均为该类型或其子类型的实例</strong>） -&gt; ELement -&gt; Node；</li>
 <li>HTMLDocument（document）-&gt; Document -&gt; Node；</li>
@@ -114,18 +117,18 @@ window<span class="token punctuation">.</span>history<span class="token punctuat
 </li>
 <li><code>document</code> 对象中的获取元素方法会返回 <strong>HTMLCollection</strong> 类型，该类型仅能包含有 ELement 类型的节点；</li>
 <li><strong>12 种节点类型</strong>（浏览器并不支持所有节点类型）：<ol>
-<li><strong><em>Node.ELEMENT_NODE</em></strong>：元素节点；</li>
-<li><strong><em>Node.ATTRIBUTE_NODE</em></strong>：属性节点；</li>
-<li><strong><em>Node.TEXT_NODE</em></strong>：文本节点；</li>
-<li><strong><em>Node.CDATA_SECTION_NODE</em></strong>：CDATA 节点（&lt;!CDATA[[ … ]]&gt;）；</li>
-<li><strong><em>Node.ENTITY_REFERENCE_NODE</em></strong>：（已在 DOM4 中移除）；</li>
-<li><strong><em>Node.ENTITY_NODE</em></strong>：（已在 DOM4 中移除）；</li>
-<li><strong><em>Node.PROCESSING_INSTRUCTION_NODE</em></strong>：处理指令节点（&lt;?xml-stylesheet … ?&gt;）；</li>
-<li><strong><em>Node.COMMENT_NODE</em></strong>：注释节点（&lt;!– … –&gt;）；</li>
-<li><strong><em>Node.DOCUMENT_NODE</em></strong>：文档节点（document）；</li>
-<li><strong><em>Node.DOCUMENT_TYPE_NODE</em></strong>：文档类型节点（&lt;!DOCTYPE html&gt;）；</li>
-<li><strong><em>Node.DOCUMENT_FRAGMENT_NODE</em></strong>：文档片段节点；</li>
-<li><strong><em>Node.NOTATION_NODE</em></strong>：（已在 DOM4 中移除）；</li>
+<li><em><strong>Node.ELEMENT_NODE</strong></em>：元素节点；</li>
+<li><em><strong>Node.ATTRIBUTE_NODE</strong></em>：属性节点；</li>
+<li><em><strong>Node.TEXT_NODE</strong></em>：文本节点；</li>
+<li><em><strong>Node.CDATA_SECTION_NODE</strong></em>：CDATA 节点（&lt;!CDATA[[ … ]]&gt;）；</li>
+<li><em><strong>Node.ENTITY_REFERENCE_NODE</strong></em>：（已在 DOM4 中移除）；</li>
+<li><em><strong>Node.ENTITY_NODE</strong></em>：（已在 DOM4 中移除）；</li>
+<li><em><strong>Node.PROCESSING_INSTRUCTION_NODE</strong></em>：处理指令节点（&lt;?xml-stylesheet … ?&gt;）；</li>
+<li><em><strong>Node.COMMENT_NODE</strong></em>：注释节点（&lt;!– … –&gt;）；</li>
+<li><em><strong>Node.DOCUMENT_NODE</strong></em>：文档节点（document）；</li>
+<li><em><strong>Node.DOCUMENT_TYPE_NODE</strong></em>：文档类型节点（&lt;!DOCTYPE html&gt;）；</li>
+<li><em><strong>Node.DOCUMENT_FRAGMENT_NODE</strong></em>：文档片段节点；</li>
+<li><em><strong>Node.NOTATION_NODE</strong></em>：（已在 DOM4 中移除）；</li>
 </ol>
 </li>
 <li>HTMLDocument 类型下只能有四种类型的子节点：<ul>
@@ -136,77 +139,77 @@ window<span class="token punctuation">.</span>history<span class="token punctuat
 </ul>
 </li>
 </ul>
-<p>- <strong><em>document 额外属性和方法</em></strong>：</p>
+<p>- <em><strong>document 额外属性和方法</strong></em>：</p>
 <ul>
-<li><strong><em>title</em></strong>：返回文档标题；</li>
-<li><strong><em>URL</em></strong>：返回文档 URL；</li>
-<li><strong><em>domain</em></strong>：返回文档所在域名（修改该值可用于跨越，如：<strong>设置 iframe 文档域名与当前文档域名为同一个二级域名</strong>，即去掉三级及以上域名的差异）；</li>
-<li><strong><em>referrer</em></strong>：返回文档来源 URL；</li>
-<li><strong><em>body</em></strong>：返回文档 &lt;body&gt; 元素；</li>
-<li><strong><em>getElementById</em></strong>：通过 ID 获取文档上的元素；</li>
-<li><strong><em>getElementsByTagName</em></strong>：通过元素名获取文档上的元素；</li>
-<li><strong><em>getElementsByName</em></strong>：通过属性名获取文档上的元素（适用于 &lt;input type=”radio”&gt; 元素）；</li>
-<li><strong><em>styleSheets</em></strong>：返回文档中可用的样式表（CSSStyleSheet）集合；</li>
-<li><strong><em>anchors</em></strong>：包含文档中所有带 name 的 &lt;a&gt; 元素；</li>
-<li><strong><em>forms</em></strong>：包含文档中所有的 &lt;form&gt; 元素；</li>
-<li><strong><em>images</em></strong>：包含文档中所有的 &lt;img&gt; 元素；</li>
-<li><strong><em>links</em></strong>：包含文档中所有带 href 的 &lt;a&gt; 元素；</li>
-<li><strong><em>implementation</em></strong>：一个对象，提供了与浏览器 DOM 实现相关的信息和能力（已废弃，均返回 true）；</li>
-<li><strong><em>write() / writeln()</em></strong>：向网页输出流中写入内容；</li>
-<li><strong><em>open() / close()</em></strong>：打开/关闭网页输出流；</li>
-<li>（Node.DOCUMENT_TYPE_NODE<strong><em>doctype</em></strong>：返回<strong>文档类型对象</strong>；<ul>
+<li><em><strong>title</strong></em>：返回文档标题；</li>
+<li><em><strong>URL</strong></em>：返回文档 URL；</li>
+<li><em><strong>domain</strong></em>：返回文档所在域名（修改该值可用于跨越，如：<strong>设置 iframe 文档域名与当前文档域名为同一个二级域名</strong>，即去掉三级及以上域名的差异）；</li>
+<li><em><strong>referrer</strong></em>：返回文档来源 URL；</li>
+<li><em><strong>body</strong></em>：返回文档 &lt;body&gt; 元素；</li>
+<li><em><strong>getElementById</strong></em>：通过 ID 获取文档上的元素；</li>
+<li><em><strong>getElementsByTagName</strong></em>：通过元素名获取文档上的元素；</li>
+<li><em><strong>getElementsByName</strong></em>：通过属性名获取文档上的元素（适用于 &lt;input type=”radio”&gt; 元素）；</li>
+<li><em><strong>styleSheets</strong></em>：返回文档中可用的样式表（CSSStyleSheet）集合；</li>
+<li><em><strong>anchors</strong></em>：包含文档中所有带 name 的 &lt;a&gt; 元素；</li>
+<li><em><strong>forms</strong></em>：包含文档中所有的 &lt;form&gt; 元素；</li>
+<li><em><strong>images</strong></em>：包含文档中所有的 &lt;img&gt; 元素；</li>
+<li><em><strong>links</strong></em>：包含文档中所有带 href 的 &lt;a&gt; 元素；</li>
+<li><em><strong>implementation</strong></em>：一个对象，提供了与浏览器 DOM 实现相关的信息和能力（已废弃，均返回 true）；</li>
+<li>***write() / writeln()***：向网页输出流中写入内容；</li>
+<li>***open() / close()***：打开/关闭网页输出流；</li>
+<li>（Node.DOCUMENT_TYPE_NODE<em><strong>doctype</strong></em>：返回<strong>文档类型对象</strong>；<ul>
 <li><em>name</em>：返回文档类型名称。</li>
 </ul>
 </li>
-<li>（Node.TEXT_NODE）<strong><em>createTextNode(text)</em></strong>：创建文本节点；</li>
-<li>（Node.COMMENT_NODE）<strong><em>createComment(text)</em></strong>：创建注释节点；</li>
-<li>（Node.DOCUMENT_FRAGMENT_NODE）<strong><em>createDocumentFragment()</em></strong>：创建文档片段（<strong>可用作被实际添加文档的父节点，以避免浏览器的多次渲染</strong>）；</li>
-<li>（Node.ATTRIBUTE_NODE）<strong><em>createAttribute() / setAttributeNode()</em></strong>：创建和设置属性节点；</li>
+<li>（Node.TEXT_NODE）***createTextNode(text)***：创建文本节点；</li>
+<li>（Node.COMMENT_NODE）***createComment(text)***：创建注释节点；</li>
+<li>（Node.DOCUMENT_FRAGMENT_NODE）***createDocumentFragment()<em><strong>：创建文档片段（</strong>可用作被实际添加文档的父节点，以避免浏览器的多次渲染</em>*）；</li>
+<li>（Node.ATTRIBUTE_NODE）***createAttribute() / setAttributeNode()***：创建和设置属性节点；</li>
 </ul>
-<p>- <strong><em>DOM 节点查询属性和方法</em></strong>：</p>
+<p>- <em><strong>DOM 节点查询属性和方法</strong></em>：</p>
 <ul>
-<li>（节点操作）<strong><em>nodeName</em></strong>：返回节点的名称（一般为标签名大写）；</li>
-<li>（节点操作）<strong><em>nodeValue</em></strong>：文本节点返回文本值；元素节点始终返回 null；</li>
-<li>（节点操作）<strong><em>nodeType</em></strong>：返回节点的类型常量；</li>
-<li><strong><em>childNodes</em></strong>：返回类数组 NodeList，存放子元素实例；<ul>
-<li><strong><em>item()</em></strong>：返回该集合中某位置的元素；</li>
+<li>（节点操作）<em><strong>nodeName</strong></em>：返回节点的名称（一般为标签名大写）；</li>
+<li>（节点操作）<em><strong>nodeValue</strong></em>：文本节点返回文本值；元素节点始终返回 null；</li>
+<li>（节点操作）<em><strong>nodeType</strong></em>：返回节点的类型常量；</li>
+<li><em><strong>childNodes</strong></em>：返回类数组 NodeList，存放子元素实例；<ul>
+<li>***item()***：返回该集合中某位置的元素；</li>
 </ul>
 </li>
-<li><strong><em>parentNode</em></strong>：返回父元素实例；</li>
-<li><strong><em>previousSibling</em></strong>：返回前一个同胞元素；</li>
-<li><strong><em>nextSibling</em></strong>：返回下一个同胞元素；</li>
-<li><strong><em>firstChild</em></strong>：返回该元素的第一个子元素；</li>
-<li><strong><em>lastChild</em></strong>：返回该元素的最后一个子元素；</li>
-<li><strong><em>hasChildNodes()</em></strong>：返回当前元素是否有子元素；</li>
-<li><strong><em>ownerDocument</em></strong>：返回当前元素的所在文档节点；</li>
+<li><em><strong>parentNode</strong></em>：返回父元素实例；</li>
+<li><em><strong>previousSibling</strong></em>：返回前一个同胞元素；</li>
+<li><em><strong>nextSibling</strong></em>：返回下一个同胞元素；</li>
+<li><em><strong>firstChild</strong></em>：返回该元素的第一个子元素；</li>
+<li><em><strong>lastChild</strong></em>：返回该元素的最后一个子元素；</li>
+<li>***hasChildNodes()***：返回当前元素是否有子元素；</li>
+<li><em><strong>ownerDocument</strong></em>：返回当前元素的所在文档节点；</li>
 </ul>
-<p>- <strong><em>DOM 节点操作属性和方法</em></strong>：</p>
+<p>- <em><strong>DOM 节点操作属性和方法</strong></em>：</p>
 <ul>
-<li>（Node.ELEMENT_NODE）<strong><em>id</em></strong>：获取/设置当前元素的 ID；</li>
-<li>（Node.ELEMENT_NODE）<strong><em>className</em></strong>：获取/设置当前元素的类名；</li>
-<li>（Node.ELEMENT_NODE）<strong><em>title</em></strong>：获取/设置当前元素的标题；</li>
-<li>（Node.ELEMENT_NODE）<strong><em>getAttribute() / setAttribute() / removeAttribute()</em></strong>：获取/设置/移除当前元素的 <strong>HTML 属性</strong>（属性名要保持一致，获取的属性值通常以“<strong>字符串</strong>”的形式来表示）；</li>
-<li>（Node.ELEMENT_NODE）<strong><em>attributes / getAttributeNode()</em></strong>：获取当前元素的属性集合（NamedNodeMap 对象，保存了 Attr 节点）；<ul>
-<li><em>getNamedItem(name)</em>：返回某个<strong>属性节点</strong>；</li>
-<li><em>removeNamedItem(name)</em>：删除某个属性节点；</li>
-<li><em>setNamedItem(name)</em>：设置某个属性节点；</li>
-<li><em>item(pos)</em>：获得索引位置 pos 处的节点。</li>
+<li>（Node.ELEMENT_NODE）<em><strong>id</strong></em>：获取/设置当前元素的 ID；</li>
+<li>（Node.ELEMENT_NODE）<em><strong>className</strong></em>：获取/设置当前元素的类名；</li>
+<li>（Node.ELEMENT_NODE）<em><strong>title</strong></em>：获取/设置当前元素的标题；</li>
+<li>（Node.ELEMENT_NODE）***getAttribute() / setAttribute() / removeAttribute()<em><strong>：获取/设置/移除当前元素的 <strong>HTML 属性</strong>（属性名要保持一致，获取的属性值通常以“</strong>字符串</em>*”的形式来表示）；</li>
+<li>（Node.ELEMENT_NODE）***attributes / getAttributeNode()***：获取当前元素的属性集合（NamedNodeMap 对象，保存了 Attr 节点）；<ul>
+<li>*getNamedItem(name)*：返回某个<strong>属性节点</strong>；</li>
+<li>*removeNamedItem(name)*：删除某个属性节点；</li>
+<li>*setNamedItem(name)*：设置某个属性节点；</li>
+<li>*item(pos)*：获得索引位置 pos 处的节点。</li>
 </ul>
 </li>
-<li>（Node.ELEMENT_NODE）<strong><em>createElement()</em></strong>：创建新元素；</li>
-<li>（Node.TEXT_NODE）<strong><em>appendData(text)</em></strong>：向文本节点末尾添加数据；</li>
-<li>（Node.TEXT_NODE）<strong><em>deleteData(offset, count)</em></strong>：删除文本；</li>
-<li>（Node.TEXT_NODE）<strong><em>insertData(offset, text)</em></strong>：插入文本；</li>
-<li>（Node.TEXT_NODE）<strong><em>replaceData(offset, count, text)</em></strong>：替换文本；</li>
-<li>（Node.TEXT_NODE）<strong><em>splitText(offset)</em></strong>：拆分文本（与 <em>normalize</em> 作用相反）；</li>
-<li>（Node.TEXT_NODE）<strong><em>substringData(offset, count)</em></strong>：提取文本子串；</li>
-<li>（Node.TEXT_NODE）<strong><em>length</em></strong>：返回文本节点长度；</li>
-<li><strong><em>appendChild()</em></strong>：为当前元素添加子元素（位于末尾）；</li>
-<li><strong><em>insertBefore()</em></strong>：为当前元素添加子元素（位于参考节点之前）；</li>
-<li><strong><em>replaceChild()</em></strong>：替换子元素；</li>
-<li><strong><em>removeChild()</em></strong>：移除子元素；</li>
-<li><strong><em>cloneNode()</em></strong>：克隆当前元素（可选是否深复制）。<strong>新复制的元素会丢失原有的事件处理器</strong>；</li>
-<li><strong><em>normalize()</em></strong>：检测当前节点的所有后代，<strong>删除不包含文本的文本节点，或合并互为同胞关系的文本节点</strong>；</li>
+<li>（Node.ELEMENT_NODE）***createElement()***：创建新元素；</li>
+<li>（Node.TEXT_NODE）***appendData(text)***：向文本节点末尾添加数据；</li>
+<li>（Node.TEXT_NODE）***deleteData(offset, count)***：删除文本；</li>
+<li>（Node.TEXT_NODE）***insertData(offset, text)***：插入文本；</li>
+<li>（Node.TEXT_NODE）***replaceData(offset, count, text)***：替换文本；</li>
+<li>（Node.TEXT_NODE）***splitText(offset)***：拆分文本（与 <em>normalize</em> 作用相反）；</li>
+<li>（Node.TEXT_NODE）***substringData(offset, count)***：提取文本子串；</li>
+<li>（Node.TEXT_NODE）<em><strong>length</strong></em>：返回文本节点长度；</li>
+<li>***appendChild()***：为当前元素添加子元素（位于末尾）；</li>
+<li>***insertBefore()***：为当前元素添加子元素（位于参考节点之前）；</li>
+<li>***replaceChild()***：替换子元素；</li>
+<li>***removeChild()***：移除子元素；</li>
+<li>***cloneNode()<em><strong>：克隆当前元素（可选是否深复制）。</strong>新复制的元素会丢失原有的事件处理器</em>*；</li>
+<li>***normalize()<em><strong>：检测当前节点的所有后代，</strong>删除不包含文本的文本节点，或合并互为同胞关系的文本节点</em>*；</li>
 </ul>
 <ol start="56">
 <li>（Page：1043）<strong>MutationObserver</strong> 接口（取代了废弃的 MutationEvent）：可以用于监听 DOM 改动。</li>
@@ -227,72 +230,73 @@ observer<span class="token punctuation">.</span><span class="token function">obs
   childList<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// 修改目标节点的子节点是否触发变化事件；</span>
   subtree<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// 观察子树；</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-observer<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+observer<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-15-章-DOM-扩展"><a href="#第-15-章-DOM-扩展" class="headerlink" title="第 15 章 - DOM 扩展"></a>第 15 章 - DOM 扩展</h3><ol start="57">
 <li>（Page：1071）Selector API：</li>
 </ol>
 <ul>
-<li><strong><em>querySelector(&lt;css-selector&gt;)</em></strong>：返回符合条件的<strong>第一个元素</strong>；</li>
-<li><strong><em>querySelectorAll(&lt;css-selector&gt;)</em></strong>：返回一个包含<strong>所有匹配元素的 NodeList 静态实例</strong>；</li>
-<li><strong><em>matches(&lt;css-selector)</em></strong>：返回是否存在所匹配的元素。</li>
+<li>***querySelector(&lt;css-selector&gt;)<em><strong>：返回符合条件的</strong>第一个元素</em>*；</li>
+<li>***querySelectorAll(&lt;css-selector&gt;)<em><strong>：返回一个包含</strong>所有匹配元素的 NodeList 静态实例</em>*；</li>
+<li>***matches(&lt;css-selector)***：返回是否存在所匹配的元素。</li>
 </ul>
 <ol start="58">
 <li>（Page：1075）<strong>元素遍历</strong>（Element Traversal 规范）：</li>
 </ol>
 <ul>
-<li><strong><em>childElementCount</em></strong>：返回子元素数量（不包含文本节点和注释）；</li>
-<li><strong><em>firstElementChild</em></strong>：指向第一个 <strong>Element 类型</strong>的子元素（Element 版的 <em>firstChild</em>）；</li>
-<li><strong><em>lastElementChild</em></strong>：指向最后一个 <strong>Element 类型</strong>的子元素（Element 版的 <em>lastChild</em>）；</li>
-<li><strong><em>previousElementSibling</em></strong>：指向前一个 <strong>Element 类型</strong>的同胞元素（Element 版的 <em>previousSibling</em>）；</li>
-<li><strong><em>nextElementSibling</em></strong>：指向后一个 <strong>Element 类型</strong>的同胞元素（Element 版的 <em>nextSibling</em>）；</li>
+<li><em><strong>childElementCount</strong></em>：返回子元素数量（不包含文本节点和注释）；</li>
+<li><em><strong>firstElementChild</strong></em>：指向第一个 <strong>Element 类型</strong>的子元素（Element 版的 <em>firstChild</em>）；</li>
+<li><em><strong>lastElementChild</strong></em>：指向最后一个 <strong>Element 类型</strong>的子元素（Element 版的 <em>lastChild</em>）；</li>
+<li><em><strong>previousElementSibling</strong></em>：指向前一个 <strong>Element 类型</strong>的同胞元素（Element 版的 <em>previousSibling</em>）；</li>
+<li><em><strong>nextElementSibling</strong></em>：指向后一个 <strong>Element 类型</strong>的同胞元素（Element 版的 <em>nextSibling</em>）；</li>
 </ul>
 <ol start="59">
 <li>（Page：1077）<strong>HTML5</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>getElementsByClassName()</em></strong>：根据类名获取元素（返回 NodeList）；</li>
-<li><strong><em>dataset</em></strong>：包含当前元素上的所有<strong>自定义属性</strong>（以 “data-” 作为前缀开头）；</li>
-<li><strong><em>innerHTML</em></strong>：读取/更换<strong>当前元素内部（不包含该元素）</strong>的 HTML 字符串（<strong>HTML5 下通过该属性动态插入的 &lt;script&gt; 标签是不会被执行的</strong>）；</li>
-<li><strong><em>outerHTML</em></strong>：读取/更换<strong>当前元素及其内部</strong>的 HTML 字符串；</li>
-<li><strong><em>insertAdjacentHTML()</em></strong>：插入 HTML 元素；</li>
-<li><strong><em>insertAdjacentText()</em></strong>：插入文本（节点）；</li>
-<li><strong><em>scrollIntoView()</em></strong>：<strong>滚动浏览器窗口或容器窗口以便包含元素进入视口</strong>；</li>
-<li><strong><em>classList</em></strong>：包含当前元素所有类型的一个集合（DOMTokenList）；<ul>
-<li><em>add(value)</em>：向类名列表中添加类名；</li>
-<li><em>contains(value)</em>：返回给定类名是否存在；</li>
-<li><em>remove(value)</em>：删除指定类名；</li>
-<li><em>toggle(value)</em>：若指定类名存在，则删除；否则添加。</li>
+<li>***getElementsByClassName()***：根据类名获取元素（返回 NodeList）；</li>
+<li><em><strong>dataset</strong></em>：包含当前元素上的所有<strong>自定义属性</strong>（以 “data-” 作为前缀开头）；</li>
+<li><em><strong>innerHTML</strong></em>：读取/更换<strong>当前元素内部（不包含该元素）</strong>的 HTML 字符串（<strong>HTML5 下通过该属性动态插入的 &lt;script&gt; 标签是不会被执行的</strong>）；</li>
+<li><em><strong>outerHTML</strong></em>：读取/更换<strong>当前元素及其内部</strong>的 HTML 字符串；</li>
+<li>***insertAdjacentHTML()***：插入 HTML 元素；</li>
+<li>***insertAdjacentText()***：插入文本（节点）；</li>
+<li>***scrollIntoView()<em><strong>：</strong>滚动浏览器窗口或容器窗口以便包含元素进入视口</em>*；</li>
+<li><em><strong>classList</strong></em>：包含当前元素所有类型的一个集合（DOMTokenList）；<ul>
+<li>*add(value)*：向类名列表中添加类名；</li>
+<li>*contains(value)*：返回给定类名是否存在；</li>
+<li>*remove(value)*：删除指定类名；</li>
+<li>*toggle(value)*：若指定类名存在，则删除；否则添加。</li>
 </ul>
 </li>
-<li>（HTMLDocument）<strong><em>activeElement</em></strong>：返回<strong>当前拥有焦点的 DOM 元素</strong>（默认为 <em>document.body</em>）；</li>
-<li>（HTMLDocument）<strong><em>hasFocus()</em></strong>：返回文档当前<strong>是否拥有焦点</strong>（表明用户是否在操作页面）；</li>
-<li>（HTMLDocument）<strong><em>readyState</em></strong>：表明当前文档的<strong>状态</strong>；<ul>
+<li>（HTMLDocument）<em><strong>activeElement</strong></em>：返回<strong>当前拥有焦点的 DOM 元素</strong>（默认为 <em>document.body</em>）；</li>
+<li>（HTMLDocument）***hasFocus()<em><strong>：返回文档当前</strong>是否拥有焦点</em>*（表明用户是否在操作页面）；</li>
+<li>（HTMLDocument）<em><strong>readyState</strong></em>：表明当前文档的<strong>状态</strong>；<ul>
 <li><em>loading</em>：文档正在加载；</li>
 <li><em>complete</em>：文档加载完成。</li>
 </ul>
 </li>
-<li>（HTMLDocument）<strong><em>compatMode</em></strong>：返回当前文档的渲染模式（标准模式 / 怪异模式）；</li>
-<li>（HTMLDocument）<strong><em>head</em></strong>：<strong>指向 &lt;head&gt; 元素</strong>；</li>
-<li>（HTMLDocument）<strong><em>characterSet</em></strong>：当前页面使用的<strong>字符集</strong>（默认为 UTF-16）；</li>
+<li>（HTMLDocument）<em><strong>compatMode</strong></em>：返回当前文档的渲染模式（标准模式 / 怪异模式）；</li>
+<li>（HTMLDocument）<em><strong>head</strong></em>：<strong>指向 &lt;head&gt; 元素</strong>；</li>
+<li>（HTMLDocument）<em><strong>characterSet</strong></em>：当前页面使用的<strong>字符集</strong>（默认为 UTF-16）；</li>
 </ul>
-<p>- <strong><em>专有扩展（未进入标准）</em></strong>：</p>
+<p>- <em><strong>专有扩展（未进入标准）</strong></em>：</p>
 <ul>
-<li><strong><em>children</em></strong>：返回一个 HTMLCollection，<strong>包含所有 Element 类型的子节点</strong>；</li>
-<li><strong><em>contains()</em></strong>：用于验证个元素是否为另一个元素的后代；</li>
-<li><strong><em>innerText</em></strong>：读取/更换<strong>当前元素内部（不包含该元素）</strong>的文本（按照 DFS 的顺序将子树中的所有文本节点值拼接起来）；</li>
-<li><strong><em>outerText</em></strong>：（同上，但包含当前节点）；</li>
+<li><em><strong>children</strong></em>：返回一个 HTMLCollection，<strong>包含所有 Element 类型的子节点</strong>；</li>
+<li>***contains()***：用于验证个元素是否为另一个元素的后代；</li>
+<li><em><strong>innerText</strong></em>：读取/更换<strong>当前元素内部（不包含该元素）</strong>的文本（按照 DFS 的顺序将子树中的所有文本节点值拼接起来）；</li>
+<li><em><strong>outerText</strong></em>：（同上，但包含当前节点）；</li>
 </ul>
 <h3 id="第-16-章-DOM2-和-DOM3"><a href="#第-16-章-DOM2-和-DOM3" class="headerlink" title="第 16 章 - DOM2 和 DOM3"></a>第 16 章 - DOM2 和 DOM3</h3><ol start="60">
 <li>（Page：1106）DOM 子集：</li>
 </ol>
 <ul>
-<li><strong><em>DOM Core</em></strong>：在 DOM1 核心部分基础上，为节点<strong>增加方法和属性</strong>；</li>
-<li><strong><em>DOM Views</em></strong>：定义<strong>基于样式信息的不同视图</strong>；</li>
-<li><strong><em>DOM Events</em></strong>：定义<strong>通过事件实现 DOM 文档交互</strong>；</li>
-<li><strong><em>DOM Style</em></strong>：定义<strong>以编程方式访问和修改 CSS 样式</strong>的接口；</li>
-<li><strong><em>DOM Traversal and Ranges</em></strong>：<strong>遍历 DOM 文档</strong>及<strong>选择文档内容</strong>的接口；</li>
-<li><strong><em>DOM HTML</em></strong>：在 DOM1 部分基础上，<strong>增加属性、方法和新接口</strong>；</li>
-<li><strong><em>DOM Mutation Observers</em></strong>：定义<strong>基于 DOM 变化触发回调</strong>的接口。</li>
+<li><em><strong>DOM Core</strong></em>：在 DOM1 核心部分基础上，为节点<strong>增加方法和属性</strong>；</li>
+<li><em><strong>DOM Views</strong></em>：定义<strong>基于样式信息的不同视图</strong>；</li>
+<li><em><strong>DOM Events</strong></em>：定义<strong>通过事件实现 DOM 文档交互</strong>；</li>
+<li><em><strong>DOM Style</strong></em>：定义<strong>以编程方式访问和修改 CSS 样式</strong>的接口；</li>
+<li><em><strong>DOM Traversal and Ranges</strong></em>：<strong>遍历 DOM 文档</strong>及<strong>选择文档内容</strong>的接口；</li>
+<li><em><strong>DOM HTML</strong></em>：在 DOM1 部分基础上，<strong>增加属性、方法和新接口</strong>；</li>
+<li><em><strong>DOM Mutation Observers</strong></em>：定义<strong>基于 DOM 变化触发回调</strong>的接口。</li>
 </ul>
 <ol start="61">
 <li>（Page：1107）XML 命名空间：可以实现<strong>在一个格式规范的文档中混用不同的 XML 语言</strong>。</li>
@@ -303,19 +307,20 @@ observer<span class="token punctuation">.</span><span class="token function">dis
       &lt;rect x="0" y ="0" width="100" height="100" style="fill:red" />
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>xmlns</code> 属性用于标注 XML 语言（元素）所属的命名空间；</li>
 <li>DOM2 / DOM3 中，新增<strong>特定于命名空间的属性和方法</strong>：<ul>
 <li><em>localname</em>：不包含命名空间前缀的节点名；</li>
 <li><em>namespaceURI</em>：节点的命名空间 URL；</li>
 <li><em>prefix</em>：命名空间前缀；</li>
-<li>（Node）<em>isDefaultNamespace(namespaceURI)</em>：表示给定 URI 是否为节点的默认命名空间；</li>
-<li>（Node）<em>lookupNamespaceURI(prefix)</em>：返回给定前缀对应的命名空间 URI；</li>
-<li>（Node）<em>lookupPrefix(namespaceURI)</em>：返回给定命名空间对应的前缀；</li>
-<li>（HTMLDocument）<em>createElementNS(namespaceURI, tagName)</em>：创建指定命名空间的标签元素；</li>
-<li>（HTMLDocument）<em>createAttributeNS(namespaceURI, attributeName)</em>：创建指定命名空间的属性；</li>
-<li>（HTMLDocument）<em>getElementByTagNameNS(namespaceURI, tagName)</em>：返回指定命名空间中所有符合标签名的元素（NodeList）。</li>
+<li>（Node）*isDefaultNamespace(namespaceURI)*：表示给定 URI 是否为节点的默认命名空间；</li>
+<li>（Node）*lookupNamespaceURI(prefix)*：返回给定前缀对应的命名空间 URI；</li>
+<li>（Node）*lookupPrefix(namespaceURI)*：返回给定命名空间对应的前缀；</li>
+<li>（HTMLDocument）*createElementNS(namespaceURI, tagName)*：创建指定命名空间的标签元素；</li>
+<li>（HTMLDocument）*createAttributeNS(namespaceURI, attributeName)*：创建指定命名空间的属性；</li>
+<li>（HTMLDocument）*getElementByTagNameNS(namespaceURI, tagName)*：返回指定命名空间中所有符合标签名的元素（NodeList）。</li>
 <li>…（其他不一一列举，均与“命名空间”相关）</li>
 </ul>
 </li>
@@ -324,30 +329,30 @@ observer<span class="token punctuation">.</span><span class="token function">dis
 <li>（Page：1119）DOM 节点相关属性和方法：</li>
 </ol>
 <ul>
-<li><strong><em>isSameNode(node)</em></strong>：验证两个节点是否<strong>相同</strong>（同一个引用）；</li>
-<li><strong><em>isEqualNode(node)</em></strong>：验证两个节点是否<strong>相等</strong>（节点类型相同、属性相同，子节点也相等）；</li>
-<li>（已废弃）<strong><em>setUserData(key, value, callback)</em></strong>：为 DOM 节点附加额外数据，并监听节点的复制、删除、重命名或导入文档；</li>
-<li>（已废弃）<strong><em>getUserData(key)</em></strong>：获取 DOM 节点上的附加数据；</li>
-<li>（HTMLIFrameElement）<strong><em>contentDocument</em></strong>：包含子内联窗格中内容的 <strong><em>document</em></strong> 对象指针（受跨域限制）；</li>
-<li>（HTMLIFrameElement）<strong><em>contentWindow</em></strong>：包含子内联窗格的 <strong><em>window</em></strong> 对象指针（受跨域限制）。</li>
+<li>***isSameNode(node)<em><strong>：验证两个节点是否</strong>相同</em>*（同一个引用）；</li>
+<li>***isEqualNode(node)<em><strong>：验证两个节点是否</strong>相等</em>*（节点类型相同、属性相同，子节点也相等）；</li>
+<li>（已废弃）***setUserData(key, value, callback)***：为 DOM 节点附加额外数据，并监听节点的复制、删除、重命名或导入文档；</li>
+<li>（已废弃）***getUserData(key)***：获取 DOM 节点上的附加数据；</li>
+<li>（HTMLIFrameElement）<em><strong>contentDocument</strong></em>：包含子内联窗格中内容的 <em><strong>document</strong></em> 对象指针（受跨域限制）；</li>
+<li>（HTMLIFrameElement）<em><strong>contentWindow</strong></em>：包含子内联窗格的 <em><strong>window</strong></em> 对象指针（受跨域限制）。</li>
 </ul>
 <ol start="63">
 <li>（Page：1123）<strong>样式属性</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>style</em></strong>：返回一个 CSSStyleDeclaration 实例，<strong>包含所有通过 HTML style 属性为元素设置的所有样式信息</strong>（样式名为“<strong>驼峰大小写</strong>”形式）；<ul>
+<li><em><strong>style</strong></em>：返回一个 CSSStyleDeclaration 实例，<strong>包含所有通过 HTML style 属性为元素设置的所有样式信息</strong>（样式名为“<strong>驼峰大小写</strong>”形式）；<ul>
 <li><em>cssText</em>：包含 style 属性中的 CSS 代码；</li>
 <li><em>length</em>：应用给元素的 CSS 属性数量；</li>
 <li><em>parentRule</em>：表示 CSS 信息的 CSSRule 对象；</li>
-<li>（已废弃）<em>getPropertyCSSValue(propertyName)</em>：获取某个 CSS 属性值；</li>
-<li><em>getPropertyPriority(propertyName)</em>：获得 CSS 属性优先级；</li>
-<li><em>getPropertyValue(propertyName)</em>：获得 CSS 属性的字符串值；</li>
-<li><em>item(index)</em>：根据索引获得 CSS 属性名；</li>
-<li><em>removeProperty(propertyName)</em>：移除 CSS 属性值；</li>
-<li><em>setProperty(propertyName, value, priority)</em>：添加 CSS 属性值；</li>
+<li>（已废弃）*getPropertyCSSValue(propertyName)*：获取某个 CSS 属性值；</li>
+<li>*getPropertyPriority(propertyName)*：获得 CSS 属性优先级；</li>
+<li>*getPropertyValue(propertyName)*：获得 CSS 属性的字符串值；</li>
+<li>*item(index)*：根据索引获得 CSS 属性名；</li>
+<li>*removeProperty(propertyName)*：移除 CSS 属性值；</li>
+<li>*setProperty(propertyName, value, priority)*：添加 CSS 属性值；</li>
 </ul>
 </li>
-<li>（Window）<strong><em>getComputedStyle()</em></strong>：获得给定元素的<strong>计算样式</strong>，返回一个 CSSStyleDeclaration 对象；</li>
+<li>（Window）***getComputedStyle()<em><strong>：获得给定元素的</strong>计算样式</em>*，返回一个 CSSStyleDeclaration 对象；</li>
 </ul>
 <ol start="64">
 <li>（Page：1131）<strong>操作样式表</strong>：</li>
@@ -368,49 +373,49 @@ observer<span class="token punctuation">.</span><span class="token function">dis
 <li><em>type</em>：表示样式表的类型，即 “<strong>text/css</strong>”；</li>
 <li><em>cssRules</em>：返回<strong>当前样式表包含的样式规则集合</strong>；</li>
 <li><em>ownerRule</em>：指向样式表的导入规则（@import）；</li>
-<li><em>deleteRule(index)</em>：在指定位置删除 cssRules 中的规则；</li>
-<li><em>insertRule(rule, index)</em>：在指定位置向 cssRules 中插入规则。</li>
+<li>*deleteRule(index)*：在指定位置删除 cssRules 中的规则；</li>
+<li>*insertRule(rule, index)*：在指定位置向 cssRules 中插入规则。</li>
 </ul>
 </li>
 </ul>
 <ol start="65">
 <li>（Page：1137）<strong>元素尺寸</strong>：</li>
 </ol>
-<p>- <strong><em>偏移尺寸属性</em></strong>：</p>
-<p><img src="1.png" alt=""></p>
+<p>- <em><strong>偏移尺寸属性</strong></em>：</p>
+<p><img src="1.png"></p>
 <ul>
-<li><strong><em>offsetHeight</em></strong>：元素在垂直方向上占用的像素尺寸（包括高度、水平滚动条高度，以及上下边框高度）；</li>
-<li><strong><em>offsetLeft</em></strong>：元素左边框<strong>距离包含元素</strong>（offsetParent，通常为 &lt;body&gt;）左边框内侧的像素；</li>
-<li><strong><em>offsetTop</em></strong>：元素上边框<strong>距离包含元素</strong>（offsetParent，通常为 &lt;body&gt;）上边框内侧的像素；</li>
-<li><strong><em>offsetWidth</em></strong>：素在水平方向上占用的像素尺寸（包括宽度、垂直滚动条宽度，以及左右边框高度）。</li>
+<li><em><strong>offsetHeight</strong></em>：元素在垂直方向上占用的像素尺寸（包括高度、水平滚动条高度，以及上下边框高度）；</li>
+<li><em><strong>offsetLeft</strong></em>：元素左边框<strong>距离包含元素</strong>（offsetParent，通常为 &lt;body&gt;）左边框内侧的像素；</li>
+<li><em><strong>offsetTop</strong></em>：元素上边框<strong>距离包含元素</strong>（offsetParent，通常为 &lt;body&gt;）上边框内侧的像素；</li>
+<li><em><strong>offsetWidth</strong></em>：素在水平方向上占用的像素尺寸（包括宽度、垂直滚动条宽度，以及左右边框高度）。</li>
 </ul>
-<p>- <strong><em>客户端尺寸属性</em></strong>：</p>
-<p><img src="2.png" alt=""></p>
+<p>- <em><strong>客户端尺寸属性</strong></em>：</p>
+<p><img src="2.png"></p>
 <ul>
-<li><strong><em>clientWidth</em></strong>：内容区宽度 + 左右内边距宽度（不超过视口尺寸）；</li>
-<li><strong><em>clientHeight</em></strong>：内容区高度 + 上下内边距宽度（不超过视口尺寸）。</li>
+<li><em><strong>clientWidth</strong></em>：内容区宽度 + 左右内边距宽度（不超过视口尺寸）；</li>
+<li><em><strong>clientHeight</strong></em>：内容区高度 + 上下内边距宽度（不超过视口尺寸）。</li>
 </ul>
-<p>- <strong><em>滚动尺寸属性</em></strong>：</p>
-<p><img src="3.png" alt=""></p>
+<p>- <em><strong>滚动尺寸属性</strong></em>：</p>
+<p><img src="3.png"></p>
 <ul>
-<li><strong><em>scrollHeight</em></strong>：元素内容总高度；</li>
-<li><strong><em>scrollWidth</em></strong>：元素内容总宽度；</li>
-<li><strong><em>scrollLeft</em></strong>：内容区左侧隐藏的像素数（可写）；</li>
-<li><strong><em>scrollTop</em></strong>：内容区顶部隐藏的像素数（可写）。</li>
+<li><em><strong>scrollHeight</strong></em>：元素内容总高度；</li>
+<li><em><strong>scrollWidth</strong></em>：元素内容总宽度；</li>
+<li><em><strong>scrollLeft</strong></em>：内容区左侧隐藏的像素数（可写）；</li>
+<li><em><strong>scrollTop</strong></em>：内容区顶部隐藏的像素数（可写）。</li>
 </ul>
-<p>- <strong><em>确定元素尺寸</em></strong>：</p>
-<p><img src="4.png" alt=""></p>
+<p>- <em><strong>确定元素尺寸</strong></em>：</p>
+<p><img src="4.png"></p>
 <ul>
-<li><strong><em>getBoundingClientRect()</em></strong>：返回一个 DOMRect 对象，包含元素在页面中相对于视口的位置信息。</li>
+<li>***getBoundingClientRect()***：返回一个 DOMRect 对象，包含元素在页面中相对于视口的位置信息。</li>
 </ul>
 <ol start="66">
-<li>（Page：1144）<strong>DOM 遍历</strong>：<strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator" target="_blank" rel="noopener">NodeIterator</a></strong> \ <strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker" target="_blank" rel="noopener">TreeWalker</a></strong>（两套 DOM API）；</li>
-<li>（Page：1156）<strong>DOM 范围</strong>：<strong><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Range" target="_blank" rel="noopener">Range</a></strong>；</li>
+<li>（Page：1144）<strong>DOM 遍历</strong>：**<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator">NodeIterator</a>** \ **<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker">TreeWalker</a>**（两套 DOM API）；</li>
+<li>（Page：1156）<strong>DOM 范围</strong>：**<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/Range">Range</a>**；</li>
 </ol>
 <h3 id="第-17-章-事件"><a href="#第-17-章-事件" class="headerlink" title="第 17 章 - 事件"></a>第 17 章 - 事件</h3><ol start="67">
 <li>（Page：<a name="1176" href="#1176">1176</a>）事件捕获与事件冒泡：前者的事件由最外层向目标事件传播；后者由目标元素向最上层元素逐层传播。现代浏览器会<strong>先进行捕获（到达目标元素），再进行冒泡（从目标元素开始）</strong>；</li>
 </ol>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ol start="68">
 <li>（Page：1181）<strong>事件处理程序</strong>（Event Handler）：</li>
 </ol>
@@ -425,7 +430,8 @@ observer<span class="token punctuation">.</span><span class="token function">dis
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Echo Username<span class="token punctuation">"</span></span> <span class="token attr-name">onClick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>console.log(username.value)<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>DOM0</strong>：诸如 <code>onclick</code> 等事件处理程序属性，默认注册在事件流的<strong>冒泡阶段</strong>。通过将改属性设置为 null，可以移除事件处理程序：</li>
 </ul>
@@ -434,11 +440,12 @@ observer<span class="token punctuation">.</span><span class="token function">dis
   btn<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>DOM2</strong>：新增两个 API。<ul>
-<li><strong><em>addEventListener()</em></strong>：添加事件处理程序（默认注册在事件流的<strong>冒泡阶段</strong>）；</li>
-<li><strong><em>removeEventListener()</em></strong>：移除事件处理程序；</li>
+<li>***addEventListener()<em><strong>：添加事件处理程序（默认注册在事件流的</strong>冒泡阶段</em>*）；</li>
+<li>***removeEventListener()***：移除事件处理程序；</li>
 </ul>
 </li>
 </ul>
@@ -447,50 +454,51 @@ observer<span class="token punctuation">.</span><span class="token function">dis
 <span class="token keyword">if</span> <span class="token punctuation">(</span>btn<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   btn<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handler<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-btn<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handler<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+btn<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> handler<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="69">
 <li>（Page：1194）<strong>事件对象</strong>（event）的属性和方法：</li>
 </ol>
 <ul>
-<li><strong><em>bubbles</em></strong>：表示事件是否冒泡；</li>
-<li><strong><em>cancelable</em></strong>：表示是否可以取消事件的默认行为；</li>
-<li><strong><em>currentTarget</em></strong>（this）：<strong>事件处理程序所在元素</strong>；</li>
-<li><strong><em>defaultPrevented</em></strong>：表示是否阻止默认事件；</li>
-<li><strong><em>detail</em></strong>：事件相关其他信息；</li>
-<li><strong><em>eventPhase</em></strong>：表示调用事件处理程序的阶段；</li>
-<li><strong><em>preventDefault()</em></strong>：取消事件的默认行为（cancelable 为 true 时可调用）；</li>
-<li><strong><em>stopImmediatePropagation()</em></strong>：取消后续事件捕获冒泡，并阻止后续调用任何事件处理程序；</li>
-<li><strong><em>stopPropagation()</em></strong>：取消所有后续事件的捕获或冒泡（bubbles 为 true 时可调用）；</li>
-<li><strong><em>target</em></strong>（IE 中为 <em>srcElement</em>）：<strong>事件目标</strong>；</li>
-<li><strong><em>trusted</em></strong>：事件是否由浏览器生成；</li>
-<li><strong><em>type</em></strong>：<strong>事件类型</strong>；</li>
-<li><strong><em>View</em></strong>：与事件相关的抽象视图。</li>
+<li><em><strong>bubbles</strong></em>：表示事件是否冒泡；</li>
+<li><em><strong>cancelable</strong></em>：表示是否可以取消事件的默认行为；</li>
+<li><em><strong>currentTarget</strong></em>（this）：<strong>事件处理程序所在元素</strong>；</li>
+<li><em><strong>defaultPrevented</strong></em>：表示是否阻止默认事件；</li>
+<li><em><strong>detail</strong></em>：事件相关其他信息；</li>
+<li><em><strong>eventPhase</strong></em>：表示调用事件处理程序的阶段；</li>
+<li>***preventDefault()***：取消事件的默认行为（cancelable 为 true 时可调用）；</li>
+<li>***stopImmediatePropagation()***：取消后续事件捕获冒泡，并阻止后续调用任何事件处理程序；</li>
+<li>***stopPropagation()***：取消所有后续事件的捕获或冒泡（bubbles 为 true 时可调用）；</li>
+<li><em><strong>target</strong></em>（IE 中为 <em>srcElement</em>）：<strong>事件目标</strong>；</li>
+<li><em><strong>trusted</strong></em>：事件是否由浏览器生成；</li>
+<li><em><strong>type</strong></em>：<strong>事件类型</strong>；</li>
+<li><em><strong>View</strong></em>：与事件相关的抽象视图。</li>
 </ul>
 <ol start="70">
 <li>（Page：1211）<strong>事件类型</strong>：</li>
 </ol>
 <ul>
 <li><strong>用户界面（UI）事件</strong>：涉及与 BOM 交互的通用浏览器事件；<ul>
-<li><strong><em>load</em></strong>：windows 上当<strong>页面（所有外部资源）加载完毕后</strong>触发；&lt;img&gt; 元素上当<strong>图片加载完成后</strong>触发（<strong>当该元素对象具有 src 属性后，便会立即触发资源下载过程</strong>）；&lt;object&gt; 元素上当相应对象加载完成后触发；</li>
+<li><em><strong>load</strong></em>：windows 上当<strong>页面（所有外部资源）加载完毕后</strong>触发；&lt;img&gt; 元素上当<strong>图片加载完成后</strong>触发（<strong>当该元素对象具有 src 属性后，便会立即触发资源下载过程</strong>）；&lt;object&gt; 元素上当相应对象加载完成后触发；</li>
 <li><em>unload</em>：windows 上当页面完全卸载后触发；&lt;object&gt; 元素上当相应对象被卸载后触发；</li>
 <li><em>abort</em>：&lt;object&gt; 元素上当相应对象加载完成前被用户提前终止下载时触发；</li>
-<li><strong><em>error</em></strong>：windows 上 <strong>JavaScript 报错时触发</strong>；&lt;img&gt; 元素上当<strong>图片无法加载时</strong>触发；&lt;object&gt; 元素上当相应对象无法加载后触发；</li>
-<li><strong><em>select</em></strong>：在文本框中当用户选择了字符时触发；</li>
-<li><strong><em>resize</em></strong>：windows 上当窗口被缩放时触发；</li>
-<li><strong><em>scroll</em></strong>：当用户滚动包含滚动条的元素时，在元素上触发。</li>
+<li><em><strong>error</strong></em>：windows 上 <strong>JavaScript 报错时触发</strong>；&lt;img&gt; 元素上当<strong>图片无法加载时</strong>触发；&lt;object&gt; 元素上当相应对象无法加载后触发；</li>
+<li><em><strong>select</strong></em>：在文本框中当用户选择了字符时触发；</li>
+<li><em><strong>resize</strong></em>：windows 上当窗口被缩放时触发；</li>
+<li><em><strong>scroll</strong></em>：当用户滚动包含滚动条的元素时，在元素上触发。</li>
 </ul>
 </li>
 <li><strong>焦点事件</strong>：在元素获得和失去焦点时触发；<ul>
-<li><strong><em>blur</em></strong>：元素失去焦点时触发，不冒泡；</li>
+<li><em><strong>blur</strong></em>：元素失去焦点时触发，不冒泡；</li>
 <li><em>focusout</em>：元素失去焦点时触发，冒泡：</li>
-<li><strong><em>focus</em></strong>：元素获得焦点时触发，不冒泡；</li>
+<li><em><strong>focus</strong></em>：元素获得焦点时触发，不冒泡；</li>
 <li><em>focusin</em>：元素获得焦点时触发，冒泡；</li>
 </ul>
 </li>
 <li><strong>鼠标事件</strong>：鼠标在页面上执行某些操作时触发；<ul>
-<li><strong><em>click</em></strong>：鼠标左键或回车单击时触发；</li>
-<li><strong><em>dblclick</em></strong>：鼠标左键双击时触发；</li>
-<li><strong><em>mousedown</em></strong>：按下任意鼠标键时触发；</li>
+<li><em><strong>click</strong></em>：鼠标左键或回车单击时触发；</li>
+<li><em><strong>dblclick</strong></em>：鼠标左键双击时触发；</li>
+<li><em><strong>mousedown</strong></em>：按下任意鼠标键时触发；</li>
 <li><em>mouseenter</em>：鼠标光标从元素外部移动元素内部时触发；</li>
 <li><em>mouseleave</em>：（与上相反）；</li>
 <li><em>mousemove</em>：鼠标光标在元素上移动时反复触发；</li>
@@ -502,22 +510,22 @@ btn<span class="token punctuation">.</span><span class="token function">removeEv
 <li><strong>滚轮事件</strong>：使用鼠标滚轮时触发；</li>
 <li><strong>输入事件</strong>：向文档中输入文本时触发；</li>
 <li><strong>键盘事件</strong>：键盘在页面上执行某些操作时触发；<ul>
-<li><strong><em>keydown</em></strong>：用户按下键盘上某个键时触发，可持续触发；</li>
+<li><em><strong>keydown</strong></em>：用户按下键盘上某个键时触发，可持续触发；</li>
 <li><em>keypress</em>：用户按下键盘上某个键并产生字符时触发，可持续触发；</li>
 <li><em>keyup</em>：用户释放键盘上某个键时触发。</li>
 </ul>
 </li>
 <li><strong>合成事件</strong>：使用某种 IME（Input Method Editor）输入字符时触发；</li>
 <li><strong>HTML5 事件</strong>：补足 DOM 事件；<ul>
-<li><strong><em>contextmenu</em></strong>：用户尝试打开上下文菜单（右键）时触发；</li>
-<li><strong><em>beforeunload</em></strong>：浏览器窗口关闭或者刷新时触发；</li>
-<li><strong><em>DOMContentLoaded</em></strong>：在 DOM 树构建完成后立即触发，不用等待图片、JavaScript 文件、CSS 文件等其他资源的完成；</li>
+<li><em><strong>contextmenu</strong></em>：用户尝试打开上下文菜单（右键）时触发；</li>
+<li><em><strong>beforeunload</strong></em>：浏览器窗口关闭或者刷新时触发；</li>
+<li><em><strong>DOMContentLoaded</strong></em>：在 DOM 树构建完成后立即触发，不用等待图片、JavaScript 文件、CSS 文件等其他资源的完成；</li>
 <li><em>readystatechange</em>：当文档的 readyState 属性发生改变时触发（触发时机不稳定）；</li>
 <li><em>pageshow / pagehide</em>：页面显示/隐藏时触发；</li>
-<li><strong><em>hashchange</em></strong>：URL 散列值发生变化时触发（可用于判断路由变化）；</li>
+<li><em><strong>hashchange</strong></em>：URL 散列值发生变化时触发（可用于判断路由变化）；</li>
 </ul>
 </li>
-<li><strong>自定义事件</strong>：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent" target="_blank" rel="noopener">CustomEvent</a>；</li>
+<li><strong>自定义事件</strong>：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/API/CustomEvent">CustomEvent</a>；</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// add an appropriate event listener.</span>
 <span class="token keyword">let</span> obj <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'obj'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -529,7 +537,8 @@ obj<span class="token punctuation">.</span><span class="token function">addEvent
     hazcheeseburger<span class="token punctuation">:</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+obj<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>其他事件</strong>：（参考 MDN）。</li>
 </ul>

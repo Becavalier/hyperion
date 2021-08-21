@@ -3,38 +3,39 @@
 <h4 id="1-TCP-IP-协议族："><a href="#1-TCP-IP-协议族：" class="headerlink" title="1. TCP/IP 协议族："></a>1. TCP/IP 协议族：</h4><p>如果基于常用的四层网络体系，TCP 协议位于传输层，IP 协议位于网络层。传输层还包含常用的 UDP 协议。</p>
 <h4 id="2-三次握手："><a href="#2-三次握手：" class="headerlink" title="2. 三次握手："></a>2. 三次握手：</h4><p>在建立基于 TCP 协议的连接时，客户端与服务器端会采用三次握手机制。首先客户端发送一个含有 SYN 标识的数据包，服务器返回一个含有 SYN/ACK 标识的数据包，最后客户端再返回一个 ACK 标识的确认数据包。如果在握手中的某一个阶段莫名中断，TCP 协议会再次以相同的顺序发送相同的数据包。</p>
 <h4 id="3-ARP-协议与-DNS-协议："><a href="#3-ARP-协议与-DNS-协议：" class="headerlink" title="3. ARP 协议与 DNS 协议："></a>3. ARP 协议与 DNS 协议：</h4><p>DNS 协议用于将域名解析为 IP 地址。ARP 协议用于通过 IP 地址找到对应设备的 MAC 地址。ARP 广播机制：如果在当前的 ARP 本地缓存中没有找到对应 IP 的 MAC 地址，那么 ARP 协议会在当前域内发送一个广播请求，所有的客户机都会收到该广播请求，只有客户机发现该广播对应要询问的 IP 与自己相同时，该客户机会把自己的 MAC 地址作为响应返回。</p>
-<h4 id="4-URL-与-URI："><a href="#4-URL-与-URI：" class="headerlink" title="4. URL 与 URI："></a>4. URL 与 URI：</h4><p>URI 是统一资源定位符的简写，主要用对应的定位符来定位某一种资源。URL 是 URI 的一个子集，主要用来表示资源在互联网中的地点。URI 格式：<strong><a href="http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1" target="_blank" rel="noopener">http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1</a></strong>。这里扩展一下“HTTP基本认证（Basic Authentication）”。上述的 URI 完整格式中“user:pass@”部分即对应一个基本认证的登录部分。基本认证主要需要服务器返回一个 “<strong>WWW-Authenticate Basic realm=”My Realm”</strong>” 头部，在该头部指定了服务器需要的认证方式和显示给用户的备注信息。服务器端可以通过 <code>$_SERVER[&quot;PHP_AUTH_USER&quot;]</code> 和 <code>$_SERVER[&quot;PHP_AUTH_PW&quot;]</code>来获得用户输入的验证信息。</p>
+<h4 id="4-URL-与-URI："><a href="#4-URL-与-URI：" class="headerlink" title="4. URL 与 URI："></a>4. URL 与 URI：</h4><p>URI 是统一资源定位符的简写，主要用对应的定位符来定位某一种资源。URL 是 URI 的一个子集，主要用来表示资源在互联网中的地点。URI 格式：<strong><a target="_blank" rel="noopener" href="http://user:pass@www.example.com/dir/index.html?uid=1#ch1">http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1</a></strong>。这里扩展一下“HTTP基本认证（Basic Authentication）”。上述的 URI 完整格式中“user:pass@”部分即对应一个基本认证的登录部分。基本认证主要需要服务器返回一个 “**WWW-Authenticate Basic realm=”My Realm”**” 头部，在该头部指定了服务器需要的认证方式和显示给用户的备注信息。服务器端可以通过 <code>$_SERVER[&quot;PHP_AUTH_USER&quot;]</code> 和 <code>$_SERVER[&quot;PHP_AUTH_PW&quot;]</code>来获得用户输入的验证信息。</p>
 <pre class="line-numbers language-php"><code class="language-php"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">"PHP_AUTH_USER"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string">"PHP_AUTH_PW"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">http_response_code</span><span class="token punctuation">(</span><span class="token number">401</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 401 未授权: (Unauthorized)；</span>
   <span class="token function">header</span><span class="token punctuation">(</span><span class="token string">"WWW-Authenticate:Basic realm='Please input you username and password!'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">echo</span> <span class="token string">"Please input you username and password!"</span><span class="token punctuation">;</span>
   exit<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="5-HTTP-无状态-无连接："><a href="#5-HTTP-无状态-无连接：" class="headerlink" title="5. HTTP 无状态. 无连接："></a>5. HTTP 无状态. 无连接：</h4><p>HTTP 协议不会保留之前的请求或者响应，意味着每当有新的请求产生，就会有新的响应，这样做的好处是：可以做到快速的响应；缺点是：每次的请求可能包含大量的重复信息；HTTP 协议的无连接是指在每一次发送请求之前都需要重新进行三次握手连接，每次请求结束后连接都会被释放。直到 HTTP 1.1 中，引入了 “<strong><em>Connection: Keep-Alive</em></strong>” 这个头部的字段，使得 HTTP 请求的连接得以保持，具体保持连接的时间可以在服务器端进行控制。</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5-HTTP-无状态-无连接："><a href="#5-HTTP-无状态-无连接：" class="headerlink" title="5. HTTP 无状态. 无连接："></a>5. HTTP 无状态. 无连接：</h4><p>HTTP 协议不会保留之前的请求或者响应，意味着每当有新的请求产生，就会有新的响应，这样做的好处是：可以做到快速的响应；缺点是：每次的请求可能包含大量的重复信息；HTTP 协议的无连接是指在每一次发送请求之前都需要重新进行三次握手连接，每次请求结束后连接都会被释放。直到 HTTP 1.1 中，引入了 “<em><strong>Connection: Keep-Alive</strong></em>” 这个头部的字段，使得 HTTP 请求的连接得以保持，具体保持连接的时间可以在服务器端进行控制。</p>
 <h4 id="6-常用的-HTTP-方法："><a href="#6-常用的-HTTP-方法：" class="headerlink" title="6. 常用的 HTTP 方法："></a>6. 常用的 HTTP 方法：</h4><ul>
-<li><strong><em>GET：</em></strong>获取资源；传输非机密信息，大小在 1024 比特以内；</li>
-<li><strong><em>POST：</em></strong>获得传输实体主体；一般用于提交表单，登录或者注册等，理论上没有传输大小限制；</li>
-<li><strong><em>PUT：</em></strong>传输文件；一般需要配合服务器的验证机制，协议本身不提供验证方法；</li>
-<li><strong><em>HEAD：</em></strong>获得报文首部；同 GET 方法，但是不返回报文主体，只返回响应头部，用于验证 URL 有效性等；</li>
-<li><strong><em>DELETE：</em></strong>删除文件；同 PUT 方法；</li>
-<li><strong><em>OPTIONS：</em></strong>询问支持的方法；一般用于 CORS 复杂验证的预检请求，比如在 CORS 中使用了 PUT 或者 DELETE 方法（同时在头部携带了一个 Origin 字段）；</li>
-<li><strong><em>CONNECT：</em></strong>使用隧道协议连接代理；主要用于请求使用 SSL/TSL 进行连接加密的情况；不常用；</li>
-<li><strong><em>TRACE：</em></strong>追踪路径；不常用；</li>
+<li><em><strong>GET：</strong></em>获取资源；传输非机密信息，大小在 1024 比特以内；</li>
+<li><em><strong>POST：</strong></em>获得传输实体主体；一般用于提交表单，登录或者注册等，理论上没有传输大小限制；</li>
+<li><em><strong>PUT：</strong></em>传输文件；一般需要配合服务器的验证机制，协议本身不提供验证方法；</li>
+<li><em><strong>HEAD：</strong></em>获得报文首部；同 GET 方法，但是不返回报文主体，只返回响应头部，用于验证 URL 有效性等；</li>
+<li><em><strong>DELETE：</strong></em>删除文件；同 PUT 方法；</li>
+<li><em><strong>OPTIONS：</strong></em>询问支持的方法；一般用于 CORS 复杂验证的预检请求，比如在 CORS 中使用了 PUT 或者 DELETE 方法（同时在头部携带了一个 Origin 字段）；</li>
+<li><em><strong>CONNECT：</strong></em>使用隧道协议连接代理；主要用于请求使用 SSL/TSL 进行连接加密的情况；不常用；</li>
+<li><em><strong>TRACE：</strong></em>追踪路径；不常用；</li>
 </ul>
 <h4 id="7-四次握手："><a href="#7-四次握手：" class="headerlink" title="7. 四次握手："></a>7. 四次握手：</h4><p>由于 TCP 协议是全双工的，所以在关闭连接时，要从客户端和服务端两个方向分别关闭。客户端先发送一个带有 FIN 标识的请求，服务器端返回一个 ACK 请求，完成一次关闭。服务器端同上。</p>
 <h4 id="8-HTTP-管线化技术："><a href="#8-HTTP-管线化技术：" class="headerlink" title="8. HTTP 管线化技术："></a>8. HTTP 管线化技术：</h4><p>该技术可以同时把多个 HTTP 请求放到一个 TCP/Socket 连接中，批量发送连接，仅支持 HTTP 1.1。本质是把多个 HTTP 消息放到同一个 TCP 分组中进行传输，在低延迟的连接里效果尤为突出。</p>
 <h4 id="9-报文结构："><a href="#9-报文结构：" class="headerlink" title="9. 报文结构："></a>9. 报文结构：</h4><p>请求/响应报文首部和主体之间通过空行（CR+LF 0X0d, 0X0a）进行分割，报文首部中包含各种传输头部信息。</p>
 <h4 id="10-报文实体压缩："><a href="#10-报文实体压缩：" class="headerlink" title="10. 报文实体压缩："></a>10. 报文实体压缩：</h4><p>在传输二进制数据时，常常需要在服务器端将报文的实体数据进行压缩，常用的压缩技术有：</p>
 <ul>
-<li><strong><em>gzip：</em></strong>GUN zip；</li>
-<li><strong><em>compress：</em></strong>Unix 系统标准压缩方式；</li>
-<li><strong><em>deflate：</em></strong>zlib 是一种 deflate 实现，deflate 本身是使用 LZ77 和哈弗曼进行编码的；</li>
-<li><strong><em>identify：</em></strong>不压缩；</li>
+<li><em><strong>gzip：</strong></em>GUN zip；</li>
+<li><em><strong>compress：</strong></em>Unix 系统标准压缩方式；</li>
+<li><em><strong>deflate：</strong></em>zlib 是一种 deflate 实现，deflate 本身是使用 LZ77 和哈弗曼进行编码的；</li>
+<li><em><strong>identify：</strong></em>不压缩；</li>
 </ul>
 <h4 id="11-分块传输编码："><a href="#11-分块传输编码：" class="headerlink" title="11. 分块传输编码："></a>11. 分块传输编码：</h4><p>服务器在响应请求并返回数据时可以实体主体分割成多个块（chunk），分块传输。每一个分块都会用一个十六进制的数来标记自己的大小，而分块的最后一个将会使用 “CR+LF” 来标记自己。该技术可以让客户端分段显示页面。</p>
 <h4 id="12-多部分对象集合："><a href="#12-多部分对象集合：" class="headerlink" title="12. 多部分对象集合："></a>12. 多部分对象集合：</h4><ul>
-<li><strong><em>multipart/form-data：</em></strong>在提交表单时如果含有图像或文件时使用；</li>
-<li><strong><em>multipart/byteranges：</em></strong>响应报文包含了多个范围的内容，状态码206。很少使用；</li>
+<li><em><strong>multipart/form-data：</strong></em>在提交表单时如果含有图像或文件时使用；</li>
+<li><em><strong>multipart/byteranges：</strong></em>响应报文包含了多个范围的内容，状态码206。很少使用；</li>
 </ul>
 <p>对应于每一个类型的对象实体，HTTP 协议都会采用一个 “boundary” 作为分隔符来进行区分。</p>
 <h4 id="13-不常见状态码："><a href="#13-不常见状态码：" class="headerlink" title="13. 不常见状态码："></a>13. 不常见状态码：</h4><ul>

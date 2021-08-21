@@ -37,26 +37,26 @@
 <ol start="7">
 <li>（Page：14）虚拟机模型：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="8">
 <li>（Page：15）V-ISA（Wasm、Java 字节码）一般仅作为其他高级语言的<strong>编译目标</strong>。JavaScript 既可以作为一种源语言，又可以被作为其他语言的编译目标（如 Emscripten）。</li>
 <li>（Page：15）源语言、虚拟机与字节码之间的关系：字节码（OpCode 的二进制形式）作为一种编译目标<strong>与源语言（比如 Java）没有直接关系</strong>；虚拟机类比于 i386 的 CPU 来执行 X86 指令；而任何类型的源语言都有可能被编译成某种特定的字节码目标。</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ol start="10">
 <li>（Page：16）一般来说，<strong>安全性语言</strong>（JavaScript、Python、Java 等）由于缺乏对资源的细粒度掌控能力而<strong>不便于</strong>（运行成本较高）用来开发 VM。</li>
 <li>（Page：18）Java 平台（如 “Java SE 8”）是 Java 语言、JVM 虚拟机、Java 类库和相关工具的规范集合。Java 实现（如 “OpenJDK 8”）是 Java 平台的完整实现。Java 平台具有不同的版本，分别称为标准版 SE，企业版 EE 等。它们都<strong>共享相同的 Java 语言和 JVM 规范</strong>，但定义了<strong>不同的库</strong>，并且可能具有<strong>不同的实现</strong>。</li>
 <li>（Page：19）CLI 平台和 Java 平台在各类概念上的横向对比：</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <h3 id="Chapter-3：虚拟机内部数据结构"><a href="#Chapter-3：虚拟机内部数据结构" class="headerlink" title="Chapter 3：虚拟机内部数据结构"></a>Chapter 3：虚拟机内部数据结构</h3><ol start="13">
 <li>（Page：21）JVM 语言具有两种数据类型：<strong>基本类型</strong>（保存一个直接值）和<strong>引用类型</strong>（包含指向对象的指针）。其中类 <em>Object</em> 是所有类的<strong>基类</strong>（所有类都是 <em>Object</em> 的派生类。<em>Object</em> 含有一个 <code>getClass()</code> 方法可以获得一个 java.lang.Class 对象，其中含有关于该类的一些信息），类 <em>Class</em> 是所有其他类的<strong>类型</strong>（所有类都是 <em>Class</em> 的一个实例），即所有其他类都是一种 <em>Class</em> 类型。其中的某些 Instance-Of 和 Subclass-Of 的关系是由 VM 来维护的。</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ol start="14">
 <li>（Page：22）通常来说，一个类对象的数据包含两部分：个体实例数据+类数据；由于 Java 支持继承和多态，因此对<strong>类多态方法的调用</strong>以及<strong>类成员的访问</strong>便成了两个最为频繁的操作。虚表属于类的而非对象，其内部含有指向虚方法（virtual）的指针。同一个类的所有对象都使用同一个虚表，因此<strong>每个对象都含有一个指向该类虚表的指针</strong>。综上，下图（b）中的资源管理方式相较于（a）会有着更好的性能（使得类对象多态方法调用和类成员访问所需要的步骤更少）。</li>
 </ol>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ol start="15">
 <li>（Page：23）JVM 中<strong>函数</strong>类型的大致描述结构：</li>
 </ol>
@@ -82,7 +82,8 @@
     <span class="token keyword">unsigned</span> is_overridden  <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>        
     <span class="token keyword">unsigned</span> is_nop         <span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span>    
   <span class="token punctuation">}</span> flags<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// properties of the methods.</span>
-<span class="token punctuation">}</span> Method<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> Method<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上述结构中包含了方法需要在进行<strong>编译</strong>、<strong>调试</strong>、<strong>Profile</strong>、<strong>链接</strong>、<strong>GC</strong> 以及<strong>异常处理</strong>时所需要的所有运行时信息。其中 jitted_code 字段包含了该函数对应的 AOT 代码。is_nop 字段表示函数体是否为空，以供虚拟机进行优化处理。</p>
 <h3 id="Chapter-4：执行引擎的设计"><a href="#Chapter-4：执行引擎的设计" class="headerlink" title="Chapter 4：执行引擎的设计"></a>Chapter 4：执行引擎的设计</h3><ol start="16">
 <li>（Page：27）GC 一般会同时囊括堆内存的分配（<strong>即在代码中需要通过 GC 来分配内存</strong>）和清理过程，比如 C++ 中常用的“贝姆”（Boehm）垃圾收集器。</li>
@@ -90,17 +91,17 @@
 </ol>
 <ul>
 <li><strong>函数懒加载优化</strong>：将函数字节码的解析和加载过程延后到函数被调用时进行。</li>
-<li><strong>超级指令优化</strong>（Super Instruction）：将多个指令（OpCode）进行合并，以减少需要进行的指令分支跳转次数（分支语句会招致 <u><strong><a href="https://medium.com/swlh/branch-prediction-everything-you-need-to-know-da13ce05787e" target="_blank" rel="noopener">分支预测失败</a></strong></u> 以及缓存穿透，而两者的代价是昂贵的）；</li>
+<li><strong>超级指令优化</strong>（Super Instruction）：将多个指令（OpCode）进行合并，以减少需要进行的指令分支跳转次数（分支语句会招致 <u><strong><a target="_blank" rel="noopener" href="https://medium.com/swlh/branch-prediction-everything-you-need-to-know-da13ce05787e">分支预测失败</a></strong></u> 以及缓存穿透，而两者的代价是昂贵的）；</li>
 <li><strong>选择性内联</strong>：选择性地<strong>将一部分字节码组合编译成机器码</strong>，这部分机器码会在解释器运行时替换对应的字节码序列，以减少指令分发次数，同时提高执行效率。但在实际应用中，由于可能存在缝合代码，导致这些被连接在一起的机器代码整体质量可能并不高；</li>
 </ul>
 <ol start="18">
 <li>（Page：30）<strong>基于函数的 JIT</strong>：流程与 ELF 共享库的动态链接过程类似，函数索引表可以类比为 PLT。当第一次调用函数时，索引表中对应项（函数指针或其他方式）会先调用内部编译器来编译函数，并生成对应的的机器码；然后，待编译完成后，<strong>用生成机器码的入口地址作为索引表项的内容</strong>，并将该地址返回给调用者，这样后续再次调用该函数时将直接使用函数的机器码（Code Cache）。</li>
 </ol>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <p>该方式的问题在于：<strong>JIT 粒度较为粗糙，热代码的命中率较低</strong>（比如函数体内耗时的循环结构无法捕捉）。</p>
 <ol start="19">
 <li>（Page：31）当多个线程要调用同一方法并触发该方法的 JIT 编译时，VM 需要确保<strong>相互排斥对同一方法的编译</strong>（比如使用单例模式的“双检查锁”，或“自旋锁”）。</li>
-<li>（Page：32）<u><strong><a href="https://en.wikipedia.org/wiki/Tracing_just-in-time_compilation" target="_blank" rel="noopener">基于 Trace 的 JIT</a></strong></u>：Trace 是指在运行时所执行的一段热代码的路径，而该种 JIT 方式只<strong>编译位于该路径上的代码</strong>。其几个重要步骤如下：</li>
+<li>（Page：32）<u><strong><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tracing_just-in-time_compilation">基于 Trace 的 JIT</a></strong></u>：Trace 是指在运行时所执行的一段热代码的路径，而该种 JIT 方式只<strong>编译位于该路径上的代码</strong>。其几个重要步骤如下：</li>
 </ol>
 <ul>
 <li><strong>识别 Trace</strong>：可以通过在<strong>函数体</strong>（颗粒度一般不够）、<strong>循环头</strong>（这里可以进行很多优化，比如“循环不变代码外提”、“循环并行化和向量化”等；循环结构的识别可以通过对编译时构建的 CFG 进行深度优先遍历来识别）以及<strong>基本块</strong>（指的是具有单个入口点和单个出口点，且中间没有分支语句的代码段）中添加<strong>计数器</strong>来判断代码是否 Hot；</li>
@@ -118,7 +119,8 @@ y <span class="token operator">=</span> <span class="token number">0</span>
     y <span class="token operator">+=</span> square<span class="token punctuation">(</span>i<span class="token punctuation">)</span>
     <span class="token keyword">if</span> y <span class="token operator">></span> <span class="token number">100000</span><span class="token punctuation">:</span>
         <span class="token keyword">break</span>
-    i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应的 Trace（伪代码，方法 square 可以被<strong>内联</strong>）：</p>
 <pre class="line-numbers language-text"><code class="language-text">loopstart(i1, y1)
   i2 = int_mul(i1, i1)  # x * x;
@@ -126,7 +128,8 @@ y <span class="token operator">=</span> <span class="token number">0</span>
   b1 = int_gt(y2, 100000)
   guard_false(b1)
   i3 = int_add(i1, 1)        # i = i + 1;
-  jump(i3, y2)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  jump(i3, y2)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>* 由于普遍性能较差且高性能 JIT 的实现复杂度，<strong>截止 2015 年，大部分知名 VM 实现都已经不再使用基于 Trace 的 JIT 方案。</strong></p>
 <ol start="21">
 <li>（Page：35）基于“循环”和“基本块”的 Tracing-JIT 均<strong>无法很好地处理递归调用</strong>（直接/间接）结构；</li>
@@ -151,7 +154,7 @@ y <span class="token operator">=</span> <span class="token number">0</span>
 <ol start="25">
 <li>（Page：46）引用计数（Reference Counting）的常用原语：</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <p>RC 相关原语的 OpCode 需要 Compiler <strong>在编译源代码到字节码的过程中插入到程序的特定位置</strong>。其中的 “updSlot” 主要用于支持赋值语句中对象引用的变化情况。</p>
 <ol start="26">
 <li>（Page：48）当 RC 的计数将要溢出时，VM 可以选择放弃后续的计数过程，并假设该引用对应的资源将永远不会被释放。常用的 RC 变量大小可以选择为<strong>1 字节</strong>。当然也可以选择为 1 位，即所有对象仅能拥有在创建时生成的一个引用，超过该引用次数，则资源永远不会被释放。</li>

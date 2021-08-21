@@ -4,7 +4,8 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 安装 Docker Compose；</span>
 <span class="token function">sudo</span> curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -s<span class="token variable">`</span></span>-<span class="token variable"><span class="token variable">`</span><span class="token function">uname</span> -m<span class="token variable">`</span></span> -o /usr/local/bin/docker-compose
 <span class="token function">sudo</span> <span class="token function">chmod</span> +x /usr/local/bin/docker-compose
-docker-compose --version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+docker-compose --version
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>编写 Dockerfile 以及应用程序相关的文件。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Dockerfile；</span>
 FROM python:2.7
@@ -15,7 +16,8 @@ WORKDIR /composeapp
 RUN pip <span class="token function">install</span> -r requirements.txt
 
 <span class="token comment" spellcheck="true"># Application(app.py/requirements.txt)；</span>
-<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">..</span>.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>编写 docker-compose.yml 配置 Docker Compose 来创建服务。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">version: <span class="token string">'3'</span>
 services:
@@ -29,14 +31,16 @@ services:
     links:
      - redis
   redis:
-    image: redis<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    image: redis
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行服务。</p>
 <pre class="line-numbers language-bash"><code class="language-bash">docker-compose up
 docker-compose logs
 docker-compose stop
 docker-compose <span class="token function">kill</span>
 docker-compose <span class="token function">rm</span>
-docker-compose <span class="token function">ps</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+docker-compose <span class="token function">ps</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2、Consul、服务发现和-Docker："><a href="#2、Consul、服务发现和-Docker：" class="headerlink" title="2、Consul、服务发现和 Docker："></a>2、Consul、服务发现和 Docker：</h4><p>（待补充）</p>
 <h4 id="3、Docker-Swarm："><a href="#3、Docker-Swarm：" class="headerlink" title="3、Docker Swarm："></a>3、Docker Swarm：</h4><p>Docker Swarm 是一个原生的 Docker 集群管理工具，支持容器的跨宿主节点的集群管理。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 拉取 Docker Swarm 镜像；</span>
@@ -63,25 +67,30 @@ docker-compose <span class="token function">ps</span><span aria-hidden="true" cl
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 首先安装 kubectl 命令行工具；</span>
 curl -LO https://storage.googleapis.com/kubernetes-release/release/<span class="token variable"><span class="token variable">$(</span>curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt<span class="token variable">)</span></span>/bin/linux/amd64/kubectl
 <span class="token function">chmod</span> +x ./kubectl
-<span class="token function">sudo</span> <span class="token function">mv</span> ./kubectl /usr/local/bin/kubectl<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">sudo</span> <span class="token function">mv</span> ./kubectl /usr/local/bin/kubectl
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 可选的本机单集群；</span>
 <span class="token comment" spellcheck="true"># https://github.com/kubernetes/minikube</span>
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x minikube <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">mv</span> minikube /usr/local/bin/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x minikube <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">mv</span> minikube /usr/local/bin/
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash">minikube version
-minikube start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+minikube start
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>安装依赖 VirtualBox（由于 ECS 等云服务器本身即基于虚拟化的产品，因此并不能在 ECS 等产品上再使用嵌套的虚拟化服务 /proc/xen）。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cd</span> /etc/yum.repos.d/
 <span class="token function">wget</span> http://download.virtualbox.org/virtualbox/rpm/rhel/virtualbox.repo
 yum update
 yum <span class="token function">install</span> binutils qt gcc <span class="token function">make</span> patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
 <span class="token function">export</span> KERN_DIR<span class="token operator">=</span>/usr/src/kernels/<span class="token operator">&lt;</span>kernels_version<span class="token operator">></span>
-yum <span class="token function">install</span> VirtualBox-5.2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+yum <span class="token function">install</span> VirtualBox-5.2
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash">kubectl run <span class="token operator">&lt;</span>name<span class="token operator">></span> --image<span class="token operator">=</span><span class="token operator">&lt;</span>image<span class="token operator">></span>
 kubectl get pods
 kubectl expose deployment <span class="token operator">&lt;</span>name<span class="token operator">></span> --port <span class="token operator">&lt;</span>port<span class="token operator">></span> --type LoadBalancer
-kubectl get services<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+kubectl get services
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过配置文件来创建 Pods，Pods 是一个或一组容器的集合，每一个 Pods 对应于一个逻辑上的应用程序。Pods 内部还有 Volumes，这些 Volumes 组成了该 Pods 的数据层。整个 Pods 共享一个网络命名空间（IP），内部的容器和 Volumes 之间可以相互访问。</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># pods.yaml</span>
 apiVersion: v1
 kind: Pod
@@ -120,18 +129,21 @@ spec:
           port: 81
           scheme: HTTP
         initialDelaySeconds: 5
-        timeoutSeconds: 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        timeoutSeconds: 1
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash">kubectl create -f pods.yaml
 kubectl get pods
 kubectl describe pods monolith
 
 kubectl port-forward monolith 10080:80 <span class="token comment" spellcheck="true"># 端口代理；</span>
 kubectl logs monolith
-kubectl <span class="token function">exec</span> monolith --stdin --tty -c monolith /bin/sh <span class="token comment" spellcheck="true"># 打开一个与 Pods 进行交互的终端；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+kubectl <span class="token function">exec</span> monolith --stdin --tty -c monolith /bin/sh <span class="token comment" spellcheck="true"># 打开一个与 Pods 进行交互的终端；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Docker 常用命令总结：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># remove exited containers:</span>
 docker <span class="token function">ps</span> --filter status<span class="token operator">=</span>dead --filter status<span class="token operator">=</span>exited -aq <span class="token operator">|</span> <span class="token function">xargs</span> -r docker <span class="token function">rm</span> -v
-
+    
 <span class="token comment" spellcheck="true"># remove unused images:</span>
-docker images --no-trunc <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'&lt;none>'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{ print <span class="token variable">$3</span> }'</span> <span class="token operator">|</span> <span class="token function">xargs</span> -r docker rmi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+docker images --no-trunc <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'&lt;none>'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{ print <span class="token variable">$3</span> }'</span> <span class="token operator">|</span> <span class="token function">xargs</span> -r docker rmi
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-11-09T07:53:48.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/11/07/Docker-最佳实践（二）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/11/12/The-Twelve-Factor-App/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

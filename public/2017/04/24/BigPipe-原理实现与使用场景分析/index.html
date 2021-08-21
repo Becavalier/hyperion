@@ -3,15 +3,16 @@
 <p>实验环境基于 Node 7.5，这里直接使用 Express 框架来实现分块传输编码，Express 的响应对象的方法 <code>res.render(view [, locals] [, callback])</code>，如果为其提供一个方法作为第二个或第三个参数，则所有的响应会自动以 <code>Transfer-Encoding: chunked</code> 的方式进行传输，因此当所有响应内容输出后，需要手动结束该次请求。</p>
 <p>BigPipe 的优势在于可以让服务器与浏览器并行处理，在浏览器渲染其他 Pagelet 服务器也同时在获取其他 Pagelet 所需要的信息，并且 BigPipe 使用了阻塞的  HTTP 请求，从某种程度上来讲也大大降低了网站页面的请求数量，从两方面大大提高了浏览器和服务器的并行效率。</p>
 <p>传统的前后端的沟通过程见下图：</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <p>BigPipe 的前后端并行处理过程见下图：</p>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <p>可以看见，相比较于传统的前后端串行的处理方式，基于 Chunk 的并行处理方式可以更加高效的同时利用浏览器与服务器的处理资源，同时将页面按照特定的“分块”进行 Pagelet 处理，也能有效的减少传统页面的请求数量。</p>
 <p>测试环境基于 Express 快速搭建，这里只列出主要的代码。BigPipe 的处理要前后端配合，后端解析到数据后发送给前端，在前端以页面内嵌 JS 的方式进行调用，因此前后端要统一并抽象出一层规范，用于前后端的通信交流。这里我们以如下 JSON 数格式作为通信的规范。每一个从后端发送过来的 Pagelet Bundle 数据都以如下格式统一封装。其中 part 字段代表该 Pagelet 数据的渲染区块，payload 则是需要渲染的数据，具体的数据渲染方式要根据业务或者技术选型的框架来觉得。</p>
 <pre class="line-numbers language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"part"</span><span class="token operator">:</span> <span class="token string">"#main"</span><span class="token punctuation">,</span>
   <span class="token property">"payload"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于 Node 本身的异步特性，使得在 Node 下实现 BigPipe 变得十分简单。服务器端用于模拟阻塞分块传输的示例代码如下。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript">res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"index"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <span class="token comment" spellcheck="true">// 先写入页面 DOM 和样式；</span>
@@ -44,7 +45,8 @@
     <span class="token comment" spellcheck="true">// 全部发送完毕后结束请求；</span>
     res<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>客户端浏览器用于处理 Pagelet Bundle 数据的 JS 逻辑如下：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Pagelet</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> <span class="token function">render</span><span class="token punctuation">(</span>json<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -52,12 +54,14 @@
     <span class="token comment" spellcheck="true">// Mock 业务逻辑；</span>
     document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>renderData<span class="token punctuation">.</span>part<span class="token punctuation">)</span><span class="token punctuation">.</span>innerText <span class="token operator">=</span> renderData<span class="token punctuation">.</span>data<span class="token punctuation">.</span>innerText<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应的 HTML 代码如下：</p>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pagelet1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pagelet2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pagelet2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>最后通过浏览器可以看到，该 HTTP 请求的 Response 头部返回的传输类型为分块传输编码：</p>
-<p><img src="3.jpg" alt=""></p>
+<p><img src="3.jpg"></p>
 <p>这样前端浏览器便可以在服务器返回数据时立即进行数据的填充，同时后端并行的继续处理数据并返回给前端，整个前后端的业务处理效率大大提升。但要注意的是前端在处理的过程中不能使用  DOMContentLoaded 来监听 DOM 的加载，因为 <code>DOMContentLoaded</code> 一定是在页面加载完成之后（HTTP 请求结束之后）才触发的。所以在填充数据时一定要使用另外的手段确保此时对应的 DOM 已经被渲染完毕。</p>
 <p>那么 BigPipe 适合什么样的场景呢？BigPipe 比较适用于页面<strong>具有明显的分块内容，且各个分块内容在后端的获取相对独立，且服务端的运算时间大于300~500ms</strong>。但具体的应用还是要根据业务以及进度来划分。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-04-24T01:17:25.000Z"> 2020 / 04 / 25, 15:10:13</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/04/22/机器学习记录-简介/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/04/26/淘宝网的-BigRender/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

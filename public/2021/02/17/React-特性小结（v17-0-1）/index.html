@@ -7,7 +7,8 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> props<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// 此处为上一个 state；</span>
   counter<span class="token punctuation">:</span> state<span class="token punctuation">.</span>counter <span class="token operator">+</span> props<span class="token punctuation">.</span>increment
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3">
 <li>JSX 回调函数中的 this 绑定问题：<em>即 class 的方法默认不会绑定 this</em>。</li>
 </ol>
@@ -29,9 +30,10 @@
       <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>public class fields</em></strong> 语法解决：</li>
+<li><em><strong>public class fields</strong></em> 语法解决：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Comp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   handleClick <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
@@ -44,9 +46,10 @@
       <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>箭头函数</em></strong>解决（此语法问题在于每次渲染 Comp 时都会创建不同的回调函数。如果该回调函数作为 prop 传入子组件时，这些组件可能会进行额外的重新渲染）：</li>
+<li><em><strong>箭头函数</strong></em>解决（此语法问题在于每次渲染 Comp 时都会创建不同的回调函数。如果该回调函数作为 prop 传入子组件时，这些组件可能会进行额外的重新渲染）：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Comp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -59,7 +62,8 @@
       <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
 <li>向事件处理程序传递参数：</li>
 </ol>
@@ -68,7 +72,8 @@
 <li><code>bind</code> 在调用时会产生原函数的包装函数，因此<strong>即使多次绑定 this，原函数在执行时也以第一次绑定时的 this 为准</strong>。后续多次绑定均绑定在了返回的包装函数，而非原函数上。</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">deleteRow</span><span class="token punctuation">(</span>id<span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Delete Row<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
-<span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteRow<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Delete Row<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>deleteRow<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span>Delete Row<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>让 render 方法返回 <em>null</em>，可以让 React 不进行任何渲染。</li>
 <li>使用“索引”作为列表组件的 key 值，会导致性能变差，还可能引起组件状态问题。<strong>key 需要在兄弟节点之间保持唯一</strong>，生成多个不同的节点数组时，分散于不同数组中的节点可以使用重复的 key。</li>
@@ -93,7 +98,8 @@
       <span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>FancyBorder<span class="token operator">></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>可以使用 <code>React.lazy</code> 及 <code>Suspense</code> 来实现<strong>组件的动态按需引入</strong>（基于路由的代码分割）。<code>React.lazy</code> 目前仅支持默认导出。</li>
 <li>启发式 “diffing” 算法的两个假设：</li>
@@ -105,7 +111,7 @@
 <ol start="11">
 <li>生命周期方法：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li><code>getSnapshotBeforeUpdate()</code> 在最近一次渲染输出（提交到 DOM 节点）之前调用。它使得组件能在发生更<br>改之前从 DOM 中捕获一些信息（例如：滚动位置）。此生命周期的任何返回值将作为参数传递给 componentDidUpdate()；</li>
 <li><code>getDerivedStateFromProps()</code> 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它返回一个对象来更新 state，如果返回 null 则不更新任何内容。</li>
@@ -147,7 +153,7 @@
 <li>自定义 Hook 是一个函数，<strong>其名称以 “use” 开头</strong>，函数内部可以调用其他的 Hook。</li>
 <li>Hook APIs：</li>
 </ol>
-<p>- <strong><em>useState</em></strong>：</p>
+<p>- <em><strong>useState</strong></em>：</p>
 <ul>
 <li><strong>函数式更新</strong>：如下 <code>setState</code> 可以接收一个函数，该函数将接收先前的 state，并返回一个更新后的值。</li>
 </ul>
@@ -157,19 +163,21 @@
 <span class="token function">setState</span><span class="token punctuation">(</span>prevState <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// 也可以使用 Object.assign；</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token operator">...</span>prevState<span class="token punctuation">,</span> <span class="token operator">...</span>updatedValues<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>惰性初始 state</strong>：如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用。</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> <span class="token punctuation">[</span>state<span class="token punctuation">,</span> setState<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token function">someExpensiveComputation</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> initialState<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>useEffect</em></strong>：</p>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>useEffect</strong></em>：</p>
 <ul>
 <li><strong>effect 执行时机</strong>：在浏览器完成布局与绘制之后，传给 useEffect 的函数会<strong>延迟调用</strong>，相比 class 模式下的 componentDidMount 与 componentDidUpdate 效率更高，不会阻塞浏览器的绘制。对于清除：上一次的 effect 会在新 UI 重新渲染后被清除。</li>
 </ul>
-<p>- <strong><em>useReducer</em></strong>：</p>
+<p>- <em><strong>useReducer</strong></em>：</p>
 <p><code>useState</code> 的替代方案，<strong>适用于 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state</strong> 等情况（将 state 的变化逻辑内聚到了 reducer 中）。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> initialState <span class="token operator">=</span> <span class="token punctuation">{</span> count<span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -200,8 +208,9 @@
       <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'decrement'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">-</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>useCallback</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>useCallback</strong></em>：</p>
 <p>返回一个 memoized 的回调函数。<code>useCallback(fn, deps)</code> 相当于 <code>useMemo(() =&gt; fn, deps)</code>。<strong>通常和 <code>React.memo</code> 一起配合使用</strong>。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">List</span><span class="token punctuation">(</span><span class="token punctuation">{</span> items<span class="token punctuation">,</span> onItemClick <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">></span><span class="token punctuation">{</span>items<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>item <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">&lt;</span>div onClick<span class="token operator">=</span><span class="token punctuation">{</span> onItemClick <span class="token punctuation">}</span><span class="token operator">></span><span class="token punctuation">{</span>item<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
@@ -224,13 +233,14 @@
     <span class="token operator">/</span><span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>useMemo</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>useMemo</strong></em>：</p>
 <p>返回一个 memoized 值。把“创建”函数和依赖项数组作为参数传入 useMemo，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进行高开销的计算。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>staticVal<span class="token punctuation">,</span> setStaticVal<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>val<span class="token punctuation">,</span> setVal<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-
+  
   <span class="token keyword">const</span> dealWithStaticVal <span class="token operator">=</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> v<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span> result <span class="token operator">+</span><span class="token operator">=</span> i <span class="token operator">*</span> i<span class="token punctuation">;</span> <span class="token punctuation">}</span>
@@ -248,8 +258,9 @@
       <span class="token operator">&lt;</span>div<span class="token operator">></span>Dynamic<span class="token punctuation">:</span> <span class="token punctuation">{</span>val<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>useRef</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>useRef</strong></em>：</p>
 <p>useRef 是一种“选择退出”渲染一致性的方法，它会返回一个可变的 ref 对象，其 .current 属性被初始化为传入的参数（initialValue）。<strong>返回的 ref 对象在组件的整个生命周期内保持不变</strong>（即每次返回的都是同一个值引用，<strong>多次执行只会创建一次</strong>。相对的，在函数组件中使用 <code>createRef</code> 时会，在每次渲染时创建包含初始值的新引用）。它可以很方便地<strong>保存任何可变值</strong>。需要注意：<strong>*变更 .current 属性不会引发组件重新渲染</strong>。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">usePrevious</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> ref <span class="token operator">=</span> <span class="token function">useRef</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -264,35 +275,38 @@
   <span class="token keyword">const</span> handleClick <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">setVal</span><span class="token punctuation">(</span>v <span class="token operator">=</span><span class="token operator">></span> v <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-
+  
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span><span class="token operator">></span>
       <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>handleClick<span class="token punctuation">}</span><span class="token operator">></span>Click Me<span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
       <span class="token operator">&lt;</span>div<span class="token operator">></span>Latest<span class="token punctuation">:</span> <span class="token punctuation">{</span>val<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
       <span class="token operator">&lt;</span>div<span class="token operator">></span>Before<span class="token punctuation">:</span> <span class="token punctuation">{</span>beforeVal<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token operator">&lt;</span><span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>useLayoutEffect</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>useLayoutEffect</strong></em>：</p>
 <p>其函数签名与 useEffect 相同，但<strong>它会在所有的 DOM 变更之后同步调用 effect</strong>。可以使用它来读取 DOM 布局并同步触发重渲染。在浏览器执行绘制之前，useLayoutEffect 内部的更新计划将被同步刷新。</p>
 <ol start="17">
 <li><strong>通常最好在 effect 内部去声明它所需要的函数</strong>。这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值，以便将它们添加到依赖列表中。</li>
 <li><code>React.memo()</code> 可以理解为函数组件下的 PureComponent。</li>
 <li>Effects 的“<strong>自给自足</strong>”（基于 useEffect 的回调函数模式）：</li>
 </ol>
-<p>- <strong><em>依赖模式</em></strong>：</p>
+<p>- <em><strong>依赖模式</strong></em>：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> id <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">setCount</span><span class="token punctuation">(</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 依赖于外部状态；</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">clearInterval</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>自给模式</em></strong>：</p>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>自给模式</strong></em>：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> id <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">setCount</span><span class="token punctuation">(</span>c <span class="token operator">=</span><span class="token operator">></span> c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 不再依赖外部状态，以“发送指令”的方式告知 React 具体的操作；</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">clearInterval</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="20">
 <li>在组件内定义的函数每一次渲染都在变，因此将其作为 useEffect 的依赖会导致每次渲染都会触发 effect（本次渲染的函数与上一次的并不相同）。解决方案：</li>
 </ol>
@@ -320,7 +334,8 @@
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>id<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// ...</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="22">
 <li>如何用 useEffect 模拟 componentDidMount 生命周期？</li>
 </ol>
@@ -337,7 +352,7 @@
 <li><strong>协调</strong>：确定该对宿主实例做什么来响应新的信息；</li>
 <li><strong>条件</strong>：render 函数中的“模板”保持了 DOM 树的基础结构，这样即使存在条件渲染，也不会发生无法合理重用已有 DOM 结构的问题；</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li><strong>列表</strong>：key 给予 React 判断子元素是否真正相同的能力，即使在渲染前后它在父元素中的位置不是相同的。在渲染前后当 key 仍然相同时，React 会重用先前的宿主实例，然后重新排序其兄弟元素；</li>
 <li><strong>组件</strong>：会返回 React 元素的函数，组件接受一个参数 — 对象哈希；</li>
@@ -366,7 +381,8 @@
   <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// setCount(0 + 1).</span>
   <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// setCount(0 + 1).</span>
   <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// setCount(0 + 1).</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>调用树</strong>：React 会为每一个调用的组件维护一个“调用树”，这些“调用树”帧会随它们的局部状态和宿主实例一起被摧毁，这些帧本质上就是 Fibers。Fibers 是局部状态真正存在的地方。当状态被更新后，React 将其下面的 Fibers 标记为需要进行协调，之后便会调用这些组件；</li>
 <li><strong>上下文</strong>：React 使用 Context 从顶层传递数据到每个子组件，当值变化时还能够进行重新渲染；</li>
@@ -376,6 +392,6 @@
 </ul>
 <ol start="24">
 <li><code>this.setState()</code> 定义在 React 包中，它读取并使用由 React DOM 设置在每个已创建类上的 <code>this.updater</code> 字段，让 React DOM 安排并处理更新。类似的，Hooks 使用了一个 “dispatcher” 对象，代替了 updater 字段。当调用 <code>React.useState()</code>、<code>React.useEffect()</code> 或者其他内置的 Hook 时，这些调用被转发给了当前的 dispatcher。而各个渲染器会在渲染组件之前设置 dispatcher。</li>
-<li><strong>React Fiber</strong>：<u><a href="https://www.fullstackacademy.com/tech-talks/a-brief-overview-of-react-fiber" target="_blank" rel="noopener">Youtube</a></u>。</li>
+<li><strong>React Fiber</strong>：<u><a target="_blank" rel="noopener" href="https://www.fullstackacademy.com/tech-talks/a-brief-overview-of-react-fiber">Youtube</a></u>。</li>
 </ol>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-02-17T06:27:54.000Z"> 2021 / 03 / 03, 12:07:45</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/02/10/2020-年度总结（Jason-Yu）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/02/19/《HTTP-权威指南》读书笔记（第-1-6-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

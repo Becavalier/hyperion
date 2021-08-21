@@ -6,16 +6,19 @@
 <li>整数运算等价于使用整数强制转换的 JavaScript 浮点算术运算符表达式。其中整数强制转换由按位与运算符 “|” 来进行；</li>
 </ul>
 <p>假设我们有一个 Int32Array 类型的 TypedArray，对应的变量名为 HEAP32。按照如下方式，我们可以从<strong>字节偏移</strong>位置 p 处加载一个 32 位整数（4 字节长度）：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript">HEAP32<span class="token punctuation">[</span>p <span class="token operator">></span><span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript">HEAP32<span class="token punctuation">[</span>p <span class="token operator">></span><span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>位移操作将字节偏移量转换为对应的 32 位偏移量；并且按位与运算符确保当 p 访问越界时可以返回数字值而非 undefined。</p>
 <p>以下为整数运算的一个例子：</p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>此编程模型直接受 Emscripten 和 Mandreel 编译器所开创技术的启发。</p>
 <h3 id="验证方法（Validation）"><a href="#验证方法（Validation）" class="headerlink" title="验证方法（Validation）"></a>验证方法（Validation）</h3><p>ASM.js 子语言由静态类型系统定义，可以在 JavaScript 解析（Parsing）时进行检查。ASM.js 代码的验证被设计为“按需付费”的模式，因为它永远不会在不被要求的代码上执行。一个 ASM.js 模块通过特殊的<strong>序言指令</strong>请求验证，类似于 ECMAScript Edition 5 中声明严格模式的指令：</p>
 <pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">MyAsmModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token string">"use asm"</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// module body</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此显式指令使得 JavaScript 引擎可以避免对其他 JavaScript 代码执行无意义且可能需要高昂成本的验证过程。并且仅在与 ASM.js 相关时，才会在 Console 控制台中报告相关的验证错误。</p>
 <h3 id="AOT-编译"><a href="#AOT-编译" class="headerlink" title="AOT 编译"></a>AOT 编译</h3><p>由于 ASM.js 是 JavaScript 的严格子集，因此规范仅定义了 ASM.js 代码的验证逻辑，而执行语义则与 JavaScript 保持相同。但是，经过验证的 ASM.js 代码可以进行 AOT 编译。此外，由 AOT 编译器生成的代码可以非常高效，其特点是：</p>
 <ul>
@@ -27,7 +30,7 @@
 <p>无法验证的代码必须通过传统方式重新执行，例如解释和/或即时（JIT）编译。</p>
 <h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>使用 ASM.js 模块要求调用模块对应的函数以获得包含有导出方法（exports）的对象，这称为<strong>链接</strong>（Linking）。还可以通过链接为 ASM.js 模块提供对<strong>标准库</strong>和<strong>自定义 JavaScript 函数</strong>的访问权限。为了能够使用编译后的代码，AOT 实现必须执行某些动态检查，以检查有关被链接库的一些编译时假设。</p>
 <p>下图描绘了 AOT 实现的简单体系结构，或采用简单的解释器。如果动态或静态验证失败，则实现必须回退到解释器。但是，如果两个部分的验证均成功，则调用模块导出的方法时将会使用由 AOT 生成的二进制可执行代码。</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <h3 id="外部代码和数据"><a href="#外部代码和数据" class="headerlink" title="外部代码和数据"></a>外部代码和数据</h3><p>在 ASM.js 模块中，所有代码均是完全静态类型的，并且仅限于非常严格的 ASM.js 方言。但是，模块也可以与可识别的标准 JavaScript 库函数，甚至自定义的动态 JavaScript 函数进行交互。</p>
 <p>一个 ASM.js 模块（实现形式为一个 JavaScript 函数）最多可以使用三个可选参数，从而可以访问外部 JavaScript 代码和数据：</p>
 <ul>
@@ -47,13 +50,15 @@
     export2<span class="token punctuation">:</span> f2<span class="token punctuation">,</span>
     <span class="token comment" spellcheck="true">// ...</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在函数定义的开始部分，通过使用<strong>类型注解</strong>（Type Annotation）来“显式”地标注函数参数类型：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">geometricMean</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   start <span class="token operator">=</span> start<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// start has type int</span>
   end <span class="token operator">=</span> end<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// end has type int</span>
   <span class="token keyword">return</span> <span class="token operator">+</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token function">logSum</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token operator">+</span><span class="token punctuation">(</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用这些注解有两个目的：首先，提供函数的类型签名，以便 Validator 可以保证所有对该函数的调用都是类型定义良好的。其次，要确保即使函数是从模块导出并由外部 JavaScript 调用的，其参数也会被动态强制转换为预期的类型。这确保了 AOT 实现可以使用 unboxed 的值表示形式。因为一旦动态强制类型转换完成后，函数主体就不再需要进行任何的运行时类型检查。</p>
 <h3 id="把所有部分放在一起"><a href="#把所有部分放在一起" class="headerlink" title="把所有部分放在一起"></a>把所有部分放在一起</h3><p>以下是一个小而完整的 ASM.js 模块示例。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>stdlib<span class="token punctuation">,</span> foreign<span class="token punctuation">,</span> buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -85,12 +90,14 @@
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">{</span> geometricMean<span class="token punctuation">:</span> geometricMean <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在支持对 ASM.js 进行 AOT 编译的 JavaScript 引擎中，当在合适的全局对象和堆缓冲区（ArrayBuffer）上调用模块将会链接导出对象，以便使用静态编译的函数。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> heap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">0x10000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">// 64k heap</span>
 <span class="token function">init</span><span class="token punctuation">(</span>heap<span class="token punctuation">,</span> START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">// fill a region with input values</span>
 <span class="token keyword">var</span> fast <span class="token operator">=</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> heap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// produce exports object linked to AOT-compiled code</span>
-fast<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// computes geometric mean of input values</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+fast<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// computes geometric mean of input values</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>相比之下，在包含非标准库函数（Math.exp 与 Math.log）的对象上调用模块，将无法生成 AOT 编译的代码（将会回退到 Interpreter 或 JIT 版本的代码）：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> bogusGlobal <span class="token operator">=</span> <span class="token punctuation">{</span>
   Math<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -101,11 +108,12 @@ fast<span class="token punctuation">.</span><span class="token function">geometr
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 <span class="token keyword">var</span> slow <span class="token operator">=</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>bogusGlobal<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> heap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// produces purely-interpreted/JITted version</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>slow<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// computes bizarro-geometric mean thanks to bogusGlobal</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>slow<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// computes bizarro-geometric mean thanks to bogusGlobal</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>对 ASM.js 模块的验证依赖于对语法进行分类和约束的静态类型系统。本节定义了验证逻辑所使用的类型。</p>
 <h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>ASM.js 的验证机制限制了 JavaScript 程序只能使用可以紧密映射到现代体系架构的有效数据表示形式和机器操作。例如 32 位整数以及相关的整数算术。</p>
 <p>ASM.js 值的类型通过子类型关系相互关联，可以用下图表示：</p>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <p>浅色方块代表符合该类型的 JavaScript 任意值，这些值可以在 ASM.js 代码和外部 JavaScript 代码之间自由流动（可以理解为当从外部 JavaScript 传回 ASM.js 时，值得类型不会发生改变）。</p>
 <p>深色方块表示不允许转义为外部 JavaScript 代码的类型。（可以在优化的 ASM.js 实现中为这些值提供高效的，unboxed 的表示形式。而如果允许它们转义，则行为将是不健全的）。</p>
 <p>元变量 σ 和 τ 用于表示值类型。</p>
@@ -136,7 +144,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>如果用 JavaScript 等效地解析，括号是没有意义的。即使规范与 <em>Expression</em> 的特定生成（例如文字）匹配，来源也可能包含多余的无意义的括号，而不会影响验证；</li>
 <li>ASI（Automatic Semicolon Insertion）不会影响 ASM.js 模块的验证过程。只要确保在 JavaScript 层面，忽略某些分号是合法的即可；</li>
 </ul>
-<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>参考：<a href="https://github.com/Becavalier/human-asmjs。" target="_blank" rel="noopener">https://github.com/Becavalier/human-asmjs。</a></p>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>参考：<a target="_blank" rel="noopener" href="https://github.com/Becavalier/human-asmjs%E3%80%82">https://github.com/Becavalier/human-asmjs。</a></p>
 <h2 id="验证（静态验证）"><a href="#验证（静态验证）" class="headerlink" title="验证（静态验证）"></a>验证（静态验证）</h2><p>为了确保 JavaScript 函数定义可以正确地表示一个 ASM.js 模块，必须首先对其进行静态验证。本节指定验证规则。规则将在 JavaScript 的<strong>抽象语法树</strong>上进行。非终结符引用 ECMAScript 语法中的产生式定义的解析节点。但请注意，ASM.js 验证器仅接受合法JavaScript 程序的子集。</p>
 <p>验证操作的结果可以是成功（表明解析节点是静态有效的 ASM.js），或者是失败（表明解析节点静态为无效的ASN.js）。</p>
 <p>（略）</p>
@@ -150,7 +158,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>如果不满足这些条件中的任何一个，则 AOT 编译可能会产生无效的结果，因此 JavaScript 引擎应退回到解释器或基于 JIT 的实现中。</p>
 <h2 id="补充记录"><a href="#补充记录" class="headerlink" title="补充记录"></a>补充记录</h2><ul>
-<li>ASM.js 使用了 Annotation（<strong>形式上</strong>。比如在 BNF 中 “|0” 直接表示一个<strong>终结符</strong>，而非运算符）与 Operator（<strong>实际运算结果</strong>）相结合的方式来保证继承自 C/C++ 的变量能够满足特定类型值的取值范围要求。比如 “x:Identifier<strong>|0</strong>” 可以确保 x:Identifier 是 int 类型。而 “x:Identifier <strong>&gt;&gt;&gt;</strong> 0” 的<strong>计算结果</strong>可以保证 x:Identifier 是 unsigned 类型。</li>
+<li>ASM.js 使用了 Annotation（<strong>形式上</strong>。比如在 BNF 中 “|0” 直接表示一个<strong>终结符</strong>，而非运算符）与 Operator（<strong>实际运算结果</strong>）相结合的方式来保证继承自 C/C++ 的变量能够满足特定类型值的取值范围要求。比如 “x:Identifier**|0<strong>” 可以确保 x:Identifier 是 int 类型。而 “x:Identifier <strong>&gt;&gt;&gt;</strong> 0” 的</strong>计算结果**可以保证 x:Identifier 是 unsigned 类型。</li>
 <li>怀疑 ASM.js 相较 Native Code 可能变慢的一个点是：C/C++ unsigned -&gt; ASM.js (unsigned)((double) &gt;&gt;&gt; 0)。运算符计算会产生额外的 Overhead？</li>
 <li><strong>“|0”</strong> 会将变量转换（cast）为一个 <strong>Signed 类型的整数</strong>；</li>
 <li>JavaScript 的按位逻辑运算符会对编码为 IEEE-754 的浮点数进行计算。按位运算符首先将整数截断（32 位），然后在执行按位运算前为其操作数做<strong>模转换</strong>，获得 32 位二进制补码值。因此可以通过 <code>x|0</code> 或 <code>x &gt;&gt; 0</code>（<strong>算数右移</strong>）将数字值 x 强制转换为 32 位有符号整数值。对于无符号数，则可以通过 <code>x &gt;&gt;&gt; 0</code>（<strong>逻辑右移</strong>）进行转换。</li>

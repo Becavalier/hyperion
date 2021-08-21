@@ -16,12 +16,14 @@
   NS<span class="token operator">::</span>A a<span class="token punctuation">;</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在上面的示例中，编译器通过借助 ADL 算法，便可以在“既没有使用 using-declaration（<code>using namespace NS;</code>），也没有使用 using-directive（<code>using NS::foo;</code>）”的情况下，仅通过未限定名称 foo 便可以找到实际定义在命名空间 NS 中的 NS::foo 方法。该算法是如何工作的呢？</p>
 <p>ADL 算法告诉编译器不仅要查看本地作用域，还要<strong>查看实参类型所在的命名空间</strong>。因此，在上述代码中，编译器发现对象 A（它是函数 foo 的参数）属于命名空间 NS。因此，它将查看该命名空间以找到 foo 的实际定义。</p>
 <h4 id="公认的优点"><a href="#公认的优点" class="headerlink" title="公认的优点"></a>公认的优点</h4><p>ADL 算法为 C++ 程序员提供了便利和易用性。如果没有该算法，那么我们将不得不承担为所有方法重复指定“完全限定名称”的责任，或者选择使用大量的 using 声明，但这却会带来额外的代码结构和可读性上的问题。</p>
 <h4 id="可能的缺点"><a href="#可能的缺点" class="headerlink" title="可能的缺点"></a>可能的缺点</h4><p>当然，过度依赖 ADL 查找也同样可能会导致语义问题。考虑我们常用的 swap 函数。通常我们在使用 swap 函数交换两个元素的值时会通过如下方式让编译器自动选择合适的版本（通过 using-directive 引入的泛型版本、特化版本以及函数版本，或者通过 ADL 引入的函数版本。注意：<strong>Ordinary Unqualified Lookup 与 ADL Lookup 两者在查找名字时可能会发生冲突</strong>。）：</p>
 <pre class="line-numbers language-text"><code class="language-text">using std::swap;
-swap(x, y);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+swap(x, y);
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>相较于直接使用 <code>std::swap</code>（<strong>不会调用 ADL 版本，会直接使用 STL 中 std::swap 的泛型或者特化版本</strong>），这两种方式可能会产生不同的结果。在上述代码中，当实参 x 和 y 所在的命名空间中存在方法 swap 时，该方法将会被调用，而标准库版本将被忽略。而直接使用 std::swap 则会调用标准库中的名字。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-04-26T13:10:29.000Z"> 2020 / 08 / 20, 18:07:15</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/04/24/常用-C-高效开发范式（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/04/26/常用-C-高效开发范式（二）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

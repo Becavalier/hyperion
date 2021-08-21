@@ -13,20 +13,20 @@
 <li><strong>保护环（分级保护域）</strong>：一般只使用 ring0 和 ring3。ring0 可以执行所有的 CPU 指令。ring3 一般是用户应用程序所在的层级，只能使用最安全的 CPU 指令；另外的 ring1 \ ring2 一般不使用；</li>
 <li><strong>虚拟内存</strong>：一般指进程独立的虚拟地址空间（VAS）。可以隔离进程运行环境，并且借由分段、分页技术，可以很好地管理进程的内存使用；</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="5">
 <li>（Page：8）程序访问的局部性：<strong>一个程序 80% 的执行时间花费在仅 20% 的代码中</strong>。分为时间局部性 —— 近期被访问的信息，可能在短时间内被访问，和空间局部性 —— 与被访问地址相邻的地址上信息可能会在短期内被再次访问。基本思想：<strong>对大概率事件赋予它优先的处理权和资源使用权，以获得全局的最优结果</strong>。</li>
 <li>（Page：9）X86-64 下的通用寄存器，即 “General Purpose Registers”（<strong>16 个 64 位的整型寄存器</strong>）：</li>
 </ol>
 <ul>
-<li><strong>r0 (rax)</strong>：算术指令中使用的一种“累加器”。通常也作为系统调用的序号，以及返回值的容器；Accumulator；</li>
-<li><strong>r1 (rcx)</strong>：用于循环控制；Cycle；</li>
-<li><strong>r2 (rdx)</strong>：在输入/输出操作期间存储数据。通常也作为系统调用中参数传递寄存器（第三个参数）；Data；</li>
-<li><strong>r3 (rbx)</strong>：基址寄存器，用于存放早期处理器模型中的基址；Base；</li>
-<li><strong>r4 (rsp)</strong>：类似 i386 下的 esp，指向进程栈的栈顶；Stack；</li>
-<li><strong>r5 (rbp)</strong>：类似 i386 下的 ebp，栈帧寄存器，默认指向旧的 rbp 的值；Stack Base；</li>
-<li><strong>r6 (rsi)</strong>：字符串操作命令中的源索引；通常也作为系统调用中参数传递寄存器（第二个参数）；Source Index；</li>
-<li><strong>r7 (rdi)</strong>：字符串操作命令中的目标索引；通常也作为系统调用中参数传递寄存器（第一个参数）；Destination Index；</li>
+<li>**r0 (rax)**：算术指令中使用的一种“累加器”。通常也作为系统调用的序号，以及返回值的容器；Accumulator；</li>
+<li>**r1 (rcx)**：用于循环控制；Cycle；</li>
+<li>**r2 (rdx)**：在输入/输出操作期间存储数据。通常也作为系统调用中参数传递寄存器（第三个参数）；Data；</li>
+<li>**r3 (rbx)**：基址寄存器，用于存放早期处理器模型中的基址；Base；</li>
+<li>**r4 (rsp)**：类似 i386 下的 esp，指向进程栈的栈顶；Stack；</li>
+<li>**r5 (rbp)**：类似 i386 下的 ebp，栈帧寄存器，默认指向旧的 rbp 的值；Stack Base；</li>
+<li>**r6 (rsi)**：字符串操作命令中的源索引；通常也作为系统调用中参数传递寄存器（第二个参数）；Source Index；</li>
+<li>**r7 (rdi)**：字符串操作命令中的目标索引；通常也作为系统调用中参数传递寄存器（第一个参数）；Destination Index；</li>
 <li><strong>r8 - r15</strong>：通常用于存储临时变量；</li>
 </ul>
 <ol start="7">
@@ -38,13 +38,13 @@
 <li><strong>b</strong>：即 byte，寻址其低 8 位（如：r7b）；</li>
 </ul>
 <p>对于 r0-r7 我们一般使用其别名来表示；而 r8-r15 则直接使用数字索引的形式来表示。我们也可以通过别名来访问 r0-r7 的一部分区域，对于 rax / rbx / rcx / rdx 来说，有着统一规则的表达方式：</p>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <p>对于 rsi / rdi / rsp / rbp 来说，有着另外的表达方式（规则相同）：</p>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="8">
 <li>（Page：12）<strong>rip 寄存器</strong>：程序员可以访问 rip 寄存器。它是一个 64 位寄存器，始终存储要执行的下一条指令的地址。分支指令会对其进行修改。因此，每次执行任何指令时，rip 都会存储下一条将要执行的指令地址。另一个可访问的寄存器称为 <strong>FLAG 状态寄存器</strong>（flags / rflags / eflags）：它存储着反映当前程序运行状态的标志。例如，最后一条算术指令的结果是是否是负数？是否发生了溢出？等。它的部分寻址为：<strong>rflags（全 64 位）</strong>、<strong>eflags（低 32 位）</strong>和 <strong>flags（低 16 位）</strong>。其内部的标志位如下所示：</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ol start="9">
 <li>（Page：12）<strong>xmm0 - xmm15 寄存器</strong>：用于进行 SIMD 以及浮点数运算。</li>
 <li>（Page：13）系统寄存器（被 OS 特殊使用。每一个寄存器上都有众多的“标志位”代表不同的系统状态）：</li>
@@ -71,11 +71,11 @@
 <ol start="12">
 <li>（Page：16）PUSH 指令：</li>
 </ol>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ul>
-<li><strong><em>push r/m16</em></strong>：将一个 16 位的寄存器的值或者从内存中取得的 16 位数字推入当前的栈中；</li>
-<li><strong><em>push CS</em></strong>：将段寄存器 cs 的值推入栈中；</li>
-<li><strong><em>push imm16</em></strong>：将 16 位的立即数推入栈中；</li>
+<li><em><strong>push r/m16</strong></em>：将一个 16 位的寄存器的值或者从内存中取得的 16 位数字推入当前的栈中；</li>
+<li><em><strong>push CS</strong></em>：将段寄存器 cs 的值推入栈中；</li>
+<li><em><strong>push imm16</strong></em>：将 16 位的立即数推入栈中；</li>
 </ul>
 <h3 id="Chapter-2：汇编语言"><a href="#Chapter-2：汇编语言" class="headerlink" title="Chapter 2：汇编语言"></a>Chapter 2：汇编语言</h3><ol start="13">
 <li>（Page：18）Unix 将一切资源均视为“文件”。从广义上讲，<strong>文件就是看起来像字节流的任何东西</strong>。</li>
@@ -99,7 +99,8 @@ dw    <span class="token string">'abc'</span>               <span class="token c
 dd    <span class="token number">0x12345678</span>          <span class="token comment" spellcheck="true">; 0x78 0x56 0x34 0x12 </span>
 dd    <span class="token number">1.234567e20</span>         <span class="token comment" spellcheck="true">; floating-point constant </span>
 dq    <span class="token number">0x123456789abcdef0</span>  <span class="token comment" spellcheck="true">; eight byte constant </span>
-dq    <span class="token number">1.234567e20</span>         <span class="token comment" spellcheck="true">; double-precision float </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+dq    <span class="token number">1.234567e20</span>         <span class="token comment" spellcheck="true">; double-precision float </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="16">
 <li>（Page：20）伪指令 <strong>TIMES，用于重复多次执行某指令</strong>：</li>
 </ol>
@@ -119,7 +120,8 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 <span class="token label function">message:</span>  
     times <span class="token number">10</span> db <span class="token string">'ABC'</span>  <span class="token comment" spellcheck="true">; message 符号的内容会成为一个整体；</span>
     times <span class="token number">64</span><span class="token operator">-</span><span class="token operator">$</span><span class="token operator">+</span>message db <span class="token string">'$'</span>  <span class="token comment" spellcheck="true">; times 伪指令可以接受表达式作为第一个参数；$ 为特殊符号表示当前语句开头的汇编位置；$$ 表示当前段开头处的汇编位置；</span>
-    db <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    db <span class="token number">10</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="17">
 <li>（Page：20）X86-64 下系统调用的传参寄存器：<strong>rdi</strong> / <strong>rsi</strong> / <strong>rdx</strong> / <strong>r10</strong> / <strong>r8</strong> / <strong>r9</strong>；最多传递 6 个参数。</li>
 <li>（Page：22）一个通过“<strong>位移 sar</strong>”和“<strong>逻辑与 and</strong>”来输出数字值的例子：</li>
@@ -154,7 +156,8 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>  <span class="token comment" spellcheck="true">; exit;</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>sar 为算数右移，会进行<strong>符号位扩展</strong>；shr 为逻辑右移，扩展为填充 0；</li>
 <li>.loop 为本地标签，隶属于某个全局标签之下（比如这里的 _start），因此其全名为 <strong>_start.loop</strong>，我们可以在整个程序中用这个名称进行索引；</li>
@@ -198,7 +201,8 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
     syscall
-<span class="token label function">ex:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token label function">ex:</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="21">
 <li>（Page：25）函数调用指令 call 会自动将后续的函数返回地址压入栈中。其中用于传递参数（由于 syscall 指令会默认使用 rcx 来存放系统调用的返回地址，且用 r11 来存放 rflags 的值，因此系统调用的第四个参数为 r10 寄存器）的寄存器为：rdi \ rsi \ rdx \ rcx \ r8 \ r9；Callee-saved 寄存器 rbx \ rbp \ r12-r15 <strong>必须由被调用方保存状态，并在结束前重置（指如果在函数调用过程中被修改的话。其中 rsp 不推荐使用）</strong>；Caller-saved 寄存器的内容<strong>视情况保存和恢复</strong>。函数调用的返回值可以保持在 rax 与 rdx 中。</li>
 <li>（Page：26）函数调用的基本流程为：</li>
@@ -243,10 +247,11 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>需要注意的是：一般与外部函数（如 C 标准库）的调用交互需要遵守对应 ABI 上的 Calling-Convention。比如 i386 下需要维护 ebp / esp；X86-64 下 rsp 在函数调用前需要满足的 16-byte 对齐条件等等。但对于内部函数的调用过程，则可以不完全满足调用规范。下面给出一个基于 <strong>AMD64 ABI</strong>，通过栈传参进行函数调用的改写后的例子，功能同上述汇编代码。</p>
-<p>这里需要注意的是，在 X86-64 下一般<strong>可能</strong>会没有 rbp 指针的参与函数调用过程（<strong>可以减少函数调用前后执行的指令数量，并节省出一个通用寄存器</strong>），因此在函数调用时便不用保存旧的 rbp 寄存器的值。对应的，栈帧上在没有局部变量的情况下，rsp 默认会指向函数的返回地址，而 <strong>[rsp + 8]</strong> 便为函数调用前放入栈中的值。注：<strong><em>下图中的 “return address” 应该属于上一个栈帧的一部分（来自 CSAPP）</em></strong>。</p>
-<p><img src="11.png" alt=""></p>
+<p>这里需要注意的是，在 X86-64 下一般<strong>可能</strong>会没有 rbp 指针的参与函数调用过程（<strong>可以减少函数调用前后执行的指令数量，并节省出一个通用寄存器</strong>），因此在函数调用时便不用保存旧的 rbp 寄存器的值。对应的，栈帧上在没有局部变量的情况下，rsp 默认会指向函数的返回地址，而 <strong>[rsp + 8]</strong> 便为函数调用前放入栈中的值。注：<em><strong>下图中的 “return address” 应该属于上一个栈帧的一部分（来自 CSAPP）</strong></em>。</p>
+<p><img src="11.png"></p>
 <p>rsp 低地址方向预留的 <strong>128 Bytes</strong> 的 “<strong>Red Zone</strong>” 主要是针对栈帧的一种优化。该区域不会被信号或中断处理程序异步地破坏，因此可用于暂存数据，而不需要显式地移动 rsp 中的指针值。但 “Red Zone” 可以被调用函数破坏，因此在一般在“<strong>叶函数</strong>”中最常用（比如：<strong>GCC 在为叶函数中的局部变量分配内存时可以直接使用 “Red Zone” 而省去移动 rsp 的开销</strong>）。</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global _start</span>
 
@@ -286,16 +291,19 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
 <li>（Page：28）字节序：大端 —— 多字节数字从 MSB 开始存储在内存（从低向高）中；小端 —— 多字节数字从 LSB 开始存储在内存（从低向高）中。Intel64 遵循<strong>小端</strong>模式。小端模式的好处在于：<strong>当进行类型收窄时，在一定条件下不会影响原数据的存放位置</strong>。大端模式通常被用在 TCP/IP 封包以及 JVM 中。</li>
 <li>（Page：30）<strong>显式</strong>指定字符串值的长度：</li>
 </ol>
-<pre class="line-numbers language-nasm"><code class="language-nasm">db <span class="token number">27</span>, <span class="token string">'Selling England by the Pound'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-nasm"><code class="language-nasm">db <span class="token number">27</span>, <span class="token string">'Selling England by the Pound'</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="25">
 <li>（Page：30）为字符串值添加 <strong>null-terminated</strong>（C 风格字符串）：</li>
 </ol>
-<pre class="line-numbers language-nasm"><code class="language-nasm">db <span class="token string">'Selling England by the Pound'</span>, <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-nasm"><code class="language-nasm">db <span class="token string">'Selling England by the Pound'</span>, <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="26">
 <li>（Page：30）指定 .data 段中的数据宽度（操作数装饰）：</li>
 </ol>
@@ -303,7 +311,7 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 <span class="token keyword">section .rodata</span>
 <span class="token label function">codes:</span> 
     db <span class="token string">'0123456789ABCDEF'</span>
-
+    
 <span class="token keyword">section .data</span>
 <span class="token label function">v:</span> 
     dq <span class="token number">0</span>
@@ -314,7 +322,7 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     <span class="token comment" spellcheck="true">; mov word[v], 2  ; 立即数按照 word 大小存放（2 Bytes）；</span>
     <span class="token comment" spellcheck="true">; mov dword[v], 2  ; 立即数按照 dword 大小存放（4 Bytes）；</span>
     <span class="token comment" spellcheck="true">; mov qword[v], 2  ; 立即数按照 qword 大小存放（8 Bytes）；</span>
-
+    
     mov <span class="token register variable">rax</span>, <span class="token operator">[</span>v<span class="token operator">]</span>
     lea <span class="token register variable">rsi</span>, <span class="token operator">[</span>codes <span class="token operator">+</span> <span class="token register variable">rax</span><span class="token operator">]</span>
     mov <span class="token register variable">rax</span>, <span class="token number">1</span>
@@ -323,7 +331,8 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     syscall
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="27">
 <li>（Page：33）一个计算输入字符串长度的程序：</li>
 </ol>
@@ -354,16 +363,18 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     call strlen
     mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>resb 指令按“位”保留内存空间，resw 指令按“字”保留内存空间（<strong>在 .bss 中</strong>）；</li>
 </ul>
 <ol start="28">
 <li>（Page：26）<strong>永远不要直接使用 rbp 和 rsp</strong>，它们在程序执行期间被 CPU 隐式使用（比如 call 指令在某些情况下会使用 rsp）。</li>
 <li>（Page：36）分别使用 r9d / r9w / r9b 来选取 r9 寄存器（其他 <strong>r8-r15</strong> 类似）的一部分数据。</li>
-<li>（Page：38）带有 displacement 和 offset 的地址表示结构：<strong><em>[base + scale * offset + displacement]</em></strong>。其中 displacement 必须是<strong>立即数</strong>，scale 的可选值为: <strong>1 / 2 / 4 / 8</strong>。</li>
+<li>（Page：38）带有 displacement 和 offset 的地址表示结构：***[base + scale * offset + displacement]<em><strong>。其中 displacement 必须是</strong>立即数</em>*，scale 的可选值为: <strong>1 / 2 / 4 / 8</strong>。</li>
 </ol>
-<pre class="line-numbers language-nasm"><code class="language-nasm">mov <span class="token register variable">rax</span>, <span class="token operator">[</span><span class="token register variable">rdx</span> <span class="token operator">+</span> <span class="token number">8</span> <span class="token operator">*</span> <span class="token register variable">rcx</span> <span class="token operator">+</span> <span class="token number">42</span><span class="token operator">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-nasm"><code class="language-nasm">mov <span class="token register variable">rax</span>, <span class="token operator">[</span><span class="token register variable">rdx</span> <span class="token operator">+</span> <span class="token number">8</span> <span class="token operator">*</span> <span class="token register variable">rcx</span> <span class="token operator">+</span> <span class="token number">42</span><span class="token operator">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="Chapter-3：传统处理器模式"><a href="#Chapter-3：传统处理器模式" class="headerlink" title="Chapter 3：传统处理器模式"></a>Chapter 3：传统处理器模式</h3><ol start="31">
 <li>（Page：39）CPU 处理器可以以下列方式之一运行：</li>
 </ol>
@@ -375,7 +386,7 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 <li><strong>长模式</strong>：64 位应用程序（或者是操作系统）可以使用 64 位指令和寄存器，而 32 位程序将以一种兼容子模式运行；</li>
 </ul>
 <p>保护模式中使用的 <strong>GDT</strong>（<em>关于保护模式的原理暂时略过，可以参考操作系统相关书籍</em>）：</p>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ol start="32">
 <li>（Page：45）<strong>对大于等于 32 位寄存器（rax / eax）的修改会影响整个寄存器的值布局</strong>，即：即使只修改低 32 位也会丢弃原有高 32 位的数据。Intel64 是 CISC 指令集，这些指令会被解码并转换为更简单的微码指令流，同时进行各类优化，比如多流水线并行。而如果修改 eax 意味着保持 rax 的高位不变，那么它将在当前指令与之前修改过 rax 或其部分之间的指令之间<strong>引入额外的依赖关系</strong>。而这种依赖关系会影响指令并行流水线的高性能执行条件，甚至在某些情况下会降低性能。</li>
 </ol>
@@ -393,18 +404,19 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 <ol start="37">
 <li>（Page：51）Linux 下查看进程的虚拟地址空间分布（基于 <strong>procfs</strong> — 一个用于描述进程信息的<strong>虚拟文件系统</strong>）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /proc/<span class="token operator">&lt;</span>pid<span class="token operator">></span>/maps<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">cat</span> /proc/<span class="token operator">&lt;</span>pid<span class="token operator">></span>/maps
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>* 逻辑内存中装载的映像（包括 ELF 可执行文件/共享库中的各个 Segment）均以 <strong>4KB（0x1000 Bytes）为页单位进行对齐</strong>。</p>
 <ol start="38">
 <li>（Page：52）<strong>使用较少内存的程序可以运行的更快</strong>，因为所产生较少的“页错误”可以减少磁盘空间与物理内存之间的数据转移次数。</li>
 <li>（Page：53）一个虚拟地址的组成结构：</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <p>在当前的 X86-64 体系中，虚拟地址本身其实只有 <strong>48 Bits</strong> 大小，即从第 0-47 位，剩下的高 16 位会通过符号扩展（高 17 位相等）进行填充。这种类型的地址被称为 “<strong>canonical-address</strong>”。通过使用这种方式，OS 可以平滑兼容以后真正的 52、56 甚至 64 位虚拟内存。当试图访问一个不符合 canonical-address 规范的内存地址时，OS <strong>可能</strong>会返回类似 “<strong>Bus error</strong>” 的错误。</p>
 <ol start="40">
 <li>（Page：54）虚拟地址到物理地址的映射要经过多个<strong>表查询</strong>和<strong>间接跳转</strong>过程：</li>
 </ol>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ul>
 <li>虚拟地址中只存放了在各个表中的相对偏移信息，而当前表的表项地址信息则由前一个表的表项值提供。最初的 “Page Map Level 4（PML4）” 表的起始地址由 <strong>cr3</strong> 系统寄存器提供。接下来，利用 cr3 的值与虚拟地址第 47:39 位的信息来组成 PML4 目标表项的地址。而该地址的一部分内容将构成下一个 “Page Directory Pointer Tables” 表项<strong>物理地址</strong>的一部分；</li>
 <li>物理内存部分被分为多个 “Page Frame”，每个大小为正好的 4 KB。同样的，每个中间表的大小也为 4 KB，每个表项大小为 64 Bits，即每个表可容纳 512 个表项；</li>
@@ -413,15 +425,16 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
 <ol start="41">
 <li>（Page：55）<strong>分页表</strong>（Page Table）：操作系统在分页表中存储部分虚拟地址到物理地址的映射。每个映射被称为分页表项（PTE, Page Table Entry）。<strong>从虚拟地址到分页表项的查询过程经历了上述 “PM4“ 等表查询过程</strong>。分页表中含有构成最终 “Page Frame” 物理地址的一部分信息，而这部分信息便可以由 TLB 进行缓存。</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <p>* 给到一个虚拟地址，OS 会首先查询 TLB 中是否有需要的物理地址信息，若没有则重新走多级的表查询流程，最后同时更新 TLB 中的对应表项。</p>
 <p>作为获得虚拟地址对应物理地址的最后一步，分页表中还记录了对应 PTE 的一些权限信息，比如是否可写（<strong>W</strong>）、是否可访问（<strong>U</strong>）以及是否可执行（<strong>EXB/NX</strong>）等。其中还有最重要的，可以通过引发 “页错误” 来加载实际物理内存数据的 <strong>P</strong> 字段。<strong>* 其中 EXB/NX 可以配合 DEP 技术来防止注入到 .data 段或栈上的恶意代码被执行</strong>。</p>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ol start="42">
 <li>（Page：57）在 NASM 中定义和使用<strong>常量</strong>：</li>
 </ol>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token operator">%</span>define directive
-<span class="token operator">%</span>define NAME <span class="token number">42</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token operator">%</span>define NAME <span class="token number">42</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="43">
 <li>（Page：59）一个小示例：使用 <strong>mmap()</strong> 系统调用加载一个 ELF 可执行文件中的代码段（.text）到当前进程的 VAS，然后执行其中的代码。</li>
 </ol>
@@ -436,7 +449,8 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     syscall
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>执行文件代码：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token operator">%</span>define O_PRONLY <span class="token number">0</span>
 <span class="token operator">%</span>define MAP_SHARED <span class="token number">0x1</span>
@@ -473,5 +487,6 @@ dq    <span class="token number">1.234567e20</span>         <span class="token c
     <span class="token comment" spellcheck="true">; exit;</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-25T08:15:36.000Z"> 2021 / 01 / 21, 19:14:24</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/25/NASM-小记录/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/26/“Advanced-Design-and-Implementation-of-Virtual-Machines”-读书笔记（一）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

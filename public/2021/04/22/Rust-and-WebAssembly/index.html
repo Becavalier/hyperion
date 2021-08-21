@@ -4,14 +4,15 @@
 <li>前置依赖：</li>
 </ol>
 <ul>
-<li><strong><em>wasm-pack</em></strong>：可用于编译 Rust 项目到 Wasm；</li>
-<li><strong><em>cargo-generate</em></strong>：使用已有 Git 仓库为模板创建项目；</li>
-<li><strong><em>npm</em></strong>。</li>
+<li><em><strong>wasm-pack</strong></em>：可用于编译 Rust 项目到 Wasm；</li>
+<li><em><strong>cargo-generate</strong></em>：使用已有 Git 仓库为模板创建项目；</li>
+<li><em><strong>npm</strong></em>。</li>
 </ul>
 <ol start="2">
 <li>创建项目：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">cargo generate --git https://github.com/rustwasm/wasm-pack-template<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">cargo generate --git https://github.com/rustwasm/wasm-pack-template
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3">
 <li>编译 &amp; 测试：</li>
 </ol>
@@ -26,18 +27,21 @@ wasm-pack login  <span class="token comment" spellcheck="true"># login to NPM.</
 <li>整合 Web：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># create a "www" web project in the current Rust source folder.</span>
-<span class="token function">npm</span> init wasm-app www<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">npm</span> init wasm-app www
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>被 <code>#[wasm_bindgen]</code> 宏标记的 Rust 类型会被导出暴露给 JavaScript 环境。</li>
-<li>通过 Rust 生成的 Wasm 函数不能返回借用的引用（<em>error: cannot return a borrowed ref with #[wasm_bindgen]</em>）。</li>
+<li>通过 Rust 生成的 Wasm 函数不能返回借用的引用（*error: cannot return a borrowed ref with #[wasm_bindgen]*）。</li>
 <li>可以使用诸如 <em>perf</em> 等工具来分析原始 Rust 代码在本地平台上的执行表现，从而找到性能痛点再予以优化。</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">perf record -g <span class="token operator">&lt;</span>path_to_binary<span class="token operator">></span> --bench<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">perf record -g <span class="token operator">&lt;</span>path_to_binary<span class="token operator">></span> --bench
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="8">
 <li>生成 LLVM-IR：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash">cargo rustc --release -- --emit llvm-ir
-<span class="token function">find</span> target/release -type f -name <span class="token string">'*.ll'</span>  <span class="token comment" spellcheck="true"># find .ll files.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">find</span> target/release -type f -name <span class="token string">'*.ll'</span>  <span class="token comment" spellcheck="true"># find .ll files.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>一些可用于生产环境的“侵入式”<strong>优化技巧</strong>：</li>
 </ol>
@@ -52,7 +56,8 @@ wasm-pack login  <span class="token comment" spellcheck="true"># login to NPM.</
         <span class="token function">Some</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> t<span class="token punctuation">,</span>
         None <span class="token operator">=</span><span class="token operator">></span> process<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>避免使用 Rust 默认的 <em>dlmalloc</em> 内存分配器，选择性使用 <em>wee_alloc</em> 作为替代（牺牲分配速度换取代码体积）；</li>
 <li>使用 <em>trait object</em> 代替泛型参数（牺牲性能换取代码体积）；</li>
@@ -61,5 +66,5 @@ wasm-pack login  <span class="token comment" spellcheck="true"># login to NPM.</
 <ol start="10">
 <li><em>wasm-pack</em> 的三种编译目标模式：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-04-22T09:25:31.000Z"> 2021 / 05 / 05, 13:46:28</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/04/13/《The-Rustonomicon》读书笔记/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/06/Rust-Runtime-与-ABI/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

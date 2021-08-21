@@ -25,27 +25,27 @@
 <li>（Page：84）<strong>HTML</strong> 和 <strong>DOM</strong>（Document Object Model，文档对象模型）规范标准<strong>由 W3C 与 WHATWG 共同负责制定和维护</strong>。DOM 标准（DOM Core 与 DOM HTML）中包含有对应该如何访问和操作文档（基于 XML）任意部分的具体方式。几个版本：</li>
 </ol>
 <ul>
-<li><strong><em>DOM Level 1</em></strong>：映射文档结构；</li>
-<li><strong><em>DOM Level 2</em></strong>：增加了对鼠标和用户<strong>界面事件</strong>、<strong>范围</strong>、<strong>遍历</strong>的支持，而且通过对象接口支持了 <strong>CSS</strong>；</li>
-<li><strong><em>DOM Level 3</em></strong>：增加了以统一的方式加载和保存文档的方法，以及验证文档的方法；</li>
-<li><strong><em>DOM Living Standard</em></strong>（DOM4）：新增了替代 Mutation Events 的 Mutation Observers 等。</li>
+<li><em><strong>DOM Level 1</strong></em>：映射文档结构；</li>
+<li><em><strong>DOM Level 2</strong></em>：增加了对鼠标和用户<strong>界面事件</strong>、<strong>范围</strong>、<strong>遍历</strong>的支持，而且通过对象接口支持了 <strong>CSS</strong>；</li>
+<li><em><strong>DOM Level 3</strong></em>：增加了以统一的方式加载和保存文档的方法，以及验证文档的方法；</li>
+<li><em><strong>DOM Living Standard</strong></em>（DOM4）：新增了替代 Mutation Events 的 Mutation Observers 等。</li>
 </ul>
 <ol start="7">
 <li>（Page：88）<strong>HTML5 的出现以“正式规范的形式”涵盖了尽可能多的 BOM（Browser Object Model）特性</strong>。而在此之前，BOM 并没有相关的标准。</li>
 </ol>
 <h3 id="第-2-章-HTML-中的-JavaScript"><a href="#第-2-章-HTML-中的-JavaScript" class="headerlink" title="第 2 章 - HTML 中的 JavaScript"></a>第 2 章 - HTML 中的 JavaScript</h3><ol start="8">
-<li>（Page：<a name="93" href="#93">93</a>）<strong><em>&lt;script&gt;</em></strong> 元素的几个特殊属性：</li>
+<li>（Page：<a name="93" href="#93">93</a>）<em><strong>&lt;script&gt;</strong></em> 元素的几个特殊属性：</li>
 </ol>
-<p>- <strong><em>async &amp; defer</em></strong>：</p>
-<p><img src="1.png" alt=""></p>
+<p>- <em><strong>async &amp; defer</strong></em>：</p>
+<p><img src="1.png"></p>
 <ul>
-<li><strong><em>async</em></strong>：表示应该<strong>立即开始下载脚本，但不能阻止其他页面动作</strong>，比如下载资源或等待其他脚本加载。只对外部脚本文件有效，并且不保证脚本可以按照它们的出现次序执行；</li>
-<li><strong><em>defer</em></strong>：表示<strong>脚本可以延迟到文档完全被解析和显示之后再执行</strong>。只对外部脚本文件有效，推迟的脚本原则上应该按照它们的出现次序执行。在脚本执行完毕前，<code>DOMContentLoaded</code> 事件不会被触发；</li>
+<li><em><strong>async</strong></em>：表示应该<strong>立即开始下载脚本，但不能阻止其他页面动作</strong>，比如下载资源或等待其他脚本加载。只对外部脚本文件有效，并且不保证脚本可以按照它们的出现次序执行；</li>
+<li><em><strong>defer</strong></em>：表示<strong>脚本可以延迟到文档完全被解析和显示之后再执行</strong>。只对外部脚本文件有效，推迟的脚本原则上应该按照它们的出现次序执行。在脚本执行完毕前，<code>DOMContentLoaded</code> 事件不会被触发；</li>
 </ul>
-<p>- <strong><em>其他属性</em></strong>：</p>
+<p>- <em><strong>其他属性</strong></em>：</p>
 <ul>
-<li><strong><em>crossorigin</em></strong>：配置相关请求的 <strong>CORS</strong> 设置。<em>crossorigin=”anonymous”</em> 配置文件请求不必设置凭据标志；<em>crossorigin=”use-credentials”</em> 设置凭据标志，意味着出站请求会包含凭据（Cookies）；</li>
-<li><strong><em>integrity</em></strong>：<strong>允许比对接收到的资源和指定的加密签名，以验证子资源完整性</strong>（SRI，Subresource Integrity）。该属性可用于确保 CDN 不会提供恶意内容。</li>
+<li><em><strong>crossorigin</strong></em>：配置相关请求的 <strong>CORS</strong> 设置。<em>crossorigin=”anonymous”</em> 配置文件请求不必设置凭据标志；<em>crossorigin=”use-credentials”</em> 设置凭据标志，意味着出站请求会包含凭据（Cookies）；</li>
+<li><em><strong>integrity</strong></em>：<strong>允许比对接收到的资源和指定的加密签名，以验证子资源完整性</strong>（SRI，Subresource Integrity）。该属性可用于确保 CDN 不会提供恶意内容。</li>
 </ul>
 <ol start="9">
 <li>（Page：95）包含在 <em>&lt;script&gt;</em> 内的代码会被从上到下解释。<strong>在其内部的代码被计算完成之前，页面的其余内容不会被加载，也不会被显示</strong>。同样的，在解释外部 JavaScript 文件时，页面也会阻塞。</li>
@@ -56,9 +56,10 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 会默认使用 “async” 的方式（加载不阻塞，执行阻塞）；</span>
 <span class="token keyword">let</span> script <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 script<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token string">'foo.js'</span><span class="token punctuation">;</span>
-document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+document<span class="token punctuation">.</span>head<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>script<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>声明式的资源获取请求，可以<strong>指明哪些资源是在页面加载完成后即刻需要的</strong>：<strong><em>&lt;link rel=”preload” href=”foo.js”&gt;</em></strong>。这一机制使得资源可以更早的得到加载并可用，且更不易阻塞页面的初步渲染，进而提升性能（当动态脚本加载被设置为“同步”时，可以通过此方式来优化性能）。</li>
+<li>声明式的资源获取请求，可以<strong>指明哪些资源是在页面加载完成后即刻需要的</strong>：***&lt;link rel=”preload” href=”foo.js”&gt;***。这一机制使得资源可以更早的得到加载并可用，且更不易阻塞页面的初步渲染，进而提升性能（当动态脚本加载被设置为“同步”时，可以通过此方式来优化性能）。</li>
 </ul>
 <ol start="13">
 <li>（Page：106）XHTML 模式下 <em>&lt;script&gt;</em> 内联代码的“防御式”写法：</li>
@@ -73,11 +74,12 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
       <span class="token keyword">return</span> x<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// ]]></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// ]]></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在 XML（XHTML）中，<strong>CDATA 块表示文档中可以包含任意文本的区块，其内容不会被作为标签来解析</strong>；</li>
 <li>XHTML 模式会在页面的 MIME 类型被指定为 “<strong>application/xhtml+xml</strong>” 时触发；</li>
-<li>在非 XHTML 模式中，<strong>不需要（不建议）指定 <em>type=”text/javascript”</em>”</strong>。</li>
+<li>在非 XHTML 模式中，**不需要（不建议）指定 *type=”text/javascript”*”**。</li>
 </ul>
 <ol start="14">
 <li>（Page：114）&lt;noscript&gt; 标签可用于在浏览器不支持（或被关闭）JavaScript 时显示位于其内部被特殊准备的内容。</li>
@@ -88,8 +90,9 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token string">"use strict"</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// ...</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>“严格模式”下的约束</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>“严格模式”下的约束</strong></em>：</p>
 <ul>
 <li><strong>不能给未声明的变量赋值</strong>，会抛出 “ReferenceError”；</li>
 <li><strong>不能定义名为 eval 和 arguments 的变量</strong>；</li>
@@ -109,13 +112,15 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
   <span class="token keyword">var</span> age <span class="token operator">=</span> <span class="token number">27</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// let age = 27;  // Uncaught ReferenceError: Cannot access 'age' before initialization.</span>
 <span class="token punctuation">}</span>
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// undefined.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>let 与闭包</em></strong>：</p>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// undefined.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>let 与闭包</strong></em>：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">6</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="2.png" alt=""></p>
-<p><img src="3.png" alt=""></p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="2.png"></p>
+<p><img src="3.png"></p>
 <ul>
 <li>每次 <strong>LexicalDeclaration</strong> 类型（let、const）的迭代都会产生新的“<strong>迭代环境记录</strong>（PerIterationEnvironment）”，因此每个循环内的闭包实际引用的值便是当前环境记录内定义的变量值。</li>
 </ul>
@@ -127,7 +132,8 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
 <span class="token punctuation">}</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> value <span class="token keyword">of</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>const</code> 声明的作用域也是块；</li>
 <li><code>const</code> 在声明时必须同时进行初始化。</li>
@@ -136,27 +142,27 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
 <li>（Page：137）ECMAScript 的七种<strong>数据类型</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>Undefined</em></strong>：原始值。未初始化变量的默认值。由 Null 值派生而来；</li>
-<li><strong><em>Null</em></strong>：原始值。表示<strong>空对象指针</strong>；</li>
-<li><strong><em>Boolean</em></strong>：原始值；</li>
-<li><strong><em>Number</em></strong>：原始值。八进制值通过 “<strong>0o</strong>” 前缀来表示，原先的 “0” 前缀在 ES6 后已经被抛弃（<strong>*Newer languages have been abandoning the prefix 0, as decimal numbers are often represented with leading zeroes</strong>. The prefix q was introduced to avoid the prefix o being mistaken for a zero, while the prefix 0o was introduced to avoid starting a numerical literal with an alphabetic character (like o or q), since these might cause the literal to be confused with a variable name. The prefix 0o also follows the model set by the prefix 0x used for hexadecimal literals in the C language;<em>）。十六进制用前缀 “*</em>0x**” 来表示；</li>
-<li><strong><em>String</em></strong>：原始值。字符串是不可变的（immutable）。String() 构造方法会在内部<strong>首先调用其参数的 toString() 方法</strong>，来尝试将其值转换为对应的字符串表示。对于 null 与 undefined 则直接返回对应的字面量字符串；</li>
-<li><strong><em>Symbol</em></strong>：原始值。且符号实例是<strong>唯一、不可变</strong>的。其用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险；</li>
-<li><strong><em>Object</em></strong>：引用值。是派生<strong>其他对象的基类</strong>（不一定适合 JavaScript 中的所有对象，比如宿主对象 BOM 和 DOM。<strong>仅适合 ECMAScript 中的对象行为</strong>）。每个 Object 实例都有如下属性和方法：<ul>
-<li><strong><em>constructor</em></strong>：用于创建当前对象的函数；</li>
-<li><strong><em>hasOwnProperty</em></strong>：判断当前对象实例（非原型链）上是否有给定属性；</li>
-<li><strong><em>isPrototypeOf</em></strong>：判断当前对象是否是另一个对象的原型；</li>
-<li><strong><em>propertyIsEnumerable</em></strong>：判断给定属性是否是“<strong>可枚举</strong>”的（for-in）；</li>
-<li><strong><em>toLocalString</em></strong>：返回对象的本地化字符串表示；</li>
-<li><strong><em>toString</em></strong>：返回对象的字符串表示；</li>
-<li><strong><em>valueOf</em></strong>：返回对象的字符串、数值或布尔表示。</li>
+<li><em><strong>Undefined</strong></em>：原始值。未初始化变量的默认值。由 Null 值派生而来；</li>
+<li><em><strong>Null</strong></em>：原始值。表示<strong>空对象指针</strong>；</li>
+<li><em><strong>Boolean</strong></em>：原始值；</li>
+<li><em><strong>Number</strong></em>：原始值。八进制值通过 “<strong>0o</strong>” 前缀来表示，原先的 “0” 前缀在 ES6 后已经被抛弃（<strong><em>Newer languages have been abandoning the prefix 0, as decimal numbers are often represented with leading zeroes</em>*. The prefix q was introduced to avoid the prefix o being mistaken for a zero, while the prefix 0o was introduced to avoid starting a numerical literal with an alphabetic character (like o or q), since these might cause the literal to be confused with a variable name. The prefix 0o also follows the model set by the prefix 0x used for hexadecimal literals in the C language;*）。十六进制用前缀 “</strong>0x**” 来表示；</li>
+<li><em><strong>String</strong></em>：原始值。字符串是不可变的（immutable）。String() 构造方法会在内部<strong>首先调用其参数的 toString() 方法</strong>，来尝试将其值转换为对应的字符串表示。对于 null 与 undefined 则直接返回对应的字面量字符串；</li>
+<li><em><strong>Symbol</strong></em>：原始值。且符号实例是<strong>唯一、不可变</strong>的。其用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险；</li>
+<li><em><strong>Object</strong></em>：引用值。是派生<strong>其他对象的基类</strong>（不一定适合 JavaScript 中的所有对象，比如宿主对象 BOM 和 DOM。<strong>仅适合 ECMAScript 中的对象行为</strong>）。每个 Object 实例都有如下属性和方法：<ul>
+<li><em><strong>constructor</strong></em>：用于创建当前对象的函数；</li>
+<li><em><strong>hasOwnProperty</strong></em>：判断当前对象实例（非原型链）上是否有给定属性；</li>
+<li><em><strong>isPrototypeOf</strong></em>：判断当前对象是否是另一个对象的原型；</li>
+<li><em><strong>propertyIsEnumerable</strong></em>：判断给定属性是否是“<strong>可枚举</strong>”的（for-in）；</li>
+<li><em><strong>toLocalString</strong></em>：返回对象的本地化字符串表示；</li>
+<li><em><strong>toString</strong></em>：返回对象的字符串表示；</li>
+<li><em><strong>valueOf</strong></em>：返回对象的字符串、数值或布尔表示。</li>
 </ul>
 </li>
 </ul>
-<p>- <strong><em>一些特殊的 Case</em></strong>：</p>
+<p>- <em><strong>一些特殊的 Case</strong></em>：</p>
 <ul>
-<li><strong><em>typeof NaN === ‘number’</em></strong>：源自于 IEEE-754 中 NaN 本身是一种合法的浮点数表示形式，并且 ECMAScript 标准中规定可以将 NaN 算作一种数字类型（<strong><em><a href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.3.20" target="_blank" rel="noopener">4.3.20 Number type</a></em></strong>）；</li>
-<li><strong><em>typeof null === ‘object’</em></strong>：由于 null 被定义为“空对象指针”，因此也算是对“复杂类型”的一个空引用。</li>
+<li>***typeof NaN === ‘number’<em><strong>：源自于 IEEE-754 中 NaN 本身是一种合法的浮点数表示形式，并且 ECMAScript 标准中规定可以将 NaN 算作一种数字类型（</strong></em><a target="_blank" rel="noopener" href="http://www.ecma-international.org/ecma-262/5.1/#sec-4.3.20">4.3.20 Number type</a>***）；</li>
+<li>***typeof null === ‘object’***：由于 null 被定义为“空对象指针”，因此也算是对“复杂类型”的一个空引用。</li>
 </ul>
 <ol start="19">
 <li>（Page：166）模板字面量标签函数（Tagged Templates）：可以<strong>自定义模板插值行为</strong>。</li>
@@ -168,7 +174,8 @@ document<span class="token punctuation">.</span>head<span class="token punctuati
   <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">let</span> cost <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
-decoCurrency<span class="token template-string"><span class="token string">`This apple costs me </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>cost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.`</span></span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "This apple costs me ￥100.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+decoCurrency<span class="token template-string"><span class="token string">`This apple costs me </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>cost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.`</span></span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "This apple costs me ￥100.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>String.raw</code> 标签函数可用于获取原始的、非转义的模板字面量内容。标签函数第一个参数中的 “<strong>raw</strong>” 属性也可以获得类似的内容。</li>
 </ul>
@@ -195,23 +202,24 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 Object<span class="token punctuation">.</span><span class="token function">getOwnPropertySymbols</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// (2) [Symbol(), Symbol(foo)].</span>
 Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptors</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// {Symbol(): {…}, Symbol(foo): {…}}.</span>
-Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回所有成员的键（包括不可枚举类型）；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回所有成员的键（包括不可枚举类型）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>Symbol 是<strong>不可枚举类型</strong>；</li>
-<li>不支持 <em>new Symbol()</em> 形式的构造函数方式，这样做是<strong>为了避免创建符号包装对象</strong>。但可以 <em>Object(Symbol())</em>（类型为 “object”）；</li>
+<li>不支持 <em>new Symbol()</em> 形式的构造函数方式，这样做是<strong>为了避免创建符号包装对象</strong>。但可以 *Object(Symbol())*（类型为 “object”）；</li>
 <li>所有<strong>内置符号属性都是不可写、不可枚举、不可配置的</strong>：<ul>
-<li><strong><em>Symbol.iterator</em></strong>：指定了一个对象的默认<strong>迭代器</strong>可用于 for-of 循环；</li>
-<li><strong><em>Symbol.asyncIterator</em></strong>：指定了一个对象的默认<strong>异步迭代器</strong>，可用于 for-await-of 循环；</li>
-<li><strong><em>Symbol.hasInstance</em></strong>：用于判断某对象是否为某构造器的实例，可用于 instanceof 操作符；</li>
-<li><strong><em>Symbol.isConcatSpreadable</em></strong>：用于配置某对象作为 <code>Array.prototype.concat()</code> 方法的参数时<strong>是否展开其数组元素</strong>；</li>
-<li><strong><em>Symbol.match</em></strong>：指定了匹配的是正则表达式而不是字符串，<code>String.prototype.match()</code> 会调用此函数；</li>
-<li><strong><em>Symbol.replace</em></strong>：指定了当一个字符串<strong>替换</strong>所匹配字符串时所调用的方法，<code>String.prototype.replace()</code> 会调用此函数；</li>
-<li><strong><em>Symbol.search</em></strong>：指定了当一个字符串<strong>搜索</strong>所匹配字符串时所调用的方法，<code>String.prototype.search()</code> 会调用此函数；</li>
-<li><strong><em>Symbol.species</em></strong>：被构造函数用以创建派生对象；</li>
-<li><strong><em>Symbol.split</em></strong>：指向一个正则表达式的索引处分割字符串的方法，<code>String.prototype.split()</code> 会调用此函数；</li>
-<li><strong><em>Symbol.toPrimitive</em></strong>：当一个对象<strong>转换为对应的原始值时，会调用此函数</strong>；</li>
-<li><strong><em>Symbol.toStringTag</em></strong>：属性值应为字符串类型，这个字符串用来<strong>表示该对象的自定义类型标签</strong>，<code>Object.prototype.toString()</code> 会调用此函数；</li>
-<li><strong><em>Symbol.unscopables</em></strong>：用于设置一个对象需要<strong>从其 with 作用域内排除的属性名</strong>。</li>
+<li><em><strong>Symbol.iterator</strong></em>：指定了一个对象的默认<strong>迭代器</strong>可用于 for-of 循环；</li>
+<li><em><strong>Symbol.asyncIterator</strong></em>：指定了一个对象的默认<strong>异步迭代器</strong>，可用于 for-await-of 循环；</li>
+<li><em><strong>Symbol.hasInstance</strong></em>：用于判断某对象是否为某构造器的实例，可用于 instanceof 操作符；</li>
+<li><em><strong>Symbol.isConcatSpreadable</strong></em>：用于配置某对象作为 <code>Array.prototype.concat()</code> 方法的参数时<strong>是否展开其数组元素</strong>；</li>
+<li><em><strong>Symbol.match</strong></em>：指定了匹配的是正则表达式而不是字符串，<code>String.prototype.match()</code> 会调用此函数；</li>
+<li><em><strong>Symbol.replace</strong></em>：指定了当一个字符串<strong>替换</strong>所匹配字符串时所调用的方法，<code>String.prototype.replace()</code> 会调用此函数；</li>
+<li><em><strong>Symbol.search</strong></em>：指定了当一个字符串<strong>搜索</strong>所匹配字符串时所调用的方法，<code>String.prototype.search()</code> 会调用此函数；</li>
+<li><em><strong>Symbol.species</strong></em>：被构造函数用以创建派生对象；</li>
+<li><em><strong>Symbol.split</strong></em>：指向一个正则表达式的索引处分割字符串的方法，<code>String.prototype.split()</code> 会调用此函数；</li>
+<li><em><strong>Symbol.toPrimitive</strong></em>：当一个对象<strong>转换为对应的原始值时，会调用此函数</strong>；</li>
+<li><em><strong>Symbol.toStringTag</strong></em>：属性值应为字符串类型，这个字符串用来<strong>表示该对象的自定义类型标签</strong>，<code>Object.prototype.toString()</code> 会调用此函数；</li>
+<li><em><strong>Symbol.unscopables</strong></em>：用于设置一个对象需要<strong>从其 with 作用域内排除的属性名</strong>。</li>
 </ul>
 </li>
 </ul>
@@ -236,7 +244,8 @@ Reflect<span class="token punctuation">.</span><span class="token function">ownK
     <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">===</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">break</span> start
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> 
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
 <li>（Page：253）“switch…case” 语句在比较每个条件的值时会使用<strong>全等操作</strong>。不同于 C/C++，case 子句使用的变量或值不再有“只能是整型常量”的限制，在 ECMAScript 中可以使用任意的表达式。</li>
 </ol>
@@ -246,18 +255,19 @@ Reflect<span class="token punctuation">.</span><span class="token function">ownK
 <li>（Page：268）每个上下文都有一个关联的“<strong>变量对象</strong>”，包含了当前上下文中定义的所有变量和函数。上下文中的代码在执行时，会创建变量对象的一个<strong>作用域链</strong>，代码正在执行的当前上下文的变量对象位于链的最前端。位于链前端的上下文可以访问后面上下文内的变量，反之则不行。以下两种情况会<strong>在作用域链前端临时添加一个上下文</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>try…catch 语句的 catch 块</em></strong>：会创建一个新的变量对象，包含要抛出的错误对象的声明；</li>
-<li><strong><em>with 语句</em></strong>：会添加一个所指定的对象。</li>
+<li><em><strong>try…catch 语句的 catch 块</strong></em>：会创建一个新的变量对象，包含要抛出的错误对象的声明；</li>
+<li><em><strong>with 语句</strong></em>：会添加一个所指定的对象。</li>
 </ul>
 <ol start="27">
-<li>（Page：<a name="278" href="#278">278</a>）<strong>暂时性死区</strong>（TDZ）：The variables are created when their <em>containing Lexical Environment is instantiated</em> but may not be accessed in any way <strong><em>until the variable’s LexicalBinding is evaluated</em></strong>.</li>
+<li>（Page：<a name="278" href="#278">278</a>）<strong>暂时性死区</strong>（TDZ）：The variables are created when their <em>containing Lexical Environment is instantiated</em> but may not be accessed in any way <em><strong>until the variable’s LexicalBinding is evaluated</strong></em>.</li>
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">'outer x'</span><span class="token punctuation">;</span> 
 <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// enter TDZ (x is hoisted, but inaccessible).</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Uncaught ReferenceError: Cannot access 'x' before initialization.</span>
     <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token string">'inner x'</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="28">
 <li>（Page：280）<strong>冻结</strong>和<strong>封存</strong>对象：</li>
 </ol>
@@ -273,10 +283,11 @@ Reflect<span class="token punctuation">.</span><span class="token function">ownK
 <li>（Page：327）为了能够让原始值拥有对象的行为（具有方法），需要借助“<strong>原始值包装类型</strong>（Boolean \ Number \ String）”。JS 引擎会在“以原始值形式访问其上的某个属性或方法”时，自动隐式创建该原始值的一个<strong>临时</strong>包装类对象。因此对该临时对象的任何“修改”操作，都不会生效。</li>
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="32">
 <li>（Page：336）JavaScript 字符串使用了两种 Unicode 编码混合的策略：<strong>UCS-2</strong> 与 <strong>UTF-16</strong>。对于 <strong>U+0000~U+FFFF</strong> 范围内的 65536 个字符，统称为 Unicode 的<strong>基本多语言平面</strong>（BMP）。</li>
-<li>（Page：362）<code>encodeURI</code> 用于编码整个 URL（比如“<strong>空格</strong>”），而 <code>encodeURIComponent</code> 仅用于编码 URL 中的单独组件（比如“<strong>#</strong>”、“<strong>?</strong>” 等）。</li>
+<li>（Page：362）<code>encodeURI</code> 用于编码整个 URL（比如“<strong>空格</strong>”），而 <code>encodeURIComponent</code> 仅用于编码 URL 中的单独组件（比如“**#<strong>”、“</strong>?**” 等）。</li>
 <li>（Page：376）可以通过全局属性 <code>globalThis</code> 来<strong>获得全局的 this 值</strong>。</li>
 </ol>
 <h3 id="第-6-章-集合引用类型"><a href="#第-6-章-集合引用类型" class="headerlink" title="第 6 章 - 集合引用类型"></a>第 6 章 - 集合引用类型</h3><ol start="35">
@@ -305,7 +316,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">[</span>Symbol<span class="token punctuation">.</span>iterator<span class="token punctuation">]</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">yield</span> <span class="token punctuation">[</span><span class="token string">'key'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// WeakMap 只能以“对象”作为键；</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>相较于 Object，Map 可以<strong>以任意类型的元素作为键</strong>。并且，Map 实例会维护键值对的<strong>插入顺序</strong>，因此可以根据插入顺序执行迭代操作（同 Array 类似，其原型链上的 entries、keys 和 values 方法会返回相应的迭代器）；</li>
 <li>对于给定固定大小的内存，Map 大约可以比 Object 多存储 50% 的键值对；</li>
@@ -329,14 +341,16 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> User<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>WeakMap 可以被用来<strong>保存 DOM 节点元数据</strong>：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 当 DOM 节点被移除后，WeakMap 中的保存 DOM 对象的键值对会被自动清除（不会阻碍 GC）；</span>
 <span class="token keyword">const</span> wm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> loginButton <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-wm<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>loginButton<span class="token punctuation">,</span> <span class="token punctuation">{</span> disabled<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+wm<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>loginButton<span class="token punctuation">,</span> <span class="token punctuation">{</span> disabled<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>Set 会维护值插入时的顺序，因此支持<strong>按顺序迭代</strong>；</li>
 <li>WeakSet 与 WeakMap 类似，对所保有的元素持有“弱引用”。其内部的值只能是 Object 或继承自 Object 的类型，并且也无法被迭代；</li>
@@ -345,17 +359,17 @@ wm<span class="token punctuation">.</span><span class="token keyword">set</span>
 <li>（Page：475）以下四种原生集合类型拥有<strong>默认迭代器</strong>（支持<strong>顺序迭代</strong>，可以应用 for-of；都兼容“<strong>扩展操作符</strong>”，可以用于浅复制）：</li>
 </ol>
 <ul>
-<li><strong><em>Array</em></strong>；</li>
-<li><strong><em>TypedArray</em></strong>；</li>
-<li><strong><em>Map</em></strong>（WeakMap 不可被迭代）；</li>
-<li><strong><em>Set</em></strong>（WeakSet 不可被迭代）；</li>
+<li><em><strong>Array</strong></em>；</li>
+<li><em><strong>TypedArray</strong></em>；</li>
+<li><em><strong>Map</strong></em>（WeakMap 不可被迭代）；</li>
+<li><em><strong>Set</strong></em>（WeakSet 不可被迭代）；</li>
 </ul>
 <h3 id="第-7-章-迭代器与生成器"><a href="#第-7-章-迭代器与生成器" class="headerlink" title="第 7 章 - 迭代器与生成器"></a>第 7 章 - 迭代器与生成器</h3><ol start="39">
 <li>（Page：<a name="482" href="#482">482</a>）<strong>迭代器</strong>：</li>
 </ol>
 <ul>
 <li>开发者无需事先知道如何进行迭代，就能够实现迭代操作；</li>
-<li>“<strong>迭代器模式</strong>”描述了一个方案，即可以把有些结构变成为“可迭代对象”，因为它们<em>实现了 Iterable 接口，而且可以通过 Iterable 接口进行消费（对“可迭代”的抽象）。*</em>通过迭代器属性 Symbol.iterator 可以获取/添加一个“迭代器工厂函数”，每次调用这个工厂函数都会返回一个新迭代器<strong>。迭代器对象每次调用 <code>next</code> 方法来遍历数据，每次调用该函数会返回一个对象，其中包含迭代器返回的下一个值 **value</strong>，和用于表示是否还有值可迭代的 <strong>done</strong> 属性；</li>
+<li>“<strong>迭代器模式</strong>”描述了一个方案，即可以把有些结构变成为“可迭代对象”，因为它们*实现了 Iterable 接口，而且可以通过 Iterable 接口进行消费（对“可迭代”的抽象）。<strong>通过迭代器属性 Symbol.iterator 可以获取/添加一个“迭代器工厂函数”，每次调用这个工厂函数都会返回一个新迭代器</strong>。迭代器对象每次调用 <code>next</code> 方法来遍历数据，每次调用该函数会返回一个对象，其中包含迭代器返回的下一个值 <strong>value</strong>，和用于表示是否还有值可迭代的 <strong>done</strong> 属性；</li>
 <li>内置语言结构在发现还有更多值可以迭代，但不会消费这些值时，会自动调用迭代器上的 <code>return</code> 方法。对于不能“<strong>关闭</strong>”的迭代器（比如“数组”），还可以从上次离开的地方继续迭代。<strong>对于自定义类型来说，带有该方法意味着可以关闭</strong>。</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token punctuation">{</span>
@@ -381,7 +395,8 @@ wm<span class="token punctuation">.</span><span class="token keyword">set</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Counter</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> counter<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token keyword">of</span> counter<span class="token punctuation">)</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>迭代器维护着一个指向可迭代对象的引用，因此迭代器会阻止 GC 回收对象；</li>
 <li>对于 ECMAScript 类型（Array \ Set 等），其<strong>迭代器对象的迭代器对象还是自己</strong>（套娃），因此迭代器对象本身也可以被迭代。<strong>对于 “Symbol.iterator”，可以将其理解为一个为自定义类型实现“可迭代”的必要接口</strong>。</li>
@@ -395,7 +410,7 @@ wm<span class="token punctuation">.</span><span class="token keyword">set</span>
 <li><code>yield</code> 关键字可以让生成器停止和开始执行。通过 yield 退出的生成器函数会处在 “<strong>done: false</strong>” 的状态；而通过 return 退出的生成器函数会处在 “<strong>done: true</strong>” 的状态；</li>
 <li>生成器的几种用途：</li>
 </ul>
-<p>- <strong><em>用来自定义可迭代对象</em></strong>：</p>
+<p>- <em><strong>用来自定义可迭代对象</strong></em>：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">nTimes</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">yield</span><span class="token punctuation">;</span>
@@ -403,8 +418,9 @@ wm<span class="token punctuation">.</span><span class="token keyword">set</span>
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// this will iterates for 3 times.</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> _ <span class="token keyword">of</span> <span class="token function">nTimes</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>借助 yield 实现“输入输出”</em></strong>：（<strong>*第一次调用 next 传入的值不会被使用</strong>，仅用于开始执行生成器函数）</p>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>借助 yield 实现“输入输出”</strong></em>：（<strong>*第一次调用 next 传入的值不会被使用</strong>，仅用于开始执行生成器函数）</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 第一次执行时，会先求 yield 子表达式，返回值，停止；</span>
 <span class="token comment" spellcheck="true">// 第二次执行时，yield 子表达式收到通过 next 传入的参数，返回值，停止；</span>
 <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -412,8 +428,9 @@ wm<span class="token punctuation">.</span><span class="token keyword">set</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">let</span> generatorObj <span class="token operator">=</span> <span class="token function">generatorFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generatorObj<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// {value: "foo", done: false}.</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generatorObj<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// {value: "bar", done: true}.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>产生可迭代对象</em></strong>：（<strong>使用“*”增强 yield 的行为</strong>，让其能够迭代一个可迭代对象，从而一次产出一个值）</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>generatorObj<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// {value: "bar", done: true}.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>产生可迭代对象</strong></em>：（<strong>使用“*”增强 yield 的行为</strong>，让其能够迭代一个可迭代对象，从而一次产出一个值）</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// yield* 将一个可迭代对象序列化为一连串可单独产出的值；</span>
 <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">generatorFnA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">yield</span><span class="token operator">*</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -435,8 +452,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token string">'iter value'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// yield 可以接收从 next 传入的值；</span>
     <span class="token keyword">return</span> <span class="token string">'yield* value'</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>使用 yield 实现递归算法</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>使用 yield 实现递归算法</strong></em>：</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">nTimes</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">yield</span><span class="token operator">*</span> <span class="token function">nTimes</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -444,8 +462,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> x <span class="token keyword">of</span> <span class="token function">nTimes</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>其他</em></strong>：所有的生成器对象都有 <code>return</code> 方法，借助于它和 <code>throw</code> 方法可用于强制生成器进入关闭状态（两者均需要<strong>主动调用</strong>）。其中，<strong>若生成器还没有开始执行，那么调用 throw 抛出的错误不会在生成器函数内部被捕获</strong>，这相当于在函数外部抛出了错误。</p>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>其他</strong></em>：所有的生成器对象都有 <code>return</code> 方法，借助于它和 <code>throw</code> 方法可用于强制生成器进入关闭状态（两者均需要<strong>主动调用</strong>）。其中，<strong>若生成器还没有开始执行，那么调用 throw 抛出的错误不会在生成器函数内部被捕获</strong>，这相当于在函数外部抛出了错误。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">const</span> g <span class="token operator">=</span> <span class="token function">generatorFnA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> x <span class="token keyword">of</span> g<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -453,5 +472,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token comment" spellcheck="true">// g.throw('error msg');</span>
   <span class="token punctuation">}</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-12-08T10:28:35.000Z"> 2021 / 03 / 03, 12:02:14</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/12/08/《JavaScript-语言精髓与编程实践（第三版）》读书笔记（第-1-3-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/12/14/《JavaScript-高级程序设计（第四版）》读书笔记（第-8-11-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

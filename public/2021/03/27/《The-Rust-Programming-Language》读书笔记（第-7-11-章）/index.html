@@ -41,7 +41,8 @@
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// use std::io;</span>
 <span class="token comment" spellcheck="true">// use std::io::Write;</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>io<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">{</span><span class="token keyword">self</span><span class="token punctuation">,</span> Write<span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// same as above.</span>
-<span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>collections<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">*</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// imports all the items under the given path.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>collections<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">*</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// imports all the items under the given path.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>pub</code> 关键字可以使某个“条目（<em>struct</em> \ <em>enum</em> \ <em>function</em> \ <em>method</em> \ <em>modules</em>）”变为公有（可见性）；</li>
 <li><code>pub use</code> 可以将某个内部引用标记为公有的（一般用于处理库内部的实现结构与导出的外部接口结构不一致的场景）；</li>
@@ -107,9 +108,10 @@
     <span class="token comment" spellcheck="true">// below line won't compile since "age" is a private field.</span>
     <span class="token comment" spellcheck="true">// person.age = 28;</span>
     other_mod<span class="token punctuation">:</span><span class="token punctuation">:</span>other_sub_mod<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// call function defined in the other module of other file.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-8-Common-Collections"><a href="#Chapter-8-Common-Collections" class="headerlink" title="Chapter 8 - Common Collections"></a>Chapter 8 - Common Collections</h3><ol start="17">
-<li>（Page：144）<strong>Vector</strong>：<em>Vec&lt;T&gt;</em>。</li>
+<li>（Page：144）<strong>Vector</strong>：*Vec&lt;T&gt;*。</li>
 </ol>
 <ul>
 <li>内部元素保存在 heap 上；</li>
@@ -163,13 +165,14 @@
             gender<span class="token punctuation">:</span> Gender<span class="token punctuation">:</span><span class="token punctuation">:</span>Male<span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> person_vec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="18">
 <li>（Page：150）<strong>String</strong>：</li>
 </ol>
 <ul>
 <li>内部数据保存在 heap 上；</li>
-<li>字符串内容基于 UTF-8 编码（<strong><em>grapheme clusters</em></strong> -&gt; <strong><em>Unicode scalar</em></strong> -&gt; <strong><em>bytes</em></strong>，*<em>an extended grapheme cluster is a sequence of one or more Unicode scalars that (when combined) produce a single human-readable character</em>）；</li>
+<li>字符串内容基于 UTF-8 编码（<em><strong>grapheme clusters</strong></em> -&gt; <em><strong>Unicode scalar</strong></em> -&gt; <em><strong>bytes</strong></em>，*<em>an extended grapheme cluster is a sequence of one or more Unicode scalars that (when combined) produce a single human-readable character</em>）；</li>
 <li>一个 String 类型是一个 <em>Vec&lt;u8&gt;</em> 类型的<strong>包装类</strong>；</li>
 <li>对于 <strong>String 上的索引操作</strong>，由于需要从字符串的开头字节进行扫描以查找有多少有效字符，而无法以 O(1) 的常量时间完成，因此 Rust 选择<strong>不予支持</strong>。但可支持对 String 的切片操作。</li>
 </ul>
@@ -202,9 +205,10 @@
     <span class="token keyword">for</span> c <span class="token keyword">in</span> data<span class="token punctuation">.</span><span class="token function">bytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// "chars()" returns each raw bytes.</span>
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="19">
-<li>（Page：158）<strong>HashMap</strong>：<em>HashMap&lt;K, V&gt;</em>。</li>
+<li>（Page：158）<strong>HashMap</strong>：*HashMap&lt;K, V&gt;*。</li>
 </ol>
 <ul>
 <li>内部数据保存在 heap 上。</li>
@@ -245,7 +249,8 @@
     <span class="token comment" spellcheck="true">// update a value based on the old value.</span>
     <span class="token operator">*</span>reference_to_inserted_value <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> scores<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-9-Error-Handling"><a href="#Chapter-9-Error-Handling" class="headerlink" title="Chapter 9 - Error Handling"></a>Chapter 9 - Error Handling</h3><ol start="20">
 <li>（Page：164）Rust 中的两种错误类型：</li>
 </ol>
@@ -254,19 +259,21 @@
 <li><strong>不可恢复</strong>：比如“数字访问越界”，可以使用 <em>panic!</em> 宏进行处理。</li>
 </ul>
 <ol start="21">
-<li>（Page：165）<strong><em>panic!</em></strong> 宏：</li>
+<li>（Page：165）<em><strong>panic!</strong></em> 宏：</li>
 </ol>
 <ul>
 <li>默认情况下，<strong>在发生 panic 时，Rust 会进行 <em>stack-unwinding</em></strong>。可以通过设置 Cargo.toml 的方式来让 Rust 直接退出应用而不进行 unwinding（交由操作系统处理）。此时生成的<strong>二进制文件的体积也会相对减小</strong>；</li>
 </ul>
 <pre class="line-numbers language-toml"><code class="language-toml">[profile.release] 
-panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+panic = 'abort'
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>可以通过执行 <code>RUST_BACKTRACE=1 Cargo run</code> 指令来打印发生 panic 时的函数调用栈。手动调用 panic 的方式如下：</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">panic!</span><span class="token punctuation">(</span><span class="token string">"crash and burn!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>可以自动调用 <code>panic!</code> 的“捷径”：</li>
 </ul>
@@ -278,9 +285,10 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token keyword">let</span> f <span class="token operator">=</span> File<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"hello.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// returns the contained [Ok] value, or panic with the given message.</span>
     <span class="token keyword">let</span> f <span class="token operator">=</span> File<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"hello.txt"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"Failed to open hello.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="22">
-<li>（Page：168）<strong><em>Result&lt;T, E&gt;</em></strong> 类型：</li>
+<li>（Page：168）<em><strong>Result&lt;T, E&gt;</strong></em> 类型：</li>
 </ol>
 <ul>
 <li>泛型参数 T 表示成功时<strong>需要正常返回的数据</strong>；</li>
@@ -305,13 +313,14 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
             other_error <span class="token operator">=</span><span class="token operator">></span> <span class="token function">panic!</span><span class="token punctuation">(</span><span class="token string">"{:?}"</span><span class="token punctuation">,</span> other_error<span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
 <li>（Page：173）<strong>错误传播</strong>：</li>
 </ol>
 <ul>
 <li>用于将错误对象从 callee 传播到上层 caller；</li>
-<li>可以通过将 <code>?</code> 运算符置于返回值为 <strong><em>Result&lt;T, E&gt;</em></strong>（本质上为实现了 <strong><em>std::ops::Try</em></strong> 的方法）的表达式后面，以标记默认将该返回值的错误信息（若有）向上层调用者传播。通过运算符传播的错误信息会通过 <em>from</em> 方法（定义于标准库中的 <em>From</em> trait）进行错误信息的类型转换（将一个特定的错误类型转换为<strong>当前返回的错误类型</strong>）。</li>
+<li>可以通过将 <code>?</code> 运算符置于返回值为 ***Result&lt;T, E&gt;<em><strong>（本质上为实现了 <em><strong>std::ops::Try</strong></em> 的方法）的表达式后面，以标记默认将该返回值的错误信息（若有）向上层调用者传播。通过运算符传播的错误信息会通过 <em>from</em> 方法（定义于标准库中的 <em>From</em> trait）进行错误信息的类型转换（将一个特定的错误类型转换为</strong>当前返回的错误类型</em>*）。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#![allow(dead_code)]</span>
 <span class="token attribute attr-name">#![allow(unused_variables)]</span>
@@ -354,14 +363,16 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token keyword">let</span> <span class="token keyword">mut</span> s <span class="token operator">=</span> String<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     File<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"hello.txt"</span><span class="token punctuation">)</span>?<span class="token punctuation">.</span><span class="token function">read_to_string</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> s<span class="token punctuation">)</span>?<span class="token punctuation">;</span>
     <span class="token function">Ok</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="24">
 <li>（Page：178）<strong>main 函数的返回值</strong>：</li>
 </ol>
 <ul>
 <li><em>Box&lt;dyn Error&gt;</em> 为一个 <em>triat object</em>，意味着返回值可以包含任意类型的 Error。</li>
 </ul>
-<pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> Result<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Box<span class="token operator">&lt;</span>dyn Error<span class="token operator">>></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> Result<span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Box<span class="token operator">&lt;</span>dyn Error<span class="token operator">>></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="25">
 <li>（Page：178）何时使用 <code>painc!</code>？</li>
 </ol>
@@ -391,13 +402,14 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <span class="token keyword">fn</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> guess <span class="token operator">=</span> global<span class="token punctuation">:</span><span class="token punctuation">:</span>Guess<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> guess<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-10-Generic-Types-Traits-and-Lifetimes"><a href="#Chapter-10-Generic-Types-Traits-and-Lifetimes" class="headerlink" title="Chapter 10 - Generic Types, Traits, and Lifetimes"></a>Chapter 10 - Generic Types, Traits, and Lifetimes</h3><ol start="26">
 <li>（Page：186）<strong>泛型</strong>（Generic）：</li>
 </ol>
 <ul>
 <li><strong>对类型的抽象</strong>；</li>
-<li>可以建立针对 <em>function<em>、</em>struct<em>、</em>method</em> 以及 <em>enum</em> 等类型的泛型。</li>
+<li>可以建立针对 <em>function</em>、<em>struct</em>、<em>method</em> 以及 <em>enum</em> 等类型的泛型。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// generic function.</span>
 <span class="token keyword">fn</span> foo<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token punctuation">(</span>list<span class="token punctuation">:</span><span class="token operator">&amp;</span><span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token operator">&amp;</span>T <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -425,13 +437,14 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
 <span class="token keyword">enum</span> Option<span class="token operator">&lt;</span>T<span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">Some</span><span class="token punctuation">(</span>T<span class="token punctuation">)</span><span class="token punctuation">,</span>
     None<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="27">
 <li>（Page：196）<strong>特质</strong>（Trait）：</li>
 </ol>
 <ul>
 <li>一个 <em>trait</em> 可以告诉编译器一种特定类型所具有的“功能”，并且可以将这个“功能”共享给其他类型。我们可以使用 <em>trait</em> 以一种抽象的方式来定义类型之间的共享行为（与其他语言中的 <em>interface</em> 类似，但仍有些许区别）；</li>
-<li>内聚性（孤儿法则）：<strong><em>triat</em> 的定义或者类型的定义，二者之一必须在本地</strong>（当前 crate），才可以为某个类型实现某个 <em>triat*。（比如：无法为 <code>Vec&lt;T&gt;</code> 类型实现 *Display</em> trait）；</li>
+<li>内聚性（孤儿法则）：<strong><em>triat</em> 的定义或者类型的定义，二者之一必须在本地</strong>（当前 crate），才可以为某个类型实现某个 <em>triat</em>。（比如：无法为 <code>Vec&lt;T&gt;</code> 类型实现 <em>Display</em> trait）；</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// define a trait.</span>
 <span class="token keyword">pub</span> <span class="token keyword">trait</span> Summary <span class="token punctuation">{</span>
@@ -472,17 +485,20 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token comment" spellcheck="true">// call the trait method.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">summarize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">notify</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>借助 “<strong><em>+</em></strong>” 语法来指定多个 <em>trait bound</em>：</li>
+<li>借助 “***+***” 语法来指定多个 <em>trait bound</em>：</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">notify</span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token punctuation">(</span><span class="token keyword">impl</span> Summary <span class="token operator">+</span> Display<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> 
-<span class="token keyword">pub</span> <span class="token keyword">fn</span> notify<span class="token operator">&lt;</span>T<span class="token punctuation">:</span> Summary <span class="token operator">+</span> Display<span class="token operator">></span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> <span class="token operator">&amp;</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> notify<span class="token operator">&lt;</span>T<span class="token punctuation">:</span> Summary <span class="token operator">+</span> Display<span class="token operator">></span><span class="token punctuation">(</span>item<span class="token punctuation">:</span> <span class="token operator">&amp;</span>T<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>使用 <em>where</em> 子句简化 <em>trait bound</em> 的指定：</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> foo<span class="token operator">&lt;</span>T<span class="token punctuation">,</span> U<span class="token operator">></span><span class="token punctuation">(</span>t<span class="token punctuation">:</span> <span class="token operator">&amp;</span>T<span class="token punctuation">,</span> u<span class="token punctuation">:</span> <span class="token operator">&amp;</span>U<span class="token punctuation">)</span> <span class="token punctuation">-></span> i32
-    <span class="token keyword">where</span> T<span class="token punctuation">:</span> Display <span class="token operator">+</span> Clone<span class="token punctuation">,</span> U<span class="token punctuation">:</span> Clone <span class="token operator">+</span> Debug <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+    <span class="token keyword">where</span> T<span class="token punctuation">:</span> Display <span class="token operator">+</span> Clone<span class="token punctuation">,</span> U<span class="token punctuation">:</span> Clone <span class="token operator">+</span> Debug <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>根据泛型参数依赖的 trait 不同，实现不同的方法：</li>
 </ul>
@@ -504,22 +520,24 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"The largest member is x = {}"</span><span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>blanket implementations</em></strong>：为某个已符合特定 <em>trait</em> 的类型实现另一个 <em>trait</em>。其形式诸如：</li>
+<li><em><strong>blanket implementations</strong></em>：为某个已符合特定 <em>trait</em> 的类型实现另一个 <em>trait</em>。其形式诸如：</li>
 </ul>
-<pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">impl</span><span class="token operator">&lt;</span>T<span class="token punctuation">:</span> Display<span class="token operator">></span> ToString <span class="token keyword">for</span> T <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">impl</span><span class="token operator">&lt;</span>T<span class="token punctuation">:</span> Display<span class="token operator">></span> ToString <span class="token keyword">for</span> T <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="28">
 <li>（Page：208）<strong>Lifetime</strong>：<em>The Rust’s most distinctive feature</em>。本身也是一种泛型，可以帮助 Borrow Checker 在编译器检查引用的生命期。</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li>两个常用形式：<ul>
 <li><code>T: &#39;a</code>: All references in <code>T</code> must outlive lifetime <code>&#39;a</code>；</li>
 <li><code>T: Trait + &#39;a</code>: Type <code>T</code> must implement trait <code>Trait</code> and all references in <code>T</code> must outlive <code>&#39;a</code>。</li>
 </ul>
 </li>
-<li>Rust 中的每一个引用都有一个对应的 <em>lifetime*，Rust 编译器可以通过 *lifetime</em> 之间的相互关系来保证程序的内存安全（如避免“悬挂指针”）；</li>
+<li>Rust 中的每一个引用都有一个对应的 <em>lifetime</em>，Rust 编译器可以通过 <em>lifetime</em> 之间的相互关系来保证程序的内存安全（如避免“悬挂指针”）；</li>
 <li><strong>当从函数中返回引用时，返回值的 <em>lifetime</em> 参数需要与输入参数中的至少一个相匹配</strong>。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// the borrow checker doesn't know which borrowed value would be returned, so we need to tell it the lifetimes of the returned reference.</span>
@@ -537,14 +555,16 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token keyword">let</span> str2 <span class="token operator">=</span> <span class="token string">"xyz"</span><span class="token punctuation">;</span>
     <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">longest</span><span class="token punctuation">(</span>str1<span class="token punctuation">.</span><span class="token function">as_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> str2<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"The longest string is {}"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在 <em>struct</em> 中存放引用类型：</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// an instance of ImportantExcerpt can't outlive the reference it holds in its "part" field.</span>
 <span class="token keyword">struct</span> ImportantExcerpt<span class="token operator">&lt;</span>'a<span class="token operator">></span> <span class="token punctuation">{</span>
     part<span class="token punctuation">:</span> <span class="token operator">&amp;</span>'a str<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在 <em>struct</em> 的方法中使用引用类型：</li>
 </ul>
@@ -553,7 +573,8 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Attention please: {}"</span><span class="token punctuation">,</span> announcement<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">self</span><span class="token punctuation">.</span>part  <span class="token comment" spellcheck="true">// get the lifetime of "&amp;self" implicitly.</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>Rust 编译器默认情况下会使用以下三个规则（<em>lifetime-elision-rules</em>）来找出没有显式注释时引用的 <em>lifetime</em>。第一个规则应用于 <em>input-lifetime</em>（方法/函数<strong>入参</strong>），第二三个规则应用于 <em>output-lifetime</em>（方法/函数<strong>返回值</strong>）：<ul>
 <li><strong>第一条</strong>：作为引用的每个参数都有自己的 <em>lifetime</em> 参数；</li>
@@ -571,12 +592,14 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
     <span class="token operator">&amp;</span>s<span class="token punctuation">[</span><span class="token punctuation">..</span><span class="token punctuation">]</span> 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>&#39;static</code> <em>lifetime</em>：<strong>生命期与整个应用相同</strong>（所有的字符串字面量有该生命期）。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// the text of this string is stored directly in the program’s binary, which is always available.</span>
-<span class="token keyword">let</span> s<span class="token punctuation">:</span> <span class="token operator">&amp;</span>'<span class="token keyword">static</span> str <span class="token operator">=</span> <span class="token string">"I have a static lifetime."</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">let</span> s<span class="token punctuation">:</span> <span class="token operator">&amp;</span>'<span class="token keyword">static</span> str <span class="token operator">=</span> <span class="token string">"I have a static lifetime."</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="29">
 <li>（Page：222）同时使用泛型、Trait 以及 Lifetime：</li>
 </ol>
@@ -592,7 +615,8 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
         y
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-11-Writing-Automated-Tests"><a href="#Chapter-11-Writing-Automated-Tests" class="headerlink" title="Chapter 11 - Writing Automated Tests"></a>Chapter 11 - Writing Automated Tests</h3><ol start="30">
 <li>（Page：223）如何编写<strong>测试脚本</strong>：</li>
 </ol>
@@ -660,7 +684,8 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <span class="token function">Err</span><span class="token punctuation">(</span>String<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"two plus two does not equal four!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// test failed.</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="31">
 <li>（Page：241）<strong>控制测试的运行</strong>：</li>
 </ol>
@@ -673,17 +698,18 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#[test]</span>
 <span class="token attribute attr-name">#[ignore]</span>
-<span class="token keyword">fn</span> <span class="token function">expensive_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">fn</span> <span class="token function">expensive_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="32">
 <li>（Page：248）测试体系：</li>
 </ol>
-<p>- <strong><em>单元测试</em></strong>：</p>
+<p>- <em><strong>单元测试</strong></em>：</p>
 <ul>
 <li>小且专注；</li>
 <li>每次单独测试一个模块，并且<strong>可以测试私有接口</strong>。</li>
-<li>一般<strong>在每个源代码文件内部直接编写</strong>，测试函数放置于 <code>mode test {}</code> 模块内部。该模块带有属性 <code>#[cfg(test)]</code> 用来告知 Rust 编译器仅在执行测试时运行该模块中的代码，并且在编译生成二进制文件时，忽略测试代码。<strong><em>cfg</em> 表示 “configuration”</strong>。</li>
+<li>一般<strong>在每个源代码文件内部直接编写</strong>，测试函数放置于 <code>mode test &#123;&#125;</code> 模块内部。该模块带有属性 <code>#[cfg(test)]</code> 用来告知 Rust 编译器仅在执行测试时运行该模块中的代码，并且在编译生成二进制文件时，忽略测试代码。<strong><em>cfg</em> 表示 “configuration”</strong>。</li>
 </ul>
-<p>- <strong><em>集成测试</em></strong>：</p>
+<p>- <em><strong>集成测试</strong></em>：</p>
 <ul>
 <li>只有 Library Crates 可以使用；</li>
 <li>独立于库代码；</li>
@@ -701,10 +727,12 @@ panic = 'abort'<span aria-hidden="true" class="line-numbers-rows"><span></span><
     <span class="token keyword">let</span> smaller <span class="token operator">=</span> Rectangle<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// with custom failure messages.</span>
     <span class="token function">assert!</span><span class="token punctuation">(</span>larger<span class="token punctuation">.</span><span class="token function">can_hold</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>smaller<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"{}-{}"</span><span class="token punctuation">,</span> larger<span class="token punctuation">,</span> smaller<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>集成测试需要的<strong>公共代码需要放到特定的 <em>tests/common/mod.rs</em> 文件中</strong>，使用时通过 <code>mod</code> 将该模块内容引入所在测试脚本文件。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">mod</span> common<span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// ...</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-03-27T13:11:50.000Z"> 2021 / 04 / 24, 21:54:53</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/03/23/《The-Rust-Programming-Language》读书笔记（第-1-6-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/04/01/《The-Rust-Programming-Language》读书笔记（第-12-16-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

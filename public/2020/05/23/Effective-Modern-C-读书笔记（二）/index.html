@@ -10,7 +10,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   <span class="token keyword">auto</span><span class="token operator">&amp;&amp;</span> x <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> x<span class="token punctuation">.</span>i <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="66">
 <li>（Page：161）被标记为顶层 const 的对象无法被移动（所以移动函数没有 const），哪怕通过 std::move 变成右值也是如此。</li>
 <li>（Page：163）std::move 与 std::forward <strong>均为编译时行为</strong>。</li>
@@ -24,7 +25,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   <span class="token keyword">auto</span><span class="token operator">&amp;&amp;</span> x <span class="token operator">=</span> v<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 基于 auto，x 为 const int &amp;x（CV 自动推导）；</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="69">
 <li>（Page：166）<strong>CV 限定符会破坏 Universal Reference 的可推导性</strong>：</li>
 </ol>
@@ -32,7 +34,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">// const auto&amp;&amp; r = x;  // r 为常量右值引用，因此左值变量 x 不能赋给 r；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="70">
 <li>（Page：167）std::vector&lt;T,Allocator&gt;::push_back(T&amp;&amp; value) 由于其函数参数直接与 T 相关（vector 在实例化时 T 已经确定），因此无法进行类型推导，只能按照左值右值调用不同的重载版本；而对应的 <strong>emplace_back(Args&amp;&amp;… args) 则由于其参数与 T 无关，因此可以进行引用折叠和类型推导</strong>，因为该函数为 in-place 构造，所以需要把参数通过 std::forward 直接传递给容器元素的构造函数（参见本文后面几条规则）。</li>
 <li>（Page：171）相较于分别为左值和右值单独重载对应的函数，<strong>使用 “Universal Reference” 的好处在于可以直接进行构造/赋值，省去了临时值的创建、移动和销毁的过程</strong>。</li>
@@ -63,7 +66,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   a<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   a<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">1.3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="77">
 <li>（Page：194）使用 std::enable_if 控制模板函数的有效性，以防止由另一个对象创建新对象的过程调用到模板实例化的拷贝构造函数：</li>
 </ol>
@@ -92,13 +96,15 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   Person p1<span class="token punctuation">{</span><span class="token number">1.3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   Person <span class="token function">p2</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="78">
 <li>（Page：199）引用折叠：当两个引用有一个为左值引用时，结果为左值引用；否则为右值引用。</li>
 <li>（Page：202）会发生“引用折叠”的几个地方：模板初始化、auto 推导、using / typedef、decltype。</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> T<span class="token operator">&amp;&amp;</span> RvalueRefToT<span class="token punctuation">;</span>
-<span class="token keyword">using</span> RvalueRefToT <span class="token operator">=</span> T<span class="token operator">&amp;&amp;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">using</span> RvalueRefToT <span class="token operator">=</span> T<span class="token operator">&amp;&amp;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="80">
 <li>（Page：209）以 “{}” 构造的初始化表达式不能直接传给模板函数进行推导或者完美转发。可以选择用 auto 作为中转作为一种解决方案。</li>
 </ol>
@@ -111,7 +117,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   <span class="token keyword">auto</span> p <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token function">forwardFunc</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span>  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="81">
 <li>（Page：209）使用 nullptr 代替 NULL 或者 0 来作为完美转发的实际参数，以防止模板推断将其参数推导为整数类型。</li>
 <li>（Page：210）<strong>没有被取地址使用的、无定义的类静态常量成员，通常会被编译器通过常量传播直接替换到被使用的地方</strong>。否则若没有定义，则在链接时会报出找不到符号的错误。<strong>所以对于类静态成员，最好均在类外进行定义</strong>。</li>
@@ -123,7 +130,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>A<span class="token operator">::</span>minVal<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="83">
 <li>（Page：213）当传递重载的函数指针或者模板函数给 “Universal Reference” 时，需要指定该函数或模板函数的具体类型。</li>
 <li>（Page：214）只有常量引用才可以指向位域中的成员。</li>
@@ -143,7 +151,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   A a<span class="token punctuation">;</span>
   a<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="86">
 <li>（Page：223）静态生存期：一个对象的生存期和程序的运行的生存期一样长，比如被标记为 static 的变量。而 <strong>lambda 表达式无法捕获具有静态生存期的变量</strong>。</li>
 <li>（Page：225）<strong>C++14 Init Capture</strong>，可以方便地移动资源到闭包中：</li>
@@ -155,7 +164,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
   <span class="token punctuation">[</span>x <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">[</span>x <span class="token operator">=</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>up<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>x <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="88">
 <li>（Page：227）在 C++11 中模拟 C++14 的 Init Capture：</li>
 </ol>
@@ -170,7 +180,8 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> e <span class="token operator">:</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> e <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span> std<span class="token operator">::</span><span class="token function">move</span><span class="token punctuation">(</span>vB<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="89">
 <li>（Page：232）可以进行完美转发的 lambda 表达式：</li>
 </ol>
@@ -178,19 +189,23 @@ A<span class="token operator">&amp;&amp;</span> <span class="token function">foo
 <span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> T<span class="token operator">></span>                         
 T<span class="token operator">&amp;&amp;</span> <span class="token function">forward</span><span class="token punctuation">(</span>std<span class="token operator">::</span>remove_reference_t<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">&amp;</span> param<span class="token punctuation">)</span> <span class="token punctuation">{</span>  
   <span class="token keyword">return</span> <span class="token keyword">static_cast</span><span class="token operator">&lt;</span>T<span class="token operator">&amp;&amp;</span><span class="token operator">></span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-text"><code class="language-text">(param = int& / T = int&) -> decltype(param) = int&
-(param = int&& / T = int) -> decltype(param) = int&&<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+(param = int&& / T = int) -> decltype(param) = int&&
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">auto</span> fA <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">auto</span><span class="token operator">&amp;&amp;</span> param<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> std<span class="token operator">::</span>forward<span class="token operator">&lt;</span><span class="token keyword">decltype</span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">(</span>param<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="90">
 <li>（Page：233）C++14 定义的一些时间字面常量类型：</li>
 </ol>
-<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>literals<span class="token operator">::</span>chrono_literals<span class="token operator">:</span><span class="token operator">*</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>literals<span class="token operator">::</span>chrono_literals<span class="token operator">:</span><span class="token operator">*</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="91">
 <li>（Page：237）std::bind 默认是传值，通过 std::ref() 可以传递引用。当<strong>需要延迟 std::bind 参数的求值过程时，可以用 std::bind 将需要延迟求值的表达式进行包装</strong>：</li>
 </ol>
@@ -203,7 +218,8 @@ T<span class="token operator">&amp;&amp;</span> <span class="token function">for
       std<span class="token operator">::</span>placeholders<span class="token operator">::</span>_1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">f</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>    
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="92">
 <li>（Page：239）std::bind 常用的两个用途：</li>
 </ol>

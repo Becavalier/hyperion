@@ -32,12 +32,14 @@
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d\n"</span><span class="token punctuation">,</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="默认零优化情况"><a href="#默认零优化情况" class="headerlink" title="默认零优化情况"></a>默认零优化情况</h4><p>然后我们使用 Clang 的<strong>默认优化等级</strong>来编译上述这段代码。接着使用 GDB 调试：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token function">file</span> main
 <span class="token punctuation">..</span>.
 <span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token keyword">set</span> disassembly-flavor intel
-<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> disas /m foo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> disas /m foo
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对函数 foo 的反汇编结果如下：</p>
 <pre class="line-numbers language-text"><code class="language-text">Dump of assembler code for function foo:
    0x0000000000401130 <+0>:    push   rbp  ; Prologue;
@@ -60,7 +62,7 @@
    0x0000000000401165 <+53>:    jne    0x401177 <foo+71>
    0x000000000040116b <+59>:    mov    DWORD PTR [rbp-0x4],0x2
    0x0000000000401172 <+66>:    jmp    0x4011be <foo+142>
-
+   
    ; "} else if (v == 50 || v == 60) {"
    0x0000000000401177 <+71>:    cmp    DWORD PTR [rbp-0x8],0x32
    0x000000000040117b <+75>:    je     0x40118b <foo+91>
@@ -68,7 +70,7 @@
    0x0000000000401185 <+85>:    jne    0x401197 <foo+103>
    0x000000000040118b <+91>:    mov    DWORD PTR [rbp-0x4],0x3
    0x0000000000401192 <+98>:    jmp    0x4011be <foo+142>
-
+   
    ; "} else if (v == 70 || v == 80) {"
    0x0000000000401197 <+103>:    cmp    DWORD PTR [rbp-0x8],0x46
    0x000000000040119b <+107>:    je     0x4011ab <foo+123>
@@ -76,20 +78,21 @@
    0x00000000004011a5 <+117>:    jne    0x4011b7 <foo+135>
    0x00000000004011ab <+123>:    mov    DWORD PTR [rbp-0x4],0x4
    0x00000000004011b2 <+130>:    jmp    0x4011be <foo+142>
-
+  
    ; "} else {"
    0x00000000004011b7 <+135>:    mov    DWORD PTR [rbp-0x4],0x5
    0x00000000004011be <+142>:    mov    eax,DWORD PTR [rbp-0x4]
 
    0x00000000004011c1 <+145>:    pop    rbp  ; Epilogue;
    0x00000000004011c2 <+146>:    ret    
-End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+End of assembler dump.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后我们再以同样的方式来反汇编使用 switch-case 结构的函数 bar 对应的汇编代码：</p>
 <pre class="line-numbers language-text"><code class="language-text">Dump of assembler code for function bar:
    0x00000000004011d0 <+0>:    push   rbp  ; Prologue;
    0x00000000004011d1 <+1>:    mov    rbp,rsp
    0x00000000004011d4 <+4>:    mov    DWORD PTR [rbp-0x8],edi
-
+  
    0x00000000004011d7 <+7>:    mov    eax,DWORD PTR [rbp-0x8]
    0x00000000004011da <+10>:    add    eax,0xfffffff6
    0x00000000004011dd <+13>:    mov    ecx,eax
@@ -103,26 +106,27 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
    ; "{ return 1; break; }" 
    0x00000000004011fa <+42>:    mov    DWORD PTR [rbp-0x4],0x1
    0x0000000000401201 <+49>:    jmp    0x401231 <bar+97>
-
+   
    ; "{ return 2; break; }" 
    0x0000000000401206 <+54>:    mov    DWORD PTR [rbp-0x4],0x2
    0x000000000040120d <+61>:    jmp    0x401231 <bar+97>
-
+   
    ; "{ return 3; break; }" 
    0x0000000000401212 <+66>:    mov    DWORD PTR [rbp-0x4],0x3
    0x0000000000401219 <+73>:    jmp    0x401231 <bar+97>
-
+   
    ; "{ return 4; break; }" 
    0x000000000040121e <+78>:    mov    DWORD PTR [rbp-0x4],0x4
    0x0000000000401225 <+85>:    jmp    0x401231 <bar+97>
-
+   
    ; "{ return 5; break; }" 
    0x000000000040122a <+90>:    mov    DWORD PTR [rbp-0x4],0x5
    0x0000000000401231 <+97>:    mov    eax,DWORD PTR [rbp-0x4]
 
    0x0000000000401234 <+100>:    pop    rbp  ; Epilogue;
    0x0000000000401235 <+101>:    ret    
-End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+End of assembler dump.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>众所周知，默认情况下编译器会为 switch-case 生成对应的“<strong>跳表</strong>”结构来以“<strong>空间换时间</strong>”的方式加快该结构对应 case 子句的查询速度。接下来我们在位置 “0x4011f0” 设置断点，并查看 “[rax*8+0x402008]” 的值以检验实际的跳转地址是否正确（对应函数参数 40 的子句入口应该为 “0x401206”）。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> <span class="token keyword">break</span> *0x00000000004011f0
 Breakpoint 1 at 0x4011f0
@@ -131,7 +135,8 @@ Starting program: /home/osboxes/Repo/linux/main
 
 Breakpoint 1, 0x00000000004011f0 <span class="token keyword">in</span> bar <span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> x /g <span class="token variable">$rax*8</span>+0x402008
-0x4020f8:    0x0000000000401206<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0x4020f8:    0x0000000000401206
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，结果是正确的。接下来，我们再以 “0x401206” 为入口，来推算一下 “0x401212” 这个分支入口地址在跳表的位置。因为我们的输入为 “40”，距离这个分支入口还有 “10” 的距离。因此该入口地址应该存放于偏移 “0x4020f8” 位置 0x50（0xa * 0x8）的地方，即位置 “0x402148”。我们可以来检验一下：</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token punctuation">(</span>gdb<span class="token punctuation">)</span> x /11xg 0x4020f8
 0x4020f8:    0x0000000000401206    0x000000000040122a
@@ -139,7 +144,8 @@ Breakpoint 1, 0x00000000004011f0 <span class="token keyword">in</span> bar <span
 0x402118:    0x000000000040122a    0x000000000040122a
 0x402128:    0x000000000040122a    0x000000000040122a
 0x402138:    0x000000000040122a    0x000000000040122a
-0x402148:    0x0000000000401212<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0x402148:    0x0000000000401212
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>需要注意的是，在位置 “0x4020f8” 与 “0x402148” 之间接连存放的是 switch-case 中 default 语句的入口地址。在《C++ Footprint and Performance Optimization》一书中，作者曾在一定条件下做过测试，得出了以下结论：“<strong>在 5 个分支（包括 default）的情况下，switch-case 与 if-else 的性能基本相同，而低于 5 个分支时，if-else 较快，反之 switch-case 较快</strong>”。由于该书出版较为久远，再加上编译器的优化在这些年里也有了较大的提升，因此该结论仅供参考。</p>
 <h4 id="O3-优化情况"><a href="#O3-优化情况" class="headerlink" title="-O3 优化情况"></a>-O3 优化情况</h4><p>我们尝试重新编译上述 C/C++ 代码，并添加优化等级 “-O3”。得出结果发现编译器通过<strong>编译时求值</strong>直接计算出了 printf 中 foo 与 bar 函数的调用结果。不仅如此，对应的 <strong>foo 中的 if-else 结构也被优化为了同 switch-case 一模一样的“跳表”结构</strong>。</p>
 <pre class="line-numbers language-text"><code class="language-text">(gdb) disas /m foo
@@ -157,7 +163,8 @@ Dump of assembler code for function foo:
    0x0000000000401155 <+37>:    ret    
    0x0000000000401156 <+38>:    mov    eax,0x5
    0x000000000040115b <+43>:    ret    
-End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+End of assembler dump.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="switch-case-“大跨度”情况"><a href="#switch-case-“大跨度”情况" class="headerlink" title="switch-case “大跨度”情况"></a>switch-case “大跨度”情况</h4><p>为了验证编译器在 switch-case 中遇到 case 条件的值在跨度较大时的处理情况，我们将上述 C/C++ 代码做出如下更改：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 
@@ -198,7 +205,8 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d\n"</span><span class="token punctuation">,</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10000</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token number">40000</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在默认优化等级下，对于使用了 if-else 结构的 foo 函数来说，<strong>产生的目标代码结构是一样的</strong>，这里不再做介绍。而对于使用了 switch-case 的 bar 函数则有所不同：</p>
 <pre class="line-numbers language-text"><code class="language-text">Dump of assembler code for function bar:
    0x00000000004011e0 <+0>:    push   rbp
@@ -213,43 +221,43 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
    0x00000000004011f5 <+21>:    je     0x401285 <bar+165>
    0x00000000004011fb <+27>:    jmp    0x401200 <bar+32>
    0x0000000000401200 <+32>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 20000；
    0x0000000000401203 <+35>:    sub    eax,0x4e20
    0x0000000000401208 <+40>:    je     0x401285 <bar+165>
    0x000000000040120e <+46>:    jmp    0x401213 <bar+51>
    0x0000000000401213 <+51>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 30000；
    0x0000000000401216 <+54>:    sub    eax,0x7530
    0x000000000040121b <+59>:    je     0x401291 <bar+177>
    0x0000000000401221 <+65>:    jmp    0x401226 <bar+70>
    0x0000000000401226 <+70>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 40000；
    0x0000000000401229 <+73>:    sub    eax,0x9c40
    0x000000000040122e <+78>:    je     0x401291 <bar+177>
    0x0000000000401234 <+84>:    jmp    0x401239 <bar+89>
    0x0000000000401239 <+89>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 50000；
    0x000000000040123c <+92>:    sub    eax,0xc350
    0x0000000000401241 <+97>:    je     0x40129d <bar+189>
    0x0000000000401247 <+103>:    jmp    0x40124c <bar+108>
    0x000000000040124c <+108>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 60000；
    0x000000000040124f <+111>:    sub    eax,0xea60
    0x0000000000401254 <+116>:    je     0x40129d <bar+189>
    0x000000000040125a <+122>:    jmp    0x40125f <bar+127>
    0x000000000040125f <+127>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 70000；
    0x0000000000401262 <+130>:    sub    eax,0x11170
    0x0000000000401267 <+135>:    je     0x4012a9 <bar+201>
    0x000000000040126d <+141>:    jmp    0x401272 <bar+146>
    0x0000000000401272 <+146>:    mov    eax,DWORD PTR [rbp-0xc]
-
+   
    ; 比较 v 与 80000；
    0x0000000000401275 <+149>:    sub    eax,0x13880
    0x000000000040127a <+154>:    je     0x4012a9 <bar+201>
@@ -267,7 +275,8 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
    0x00000000004012bc <+220>:    mov    eax,DWORD PTR [rbp-0x4]
    0x00000000004012bf <+223>:    pop    rbp
    0x00000000004012c0 <+224>:    ret    
-End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+End of assembler dump.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，此时的 switch-case 并没有采用“跳表”的方式，而是退化到了与 if-else 结构类似的顺序条件判断结构。因此，可以得到的一个优化方式是：<strong>将命中率较高的 case 语句摆放在 switch-case 结构的最前面，可以减少需要判断的分支情况，加速目标分支的命中</strong>。接下来，我们同样查看在使用了 -O3 参数优化之后生成的目标 switch-case 结构：</p>
 <pre class="line-numbers language-text"><code class="language-text">Dump of assembler code for function bar:
    0x00000000004011b0 <+0>:    cmp    edi,0xc34f  ; 49999;
@@ -306,6 +315,7 @@ End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span><
 
    0x0000000000401220 <+112>:    mov    eax,0x5
    0x0000000000401225 <+117>:    ret    
-End of assembler dump.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+End of assembler dump.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时如果再查看 foo 函数内的 if-else 结构，会发现它同 switch-case 结构一样，被优化为了同一种形式，即：<strong>使用 “Binary Decision Tree” 的方式来查找目标分支语句</strong>。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-07-18T13:36:02.000Z"> 2020 / 07 / 19, 12:19:59</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/07/15/《虚拟机系统与进程的通用平台》基础概述/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/07/22/《C-17-STL-Cookbook》读书笔记（第 1-2 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

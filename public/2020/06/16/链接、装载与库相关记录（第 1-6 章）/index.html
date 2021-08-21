@@ -23,7 +23,7 @@
 <ol start="8">
 <li>（Page：19）<strong>线程基础</strong>：</li>
 </ol>
-<p>- <strong><em>多线程的优势</em></strong>：</p>
+<p>- <em><strong>多线程的优势</strong></em>：</p>
 <ul>
 <li>可以有效利用 CPU 的等待时间（如某个线程在等待网络响应，此时可以调度其他线程运行）；</li>
 <li>防止程序与用户之间的交互中断（计算线程 VS 交互线程）；</li>
@@ -31,26 +31,26 @@
 <li>可以充分利用多 CPU 或多核计算机的能力；</li>
 <li>相较于“多进程”应用，多线程的数据共享效率较高。</li>
 </ul>
-<p>- <strong><em>线程基本组成</em></strong>：</p>
+<p>- <em><strong>线程基本组成</strong></em>：</p>
 <p>标准线程由：<em>线程 ID</em>、<em>当前指令指针（PC）</em>、<em>寄存器</em>集合以及<em>堆栈</em>组成。其中，栈、TLS 线程局部存储资源，以及某些寄存器（逻辑 PC）为线程私有。一般来说，一个进程由一个到多个线程组成，各个线程之间共享程序的内存空间（代码段、数据段、堆等）和一些进程级资源（打开文件和信号等）。</p>
-<p>- <strong><em>线程三种状态</em></strong>：</p>
-<p><img src="5.png" alt=""></p>
+<p>- <em><strong>线程三种状态</strong></em>：</p>
+<p><img src="5.png"></p>
 <ul>
 <li><strong>运行</strong>：此时线程正在执行。时间片用尽后将进入“就绪”状态；</li>
 <li><strong>就绪</strong>：此时线程可以立刻执行，但 CPU 已被其他线程占用。被 CPU 选中则进入“运行”状态；</li>
 <li><strong>等待</strong>：此时线程正在等待某一事件（通常是 IO 或者同步）发生，无法执行。等待完成后进入“就绪”状态。</li>
 </ul>
-<p>- <strong><em>线程调度</em></strong>：</p>
+<p>- <em><strong>线程调度</strong></em>：</p>
 <ul>
 <li><strong>优先级调度</strong>：根据线程优先级进行调度；</li>
 <li><strong>轮转法调度</strong>：各个线程轮流执行一小段时间。</li>
 </ul>
 <p><strong>IO 密集型线程总是比 CPU 密集型线程容易得到优先级的提升</strong>。因为当一个 CPU 密集型的线程获得较高优先级时，其他的低优先级进程就很可能被“<strong>饿死</strong>”。而为了避免饿死，调度系统也会逐步提升那些等待了过长时间的得不到执行的线程的优先级（比如基于“彩票调度”）。</p>
-<p>- <strong><em>线程安全</em></strong>：</p>
+<p>- <em><strong>线程安全</strong></em>：</p>
 <ul>
 <li>一般把<strong>单指令的 CPU 操作称为“原子的”</strong>；</li>
 <li>常见的<strong>同步与锁策略</strong>：<ul>
-<li><strong>多元信号量（Binary Semaphore）</strong>：允许多个线程并发访问资源。一个初始值为 N 的信号量允许 N 个线程并发访问。线程访问资源时先获取信号量：<em>(1) 将信号量值减一；(2) 如果信号量值小于 0，则线程进入等待状态，否则继续执行*。访问完资源后，线程将释放信号量，进行如下操作：</em>(1) 将信号量值加一；(2) 如果信号量值小于 0，则唤醒一个等待中的线程*；</li>
+<li><strong>多元信号量（Binary Semaphore）</strong>：允许多个线程并发访问资源。一个初始值为 N 的信号量允许 N 个线程并发访问。线程访问资源时先获取信号量：*(1) 将信号量值减一；(2) 如果信号量值小于 0，则线程进入等待状态，否则继续执行<em>。访问完资源后，线程将释放信号量，进行如下操作：</em>(1) 将信号量值加一；(2) 如果信号量值小于 0，则唤醒一个等待中的线程*；</li>
 <li><strong>互斥量（Mutex）</strong>：同“二元信号量”。资源仅同时允许一个线程访问。与信号量不同的是，互斥量要求哪个线程获取哪个线程负责释放这个锁，其他线程无法干涉；</li>
 <li><strong>临界区（Critical Section）</strong>：对共享内存进行访问的程序片段。把临界区的锁的获取称为“进入临界区”，锁的释放称为“离开临界区”。<strong>临界区的作用域仅限于本进程，其他进程无法获取该锁</strong>；</li>
 <li><strong>读写锁</strong>：适用于“<strong>读写频繁，但偶尔写入</strong>”的情况。锁分为两种方式：共享的和独占的。如果锁处于共享状态，试图以任意方式获取锁都能成功，此时该锁分配给了多个线程。若其他线程试图以独占方式获取处于共享的锁，则需要等待锁被所有线程释放。反之，处于独占状态的锁无法被其他任何线程共享；</li>
@@ -75,7 +75,7 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>线程模型</em></strong>：</p>
+<p>- <em><strong>线程模型</strong></em>：</p>
 <ul>
 <li><strong>一对一模型</strong>：一个用户线程唯一对应一个内核线程。缺点：(1) 用户线程的数量受到内核限制；(2) 内核线程调度时的上下文切换开销较大，用户线程执行效率较低。</li>
 <li><strong>多对一模型</strong>：多个用户线程映射到一个内核线程，线程间的切换由用户态的代码来进行。好处在于高效的上下文切换和几乎无限制的线程数量；缺点在于如果一个用户线程阻塞，那么所有的线程都将无法执行。</li>
@@ -92,7 +92,8 @@
 <li>添加行号和文件名标识，便于编译器产生行号信息，用于错误和警告的提示；</li>
 <li><strong>保留所有 “#pragma” 指令</strong>，以便编译器使用。</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash">clang++ -E ./main.cc -std<span class="token operator">=</span>c++17 -o main.i <span class="token comment" spellcheck="true"># -E 表示只进行预编译；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">clang++ -E ./main.cc -std<span class="token operator">=</span>c++17 -o main.i <span class="token comment" spellcheck="true"># -E 表示只进行预编译；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>经预编译后生成的中间文件内容示例：</p>
 <pre class="line-numbers language-text"><code class="language-text"># 1 "./main.cc"
 # 1 "<built-in>" 1
@@ -104,7 +105,8 @@
 # 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory" 1 3
 # 652 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/memory" 3
 # 1 "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/__config" 1 3
-...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+...
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="10">
 <li>（Page：41）.o 文件由汇编器输出，是在进行链接前的中间文件，一般称为“<strong>目标文件</strong>”。</li>
 <li>（Page：42）<strong>编译基本流程</strong>：</li>
@@ -137,7 +139,8 @@
 <li><strong>核心转储文件</strong>：当进程意外终止时，系统可以将该进程的<strong>地址空间内容及终止时的一些其他信息</strong>转储到核心转储文件（core dump）。</li>
 </ul>
 <p>可以使用 <code>file</code> 命令来查看文件类型：</p>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">file</span> main <span class="token comment" spellcheck="true"># main: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">file</span> main <span class="token comment" spellcheck="true"># main: ELF 64-bit LSB relocatable, x86-64, version 1 (SYSV), not stripped</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="15">
 <li>（Page：59）ELF 数据、指令分段存放的意义：</li>
 </ol>
@@ -157,9 +160,9 @@
 <li><strong>ELF BSS 段（.bss）</strong>：存放<strong>未初始化的静态变量，以及初始化为 0 的全局或静态变量</strong>，对于“未初始化的全局非静态变量”则视语言和编译器而定，一般被放在 “COMMON” 块中（该段只是为这些变量预留位置而已，因此实际上只有一个长度信息，不占用文件大小）。</li>
 </ul>
 <p><strong>其他段结构</strong>：</p>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ol start="17">
-<li>（Page：68）在 GCC 中，可以使用 “<strong><em><strong>attribute</strong>((section(“FOO”)))</em></strong>” 的方式来指定变量所处的段（Clang 不支持该方式）。</li>
+<li>（Page：68）在 GCC 中，可以使用 “***<strong>attribute</strong>((section(“FOO”)))***” 的方式来指定变量所处的段（Clang 不支持该方式）。</li>
 <li>（Page：85）ld 在其链接脚本中提供的一些程序可以使用的特殊符号（<em>具体定义取决于不同的平台及链接器</em>）：</li>
 </ol>
 <ul>
@@ -185,7 +188,8 @@
   */</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>hex <span class="token operator">&lt;&lt;</span> __executable_start <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="19">
 <li>（Page：87）在现代 Linux 下的 GCC/Clang 编译器中，<strong>默认情况下已经去掉了在 C 语言符号前加 “_” 的名称修饰方式</strong>，但 Windows 平台下的编译器还保持着这样的传统。</li>
 <li>（Page：88）可以使用 <strong>c++filt</strong> 工具来查看被 Name Mangling 处理过的符号的原始形态。</li>
@@ -212,16 +216,16 @@
 <li>（Page：111）COMMON 块的概念来自早期的 Fortran，早期的 Fortran 没有动态分配空间的机制，程序员必须事先声明它所需要的临时使用空间大小。Fortran 把这种空间叫做 COMMON 块，当不同的目标文件需要的 COMMON 块空间大小不一致时，以最大的那块为准。<strong>链接器在处理弱符号时会采用与 COMMON 块一样的机制，选择同名符号中占用空间最大的那个</strong>。直接导致需要 COMMON 机制的原因是编译器和链接器允许不同类型的弱符号存在，但本质原因还是由于<strong>链接器不支持符号类型</strong>。对于 C 代码中的未初始化的全局变量，编译器会将其默认放置于 COMMON 块中，而<strong>在最终的可执行文件中，这些符号仍会被存放于 .bss 段</strong>。而一旦一个未初始化的全局变量不是以 COMMON 块的形式存在，那么它默认就相当于一个<strong>强符号</strong>。</li>
 <li>（Page：113）编译器及链接器对 C++ 模板实例化的优化：<strong>使用 Link Once 段</strong>。即在每一个编译单元中将每一个模板的实例代码都单独地存放在一个段里，且每个段只包含一个模板实例。链接器在最后链接时便可以区分这些相同的模板实例段，然后进行合并优化。</li>
 <li>（Page：114）<strong>函数级别链接</strong>：为目标文件中的每一个函数都设置一个单独的段，在链接时去掉没有使用到的段，以减小可执行文件的大小。</li>
-<li>（Page：114）Linux 系统下一般程序的入口是 “<strong>_start</strong>”。C++ 全局对象的构造函数在 main 函数之前被执行，析构函数在 main 函数之后被执行。这两个函数对应 ELF 文件的两个特殊的段（其中的代码由 “Glibc” 安排执行）：</li>
+<li>（Page：114）Linux 系统下一般程序的入口是 “**_start**”。C++ 全局对象的构造函数在 main 函数之前被执行，析构函数在 main 函数之后被执行。这两个函数对应 ELF 文件的两个特殊的段（其中的代码由 “Glibc” 安排执行）：</li>
 </ol>
 <ul>
-<li><strong><em>.init</em></strong>：保存可执行指令，构成了进程的初始化代码。会在 main 函数之前被调用；</li>
-<li><strong><em>.fini</em></strong>：保存进程终止代码指令。main 函数正常退出时，会执行这个段中的代码。</li>
+<li><em><strong>.init</strong></em>：保存可执行指令，构成了进程的初始化代码。会在 main 函数之前被调用；</li>
+<li><em><strong>.fini</strong></em>：保存进程终止代码指令。main 函数正常退出时，会执行这个段中的代码。</li>
 </ul>
 <ol start="31">
 <li>（Page：115）如果要使两个编译器编译出来的目标文件能够相互链接，那么它们需要满足如下条件：采用同样的目标文件格式、拥有相同的符号修饰标准、变量的内存分布方式相同、函数调用方式相同等。上述这些跟可执行代码二进制兼容性相关的内容组成了 <strong>ABI</strong>。<strong>ABI 的兼容程度比 API 更为严格</strong>。C/C++ 语言的 ABI 由以下方面决定：</li>
 </ol>
-<p>- <strong><em>C</em></strong>：</p>
+<p>- <em><strong>C</strong></em>：</p>
 <ul>
 <li>内置类型的大小和在存储器中的放置方式（大端、小端、对齐方式等）；</li>
 <li>组合类型的存储方式和内存分布；</li>
@@ -229,7 +233,7 @@
 <li>函数调用方式，比如参数入栈顺序、返回值如何保持等；</li>
 <li>寄存器使用约定，比如函数调用时那些寄存器可以被修改，哪些需要保存等。</li>
 </ul>
-<p>- <strong><em>C++</em></strong>：</p>
+<p>- ***C++***：</p>
 <ul>
 <li>继承类体系的内存分布，如基类、虚基类在继承类中的位置等；</li>
 <li>指向成员函数的指针的内存分布，如何通过指向成员函数的指针来调用成员函数，如何传递 this 指针。</li>
@@ -262,7 +266,7 @@
 <li>使用值 0。</li>
 </ul>
 <ol start="36">
-<li>（Page：131）<u><a href="https://ftp.gnu.org/pub/old-gnu/Manuals/bfd-2.9.1/html_mono/bfd.html#SEC5" target="_blank" rel="noopener">BFD</a>（Binary File Descriptor Library）</u>库<strong>提供了一种统一的接口来处理不同的目标文件格式</strong>（抽象层），其将目标文件抽象成一个统一的模型来进程处理。目前，GNU 下的 gcc、ld、gdb 以及 binutils 均使用 BFD 来间接处理目标文件，而非直接操作目标文件。</li>
+<li>（Page：131）<u><a target="_blank" rel="noopener" href="https://ftp.gnu.org/pub/old-gnu/Manuals/bfd-2.9.1/html_mono/bfd.html#SEC5">BFD</a>（Binary File Descriptor Library）</u>库<strong>提供了一种统一的接口来处理不同的目标文件格式</strong>（抽象层），其将目标文件抽象成一个统一的模型来进程处理。目前，GNU 下的 gcc、ld、gdb 以及 binutils 均使用 BFD 来间接处理目标文件，而非直接操作目标文件。</li>
 </ol>
 <h3 id="第五章：Windows-PE-COFF"><a href="#第五章：Windows-PE-COFF" class="headerlink" title="第五章：Windows PE/COFF"></a>第五章：Windows PE/COFF</h3><p>（略）</p>
 <h3 id="第六章：可执行文件的装载与进程"><a href="#第六章：可执行文件的装载与进程" class="headerlink" title="第六章：可执行文件的装载与进程"></a>第六章：可执行文件的装载与进程</h3><ol start="37">
@@ -286,7 +290,7 @@
 <li>（Page：159）Linux 中将进程虚拟地址空间（VAS）中的一个段叫做“虚拟内存区域”（<strong>VMA</strong>, Virtual Memory Area）。</li>
 <li>（Page：160）虚拟内存区域的实际物理内存分配是在发生“<strong>页错误</strong>”时才会进行的。这一步中需要 MMU 的帮助来管理虚拟内存地址到实际物理内存地址的转换关系，这其中也将涉及到 TLB 对地址转换规则的缓存。操作系统通过检测“页错误”来不断装载需要的页内容：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="52">
 <li>（Page：161）ELF 文件中，段权限的几种组合（可读、可写、可执行三种权限的组合）：</li>
 </ol>
@@ -299,7 +303,7 @@
 <li>（Page：161）ELF 可执行文件中会以 “<strong>Segment</strong>” 的形式来组织各个 Section 在虚拟内存区域中的分布，比如<strong>将某些权限相同的 Section 合并在一个 Segment 中，然后再按“页”进行组织</strong>，这样可以在某种程度上节省内存空间。</li>
 <li>（Page：164）描述 “Section” 结构的表叫做<strong>段表（Section Header Table）</strong>，即“链接视图”的视角；而描述 “Segment” 结构的表叫做<strong>程序头表（Program Header Table）</strong>，即“执行视图”的视角。可以通过 <code>readelf -l</code> 来查看 ELF 可执行文件内的程序头表。</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li>标记为 “LOAD” 的为实际需要装载的 Segment；</li>
 <li>每一个 Segment 对应为一个虚拟内存区域（VMA）。</li>
@@ -317,8 +321,8 @@
 <li>第五列是映像文件的 inode 号；</li>
 <li>最后一列为映像文件路径。</li>
 </ul>
-<p>最后的 “<strong>[vdso]</strong>” 是一个内核的模块，位于 VAS 的高地址段。进程可以通过它来与内核进行交互。</p>
-<p><img src="3.png" alt=""></p>
+<p>最后的 “**[vdso]**” 是一个内核的模块，位于 VAS 的高地址段。进程可以通过它来与内核进行交互。</p>
+<p><img src="3.png"></p>
 <ol start="58">
 <li>（Page：167）一个进程可以分为如下几种类型的 VMA 区域：</li>
 </ol>
@@ -331,11 +335,11 @@
 <ol start="59">
 <li>（Page：169）在某些 Unix 系统下，装载进程数据的<strong>一个物理内存页面可能包含两个甚至多个 Segment 的数据</strong>，以减少内存碎片。此时，<strong>一个物理页会被映射两遍到进程的 VAS 中，使得上一个段的结束地址和下一个段的开始地址被分配在不同的页中</strong>（<em>p_vaddr</em> 除以对齐属性的余数等于 <em>p_offset</em> 除以对齐属性的余数）。</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ol start="60">
 <li>（Page：172）进程初始化后会将环境变量参数以及传递给该进程的参数存放到进程 VAS 的<strong>栈</strong>中。然后将其中位于栈顶的参数个数和参数指针传递给应用 main 函数的两个参数（argc，argv）。<strong>esp/rsp 指针将一直指向 VAS 中的进程栈顶</strong>。</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <p>因此，根据进程中的栈内存分布，我们可以直接利用 argc 参数的地址（被放到栈上后）来访问随后位于栈中的其他参数以及环境变量（X86-64 Linux 存储环境变量的方式有所变化。<strong>X86-64 下函数调用会通过诸如 rdi / rsi 寄存器传递，main 函数内会将对应的 argc / argv 参数再存放到栈上的相邻位置</strong>，且相对位置不固定）：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token number">0000000000401130</span> <span class="token operator">&lt;</span>main<span class="token operator">></span>:
   <span class="token number">401130</span>:    <span class="token number">55</span>                       push   <span class="token operator">%</span><span class="token register variable">rbp</span>
@@ -360,7 +364,8 @@
   <span class="token number">401176</span>:    <span class="token number">48</span> <span class="token number">83</span> c4 <span class="token number">20</span>              add    <span class="token operator">$</span><span class="token number">0x20</span>,<span class="token operator">%</span><span class="token register variable">rsp</span>
   40117a:    <span class="token number">5d</span>                       pop    <span class="token operator">%</span><span class="token register variable">rbp</span>
   40117b:    c3                       retq   
-  40117c:    0f 1f <span class="token number">40</span> <span class="token number">00</span>              nopl   <span class="token number">0x0</span>(<span class="token operator">%</span><span class="token register variable">rax</span>)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  40117c:    0f 1f <span class="token number">40</span> <span class="token number">00</span>              nopl   <span class="token number">0x0</span>(<span class="token operator">%</span><span class="token register variable">rax</span>)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
 
@@ -368,7 +373,8 @@
   <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span> argvAddr <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>argc <span class="token operator">-</span> <span class="token number">0x8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// pointer to the stack cell stroing pointer to char**.</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token operator">*</span>argvAddr<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// argv[0].</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="61">
 <li>（Page：172）<strong>esp 寄存器（X86-64 下为 rsp 寄存器）</strong>：</li>
 </ol>

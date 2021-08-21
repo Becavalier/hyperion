@@ -2,15 +2,15 @@
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/notes" alt="记录" title="记录" itemprop="url">记录</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/author" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备10004938-2号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="50e19b907966b74760b32b31b5c36e5b" class="full"><h1 itemprop="headline" class="post-heading">《CSAPP（第三版）》读书笔记（第 6-8 章）</h1><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-11-30T14:47:39.000Z"> 2020 / 11 / 30, 22:47:39</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><br><h3 id="第六章、存储器层次结构"><a href="#第六章、存储器层次结构" class="headerlink" title="第六章、存储器层次结构"></a>第六章、存储器层次结构</h3><ol start="118">
 <li>（Page：400）随机访问存储器（<strong>RAM</strong>）：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
-<li><strong><em>静态</em></strong>（SRAM）：将每个位存储在一个“双稳态”存储器中，抗干扰能力强，只要供电，数据就会保持不变，访问速度<strong>较快</strong>。一般用来作为<strong>高速缓存存储器</strong>，即可用在 CPU 芯片上，也可以用在片下；</li>
-<li><strong><em>动态</em></strong>（DRAM）：将<strong>每个位</strong>存储为对一个电容的充电，抗干扰能力弱，访问速度<strong>较慢</strong>。一般用作“<strong>主存</strong>”以及图形系统的帧缓冲区。</li>
+<li><em><strong>静态</strong></em>（SRAM）：将每个位存储在一个“双稳态”存储器中，抗干扰能力强，只要供电，数据就会保持不变，访问速度<strong>较快</strong>。一般用来作为<strong>高速缓存存储器</strong>，即可用在 CPU 芯片上，也可以用在片下；</li>
+<li><em><strong>动态</strong></em>（DRAM）：将<strong>每个位</strong>存储为对一个电容的充电，抗干扰能力弱，访问速度<strong>较慢</strong>。一般用作“<strong>主存</strong>”以及图形系统的帧缓冲区。</li>
 </ul>
 <ol start="119">
 <li>（Page：402）<strong>DRAM 芯片</strong>的数据读取过程：</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li>每个“超单元”由若干个 DRAM 单元（<strong>每个可存储 1 位数据</strong>）组成；</li>
 <li>为了读取超单元 (i, j) 的内容，内存控制器将行地址 i 发送到 DRAM，然后是列地址 j。其中，行地址 i 称为 <strong>RAS</strong>（Row Access Strobe，行访问选通脉冲）请求。同理，j 为 <strong>CAS</strong>（Column Access Strobe，列访问选通脉冲）；</li>
@@ -19,7 +19,7 @@
 <ol start="120">
 <li>（Page：402）<strong>内存模块</strong>：由多个 DRAM 芯片组成。</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ul>
 <li>要取出内存地址 A 处的一个字，内存控制器将 A 转换成一个超单元地址 (i, j)，并将它发送到内存模块，然后内存模块再将 i 和 j <strong>广播</strong>到每个 DRAM。作为响应，<strong>每个 DRAM 输出它的 (i, j) 超单元的 8 位内存</strong>。模块中的电路收集这些输出，并把它们<strong>合并</strong>成一个 64 位字，再返回给内存控制器。</li>
 </ul>
@@ -27,16 +27,16 @@
 <li>（Page：403）增强的 DRAM：</li>
 </ol>
 <ul>
-<li><strong><em>快页模式 FPM DRAM</em></strong>：当需要从超单元中连续地读出数据时，可以只发送一个 RAS/CAS 请求来指定超单元的行，然后再跟随一连串的独立 CAS 请求连续地读取数据（不再需要每次都发送 RAS/CAS 请求）；</li>
-<li><strong><em>扩展数据输出 EDO DRAM</em></strong>：允许各个 CAS 信号在时间上靠得更紧密一点；</li>
-<li><strong><em>同步 SDRAM</em></strong>：可以比上述异步存储器更快地输出它的超单元内容；</li>
-<li><strong><em>双倍数据速率同步 DDR SDRAM</em></strong>：对 SDRAM 的一种增强，通过使用<strong>两个时钟沿</strong>作为控制信号，使得 DRAM 的速度翻倍。不同类型的 DDR SDRAM 的区别在于不同的，用于<strong>提高有效带宽的预取缓冲区</strong>的大小（“DDR N” 对应 2^N 位大小）不同；</li>
-<li><strong><em>视频 VRAM</em></strong>：用在图形系统的帧缓冲区中。其输出是通过一次对内部缓冲区的整个内容进行<strong>移位</strong>得到的，并且允许对内存<strong>并行地读和写</strong>。</li>
+<li><em><strong>快页模式 FPM DRAM</strong></em>：当需要从超单元中连续地读出数据时，可以只发送一个 RAS/CAS 请求来指定超单元的行，然后再跟随一连串的独立 CAS 请求连续地读取数据（不再需要每次都发送 RAS/CAS 请求）；</li>
+<li><em><strong>扩展数据输出 EDO DRAM</strong></em>：允许各个 CAS 信号在时间上靠得更紧密一点；</li>
+<li><em><strong>同步 SDRAM</strong></em>：可以比上述异步存储器更快地输出它的超单元内容；</li>
+<li><em><strong>双倍数据速率同步 DDR SDRAM</strong></em>：对 SDRAM 的一种增强，通过使用<strong>两个时钟沿</strong>作为控制信号，使得 DRAM 的速度翻倍。不同类型的 DDR SDRAM 的区别在于不同的，用于<strong>提高有效带宽的预取缓冲区</strong>的大小（“DDR N” 对应 2^N 位大小）不同；</li>
+<li><em><strong>视频 VRAM</strong></em>：用在图形系统的帧缓冲区中。其输出是通过一次对内部缓冲区的整个内容进行<strong>移位</strong>得到的，并且允许对内存<strong>并行地读和写</strong>。</li>
 </ul>
 <ol start="122">
 <li>（Page：405）<strong>总线</strong>结构：</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li>总线是一组并行的导线，能携带地址、数据和控制信号；</li>
 <li>每次 CPU 和主存之间的数据传送都是通过一系列步骤完成的，这些步骤称为“<strong>总线事务</strong>”。“读事务”从主存传送数据到 CPU，“写事务”反之；</li>
@@ -45,11 +45,11 @@
 <ol start="123">
 <li>（Page：408）<strong>磁盘容量</strong>的计算公式：</li>
 </ol>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ol start="124">
 <li>（Page：414）<strong>固态硬盘</strong>（SSD）：</li>
 </ol>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ul>
 <li>从 SSD 中<strong>读取数据比写要快</strong>；</li>
 <li>页大小一般为 512 字节到 4 KB，块由 32~128 个页组成；</li>
@@ -60,10 +60,10 @@
 <li>（Page：418）<strong>局部性</strong>（locality）原理：</li>
 </ol>
 <ul>
-<li><strong><em>时间局部性</em></strong>：被引用过一次的内存位置可能在不远的将来<strong>再被多次引用</strong>；</li>
-<li><strong><em>空间局部性</em></strong>：如果一个内存位置被引用了一次，那么程序很可能在不远的将来<strong>引用附近的一个内存位置</strong>。</li>
+<li><em><strong>时间局部性</strong></em>：被引用过一次的内存位置可能在不远的将来<strong>再被多次引用</strong>；</li>
+<li><em><strong>空间局部性</strong></em>：如果一个内存位置被引用了一次，那么程序很可能在不远的将来<strong>引用附近的一个内存位置</strong>。</li>
 </ul>
-<p>- <strong><em>一个空间局部性很差的典型例子</em></strong>：</p>
+<p>- <em><strong>一个空间局部性很差的典型例子</strong></em>：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 非“行优先”的顺序扫描数组，导致数据引用的位置不连续（C 中数组在内存中是以行优先的形式存放的），因此导致“空间局部性”很差；</span>
 <span class="token keyword">int</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
@@ -73,8 +73,9 @@
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>评价局部性的基本原则</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>评价局部性的基本原则</strong></em>：</p>
 <ul>
 <li><strong>重复引用相同变量</strong>的程序有良好的时间局部性；</li>
 <li>对于具有步长为 k 的引用模式的程序，<strong>步长越小，空间局部性越好</strong>；</li>
@@ -83,24 +84,24 @@
 <ol start="126">
 <li>（Page：422）存储器层次结构中各层之间的通信：对于每个 k，位于 k 层的更快更小的存储设备作为位于 k+1 层更大更慢存储设备的<strong>缓存</strong>。数据总是以“<strong>块大小</strong>”为传送单元（带来了“空间局部性”优势），在两个层次之间来回复制。通常来说，<strong>层次结构中较低层的设备访问时间较长，因此为了补偿这些较长的访问时间，倾向于使用较大的块</strong>。</li>
 </ol>
-<p>- <strong><em>当程序需要第 k+1 层（慢速层）的某个数据对象时</em></strong>：</p>
+<p>- <em><strong>当程序需要第 k+1 层（慢速层）的某个数据对象时</strong></em>：</p>
 <ul>
-<li><strong><em>缓存命中</em></strong>：可以在第 k 层中找到对应的数据，速度更快；</li>
-<li><strong><em>缓存不命中</em></strong>：第 k 层的缓存会从第 k+1 层缓存中取出包含数据的那个块，并<strong>缓存在第 k 层</strong>。在缓存时若当前缓存已满，则会根据“缓存替换策略”来<strong>替换</strong>某个块。<ul>
-<li><strong><em>冷不命中</em></strong>：即缓存冷启动时不存在，属于短暂事件，在缓存稳定后不会再次出现；</li>
-<li><strong><em>冲突不命中</em></strong>：每次从 k+1 层映射存放到 k 层的缓存块都会被替换掉（比如由于某种固有的映射关系）；</li>
-<li><strong><em>容量不命中</em></strong>：缓存太小，无法处理工作集。</li>
+<li><em><strong>缓存命中</strong></em>：可以在第 k 层中找到对应的数据，速度更快；</li>
+<li><em><strong>缓存不命中</strong></em>：第 k 层的缓存会从第 k+1 层缓存中取出包含数据的那个块，并<strong>缓存在第 k 层</strong>。在缓存时若当前缓存已满，则会根据“缓存替换策略”来<strong>替换</strong>某个块。<ul>
+<li><em><strong>冷不命中</strong></em>：即缓存冷启动时不存在，属于短暂事件，在缓存稳定后不会再次出现；</li>
+<li><em><strong>冲突不命中</strong></em>：每次从 k+1 层映射存放到 k 层的缓存块都会被替换掉（比如由于某种固有的映射关系）；</li>
+<li><em><strong>容量不命中</strong></em>：缓存太小，无法处理工作集。</li>
 </ul>
 </li>
 </ul>
 <ol start="127">
 <li>（Page：425）现代计算机系统中的<strong>缓存体系</strong>：</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ol start="128">
 <li>（Page：426）高速缓存存储器（L1~L3）的组织结构：</li>
 </ol>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ul>
 <li>一般而言，高速缓存的结构可以用元组 (S, E, B, m) 来描述。其中，S 为<strong>组数</strong>、E 为<strong>每组的行数</strong>、B 为<strong>块大小</strong>（字节）。m 为<strong>主存的物理地址位数</strong>；</li>
 <li>高速缓存的结构将 m 个地址位划分成了 t 个<strong>标记位</strong>、s 个<strong>组索引位</strong>和 b 个<strong>块偏移位</strong>。当在缓存中查找匹配数据时，只有当且仅当<strong>设置了有效位并且该行的标记位于地址中的标记位相匹配时</strong>，组中的这一行才包含这个字；</li>
@@ -108,8 +109,8 @@
 <li>高速缓存确定一个请求是否命中，然后抽取出被请求的字的过程，分为三步：(1) 组选择；(2) 行匹配；(3) 字抽取；</li>
 <li>数据总是以“<strong>块大小</strong>”为传送单元（<strong>*对于连续数据而言，可能会存在前一次的内存数据加载导致下一次将要访问的数据也被同时缓存</strong>），在层次之间来回复制。</li>
 </ul>
-<p>- <strong><em>地址到“标记、索引、偏移”位的映射示例</em></strong>：</p>
-<p><img src="9.png" alt=""></p>
+<p>- <em><strong>地址到“标记、索引、偏移”位的映射示例</strong></em>：</p>
+<p><img src="9.png"></p>
 <ul>
 <li>上述示例对应的描述：(S, E, B, m) =&gt; (4, 1, 2, 4)；</li>
 <li><strong>由“标记、索引、偏移”位组成的“地址位”正好对应地址的二进制表示</strong>。</li>
@@ -132,8 +133,8 @@
 <li>（Page：438）“<strong>写回</strong>”与“<strong>写分配</strong>”：</li>
 </ol>
 <ul>
-<li><strong><em>写命中</em></strong>：假设要写一个已经缓存了的字 w，在高速缓存更新了它的 w 副本之后，如何更新 w 在高速缓存较低层次中的副本呢？“写回”，即<strong>尽可能地推迟更新，只有当替换算法要驱逐这个更新过的块时，才把它写到紧接着的低一层中</strong>。“直写”：立即将高速缓冲块的内容写回紧接的低一层中（会频繁引起总线流量）；</li>
-<li><strong><em>写不命中</em></strong>：若写不命中，“写分配”会<strong>加载相应的低一层中的块到当前层级的高速缓存中，然后再更新这个高速缓存块</strong>。“非写分配”：避开高速缓存，直接把字写到低一层中。</li>
+<li><em><strong>写命中</strong></em>：假设要写一个已经缓存了的字 w，在高速缓存更新了它的 w 副本之后，如何更新 w 在高速缓存较低层次中的副本呢？“写回”，即<strong>尽可能地推迟更新，只有当替换算法要驱逐这个更新过的块时，才把它写到紧接着的低一层中</strong>。“直写”：立即将高速缓冲块的内容写回紧接的低一层中（会频繁引起总线流量）；</li>
+<li><em><strong>写不命中</strong></em>：若写不命中，“写分配”会<strong>加载相应的低一层中的块到当前层级的高速缓存中，然后再更新这个高速缓存块</strong>。“非写分配”：避开高速缓存，直接把字写到低一层中。</li>
 </ul>
 <p>-基本逻辑：</p>
 <ul>
@@ -144,7 +145,7 @@
 <ol start="132">
 <li>（Page：438）一个真实的高速缓存层次结构（Intel Core i7）：</li>
 </ol>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ol start="133">
 <li>（Page：440）编写高速缓存友好代码的原则：</li>
 </ol>
@@ -160,11 +161,11 @@
 <li>（Page：446）存储器山：可用于描述存储系统的性能。</li>
 <li>（Page：448）一个性能优化实例：</li>
 </ol>
-<p><img src="11.png" alt=""></p>
+<p><img src="11.png"></p>
 <ul>
 <li>最后的 <em>kij</em> 版本与 <em>ikj</em> 版本具有最好的性能；</li>
 </ul>
-<p>- <strong><em>利用局部性</em></strong>：</p>
+<p>- <em><strong>利用局部性</strong></em>：</p>
 <ul>
 <li>将你的注意力集中在<strong>内循环</strong>上，大部分计算和内存访问都发生在这里；</li>
 <li>通过<strong>按照数据对象存储在内存中的顺序、以步长为 1 来读数据</strong>，从而使程序的空间局部性最大；</li>
@@ -175,9 +176,9 @@
 <li>（Page：464）链接：<strong>将各种代码和数据片段收集并组合成一个单一文件的过程</strong>。</li>
 </ol>
 <ul>
-<li><strong><em>编译时</em></strong>：源代码被翻译成机器代码时，<strong>静态链接</strong>；</li>
-<li><strong><em>加载时</em></strong>：被“动态链接器”加载时，<strong>动态链接</strong>；</li>
-<li><strong><em>运行时</em></strong>：<code>dlopen</code>；</li>
+<li><em><strong>编译时</strong></em>：源代码被翻译成机器代码时，<strong>静态链接</strong>；</li>
+<li><em><strong>加载时</strong></em>：被“动态链接器”加载时，<strong>动态链接</strong>；</li>
+<li><em><strong>运行时</strong></em>：<code>dlopen</code>；</li>
 </ul>
 <ol start="137">
 <li>（Page：465）一个示例程序：</li>
@@ -197,41 +198,42 @@
     s <span class="token operator">+</span><span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> s<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="138">
 <li>（Page：466）静态链接：</li>
 </ol>
-<p>- <strong><em>两个主要任务</em></strong>：</p>
+<p>- <em><strong>两个主要任务</strong></em>：</p>
 <ul>
-<li><strong><em>符号解析</em></strong>（symbol resolution）：目标文件定义和引用符号，每个符号对应于一个函数、一个全局变量或一个静态变量。该步骤<strong>将每个符号引用正好和一个符号定义关联起来</strong>；</li>
-<li><strong><em>重定位</em></strong>（relocation）：编译器和汇编器<strong>生成从地址 0 开始的代码和数据 Section</strong>。链接器通过<strong>把每个符号定义与一个内存位置关联起来</strong>，从而重定位这些 Section，然后修改所有对这些符号的引用，使它们指向这个内存位置。链接器使用汇编器产生的重定位条目来进行重定位。</li>
+<li><em><strong>符号解析</strong></em>（symbol resolution）：目标文件定义和引用符号，每个符号对应于一个函数、一个全局变量或一个静态变量。该步骤<strong>将每个符号引用正好和一个符号定义关联起来</strong>；</li>
+<li><em><strong>重定位</strong></em>（relocation）：编译器和汇编器<strong>生成从地址 0 开始的代码和数据 Section</strong>。链接器通过<strong>把每个符号定义与一个内存位置关联起来</strong>，从而重定位这些 Section，然后修改所有对这些符号的引用，使它们指向这个内存位置。链接器使用汇编器产生的重定位条目来进行重定位。</li>
 </ul>
 <ol start="139">
 <li>（Page：467）ELF 可重定位目标文件：</li>
 </ol>
-<p><img src="12.png" alt=""></p>
+<p><img src="12.png"></p>
 <ul>
-<li><strong><em>ELF 文件头</em></strong>（ELF header）：16 字节。描述了生成该文件的系统的字大小和字节顺序。剩下的部分包含 ELF 头大小、目标文件类型（可重定向、可执行或共享的）、机器类型、节头部表（Section Header Table）的文件偏移，以及该表中<strong>条目（不同 Section）的大小和数量</strong>；</li>
-<li><strong><em>.text</em></strong>：已编译程序的机器代码；</li>
-<li><strong><em>.rodata</em></strong>：只读数据；</li>
-<li><strong><em>.data</em></strong>：<strong>已初始化的全局和静态 C 变量</strong>。局部变量在运行时被保存在寄存器或栈中；</li>
-<li><strong><em>.bss</em></strong>（Block Storage Start）：<strong>未初始化的全局和静态 C 变量，以及所有被初始化为 0 的全局或静态变量</strong>。在目标文件中该节不占据实际的空间，仅是一个占位符，只有一个长度信息（提升空间使用效率）；</li>
-<li><strong><em>.symtab</em></strong>：符号表，<strong>存放程序中定义和引用的函数和全局变量</strong>信息。和编译器中的符号表不同，.symtab 中不包含局部变量的条目；<ul>
-<li><strong><em>当前模块全局符号</em></strong>：定义在当前模块内的可以由其他模块引用的全局符号；</li>
-<li><strong><em>引用的外部全局符号</em></strong>：当前模块引用的定义在其他模块中的全局符号；</li>
-<li><strong><em>当前模块静态局部符号</em></strong>：定义在当前模块内的 static 符号。</li>
+<li><em><strong>ELF 文件头</strong></em>（ELF header）：16 字节。描述了生成该文件的系统的字大小和字节顺序。剩下的部分包含 ELF 头大小、目标文件类型（可重定向、可执行或共享的）、机器类型、节头部表（Section Header Table）的文件偏移，以及该表中<strong>条目（不同 Section）的大小和数量</strong>；</li>
+<li><em><strong>.text</strong></em>：已编译程序的机器代码；</li>
+<li><em><strong>.rodata</strong></em>：只读数据；</li>
+<li><em><strong>.data</strong></em>：<strong>已初始化的全局和静态 C 变量</strong>。局部变量在运行时被保存在寄存器或栈中；</li>
+<li><em><strong>.bss</strong></em>（Block Storage Start）：<strong>未初始化的全局和静态 C 变量，以及所有被初始化为 0 的全局或静态变量</strong>。在目标文件中该节不占据实际的空间，仅是一个占位符，只有一个长度信息（提升空间使用效率）；</li>
+<li><em><strong>.symtab</strong></em>：符号表，<strong>存放程序中定义和引用的函数和全局变量</strong>信息。和编译器中的符号表不同，.symtab 中不包含局部变量的条目；<ul>
+<li><em><strong>当前模块全局符号</strong></em>：定义在当前模块内的可以由其他模块引用的全局符号；</li>
+<li><em><strong>引用的外部全局符号</strong></em>：当前模块引用的定义在其他模块中的全局符号；</li>
+<li><em><strong>当前模块静态局部符号</strong></em>：定义在当前模块内的 static 符号。</li>
 </ul>
 </li>
-<li><strong><em>.rel.text</em></strong>（对应 .text 节）：一个包含 .text 节中位置的列表，<strong>当链接器把这个目标文件和其他文件组合时，需要修改这些位置</strong>。一般而言，任何调用外部函数或引用全局变量的指令都需要修改，而调用本地函数则不需要；</li>
-<li><strong><em>.rel.data</em></strong>（对应 .data 节）：<strong>被模块引用或定义的所有全局变量的“重定位”信息</strong>。一般而言，任何已初始化的全局变量，如果它的初始值是一个全局变量地址或外部定义函数的地址，则都需要被修改；</li>
-<li><strong><em>.debug</em></strong>：调试符号表；</li>
-<li><strong><em>.line</em></strong>：原始 C 程序中的行号与 .text 节中机器指令之间的映射；</li>
-<li><strong><em>.strtab</em></strong>：字符串表。其内部<strong>包含 .symtab 和 .debug 节中的符号名，以及节头部中的节名字</strong>。</li>
+<li><em><strong>.rel.text</strong></em>（对应 .text 节）：一个包含 .text 节中位置的列表，<strong>当链接器把这个目标文件和其他文件组合时，需要修改这些位置</strong>。一般而言，任何调用外部函数或引用全局变量的指令都需要修改，而调用本地函数则不需要；</li>
+<li><em><strong>.rel.data</strong></em>（对应 .data 节）：<strong>被模块引用或定义的所有全局变量的“重定位”信息</strong>。一般而言，任何已初始化的全局变量，如果它的初始值是一个全局变量地址或外部定义函数的地址，则都需要被修改；</li>
+<li><em><strong>.debug</strong></em>：调试符号表；</li>
+<li><em><strong>.line</strong></em>：原始 C 程序中的行号与 .text 节中机器指令之间的映射；</li>
+<li><em><strong>.strtab</strong></em>：字符串表。其内部<strong>包含 .symtab 和 .debug 节中的符号名，以及节头部中的节名字</strong>。</li>
 </ul>
 <ol start="140">
 <li>（Page：469）.symtab 符号表：</li>
 </ol>
-<p>- <strong><em>C 源代码</em></strong>：</p>
+<p>- <em><strong>C 源代码</strong></em>：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// main.c</span>
 <span class="token comment" spellcheck="true">// CLI: clang -O0 -c main.c -o main.o &amp;&amp; readelf -a main.o</span>
 <span class="token keyword">extern</span> <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -245,9 +247,10 @@
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">static</span> <span class="token keyword">int</span> local_static_uninitialized<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">minus</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>对应上述代码的 .symtab 符号表结构</em></strong>：</p>
-<p><img src="13.png" alt=""></p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>对应上述代码的 .symtab 符号表结构</strong></em>：</p>
+<p><img src="13.png"></p>
 <ul>
 <li>“Value” 为<strong>符号的地址</strong>。对于可重定位模块来说，该值是距定义目标的节的起始位置偏移；对于可执行文件来说，是一个<strong>绝对运行时地址</strong>；</li>
 <li>“Bind” 表示符号是<strong>本地的还是全局</strong>的；</li>
@@ -274,7 +277,7 @@
 <li>如果有一个强符号和多个弱符号同名，则<strong>选择强符号</strong>；</li>
 <li>如果有多个弱符号同名，则<strong>从这些弱符号中任意选一个</strong>。</li>
 </ul>
-<p>- <strong><em>一个由于强弱符号规则引发的运行时错误代码</em></strong>：（全局变量定义为同名但不同类型） </p>
+<p>- <em><strong>一个由于强弱符号规则引发的运行时错误代码</strong></em>：（全局变量定义为同名但不同类型） </p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// main.c</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -289,7 +292,8 @@
 <span class="token keyword">double</span> x<span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   x <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.0</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>上述 lib.c 中对变量 x 的赋值<strong>将用负零的双精度浮点表示覆盖内存中 x 和 y 位置上的值</strong>（x、y 的大小在 main.c 中为 4 个字节，而在 lib.c 中的浮点操作将为 x 替换连续的 8 个字节，因此会覆盖掉 y）。</li>
 </ul>
@@ -307,12 +311,12 @@
 <li>如果当链接器完成对命令行上输入文件的扫描后，U 是非空的，那么链接器就会输出错误并终止。否则会合并并<strong>重定位</strong> E 中的目标文件，输出可执行文件。</li>
 </ul>
 </li>
-<li><strong><em>重定位</em></strong>：<ul>
-<li><strong><em>重定位节和符号定义</em></strong>：链接器将所有相同类型的节合并为同一类型的聚合节。然后，链接器将运行时内存地址赋给新的聚合节、输入模块定义的每个节，以及输入模块定义的每个符号；</li>
-<li><strong><em>重定位节中的符号引用</em></strong>：链接器借助于可重定位目标模块中的“<strong>重定位条目</strong>”来修改代码节（.text）和数据节（.data）中对每个符号的引用，使得它们指向正确的运行时地址。</li>
-<li><strong><em>重定位条目</em></strong>：当汇编器遇到对最终位置未知的目标引用时，它就会生成一个重定位条目，以告知链接器在合并生成可执行文件时如何修改这个引用。<strong>代码重定位条目放在 “.rel.text” 中；已初始化全局数据/静态变量的重定位条目放在 “.rel.data 中</strong>。常用的两种重定位类型（支持 X86-64 小型代码模型）：<ul>
-<li><strong><em>R_X86_64_PC32</em></strong>：重定位一个使用 <strong>32 位 PC 相对地址</strong>的引用。<em>有效地址 = PC 当前值（通常为下一条指令的地址） + 指令中的编码值</em>。</li>
-<li><strong><em>R_X86_64_32</em></strong>：重定位一个使用 <strong>32 位绝对地址</strong>的引用。CPU 直接使用在指令中编码的 32 位值作为有效地址，不需要进一步修改。</li>
+<li><em><strong>重定位</strong></em>：<ul>
+<li><em><strong>重定位节和符号定义</strong></em>：链接器将所有相同类型的节合并为同一类型的聚合节。然后，链接器将运行时内存地址赋给新的聚合节、输入模块定义的每个节，以及输入模块定义的每个符号；</li>
+<li><em><strong>重定位节中的符号引用</strong></em>：链接器借助于可重定位目标模块中的“<strong>重定位条目</strong>”来修改代码节（.text）和数据节（.data）中对每个符号的引用，使得它们指向正确的运行时地址。</li>
+<li><em><strong>重定位条目</strong></em>：当汇编器遇到对最终位置未知的目标引用时，它就会生成一个重定位条目，以告知链接器在合并生成可执行文件时如何修改这个引用。<strong>代码重定位条目放在 “.rel.text” 中；已初始化全局数据/静态变量的重定位条目放在 “.rel.data 中</strong>。常用的两种重定位类型（支持 X86-64 小型代码模型）：<ul>
+<li><em><strong>R_X86_64_PC32</strong></em>：重定位一个使用 <strong>32 位 PC 相对地址</strong>的引用。<em>有效地址 = PC 当前值（通常为下一条指令的地址） + 指令中的编码值</em>。</li>
+<li><em><strong>R_X86_64_32</strong></em>：重定位一个使用 <strong>32 位绝对地址</strong>的引用。CPU 直接使用在指令中编码的 32 位值作为有效地址，不需要进一步修改。</li>
 </ul>
 </li>
 </ul>
@@ -321,19 +325,19 @@
 <ol start="143">
 <li>（Page：483）ELF 可执行文件：</li>
 </ol>
-<p><img src="14.png" alt=""></p>
+<p><img src="14.png"></p>
 <ul>
 <li>结构类似于“ELF 可重定向文件”；</li>
-<li><strong><em>.init</em></strong>：定义了函数 _init，由程序的初始化代码使用；</li>
+<li><em><strong>.init</strong></em>：定义了函数 _init，由程序的初始化代码使用；</li>
 <li><strong>程序头部表</strong>（Program Headers）描述了可执行文件连续的片（chunk）被映射到连续内存段的具体映射关系；<strong>多个经过对齐的 Section 被组织成 Segmnet</strong>，同样再经过对齐后排列并映射到进程的 VAS 中；</li>
 </ul>
-<p>- <strong><em>Linux X86-64 运行时内存映像</em></strong>： </p>
-<p><img src="15.png" alt=""></p>
+<p>- <em><strong>Linux X86-64 运行时内存映像</strong></em>： </p>
+<p><img src="15.png"></p>
 <ul>
 <li>每个 Linux 进程对应于一个运行时内存映像；</li>
 <li>从 VAS 的地址 0x400000 处开始加载。VAS 的最高地址段为内核保留（操作系统驻留在内存中的部分）；</li>
 <li>加载器从 <strong>_start</strong> 函数（ctr1.o）开始执行代码，然后调用系统启动函数 <strong>__libc_start_main</strong>（libc.so），然后执行 main 函数；</li>
-<li><strong><em>加载细节</em></strong>：当 Shell 运行一个程序时，父 Shell 进程生成一个子进程，它是父进程的一个复制。子进程通过 <code>execve</code> 系统调用启动加载器。加载器删除子进程现有的虚拟内存段，并创建一组新的代码、数据、堆和栈段。新的栈和堆被初始化为 0。通过将 VAS 中的页映射到可执行文件的页大小的片，新的代码和数据段被初始化为可执行文件的内容。然后，加载器从 _start 开始执行代码。<strong>除了一些头部信息，在加载过程中没有任何从磁盘到内存的数据复制。直到 CPU 引用一个被映射的虚拟页时才会进行复制，此时，操作系统利用它的页面调度机制自动将页面从磁盘传送到内存</strong>。</li>
+<li><em><strong>加载细节</strong></em>：当 Shell 运行一个程序时，父 Shell 进程生成一个子进程，它是父进程的一个复制。子进程通过 <code>execve</code> 系统调用启动加载器。加载器删除子进程现有的虚拟内存段，并创建一组新的代码、数据、堆和栈段。新的栈和堆被初始化为 0。通过将 VAS 中的页映射到可执行文件的页大小的片，新的代码和数据段被初始化为可执行文件的内容。然后，加载器从 _start 开始执行代码。<strong>除了一些头部信息，在加载过程中没有任何从磁盘到内存的数据复制。直到 CPU 引用一个被映射的虚拟页时才会进行复制，此时，操作系统利用它的页面调度机制自动将页面从磁盘传送到内存</strong>。</li>
 </ul>
 <ol start="144">
 <li>（Page：486）<strong>共享库</strong>：</li>
@@ -341,9 +345,9 @@
 <ul>
 <li>相较于“静态库”，<strong>不需要将数据和代码复制和嵌入到可执行文件中</strong>；</li>
 <li>在内存中，一个共享库的 “.text” 代码段可以被不同的正在运行的进程共享；<ul>
-<li><strong><em>PIC</em></strong>（Position-Independent Code，位置无关代码）：可以加载而无需重定位的代码（<strong>-fPIC/-fpic</strong>）；<ul>
-<li><strong><em>GOT</em></strong>（Global Offset Table，全局偏移量表）：存放在 .data 段中。每个被目标模块引用的全局数据目标（<strong>过程或全局变量</strong>）都有一个 8 字节的条目。编译器还为这些条目生成了对应的“重定位记录”。在加载时，动态链接器会重定向 GOT 中的条目，<strong>每个引用全局目标的目标模块都有自己的 GOT</strong>；</li>
-<li><strong><em>PLT</em></strong>（Procedure Linkage Table，过程链接表）：如果一个目标模块调用定义在共享库中的任何函数，那么它就有自己的 GOT 与 PLT。<strong>GOT 是 .data 段的一部分，PLT 是 .text 段的一部分</strong>。实际运行时，程序自己的各个节与共享库的各个节都会被加载到当前进程的 VAS 中的不同位置，因此有其各自的 GOT 与 PLT。</li>
+<li><em><strong>PIC</strong></em>（Position-Independent Code，位置无关代码）：可以加载而无需重定位的代码（**-fPIC/-fpic**）；<ul>
+<li><em><strong>GOT</strong></em>（Global Offset Table，全局偏移量表）：存放在 .data 段中。每个被目标模块引用的全局数据目标（<strong>过程或全局变量</strong>）都有一个 8 字节的条目。编译器还为这些条目生成了对应的“重定位记录”。在加载时，动态链接器会重定向 GOT 中的条目，<strong>每个引用全局目标的目标模块都有自己的 GOT</strong>；</li>
+<li><em><strong>PLT</strong></em>（Procedure Linkage Table，过程链接表）：如果一个目标模块调用定义在共享库中的任何函数，那么它就有自己的 GOT 与 PLT。<strong>GOT 是 .data 段的一部分，PLT 是 .text 段的一部分</strong>。实际运行时，程序自己的各个节与共享库的各个节都会被加载到当前进程的 VAS 中的不同位置，因此有其各自的 GOT 与 PLT。</li>
 </ul>
 </li>
 </ul>
@@ -352,8 +356,8 @@
 <li>使用了共享库的应用其<strong>执行入口为“动态链接器”</strong>，由它完成对共享库的加载和处理，然后再将控制权交还给应用程序；</li>
 <li>JNI（Java Native Interface）的基本思想：将本地 C 函数编译到一个共享库中。当一个正在运行的 Java 程序试图调用该函数时，Java 解释器利用 <code>dlopen</code> 接口动态加载共享库，然后调用该函数；</li>
 </ul>
-<p>- <strong><em>GOT 与 PLT 协作流程</em></strong>：</p>
-<p><img src="16.png" alt=""></p>
+<p>- <em><strong>GOT 与 PLT 协作流程</strong></em>：</p>
+<p><img src="16.png"></p>
 <ul>
 <li><strong>初始时</strong>，每个 GOT 条目都指向对应 PLT 条目的第二条指令；</li>
 <li><strong>第一步</strong>：不直接调用 addvec，程序调用进入 PLT[2]，这是 addvec 的 PLT 条目；</li>
@@ -366,9 +370,9 @@
 <li>（Page：492）<strong>库打桩</strong>：允许<strong>截获对共享库函数的调用</strong>，取而代之执行自己的代码。</li>
 </ol>
 <ul>
-<li><strong><em>编译时打桩</em></strong>：利用编译时的 “-I.” 参数，让编译器优先在本地目录查找共享库的头文件，然后在该头文件中，我们使用宏来替换实际运行的函数；</li>
-<li><strong><em>链接时打桩</em></strong>：利用 Linux 静态链接器的 “<strong>--wrap f</strong>” 标志。这个标志告诉链接器，把对符号 f 的引用解析为 __wrap_f，并且把对符号 __real_f 的引用解析为 f；</li>
-<li><strong><em>运行时打桩</em></strong>：利用动态链接器的 “<strong>LD_PRELOAD</strong>” 环境变量。如果该变量被设置为一个共享库路径名的列表，则当加载和执行一个程序时，需要解析未定义引用时，<strong>动态链接器会优先搜索 LD_PRELOAD 指定的库</strong>。</li>
+<li><em><strong>编译时打桩</strong></em>：利用编译时的 “-I.” 参数，让编译器优先在本地目录查找共享库的头文件，然后在该头文件中，我们使用宏来替换实际运行的函数；</li>
+<li><em><strong>链接时打桩</strong></em>：利用 Linux 静态链接器的 “<strong>--wrap f</strong>” 标志。这个标志告诉链接器，把对符号 f 的引用解析为 __wrap_f，并且把对符号 __real_f 的引用解析为 f；</li>
+<li><em><strong>运行时打桩</strong></em>：利用动态链接器的 “<strong>LD_PRELOAD</strong>” 环境变量。如果该变量被设置为一个共享库路径名的列表，则当加载和执行一个程序时，需要解析未定义引用时，<strong>动态链接器会优先搜索 LD_PRELOAD 指定的库</strong>。</li>
 </ul>
 <h3 id="第八章、异常控制流"><a href="#第八章、异常控制流" class="headerlink" title="第八章、异常控制流"></a>第八章、异常控制流</h3><ol start="146">
 <li>（Page：501）异常控制流（Exceptional Control Flow，ECF）：现代系统通过使控制流发生<strong>突变</strong>来对各种情况（异常）做出反应。当处理器检测到有事件发生时，它就会通过一张叫做“<strong>异常表</strong>”的跳转表（其起始地址存放在“<strong>异常表基址寄存器</strong>”中），进行一个间接过程调用，到一个专门设计用来处理这类事件的子程序中。异常处理完毕后，根据异常事件类型，会发生：</li>
@@ -381,31 +385,31 @@
 <ol start="147">
 <li>（Page：504）异常的类别：</li>
 </ol>
-<p><img src="17.png" alt=""></p>
+<p><img src="17.png"></p>
 <ul>
-<li><strong><em>中断</em></strong>（一般指“I/O 硬件中断”）：在当前指令完成后，处理器注意到中断引脚电压升高，就从系统总线读取异常号，然后调用“<strong>中断处理程序</strong>”进行处理；</li>
-<li><strong><em>陷阱和系统调用</em></strong>：是有意的异常，是执行一条指令的结果。其最重要的用途是<strong>在用户程序与内核之间提供一个接口</strong>。<code>syscall</code> 指令会导致一个到异常处理程序的陷阱，这个程序解析参数，并调用适当的内核程序；</li>
-<li><strong><em>故障</em></strong>：由错误情况引起，可能能够被故障处理程序修正。常见的一个示例是“<strong>缺页异常</strong>”，即指令引用一个虚拟地址，而与之相对的物理页面不在内存中。其他的还有“除零错误”等；</li>
-<li><strong><em>终止</em></strong>：不可恢复的致命错误造成的，通常是硬件错误；</li>
+<li><em><strong>中断</strong></em>（一般指“I/O 硬件中断”）：在当前指令完成后，处理器注意到中断引脚电压升高，就从系统总线读取异常号，然后调用“<strong>中断处理程序</strong>”进行处理；</li>
+<li><em><strong>陷阱和系统调用</strong></em>：是有意的异常，是执行一条指令的结果。其最重要的用途是<strong>在用户程序与内核之间提供一个接口</strong>。<code>syscall</code> 指令会导致一个到异常处理程序的陷阱，这个程序解析参数，并调用适当的内核程序；</li>
+<li><em><strong>故障</strong></em>：由错误情况引起，可能能够被故障处理程序修正。常见的一个示例是“<strong>缺页异常</strong>”，即指令引用一个虚拟地址，而与之相对的物理页面不在内存中。其他的还有“除零错误”等；</li>
+<li><em><strong>终止</strong></em>：不可恢复的致命错误造成的，通常是硬件错误；</li>
 </ul>
 <p>* 0~31 的异常号对应的是由 Intel 架构师定义的异常，这些异常通常会被分别映射到 Linux 内核的不同信号上（比如 “<strong>SIGSEGV</strong>” 信号导致的 “Segmentation Fault”）。 </p>
 <ol start="148">
 <li>（Page：508）<strong>进程</strong>：</li>
 </ol>
-<p>- <strong><em>提供给应用程序的抽象</em></strong>：</p>
+<p>- <em><strong>提供给应用程序的抽象</strong></em>：</p>
 <ul>
 <li>一个独立的逻辑控制流：提供一个假象，好像我们的程序<strong>独占地使用处理器</strong>，即“抢占式系统”。相对于“物理控制流（处理器的实际执行逻辑）”；</li>
 <li>一个私有的地址空间：提供一个假象，好像我们的程序<strong>独占地使用内存系统</strong>（系统地址空间）。</li>
 </ul>
-<p>- <strong><em>用户模式与内核模式</em></strong>：</p>
+<p>- <em><strong>用户模式与内核模式</strong></em>：</p>
 <ul>
 <li>处理器通常是用某个控制寄存器的一个<strong>模式位</strong>来标记当前进程的权限；</li>
 <li>进程从用户模式<strong>转变为内核模式的唯一方法</strong>是通过诸如：中断、故障或陷入“系统调用”这样的异常（异常处理程序运行在内核模式中）；</li>
 </ul>
-<p>- <strong><em>上下文切换</em></strong>：</p>
+<p>- <em><strong>上下文切换</strong></em>：</p>
 <ul>
-<li><strong><em>进程上下文</em></strong>：内核重新启动一个被抢占的进程所需的状态（<em>通用目的寄存器、浮点寄存器、程序计数器、用户栈、状态寄存器、内核栈、描述地址空间的页表、包含有关当前进程信息的进程表，以及已打开文件的“文件表”等</em>）；</li>
-<li><strong><em>上下文切换</em></strong>：<ul>
+<li><em><strong>进程上下文</strong></em>：内核重新启动一个被抢占的进程所需的状态（<em>通用目的寄存器、浮点寄存器、程序计数器、用户栈、状态寄存器、内核栈、描述地址空间的页表、包含有关当前进程信息的进程表，以及已打开文件的“文件表”等</em>）；</li>
+<li><em><strong>上下文切换</strong></em>：<ul>
 <li>由<strong>内核</strong>中的“调度器”执行，执行时会发生<strong>时钟中断</strong>（维持系统时间、促使环境的切换，保证所有进程共享 CPU 时间片）或其他类型中断；</li>
 <li>保存当前进程上下文；</li>
 <li>恢复某个先前被抢占进程被保存的上下文；</li>
@@ -413,15 +417,15 @@
 </ul>
 </li>
 </ul>
-<p><img src="18.png" alt=""></p>
+<p><img src="18.png"></p>
 <ul>
 <li>进程 A 由于系统调用 read 而陷入到内核，内核中的陷阱处理程序请求磁盘控制器的 DMA 传输。由于磁盘控制器需要一段相对较长的时间，因此内核执行从进程 A 到 B 的上下文切换。直到某个时刻，磁盘发出一个中断信号，表示数据已经传送到内存，此时内核从进程 B 切换到 A。</li>
 </ul>
-<p>- <strong><em>进程的三种状态</em></strong>：</p>
+<p>- <em><strong>进程的三种状态</strong></em>：</p>
 <ul>
-<li><strong><em>运行</em></strong>：在 CPU 上执行，或在等待被执行；</li>
-<li><strong><em>停止</em></strong>：进程的执行被挂起，且不会被调度。当收到 SIGSTOP、SIGTSTP、SIGTTIN 或 SIGTTOU 信号时，进程会停止直到收到 <strong>SIGCONT</strong> 信号；</li>
-<li><strong><em>终止</em></strong>：进程永远地停止了。原因可能为：<ul>
+<li><em><strong>运行</strong></em>：在 CPU 上执行，或在等待被执行；</li>
+<li><em><strong>停止</strong></em>：进程的执行被挂起，且不会被调度。当收到 SIGSTOP、SIGTSTP、SIGTTIN 或 SIGTTOU 信号时，进程会停止直到收到 <strong>SIGCONT</strong> 信号；</li>
+<li><em><strong>终止</strong></em>：进程永远地停止了。原因可能为：<ul>
 <li>(1) 收到一个信号，其默认行为是终止进程；</li>
 <li>(2) 从主程序返回；</li>
 <li>(3) 调用 <code>exit</code> 函数。</li>
@@ -435,7 +439,8 @@
 <span class="token keyword">void</span> <span class="token function">unix_error</span><span class="token punctuation">(</span><span class="token keyword">char</span> <span class="token operator">*</span>msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"%s: %s\n"</span><span class="token punctuation">,</span> msg<span class="token punctuation">,</span> <span class="token function">strerror</span><span class="token punctuation">(</span>errno<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>当 Unix 系统级函数遇到错误时，它们通常会返回 -1</strong>，并设置全局整数变量 <code>errno</code> 来表示具体的错误类型；</li>
 <li>可以利用“<strong>错误处理包装</strong>”来简化对系统调用的错误处理过程。</li>
@@ -443,13 +448,14 @@
 <ol start="150">
 <li>（Page：513）进程控制：</li>
 </ol>
-<p>- <strong><em>获取进程 ID</em></strong>（<code>getpid</code>/<code>getppid</code>）：</p>
+<p>- <em><strong>获取进程 ID</strong></em>（<code>getpid</code>/<code>getppid</code>）：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
 
 pid_t <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 获得调用进程的 PID；</span>
-pid_t <span class="token function">getppid</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 获得调用进程父进程的 PID；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>创建和终止进程</em></strong>（<code>fork</code>）：</p>
+pid_t <span class="token function">getppid</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 获得调用进程父进程的 PID；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>创建和终止进程</strong></em>（<code>fork</code>）：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   pid_t pid<span class="token punctuation">;</span>
   <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
@@ -462,70 +468,71 @@ pid_t <span class="token function">getppid</span><span class="token punctuation"
   <span class="token comment" spellcheck="true">/* 父进程 */</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"parent: x=%d\n"</span><span class="token punctuation">,</span> <span class="token operator">--</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "parent: x=0".</span>
   <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>子进程得到<strong>与父进程用户级虚拟地址空间相同的一份副本</strong>，同时子进程还<strong>获得与父进程中任何打开文件描述符相同的副本</strong>；</li>
 <li><code>fork</code> 函数调用一次，返回两次。一次是在父进程中，一次在子进程中。<strong>子进程中该函数的返回值永远为 0，父进程中返回子进程的实际 PID</strong>；</li>
 <li>进程并发执行。内核交替执行它们的逻辑控制流中的指令；</li>
 <li>父子进程地址空间独立。地址空间内容（<em>用户栈、本地变量值、堆、全局变量和代码</em>）相同但是独立。</li>
 </ul>
-<p>- <strong><em>回收子进程</em></strong>（<code>waitpid</code> / <code>wait</code>）：</p>
+<p>- <em><strong>回收子进程</strong></em>（<code>waitpid</code> / <code>wait</code>）：</p>
 <ul>
 <li>当进程终止时，内核并<strong>不会立即把它从系统中清除</strong>。此时，该进程被称为“<strong>僵死进程</strong>”，它被保持在一种已终止的状态中，直到被它的父进程回收。当父进程回收已终止的子进程时，内核<strong>将子进程的退出状态传递给父进程</strong>，然后抛弃已终止的进程；</li>
 <li><strong>类 Unix 操作系统中，init 进程是所有进程的祖先，它是在系统启动时由内核创建的，其 PID 为 1</strong>。在特殊情况下，它会代替父进程来回收僵死的子进程。</li>
 </ul>
-<p>- <strong><em>让进程休眠</em></strong>（<code>sleep</code> / <code>pause</code>）：</p>
+<p>- <em><strong>让进程休眠</strong></em>（<code>sleep</code> / <code>pause</code>）：</p>
 <ul>
 <li><code>sleep</code> 函数将一个进程挂起一段指定的时间；</li>
 <li>Pause is made obsolete by <code>sigsuspend</code>.</li>
 </ul>
-<p>- <strong><em>加载并运行文件程序</em></strong>（<code>execve</code>）：</p>
+<p>- <em><strong>加载并运行文件程序</strong></em>（<code>execve</code>）：</p>
 <ul>
 <li><code>execve</code> 调用一次，从不返回（除非出现错误）；</li>
 <li><code>execve</code> 在当前进程的上下文中加载并运行一个新的程序，它会<strong>覆盖当前进程的地址空间</strong>，但<strong>不会创建一个新的进程</strong>。新的程序仍然有相同的 PID，并且<strong>继承了调用该函数时已打开的所有文件描述符</strong>。</li>
 </ul>
-<p>- <strong><em>新程序用户栈的典型结构，参数和环境变量</em></strong>（<code>getenv</code> / <code>setenv</code> / <code>unsetenv</code>）：</p>
-<p><img src="19.png" alt=""></p>
+<p>- <em><strong>新程序用户栈的典型结构，参数和环境变量</strong></em>（<code>getenv</code> / <code>setenv</code> / <code>unsetenv</code>）：</p>
+<p><img src="19.png"></p>
 <ul>
-<li>全局变量 <code>environ</code> <strong>指向环境变量字符串指针数组的第一个元素</strong>（<em>envp[0]</em>）；</li>
+<li>全局变量 <code>environ</code> <strong>指向环境变量字符串指针数组的第一个元素</strong>（*envp[0]*）；</li>
 <li>栈中的 <em>envp</em> 与 <em>argv</em> 指针数组<strong>以 null 结尾</strong>（分割）。其中每个指针都指向栈中的一个环境变量或参数字符串。</li>
 </ul>
 <ol start="151">
 <li>（Page：526）信号：<strong>允许进程和内核中断其他进程</strong>。一个信号就是一条消息，它通知<strong>进程</strong>系统中发生了一个某种类型的事件。</li>
 </ol>
-<p><img src="20.png" alt=""></p>
+<p><img src="20.png"></p>
 <ul>
 <li>在任何时刻，<strong>一种类型至多只会有一个待处理信号</strong>；</li>
 <li>一个进程可以发送信号给自己；</li>
 <li>内核为每个进程在 <strong>pending 位向量中维护着待处理信号的集合</strong>，而在 <strong>blocked 位向量中维护着被阻塞的信号集合</strong>。</li>
 </ul>
-<p>- <strong><em>发送信号</em></strong>：</p>
+<p>- <em><strong>发送信号</strong></em>：</p>
 <ul>
-<li><strong><em>进程组</em></strong>：每个进程都属于一个进程组。默认情况下，<strong>一个子进程与它的父进程同属一个进程组</strong>（<code>getpgrp</code> / <code>setpgid</code>）；</li>
-<li><strong><em>使用 /bin/kill 程序发送信号</em></strong>：“<em>/bin/kill -9 15213</em>”，发送信号 9（SIGKILL）给进程 15213。一个负的 PID 会导致信号被发送到进程组 PID 中的每个进程；</li>
-<li><strong><em>从键盘发送信号</em></strong>：通过键盘发出的信号会<strong>发送给前台进程组中的每个进程</strong>；</li>
-<li><strong><em>使用 kill 函数发送信号</em></strong>：<em>int kill(pid_t pid, int sig);</em></li>
-<li><strong><em>使用 alarm 函数发送信号</em></strong>：进程可以通过该函数向自己发送 SIGALRM 信号。</li>
+<li><em><strong>进程组</strong></em>：每个进程都属于一个进程组。默认情况下，<strong>一个子进程与它的父进程同属一个进程组</strong>（<code>getpgrp</code> / <code>setpgid</code>）；</li>
+<li><em><strong>使用 /bin/kill 程序发送信号</strong></em>：“*/bin/kill -9 15213*”，发送信号 9（SIGKILL）给进程 15213。一个负的 PID 会导致信号被发送到进程组 PID 中的每个进程；</li>
+<li><em><strong>从键盘发送信号</strong></em>：通过键盘发出的信号会<strong>发送给前台进程组中的每个进程</strong>；</li>
+<li><em><strong>使用 kill 函数发送信号</strong></em>：<em>int kill(pid_t pid, int sig);</em></li>
+<li><em><strong>使用 alarm 函数发送信号</strong></em>：进程可以通过该函数向自己发送 SIGALRM 信号。</li>
 </ul>
-<p>- <strong><em>接收信号</em></strong>：</p>
+<p>- <em><strong>接收信号</strong></em>：</p>
 <ul>
 <li>当内核<strong>把进程 p 从内核模式切换到用户模式时</strong>（如从系统调用返回或完成了一次上下文切换），它会检查进程 p 的未被阻塞的待处理信号集合（<em>pending &amp; ~blocked</em>）。如果集合非空，则内核会选择集合中的某个信号 k（通常是最小的 k），并强制 p 接受信号 k。</li>
 <li>SIGSTOP 和 SIGKILL 信号的默认行为无法被修改；</li>
 <li>可以通过 <code>singal</code> 函数来修改信号的默认行为；</li>
 <li>信号处理程序可以被其他信号处理程序中断；</li>
 </ul>
-<p><img src="21.png" alt=""></p>
+<p><img src="21.png"></p>
 <ul>
 <li>内核默认阻塞任何当前处理程序正在处理信号类型的待处理信号（<strong>新接收的同类型信号会变为“待处理”，不会被立即处理</strong>），任何时刻只会有一个“待处理”信号，多余的同类型信号将被丢弃。因此，<strong>*不可以用信号来对其他进程中发生的事件计数</strong>；</li>
 <li><strong>未处理的信号是不排队的</strong>，这意味着，如果存在一个未处理的信号就表明<strong>至少</strong>有一个信号已经到达了；</li>
 <li>可以使用 <code>sigprocmask</code> 和其他相关函数来设置和解除阻塞（blocked）的信号类型；</li>
 <li><strong>信号处理程序会与主程序“并发”地运行</strong>（*这里指处理程序会打断主程序指令执行的完整性，进而导致“数据竞争”），一些原则：<ul>
-<li><strong><em>处理程序要尽可能的简单</em></strong>：例如，处理程序可能只是简单地设置全局标志并立即返回；所有与接收信号相关的处理都由主程序执行，它周期性地检查（并重置）这个表示位；</li>
-<li><strong><em>在处理程序中仅调用异步信号安全的函数</em></strong>：即这些函数<strong>仅访问局部变量</strong>，或<strong>不能被信号处理程序中断</strong>；</li>
-<li><strong><em>保存和恢复 errno</em></strong>：在进入处理程序时保存 errno，返回之前恢复它；</li>
-<li><strong><em>阻塞所有信号，保护对共享全局数据结构的访问</em></strong>：在访问共享的全局数据之前，阻塞所有信号，以防止数据竞争；</li>
-<li><strong><em>用 volatile 声明全局变量</em></strong>：告诉编译器不要缓存该变量，即每次访问都从内存中读取；</li>
-<li><strong><em>用 sig_atomic_t 声明标志</em></strong>：保障对全局标志变量的读写是原子性的；</li>
+<li><em><strong>处理程序要尽可能的简单</strong></em>：例如，处理程序可能只是简单地设置全局标志并立即返回；所有与接收信号相关的处理都由主程序执行，它周期性地检查（并重置）这个表示位；</li>
+<li><em><strong>在处理程序中仅调用异步信号安全的函数</strong></em>：即这些函数<strong>仅访问局部变量</strong>，或<strong>不能被信号处理程序中断</strong>；</li>
+<li><em><strong>保存和恢复 errno</strong></em>：在进入处理程序时保存 errno，返回之前恢复它；</li>
+<li><em><strong>阻塞所有信号，保护对共享全局数据结构的访问</strong></em>：在访问共享的全局数据之前，阻塞所有信号，以防止数据竞争；</li>
+<li><em><strong>用 volatile 声明全局变量</strong></em>：告诉编译器不要缓存该变量，即每次访问都从内存中读取；</li>
+<li><em><strong>用 sig_atomic_t 声明标志</strong></em>：保障对全局标志变量的读写是原子性的；</li>
 </ul>
 </li>
 <li>使用 <code>sigaction</code> 函数明确指定想要使用的信号处理语义；</li>

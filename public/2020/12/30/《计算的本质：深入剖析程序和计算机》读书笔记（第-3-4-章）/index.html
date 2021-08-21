@@ -8,19 +8,19 @@
 <li>没有持久化的存储，且几乎没有 RAM；</li>
 <li>硬编码的“<strong>规则集合</strong>”，决定在相应输入下如何从一个状态切换到另一个状态；</li>
 <li>DFA 的“确定性”：<ul>
-<li><strong><em>没有冲突</em></strong>：一个状态对于同样的输入，不能有多个规则；</li>
-<li><strong><em>没有遗漏</em></strong>：每个状态都必须针对每个可能的输入字符有至少一个规则。</li>
+<li><em><strong>没有冲突</strong></em>：一个状态对于同样的输入，不能有多个规则；</li>
+<li><em><strong>没有遗漏</strong></em>：每个状态都必须针对每个可能的输入字符有至少一个规则。</li>
 </ul>
 </li>
 </ul>
-<p>- <strong><em>一个简易的 DFA（确定性有限自动机）</em></strong>：</p>
-<p><img src="1.png" alt=""></p>
+<p>- <em><strong>一个简易的 DFA（确定性有限自动机）</strong></em>：</p>
+<p><img src="1.png"></p>
 <ul>
 <li>上图中状态 “2” 为<strong>接受状态</strong>；</li>
 <li>机器接受任何奇数个数的 “a” 组成的字符串（可进行的计算）。</li>
 </ul>
-<p><img src="2.png" alt=""></p>
-<p>- <strong><em>使用“规则手册（转移函数）”模拟 DFA 行为</em></strong>：</p>
+<p><img src="2.png"></p>
+<p>- <em><strong>使用“规则手册（转移函数）”模拟 DFA 行为</strong></em>：</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">FARule</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:state</span><span class="token punctuation">,</span> <span class="token symbol">:char</span><span class="token punctuation">,</span> <span class="token symbol">:next_state</span><span class="token punctuation">)</span>
   <span class="token keyword">def</span> applies_to<span class="token operator">?</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> char<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 指示规则是否可用；</span>
     <span class="token keyword">self</span><span class="token punctuation">.</span>state <span class="token operator">==</span> state <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">.</span>char <span class="token operator">==</span> char
@@ -63,7 +63,8 @@ rulebook <span class="token operator">=</span> <span class="token constant">DFAR
 <span class="token punctuation">]</span><span class="token punctuation">)</span>
 dfa <span class="token operator">=</span> <span class="token constant">DFA</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> rulebook<span class="token punctuation">)</span>
 dfa<span class="token punctuation">.</span><span class="token function">read_string</span><span class="token punctuation">(</span><span class="token string">'baaab'</span><span class="token punctuation">)</span>
-puts dfa<span class="token punctuation">.</span>accepting<span class="token operator">?</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+puts dfa<span class="token punctuation">.</span>accepting<span class="token operator">?</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="12">
 <li>（Page：65）非确定性有限自动机（<strong>NFA</strong>）：</li>
 </ol>
@@ -72,9 +73,9 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
 <li>在向下一个状态转移时会<strong>有多种可能性</strong>，或<strong>有时根本无法转移</strong>，即进入到一个错误状态（卡死状态）；</li>
 <li>能被“有限自动机”识别的语言称为“<strong>正则语言</strong>”。</li>
 </ul>
-<p>- <strong><em>一个简易的 NFA</em></strong>：</p>
-<p><img src="3.png" alt=""></p>
-<p>- <strong><em>模拟 NFA 行为</em></strong>：</p>
+<p>- <em><strong>一个简易的 NFA</strong></em>：</p>
+<p><img src="3.png"></p>
+<p>- <em><strong>模拟 NFA 行为</strong></em>：</p>
 <ul>
 <li>通过跟踪一台 NFA 当前<strong>所有可能的状态</strong>来模拟一台简单的 NFA；</li>
 <li>可以通过 <strong>DFS</strong> 或“<strong>线程分叉</strong>”来找到一条输入序列可以被 NFA 接受的详细“路径”。但若不需知道路径的详情，可以仅通过查询每一个字符输入时的“<strong>状态集合变化</strong>”来判断输入序列可否被接受。</li>
@@ -103,14 +104,15 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
       <span class="token function">read_char</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span>
     <span class="token keyword">end</span>
   <span class="token keyword">end</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>自由移动（Free Move，ε-moves）</em></strong>：</p>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>自由移动（Free Move，ε-moves）</strong></em>：</p>
 <ul>
 <li>NFA-ε；</li>
 <li>让机器<strong>无需读取任何输入就能自发遵照执行</strong>；</li>
 <li><strong>可用于组合单体 NFA</strong>（应用于“正则表达式”的解析中）。</li>
 </ul>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li>这里可以使用 <code>nil</code> 来代替触发“自由移动”的“输入”（实际上无需任何输入）；</li>
 </ul>
@@ -128,8 +130,9 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
   <span class="token keyword">def</span> current_states  <span class="token comment" spellcheck="true"># 覆盖原有属性（动态属性）；</span>
     rulebook<span class="token punctuation">.</span><span class="token function">follow_free_moves</span><span class="token punctuation">(</span><span class="token keyword">super</span><span class="token punctuation">)</span>
   <span class="token keyword">end</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong>*一个 NFA 对象的封装 *</strong>：</p>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- ***一个 NFA 对象的封装 ***：</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">NFADesign</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:start_state</span><span class="token punctuation">,</span> <span class="token symbol">:accept_states</span><span class="token punctuation">,</span> <span class="token symbol">:rulebook</span><span class="token punctuation">)</span>
   <span class="token keyword">def</span> accepts<span class="token operator">?</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
     to_nfa<span class="token punctuation">.</span>tap <span class="token punctuation">{</span> <span class="token operator">|</span>nfa<span class="token operator">|</span> nfa<span class="token punctuation">.</span><span class="token function">read_string</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">.</span>accepting<span class="token operator">?</span>  <span class="token comment" spellcheck="true"># "tap" 方法对代码块求值，并返回调用它的对象；</span>
@@ -137,19 +140,20 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
   <span class="token keyword">def</span> <span class="token function">to_nfa</span><span class="token punctuation">(</span>current_states <span class="token operator">=</span> <span class="token constant">Set</span><span class="token punctuation">[</span>start_state<span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token constant">NFA</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>current_states<span class="token punctuation">,</span> accept_states<span class="token punctuation">,</span> rulebook<span class="token punctuation">)</span>
   <span class="token keyword">end</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="13">
 <li>（Page：74）<strong>正则表达式</strong>：NFA 的一个重要应用，<strong>每一个与正则表达式匹配的字符串都能被其对应的 NFA 接受</strong>。可以将 NFA 理解为正则的一个“指称语义”；</li>
 </ol>
 <ul>
 <li>大多数现实中的正则库会使用“<strong>回溯算法</strong>”而非转换为 NFA 来更直接地处理正则表达式。</li>
 </ul>
-<p>- <strong><em>空（Empty）</em></strong>：</p>
-<p><img src="8.png" alt=""></p>
-<p>- <strong><em>单字符（Literal）</em></strong>：</p>
-<p><img src="9.png" alt=""></p>
-<p>- <strong><em>连接（Concatenate）</em></strong>：</p>
-<p><img src="5.png" alt=""></p>
+<p>- <em><strong>空（Empty）</strong></em>：</p>
+<p><img src="8.png"></p>
+<p>- <em><strong>单字符（Literal）</strong></em>：</p>
+<p><img src="9.png"></p>
+<p>- <em><strong>连接（Concatenate）</strong></em>：</p>
+<p><img src="5.png"></p>
 <ul>
 <li><strong>直接将两个 NFA 按顺序连接到一起，用“自由移动”把它们联结在一起</strong>，并保留第二个 NFA 的接受状态；</li>
 <li>该组合机器的结构：<ul>
@@ -160,8 +164,8 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
 </ul>
 </li>
 </ul>
-<p>- <strong><em>选择（Choose）</em></strong>：</p>
-<p><img src="6.png" alt=""></p>
+<p>- <em><strong>选择（Choose）</strong></em>：</p>
+<p><img src="6.png"></p>
 <ul>
 <li><strong>增加一个新的起始状态，并通过“自由移动”将两台 NFA 连接起来</strong>；</li>
 <li>该组合机器的结构：<ul>
@@ -172,8 +176,8 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
 </ul>
 </li>
 </ul>
-<p>- <strong><em>重复（Repeat）</em></strong>：</p>
-<p><img src="7.png" alt=""></p>
+<p>- <em><strong>重复（Repeat）</strong></em>：</p>
+<p><img src="7.png"></p>
 <ul>
 <li><strong>从它的接受状态到开始状态增加一个自由移动</strong>（可以匹配多个）；</li>
 <li><strong>增加一个可自由移动到旧的开始状态的新状态，并使其作为接受状态</strong>（可以匹配空字符串）；</li>
@@ -186,7 +190,7 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
 </ul>
 </li>
 </ul>
-<p>- <strong><em>定义正则表达式 AST 上的相关类</em></strong>：</p>
+<p>- <em><strong>定义正则表达式 AST 上的相关类</strong></em>：</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token keyword">module</span> <span class="token constant">Pattern</span>
   <span class="token keyword">def</span> <span class="token function">bracket</span><span class="token punctuation">(</span>outer_precedence<span class="token punctuation">)</span>
     <span class="token keyword">if</span> precedence <span class="token operator">&lt;</span> outer_precedence
@@ -296,7 +300,7 @@ puts dfa<span class="token punctuation">.</span>accepting<span class="token oper
     <span class="token punctuation">}</span> <span class="token operator">+</span>
     <span class="token comment" spellcheck="true"># 另一些“自由移动”，把新的起始状态与旧的起始状态连接起来；</span>
     <span class="token punctuation">[</span><span class="token constant">FARule</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>start_state<span class="token punctuation">,</span> <span class="token keyword">nil</span><span class="token punctuation">,</span> pattern_nfa_design<span class="token punctuation">.</span>start_state<span class="token punctuation">)</span><span class="token punctuation">]</span> 
-
+    
     rulebook <span class="token operator">=</span> <span class="token constant">NFARuleBook</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>rules <span class="token operator">+</span> extra_rules<span class="token punctuation">)</span>
     <span class="token constant">NFADesign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>start_state<span class="token punctuation">,</span> accept_states<span class="token punctuation">,</span> rulebook<span class="token punctuation">)</span>
   <span class="token keyword">end</span>
@@ -311,7 +315,8 @@ pattern <span class="token operator">=</span> <span class="token constant">Repea
   <span class="token constant">Concatenate</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
     <span class="token constant">Literal</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token constant">Choose</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Empty</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">,</span> <span class="token constant">Literal</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-puts pattern<span class="token punctuation">.</span>to_nfa_design<span class="token punctuation">.</span>accepts<span class="token operator">?</span><span class="token punctuation">(</span><span class="token string">'abaab'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+puts pattern<span class="token punctuation">.</span>to_nfa_design<span class="token punctuation">.</span>accepts<span class="token operator">?</span><span class="token punctuation">(</span><span class="token string">'abaab'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="14">
 <li>（Page：89）<strong>NFA 到 DFA 的转换</strong>：</li>
 </ol>
@@ -322,18 +327,18 @@ puts pattern<span class="token punctuation">.</span>to_nfa_design<span class="to
 <li><strong>DFA 比 NFA 更容易模拟，且用硬件或机器代码实现起来足够简单</strong>。因此通常可以先将一个概念（比如“正则”）转换为 NFA，再转换为 DFA，最后被快速实现；</li>
 <li><strong>DFA 最小化</strong>：即所持有<strong>状态是最少的</strong> DFA。从 NFA 到 DFA 的转换有时会产生包含冗余状态的“非最小化 DFA”，此时可以通过 “<strong>Brzozowski</strong>” 算法来进行优化。可以通过最小化的 DFA 来判断两个 NFA 的等价性。</li>
 </ul>
-<p>- <strong><em>一个例子</em></strong>：</p>
+<p>- <em><strong>一个例子</strong></em>：</p>
 <ul>
 <li>NFA：</li>
 </ul>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ul>
 <li>对应的 DFA：<ul>
 <li><em>follow_free_moves</em> 会在每次查找下一个状态集合后，收集所有可以再次通过 “ε-moves” 得到的新状态。并将此作为下一次查询的输入状态。</li>
 </ul>
 </li>
 </ul>
-<p><img src="13.png" alt=""></p>
+<p><img src="13.png"></p>
 <pre class="line-numbers language-ruby"><code class="language-ruby">rulebook <span class="token operator">=</span> <span class="token constant">NFARulebook</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
   <span class="token constant">FARule</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
   <span class="token constant">FARule</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
@@ -390,7 +395,8 @@ dfa <span class="token operator">=</span> simulation<span class="token punctuati
 <span class="token comment" spellcheck="true">#&lt;struct FARule state=#&lt;Set: {}>, character="b", next_state=#&lt;Set: {}>></span>
 <span class="token comment" spellcheck="true">#&lt;struct FARule state=#&lt;Set: {1, 3, 2}>, character="a", next_state=#&lt;Set: {1, 2}>></span>
 <span class="token comment" spellcheck="true">#&lt;struct FARule state=#&lt;Set: {1, 3, 2}>, character="b", next_state=#&lt;Set: {1, 3, 2}>></span>
-puts dfa<span class="token punctuation">.</span>rulebook<span class="token punctuation">.</span>rules<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+puts dfa<span class="token punctuation">.</span>rulebook<span class="token punctuation">.</span>rules
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-4-章-增加计算能力"><a href="#第-4-章-增加计算能力" class="headerlink" title="第 4 章 - 增加计算能力"></a>第 4 章 - 增加计算能力</h3><ol start="15">
 <li>（Page：100）<strong>确定性下推自动机</strong>（DPDA）：</li>
 </ol>
@@ -408,9 +414,9 @@ puts dfa<span class="token punctuation">.</span>rulebook<span class="token punct
 </ul>
 </li>
 </ul>
-<p>- <strong><em>一个例子</em></strong>：</p>
-<p><img src="11.png" alt=""></p>
-<p>- <strong><em>模拟 DPDA</em></strong>：</p>
+<p>- <em><strong>一个例子</strong></em>：</p>
+<p><img src="11.png"></p>
+<p>- <em><strong>模拟 DPDA</strong></em>：</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># 栈；</span>
 <span class="token keyword">class</span> <span class="token class-name">Stack</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:contents</span><span class="token punctuation">)</span>
   <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span>
@@ -510,7 +516,8 @@ puts dfa<span class="token punctuation">.</span>rulebook<span class="token punct
     start_config <span class="token operator">=</span> <span class="token constant">PDAConfiguration</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>start_state<span class="token punctuation">,</span> start_stack<span class="token punctuation">)</span>
     <span class="token constant">DPDA</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>start_config<span class="token punctuation">,</span> accept_states<span class="token punctuation">,</span> rulebook<span class="token punctuation">)</span>
   <span class="token keyword">end</span> 
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="16">
 <li>（Page：110）<strong>非确定性下推自动机</strong>（NPDA）：</li>
 </ol>
@@ -518,8 +525,8 @@ puts dfa<span class="token punctuation">.</span>rulebook<span class="token punct
 <li><strong>无法将一个 NPDA 转换成对应的 DPDA</strong>（栈的多种组合无法被合并成一个）；</li>
 <li>NPDA 可用来解决“<strong>判断无标记回文</strong>”的问题，而 DPDA 无法做到。</li>
 </ul>
-<p>- <strong><em>一个例子</em></strong>：</p>
-<p><img src="12.png" alt=""></p>
+<p>- <em><strong>一个例子</strong></em>：</p>
+<p><img src="12.png"></p>
 <ol start="17">
 <li>（Page：116）PDA 解析编程语言：</li>
 </ol>

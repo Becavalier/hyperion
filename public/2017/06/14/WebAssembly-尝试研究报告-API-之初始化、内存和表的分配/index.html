@@ -7,14 +7,16 @@ WebAssembly<span class="token punctuation">.</span><span class="token function">
 WebAssembly<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// 用来验证对应的二进制代码是否是来自一个完整的 Wasm 模块； </span>
 <span class="token comment" spellcheck="true">// 对象（构造函数）；</span>
 WebAssembly<span class="token punctuation">.</span><span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// WebAssembly.Module 对象的构造函数；</span>
-WebAssembly<span class="token punctuation">.</span><span class="token function">Instance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// WebAssembly.Instance 对象的构造函数；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+WebAssembly<span class="token punctuation">.</span><span class="token function">Instance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// WebAssembly.Instance 对象的构造函数；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们直接通过具体的例子来了解上述几个 API 的使用方法，该例子对应的 C/C++ 代码如下所示。代码很简单，一个预置函数 <code>print_number</code> 和一个调用了预置函数的加法函数 <code>add</code>，我们只需要在 JS 层初始化 Wasm 模块的时传递一个 <code>print_number</code> 函数实体即可。</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">print_number</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">int</span> <span class="token function">add</span> <span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
   <span class="token function">print_number</span><span class="token punctuation">(</span>a <span class="token operator">+</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第一种初始化方式如下代码所示。我们均使用 WebAssembly 对象上的异步方法来进行 Wasm 模块的加载和初始化。整个初始化一共分为三个步骤：<strong>验证，编译，实例化</strong>。不论是通过 WebAssembly 对象的方法还是单独使用 WebAssembly 下各个对象的构造函数来初始化，其整体流程都是一样的。主要区别只是<strong>同步方式</strong>和<strong>异步方式</strong>两种不同的策略而已。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> importObject <span class="token operator">=</span> <span class="token punctuation">{</span>
   env<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -33,7 +35,8 @@ WebAssembly<span class="token punctuation">.</span><span class="token function">
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第二种初始化使用 WebAssembly 提供的多种构造函数进行同步化的初始化过程，具体代码如下所示。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> importObject <span class="token operator">=</span> <span class="token punctuation">{</span>
   env<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -50,7 +53,8 @@ WebAssembly<span class="token punctuation">.</span><span class="token function">
   <span class="token keyword">var</span> memory <span class="token operator">=</span> instance<span class="token punctuation">.</span>exports<span class="token punctuation">.</span>memory<span class="token punctuation">;</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>memory <span class="token keyword">instanceof</span> <span class="token class-name">WebAssembly<span class="token punctuation">.</span>Memory</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第三种初始化方式同第一种十分相似，不同的是我们在这里没有首先使用 <code>WebAssembly.compile</code> 来编译 Wasm 的二进制代码，而是直接使用 <code>WebAssembly.instantiate</code> 对 Wasm 的二进制代码进行了实例化，这便是 <code>WebAssembly.instantiate</code> 的第二种使用场景。在第一种方法中，我们在初始化的过程中会产生一个中间对象即 WebAssembly.Module 对象，在这个对象中保存了已经编译好的无状态 WebAssembly 代码，这些代码可以通过 Web Workers 高效的传递给子 Worker 进行使用，或者将其存储在本地的 IndexedDB 当中（最新标准已无法存储），当有需要时可以从本地 DB 中取出多次的进行再实例化（Worker 传递和本地数据存储的相关内容我们会在下一篇报告中讲述）。因此相对来说，第三种初始化方法更适合用于不需要本地存储情况下的快速 WebAssembly 实例化。具体代码如下所示。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> importObject <span class="token operator">=</span> <span class="token punctuation">{</span>
   env<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -69,12 +73,14 @@ WebAssembly<span class="token punctuation">.</span><span class="token function">
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>memory <span class="token keyword">instanceof</span> <span class="token class-name">WebAssembly<span class="token punctuation">.</span>Memory</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>除此之外，WebAssembly.Module 还有两个比较常用的静态方法 <code>imports</code> 和 <code>exports</code>，可以通过传入一个 WebAssembly.Module 对象来获得该 Wasm 模块的导出接口和需要导入的函数占位符，代码如下。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> wasmModule <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebAssembly<span class="token punctuation">.</span>Module</span><span class="token punctuation">(</span>wasmCode<span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>WebAssembly<span class="token punctuation">.</span>Module<span class="token punctuation">.</span><span class="token function">imports</span><span class="token punctuation">(</span>wasmModule<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>WebAssembly<span class="token punctuation">.</span>Module<span class="token punctuation">.</span><span class="token function">exports</span><span class="token punctuation">(</span>wasmModule<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="二、内存分配："><a href="#二、内存分配：" class="headerlink" title="二、内存分配："></a>二、内存分配：</h4><p>我们可以在 JS 层为 Wasm 模块手动分配固定大小的内存块供 Wasm 模块来使用，这样做的好处是我们可以使用 JS 在模块编译之前或获取并创建内存的初始内容。为了实现让 Wasm 模块使用我们从 JS 初始化的内存，我们需要手动修改 Wast 文本中的内容。Wast 是 Wasm 模块的可读文本格式，我们首先将编写好的 C/C++ 源码编译成 Wast 可读文本，然后将代码中的内存使用方式改成使用外部引入的内存，最后再通过 WABT 提供的工具将其继续编译成 Wasm 二进制模块格式。Wast 文本中修改内存使用方式的部分示例代码如下，其他代码可以在 <a href="https://github.com/Becavalier/WasmPlay/tree/master/WebAssembly.Memory" target="_blank" rel="noopener">Github</a> 上查阅。关于 Wast 文本的基本语法可以参考 MDN 上的<a href="https://developer.mozilla.org/zh-CN/docs/WebAssembly/Understanding_the_text_format" target="_blank" rel="noopener">相关文档</a>。</p>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>WebAssembly<span class="token punctuation">.</span>Module<span class="token punctuation">.</span><span class="token function">exports</span><span class="token punctuation">(</span>wasmModule<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h4 id="二、内存分配："><a href="#二、内存分配：" class="headerlink" title="二、内存分配："></a>二、内存分配：</h4><p>我们可以在 JS 层为 Wasm 模块手动分配固定大小的内存块供 Wasm 模块来使用，这样做的好处是我们可以使用 JS 在模块编译之前或获取并创建内存的初始内容。为了实现让 Wasm 模块使用我们从 JS 初始化的内存，我们需要手动修改 Wast 文本中的内容。Wast 是 Wasm 模块的可读文本格式，我们首先将编写好的 C/C++ 源码编译成 Wast 可读文本，然后将代码中的内存使用方式改成使用外部引入的内存，最后再通过 WABT 提供的工具将其继续编译成 Wasm 二进制模块格式。Wast 文本中修改内存使用方式的部分示例代码如下，其他代码可以在 <a target="_blank" rel="noopener" href="https://github.com/Becavalier/WasmPlay/tree/master/WebAssembly.Memory">Github</a> 上查阅。关于 Wast 文本的基本语法可以参考 MDN 上的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/WebAssembly/Understanding_the_text_format">相关文档</a>。</p>
 <pre class="line-numbers language-wat"><code class="language-wat">;; 修改前；
 (module
   (table 0 anyfunc)
@@ -82,7 +88,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   (export "memory" (memory $0))
   (export "plus" (func $plus))
   ...
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-wat"><code class="language-wat">;; 修改后；
 (module
   (import "env" "memory" (memory $0 1))
@@ -90,7 +97,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   (export "memory" (memory $0))
   (export "plus" (func $plus))
   ... 
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应的，我们需要在 JS 中初始化一个内存对象。Wasm 模块使用的所有内存大小都是以“页”作为单位的，默认的一页大小为 64KB，在传递内存对象到 Wasm 模块时至少要保证该内存对象的大小大于等于一页。部分 JS 代码如下所示。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> memory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebAssembly<span class="token punctuation">.</span>Memory</span><span class="token punctuation">(</span><span class="token punctuation">{</span>initial<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> maximum<span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">var</span> importObject <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -98,7 +106,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
       memory<span class="token punctuation">:</span> memory
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span> 
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>WebAssembly.Memory</code> 构造函数的参数为一个内存对象描述符。其中 <code>initial</code> 参数表示该内存对象的初始化大小（以页为单位），<code>maximum</code> 参数表示该内存块的最大可用大小（以页为单位）。</p>
 <h4 id="三、表分配："><a href="#三、表分配：" class="headerlink" title="三、表分配："></a>三、表分配：</h4><p>WebAssembly 中的 Table 主要用来存储动态函数的引用。现在来看，Table 的一个主要应用场景是可以在 Wasm 模块之间进行动态链接。也就是说我们可以通过 Table 和 Memory 的共享来使两个 Module 之间通过 Table 进行“交互”。一个简单的使用了 Table 的 Wasm 模块其可读文本代码如下所示。其中第一部分代码指定了该 Table 的大小为2，即最多只能存储两个函数引用。普通函数的声明部分没有任何变化。接下来在元素段中我们为该 Table 分配了两个函数引用，元素段中的代码是 Table 结构的主要初始化过程。由于在调用 Table 中函数时要保证调用函数的函数签名和索引同时正确，该函数才可以被正常调用。</p>
 <pre class="line-numbers language-wat"><code class="language-wat">(module
@@ -112,7 +121,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   (func (export "callByIndex") (param $i i32) (result i32)
     get_local $i                           ;; 参数入执行栈；
     call_indirect $return_i32)             ;; 执行 Table 中索引为 $i 的函数，并且验证签名类型为 $return_i32； 
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>接下来我们来看怎样通过 Table 在两个不同的 Wasm 模块之间进行“通信”。通过同一个 Memory 和 Table 进行初始化的 Wasm 模块便可以共享同一个 Linear Memory 段和同一个 Table，由于 Table 中存储了不同模块不同方法的引用，因此我们便可以通过“间接调用表方法”的方式来达到模块间相互调用其内部暴露方法的目的（跟一个桌面应用的所有 DLL 动态链接库共享同一个进程内存地址一样），首先来看第一个模块的内部结构，如下所示。</p>
 <pre class="line-numbers language-wat"><code class="language-wat">(module
   (import "js" "memory" (memory 1))        ;; 使用导入的内存；
@@ -121,7 +131,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   (func $shared0func (result i32)
    i32.const 0                             ;; 常量0入执行栈；
    i32.load)                               ;; 取出执行栈的第一个值作为参数，取出该参数对应内存位置的值；
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>接下来是第二个模块的内部结构。</p>
 <pre class="line-numbers language-wat"><code class="language-wat">(module
   (import "js" "memory" (memory 1))        ;; 使用导入的内存（与第一个模块一样）；
@@ -133,8 +144,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
    i32.store                               ;; 取出执行栈的前两个值作为参数，将常量42存储内存偏移为0的位置；
    i32.const 0                             ;; 常量0入执行栈；
    call_indirect $void_to_i32)             ;; 调用 Table 中索引位置为0的函数，并且函数签名中返回值的类型是 i32；
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+)
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里要注意的是 Wasm 独有的执行栈与线性内存分离的设计，使得所有的操作数都会被事先放到执行栈中。操作符直接从执行栈中取出对应个数的操作数。这种分离结构也有利于 Wasm 的代码执行安全，保证运行过程中的数据不会被篡改。Wasm 模块间的动态链接过程大致如下图所示。</p>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <p>当然 Table 的用途不止是可以用来做模块之间的动态链接，还可以做重载函数在 JS 端的调用容器。这些特性我们会在 Post-MVP 阶段再仔细进行研究。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-06-14T09:46:46.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/06/13/WebAssembly-尝试研究报告-错误处理/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/06/16/WebAssembly-尝试研究报告-本地存储与转移/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

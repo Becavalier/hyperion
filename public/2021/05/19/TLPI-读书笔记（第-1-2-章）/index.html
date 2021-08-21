@@ -5,7 +5,7 @@
 <li>（Page：26）Linux 下的用户和组：</li>
 </ol>
 <ul>
-<li><strong>用户信息</strong>：<em>/etc/passwd</em>；<ul>
+<li><strong>用户信息</strong>：*/etc/passwd*；<ul>
 <li>登录名；</li>
 <li>用户 ID；</li>
 <li>第一个所属组 ID；</li>
@@ -14,7 +14,7 @@
 <li>（可选）加密后的用户登录密码。</li>
 </ul>
 </li>
-<li><strong>组信息</strong>：<em>/etc/group</em>；<ul>
+<li><strong>组信息</strong>：*/etc/group*；<ul>
 <li>组名称；</li>
 <li>组 ID；</li>
 <li>包含的用户名列表。</li>
@@ -27,21 +27,21 @@
 </ol>
 <ul>
 <li><strong>文件类型</strong>：普通（<em>plain</em> / <em>regular</em>）文件、设备、管道、套接字、目录，以及符号链接；</li>
-<li><strong><em>文件夹</em></strong>：其内容采用类似“文件名表”的形式进行组织，表中的每一个文件名都有一个与其相对应的实体文件<strong>引用</strong>；</li>
-<li><strong><em>链接</em></strong>（硬链接）：即上述“文件名+实体文件指针”的组合。文件可以有多重链接，即一个实体文件可对应多个名字；</li>
-<li><strong><em>符号链接</em></strong>（软链接）：对应文件名表中的一个“文件名+实体文件指针”的组合，而该文件指针所指向文件内包含了源文件实体的路径。当一个路径名在系统调用中被指定时，内核通常会自动解除对路径名中每个符号链接的引用，用它所指向的文件名来替换它。如果一个符号链接的目标本身是一个符号链接，则这个过程可能会递归发生。<strong>内核对解除引用的数量进行了限制，以处理符号链接的循环链的可能性</strong>。如果一个符号链接指向一个不存在的文件，它就被称为悬空链接（<em>dangling link</em>）；</li>
-<li><strong><em>文件名</em></strong>：大多数 Linux 文件系统支持最长 255 字符的文件名。<strong>可移植文件名字符集（<em>portable filename character set</em>）包含 “[-._a-zA-Z0-9]”</strong>，该字符集在 SUSv3 中定义。</li>
-<li><strong><em>路径名</em></strong>：相对路径、绝对路径；</li>
-<li><strong><em>当前工作目录</em></strong>（CWD）：每个进程都有一个“当前工作目录”，一个进程从其父进程继承其“当前工作目录”。Unix 下的 <code>chdir</code> 系统调用可用于修改进程的 CWD；</li>
-<li><strong><em>文件所有权及权限</em></strong>：每个文件都有一个相关的用户 ID 和组 ID，定义了文件的所有者和所属的组。三类用户（所有者、同组、其他），三个权限位（读、写、执行）。</li>
+<li><em><strong>文件夹</strong></em>：其内容采用类似“文件名表”的形式进行组织，表中的每一个文件名都有一个与其相对应的实体文件<strong>引用</strong>；</li>
+<li><em><strong>链接</strong></em>（硬链接）：即上述“文件名+实体文件指针”的组合。文件可以有多重链接，即一个实体文件可对应多个名字；</li>
+<li><em><strong>符号链接</strong></em>（软链接）：对应文件名表中的一个“文件名+实体文件指针”的组合，而该文件指针所指向文件内包含了源文件实体的路径。当一个路径名在系统调用中被指定时，内核通常会自动解除对路径名中每个符号链接的引用，用它所指向的文件名来替换它。如果一个符号链接的目标本身是一个符号链接，则这个过程可能会递归发生。<strong>内核对解除引用的数量进行了限制，以处理符号链接的循环链的可能性</strong>。如果一个符号链接指向一个不存在的文件，它就被称为悬空链接（<em>dangling link</em>）；</li>
+<li><em><strong>文件名</strong></em>：大多数 Linux 文件系统支持最长 255 字符的文件名。<strong>可移植文件名字符集（<em>portable filename character set</em>）包含 “[-._a-zA-Z0-9]”</strong>，该字符集在 SUSv3 中定义。</li>
+<li><em><strong>路径名</strong></em>：相对路径、绝对路径；</li>
+<li><em><strong>当前工作目录</strong></em>（CWD）：每个进程都有一个“当前工作目录”，一个进程从其父进程继承其“当前工作目录”。Unix 下的 <code>chdir</code> 系统调用可用于修改进程的 CWD；</li>
+<li><em><strong>文件所有权及权限</strong></em>：每个文件都有一个相关的用户 ID 和组 ID，定义了文件的所有者和所属的组。三类用户（所有者、同组、其他），三个权限位（读、写、执行）。</li>
 </ul>
 <ol start="3">
 <li>（Page：30）Linux 文件 I/O 模型：</li>
 </ol>
 <ul>
-<li><strong><em>I/O 普遍性</em></strong>（<em>universality</em>）：同一个系统调用（<code>open</code> \ <code>read</code> \ <code>close</code> 等）可被用在所有类型的文件上。内核会将应用的 I/O 请求翻译成适当的文件系统或设备驱动程序操作，并在目标文件或设备上执行 I/O。内核本质上仅提供一种文件类型：一个<strong>连续的字节流</strong>。Unix 系统没有文件结尾字符，文件的结尾是由一个<strong>没有返回数据的读操作</strong>来标识的。</li>
-<li><strong><em>文件描述符</em></strong>：本质是正整数。默认情况下，一个进程在由 Shell 启动时会继承三个特殊的文件描述符：<em>stdin</em>（0）、<em>stdout</em>（1）、<em>stderr</em>（2）；</li>
-<li><strong><em>stdio 库</em></strong>：<strong><em>stdio</em> 库中的 I/O 函数</strong>（<em>fopen</em> / <em>fclose</em> / <em>scanf</em> / <em>printf</em> / <em>fgets</em> / <em>fputs</em> 等）<strong>构建于系统调用</strong>（<em>open</em> / <em>close</em> / <em>read</em> / <em>write</em>）<strong>之上</strong>。</li>
+<li><em><strong>I/O 普遍性</strong></em>（<em>universality</em>）：同一个系统调用（<code>open</code> \ <code>read</code> \ <code>close</code> 等）可被用在所有类型的文件上。内核会将应用的 I/O 请求翻译成适当的文件系统或设备驱动程序操作，并在目标文件或设备上执行 I/O。内核本质上仅提供一种文件类型：一个<strong>连续的字节流</strong>。Unix 系统没有文件结尾字符，文件的结尾是由一个<strong>没有返回数据的读操作</strong>来标识的。</li>
+<li><em><strong>文件描述符</strong></em>：本质是正整数。默认情况下，一个进程在由 Shell 启动时会继承三个特殊的文件描述符：<em>stdin</em>（0）、<em>stdout</em>（1）、<em>stderr</em>（2）；</li>
+<li><em><strong>stdio 库</strong></em>：<strong><em>stdio</em> 库中的 I/O 函数</strong>（<em>fopen</em> / <em>fclose</em> / <em>scanf</em> / <em>printf</em> / <em>fgets</em> / <em>fputs</em> 等）<strong>构建于系统调用</strong>（<em>open</em> / <em>close</em> / <em>read</em> / <em>write</em>）<strong>之上</strong>。</li>
 </ul>
 <ol start="4">
 <li>（Page：31）Linux 进程：</li>

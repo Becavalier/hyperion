@@ -3,7 +3,7 @@
 <h3 id="Chapter-12-An-I-O-Project-Building-a-Command-Line-Program"><a href="#Chapter-12-An-I-O-Project-Building-a-Command-Line-Program" class="headerlink" title="Chapter 12 - An I/O Project: Building a Command Line Program"></a>Chapter 12 - An I/O Project: Building a Command Line Program</h3><ol start="33">
 <li>（Page：268）基本代码（Monolithic）：</li>
 </ol>
-<p>- <strong><em>src/main.rs</em></strong>：</p>
+<p>- <em><strong>src/main.rs</strong></em>：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// src/main.rs</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>env<span class="token punctuation">;</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>process<span class="token punctuation">;</span>
@@ -22,8 +22,9 @@
         <span class="token function">eprintln!</span><span class="token punctuation">(</span><span class="token string">"Application error: {}"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
         process<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>src/lib.rs</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>src/lib.rs</strong></em>：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// src/lib.rs</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>error<span class="token punctuation">:</span><span class="token punctuation">:</span>Error<span class="token punctuation">;</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>fs<span class="token punctuation">;</span>
@@ -118,7 +119,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
       <span class="token function">search_case_insensitive</span><span class="token punctuation">(</span>query<span class="token punctuation">,</span> contents<span class="token punctuation">)</span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="34">
 <li>（Page：）<strong>TDD</strong>（Test-Driven Development）的基本实施步骤：</li>
 </ol>
@@ -138,7 +140,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">add_one_v1</span> <span class="token punctuation">(</span>x<span class="token punctuation">:</span>u32<span class="token punctuation">)</span> <span class="token punctuation">-></span> u32 <span class="token punctuation">{</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// function definition.</span>
 <span class="token keyword">let</span> add_one_v2 <span class="token operator">=</span> <span class="token closure-params"><span class="token punctuation">|</span>x<span class="token punctuation">:</span> u32<span class="token punctuation">|</span></span> <span class="token punctuation">-></span> u32 <span class="token punctuation">{</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// the rests are closure definition.</span>
 <span class="token keyword">let</span> add_one_v3 <span class="token operator">=</span> <span class="token closure-params"><span class="token punctuation">|</span>x<span class="token punctuation">|</span></span> <span class="token punctuation">{</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> 
-<span class="token keyword">let</span> add_one_v4 <span class="token operator">=</span> <span class="token operator">|</span>x<span class="token operator">|</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">let</span> add_one_v4 <span class="token operator">=</span> <span class="token operator">|</span>x<span class="token operator">|</span> x <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>可以<strong>捕获</strong>其定义所在作用域内的其他变量值。在捕获时，闭包会使用<strong>额外的内存</strong>来存放捕获的变量值。闭包可以使用三种方式来捕获外界的变量：<ul>
 <li><code>FnOnce</code>：将捕获变量的<strong>所有权转移到闭包中</strong>，比如使用 <code>move</code> 标记的闭包（所有闭包默认均实现，一般仅能被执行一次）；</li>
@@ -152,7 +155,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
     <span class="token keyword">let</span> equal_to_x <span class="token operator">=</span> <span class="token keyword">move</span> <span class="token operator">|</span>z<span class="token operator">|</span> z <span class="token operator">==</span> x<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// the value of "x" has been moved into the closure.</span>
     <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token function">vec!</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token function">assert!</span><span class="token punctuation">(</span><span class="token function">equal_to_x</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>每个闭包实例都有自己独一无二的的匿名类型，即使两个闭包有同样的签名，它们的类型也并不相同。为了定义可以容纳闭包的集合，可以使用 <code>Fn</code> \ <code>FnMut</code> \ <code>FnOnce</code> traits，</li>
 </ul>
@@ -181,7 +185,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="36">
 <li>（Page：303）<strong>迭代器</strong>（Iterator）：</li>
 </ol>
@@ -195,7 +200,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
     <span class="token keyword">for</span> val <span class="token keyword">in</span> v1_iter <span class="token punctuation">{</span>
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>所有迭代器都实现了标准库中定义的 <em>Iterator</em> trait，以及对应的 <code>next()</code> 方法。集合的三种迭代器类型：<ul>
 <li><code>iter()</code>：返回<strong>不可变引用</strong>；</li>
@@ -223,7 +229,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{}"</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token comment" spellcheck="true">// println!("{:#?}", x);  // panic!.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>可以通过 <em>iterator adaptor</em> 将一个迭代器转换为另一种迭代器。通过这种方式，可以“串联”起多个适配器以对集合中的数据进行不同的转换：</li>
 </ul>
@@ -232,7 +239,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
     <span class="token comment" spellcheck="true">// the iterator adaptor is lazy.</span>
     <span class="token keyword">let</span> v2<span class="token punctuation">:</span> Vec<span class="token operator">&lt;</span>_<span class="token operator">></span> <span class="token operator">=</span> v1<span class="token punctuation">.</span><span class="token function">iter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>x<span class="token operator">|</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> v2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>结合使用迭代器与闭包：</li>
 </ul>
@@ -245,7 +253,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
 <span class="token keyword">fn</span> <span class="token function">shoes_in_my_size</span><span class="token punctuation">(</span>shoes<span class="token punctuation">:</span> Vec<span class="token operator">&lt;</span>Shoe<span class="token operator">></span><span class="token punctuation">,</span> shoe_size<span class="token punctuation">:</span> u32<span class="token punctuation">)</span> <span class="token punctuation">-></span> Vec<span class="token operator">&lt;</span>Shoe<span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// capture the surrounding parameter.</span>
     shoes<span class="token punctuation">.</span><span class="token function">into_iter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token operator">|</span>s<span class="token operator">|</span> s<span class="token punctuation">.</span>size <span class="token operator">==</span> shoe_size<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>自定义迭代器</strong>：为自定义类型实现 <code>Iterator</code> trait；</li>
 </ul>
@@ -273,7 +282,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
     <span class="token keyword">let</span> c <span class="token operator">=</span> counter<span class="token punctuation">.</span><span class="token function">iter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">let</span> counter_v<span class="token punctuation">:</span> Vec<span class="token operator">&lt;</span>_<span class="token operator">></span> <span class="token operator">=</span> counter<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">|</span>x<span class="token operator">|</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> counter_v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>迭代器是 Rust 众多“<strong>零开销抽象</strong>（<em>zero-cost abstractions</em>）”特性之一，因此相较于使用手写的循环实现，<strong>使用迭代器不会产生额外的性能开销</strong>（C++ 的实现类似）。</li>
 </ul>
@@ -284,7 +294,8 @@ Trust me<span class="token punctuation">.</span>"<span class="token punctuation"
 opt-level = 0
 
 [profile.release] 
-opt-level = 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+opt-level = 3
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="38">
 <li>（Page：321）<strong>文档注释</strong>：<code>///</code>。</li>
 </ol>
@@ -309,7 +320,8 @@ opt-level = 3<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <span class="token comment" spellcheck="true">/// // describe the exposed functions which are unsafe.</span>
 <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">add_one</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> i32<span class="token punctuation">)</span> <span class="token punctuation">-></span> i32 <span class="token punctuation">{</span>
     x <span class="token operator">+</span> <span class="token number">1</span> 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="39">
 <li>（Page：323）用于<strong>整体描述模块内容的注释</strong>类型：</li>
 </ol>
@@ -320,7 +332,8 @@ opt-level = 3<span aria-hidden="true" class="line-numbers-rows"><span></span><sp
 <span class="token comment" spellcheck="true">//! # My Crate</span>
 <span class="token comment" spellcheck="true">//!</span>
 <span class="token comment" spellcheck="true">//! `my_crate` is a collection of utilities to make performing certain //! calculations more convenient.</span>
-<span class="token comment" spellcheck="true">/// Adds one to the number given.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">/// Adds one to the number given.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="40">
 <li>（Page：329）可以使用 <code>pub use</code> 重新整理导出 API 接口的引用结构。</li>
 <li>（Page：330）为将要发布的 crate 添加<strong>元信息</strong>：</li>
@@ -331,10 +344,11 @@ version = "0.1.0"
 authors = ["Becavalier <yhorg@hotmail.com>"]
 edition = "2018"
 description = "A fun game where you guess what number the computer has chosen."
-license = "MIT OR Apache-2.0"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+license = "MIT OR Apache-2.0"
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>可以使用 <code>cargo publish</code> 发布 crate；</li>
-<li><strong>*</strong>目前 crates.io 暂无 namespacing 机制（考虑到 Namespace Squatting 等一系列潜在的问题）；</li>
+<li>*****目前 crates.io 暂无 namespacing 机制（考虑到 Namespace Squatting 等一系列潜在的问题）；</li>
 </ul>
 <ol start="42">
 <li>（Page：332）使用 <code>cargo yank --vers &lt;version&gt;</code> 阻止某一版本 crate 被<strong>新的项目</strong>使用；反之：<code>cargo yank --vers &lt;version&gt; --undo</code>。</li>
@@ -349,7 +363,8 @@ license = "MIT OR Apache-2.0"<span aria-hidden="true" class="line-numbers-rows">
 members = [ 
   "adder",
   "add-one", 
-]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="44">
 <li>（Page：339）使用 <code>cargo install</code> 安装来自 Crates.io 的二进制包（默认安装在 <em>$HOME/.cargo/bin</em>），并可在系统的全局环境下使用。</li>
 </ol>
@@ -388,11 +403,12 @@ members = [
     <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// manipulate as a pointer.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"b = {}"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// "b" will be deallocated before getting here.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// "b" will be deallocated before getting here.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><em>Recursive Types</em>：即某种类型，其大小无法在编译时得知。该类型的一个值其本身可以包含有另一个相同类型的值（无限递归）。比如 <em>Cons List</em>，在 Rust 中该类型可借助 Box 实现：</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">enum</span> List <span class="token punctuation">{</span>
     <span class="token function">Cons</span><span class="token punctuation">(</span>i32<span class="token punctuation">,</span> Box<span class="token operator">&lt;</span>List<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// save a pointer with a fixed size.</span>
     Nil<span class="token punctuation">,</span>
@@ -403,7 +419,8 @@ members = [
         Box<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token function">Cons</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> 
             Box<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token function">Cons</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> 
                 Box<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span>Nil<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="47">
 <li>（Page：348）<code>Deref</code> trait：</li>
 </ol>
@@ -439,7 +456,8 @@ members = [
     <span class="token keyword">fn</span> <span class="token function">deref_mut</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> T <span class="token punctuation">{</span>
         <span class="token operator">&amp;</span><span class="token keyword">mut</span> <span class="token keyword">self</span><span class="token punctuation">.</span><span class="token number">0</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><em>Deref Coercion</em>：对于实现了 <code>Deref</code> trait 的类型，其在作为函数和方法的参数时，Rust 会将该类型转换为对其他类型的引用。<strong>当将对特定类型的值的引用作为参数，传递给与函数或方法定义中的参数类型不匹配的函数或方法时，会自动发生该转换</strong>。一系列对 <code>deref()</code> 的调用会将我们提供的类型转换为参数需要的类型。</li>
 </ul>
@@ -450,7 +468,8 @@ members = [
     <span class="token keyword">let</span> m <span class="token operator">=</span> MyBox<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span>String<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Rust"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">hello</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// hello(&amp;(*m)[..]);  // original way with "Deref Coercion".</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="48">
 <li>（Page：354）<code>Drop</code> trait：</li>
 </ol>
@@ -473,7 +492,8 @@ members = [
     <span class="token keyword">let</span> d <span class="token operator">=</span> S <span class="token punctuation">{</span>
         data<span class="token punctuation">:</span> String<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"other stuff"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>可以使用 <code>std::mem::drop()</code> <strong>提前调用某个变量的 <em>drop</em> 方法</strong>（比如用于在某个作用域内提前<strong>释放锁</strong>）：</li>
 </ul>
@@ -484,7 +504,8 @@ members = [
     <span class="token comment" spellcheck="true">// std::mem::drop(c); </span>
     <span class="token function">drop</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// drop "c" manually.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"S dropped before the end of main."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="49">
 <li>（Page：358）<code>Rc&lt;T&gt;</code>：</li>
 </ol>
@@ -494,7 +515,7 @@ members = [
 <li>仅支持<strong>编译时</strong>的<strong>不可变引用</strong>；</li>
 <li>使用场景：程序<strong>在多个地方需要使用某个在堆上分配的资源，且无法在编译时得知哪一部分代码会最后一个使用该资源</strong>。</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">enum</span> List <span class="token punctuation">{</span>
     <span class="token function">Cons</span><span class="token punctuation">(</span>i32<span class="token punctuation">,</span> Rc<span class="token operator">&lt;</span>List<span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     Nil<span class="token punctuation">,</span>
@@ -507,7 +528,8 @@ members = [
                     Rc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span>Nil<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token function">Cons</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> Rc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// increments the reference count.</span>
     <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token function">Cons</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> Rc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="50">
 <li>（Page：363）<code>RefCall&lt;T&gt;</code>：</li>
 </ol>
@@ -515,7 +537,7 @@ members = [
 <li>代表<strong>对它所持有数据的单一所有权</strong>，主要在当确定代码遵循借用规则，但编译器无法理解并保证这一点的时候使用。</li>
 <li>仅适用于“单线程”场景；</li>
 <li>支持<strong>运行时</strong>的<strong>可变与不可变引用</strong>；</li>
-<li><strong><em>Interior Mutability</em></strong>：是 Rust 中的一种设计模式，它允许<strong>通过数据的不可变引用来在运行时对数据进行变更</strong>。被该类型“包裹”的对象可以通过不可变引用来进行变更。</li>
+<li><em><strong>Interior Mutability</strong></em>：是 Rust 中的一种设计模式，它允许<strong>通过数据的不可变引用来在运行时对数据进行变更</strong>。被该类型“包裹”的对象可以通过不可变引用来进行变更。</li>
 </ul>
 <ol start="51">
 <li>（Page：371）结合使用 <code>RefCell&lt;T&gt;</code> 与 <code>Rc&lt;T&gt;</code>：</li>
@@ -540,12 +562,13 @@ members = [
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"a after = {:?}"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span> 
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"b after = {:?}"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> 
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"c after = {:?}"</span><span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="52">
 <li>（Page：373）<strong>循环引用</strong>：</li>
 </ol>
-<p>- <strong><em>一个产生循环引用的例子</em></strong>：</p>
-<p><img src="3.png" alt=""></p>
+<p>- <em><strong>一个产生循环引用的例子</strong></em>：</p>
+<p><img src="3.png"></p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token punctuation">:</span><span class="token punctuation">:</span>List<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">{</span>Cons<span class="token punctuation">,</span> Nil<span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>rc<span class="token punctuation">:</span><span class="token punctuation">:</span>Rc<span class="token punctuation">;</span>
 <span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>cell<span class="token punctuation">:</span><span class="token punctuation">:</span>RefCell<span class="token punctuation">;</span>
@@ -569,8 +592,9 @@ members = [
     <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token function">Some</span><span class="token punctuation">(</span>link<span class="token punctuation">)</span> <span class="token operator">=</span> a<span class="token punctuation">.</span><span class="token function">tail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
         <span class="token operator">*</span>link<span class="token punctuation">.</span><span class="token function">borrow_mut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> Rc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>借助 <code>Weak&lt;T&gt;</code> 解决循环引用</em></strong>：</p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>借助 <code>Weak&lt;T&gt;</code> 解决循环引用</strong></em>：</p>
 <ul>
 <li>调用 <code>Rc::clone()</code> 会增加 <em>strong_count</em> 的数量，而调用 <code>Rc::downgrade()</code> 会返回一个类型为 <code>Weak&lt;T&gt;</code> 的智能指针，并同时增加 <em>weak_count</em> 的数量。而 <em>weak_count</em> 的数量是否为零，不会影响 <code>Rc&lt;T&gt;</code> 指针的释放；</li>
 <li>在使用返回的 <code>Weak&lt;T&gt;</code> 前需要调用 <em>upgrade</em> 以返回该“弱指针”的可用状态（是否已被释放），该状态会被存放在 <em>Option&lt;Rc<T>&gt;</em> 类型中。</li>
@@ -597,7 +621,8 @@ members = [
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token operator">*</span>leaf<span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">borrow_mut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> Rc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">downgrade</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>branch<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// populating.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"leaf parent = {:#?}"</span><span class="token punctuation">,</span> leaf<span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">borrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">upgrade</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// return Option&lt;_, None>.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-16-Fearless-Concurrency"><a href="#Chapter-16-Fearless-Concurrency" class="headerlink" title="Chapter 16 - Fearless Concurrency"></a>Chapter 16 - Fearless Concurrency</h3><ol start="53">
 <li>（Page：383）使用线程：</li>
 </ol>
@@ -623,7 +648,8 @@ members = [
     <span class="token punctuation">}</span>
     <span class="token comment" spellcheck="true">// let the current thread wait here for the thread to finish.</span>
     handle<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>使用带有 <em>move</em> 语义的闭包来在<strong>线程间移动资源</strong>：</li>
 </ul>
@@ -636,13 +662,14 @@ members = [
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Here's a vector: {:?}"</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     handle<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="54">
 <li>（Page：391）<strong>Message Passing</strong>：</li>
 </ol>
 <ul>
-<li>线程或参与者通过互相发送包含数据的消息进行通信。“<em>Do not communicate by sharing memory; instead, share memory by communicating.</em>”；</li>
-<li>可以通过<strong>克隆 transmitter</strong>（<em>clone()</em>）来支持多个线程的消息发送端；</li>
+<li>线程或参与者通过互相发送包含数据的消息进行通信。“*Do not communicate by sharing memory; instead, share memory by communicating.*”；</li>
+<li>可以通过<strong>克隆 transmitter</strong>（*clone()*）来支持多个线程的消息发送端；</li>
 <li>仅支持“单一所有权”，即<strong>同一时间只有一个线程拥有、且可以处理该资源</strong>。</li>
 </ul>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">use</span> std<span class="token punctuation">:</span><span class="token punctuation">:</span>thread<span class="token punctuation">;</span>
@@ -656,7 +683,7 @@ members = [
         <span class="token comment" spellcheck="true">// send a message.</span>
         tx<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
+    
     <span class="token comment" spellcheck="true">// block the main thread’s execution and wait until a value is sent down the channel.</span>
     <span class="token keyword">let</span> received <span class="token operator">=</span> rx<span class="token punctuation">.</span><span class="token function">recv</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -667,7 +694,8 @@ members = [
 
     <span class="token comment" spellcheck="true">// let received = rx.try_recv().unwrap();  // the non-blocking version, can be used within a loop.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Got: {}"</span><span class="token punctuation">,</span> received<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="55">
 <li>（Page：398）<strong>共享状态</strong>多线程：</li>
 </ol>
@@ -687,7 +715,8 @@ members = [
     <span class="token punctuation">}</span>
     <span class="token comment" spellcheck="true">// the lock will be released automatically when it goes out of the scope.</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"m = {:?}"</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在多个线程间使用 Mutex 访问共享数据：<ul>
 <li>需要使用线程安全的 “<em>Arc</em>（<strong>Atomic</strong>）” 来提供对 Mutex 的多所有权，每个所有权分发给一个单独的线程来使用。</li>
@@ -701,7 +730,7 @@ members = [
     <span class="token comment" spellcheck="true">// use thread-safe Rc -> Arc.</span>
     <span class="token keyword">let</span> counter <span class="token operator">=</span> Arc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span>Mutex<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">let</span> <span class="token keyword">mut</span> handles <span class="token operator">=</span> <span class="token function">vec!</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
+    
     <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">..</span><span class="token number">10</span> <span class="token punctuation">{</span>
         <span class="token keyword">let</span> counter <span class="token operator">=</span> Arc<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>counter<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">let</span> handle <span class="token operator">=</span> thread<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">spawn</span><span class="token punctuation">(</span><span class="token keyword">move</span> <span class="token closure-params"><span class="token punctuation">|</span><span class="token punctuation">|</span></span> <span class="token punctuation">{</span>
@@ -714,11 +743,12 @@ members = [
         handle<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Result: {}"</span><span class="token punctuation">,</span> <span class="token operator">*</span>counter<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">unwrap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><em>Mutex&lt;T&gt;</em> <strong>也提供了 <em>interior mutability</em> 的能力</strong>。<ul>
-<li><em>RefCell&lt;T&gt;</em> / <em>Rc&lt;T&gt;</em>；</li>
-<li><em>Mutex&lt;T&gt;</em> / <em>Arc&lt;T&gt;</em>。</li>
+<li><em>RefCell&lt;T&gt;</em> / *Rc&lt;T&gt;*；</li>
+<li><em>Mutex&lt;T&gt;</em> / *Arc&lt;T&gt;*。</li>
 </ul>
 </li>
 </ul>

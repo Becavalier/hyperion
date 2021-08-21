@@ -43,20 +43,23 @@
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass<span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   MyClass <span class="token class-name">c</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>栈是属于函数的：指向栈对象的指针比较危险：</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass <span class="token class-name">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   MyClass <span class="token class-name">c</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   AClass <span class="token class-name">a</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   c<span class="token punctuation">.</span>pa <span class="token operator">=</span> $a<span class="token punctuation">;</span>
   <span class="token keyword">return</span> c<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>返回值尽量不要返回指针，谁分配内存谁释放内存：</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass<span class="token operator">*</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   MyClass <span class="token operator">*</span> pa <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> pa<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-MyClass <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+MyClass <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>栈上存放指针，堆上存储真正的对象；</li>
 <li>栈对象：对象内存直接存储于栈对象；</li>
@@ -68,11 +71,13 @@ MyClass <span class="token operator">*</span>p <span class="token operator">=</s
 <span class="token punctuation">}</span>
 <span class="token keyword">void</span> <span class="token function">func2</span><span class="token punctuation">(</span>MyClass <span class="token operator">*</span>pc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// 尽量不用，不能 delete 栈对象；</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>后续删除指针：</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass <span class="token operator">*</span>pc <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">func2</span><span class="token punctuation">(</span>pc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">delete</span><span class="token punctuation">(</span>pc<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">delete</span><span class="token punctuation">(</span>pc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">func3</span><span class="token punctuation">(</span>MyClass <span class="token operator">&amp;</span>mc<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// 传参成本低，效率高，背后是指针，不用考虑是栈对象还是堆对象；</span>
 <span class="token punctuation">}</span>
@@ -82,12 +87,14 @@ MyClass <span class="token operator">*</span>p <span class="token operator">=</s
   <span class="token keyword">delete</span> p<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// ByValue 的替代，传 const 引用；</span>
-<span class="token keyword">void</span> <span class="token function">func3</span><span class="token punctuation">(</span><span class="token keyword">const</span> MyClass <span class="token operator">&amp;</span>mc<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">func3</span><span class="token punctuation">(</span><span class="token keyword">const</span> MyClass <span class="token operator">&amp;</span>mc<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>传参：</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass <span class="token class-name">c1</span>；
 <span class="token function">func1</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">func2</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">func3</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">func3</span><span class="token punctuation">(</span>c1<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>返回值：</strong></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">MyClass <span class="token class-name">func1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   MyClass <span class="token class-name">c1</span><span class="token punctuation">;</span>
@@ -110,7 +117,8 @@ MyClass <span class="token operator">*</span><span class="token function">func2<
 
 MyClass<span class="token operator">&amp;</span> <span class="token function">func4</span><span class="token punctuation">(</span>MyClass <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> c<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>    
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>栈的大小是确定的，堆具有灵活性，大小可以随意分配，没有栈就没有函数，没有变量；</li>
 </ul>

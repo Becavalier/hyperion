@@ -7,7 +7,7 @@
 </ol>
 <ul>
 <li>保存 Callee-saved 寄存器的值；</li>
-<li>函数的<strong>整型参数*</strong>被存放在 rdi \ rsi \ rdx \ rcx \ r8 \ r9 寄存器中；<strong>浮点型参数</strong>被存放在 xmm0-xmm7 寄存器中。剩下多余的参数直接存放到栈上，最后一个参数将会位于栈顶；对于大于 32 字节或者有非对齐字段的结构体，将会通过栈进行传递。否则各个字段将被拆解为类似函数参数的方式，以寄存器依次进行传递。对于返回值，整型和指针值通过 rax \ rdx 传递；浮点值通过 xmm0 \ xmm1 传递。</li>
+<li>函数的<strong>整型参数</strong>*被存放在 rdi \ rsi \ rdx \ rcx \ r8 \ r9 寄存器中；<strong>浮点型参数</strong>被存放在 xmm0-xmm7 寄存器中。剩下多余的参数直接存放到栈上，最后一个参数将会位于栈顶；对于大于 32 字节或者有非对齐字段的结构体，将会通过栈进行传递。否则各个字段将被拆解为类似函数参数的方式，以寄存器依次进行传递。对于返回值，整型和指针值通过 rax \ rdx 传递；浮点值通过 xmm0 \ xmm1 传递。</li>
 <li>call 指令被调用，同时返回地址被推到栈上。根据 <strong>Prologue</strong> 与 <strong>Epilogue</strong> 对函数调用前后的栈进行处理（如：保存旧 rbp，移动 rbp，分配栈空间等）。</li>
 </ul>
 <ol start="94">
@@ -37,7 +37,8 @@
     sub <span class="token register variable">rsp</span>, <span class="token number">0x8</span> <span class="token comment" spellcheck="true">; clean stack (params);</span>
     mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="95">
 <li>（Page：271）Red Zone：</li>
 </ol>
@@ -62,7 +63,8 @@
     <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"End"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="98">
 <li>（Page：277）在使用优化等级参数（-O1\2\3）的情况下，<strong>只有被标记为</strong> <code>volatile</code> <strong>的局部变量才能在</strong> <code>longjmp</code> <strong>之后保持其值不变</strong>。</li>
 </ol>
@@ -82,7 +84,8 @@
     <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"End."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="99">
 <li>（Page：281）<code>restrict</code> 关键字：主要用于标记指针类型，即<strong>向编译器承诺只通过该指针来修改所指对象的值</strong>，以允许编译器进行特殊的优化。memcpy 函数的 dest 与 src 两个指针也使用了 restrict 关键字，以承诺读取的内存地址与写入地址没有重叠。类似的效果也可以通过 “<strong>Strict Aliasing</strong>” 来实现，但不推荐。</li>
 </ol>
@@ -98,12 +101,13 @@
   <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="100">
 <li>（Page：284）一些常见的漏洞利用方法：</li>
 </ol>
 <ul>
-<li><strong><em>Stack Buffer Overrun</em></strong>：</li>
+<li><em><strong>Stack Buffer Overrun</strong></em>：</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -113,13 +117,14 @@
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong><em>return-to-libc</em></strong>：</li>
+<li> <em><strong>return-to-libc</strong></em>：</li>
 </ul>
 <p>即在 “Stack Buffer Overrun” 的基础上<strong>将返回地址设置为 libc 中的某个函数</strong>，比如 system()。而该函数一般可以以与被攻击程序相同的权限来执行任意的命令行指令。但在 X86-64 上，借助 <strong>ASLR</strong>（地址空间布局随机化）的帮助，完成该攻击的几率几乎为零。</p>
 <ul>
-<li><strong><em>Format Output Vulnerabilities</em></strong>：</li>
+<li> <em><strong>Format Output Vulnerabilities</strong></em>：</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
@@ -127,21 +132,22 @@
   <span class="token function">gets</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>    
   <span class="token function">printf</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// the user input can be treated as format specifiers which is dangerous. </span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="101">
 <li>（Page：287）常见的栈溢出保护机制：</li>
 </ol>
 <ul>
-<li><strong><em>Security Cookie</em></strong>：</li>
+<li><em><strong>Security Cookie</strong></em>：</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <p>通过在旧 rbp 值的高地址侧插入一个 <strong>Stack Guard</strong> 的方式来检测 Stack Overrunning 是否发生。在 ret 指令执行之前，<strong>编译器会发出特殊检查，以验证 Stack Guard 的完整性</strong>。如果发现其值被更改则会直接终止程序的执行。该技术默认在 GCC 及 MSVC 中开启。</p>
 <ul>
-<li><strong><em>ASLR (Address Space Layout Randomization)</em></strong>：</li>
+<li>***ASLR (Address Space Layout Randomization)***：</li>
 </ul>
 <p>将每个 Program Segment 都加载到地址空间中的随机位置上，这使得猜测函数的正确地址变得几乎不可能。大部分常用的操作系统均支持该功能。</p>
 <ul>
-<li><strong><em>EDP (Data Execution Prevention)</em></strong>：</li>
+<li>***EDP (Data Execution Prevention)***：</li>
 </ul>
 <p>此技术可以保护某些内存页，以避免执行存储在这些内存页上的指令。</p>
 <h3 id="Chapter-15：共享对象和代码模型"><a href="#Chapter-15：共享对象和代码模型" class="headerlink" title="Chapter 15：共享对象和代码模型"></a>Chapter 15：共享对象和代码模型</h3><ol start="102">
@@ -149,7 +155,7 @@
 <li>（Page：292）可以使用 <strong>LD_PRELOAD</strong> 环境变量来控制每个应用程序在运行前需要<strong>第一个</strong>进行动态链接的共享库（如果在该库中找到符号，则后续 libc \ libcxx 中的符号便不会再被使用。因此可用于实现某些代码注入的目的）。</li>
 <li>（Page：295）基于 GOT 的符号相对寻址示意图（更直观一些）：</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ol start="105">
 <li>（Page：297）<strong>PLT 位于 .text 段</strong>，主要用于函数符号的 Lazy-Resolving。</li>
 <li>（Page：304）一个应用 GOT / PLT 的汇编例子：</li>
@@ -165,7 +171,8 @@
 
     mov <span class="token register variable">rdi</span>, <span class="token number">0</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>共享库（lib.asm）：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_</span>
 <span class="token keyword">global foo:function</span>
@@ -181,13 +188,15 @@
     lea <span class="token register variable">rsi</span>, <span class="token operator">[</span>rel msg<span class="token operator">]</span>  <span class="token comment" spellcheck="true">; -> lea rsi, [rip + offset];</span>
     mov <span class="token register variable">rdx</span>, msg.end <span class="token operator">-</span> msg  <span class="token comment" spellcheck="true">; calculate the string length;</span>
     syscall
-    ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>编译运行：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">nasm -flef64 main.asm -o main.o
 nasm -flef64 lib.asm -o lib.o
 ld -shared lib.o -o lib.so
 ld --dynamic-linker<span class="token operator">=</span>/lib64/ld-linux-x86-64.so.2 main.o lib.so -o main
-LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token comment" spellcheck="true"># "SO function called.";</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token comment" spellcheck="true"># "SO function called.";</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="107">
 <li>（Page：307）一个完整的 <strong>Dynamic Linking</strong> 的例子：</li>
 </ol>
@@ -246,14 +255,16 @@ LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token
     mov <span class="token register variable">rsi</span>, <span class="token operator">[</span>rel common_msg wrt ..got<span class="token operator">]</span>
     mov <span class="token register variable">rdx</span>, <span class="token number">5</span>
     syscall
-    ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="108">
 <li>（Page：313）GCC 中可以使用 <code>__attribute__((visibility(&quot;hidden&quot;)))</code> 来控制共享库中<strong>符号对外部的可见性</strong>。优点：通过隐藏不需要导出或仅用于共享库内部的函数，可以保证共享库的<strong>对外接口足够简洁并易于维护</strong>。当然，也可以选择将符号定义为 static，使其作用域仅限于当前的编译单元。</li>
 </ol>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">visibility</span><span class="token punctuation">(</span><span class="token string">"hidden"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// 会变成 local 符号；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// 会变成 local 符号；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
-<li>可以选择在编译时为 GCC 传递 “<strong>-fvisibility=hidden</strong>” 来隐藏所有符号，然后仅将需要的符号再显式导出。</li>
+<li>可以选择在编译时为 GCC 传递 “**-fvisibility=hidden**” 来隐藏所有符号，然后仅将需要的符号再显式导出。</li>
 </ul>
 <ol start="109">
 <li>（Page：315）GCC 中可以通过为标记为 “hidden” 的内部方法添加 <code>__attribute__((alias(&quot;aliasName&quot;)))</code> 别名的方式，使得它们在被 wrapper 方法调用时减少一次内存地址的解引用过程（是依赖于编译器的特性）。</li>
@@ -293,7 +304,8 @@ LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token
     call fact
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>不使用</strong>尾递归版本的 Factorial 阶乘：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global _start</span>
 <span class="token keyword">section .text</span>
@@ -316,7 +328,8 @@ LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token
     mov <span class="token register variable">r11</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="114">
 <li>（Page：333）优化方法：<strong>公共子表达式消除</strong>（对应 -fgcse）。对于两个表达式中的<strong>公共部分，将会被单独求值，然后在多个表达式中共享计算结果</strong>。</li>
 <li>（Page：334）优化方法：<strong>常量传播</strong>（对应 -fipa-cp \ -fgcse \ -fipa-cp-clone）。即对于部分仅依赖于常量的表达式，可以进行编译时求值。</li>
@@ -352,7 +365,8 @@ LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token
     mov <span class="token register variable">r11</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>  <span class="token comment" spellcheck="true">; 6;</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>编译器通常会<strong>使用 SSE 指令来进行浮点数运算</strong>（如：<code>mulss</code>）。</li>
 </ul>

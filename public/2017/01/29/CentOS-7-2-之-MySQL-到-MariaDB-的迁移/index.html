@@ -3,28 +3,35 @@
 <p>MariaDB 由 MySQL 的创始人 Michael Widenius 主导研发，他早前曾以10亿美元的价格，将自己创建的公司 MySQL AB 卖给了 SUN，此后，随着SUN 被甲骨文收购，MySQL 的所有权也落入 Oracle 的手中。开发这个分支的原因之一是：甲骨文公司在收购 MySQL 后，有将 MySQL 闭源的潜在风险，因此社区采用另起分支的方式来避开这个风险。 在过去一年中，大型互联网用户以及 Linux 发行商（这里比如 CentOS）纷纷抛弃 MySQL，转投到 MariaDB 的阵营。MariaDB 是目前最受关注的 MySQL 数据库衍生版，也被视为开源数据库 MySQL 的替代品。</p>
 <p>MariaDB 默认的存储引擎是 Maria，不是 MyISAM。Maria 可以支持事务，但是默认情况下没有打开事务支持，因为事务支持对数据库的性能会有着一定的影响。</p>
 <p>MariaDB 的安装与配置流程：</p>
-<h4 id="1-检测当前-CentOS-的系统版本"><a href="#1-检测当前-CentOS-的系统版本" class="headerlink" title="1. 检测当前 CentOS 的系统版本"></a>1. 检测当前 CentOS 的系统版本</h4><pre class="line-numbers language-bash"><code class="language-bash">lsb_release -a LSB Version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="2-安装-MariaDB"><a href="#2-安装-MariaDB" class="headerlink" title="2. 安装 MariaDB"></a>2. 安装 MariaDB</h4><pre class="line-numbers language-bash"><code class="language-bash">yum <span class="token function">install</span> mariadb*<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="1-检测当前-CentOS-的系统版本"><a href="#1-检测当前-CentOS-的系统版本" class="headerlink" title="1. 检测当前 CentOS 的系统版本"></a>1. 检测当前 CentOS 的系统版本</h4><pre class="line-numbers language-bash"><code class="language-bash">lsb_release -a LSB Version
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="2-安装-MariaDB"><a href="#2-安装-MariaDB" class="headerlink" title="2. 安装 MariaDB"></a>2. 安装 MariaDB</h4><pre class="line-numbers language-bash"><code class="language-bash">yum <span class="token function">install</span> mariadb*
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="3-启动-MariaDB"><a href="#3-启动-MariaDB" class="headerlink" title="3. 启动 MariaDB"></a>3. 启动 MariaDB</h4><pre class="line-numbers language-bash"><code class="language-bash">systemctl <span class="token function">enable</span> mariadb
-systemctl start mariadb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="4-配置管理员用户权限"><a href="#4-配置管理员用户权限" class="headerlink" title="4. 配置管理员用户权限"></a>4. 配置管理员用户权限</h4><pre class="line-numbers language-bash"><code class="language-bash">mysqladmin -u root password <span class="token operator">&lt;</span>your@password<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+systemctl start mariadb
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="4-配置管理员用户权限"><a href="#4-配置管理员用户权限" class="headerlink" title="4. 配置管理员用户权限"></a>4. 配置管理员用户权限</h4><pre class="line-numbers language-bash"><code class="language-bash">mysqladmin -u root password <span class="token operator">&lt;</span>your@password<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h4 id="5-设置远程连接的数据库账户"><a href="#5-设置远程连接的数据库账户" class="headerlink" title="5. 设置远程连接的数据库账户"></a>5. 设置远程连接的数据库账户</h4><pre class="line-numbers language-bash"><code class="language-bash">mysql -u root -p <span class="token operator">&lt;</span>your@password<span class="token operator">></span>
 <span class="token operator">></span> use mysql<span class="token punctuation">;</span>
 <span class="token operator">></span> insert into user<span class="token punctuation">(</span>Host, User, Password<span class="token punctuation">)</span> values <span class="token punctuation">(</span><span class="token string">'localhost'</span>, <span class="token string">'remote'</span>, password<span class="token punctuation">(</span><span class="token operator">&lt;</span>your@password<span class="token operator">></span><span class="token punctuation">))</span><span class="token punctuation">;</span>
 <span class="token operator">></span> flush privileges<span class="token punctuation">;</span>
 <span class="token operator">></span> create database dbname<span class="token punctuation">;</span>
 <span class="token operator">></span> grant all privileges on dbname.* to <span class="token string">'remote'</span>@<span class="token string">'%'</span> identified by <span class="token operator">&lt;</span>your@password<span class="token operator">></span><span class="token punctuation">;</span>
-<span class="token operator">></span> flush privileges<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">></span> flush privileges<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>接下来便可以通过 SQLyog 等数据库远程连接工具以“remote”用户登陆 MariaDB。我们仍然可以使用 <code>service</code> 命令来查看当前数据库的状态或者停止启动数据库，在使用 <code>service</code> 执行对应的命令时，该命令会被自动跳转到对应的 <code>systemctl</code> 命令进行执行。</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">service</span> mariadb status
 <span class="token function">service</span> mariadb stop
 <span class="token function">service</span> mariadb start 
-<span class="token function">service</span> mariadb restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">service</span> mariadb restart
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应于实际执行的命令：</p>
 <pre class="line-numbers language-bash"><code class="language-bash">systemctl status mariadb.service
 systemctl stop mariadb.service
 systemctl start mariadb.service
-systemctl restart mariadb.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+systemctl restart mariadb.service
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>附：如何更改 Mariadb 数据存放位置？</p>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 停止 Mariadb；</span>
 <span class="token function">service</span> mariadb stop
@@ -43,5 +50,6 @@ socket<span class="token operator">=</span>/data/mysql/mysql.sock
 <span class="token function">chown</span> -R mysql:mysql /data/mysql
 <span class="token function">chmod</span> -R 777 /data/mysql
 <span class="token comment" spellcheck="true"># 重启 Mariadb；</span>
-<span class="token function">service</span> mariadb start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">service</span> mariadb start
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-01-29T14:57:05.000Z"> 2019 / 06 / 28, 15:56:25</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2017/01/16/2017-开篇/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2017/02/28/Promise-A-调用详谈/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

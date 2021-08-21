@@ -5,7 +5,7 @@
 <li>（Page：16）形式上，虚拟化是构建一个<strong>将虚拟客户系统映射到真实主机系统的同态</strong>。通常，两者的细节是相同的。</li>
 <li>（Page：19）计算机系统体系结构，如下图。2 和 3 分别是系统调用接口与 lic \ libcxx 等库中提供的接口；7 和 8 分别为<strong>用户指令集</strong>与<strong>操作系统指令集</strong>。ISA 是划分软件和硬件两个层面的分界线。ABI 由 3（<strong>系统调用 ABI</strong>，比如 X86-64 下不能使用 rcx 传参，相对于 ISA 的调用约定可能会有些许不同）和 7（<strong>ISA 调用约定</strong>，cdecl \ System-V-AMD64 ABI 等）组成；API（源代码级别）由 2 和 7（个人理解是指单纯的指令调用）组成。</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <p><strong>C ABI</strong> 规定内容（其中一部分内容由 Calling-Convention 决定）：</p>
 <ul>
 <li>预定义类型（char、int、float 等）的大小和布局；</li>
@@ -45,7 +45,7 @@
 <li>（Page：25）在系统虚拟机中，VMM 的一个主要特色是提供了对平台的复制。VMM 可以访问并管理所有硬件资源，当客户机操作系统要执行一个特定操作时（比如直接访问共享硬件资源的特权指令），这个操作将<strong>由 VMM 来解释并检查正确性，再由 VMM 替客户机执行</strong>。</li>
 <li>（Page：28）虚拟机分类法：</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <p><strong>进程虚拟机</strong>：</p>
 <ul>
 <li>多道程序设计；</li>
@@ -73,7 +73,7 @@
 <li>（Page：31）<strong>译码分派</strong>（decode-and-dispatch）解释器：逐条指令地执行源程序来运行，并根据读取到的指令修改源状态。解释的性能代价会相当高。即使解释器代码用汇编语言编写，<strong>解释一条像“取字并置零”的单一指令仍需要包含目标 ISA 中数十条指令的执行</strong>。</li>
 <li>（Page：34）<strong>线索解释</strong>（Threaded Interpretation）：在当前指令处理例程结束之前以某种方式（直接、间接查表等）直接跳转到下一个指令处理例程继续执行，进而<strong>省去循环分派的过程，降低 CPU 分支预测产生的损耗</strong>。</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="12">
 <li>（Page：34）预译码（Pre-decoding）：<strong>将指令的操作码和扩展操作码合并为一个单独的预译码操作码，同时将操作数或立即数等参数按照字节对齐的方式进行存放</strong>。这在简化了原指令序列的同时，也会易于虚拟机的访问。一个预译码（针对 IA32）的基本结构如下：</li>
 </ol>
@@ -83,6 +83,7 @@
   <span class="token keyword">unsigned</span> <span class="token keyword">char</span> dest<span class="token punctuation">;</span>
   <span class="token keyword">unsigned</span> <span class="token keyword">char</span> src1<span class="token punctuation">;</span>
   unsinged <span class="token keyword">int</span> src2<span class="token punctuation">;</span>
-<span class="token punctuation">}</span> code<span class="token punctuation">[</span>CODE_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> code<span class="token punctuation">[</span>CODE_SIZE<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>（待更新。大概率不会更新了，翻译质量太差）</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-07-15T10:09:30.000Z"> 2020 / 11 / 21, 16:50:05</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/07/11/std-optional-与-Optional-References/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/07/18/老生常谈之：switch-case-VS-if-else/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

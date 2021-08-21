@@ -3,21 +3,24 @@
 <h3 id="Chapter-8-Utility-Classes"><a href="#Chapter-8-Utility-Classes" class="headerlink" title="Chapter 8: Utility Classes"></a>Chapter 8: Utility Classes</h3><h5>使用 std::ratio 转换不同的时间单位</h5>
 
 <ul>
-<li>几种不同类型的时钟对象：<ul>
-<li><strong><em>std::chrono::system_clock</em></strong>：表示系统级别的实时挂钟。想要获取本地时间的话，这是个正确的选择；</li>
-<li><strong><em>std::chrono::steady_clock</em></strong>：表示单调型的时间。这个时间是不可能倒退的，而时间倒退可能会在其他时钟上发生，比如：其最小精度不同，或是在冬令时和夏令时交替时发生；</li>
-<li><strong><em>std::chrono::high_resolution_clock</em></strong>：STL 中可统计<strong>最细粒度</strong>时钟周期的时钟；</li>
+<li>几种不同类型的时钟对象：</li>
 </ul>
-</li>
+<ul>
+<li><em><strong>std::chrono::system_clock</strong></em>：表示系统级别的实时挂钟。想要获取本地时间的话，这是个正确的选择；</li>
+<li><em><strong>std::chrono::steady_clock</strong></em>：表示单调型的时间。这个时间是不可能倒退的，而时间倒退可能会在其他时钟上发生，比如：其最小精度不同，或是在冬令时和夏令时交替时发生；</li>
+<li><em><strong>std::chrono::high_resolution_clock</strong></em>：STL 中可统计<strong>最细粒度</strong>时钟周期的时钟；</li>
+</ul>
+<ul>
 <li>std::chrono::duration 结构：<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span>
   <span class="token keyword">class</span> <span class="token class-name">Rep</span><span class="token punctuation">,</span> 
   <span class="token keyword">class</span> <span class="token class-name">Period</span> <span class="token operator">=</span> std<span class="token operator">::</span>ratio<span class="token operator">&lt;</span><span class="token number">1</span><span class="token operator">></span> 
-<span class="token operator">></span> <span class="token keyword">class</span> <span class="token class-name">duration</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">></span> <span class="token keyword">class</span> <span class="token class-name">duration</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
 <ul>
 <li>Rep 为一个数值类型，用来保存某时间点的值（默认为 <code>long long int</code>）。</li>
 <li>Period 为比例参数，默认情况下为 std::ratio&lt;1&gt;，即 1。</li>
-</ul>
-</li>
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// "chrono::duration" represents a time interval.</span>
@@ -56,19 +59,23 @@
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>std::ratio_multiply 用于<strong>将两个 std::ratio 相乘</strong>（如：2/3 * 1/6 = 1/9）。<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">typedef</span> ratio<span class="token operator">&lt;</span><span class="token number">1LL</span><span class="token punctuation">,</span> <span class="token number">1000000LL</span><span class="token operator">></span> micro<span class="token punctuation">;</span>
-<span class="token keyword">typedef</span> ratio<span class="token operator">&lt;</span><span class="token number">1LL</span><span class="token punctuation">,</span> <span class="token number">1000LL</span><span class="token operator">></span> milli<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">typedef</span> ratio<span class="token operator">&lt;</span><span class="token number">1LL</span><span class="token punctuation">,</span> <span class="token number">1000LL</span><span class="token operator">></span> milli<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+</ul>
 <ul>
 <li>std::chrono::duration::period：std::__1::ratio&lt;1L&gt;。</li>
-</ul>
-</li>
 </ul>
 <h5>使用 std::chrono 转换绝对时间与相对时间</h5>
 
 <ul>
-<li>常用的实际偏移字面量值（std::chrono::duration）：<ul>
+<li>常用的实际偏移字面量值（std::chrono::duration）：</li>
+</ul>
+<ul>
 <li>hours (<strong>h</strong>)；</li>
 <li>minutes (<strong>min</strong>)；</li>
 <li>seconds (<strong>s</strong>)；</li>
@@ -76,7 +83,7 @@
 <li>microseconds (<strong>us</strong>)；</li>
 <li>nanoseconds (<strong>ns</strong>)；</li>
 </ul>
-</li>
+<ul>
 <li>std::time：<strong>表示时间的算数类型，通常为一个整型</strong>。该值包含自 1970/01/01 UTC 的 00:00 开始的秒数。</li>
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -107,7 +114,8 @@ ostream<span class="token operator">&amp;</span> <span class="token keyword">ope
        <span class="token operator">&lt;&lt;</span> <span class="token string">"1 week ago, it was "</span>
        <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>now <span class="token operator">-</span> 7_days<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>使用 std::optional 安全地标识失败</h5>
 
 <ul>
@@ -141,7 +149,8 @@ oint <span class="token keyword">operator</span><span class="token operator">+</
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"sorry, the input was something else than 2 numbers.\n"</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>std::tuple 的打包与解包</h5>
 
 <ul>
@@ -176,13 +185,14 @@ oint <span class="token keyword">operator</span><span class="token operator">+</
   std<span class="token operator">::</span><span class="token function">apply</span><span class="token punctuation">(</span>printStudent<span class="token punctuation">,</span> john<span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"-----\n"</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>使用 std::tuple 快速构建数据结构</h5>
 
 <ul>
 <li>std::make_tuple 与 std::tuple_cat 相结合构建 zip 函数：</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">typename</span> T<span class="token punctuation">,</span> <span class="token keyword">typename</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>Ts<span class="token operator">></span>
 <span class="token keyword">void</span> <span class="token function">printArgs</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream<span class="token operator">&amp;</span> os<span class="token punctuation">,</span> <span class="token keyword">const</span> T<span class="token operator">&amp;</span> v<span class="token punctuation">,</span> <span class="token keyword">const</span> Ts<span class="token operator">&amp;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>vs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   os <span class="token operator">&lt;&lt;</span> v<span class="token punctuation">;</span>
@@ -226,7 +236,8 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
     std<span class="token operator">::</span><span class="token function">make_tuple</span><span class="token punctuation">(</span><span class="token string">"Sum"</span><span class="token punctuation">,</span> <span class="token string">"Minimum"</span><span class="token punctuation">,</span> <span class="token string">"Maximum"</span><span class="token punctuation">,</span> <span class="token string">"Average"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token function">sumMinMaxAvg</span><span class="token punctuation">(</span>numbers<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>将 void* 替换为更为安全的 std::any</h5>
 
 <ul>
@@ -265,16 +276,17 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
   <span class="token comment" spellcheck="true">// in-place construct.</span>
   <span class="token function">printAnything</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">any</span><span class="token punctuation">(</span>std<span class="token operator">::</span>in_place_type_t<span class="token operator">&lt;</span>intList<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>使用 std::variant 存储不同数据类型</h5>
 
 <ul>
-<li>三种成员遍历方式：<ul>
+<li>三种成员遍历方式：</li>
+</ul>
+<ul>
 <li><strong>std::get</strong>；</li>
 <li><strong>std::get_if</strong>；</li>
 <li><strong>std::visit</strong>；</li>
-</ul>
-</li>
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>string name<span class="token punctuation">;</span>
@@ -336,7 +348,8 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
     <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span><span class="token function">count_if</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">begin</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token operator">::</span><span class="token function">end</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">,</span> is_type<span class="token operator">&lt;</span>Dog<span class="token operator">></span><span class="token punctuation">)</span>
     <span class="token operator">&lt;&lt;</span> <span class="token string">" dogs in the list.\n"</span><span class="token punctuation">;</span>  
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>自动化管理资源 — std::unique_ptr</h5>
 
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> Foo <span class="token punctuation">{</span>
@@ -363,7 +376,8 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"End of main()\n"</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>处理共享堆内存 — std::shared_ptr</h5>
 
 <p>（略）</p>
@@ -380,7 +394,7 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
 <ul>
 <li>std::shared_ptr 可以指向另外一个由 std::shared_ptr 管理的共享对象的一部分成员。但<strong>两个指针会共享同样的控制块（引用计数会增加）</strong>。因此当指向共享对象的指针析构后。指向其成员的 std::shared_ptr 仍然存活；</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> Person <span class="token punctuation">{</span>
   std<span class="token operator">::</span>string name<span class="token punctuation">;</span>
   size_t age<span class="token punctuation">;</span>
@@ -402,7 +416,8 @@ std<span class="token operator">::</span>tuple<span class="token operator">&lt;<
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"name: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>sharedName
     <span class="token operator">&lt;&lt;</span> <span class="token string">"\nage: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>sharedAge <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5>选择合适的引擎生成随机数</h5>
 
 <p>（略）</p>

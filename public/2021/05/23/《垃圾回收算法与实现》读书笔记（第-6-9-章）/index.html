@@ -49,7 +49,7 @@
 <ol start="33">
 <li>（Page：125）<strong>间接引用</strong>：可解决保守式 GC 无法使用“复制算法”的问题。</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li><strong>算法思路</strong>：经由“句柄”来<strong>间接</strong>地处理对象。在移动引用的对象时，只需修改句柄里的指针，而无需修改原本的引用值；</li>
 <li><strong>缺点</strong>：因为必须将所有对象都间接引用，因此会拉低访问对象内数据的速度，而这会关系到整个语言处理程序的速度。</li>
@@ -73,7 +73,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li>堆被分成一定大小的页，每个页各有一个编号；</li>
@@ -105,7 +105,8 @@
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// 伪代码。若该对象地址未曾使用过，则将其加入黑名单；</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_used_object</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span> 
   obj<span class="token punctuation">.</span>next <span class="token operator">=</span> $blacklist 
-  $blacklist <span class="token operator">=</span> obj<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  $blacklist <span class="token operator">=</span> obj
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-7：分代垃圾回收（Generational-GC）"><a href="#Chapter-7：分代垃圾回收（Generational-GC）" class="headerlink" title="Chapter 7：分代垃圾回收（Generational GC）"></a>Chapter 7：分代垃圾回收（Generational GC）</h3><p>即在对象中引入了“<strong>年龄</strong>”的概念，通过优先回收容易成为垃圾的对象，提高垃圾回收的效率。这基于一个总结出的经验：“<strong>大部分对象在生成后马上就变成了垃圾，很少有对象能活得很久</strong>。”</p>
 <ol start="36">
 <li>（Page：143）<strong>分代</strong>：</li>
@@ -117,8 +118,8 @@
 <ol start="37">
 <li>（Page：143）<strong>Ungar 的分代垃圾回收</strong>：</li>
 </ol>
-<p>- <strong><em>堆结构</em></strong>：</p>
-<p><img src="2.png" alt=""></p>
+<p>- <em><strong>堆结构</strong></em>：</p>
+<p><img src="2.png"></p>
 <ul>
 <li>论文中，对各空间大小的设定：<ul>
 <li>生成空间（用于生成新对象，满时发生 GC）：140KB；</li>
@@ -127,7 +128,7 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>实现细节</em></strong>：</p>
+<p>- <em><strong>实现细节</strong></em>：</p>
 <ul>
 <li><strong>记录集</strong>（<em>remembered set</em>）：记录了从老年代对象到新生代对象的引用。这部分引用也需要被当作根进行处理（用于搜索新生代的活动对象，每次新生代 GC 时创建。可以简化更新父子指针的复杂度）；</li>
 <li>对象头结构：<ul>
@@ -141,7 +142,7 @@
 </li>
 <li><strong>新生代 GC</strong>：<strong>当生成空间满时启动</strong>。GC 过程会将生成空间中的活动对象复制到 To 幸存空间。同时，From 空间内的活动对象也会被复制到 To 幸存空间。</li>
 </ul>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ul>
 <li><strong>老年代 GC</strong>：老年代空间占满后触发。可通过 GC 标记-清除进行；</li>
 <li>从一定次数的新生代 GC 中存活下来的对象会被到晋升，被复制到老年代空间中；</li>
@@ -176,9 +177,9 @@
 <li>（Page：156）<strong>多代垃圾回收</strong>：可以相对减少在老年代对象上消耗的垃圾回收时间。除了最老的那一代之外，每代都有一个记录集。X 代的记录集只记录来自比 X 老的其他代的引用。综合来看，少设置一些分代能得到更优秀的吞吐量，<strong>据说分为 2 代或者 3 代是最好的</strong>。</li>
 <li>（Page：157）<strong>列车垃圾回收</strong>（<em>Train GC</em>）：为了在分代垃圾回收中利用老年代 GC 而采用的算法，可以控制老年代 GC 中暂停时间的增长。</li>
 </ol>
-<p>- <strong><em>堆结构</em></strong>：</p>
-<p><img src="5.png" alt=""></p>
-<p>- <strong><em>实现细节</em></strong>：</p>
+<p>- <em><strong>堆结构</strong></em>：</p>
+<p><img src="5.png"></p>
+<p>- <em><strong>实现细节</strong></em>：</p>
 <ul>
 <li>老年代空间按一定大小划分，每个划分出来的空间称为车厢。每个列车和每个车厢都按其产生顺序被赋予编号，互相连接。<strong>1 次老年代 GC 是以 1 个车厢作为 GC 对象的</strong>；</li>
 <li>列车的记录集里记录的是来自其他列车的引用，车厢的记录集中记录的则是来自同一列车的其他车厢的引用（均是老年代对象）；</li>
@@ -188,7 +189,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ul>
 <li><strong>老年代 GC</strong>：新生代 GC 结束后执行。以<strong>开头列车的开头车厢</strong>作为 GC 对象开始，将该对象所在车厢里的活动对象复制到其他车厢。<ul>
 <li>若当前列车所有车厢没有根引用，且该车厢记录集为空，则直接回收整个列车；</li>
@@ -196,7 +197,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ul>
 <li>若新生代空间的记录集满了，则必须执行新生代 GC 以清空新生代空间；若老年代空间中某个车厢的记录集满了，则可选择<strong>将该车厢排除到 GC 对象之外</strong>（类似永生对象）。</li>
 <li><strong>优点</strong>：<ul>
@@ -259,7 +260,8 @@
     <span class="token function">push</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> $mark_stack<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 重新搜索；</span>
   <span class="token punctuation">}</span>
   <span class="token operator">*</span>field <span class="token operator">=</span> newobj
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="43">
 <li>（Page：176）<strong>汤浅的算法</strong>（又名“快照 GC”）：</li>
 </ol>
@@ -271,7 +273,7 @@
 <li>（Page：180）RC Immix 算法（合并型引用计数法 + Immix 算法）<strong>将引用计数法的一大缺点 — “吞吐量低”（由于引用计数频繁变化引起），改善到了实用级别</strong>。</li>
 <li>（Page：181）<strong>合并型引用计数法</strong>：将注意力放在某一时期最初和最后的状态上，在该期间内不进行计数器的增减。指针改动时的信息（对象和其子对象）会被注册到“<strong>更改缓冲区</strong>”（Modified Buffer）。当更改缓冲区满时，执行 GC 查找更改缓冲区，并正确设置计数器的值。</li>
 </ol>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ul>
 <li><strong>优点</strong>：增加了吞吐量；</li>
 <li><strong>缺点</strong>：增加了 mutator 的暂停时间。</li>
@@ -287,4 +289,4 @@
 <li><strong>优点</strong>：吞吐量得到了大幅改善；</li>
 <li><strong>缺点</strong>：暂停时间增长。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 06 / 01, 20:18:53</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/25/GC：理解与实现（基于-Mark-and-Sweep）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-23T14:17:23.000Z"> 2021 / 06 / 01, 20:18:53</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/05/19/TLPI-读书笔记（第-1-2-章）/" itemprop="url">Older Post ⇒</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

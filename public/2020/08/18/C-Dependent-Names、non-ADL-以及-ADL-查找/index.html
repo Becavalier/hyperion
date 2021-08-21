@@ -9,27 +9,29 @@
     <span class="token keyword">static</span> <span class="token keyword">int</span> i <span class="token operator">=</span> B<span class="token operator">&lt;</span>T<span class="token operator">></span><span class="token operator">::</span>i<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "B&lt;T>::i" is dependent on T.</span>
     pb<span class="token operator">-</span><span class="token operator">></span>j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "pb->j" is dependent on T.</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>因此，对于 Dependent 的名字查找和绑定规则会有所不同。</p>
 <h3 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h3><p>Non-dependent 的名字会在模板<strong>定义时</strong>查找并进行绑定。<strong>即使在模板实例化时存在着更好的匹配，此绑定也会保持不变</strong>。对于此类名字的绑定过程，候选函数将以在模板定义之前出现的函数为主，若未找到可以绑定的函数，则终止编译。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token keyword">void</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"g(double)\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
+ 
 <span class="token keyword">template</span><span class="token operator">&lt;</span><span class="token keyword">class</span> <span class="token class-name">T</span><span class="token operator">></span>
 <span class="token keyword">struct</span> S <span class="token punctuation">{</span>
   <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{</span>
     <span class="token function">g</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "g" is a non-dependent name, bound now.</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-
+ 
 <span class="token keyword">void</span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"g(int)\n"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-
+ 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">g</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// calls g(int).</span>
 
   S<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> s<span class="token punctuation">;</span>
   s<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// calls g(double).</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果 non-dependent 名字的含义<strong>在模板定义上下文和模板实例化之间更改</strong>，则程序是 <strong>ill-formed</strong> 的。比如：“在模板定义时，在一个 non-dependent 名字的定义中使用了不完全类型，而模板实例化时却成为了完全类型”等（示例如下）。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">extern</span> <span class="token keyword">const</span> <span class="token keyword">int</span> b<span class="token punctuation">;</span>
 
@@ -54,7 +56,8 @@
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   g<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "int";</span>
   h<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Clang - "long", GCC - "int" (ill-formed);</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对于 dependent 名字的绑定过程则会被推迟到“查找”阶段进行。</p>
 <h3 id="查找规则"><a href="#查找规则" class="headerlink" title="查找规则"></a>查找规则</h3><ul>
 <li>对于具有外部链接（External Linkage）的函数定义，Non-ADL 查找<strong>仅会查找模板的定义上下文</strong>；</li>
@@ -68,7 +71,7 @@
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value = "</span> <span class="token operator">&lt;&lt;</span> t <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
+ 
 <span class="token comment" spellcheck="true">// translation unit 1:</span>
 <span class="token comment" spellcheck="true">// Programmer 1 wants to allow E::writeObject to work with vector&lt;int>.</span>
 <span class="token keyword">namespace</span> P1 <span class="token punctuation">{</span>
@@ -80,7 +83,7 @@
     E<span class="token operator">::</span><span class="token function">writeObject</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// error: will not find P1::operator&lt;&lt;.</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
+ 
 <span class="token comment" spellcheck="true">// translation unit 2:</span>
 <span class="token comment" spellcheck="true">// Programmer 2 wants to allow E::writeObject to work with vector&lt;int>.</span>
 <span class="token keyword">namespace</span> P2 <span class="token punctuation">{</span>
@@ -91,7 +94,8 @@
     std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> v<span class="token punctuation">;</span>
     E<span class="token operator">::</span><span class="token function">writeObject</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// error: will not find P2::operator&lt;&lt;.</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在上面的示例中，如果对于 operator&lt;&lt; 的 non-ADL 查找允许在模板的实例化上下文中进行，则对于 <code>E::writeObject&lt;vector&lt;int&gt;&gt;</code> 的实例化这导致该模板具有两个不同的定义。一个使用了 “P1::operator&lt;&lt;”，另一个使用了 “P2::operator&lt;&lt;”。链接器可能无法识别类似的 ODR 违规，导致在两个实例化中可能都会使用其中的某一个定义。</p>
 <p>为了能够使 ADL 查找来检查用户定义的命名空间，应<strong>将 std::vector 替换为用户定义的类，或者将其元素类型替换为用户自定义的类</strong>：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> P1 <span class="token punctuation">{</span>
@@ -104,18 +108,19 @@
   E<span class="token operator">::</span><span class="token function">writeObject</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// OK: instantiates writeObject(std::vector&lt;P1::C>)</span>
                      <span class="token comment" spellcheck="true">//     which finds P1::operator&lt;&lt; via ADL.</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意：此规则使得无法对标准库类型进行运算符重载（因为按照 ADL 规则，需要将重载运算符定义在 std 命名空间内。如下代码所示）；</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iterator></span></span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;utility></span></span>
-
+ 
 <span class="token comment" spellcheck="true">// Bad idea: operator in global namespace, but its arguments are in std::.</span>
 std<span class="token operator">::</span>ostream<span class="token operator">&amp;</span> <span class="token keyword">operator</span><span class="token operator">&lt;&lt;</span><span class="token punctuation">(</span>std<span class="token operator">::</span>ostream<span class="token operator">&amp;</span> os<span class="token punctuation">,</span> std<span class="token operator">::</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> os <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span>first <span class="token operator">&lt;&lt;</span> <span class="token string">','</span> <span class="token operator">&lt;&lt;</span> p<span class="token punctuation">.</span>second<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
+ 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">typedef</span> std<span class="token operator">::</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">double</span><span class="token operator">></span> elem_t<span class="token punctuation">;</span>
   std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>elem_t<span class="token operator">></span> <span class="token function">v</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -126,7 +131,8 @@ std<span class="token operator">::</span>ostream<span class="token operator">&am
   <span class="token comment" spellcheck="true">// only consider the std namespace, and will find many overloads of -</span>
   <span class="token comment" spellcheck="true">// std::operator&lt;&lt;, so the lookup will be done. Overload resolution will then -</span>
   <span class="token comment" spellcheck="true">// fail to find operator&lt;&lt; for elem_t in the set found by the lookup.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="ADL"><a href="#ADL" class="headerlink" title="ADL"></a>ADL</h3><ul>
 <li>对于以 Primitive Type 作为参数的函数调用，只能遵循 non-ADL 查找规则；</li>
 </ul>
@@ -146,10 +152,11 @@ std<span class="token operator">::</span>ostream<span class="token operator">&am
 
   <span class="token punctuation">(</span>endl<span class="token punctuation">)</span><span class="token punctuation">(</span>std<span class="token operator">::</span>cout<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Error: 'endl' is not declared in this namespace.</span>
                        <span class="token comment" spellcheck="true">// The sub-expression (endl) is not a function call expression.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><strong>一些例子</strong>：</p>
 <ul>
-<li><strong>using-directive 会在当前 scope 引入名字</strong>。在当前 scope 内查找时，如果找到名字，则不会在往外层 scope 继续查找；因此 <code>foo(N1::S{});</code> 只会调用 <code>N2::foo</code>，而非 <code>::foo</code>。</li>
+<li><strong>using-directive 会在当前 scope 引入名字</strong>。在当前 scope 内查找时，如果找到名字，则不会在往外层 scope 继续查找；因此 <code>foo(N1::S&#123;&#125;);</code> 只会调用 <code>N2::foo</code>，而非 <code>::foo</code>。</li>
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> N1 <span class="token punctuation">{</span>
   <span class="token keyword">struct</span> S <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -167,7 +174,8 @@ std<span class="token operator">::</span>ostream<span class="token operator">&am
   <span class="token keyword">using</span> N2<span class="token operator">::</span>foo<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// N2::foo is introduced into the main function, lookup stops here.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>N1<span class="token operator">::</span>S<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use generic version.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use generic version.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>查找时同时找到 ADL 引入的 <code>N1::foo</code>，以及由 using-directive 引入的 <code>N2::foo</code>。但前者优先级更高。</li>
 </ul>
@@ -190,9 +198,10 @@ std<span class="token operator">::</span>ostream<span class="token operator">&am
   <span class="token keyword">using</span> N2<span class="token operator">::</span>foo<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// N2::foo is introduced into the main function, lookup stops here.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>N1<span class="token operator">::</span>S<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use specific version.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use generic version.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><code>foo(N1::S{});</code> 调用了由 using-directive 引入的特化版本 <code>template&lt;&gt; N2::foo</code>。</li>
+<li><code>foo(N1::S&#123;&#125;);</code> 调用了由 using-directive 引入的特化版本 <code>template&lt;&gt; N2::foo</code>。</li>
 </ul>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">namespace</span> N1 <span class="token punctuation">{</span>
   <span class="token keyword">struct</span> S <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -214,7 +223,8 @@ std<span class="token operator">::</span>ostream<span class="token operator">&am
   <span class="token keyword">using</span> N2<span class="token operator">::</span>foo<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// N2::foo is introduced into the main function, lookup stops here.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>N1<span class="token operator">::</span>S<span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use specific version.</span>
   <span class="token function">foo</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// use generic version.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>External Linkage Lookup 只能走 ADL 的方式；</li>
 <li>不建议为标准库中的类型（如 <code>std::vector&lt;int&gt;</code> 等）进行自定义的运算符重载（一般不建议污染 std 命名空间）。<strong>最好写在自定义类型中，然后走 ADL；using-directive 引入的泛型版本作为 backup</strong>。</li>

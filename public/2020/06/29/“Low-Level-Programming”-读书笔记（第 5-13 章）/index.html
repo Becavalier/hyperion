@@ -6,7 +6,8 @@
 <p><strong>常量宏替换</strong>（%define）：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token operator">%</span>define COUNT <span class="token number">42</span>
 mov <span class="token register variable">rax</span>, COUNT  <span class="token comment" spellcheck="true">; macro -> macro expansion;</span>
-<span class="token comment" spellcheck="true">; mov rax, 42</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">; mov rax, 42</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>带参数的宏替换</strong>（%macro / %endmacro）：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token operator">%</span>macro print <span class="token number">2</span>  <span class="token comment" spellcheck="true">; macro, taking 2 parameters;</span>
 mov <span class="token register variable">rsi</span>, <span class="token operator">%</span><span class="token number">1</span>  <span class="token comment" spellcheck="true">; use the 1st parameter;</span>
@@ -26,7 +27,8 @@ syscall
     print v, <span class="token number">6</span>  <span class="token comment" spellcheck="true">; macro -> macro expansion;</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="45">
 <li>（Page：66）NASM 条件宏编译：</li>
 </ol>
@@ -45,7 +47,8 @@ syscall
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
 <span class="token operator">%</span>endif
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>基于定义的条件编译</strong>（%ifdef / %ifndef）：</li>
 </ul>
@@ -59,7 +62,8 @@ syscall
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
 <span class="token operator">%</span>endif
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>基于文本识别的条件编译</strong>（%ifidn / %ifidni）：</li>
 </ul>
@@ -77,7 +81,8 @@ syscall
     pushr rflags  <span class="token comment" spellcheck="true">; push lower 16 bits of EFLAGS;</span>
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>基于参数类型的条件编译</strong>（%ifid / %ifstr / %ifnum）：</li>
 </ul>
@@ -97,7 +102,8 @@ syscall
 <span class="token label function">_start:</span>
     print <span class="token number">10</span>  <span class="token comment" spellcheck="true">; mov rdi, 2;</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="46">
 <li>（Page：69）NASM 下的<strong>宏定义求值规则</strong>：</li>
 </ol>
@@ -120,7 +126,8 @@ syscall
 <span class="token label function">_start:</span>
     mov <span class="token register variable">rdi</span>, v  <span class="token comment" spellcheck="true">; v &lt;- 55;</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在循环中我们可以使用 <strong>%exitrep</strong> 直接退出整个循环结构（类似 break）。</li>
 </ul>
@@ -142,12 +149,14 @@ syscall
     foo <span class="token number">10</span>
     mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="49">
 <li>（Page：77）相较于 readelf 命令，<strong>objdump 还支持对除 ELF 外的其他格式的分析</strong>，比如：ELF、COFF、MachO 甚至 Wasm（llvm-objdump）。</li>
 <li>（Page：79）以 <strong>Intel 指令集</strong>（而非 AT&amp;T）的语法形式展示反编译的代码结果：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">objdump -D -M intel-mnemonic <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">objdump -D -M intel-mnemonic <span class="token operator">&lt;</span>file<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="51">
 <li>（Page：80）NASM 下的<strong>静态链接</strong>：</li>
 </ol>
@@ -159,12 +168,14 @@ syscall
 <span class="token label function">_start:</span>
     mov <span class="token register variable">rdi</span>, <span class="token operator">[</span>count<span class="token operator">]</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>模块文件：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global count  </span><span class="token comment" spellcheck="true">; declare this as a global symbol;</span>
 <span class="token keyword">section .data</span>
 <span class="token label function">count:</span>
-    db <span class="token number">10</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+    db <span class="token number">10</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>只有 Global 的符号才能够跨模块共享使用</strong>。通常在 C/C++ 定义的非静态函数默认均为 Global 类型，而全局静态函数由于作用域仅限于当前的编译单元，因此为 Local 类型符号；</li>
 </ul>
@@ -182,7 +193,8 @@ syscall
     call foo
     mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>共享库文件（mod.asm）：</p>
 <pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_  </span><span class="token comment" spellcheck="true">; PIC code;</span>
 <span class="token keyword">global foo:function</span>
@@ -198,11 +210,13 @@ syscall
     mov <span class="token register variable">rsi</span>, message
     mov <span class="token register variable">rdx</span>, <span class="token number">14</span>
     syscall
-    ret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>在最后一步链接生成 ELF 可执行文件时一定要<strong>指定使用的动态链接器</strong>：</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash">ld -o main main.o ./mod.so --dynamic-linker<span class="token operator">=</span>/lib64/ld-linux-x86-64.so.2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ld -o main main.o ./mod.so --dynamic-linker<span class="token operator">=</span>/lib64/ld-linux-x86-64.so.2
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="53">
 <li>（Page：87）NASM 汇编实现的一个简易 <strong>Dictionary</strong>（基于 Linked List）：基本原理是使用宏自动生成的标签（%%lw）来分割每一个 Node；每个 Node 包含两部分：一部分为指向下一个节点的“指针”，另一部分为 Key-Value 结构，保存了当前节点的键值对。</li>
 </ol>
@@ -237,7 +251,7 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
     mov <span class="token register variable">rdi</span>, <span class="token number">1</span>
     mov <span class="token register variable">rdx</span>, <span class="token number">4</span>
     syscall
-
+    
     <span class="token comment" spellcheck="true">; start from that addr (bypass the first 8 bytes);</span>
     add <span class="token register variable">rbx</span>, <span class="token number">8</span>  
     mov <span class="token register variable">rsi</span>, <span class="token register variable">rbx</span>
@@ -248,9 +262,10 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
 
     xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
     mov <span class="token register variable">rax</span>, <span class="token number">60</span>
-    syscall<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>用于串联两条宏指令：“<strong>％+</strong>”；</li>
+<li>用于串联两条宏指令：“**％+**”；</li>
 </ul>
 <h3 id="Chapter-6：中断和系统调用"><a href="#Chapter-6：中断和系统调用" class="headerlink" title="Chapter 6：中断和系统调用"></a>Chapter 6：中断和系统调用</h3><ol start="54">
 <li>（Page：91）应用程序有两种可以访问 IO 端口的方式：</li>
@@ -263,7 +278,7 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
 <li>（Page：94）每一个中断请求都带有一个 ID，以用于在内存中的“中断描述表（IDT）”查询对应的中断类型和处理程序地址。中断描述表的位置及大小信息被记录在 <strong>idtr</strong> 寄存器（64 位）中。其中<strong>低 16 位记录了大小信息</strong>；<strong>高 48 位记录了 IDT 的地址信息</strong>。</li>
 <li>（Page：94）IDT 中的每一个表项占据 16 个字节，大体结构如下：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li>其中当前的特权等级需要小于等于 DPL 字段的值，以使用 int 来调用该中断处理程序；</li>
 <li><strong>前 30 个中断号被保留</strong>，CPU 会将它们用于处理其内部事件，例如无效的指令编码。</li>
@@ -284,26 +299,26 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
 <ul>
 <li>权限转移只能发生在 ring0 和 ring3 之间；</li>
 <li>所有的系统调用都只有一个代码入口点，而非传统 <code>int 0x80</code> 的方式；</li>
-<li>通用寄存器在系统调用期间被隐式使用（如 rcx 用于存储 rip 寄存器的内容；r11 用于存储 rflags 的内容）；</li>
+<li> 通用寄存器在系统调用期间被隐式使用（如 rcx 用于存储 rip 寄存器的内容；r11 用于存储 rflags 的内容）；</li>
 </ul>
 <h3 id="Chapter-7：计算模型"><a href="#Chapter-7：计算模型" class="headerlink" title="Chapter 7：计算模型"></a>Chapter 7：计算模型</h3><p>（“有限自动机”的部分略。这部分内容可以直接参考斯坦福的 <strong>CS143</strong>。） </p>
 <ol start="59">
 <li>（Page：110）Forth 抽象机：<strong>处理器</strong> + <strong>两个分别用于存储数据和返回地址的栈</strong> + <strong>线性内存</strong>；</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <p>Forth 程序按“<strong>字</strong>”为单位以空格或换行符进行分割，数字值表示将该数据推入栈中。有三种类型的“字”：Integer（数据）、Native（操作）、Colon（定义其他字）。<strong>符号 “:” 用于定义新的字</strong>。一个基本的用于求一元二次方程判别式的 Forth 程序的栈变化图（Stack Diagram）如下：</p>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="60">
 <li>（Page：113）基于 <strong>ITC</strong>（Indirect Threaded Code，二级指针）方式实现的 Forth Machine 基本字调用结构：</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li>pc 指向了每一个 Native 对应的 <strong>ET</strong>（Execution Token，汇编实现部分）；而每一个 Native 在实现的结尾处都通过调用 next 子过程来调整 pc 的位置，并将执行过程移动到下一个 ET 处；</li>
 <li>Colon 其实相当于<strong>子函数调用</strong>的过程，在调用之前需要先保存当前 pc 的值，然后在调用结束后把 pc 值重置；</li>
 </ul>
-<p>一个简单实现：<u><strong><a href="https://github.com/Becavalier/Forthress" target="_blank" rel="noopener">Becavalier/Forthress</a></strong></u>。</p>
+<p>一个简单实现：<u><strong><a target="_blank" rel="noopener" href="https://github.com/Becavalier/Forthress">Becavalier/Forthress</a></strong></u>。</p>
 <h3 id="Chapter-8：C-语言"><a href="#Chapter-8：C-语言" class="headerlink" title="Chapter 8：C 语言"></a>Chapter 8：C 语言</h3><ol start="61">
-<li>（Page：130）<strong>-Wall</strong>，可用于让编译器显示所有警告信息。</li>
+<li>（Page：130）**-Wall**，可用于让编译器显示所有警告信息。</li>
 <li>（Page：131）在 C 中，<strong>全局变量只能使用编译时常量来赋值</strong>；</li>
 <li>（Page：131）在大多数去情况下尽量使用 <strong>puts</strong> 来代替 <strong>printf</strong> 输出字符串。相较于 printf，puts 速度更快且没有安全漏洞。</li>
 <li>（Page：133）<strong>静态类型</strong>意味着可以在编译时知道所有变量的具体类型；<strong>弱类型</strong>意味着有时一些数据值会被隐式地转换为其他类型。</li>
@@ -321,7 +336,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   <span class="token keyword">int</span> arr<span class="token punctuation">[</span>ARR_SIZE <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token function">foo</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="69">
 <li>（Page：154）指派初始化（C++20 里也开始支持）：</li>
 </ol>
@@ -329,7 +345,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> arr<span class="token punctuation">[</span>ARR_SIZE<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="70">
 <li>（Page：156）一般情况下，<strong>请使用 size_t 类型来作为数组的索引下标</strong>。标准规定，数组类型的可索引大小由 size_t 的大小决定。</li>
 <li>（Page：156）C 标准中<strong>没有规定对负数进行位移操作时的具体实现规则</strong>。</li>
@@ -347,7 +364,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
     sum <span class="token operator">=</span> sum <span class="token operator">+</span> array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The sum is: %d\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>重构后：</p>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">const</span> <span class="token keyword">int</span> g_array<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 变量带有语义；</span>
@@ -365,7 +383,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"The sum is: %d\n"</span><span class="token punctuation">,</span> <span class="token function">array_sum</span><span class="token punctuation">(</span>g_array<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>g_array<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="75">
 <li>（Page：168）C 中的结构体在使用时需要配合 “struct” 关键字。如下，即 “struct pair” 整体才是一个类型。编译器会通过判断是否带有 “struct” 关键字来推断引用变量的类型是结构体还是其他符号。</li>
 </ol>
@@ -375,7 +394,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   <span class="token keyword">struct</span> pair p <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">10</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// should be used by "struct pair".</span>
   <span class="token keyword">int</span> pair <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="76">
 <li>（Page：170）C 下，Union 的一种常见的使用方式：</li>
 </ol>
@@ -388,7 +408,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   <span class="token keyword">union</span> pixel p <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c\n"</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span>at<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 'c'.</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="77">
 <li>（Page：173）类似 OCaml 的静态强类型语言中，<strong>针对两整数运算（+）和两浮点数运算（+.）分别有着不同的运算符</strong>。</li>
 <li>（Page：178）C11 中新增的宏 <strong>_Generic</strong> 可以在编译时动态选择符合条件的子句（<strong>可用于模拟 C++ 中的函数重载</strong>）：</li>
@@ -406,7 +427,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">print</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-10：代码结构"><a href="#Chapter-10：代码结构" class="headerlink" title="Chapter 10：代码结构"></a>Chapter 10：代码结构</h3><ol start="79">
 <li>（Page：183）可以在<strong>函数声明中使用 incomplete 不完全类型</strong>。</li>
 <li>（Page：191）在宏函数体内的所有变量在使用其值时均需要<strong>以括号“()”的形式包裹起来</strong>。</li>
@@ -427,7 +449,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   arr<span class="token punctuation">[</span>DEFAULT_INDEX<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>DEFAULT_INDEX<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="86">
 <li>（Page：209）<strong>灵活（柔性）数组类型</strong>：结构体中的最后一个元素允许是未知大小的数组，而 <code>sizeof</code> 返回这种结构体的大小时不包括柔性数组占用的内存（C99）。对于 C++ 来说，某些编译器会以“扩展”的方式支持该特性。</li>
 </ol>
@@ -449,12 +472,13 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
     <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> arr<span class="token operator">-></span>array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="87">
 <li>（Page：212）对于<strong>较短</strong>的字符串，编译器通常会将其<strong>直接 inline 到指令中作为立即数</strong>。对于<strong>较长</strong>的字符串，通常会被事先存放到 <strong>.rodata 段</strong>中，然后在使用到时再通过指令<strong>拷贝到栈</strong>上。</li>
 <li>（Page：213）不同平台体系上的数据模型：</li>
 </ol>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ol start="89">
 <li>（Page：214）使用“<strong>平台无关类型</strong>”（uint8_t \ int64_t \ int16_t 等）：</li>
 </ol>
@@ -466,7 +490,8 @@ db <span class="token string">"head"</span>, <span class="token number">0</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%"</span> PRIi64 <span class="token string">"\n"</span><span class="token punctuation">,</span> i64<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 'PRIi64' 为格式化输出字符串对应的宏；</span>
   <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%"</span> PRIu64 <span class="token string">"\n"</span><span class="token punctuation">,</span> u64<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-12：语法、语义和语用学"><a href="#Chapter-12：语法、语义和语用学" class="headerlink" title="Chapter 12：语法、语义和语用学"></a>Chapter 12：语法、语义和语用学</h3><p>（略）</p>
 <h3 id="Chapter-13：良好的编码习惯"><a href="#Chapter-13：良好的编码习惯" class="headerlink" title="Chapter 13：良好的编码习惯"></a>Chapter 13：良好的编码习惯</h3><ol start="90">
 <li>（Page：247）可以使用 <strong>Doxygen</strong> 来为 C/C++ 源码创建 HTML 或 LATEX 格式的文档。</li>

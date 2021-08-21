@@ -12,7 +12,15 @@
 <p><strong>标准布局</strong>：</p>
 <ol>
 <li>所有非静态成员有相同的访问权限；</li>
-<li>在有类继承时满足以下情况之一：<br>2.1. 派生类中有非静态成员，且只有一个仅包含静态成员的基类；<br>2.2. 基类有非静态成员，而派生类没有非静态成员；</li>
+<li>在有类继承时满足以下情况之一：</li>
+<li><ol>
+<li>派生类中有非静态成员，且只有一个仅包含静态成员的基类；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>基类有非静态成员，而派生类没有非静态成员；</li>
+</ol>
+</li>
 <li>类中第一个非静态成员类型与其基类不同；</li>
 <li>没有虚函数和虚基类；</li>
 <li>所有非静态成员均符合标准布局，其基类也符合标准布局；</li>
@@ -33,7 +41,8 @@
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>is_pod<span class="token operator">&lt;</span>A<span class="token operator">></span><span class="token operator">::</span>value <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>is_pod<span class="token operator">&lt;</span>B<span class="token operator">></span><span class="token operator">::</span>value <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对于任何一个符合 POD 要求的对象，由于其保证对应对象在内存中是连续存储的，因此我们可以使用 std::memcpy 函数直接从内存中对该对象进行复制而不破坏该对象。比如：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> A <span class="token punctuation">{</span> <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">default</span><span class="token punctuation">;</span> <span class="token keyword">int</span> v<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token keyword">struct</span> B <span class="token operator">:</span> <span class="token keyword">public</span> A <span class="token punctuation">{</span> <span class="token keyword">using</span> A<span class="token operator">::</span>A<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -44,7 +53,8 @@
   std<span class="token operator">::</span><span class="token function">memcpy</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>y<span class="token punctuation">,</span> <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> y<span class="token punctuation">.</span>v <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 100;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对于“标准布局”部分的第二条，我们可以直接理解为<strong>基类和派生类不能同时拥有非静态成员变量</strong>；而对于第三条，若派生类中的第一个非静态成员类型与其基类相同，则在内存中，派生类的布局并不会与基类地址直接对齐，而是相差了一个字节（为了区分类对象地址和第一个相同类型成员的地址）。因此，类定义中第一个非静态的成员类型是否与其基类相同便决定着不同的内存布局。</p>
 <p>我们再来看看聚合类和 POD 的关系。C++11 对聚合类的定义是：所有成员均为 public、没有显式定义的构造函数（包括拷贝构造）、没有基类、没有虚函数。如下代码所示，可以看到一般来说，符合聚合类要求的对象通常也具有标准布局，但却并不一定平凡。<strong>若聚合类没有自定义的拷贝构造函数、析构函数以及成员类内初始值，则其为 POD</strong>。</p>
 <p>还有一点需要注意的是，聚合类可以使用“<strong>聚合初始化</strong>”来初始化一个聚合类对象，而 C++14 之后则可以对有类内初始值的聚合类进行列表初始化，即<strong>自 C++14 起，有无类内初始化器不再成为聚合体的要求（–std=c++14）</strong>。</p>
@@ -61,7 +71,8 @@
   B bv1<span class="token punctuation">{</span><span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
   B bv2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">100</span><span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 复制列表初始化会产生临时对象，其性能可能稍弱于直接初始化；</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>总的来说，POD 具有以下几点特征：</p>
 <ol>
 <li><strong>字节赋值</strong>：对于 POD 类型，可以安全地使用 std::memset、std::memcpy 对其进行初始化和拷贝；</li>

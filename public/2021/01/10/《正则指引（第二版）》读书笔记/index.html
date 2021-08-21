@@ -11,32 +11,36 @@
 <span class="token regex">/[12345]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'F1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token regex">/[1-5]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'F1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 范围表示法；</span>
 <span class="token regex">/[0-9a-zA-Z]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token regex">/[\x00-\x7f]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配全 ASCII 码表；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/[\x00-\x7f]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配全 ASCII 码表；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>“范围表示法”的字符范围是<strong>根据 “-” 符号两端字符的 ASCII 码值</strong>来确定的（小-大）；</li>
 <li>可以使用 “\x” 的方式来匹配不可打印或不好打印字符（如“非本地文字”）；</li>
 <li>转义“<strong>元字符</strong>”：（当正则是以“字符串”形式给出时，“\” 需要用 “\” 代替。否则会被当做非法的转义字符）。</li>
 </ul>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/[0\-9]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'0-9'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/[0\-9]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'0-9'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>完全匹配</strong>：整个字符串需要完全与正则匹配。</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 正则只能匹配一个字符，而字符串多于一个字符；</span>
 <span class="token regex">/^[12\]345]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'2345'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false.</span>
 <span class="token comment" spellcheck="true">// 整个字符串的完全匹配；</span>
-<span class="token regex">/^\[2345]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'[2345]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^\[2345]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'[2345]'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>“<strong>排除型</strong>”字符组：（必须匹配一个字符）。</li>
 </ul>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^[^0-9][0-9]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'A2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^[^0-9][0-9]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'A2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>字符组简记法</strong>（ASCII 匹配规则）：<ul>
-<li><strong><em>\d</em></strong>：等价于 <em>[0-9]</em>（数字）；</li>
-<li><strong><em>\w</em></strong>：等价于 <em>[0-9a-zA-Z_]</em>（单词字符）；</li>
-<li><strong><em>\s</em></strong>：等价于 <em>[ \t\r\n\v\f]</em>（空白字符）；</li>
-<li><strong><em>\D</em></strong>：与 <em>\d</em> 互补；</li>
-<li><strong><em>\W</em></strong>：与 <em>\w</em> 互补；</li>
-<li><strong><em>\S</em></strong>：与 <em>\s</em> 互补。</li>
+<li><em><strong>\d</strong></em>：等价于 *[0-9]*（数字）；</li>
+<li><em><strong>\w</strong></em>：等价于 *[0-9a-zA-Z_]*（单词字符）；</li>
+<li><em><strong>\s</strong></em>：等价于 *[ \t\r\n\v\f]*（空白字符）；</li>
+<li><em><strong>\D</strong></em>：与 <em>\d</em> 互补；</li>
+<li><em><strong>\W</strong></em>：与 <em>\w</em> 互补；</li>
+<li><em><strong>\S</strong></em>：与 <em>\s</em> 互补。</li>
 </ul>
 </li>
 </ul>
@@ -45,7 +49,8 @@
 <span class="token regex">/^[^\d]$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'_'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token regex">/^\d$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'8'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token comment" spellcheck="true">// 匹配所有字符；</span>
-<span class="token regex">/^[\s\S]*$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Hello, world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^[\s\S]*$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'Hello, world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>转义</strong>：对于一般形式的字符组 <code>[a-z]</code>，<strong>转义时仅需要给第一个字符添加反斜线即可</strong>，即 “\[a-z]”。</li>
 </ul>
@@ -58,21 +63,23 @@
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^[\d]{6,8}$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token regex">/^[\d]{4,}$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
-<span class="token regex">/^[\d]{4}$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^[\d]{4}$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'123456'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>简记量词</strong>：<ul>
-<li><strong><em>+</em></strong>：等价于 <em>{0,}</em>；</li>
-<li><strong><em>*</em></strong>：等价于 <em>{1,}</em>；</li>
-<li><strong><em>?</em></strong>：等价于 <em>{0,1}</em>。</li>
+<li>***+***：等价于 *{0,}*；</li>
+<li>*******：等价于 *{1,}*；</li>
+<li>***?***：等价于 *{0,1}*。</li>
 </ul>
 </li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/^&lt;[^>]+>$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token regex">/^&lt;[^/][^>]*[^/]>$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
 <span class="token regex">/^&lt;\/[^>]*>$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;/div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
-<span class="token regex">/^&lt;[^>\/]*\/>$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;div/>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^&lt;[^>\/]*\/>$/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;div/>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong>任意字符匹配</strong>：“<strong>*</strong>”；<ul>
+<li><strong>任意字符匹配</strong>：“*****”；<ul>
 <li>无法匹配换行符（\n）；</li>
 </ul>
 </li>
@@ -80,18 +87,20 @@
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/\".*\"/</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`"quoted string" and another"`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
 <span class="token comment" spellcheck="true">// "quoted string" and another".</span>
-<span class="token regex">/\"[^\"]*\"/</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`"quoted string" and another"`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "quoted string".</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/\"[^\"]*\"/</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`"quoted string" and another"`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "quoted string".</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong>忽略优先量词</strong>（懒惰量词，效率相对较低）：“<strong>*?</strong>”，选择能保证后序正则优先匹配的当前最小匹配。在匹配时会先选择“不匹配”的状态，再尝试表达式中之后的元素，如果尝试失败，再回溯，选择之前保存的“匹配”状态。</li>
+<li><strong>忽略优先量词</strong>（懒惰量词，效率相对较低）：“***?**”，选择能保证后序正则优先匹配的当前最小匹配。在匹配时会先选择“不匹配”的状态，再尝试表达式中之后的元素，如果尝试失败，再回溯，选择之前保存的“匹配”状态。</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`&lt;div>A&lt;/div>&lt;div>B&lt;/div>`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/&lt;div>[\S\s]*?&lt;\/div>/g</span><span class="token punctuation">)</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// (2) [Array(1), Array(1)].</span>
 <span class="token regex">/\/\/.*/</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`// comment here.`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token operator">/</span><span class="token operator">/</span> 匹配“单行注释”；
 <span class="token regex">/\*[\S\s]*?\*\//</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/* comment here */`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配“多行注释”（不能嵌套，所以优先选择第一个）；</span>
 <span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`&lt;script>let x = 1;&lt;/script>`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/&lt;script[\s>][\S\s]*?&lt;\/script>/g</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配特定 HTML 标签；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="1.png" alt=""></p>
+<span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`&lt;script>let x = 1;&lt;/script>`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/&lt;script[\s>][\S\s]*?&lt;\/script>/g</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配特定 HTML 标签；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="1.png"></p>
 <ul>
-<li><strong>转义</strong>：对于一般形式的量词 <code>{m,n}</code>，其含有的特殊字符不止一个，但<strong>转义时仅需要给第一个字符添加反斜线即可</strong>。其他形式则需要转义每个字符。</li>
+<li><strong>转义</strong>：对于一般形式的量词 <code>&#123;m,n&#125;</code>，其含有的特殊字符不止一个，但<strong>转义时仅需要给第一个字符添加反斜线即可</strong>。其他形式则需要转义每个字符。</li>
 </ul>
 <h3 id="第-3-章-括号"><a href="#第-3-章-括号" class="headerlink" title="第 3 章 - 括号"></a>第 3 章 - 括号</h3><ol start="3">
 <li>（Page：33）<strong>括号</strong>：</li>
@@ -99,9 +108,10 @@
 <ul>
 <li>默认情况下，量词只能应用在“字符(组)”上。<strong>使用括号，可以将量词应用在一个整体的表达式规则上</strong>。这种功能被称为“分组”；</li>
 </ul>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/(^abc(de)*$)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`abcdedede`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/(^abc(de)*$)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`abcdedede`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li><strong>多选结构</strong>：“<strong>(…|…)</strong>”。<ul>
+<li><strong>多选结构</strong>：“**(…|…)**”。<ul>
 <li>可以没有最外层的“括号”，但可能由于优先级产生意外的效果（比如 <code>/^ab|cd$/</code> 与 <code>/^(ab|cd)$/</code> 的解析规则并不相同）；</li>
 <li>没有类似“字符组”的“排除”方式；</li>
 <li>分支的排序是有讲究的，<strong>大多数实现会选择最左侧的分支</strong>；</li>
@@ -111,8 +121,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="2.png" alt=""></p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/([0-9]|[0-9]{2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`125`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="2.png"></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/([0-9]|[0-9]{2}|1[0-9][0-9]|2[0-4][0-9]|25[0-5])/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`125`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// true.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>引用分组</strong>：提取匹配的分组内容。<ul>
 <li>分组的标号是<strong>根据 “(” 出现的顺序来计数的</strong>。</li>
@@ -122,7 +133,8 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// (4) ["11-22-33", "11", "22", "33", index: 0, input: "11-22-33", groups: undefined]</span>
 <span class="token regex">/(\d{2})-(\d{2})-(\d{2})/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-22-33"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// (5) ["11-33-44", "11-33", "11", "33", "44", index: 0, input: "11-33-44", groups: undefined]</span>
-<span class="token regex">/((\d{2})-(\d{2}))-(\d{2})/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-33-44"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/((\d{2})-(\d{2}))-(\d{2})/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-33-44"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>反向引用</strong>：“<strong>\num</strong>”。<ul>
 <li>允许在正则表达式内<strong>引用之前捕获分组匹配的文本</strong>（非表达式）；</li>
@@ -134,16 +146,18 @@
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// (2) ["11-11-11", "11", index: 0, input: "11-11-11", groups: undefined]</span>
 <span class="token regex">/(\d{2})-\1-\1/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-11-11"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment" spellcheck="true">// 命名分组（赋予分组名称）；</span>
-<span class="token regex">/(?&lt;seq>\d{2})-\k&lt;seq>-\k&lt;seq>/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-11-11"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/(?&lt;seq>\d{2})-\k&lt;seq>-\k&lt;seq>/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-11-11"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><strong>非捕获分组</strong>：“<strong>(?:…)</strong>”（… 为正则）。<ul>
+<li><strong>非捕获分组</strong>：“**(?:…)**”（… 为正则）。<ul>
 <li><strong>仅限定量词的作用范围，不捕获任何文本</strong>。某些情况下可用于提升性能；</li>
 <li>此类型分组在被引用时会被略过（即无法引用）。</li>
 </ul>
 </li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// (3) ["11-22-33", "22", "33", index: 0, input: "11-22-33", groups: undefined]</span>
-<span class="token regex">/(?:\d{2})-(\d{2})-(\d{2})/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-22-33"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token regex">/(?:\d{2})-(\d{2})-(\d{2})/g</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"11-22-33"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>转义</strong>：括号表达式中的元字符 “(”、“)” 以及 “|” 每一个都需要转义。</li>
 <li><strong>动态提取不定长输入的特定匹配</strong>：</li>
@@ -159,7 +173,8 @@
     <span class="token keyword">break</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-4-章-断言"><a href="#第-4-章-断言" class="headerlink" title="第 4 章 - 断言"></a>第 4 章 - 断言</h3><ol start="4">
 <li>（Page：60）<strong>断言</strong>：正则表达式中的某些结构并不真正匹配文本，而只负责判断在某个位置左/右侧的文本是否符合要求。</li>
 </ol>
@@ -174,31 +189,34 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>反向引用只会引用匹配到的文本，而<strong>不会保留之前的断言规则</strong>；</li>
 <li>对应的也有“非单词边界”匹配 — “<strong>\B</strong>”（对应 “\b” 的补集）。</li>
 </ul>
-<p><img src="3.png" alt=""></p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`a sentence contains a lot of words`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/\b\w+\b/g</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 提取所有单词；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="3.png"></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`a sentence contains a lot of words`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/\b\w+\b/g</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 提取所有单词；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="6">
 <li>（Page：62）断言 - “<strong>行起始/结束位置</strong>”匹配：</li>
 </ol>
 <ul>
 <li>“<strong>^</strong>”：将正则匹配“定位”在字符串的<strong>开始位置</strong>（行起始位置）；</li>
-<li>“<strong>$</strong>”：将正则匹配“定位”在字符串的<strong>结束位置</strong>（行结束位置，任何终止符之前。JavaScript 中匹配时会包含终止符）；</li>
+<li>“**$<strong>”：将正则匹配“定位”在字符串的</strong>结束位置**（行结束位置，任何终止符之前。JavaScript 中匹配时会包含终止符）；</li>
 </ul>
-<p><img src="7.png" alt=""></p>
-<p><img src="6.png" alt=""></p>
+<p><img src="7.png"></p>
+<p><img src="6.png"></p>
 <ul>
-<li>“<strong>(?m)</strong>”：设定匹配模式“<strong>多行模式</strong>”（大多数编程语言通过其他方式支持）。</li>
+<li>“**(?m)<strong>”：设定匹配模式“</strong>多行模式**”（大多数编程语言通过其他方式支持）。</li>
 </ul>
-<p><img src="4.png" alt=""></p>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`a\nsentence\ncontains\na\nlot\nof\nwords`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/^\w+/gm</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 提取所有单词；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="4.png"></p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">[</span><span class="token operator">...</span><span class="token template-string"><span class="token string">`a\nsentence\ncontains\na\nlot\nof\nwords`</span></span><span class="token punctuation">.</span><span class="token function">matchAll</span><span class="token punctuation">(</span><span class="token regex">/^\w+/gm</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 提取所有单词；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>“<strong>\A</strong>”：（忽视多行）将正则匹配“定位”在<strong>整个字符串的开始位置</strong>；</li>
 <li>“<strong>\Z</strong>”：（忽视多行）等价于默认非多行模式下的 “$”；</li>
 <li>“<strong>\z</strong>”：（忽视多行）不管终止符，只匹配整个字符串的结束位置。</li>
 </ul>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// JavaScript 中多行正则替换的几种方式；</span>
 <span class="token string">'p1\np2'</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(\w+$)/mg</span><span class="token punctuation">,</span> <span class="token string">'&lt;p>$1&lt;/p>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token string">'p1\np2'</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(?&lt;w>\w+$)/mg</span><span class="token punctuation">,</span> <span class="token string">'&lt;p>$&lt;w>&lt;/p>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token string">'p1\np2'</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(?&lt;w>\w+$)/mg</span><span class="token punctuation">,</span> <span class="token string">'&lt;p>$&lt;w>&lt;/p>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>*一个特殊 case</strong>：</li>
 </ul>
@@ -206,7 +224,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
  * “\s+$” 可以匹配前面的 “\t\n”：以后面的 “\n” 作为行分割符；
  * “^\s+” 可以匹配后面的 “\n”：以前一个 “\n” 作为行分隔符。
  */</span>
-<span class="token string">'  begin\n between\t\n\nend  '</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(^\s+|\s+$)/mg</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// ！不正确的结果！</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token string">'  begin\n between\t\n\nend  '</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(^\s+|\s+$)/mg</span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// ！不正确的结果！</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="7">
 <li>（Page：69）<strong>环视</strong>：</li>
 </ol>
@@ -216,29 +235,33 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/&lt;(?!\/)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'&lt;div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配的左尖括号右侧不能有正斜线；</span>
 <span class="token template-string"><span class="token string">`12345678`</span></span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token regex">/(?&lt;=\d)(?=(\d{2})+(?!\d))/g</span><span class="token punctuation">,</span> <span class="token string">'|'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 二位均等分割；</span>
-<span class="token regex">/(?![aeiou])[a-z]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配辅音字母；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/(?![aeiou])[a-z]/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 匹配辅音字母；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>四种“环视”类型</strong>：<ul>
 <li><strong>肯定环视要判断成功</strong>，字符串中必须有字符由环视结构中的表达式匹配；而<strong>否定环视要判断成功</strong>，却有两种情况：(1) 字符串中出现了字符，但不能由环视结构中的表达式匹配；(2) 字符串中不再有任何字符。</li>
 </ul>
 </li>
 </ul>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ul>
 <li>环视的“<strong>嵌套</strong>”：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 限制匹配字符串的固定长度；</span>
-<span class="token regex">/^(?=\d{0,3}(?!\d))/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'111123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token regex">/^(?=\d{0,3}(?!\d))/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'111123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>环视的“<strong>并列</strong>”：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 对同一个位置附加多个条件；</span>
 <span class="token regex">/^(?=\d+)(?!999)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'111123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token regex">/^(?=\d+(?&lt;!999)$)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'111999'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 字符串不能以 “999” 结尾；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token regex">/^(?=\d+(?&lt;!999)$)/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'111999'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 字符串不能以 “999” 结尾；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>“<strong>多选</strong>结构”中的环视：</li>
 </ul>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/((?!\d)|(?=\d\D))/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'ab'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 找到一个位置，其后面要么不是数字，要么是一个数字和非数字字符；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token regex">/((?!\d)|(?=\d\D))/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'ab'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 找到一个位置，其后面要么不是数字，要么是一个数字和非数字字符；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="第-5-章-匹配模式"><a href="#第-5-章-匹配模式" class="headerlink" title="第 5 章 - 匹配模式"></a>第 5 章 - 匹配模式</h3><ol start="8">
 <li>（Page：83）<strong>匹配模式</strong>：</li>
 </ol>
@@ -248,12 +271,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><strong>预定义常量</strong>作为特殊参数传入正则函数（通常为先生成 Pattern 对象，然后再调用对应匹配方法）。</li>
 </ul>
 </li>
-<li><strong><em>不区分大小写模式</em></strong>（“<strong>i</strong>”）：此模式下匹配时不区分字符大小写；</li>
-<li><strong><em>单行模式</em></strong>（“<strong>s</strong>”）：此模式下 “.” 可以匹配包括换行符在内的任何字符；</li>
-<li><strong><em>多行模式</em></strong>（“<strong>m</strong>”）：此模式下 “^” 与 “$” 可以匹配字符串内部某一行文本的起始位置和结束位置；</li>
-<li><strong><em>注释模式</em></strong>（“<strong>x</strong>”）：为正则添加注释 “<strong>(?#comment)</strong>”。</li>
+<li><em><strong>不区分大小写模式</strong></em>（“<strong>i</strong>”）：此模式下匹配时不区分字符大小写；</li>
+<li><em><strong>单行模式</strong></em>（“<strong>s</strong>”）：此模式下 “.” 可以匹配包括换行符在内的任何字符；</li>
+<li><em><strong>多行模式</strong></em>（“<strong>m</strong>”）：此模式下 “^” 与 “$” 可以匹配字符串内部某一行文本的起始位置和结束位置；</li>
+<li><em><strong>注释模式</strong></em>（“<strong>x</strong>”）：为正则添加注释 “**(?#comment)**”。</li>
 <li>模式可以通过括号来限定其作用域；</li>
-<li>结束模式的生效范围：“<strong>(?-modifier)</strong>”</li>
+<li>结束模式的生效范围：“**(?-modifier)**”</li>
 </ul>
-<pre class="line-numbers language-pcre"><code class="language-pcre">/(?i)(foo|zee)(?-i)BAR/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-pcre"><code class="language-pcre">/(?i)(foo|zee)(?-i)BAR/
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-01-10T09:24:06.000Z"> 2021 / 01 / 18, 22:33:12</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/01/03/《计算的本质：深入剖析程序和计算机》读书笔记（第-5-9-章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/01/19/《计算机网络（第七版）》读书笔记（第-1-2-章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

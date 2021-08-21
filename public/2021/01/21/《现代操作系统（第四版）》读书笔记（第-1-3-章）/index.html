@@ -85,9 +85,9 @@
 </ul>
 </li>
 <li><strong>文件</strong>：（提供对 I/O 的抽象）<ul>
-<li><strong><em>块特殊文件</em></strong>：由可随机存取块组成的设备，如磁盘等（可以被 <code>mount</code> 到当前文件系统中）；</li>
-<li><strong><em>字符特殊文件</em></strong>：用于打印机、调制解调器和其他接收或输出字符流的设备。</li>
-<li><strong><em>管道</em></strong>：是一种“虚文件”，可连接两个进程。</li>
+<li><em><strong>块特殊文件</strong></em>：由可随机存取块组成的设备，如磁盘等（可以被 <code>mount</code> 到当前文件系统中）；</li>
+<li><em><strong>字符特殊文件</strong></em>：用于打印机、调制解调器和其他接收或输出字符流的设备。</li>
+<li><em><strong>管道</strong></em>：是一种“虚文件”，可连接两个进程。</li>
 </ul>
 </li>
 <li><strong>输入/输出</strong>：I/O 子系统，用于管理 I/O 设备；</li>
@@ -95,7 +95,7 @@
 <li><strong>shell</strong>：终端与操作系统之间的接口。</li>
 </ul>
 <ol start="8">
-<li>（Page：32）<em><code>brk</code> used to be POSIX, but it was removed in POSIX 2001</em>。</li>
+<li>（Page：32）*<code>brk</code> used to be POSIX, but it was removed in POSIX 2001*。</li>
 <li>（Page：34）<code>kill</code> 系统调用：向进程发送信号。若该进程准备好捕捉一个特定的信号，那么对应的信号处理程序会处理该信号。<strong>否则，信号到来时杀掉该进程</strong>（名字由来）。</li>
 <li>（Page：36）操作系统结构：</li>
 </ol>
@@ -109,11 +109,11 @@
 <li><strong>层次式系统</strong>：上层软件在下一层软件的基础之上构建；</li>
 <li><strong>微内核</strong>：为实现高可靠性，将操作系统划分为小的、良好定义的模块，<strong>只有“微内核”运行在内核态，其余模块作为普通用户进程运行（包括硬件驱动程序）</strong>。比如 “MINIX 3”；</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li><strong>客户端-服务器模式</strong>：将进程分为两类，一类用来提供服务，一类使用服务；</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li><strong>虚拟机</strong>；</li>
 <li><strong>外核</strong>：在内核态运行，为虚拟机分配资源，并检查使用这些资源的企图。</li>
@@ -125,16 +125,16 @@
 <li>在计算机中所有可运行的软件（通常包括操作系统），都被组织成若干“<strong>顺序进程</strong>”，简称“进程”；</li>
 <li>CPU 在各进程执行间快速切换，<strong>每次切换时都会更新唯一的物理 PC 的值到对应进程在内存的逻辑 PC 中</strong>。这种多个进程的并发执行被称为“多道程序设计”。</li>
 </ul>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="12">
 <li>（Page：50）<strong>进程的创建和终止</strong>：</li>
 </ol>
-<p>- <strong><em>进程创建</em></strong>：</p>
+<p>- <em><strong>进程创建</strong></em>：</p>
 <ul>
 <li>新进程的创建都是通过<strong>一个已存在的进程执行了一个用于创建进程的系统调用</strong>实现的；</li>
 <li>Unix 中新进程的创建分为 <code>fork</code> 与 <code>execve</code> 两步：可以在两者之间对子进程的文件描述符进行处理（如：对标准输入、输出、错误的重定向等）。父子进程的可写内存段是独立的，通过“<strong>写时复制</strong>”共享（保证修改的内存仅发生在私有地址空间）。</li>
 </ul>
-<p>- <strong><em>进程终止</em></strong>：</p>
+<p>- <em><strong>进程终止</strong></em>：</p>
 <ul>
 <li>进程的终止通常由下列原因引起：<ul>
 <li>正常退出（自愿的）；</li>
@@ -147,7 +147,7 @@
 <ol start="13">
 <li>（Page：52）<strong>进程的状态</strong>：</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li>三种状态：<ul>
 <li>运行态（实际占用 CPU）；</li>
@@ -261,7 +261,7 @@
 </li>
 </ul>
 <ol start="15">
-<li>（Page：54）CPU 利用率：<strong><em>1 - p^n</em></strong>（<em>p</em> 为进程等待 I/O 操作的时间与其停留在内存中的时间之比；<em>n</em> 为内存中进程个数）。</li>
+<li>（Page：54）CPU 利用率：<em><strong>1 - p^n</strong></em>（<em>p</em> 为进程等待 I/O 操作的时间与其停留在内存中的时间之比；<em>n</em> 为内存中进程个数）。</li>
 <li>（Page：54）<strong>线程概述</strong>：</li>
 </ol>
 <ul>
@@ -371,8 +371,8 @@
 <ol start="18">
 <li>（Page：61）<strong>线程实现</strong>：</li>
 </ol>
-<p><img src="5.png" alt=""></p>
-<p>- <strong><em>在用户空间中实现</em></strong>：</p>
+<p><img src="5.png"></p>
+<p>- <em><strong>在用户空间中实现</strong></em>：</p>
 <ul>
 <li>内核仍按照“单线程进程”的方式管理进程；</li>
 <li>用户级线程可以在不支持线程的操作系统上实现。<strong>线程在一个运行时系统的上层运行</strong>，该运行时系统是一个管理线程的过程的集合。每个进程有其专用的“<strong>线程表</strong>”，由运行时系统管理，包含有线程相关信息；</li>
@@ -380,13 +380,13 @@
 <li>允许每个进程拥有自己定制的调度算法；</li>
 <li>可借助类似 <code>select</code> 的系统调用来模拟非阻塞系统调用（<strong>只在不会阻塞时实际调用</strong>）。</li>
 </ul>
-<p>- <strong><em>在内核中实现</em></strong>：</p>
+<p>- <em><strong>在内核中实现</strong></em>：</p>
 <ul>
 <li>“线程表”放置在内核中，记录所有线程的信息；</li>
 <li>线程的创建、撤销效率相对较低。</li>
 </ul>
-<p>- <strong><em>混合实现</em></strong>：</p>
-<p><img src="6.png" alt=""></p>
+<p>- <em><strong>混合实现</strong></em>：</p>
+<p><img src="6.png"></p>
 <ul>
 <li>使用内核级线程，然后将用户级线程与某些或全部内核线程多路复用起来（<strong>多个用户线程对应一个内核线程</strong>）。</li>
 </ul>
@@ -412,47 +412,47 @@
 <li><strong>竞争条件</strong>：两个或多个进程读写某些共享数据，而<strong>最后结果取决于进程运行的精确时序</strong>；</li>
 <li><strong>临界区</strong>（Critical Region）：对共享内存进行访问的<strong>程序片段</strong>（解决“竞争条件”的直接方法是，<strong>不能使多个进程同时处于临界区</strong>，因此可以使用“互斥”）；</li>
 </ul>
-<p>- <strong><em>实现互斥的几种方法</em></strong>：</p>
+<p>- <em><strong>实现互斥的几种方法</strong></em>：</p>
 <ul>
 <li><strong>屏蔽中断</strong>：在进程进入临界区后立即屏蔽所有中断，包括“<strong>时钟中断</strong>”。离开前再打开中断（不安全、多核并不友好）；</li>
 <li><strong>锁变量</strong>：在软件层，通过设置一个全局共享变量的不同值来代表是否有进程已进入了临界区（无济于事）；</li>
 <li><strong>严格轮换法</strong>：利用“<strong>自旋锁</strong>”让每个进程进行严格等待，以轮流进入临界区。缺点是：由于只有每个进程自身才能够修改锁的状态，导致<strong>处于临界区外运行的进程可能会阻碍其他进程</strong>。</li>
 </ul>
-<p><img src="18.png" alt=""></p>
+<p><img src="18.png"></p>
 <ul>
 <li><strong>Peterson 解法</strong>：如下图。进入临界区前调用 <em>enter_region</em>，退出前调用 <em>leave_region</em>（构造“忙等待”，会浪费 CPU）。</li>
 </ul>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ul>
 <li><strong>TSL 指令</strong>：需硬件支持。利用 <code>tsl</code>（<strong>测试并加锁</strong>）指令，该指令可以原子读取并写某个内存位置（构造“忙等待”，会浪费 CPU）。也可以使用 <code>xchg</code> 原子交换指令来完成类似的操作。</li>
 </ul>
-<p><img src="19.png" alt=""></p>
-<p>- <strong><em>睡眠与唤醒</em></strong>：</p>
+<p><img src="19.png"></p>
+<p>- <em><strong>睡眠与唤醒</strong></em>：</p>
 <ul>
 <li>借助 <em>sleep</em> / <em>wakeup</em> 原语来<strong>阻塞和唤醒进程</strong>（但需要借助“唤醒等待位”，无法从根本上解决问题）；</li>
 </ul>
-<p>- <strong><em>信号量</em></strong>（Semaphore）：</p>
+<p>- <em><strong>信号量</strong></em>（Semaphore）：</p>
 <ul>
 <li>一种新的数据类型，可用来<strong>累计唤醒次数</strong>，供后续使用。一个初始值为 1 的互斥量称为“<strong>二元信号量</strong>”，意味着<strong>同一时刻只能允许 1 个进程执行</strong>；</li>
 <li>对信号量为 0 的进程执行 <em>down</em> 操作，进程会陷入睡眠；对睡眠的进程执行 <em>up</em> 操作，信号量不会发生变化，但进程会苏醒。<strong>整个过程是原子的</strong>；</li>
 <li>实现互斥：每个进程在进入临界区时使互斥量减一，退出临界区时使互斥量加一。</li>
 </ul>
-<p>- <strong><em>互斥量</em></strong>：</p>
+<p>- <em><strong>互斥量</strong></em>：</p>
 <ul>
 <li>一个可以处于两个状态之一的变量（解锁/加锁）；</li>
 <li>当一个线程（进程）需要访问临界区时，它调用 <code>pthread_mutex_lock</code>，如果此时互斥量是解锁的，则调用成功，可以进入。否则，调用线程（进程）被阻塞，直到在临界区的线程（进程）完成并调用 <code>pthread_mutex_unlock</code>。如果多个线程（进程）被阻塞在该互斥量上，将随机选择一个并允许它获得锁。</li>
 </ul>
-<p>- <strong><em>管程</em></strong>：</p>
+<p>- <em><strong>管程</strong></em>：</p>
 <ul>
 <li>一种<strong>高级同步原语</strong>，是编程语言的组成部分（比如 Java）。是一个由过程、变量及数据结构等组成的一个集合，它们组成一个特殊的模块或软件包。进程可以调用管程中的过程，但不能在管程之外声明的函数中直接访问管程内的数据结构；</li>
 <li><strong>任一时刻管程中只能有一个活跃进程</strong>，进入管程时的“互斥”由编译器负责。进程之间的运行条件转移可以通过“条件变量”原语（<code>signal</code> 与 <code>wait</code>）来实现。</li>
 </ul>
-<p>- <strong><em>消息传递</em></strong>：</p>
+<p>- <em><strong>消息传递</strong></em>：</p>
 <ul>
 <li>一般用于远程进程通信；</li>
 <li>使用 <code>send</code> 与 <code>receive</code> 系统调用。</li>
 </ul>
-<p>- <strong><em>屏障</em></strong>：</p>
+<p>- <em><strong>屏障</strong></em>：</p>
 <ul>
 <li>用于“进程组”的同步。</li>
 </ul>
@@ -466,22 +466,22 @@
 </ul>
 </li>
 </ul>
-<p><img src="8.png" alt=""></p>
-<p>- <strong><em>调度算法种类</em></strong>：</p>
+<p><img src="8.png"></p>
+<p>- <em><strong>调度算法种类</strong></em>：</p>
 <ul>
 <li><strong>非抢占式算法</strong>：挑选一个进程，然后<strong>让该进程运行直至被阻塞，或直到该进程自动释放 CPU</strong>；</li>
 <li><strong>抢占式算法</strong>：挑选一个进程，<strong>并让该进程运行某个固定时段的最大值，超时后则挂起</strong>（通过时钟中断），然后挑选另一个进程运行。</li>
 </ul>
-<p>- <strong><em>批处理系统中的调度</em></strong>：</p>
+<p>- <em><strong>批处理系统中的调度</strong></em>：</p>
 <ul>
 <li><strong>先来先服务</strong>：按进程请求 CPU 的顺序使用 CPU。当一个进程被阻塞时，会从“就绪队列”中取出下一个进程接着运行。而当被阻塞进程变为就绪时，重新排放到末尾；</li>
 <li><strong>最短作业优先</strong>：将运行时间最短的作业排在前面。适用于<strong>可预知运行时间</strong>的作业；</li>
 <li><strong>最短剩余时间优先</strong>：“最短作业优先”的<strong>抢占式版本</strong>。调度程序总是选择剩余运行时间最短（包括新到达的作业）的那个进程运行。</li>
 </ul>
-<p>- <strong><em>交互式系统中的调度</em></strong>：</p>
+<p>- <em><strong>交互式系统中的调度</strong></em>：</p>
 <ul>
 <li><strong>轮转调度</strong>：每个进程被分配一个<strong>时间片</strong>，允许该进程在该时间段内运行。超时则剥夺 CPU 并分配给另一个进程，当前进程被移动到队列（可运行进程表）末尾。若进程在时间片结束前阻塞或结束，则 CPU 立即进行切换。总结：时间片设置太短会导致过多的进程切换，降低 CPU 效率；设置太长又可能因引起对短交互请求的响应时间变长。通常设置为 <strong>20~50ms</strong> 是一个比较合理的折中；</li>
-<li><strong>优先级调度</strong>：每个进程被赋予一个优先级，允许优先级最高的可运行进程先运行。可以选择将一组进程按优先级分为若干类，并在<strong>各类之间采用优先级调度，各类进程内部采用轮转调度</strong>。对于 I/O 密集型进程，可以将其优先级设置为 <strong><em>1/f</em></strong>，<em>f</em> 为该进程在上一时间片中所占的部分（比例）。</li>
+<li><strong>优先级调度</strong>：每个进程被赋予一个优先级，允许优先级最高的可运行进程先运行。可以选择将一组进程按优先级分为若干类，并在<strong>各类之间采用优先级调度，各类进程内部采用轮转调度</strong>。对于 I/O 密集型进程，可以将其优先级设置为 <em><strong>1/f</strong></em>，<em>f</em> 为该进程在上一时间片中所占的部分（比例）。</li>
 <li><strong>多级队列</strong>：设计优先级类，属于最高优先级类的进程运行一个时间片，次优先级类的进程运行 2 个时间片，再次一级运行 4 个时间片，以此类推。当一个进程用完分配的时间片后，被移动到下一类；</li>
 <li><strong>最短进程优先</strong>：优先执行估计运行时间最短的进程。进程的运行时间可以根据过过去的行为进行推测（老化）；</li>
 <li><strong>保证调度</strong>：向用户做出明确的性能保证（比如每个进程平均使用 CPU），然后实现；</li>
@@ -491,7 +491,7 @@
 <h3 id="第-3-章-内存管理"><a href="#第-3-章-内存管理" class="headerlink" title="第 3 章 - 内存管理"></a>第 3 章 - 内存管理</h3><ol start="24">
 <li>（Page：103）早期组织内存的三种方案：<strong>一个时刻只能有一个进程运行</strong>。</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ul>
 <li>操作系统位于低地址的 RAM 中（大型机和小型计算机）；</li>
 <li>操作系统位于高地址的 ROM 中（掌上电脑和嵌入式系统）；</li>
@@ -500,14 +500,14 @@
 <ol start="25">
 <li>（Page：106）两种<strong>解决内存超载的方法</strong>：</li>
 </ol>
-<p>- <strong><em>交换</em></strong>：</p>
-<p><img src="10.png" alt=""></p>
+<p>- <em><strong>交换</strong></em>：</p>
+<p><img src="10.png"></p>
 <ul>
 <li>进程被完整地换入和换出；</li>
 <li>产生的内存空洞可以通过“内存紧缩”技术进行合并（需要耗费大量 CPU 时间）；</li>
 <li>需要为可能增长的堆栈和数据段提前预留空间。</li>
 </ul>
-<p>- <strong><em>虚拟内存</em></strong>：</p>
+<p>- <em><strong>虚拟内存</strong></em>：</p>
 <ul>
 <li>每个程序拥有自己的地址空间，这个空间被分割为多个块，每个块称为一个“页”。每一页有连续的地址范围，并被映射到物理内存。当程序引用到一部分在物理内存中的地址空间时，由硬件执行必要的映射。若引用部分不在物理内存中，则由操作系统负责将缺失的部分装入内存并重新执行失败的指令；</li>
 <li>虚拟地址 -&gt; MMU -&gt;（地址总线）-&gt; 物理内存；</li>
@@ -519,21 +519,21 @@
 </ul>
 </li>
 </ul>
-<p><img src="12.png" alt=""></p>
+<p><img src="12.png"></p>
 <ul>
 <li><strong>页面对应的磁盘地址不是页表项的组成部分</strong>。页表只保存有 MMU 硬件需要的信息，而操作系统在处理“缺页中断”时需要把页面的磁盘地址等信息保存在操作系统内部的数据结构中。</li>
 </ul>
 <ol start="26">
 <li>（Page：107）<strong>空闲内存管理算法</strong>：</li>
 </ol>
-<p><img src="11.png" alt=""></p>
-<p>- <strong><em>位图</em></strong>：</p>
+<p><img src="11.png"></p>
+<p>- <em><strong>位图</strong></em>：</p>
 <ul>
 <li>内存被划分为几个字到几千字节的“分配单元”，<strong>每个单元对应于位图中的一个位，0 表示空闲，1 表示占用</strong>（或者相反）；</li>
 <li>在最后一个分配单元可能会有内存浪费；</li>
 <li><strong>缺点</strong>：查找位图中指定长度的连续 0 串（连续的可用空间）可能很耗时。</li>
 </ul>
-<p>- <strong><em>空闲链表</em></strong>：</p>
+<p>- <em><strong>空闲链表</strong></em>：</p>
 <ul>
 <li>维护一个记录已分配内存段和空闲内存段的链表，其中每个节点包含以下域：<ul>
 <li>空闲/占用标志位；</li>
@@ -556,7 +556,7 @@
 <ol start="27">
 <li>（Page：113）<strong>加速分页过程</strong>：</li>
 </ol>
-<p>- <strong><em>虚拟地址到物理地址的快速转换</em></strong>：</p>
+<p>- <em><strong>虚拟地址到物理地址的快速转换</strong></em>：</p>
 <ul>
 <li><strong>转换检测缓冲区</strong>（TLB）：基于“<strong>大多数程序总是对少量页面进行多次访问</strong>”的观察，可以提供一个小型硬件设备，<strong>将虚拟地址直接映射到物理地址，而不必再访问页表</strong>。通常被放置在 MMU 中。<ul>
 <li><em>TLB 命中</em>：虚拟地址 -&gt; MMU -&gt; TLB -&gt; 物理地址；</li>
@@ -569,7 +569,7 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>支持大型虚拟地址空间</em></strong>：</p>
+<p>- <em><strong>支持大型虚拟地址空间</strong></em>：</p>
 <ul>
 <li><strong>多级页表</strong>：<ul>
 <li>可以避免把全部页表一直保存在内存中（仅需顶级页表）；</li>
@@ -578,58 +578,58 @@
 </li>
 <li><strong>倒排页表</strong>：<ul>
 <li>存储的是有关每个物理页框的信息，倒排页表项与物理内存页框有一一对应关系，它所包含的表项数量较少（物理内存大小一般远小于虚拟内存大小）；</li>
-<li>可以直接通过 <strong><em>(进程 ID, 虚拟页号)</em></strong> 对来查找对应的物理页号；</li>
+<li>可以直接通过 <em><strong>(进程 ID, 虚拟页号)</strong></em> 对来查找对应的物理页号；</li>
 <li>可以通过增加“<strong>哈希表</strong>”（对进程 ID 与虚拟页号进行哈希）的方式来加速表项的查找过程。产生冲突可以用“<strong>链地址法</strong>”解决。</li>
 </ul>
 </li>
 </ul>
-<p><img src="13.png" alt=""></p>
+<p><img src="13.png"></p>
 <ol start="28">
 <li>（Page：117）<strong>页面置换算法</strong>：</li>
 </ol>
-<p>- <strong><em>最优页面置换算法</em></strong>：</p>
+<p>- <em><strong>最优页面置换算法</strong></em>：</p>
 <p>置换出很（最）久之后才会用到的页面（无法实现）。</p>
-<p>- <strong><em>最近未使用页面置换算法</em></strong>（NRU，Not Recently Used）：</p>
+<p>- <em><strong>最近未使用页面置换算法</strong></em>（NRU，Not Recently Used）：</p>
 <p>在最近一个时钟滴答中，<strong>淘汰一个没有被访问的（R 位为 0）已修改（M 位为 1）的页面较好</strong>。初始时，R 位与 M 位均为 0，一旦任何一个页面引起缺页中断时（被访问），R 位会被置位，且 <strong>R 位会在每次时钟中断时清零</strong>（周期内）。M 位会在页面修改后置位。</p>
-<p>- <strong><em>先进先出页面置换算法</em></strong>（FIFO）：</p>
+<p>- <em><strong>先进先出页面置换算法</strong></em>（FIFO）：</p>
 <p>维护一个所有当前在内存中的页面的链表，最新进入的放在表尾，最早进入的放在表头。当发生缺页中断时，淘汰表头的页面，并将新调入的页面放在表尾（可能会淘汰常用页面）。</p>
-<p>- <strong><em>第二次机会页面置换算法</em></strong>：</p>
+<p>- <em><strong>第二次机会页面置换算法</strong></em>：</p>
 <p>上述算法的改进。淘汰时检查最老页面的 R 位，如果为 0（最近没有使用），可以立刻置换；否则，清零该位并把页面放到链表的尾端。</p>
-<p>- <strong><em>时钟页面置换算法</em></strong>：</p>
+<p>- <em><strong>时钟页面置换算法</strong></em>：</p>
 <p>上述算法的改进。将所有页面都保存在一个<strong>环形链表</strong>中，一个指针指向最老的页面。当发生缺页时，算法首先检查指针指向的页面，如果 R 位为 0 就淘汰该页面，并把新页面插入这个位置，然后指针前进。否则清零 R 位，指针前进（<strong>省去了将页面移动到链表尾端的步骤</strong>）。</p>
-<p>- <strong><em>最近最少使用页面置换算法</em></strong>（LRU，Least Recently Used）：</p>
+<p>- <em><strong>最近最少使用页面置换算法</strong></em>（LRU，Least Recently Used）：</p>
 <p>基于一个观察：在前面几条指令中频繁使用的页面很可能在后面的几条指令中被使用。</p>
 <p>在缺页中断时，<strong>置换未使用时间最长的页面</strong>。内存中维护一个所有页面的链表，最近最多使用的在表头，最近最少使用的在表尾。每次访问内存时都必须更新整个链表。在链表中找到一个页面，删除它，然后把它移动到表头。实现成本较高，一般需要硬件支持。</p>
-<p>- <strong><em>优化的最不常使用置换算法</em></strong>（NFU，Not Frequently Used）（<strong>较好</strong>）：</p>
+<p>- <em><strong>优化的最不常使用置换算法</strong></em>（NFU，Not Frequently Used）（<strong>较好</strong>）：</p>
 <p>将每个页面与一个软件计数器（一般 8 位够用）相关联，计数器初值为 0，每次时钟中断时，由操作系统扫描内存中的所有页面，<strong>将每个页面的的计数器值右移一位，然后将该页面的 R 位加到计数器最左端的位</strong>（老化）。</p>
 <p>发生缺页中断时，<strong>将置换计数器值最小的页面</strong>。</p>
-<p><img src="14.png" alt=""></p>
-<p>- <strong><em>工作集页面置换算法</em></strong>：</p>
+<p><img src="14.png"></p>
+<p>- <em><strong>工作集页面置换算法</strong></em>：</p>
 <p><em>工作集模型</em>：在让进程运行以前，确保它的工作集就已经在内存中（预先调页），从而减少缺页中断率。</p>
 <p>该算法在发生缺页中断时，<strong>淘汰一个不在工作集中的页面</strong>。工作集可以被定义为过去 10ms 中的内存访问所用到的页面集合。算法执行如下图所示：</p>
-<p><img src="15.png" alt=""></p>
+<p><img src="15.png"></p>
 <ul>
 <li>若所有页面的生存时间都在特定时间内，则选择时间最长的淘汰；</li>
 <li>最坏情况下，所有页面都被访问过，则随机淘汰。</li>
 </ul>
-<p>- <strong><em>工作集时钟页面置换算法</em></strong>（<strong>较好</strong>）：</p>
+<p>- <em><strong>工作集时钟页面置换算法</strong></em>（<strong>较好</strong>）：</p>
 <p>上述算法的改进。构建一个循环表，当装入第一个页面后，把它加到该表中。随着更多的页加入，它们形成一个环。每个表项包含来自基本工作集算法的上次使用时间、R 位和 M 位。</p>
 <p>每次缺页时，首先检查指针指向的页面。如果 R 位被置 1，该页面在当前时钟滴答中被使用过，那么该页不适合被淘汰。然后把该页 R 位置零，指针指向下一个页面，并重复该算法。否则，如果页面生成时间大于特定值且 M 位为零，则可以将此页面替换掉。</p>
 <ol start="29">
 <li>（Page：125）分页系统<strong>设计问题</strong>：</li>
 </ol>
-<p>- <strong><em>局部分配策略于全局分配策略</em></strong>：</p>
+<p>- <em><strong>局部分配策略于全局分配策略</strong></em>：</p>
 <ul>
 <li>可以<strong>按照进程大小的比例来为进程分配相应数目的页面，并同时为每个进程规定一个最小页框数</strong>；</li>
 <li><em>局部</em>：只选择替换内存中属于当前进程的页；</li>
 <li><em>全局</em>：选择内存中所有的页进行替换，不区分是哪个进程（较“局部”算法更好）。</li>
 </ul>
-<p>- <strong><em>负载控制</em></strong>：</p>
+<p>- <em><strong>负载控制</strong></em>：</p>
 <ul>
 <li>可以将进程交换到磁盘，并释放其所占有的页面来减轻内存压力；</li>
 <li>在决定交互出哪个进程时要考虑：进程大小、分页率、CPU 密集型还是 I/O 密集型等。</li>
 </ul>
-<p>- <strong><em>页面大小</em></strong>：</p>
+<p>- <em><strong>页面大小</strong></em>：</p>
 <ul>
 <li>常见的为 4KB 或 8KB；</li>
 <li><strong>小页面</strong>：<ul>
@@ -645,34 +645,34 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>分离的指令空间与数据空间</em></strong>：</p>
+<p>- <em><strong>分离的指令空间与数据空间</strong></em>：</p>
 <p>为指令（I 空间）和数据（D 空间）设置分离的地址空间，两者拥有各自独立的页表。链接器需要对数据/代码进行重定向。</p>
-<p>- <strong><em>共享页面</em></strong>：</p>
+<p>- <em><strong>共享页面</strong></em>：</p>
 <ul>
 <li>需要注意当共享的两个进程中，某一个退出时，需要检查该进程所有的页面是否被其他进程共享。而对于正在共享的页面，不能够被释放；</li>
 <li>只读的页面可以共享，数据页面不能共享。</li>
 </ul>
-<p>- <strong><em>共享库</em></strong>：</p>
+<p>- <em><strong>共享库</strong></em>：</p>
 <p>（之前书中讨论过太多次，略）</p>
-<p>- <strong><em>内存映射文件</em></strong>：</p>
+<p>- <em><strong>内存映射文件</strong></em>：</p>
 <p>共享库的通用机制。进程可以通过发起一个系统调用，将一个文件映射到其虚拟地址空间的一部分。映射时不会实际读入页面内容，而是在访问时按“页”读入，磁盘文件被当做后备存储。当进程退出或解除文件映射时，改动被写回磁盘。</p>
 <p><strong>可用于进程间通信</strong>：一个进程在共享内存上写，另一个进程执行读。</p>
-<p>- <strong><em>清除策略</em></strong>：</p>
+<p>- <em><strong>清除策略</strong></em>：</p>
 <p>增加“分页守护进程”，定期唤醒以检查内存状态。如果空闲页框过少，该进程通过预定的页面置换算法选择页面换出内存。如果页面被修改过，则将其写回。</p>
 <p>一种实现方式是使用“双指针时钟”，前指针由分页守护进程控制，后指针用于页面置换。</p>
-<p>- <strong><em>虚拟内存接口</em></strong>：</p>
+<p>- <em><strong>虚拟内存接口</strong></em>：</p>
 <p>提供可以直接“操作”虚拟内存的接口，诸如 <code>mmap</code> 等。命名虚拟内存可用于多个进程间的通信。</p>
 <ol start="30">
 <li>（Page：131）有关实现的问题：</li>
 </ol>
-<p>- <strong><em>分页工作时期</em></strong>：</p>
+<p>- <em><strong>分页工作时期</strong></em>：</p>
 <ul>
 <li><strong>进程创建时</strong>：需要确定程序和数据初始大小，并为它们创建一个页表。同时在内存中为页表分配空间并初始化。进程被换出时，页表不需要驻留在内存中。操作系统需要在磁盘交换区中分配空间，以便进程换出时进行放置。操作系统需要把有关页表和磁盘交换区的信息存储在进程表中；</li>
 <li><strong>进程执行时</strong>：调度进程执行时，需要为新进程重置 MMU，刷新 TLB。新进程的页表成为当前页表；</li>
 <li><strong>缺页中断时</strong>：操作系统通过读硬件寄存器来确定是哪个虚拟地址造成了缺页中断。通过该信息，操作系统需要计算需要哪个页面，并在磁盘上进行定位。然后置换老的页面，所需页面读入页框（物理页面）。最后，回退 PC，使程序计数器指向引起缺页中断的指令，并重新执行该指令；</li>
 <li><strong>进程终止时</strong>：操作系统释放该进程的页表、页面和页面在磁盘上占用的空间。注意对进程间共享页面的特殊处理。</li>
 </ul>
-<p>- <strong><em>缺页中断处理</em></strong>：</p>
+<p>- <em><strong>缺页中断处理</strong></em>：</p>
 <ul>
 <li>硬件陷入内核，在堆栈中保存程序计数器（引起中断的指令信息）；</li>
 <li>启动一个汇编代码例程保存通用寄存器和其他易失信息。例程调用传递到操作系统；</li>
@@ -685,17 +685,17 @@
 <li>调度引发缺页中断的进程，操作系统返回调用它的汇编例程；</li>
 <li>例程恢复寄存器和其他状态信息，返回用户空间继续执行。</li>
 </ul>
-<p>- <strong><em>指令备份</em></strong>：</p>
+<p>- <em><strong>指令备份</strong></em>：</p>
 <p><strong>通过引发“缺页中断”的地址无法快速简单地找到当前正在执行的对应指令</strong>（无法确定页面内容上放置的是操作码还是操作数）。某些计算机上，CPU 会通过一个隐藏的内部寄存器来在每条指令执行之前，将 PC 的内容复制到给寄存器。</p>
-<p>- <strong><em>锁住内存中的页面</em></strong>：</p>
+<p>- <em><strong>锁住内存中的页面</strong></em>：</p>
 <p>锁住正在进行 I/O 操作的内存中的页面，防止全局页面置换算法在调度其他进程时，将正在执行 I/O 操作的其他进程的页面换出。或者选择在内核缓冲区中完成所有 I/O 操作，然后再将数据复制到用户页面。</p>
-<p>- <strong><em>后备存储</em></strong>：</p>
+<p>- <em><strong>后备存储</strong></em>：</p>
 <p>在磁盘上设置特殊的交换分区以存放换出的页面。系统启动时，交换分区为空。第一个进程启动时，<strong>留出与该进程一样大的交换区块</strong>。新进程启动后，同样分配与其核心映像同等大小的交换分区。进程结束后，释放交换区。</p>
 <p>进程表中需要记录进程交换区的磁盘地址。写回页面时，写回地址可以由“虚拟地址空间中的页面偏移量加到交换区开始地址”得到。</p>
 <p>交换区的初始化可以通过将整个进程映像复制到交换区实现（代码段可以映射到源文件）。或者单纯在页面换出时为其分配磁盘空间，换入时再回收（需要每个进程维护一张表，记录页面在磁盘上的位置）。</p>
-<p><img src="16.png" alt=""></p>
-<p>- <strong><em>策略和机制的分离</em></strong>：</p>
-<p><img src="17.png" alt=""></p>
+<p><img src="16.png"></p>
+<p>- <em><strong>策略和机制的分离</strong></em>：</p>
+<p><img src="17.png"></p>
 <ul>
 <li>底层 MMU 处理程序（代码机器相关）；</li>
 <li>作为内核一部分的缺页中断处理程序（代码机器无关）；</li>

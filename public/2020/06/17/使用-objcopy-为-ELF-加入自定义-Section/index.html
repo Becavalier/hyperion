@@ -5,12 +5,15 @@
 <p>Distributor ID:    Ubuntu<br>Description:    Ubuntu 20.04 LTS<br>Release:    20.04<br>Codename:    focal</p>
 </blockquote>
 <p>首先准备一个可以作为段内容的文件，比如含有下列内容的文本文件（text）：</p>
-<pre class="line-numbers language-text"><code class="language-text">Hello, YHSPY!<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text"><code class="language-text">Hello, YHSPY!
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后通过以下命令将其转换为一个目标文件：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">objcopy -I i386:binary -O elf64-x86-64 -B i386:x86-64 text text.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">objcopy -I i386:binary -O elf64-x86-64 -B i386:x86-64 text text.o
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>其中 “-I” 参数用来指定输入文件的 bfdname；“-O” 用来指定输出文件的 bfdname；“-B” 用来指定输出文件的架构类型。关于具体可用的 bfdname 类型，可以通过 <code>objcopy --info</code> 来查看。</p>
 <p>接下来查看下目标文件的 Section Header：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">objdump -d -x text.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">objdump -d -x text.o
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text"><code class="language-text">text.o:     file format elf64-x86-64
 text.o
 architecture: i386:x86-64, flags 0x00000010:
@@ -25,9 +28,11 @@ SYMBOL TABLE:
 0000000000000000 l    d  .data    0000000000000000 .data
 0000000000000000 g       .data    0000000000000000 _binary_text_start
 000000000000000e g       .data    0000000000000000 _binary_text_end
-000000000000000e g       *ABS*    0000000000000000 _binary_text_size<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到，整个目标文件只有一个 .data 段，用来存放先前文本文件中的内容。并且同时，objcopy 还为我们增加了一些辅助的导出符号，比如 “<strong>_binary_text_start</strong>” 和 “<strong>_binary_text_end</strong>” 这两个指针分别指向了作为 Section 内容的文本文件的头和尾。另外的 “_binary_text_size” 作为一个 ABS 类型的符号主要用于作为编译器或链接器的元信息。接下来，这里我们使用 readelf 来看一下整个目标文件的全貌：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">readelf -a text.o<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+000000000000000e g       *ABS*    0000000000000000 _binary_text_size
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可以看到，整个目标文件只有一个 .data 段，用来存放先前文本文件中的内容。并且同时，objcopy 还为我们增加了一些辅助的导出符号，比如 “**_binary_text_start<strong>” 和 “</strong>_binary_text_end**” 这两个指针分别指向了作为 Section 内容的文本文件的头和尾。另外的 “_binary_text_size” 作为一个 ABS 类型的符号主要用于作为编译器或链接器的元信息。接下来，这里我们使用 readelf 来看一下整个目标文件的全貌：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">readelf -a text.o
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-text"><code class="language-text">ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
   Class:                             ELF64
@@ -86,7 +91,8 @@ Symbol table '.symtab' contains 5 entries:
      3: 000000000000000e     0 NOTYPE  GLOBAL DEFAULT    1 _binary_text_end
      4: 000000000000000e     0 NOTYPE  GLOBAL DEFAULT  ABS _binary_text_size
 
-No version information found in this file.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+No version information found in this file.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>抛开 ELF Header 的部分，我们可以对照 <code>hexdump -C text.o</code> 输出的信息来分别对应 .strtab 以及 .shstrtab 两个段内容在该 ELF 文件中的所在位置，这里就不展开分析了。接下来给出一段 C++ 代码来使用上述目标文件中的内容：</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">// main.cc</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
@@ -99,8 +105,10 @@ No version information found in this file.<span aria-hidden="true" class="line-n
   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> s <span class="token operator">=</span> <span class="token operator">&amp;</span>_binary_text_start<span class="token punctuation">;</span> s <span class="token operator">!=</span> <span class="token operator">&amp;</span>_binary_text_end<span class="token punctuation">;</span> <span class="token operator">++</span>s<span class="token punctuation">)</span>
     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>s<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// "Hello, YHSPY!"</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>编译和链接：</p>
-<pre class="line-numbers language-bash"><code class="language-bash">clang++ main.cc text.o -o main<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">clang++ main.cc text.o -o main
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>要注意一点的是：在现代 Linux 下的 GCC 编译器中，默认情况下已经去掉了在 C 语言符号前加 “_” 的方式。因此这里在源代码中，对于引用的外部符号，我们需要携带前面的下划线以跟目标文件中的符号名保持一致。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-06-17T07:42:53.000Z"> 2020 / 06 / 18, 13:21:49</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/06/17/Linux 下的 ELF 完整结构分析/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/06/18/Clang-下的-weak-与-weakref/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

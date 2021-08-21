@@ -11,7 +11,8 @@
   <span class="token comment" spellcheck="true">// 模板类型参数通过函数参数自动推导；</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> mul<span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 5;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="65">
 <li>（Page：209）可以在以下7个位置展开模板参数包：</li>
 </ol>
@@ -42,7 +43,8 @@
   A <span class="token function">y</span><span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> mul<span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 20;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="67">
 <li>（Page：216）基于 pthread 互斥锁实现的多线程：</li>
 </ol>
@@ -68,7 +70,8 @@
   tB<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> counter <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="68">
 <li>（Page：217）基于 C++11 原子类型实现的多线程：</li>
 </ol>
@@ -83,14 +86,15 @@
   tB<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> counter <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="69">
 <li>（Page：219）原子类型之间不允许拷贝、移动和赋值。而且原子操作的实现是平台相关的，比如一般会通过汇编的 lock 指令来独占总线。</li>
 <li>（Page：225）顺序一致性的内存模型：在 C++11 中的原子类型变量在线程中总是保持着<strong>顺序执行</strong>的特性，即程序的运行顺序与代码顺序保持一致。</li>
 <li>（Page：225）内存模型：表示机器指令是以什么样的顺序被处理器执行的。一般可分为<strong>强顺序</strong>和<strong>弱顺序</strong>。但对于超标量流水线的处理器来说，便有可能将指令的执行顺序打乱，以在一个时钟周期内发射多条指令。</li>
 <li>（Page：227）为原子操作指定内存顺序：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <pre class="line-numbers language-cpp"><code class="language-cpp">std<span class="token operator">::</span>atomic<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> x<span class="token punctuation">;</span>
 std<span class="token operator">::</span>atomic<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> y<span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -102,7 +106,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
   std<span class="token operator">::</span>thread <span class="token function">t</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
   t<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="73">
 <li>（Page：231）常见的几种内存顺序模型：顺序一致、松散、release-acquire 内存顺序、release-consume 内存顺序以及 acquire-release 内存顺序。通过控制程序运行时各个代码位置的内存顺序，我们可以在保证程序不会发生多线程数据竞争的情况下，<strong>让 CPU 减少内存栅栏的插入，进而尽量提高性能</strong>。（这里不展开讲了，C++ 并发相关领域的实践可以参考其他书籍）</li>
 <li>（Page：233）线程局部存储：即拥有线程生命周期及线程可见性的变量。</li>
@@ -115,7 +120,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
   tB<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> code <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 0;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="75">
 <li>（Page：236）使用 std::atexit 注册退出执行函数：</li>
 </ol>
@@ -123,7 +129,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span><span class="token function">atexit</span><span class="token punctuation">(</span>foo<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="76">
 <li>（Page：237）相比 std::exit 需要向线程发出信号，并等待线程结束再执行析构函数并调用 atexit 钩子函数而言，使用 std::quick_exit 以及 std::at_quick_exit 可以<strong>让程序快速退出，而并不执行析构函数</strong>。资源回收过程交由操作系统来完成。</li>
 <li>（Page：239）C 语言下的 NULL 会被编译器选择性编译成数字 0，__null 内部标识符或者 ((void*)0)。</li>
@@ -141,7 +148,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
 <li>（Page：251）在声明构造函数时，不建议将 explicit 与 =delete 一起使用，否则可能导致无法禁止类型转换（比如参数 char 隐式转换为 int，并调用对应的非 explicit 构造函数）的发生。</li>
 <li>（Page：20）最简单的 lambda 形式：</li>
 </ol>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">auto</span> l <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="82">
 <li>（Page：256）标准规定，在块作用域外的 lambda 函数其捕获列表必须为空。而在块作用域内的 lambda 函数仅能捕获其父作用域中的<strong>自动变量</strong>。</li>
 <li>（Page：259）现阶段，lambda 是仿函数（函数对象）的一种语法糖。</li>
@@ -157,7 +165,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
     <span class="token comment" spellcheck="true">// v = 100;  </span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="87">
 <li>（Page：275）使用 lambda 代替仿函数（函数对象）应满足以下条件：</li>
 </ol>
@@ -177,7 +186,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">alignof</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 32;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="89">
 <li>（Page：281）对齐值必须是 2 的自然数幂次。</li>
 <li>（Page：281）查询基本对齐值（一般不建议对齐值超过该值）：</li>
@@ -185,13 +195,14 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">alignof</span><span class="token punctuation">(</span>std<span class="token operator">::</span>max_align_t<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="91">
 <li>（Page：291）C++11 中的通用属性：</li>
 </ol>
 <ul>
-<li><strong>[[noreturn]]</strong>：用于标识不会返回的函数，即函数调用完后续代码不会再被执行，比如会抛出异常的函数、有终止应用程序的函数、有死循环的函数；</li>
-<li><strong>[[carries_dependency]]</strong>：用于保证对当前原子类型数据的读取操作先于所有之后关于该原子变量的操作完成，但不影响其他原子操作的顺序；</li>
+<li>**[[noreturn]]**：用于标识不会返回的函数，即函数调用完后续代码不会再被执行，比如会抛出异常的函数、有终止应用程序的函数、有死循环的函数；</li>
+<li>**[[carries_dependency]]**：用于保证对当前原子类型数据的读取操作先于所有之后关于该原子变量的操作完成，但不影响其他原子操作的顺序；</li>
 </ul>
 <ol start="92">
 <li>（Page：297）用于存储 Unicode 数据的数据类型：</li>
@@ -203,9 +214,10 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> utf8 <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> utf16 <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="93">
-<li>（Page：303）原生字符串字面量 <strong>R”(…)”</strong>：</li>
+<li>（Page：303）原生字符串字面量 **R”(…)”**：</li>
 </ol>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> R"<span class="token punctuation">(</span>
@@ -216,7 +228,8 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> u8R<span class="token string">"(你好)"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> UR<span class="token string">"(你好)"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="94">
 <li>（Page：304）const char* 以及原生字符串的连接规则：</li>
 </ol>
@@ -227,5 +240,6 @@ std<span class="token operator">::</span>atomic<span class="token operator">&lt;
   std<span class="token operator">::</span>u16string strD <span class="token operator">=</span> u<span class="token string">"你"</span> <span class="token string">"好"</span><span class="token punctuation">;</span>
   std<span class="token operator">::</span>u32string strE <span class="token operator">=</span> U<span class="token string">"你"</span> <span class="token string">"好"</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-05-12T08:21:23.000Z"> 2020 / 07 / 07, 12:05:06</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/05/09/“深入理解-C-11：C-11-新特性解析与应用” 读书笔记（一）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/05/14/Effective-Modern-C-读书笔记（一）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

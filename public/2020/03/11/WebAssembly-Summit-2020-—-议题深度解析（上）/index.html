@@ -38,14 +38,14 @@
 <li>左侧： … 02 40 (X) 0d 00 (Y) 0b …</li>
 <li>右侧： … (X) 45 04 40 (Y) 0b …</li>
 </ul>
-<p>可以看到，相较于左侧的原始字节码，新改写后的右侧代码可以少生成 1byte 对应的二进制字节码，降低了整个二进制模块文件的体积。而如果把 wasm-opt 中所有类似的精细优化过程都加起来，平均下来则可以优化目标 Wasm 模块文件多达20%的体积。wasm-opt 命令行工具一般跟随 Binaryen 工具套件一同发行，当然其也有对应的 JavaScript 版本以及线上开箱即用版本：<a href="http://wasm-shr.ink。" target="_blank" rel="noopener">http://wasm-shr.ink。</a></p>
+<p>可以看到，相较于左侧的原始字节码，新改写后的右侧代码可以少生成 1byte 对应的二进制字节码，降低了整个二进制模块文件的体积。而如果把 wasm-opt 中所有类似的精细优化过程都加起来，平均下来则可以优化目标 Wasm 模块文件多达20%的体积。wasm-opt 命令行工具一般跟随 Binaryen 工具套件一同发行，当然其也有对应的 JavaScript 版本以及线上开箱即用版本：<a target="_blank" rel="noopener" href="http://wasm-shr.ink./">http://wasm-shr.ink。</a></p>
 <h3 id="审视字节码"><a href="#审视字节码" class="headerlink" title="审视字节码"></a>审视字节码</h3><p>我们可以通过对 Wasm 二进制文件的字节码进行 Profiling 来审视对应的源代码是否还有可以被优化改进的空间，这些常用的性能分析工具有如下几种：</p>
 <ul>
 <li>Bloaty McBloatface  — Google 自研的二进制文件分析器，支持 Wasm 格式；</li>
 <li>Twiggy — 来自 Rust 社区的 Wasm 文件分析器；</li>
 <li>wasm-opt’s –func-metrics；</li>
 </ul>
-<h3 id="优化源语言"><a href="#优化源语言" class="headerlink" title="优化源语言"></a>优化源语言</h3><p>除了可以直接对 Wasm 的二进制字节码进行分析优化以外，我们还可以从源语言以及对应的编译器工具链入手来进行优化，这里以 C++ 为例。为了能够减小生成的 Wasm 模块文件体积，如果在代码中没有使用 C++ Exception 相关的特性，建议为编译器指定 “<strong>-fno-exceptions</strong>” 参数以关闭编译器对异常相关特性的支持。类似的还有：RTTI 相关特性的参数 “<strong>-fno-rtti</strong>”。使用模板（Templates）会产生重复的代码段，进而增加最终产物的体积，在实际编码时需要注意。虚函数（virtual）的调用可能会阻止编译器 DCE 的进行，进而弱化了优化结果。更进一步，尽量使用 C-like Array 来代替 C++ STL 中的 std::vector、使用 <strong>printf</strong> 代替 std::iostream 等等。由于 STL 中的数据容器和对象一般都经过了高度的抽象和封装，因此对应最终生成的 Wasm 字节码体积通常会比真正使用到的部分大很多。</p>
+<h3 id="优化源语言"><a href="#优化源语言" class="headerlink" title="优化源语言"></a>优化源语言</h3><p>除了可以直接对 Wasm 的二进制字节码进行分析优化以外，我们还可以从源语言以及对应的编译器工具链入手来进行优化，这里以 C++ 为例。为了能够减小生成的 Wasm 模块文件体积，如果在代码中没有使用 C++ Exception 相关的特性，建议为编译器指定 “**-fno-exceptions<strong>” 参数以关闭编译器对异常相关特性的支持。类似的还有：RTTI 相关特性的参数 “</strong>-fno-rtti**”。使用模板（Templates）会产生重复的代码段，进而增加最终产物的体积，在实际编码时需要注意。虚函数（virtual）的调用可能会阻止编译器 DCE 的进行，进而弱化了优化结果。更进一步，尽量使用 C-like Array 来代替 C++ STL 中的 std::vector、使用 <strong>printf</strong> 代替 std::iostream 等等。由于 STL 中的数据容器和对象一般都经过了高度的抽象和封装，因此对应最终生成的 Wasm 字节码体积通常会比真正使用到的部分大很多。</p>
 <p>除了关闭不需要的编译器功能、使用低抽象层次语言特性之外，我们也可以在某种程度上直接使用 Web 平台为我们提供的 API 来提供应用的运行效率。比如在下面这段代码中，我们借助 Emscripten 为我们提供的 EM_JS 宏，来在 C++ 代码中直接调用浏览器的 API “console.log” 以向宿主环境打印消息。相比调用 printf 函数，这种直接使用宿主环境 API 的方式可以让我们省略掉很多并不需要的、在胶水代码中实现的抽象环节。通常来说，这些抽象环节主要用来弥补不同平台之间的函数调用差异。</p>
 <p><img src="4.png" alt="使用 EM_JS 宏直接在 C++ 代码中 “调用” Web API"></p>
 <h3 id="优化编译链路"><a href="#优化编译链路" class="headerlink" title="优化编译链路"></a>优化编译链路</h3><p>除了可以对源语言代码进行优化以外，我们还可以对编译器链路进行优化。除了我们上述提到的几个 C / C++ 编译器可以直接使用的优化标记以外，Emscripten 也为我们提供了众多可选的优化参数，一些常用的优化标记如下所示。</p>

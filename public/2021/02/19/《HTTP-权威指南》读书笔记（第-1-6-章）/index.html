@@ -23,7 +23,7 @@
 <ol start="4">
 <li>（Page：11）<strong>HTTP 报文是纯文本的</strong>，以方便人们对其进行读写。其组成包括（包括请求报文与响应报文）：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li><strong>起始行</strong>：报文的第一行。<strong>请求报文中用来说明做什么；响应报文中说明发生了什么</strong>；</li>
 <li><strong>首部字段</strong>：位于起始行后面。每行一个字段，每个字段包含一个名值对，以冒号分割。<strong>首部以一个空行结束</strong>；</li>
@@ -43,18 +43,19 @@
 <h3 id="第-2-章-URL-与资源"><a href="#第-2-章-URL-与资源" class="headerlink" title="第 2 章 - URL 与资源"></a>第 2 章 - URL 与资源</h3><ol start="7">
 <li>（Page：29）URL 语法：</li>
 </ol>
-<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>scheme<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">&lt;</span>user<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">&lt;</span>password<span class="token operator">></span>@<span class="token operator">&lt;</span>host<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">&lt;</span>port<span class="token operator">></span><span class="token operator">/</span><span class="token operator">&lt;</span>path<span class="token operator">></span><span class="token punctuation">;</span><span class="token operator">&lt;</span>params<span class="token operator">></span><span class="token operator">?</span><span class="token operator">&lt;</span>query<span class="token operator">></span>#<span class="token operator">&lt;</span>frag<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>- <strong><em>组件</em></strong>：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>scheme<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token operator">&lt;</span>user<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">&lt;</span>password<span class="token operator">></span>@<span class="token operator">&lt;</span>host<span class="token operator">></span><span class="token punctuation">:</span><span class="token operator">&lt;</span>port<span class="token operator">></span><span class="token operator">/</span><span class="token operator">&lt;</span>path<span class="token operator">></span><span class="token punctuation">;</span><span class="token operator">&lt;</span>params<span class="token operator">></span><span class="token operator">?</span><span class="token operator">&lt;</span>query<span class="token operator">></span>#<span class="token operator">&lt;</span>frag<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>- <em><strong>组件</strong></em>：</p>
 <ul>
-<li><strong><em>scheme</em></strong>：访问服务器获取资源时要使用哪种协议，不区分大小写；</li>
-<li><strong><em>user</em></strong>：某些方案访问资源时需要的用户名；</li>
-<li><strong><em>password</em></strong>：同上，所需的密码；</li>
-<li><strong><em>host</em></strong>：资源宿主服务器的主机名或点分 IP 地址；</li>
-<li><strong><em>port</em></strong>：资源宿主服务器正在监听的端口号；</li>
-<li><strong><em>path</em></strong>：服务器上资源的本地名；</li>
-<li><strong><em>params</em></strong>：输入参数，由 “=” 连接组成的键值对；</li>
-<li><strong><em>query</em></strong>：查询参数；</li>
-<li><strong><em>frag</em></strong>：一小片或一部分资源的名字（仅客户端使用）。</li>
+<li><em><strong>scheme</strong></em>：访问服务器获取资源时要使用哪种协议，不区分大小写；</li>
+<li><em><strong>user</strong></em>：某些方案访问资源时需要的用户名；</li>
+<li><em><strong>password</strong></em>：同上，所需的密码；</li>
+<li><em><strong>host</strong></em>：资源宿主服务器的主机名或点分 IP 地址；</li>
+<li><em><strong>port</strong></em>：资源宿主服务器正在监听的端口号；</li>
+<li><em><strong>path</strong></em>：服务器上资源的本地名；</li>
+<li><em><strong>params</strong></em>：输入参数，由 “=” 连接组成的键值对；</li>
+<li><em><strong>query</strong></em>：查询参数；</li>
+<li><em><strong>frag</strong></em>：一小片或一部分资源的名字（仅客户端使用）。</li>
 </ul>
 <ol start="8">
 <li>（Page：36）“相对 URL 到对应绝对 URL” 的转换算法定义在 <strong>RFC 2396</strong> 中。</li>
@@ -69,7 +70,7 @@
 <li>（Page：50）有些 HTTP 版本（如 HTTP/1.1）中要求<strong>有效的请求或响应中必须包含特定的首部</strong>，即首部不能完全留空。</li>
 <li>（Page：<a name="51" href="#51">51</a>）常见请求方法：</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li>GET / HEAD 为“<strong>安全方法</strong>”，对应的 HTTP 请求不会产生动作；</li>
 <li>使用 HEAD 方法，可以：<ul>
@@ -88,15 +89,15 @@
 <ol start="13">
 <li>（Page：52）常见状态码：</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ul>
 <li><em>100</em>：<em>Continue</em>。说明收到了请求的初始部分，请求客户端继续；<ul>
-<li><em>客户端</em>：如果客户端在向服务器发送一个实体，且愿意在发送前等待 100 Continue 响应，那么，客户端就要发送一个携带值为 “100 Continue” 的 <strong><em>Expect</em></strong> 首部； </li>
+<li><em>客户端</em>：如果客户端在向服务器发送一个实体，且愿意在发送前等待 100 Continue 响应，那么，客户端就要发送一个携带值为 “100 Continue” 的 <em><strong>Expect</strong></em> 首部； </li>
 <li><em>服务器</em>：收到对应请求后，用 “100 Continue” 或一条错误码作为响应；</li>
-<li><em>代理*：根据下一跳服务器的 HTTP 兼容情况，选择性返回 *417 Expectation Failed</em> 或者继续向下转发。</li>
+<li><em>代理</em>：根据下一跳服务器的 HTTP 兼容情况，选择性返回 <em>417 Expectation Failed</em> 或者继续向下转发。</li>
 </ul>
 </li>
-<li><em>101<em>：</em>Switching Protocols*。服务器正在根据客户端的指定，将协议切换成 *Update</em> 首部所列协议（WebSocket 的链接过程会使用）；</li>
+<li><em>101</em>：<em>Switching Protocols</em>。服务器正在根据客户端的指定，将协议切换成 <em>Update</em> 首部所列协议（WebSocket 的链接过程会使用）；</li>
 <li><em>201</em>：<em>Created</em>。服务器对象创建成功（PUT）；</li>
 <li><em>202</em>：<em>Accepted</em>。请求已被接受，但服务器还未对其执行任何动作。响应实体中应该包含对请求状态的描述，及请求完成时间的估计；</li>
 <li><em>203</em>：<em>Non-Authoritative Information</em>。实体首部包含的信息不是来自于源段服务器，而是资源的一份副本；</li>
@@ -138,7 +139,7 @@
 <ol start="14">
 <li>（Page：54）首部：</li>
 </ol>
-<p>- <strong><em>常见首部</em></strong>：</p>
+<p>- <em><strong>常见首部</strong></em>：</p>
 <ul>
 <li>（通用首部）<em>Connection</em>：允许客户端和服务器指定与请求/响应连接有关的选项；</li>
 <li>（通用首部）<em>Date</em>：说明报文的创建时间；</li>
@@ -153,7 +154,7 @@
 <li>（请求首部）<em>From</em>：提供了客户端用户的邮件地址；</li>
 <li>（请求首部）<em>Host</em>：给出了接受请求的服务器的主机号和端口号；</li>
 <li>（请求首部）<em>Referer</em>：提供了包含当前 URI 的文档 URL；</li>
-<li>（请求首部）<em>UA-*</em>：提供了客户端相关信息；</li>
+<li>（请求首部）*UA-**：提供了客户端相关信息；</li>
 <li>（请求首部）<em>User-Agent</em>：将发起请求的应用名称告知服务器；</li>
 <li>（请求首部）<em>Accept</em>：告诉服务器能够发送哪些媒体类型；</li>
 <li>（请求首部）<em>Accept-Charset</em>：告诉服务器能够发送哪些字符集；</li>
@@ -187,17 +188,18 @@
 <li>（响应首部）<em>WWW-Authenticate</em>：来自服务器对客户端的质询列表；</li>
 <li>（实体首部）<em>Allow</em>：列出了可对此实体执行的请求方法；</li>
 <li>（实体首部）<em>Location</em>：告知客户端实体实际上位于何处，用于将接收端定向到资源的可用位置上去；</li>
-<li>（实体首部）<em>Content-*</em>：与实体内容相关的信息（编码方式、语言、长度、MD5、范围、类型等）；</li>
+<li>（实体首部）*Content-**：与实体内容相关的信息（编码方式、语言、长度、MD5、范围、类型等）；</li>
 <li>（实体首部）<em>ETag</em>：与此实体相关的实体标记；</li>
 <li>（实体首部）<em>Expires</em>：实体不再有效，要从源端再次获取此实体的日期和时间；</li>
 <li>（实体首部）<em>Last-Modified</em>：该实体最后一次被修改的日期和时间。</li>
 </ul>
-<p>- <strong><em>首部延续行</em></strong>：以空格或制表符（tab）延续首部。</p>
+<p>- <em><strong>首部延续行</strong></em>：以空格或制表符（tab）延续首部。</p>
 <pre class="line-numbers language-text"><code class="language-text">HTTP/1.0 200 OK
 Content-Type: image/gif
 Content-Length: 8572
 Server: Test Server
-  Version 1.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  Version 1.0
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-4-章-连接管理"><a href="#第-4-章-连接管理" class="headerlink" title="第 4 章 - 连接管理"></a>第 4 章 - 连接管理</h3><ol start="15">
 <li>（Page：<a name="81" href="#81">81</a>）TCP 连接：</li>
 </ol>
@@ -205,7 +207,7 @@ Server: Test Server
 <li>TCP 会<strong>按序、无差错</strong>地承载 HTTP 数据；</li>
 <li>TCP 流是分段的、由 IP 分组（IP 数据报）传送，即 “HTTP over TCP over IP”。对应的 HTTPS 就是在 HTTP 与 TCP 之间插入了一个密码加密层（即 TLS 或 SSL）。</li>
 </ul>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li>HTTP 报文流 -&gt; TCP 分段 -&gt; 封装 IP 分组 -&gt; 传输；</li>
 <li>一个 TCP 连接由“<strong>源 IP 地址</strong>”、“<strong>源端口号</strong>”、“<strong>目的 IP 地址</strong>”、“<strong>目的端口号</strong>”四个部分唯一确定；</li>
@@ -217,12 +219,12 @@ Server: Test Server
 </li>
 <li>IP 分组<strong>报文结构</strong>：</li>
 </ul>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ul>
 <li>“TCP 段序列” 和 “TCP 检验和” 字段用于保证数据传输的完整性；</li>
 <li>“捎带的确认”字段中存放了发送回发送者的确认分组（由接受者发出，以确认收到某个分段），只不过由于确认分组报文本身很小，因此该分组可以由其他相同方向（向发送者）的输出数据分组“帮忙捎带”。</li>
 </ul>
-<p>- <strong><em>TCP 性能</em></strong>：</p>
+<p>- <em><strong>TCP 性能</strong></em>：</p>
 <ul>
 <li>HTTP 事务的时延：<ul>
 <li>域名到 IP 的 DNS 查询时延（可通过本地缓存解决）；</li>
@@ -249,7 +251,7 @@ Server: Test Server
 <li>Connection 首部可用标签类型：<ul>
 <li><strong>HTTP 首部字段名</strong>，该首部字段包含与此连接相关的信息；</li>
 <li><strong>任意标签值</strong>，用于描述此连接的非标准选项；</li>
-<li>值 <strong><em>close</em></strong>，表明操作完成后需关闭这条持久连接。</li>
+<li>值 <em><strong>close</strong></em>，表明操作完成后需关闭这条持久连接。</li>
 </ul>
 </li>
 <li>“逐跳首部名”（仅应用于这一跳的首部）可以放入 Connection 首部中，以确保在发送到下一跳前删除该首部。</li>
@@ -260,7 +262,7 @@ Server: Test Server
 <ul>
 <li><strong>并行连接</strong>：通过多条 TCP 连接发起并发的 HTTP 请求；</li>
 <li><strong>持久连接</strong>：重用 TCP 连接，以消除连接及关闭时延（<strong>可以省去握手和慢启动过程</strong>）。*实现要求所有报文的实体长度都要和相应的 Content-Length 一致，以使得可以区分报文的起始和结束位置：<ul>
-<li><em>HTTP/1.0+ Keep-Alive*：可以通过包含 *Connection: Keep-Alive</em> 首部请求将一条连接保持在打开状态，若服务器支持且同意，则会在响应中包含同样的 Connection 首部，而 Keep-Alive 首部中将指定相关行为的选项。<strong>该方式在通信链路中间存在“哑代理”时会存在问题</strong>；</li>
+<li><em>HTTP/1.0+ Keep-Alive</em>：可以通过包含 <em>Connection: Keep-Alive</em> 首部请求将一条连接保持在打开状态，若服务器支持且同意，则会在响应中包含同样的 Connection 首部，而 Keep-Alive 首部中将指定相关行为的选项。<strong>该方式在通信链路中间存在“哑代理”时会存在问题</strong>；</li>
 <li><em>HTTP/1.1 持久连接</em>：除非发送的请求中指明 <em>Connection: close</em>，否则<strong>默认情况下持久连接是激活的</strong>。</li>
 </ul>
 </li>
@@ -271,11 +273,11 @@ Server: Test Server
 </li>
 <li><strong>复用的连接</strong>：交替传送请求和响应报文。</li>
 </ul>
-<p><img src="6.png" alt=""></p>
+<p><img src="6.png"></p>
 <ol start="18">
 <li>（Page：108）正常关闭连接：</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ul>
 <li><strong>TCP 连接是双向的</strong>；</li>
 <li>关闭连接的输出信道总是安全的，而关闭连接的输入信道是危险的。如果另一端向已关闭的输入信道发送数据，操作系统会向另一端的机器回送一条 TCP “<strong>连接被对端重置</strong>”的报文。</li>
@@ -289,7 +291,7 @@ Server: Test Server
 <li><strong>I/O 复用 Web 服务器</strong>：用于支持大量的连接。复用结构中，同时监视所有连接上的活动。当连接发生变化时，就对其进行处理；处理结束后，将连接返回到开放连接列表中，等待下一次状态变化；</li>
 <li><strong>复用的多线程 Web 服务器</strong>：结合多线程与复用功能。</li>
 </ul>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ol start="20">
 <li>（Page：132）响应主体 <strong>MIME 分类方式</strong>：</li>
 </ol>
@@ -302,7 +304,7 @@ Server: Test Server
 <h3 id="第-6-章-代理"><a href="#第-6-章-代理" class="headerlink" title="第 6 章 - 代理"></a>第 6 章 - 代理</h3><ol start="21">
 <li>（Page：137）<strong>代理与网关的区别</strong>：严格来讲，代理连接的是两个或多个使用<strong>相同协议</strong>的应用程序（中继）；而网关连接的则是两个或多个使用<strong>不同协议</strong>的端点（协议转换器）。但实际上，两者之间的区别很模糊。</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ol start="22">
 <li>（Page：138）<strong>代理的应用场景</strong>：</li>
 </ol>

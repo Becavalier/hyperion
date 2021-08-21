@@ -24,15 +24,16 @@
   mov <span class="token register variable">rsi</span>, msg
   mov <span class="token register variable">rdx</span>, <span class="token number">13</span>
   syscall
-  call exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  call exit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
 <li>（Page：6）在 X86/X64 体系中，指令处理数据分为“基础（fundamental）”和“数值（numeric）”两大类。前者包括：byte（8 位）\ word（16 位）\ doubleword（32 位）\ quadword（64 位），它们代表<strong>指令能一次性处理的数据宽度</strong>。后者主要使用在<strong>运算类指令</strong>上，包括：</li>
 </ol>
 <ul>
-<li><strong><em>整数</em></strong>：包括 unsigned 与 signed 类型；</li>
-<li><strong><em>浮点数</em></strong>：包括单精度浮点（1/8/23）、双精度浮点（1/11/52）与扩展双精度浮点（1/15/64）；</li>
-<li><strong><em>BCD</em></strong>（binary-code decmial integer）：包括 non-packed BCD 码与 packed BCD 码；</li>
-<li><strong><em>SIMD</em></strong>：单指令多数据流；</li>
+<li><em><strong>整数</strong></em>：包括 unsigned 与 signed 类型；</li>
+<li><em><strong>浮点数</strong></em>：包括单精度浮点（1/8/23）、双精度浮点（1/11/52）与扩展双精度浮点（1/15/64）；</li>
+<li><em><strong>BCD</strong></em>（binary-code decmial integer）：包括 non-packed BCD 码与 packed BCD 码；</li>
+<li><em><strong>SIMD</strong></em>：单指令多数据流；</li>
 </ul>
 <ol start="3">
 <li>（Page：7）不存在 unsigned 浮点数（IEEE-754 有小数位）。</li>
@@ -59,11 +60,12 @@
   syscall
 <span class="token label function">_main:</span>  <span class="token comment" spellcheck="true">; entry here.</span>
   mov <span class="token register variable">rax</span>, __float32__(<span class="token number">0.5</span>)
-  call exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  call exit
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
 <li>（Page：11）IEEE-754 其他实数编码格式：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li>denormal 数是一个<strong>极小的数，接近于 0</strong>。其指数部分为 0，尾数部分不为 0；</li>
 <li>如果一个数超出 infinite，那就是一个 NaN 数。其分为两类：<strong>SNaN</strong>（Signaling NaN）与 <strong>QNaN</strong>（Quiet NaN）。<strong>前者表示一种比较严重的错误值，后者则通常可以接受</strong>（可能针对不同的异常）；</li>
@@ -73,10 +75,10 @@
 <li>（Page：17）IEEE-754 的四种<strong>舍入模式</strong>（用于在编码类型转换时舍入尾数部分）：</li>
 </ol>
 <ul>
-<li><strong><em>round to nearest</em></strong>：四舍五入，且<strong>当有两个最接近的可表示的值时首选“偶数”值</strong>；</li>
-<li><strong><em>round down</em></strong>：向<strong>负无穷大</strong>（向下）舍入；</li>
-<li><strong><em>round up</em></strong>：向正<strong>无穷大</strong>（向上）舍入；</li>
-<li><strong><em>round zero</em></strong>：向 <strong>0</strong>（截断）舍入。</li>
+<li><em><strong>round to nearest</strong></em>：四舍五入，且<strong>当有两个最接近的可表示的值时首选“偶数”值</strong>；</li>
+<li><em><strong>round down</strong></em>：向<strong>负无穷大</strong>（向下）舍入；</li>
+<li><em><strong>round up</strong></em>：向正<strong>无穷大</strong>（向上）舍入；</li>
+<li><em><strong>round zero</strong></em>：向 <strong>0</strong>（截断）舍入。</li>
 </ul>
 <ol start="10">
 <li>（Page：17）FPU（Float Point Unit）：<strong>浮点运算单元</strong>。在大多数现代通用计算机架构中，<strong>一个或多个浮点运算单元会被集成在 CPU 中</strong>。浮点数的计算也会采用独立的寄存器，比如 XMM 寄存器。</li>
@@ -86,14 +88,14 @@
 <li><strong>向上溢出</strong>：结果值超出了目标格式的最大 normal 值（即 finite 范围外）；</li>
 <li><strong>向下溢出</strong>：结果值超出了目标格式的最小 normal 值（即 tiny 值或 denornal 值）；</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ol start="12">
 <li>（Page：20）在 BCD 码中，<strong>一个十进制数的每一位，使用 8 位的二进制进行编码</strong>，如 15 的 BCD 编码为 “15H”。而在 “packed BCD” 中，每个 BCD 数字使用 4 位来表示。<strong>X86</strong> 下可以使用 <code>aaa</code> 指令来将累加器（AX）中的值转换为非压缩的 BCD 码。</li>
 </ol>
 <h3 id="第二章、X86-X64-编程基础"><a href="#第二章、X86-X64-编程基础" class="headerlink" title="第二章、X86/X64 编程基础"></a>第二章、X86/X64 编程基础</h3><ol start="13">
 <li>（Page：24）C 语言不能直接转换为机器语言，要先由 C 编译器编译出汇编代码，然后再由汇编器生成机器指令，最终再由链接器将这些变量的地址定下来（符号重定向）。</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="14">
 <li>（Page：24）<strong>X86 机器是 CISC 体系，指令的长度不是固定的</strong>。其中最短的指令 1 字节，最长的指令 15 字节。</li>
 <li>（Page：26）C 语言中的 __stdcall 与 __cdecl 调用规范会使用栈来传递参数，而使用寄存器来传递参数能获得更高的效率。</li>

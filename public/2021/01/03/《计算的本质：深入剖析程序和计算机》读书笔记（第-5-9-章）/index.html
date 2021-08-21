@@ -25,8 +25,8 @@
 </li>
 <li>DTM 的确定性：“<strong>当前状态</strong>”和“<strong>纸带头下读到的字符</strong>”两者组合对应唯一的规则；</li>
 </ul>
-<p>- <strong><em>一个例子</em></strong>：</p>
-<p><img src="1.png" alt=""></p>
+<p>- <em><strong>一个例子</strong></em>：</p>
+<p><img src="1.png"></p>
 <ol start="19">
 <li>（Page：136）<strong>非确定型图灵机</strong>（NTM）：</li>
 </ol>
@@ -55,29 +55,34 @@
 <li>计算模型不一定看起来像机器（比如“图灵机”），它们可以看起来像编程语言；</li>
 <li><strong>邱奇（“lambda 演算”发明者）编码</strong>：<strong>将数据表示为纯代码的技术</strong>（邱奇数、邱奇布尔值、邱奇有序对）。</li>
 </ul>
-<p>- <strong><em>数字</em></strong>（邱奇数）：<strong>某个动作的重复</strong>。</p>
+<p>- <em><strong>数字</strong></em>（邱奇数）：<strong>某个动作的重复</strong>。</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># def to_integer(proc)</span>
 <span class="token comment" spellcheck="true">#   proc[ -> n { n + 1 }][0]</span>
 <span class="token comment" spellcheck="true"># end</span>
 <span class="token constant">ZERO</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span>
 <span class="token constant">ONE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
 <span class="token constant">TWO</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
-<span class="token constant">THREE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>布尔值</em></strong>（邱奇布尔值）：<strong>两个值中选择其一</strong>。</p>
+<span class="token constant">THREE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>p<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>布尔值</strong></em>（邱奇布尔值）：<strong>两个值中选择其一</strong>。</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># def to_boolean(proc)</span>
 <span class="token comment" spellcheck="true">#   proc[true][false]</span>
 <span class="token comment" spellcheck="true"># end</span>
 <span class="token constant">TRUE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span>
-<span class="token constant">FALSE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> y <span class="token punctuation">}</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>有序对</em></strong>（邱奇有序对）：存储两个值，并在之后根据需要再次提供。</p>
+<span class="token constant">FALSE</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> y <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>有序对</strong></em>（邱奇有序对）：存储两个值，并在之后根据需要再次提供。</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">PAIR</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
 <span class="token constant">LEFT</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> p<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
 <span class="token constant">RIGHT</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> p <span class="token punctuation">{</span> p<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> y <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
-my_pair <span class="token operator">=</span> <span class="token constant">PAIR</span><span class="token punctuation">[</span><span class="token constant">THREE</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token constant">FIVE</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>Y-组合子</em></strong>：用于计算（高阶）函数的不动点，使得 lambda 演算可以定义“<strong>匿名递归函数</strong>”。</p>
-<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Y</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>- <strong><em>Z-组合子</em></strong>：Y 组合子对于像 Ruby 这样严格语言的变化。</p>
-<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Z</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+my_pair <span class="token operator">=</span> <span class="token constant">PAIR</span><span class="token punctuation">[</span><span class="token constant">THREE</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token constant">FIVE</span><span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>Y-组合子</strong></em>：用于计算（高阶）函数的不动点，使得 lambda 演算可以定义“<strong>匿名递归函数</strong>”。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Y</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span>x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>- <em><strong>Z-组合子</strong></em>：Y 组合子对于像 Ruby 这样严格语言的变化。</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token constant">Z</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> f <span class="token punctuation">{</span> <span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> x <span class="token punctuation">{</span> f<span class="token punctuation">[</span><span class="token operator">-</span><span class="token operator">></span> y <span class="token punctuation">{</span> x<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">[</span>y<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">]</span> <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="第-7-章-通用性无处不在"><a href="#第-7-章-通用性无处不在" class="headerlink" title="第 7 章 - 通用性无处不在"></a>第 7 章 - 通用性无处不在</h3><p>（*以下这些系统都具有模拟图灵机的能力）</p>
 <ol start="22">
 <li>（Page：193）<strong>lambda 演算</strong>：可以模拟包括“通用图灵机”在内的任何图灵机（<strong>图灵完备</strong>）；</li>
@@ -97,20 +102,20 @@ my_pair <span class="token operator">=</span> <span class="token constant">PAIR<
 <li>（Page：236）计算机的实际目的是“<strong>执行算法</strong>”，但必须满足以下条件：</li>
 </ol>
 <ul>
-<li><strong><em>有限</em></strong>：指令的数量是有限的；</li>
-<li><strong><em>简单</em></strong>：指令要足够简单；</li>
-<li><strong><em>终止</em></strong>：对于任何输入，一个遵守指令执行的人都会在有限步骤内终止；</li>
-<li><strong><em>正确</em></strong>：对于任何输入，一个遵守指令执行的人都将得到正确的答案。</li>
+<li><em><strong>有限</strong></em>：指令的数量是有限的；</li>
+<li><em><strong>简单</strong></em>：指令要足够简单；</li>
+<li><em><strong>终止</strong></em>：对于任何输入，一个遵守指令执行的人都会在有限步骤内终止；</li>
+<li><em><strong>正确</strong></em>：对于任何输入，一个遵守指令执行的人都将得到正确的答案。</li>
 </ul>
 <ol start="25">
 <li>（Page：238）任何算法都能被一台机器（特别是一台 DTM）执行的思想叫作“<strong>邱奇-图灵</strong>”论题。</li>
 <li>（Page：241）任何强大到足以通用的系统（能对自身求值），都不可避免地允许我们<strong>构建永不停机一直循环的计算</strong>。</li>
 </ol>
 <ul>
-<li><strong><em>完全编程语言</em></strong>：被仔细设计以保证它们的程序一定总是能停机的语言（无法解释自身）；</li>
-<li><strong><em>部分编程语言</em></strong>：与上述相反的语言。</li>
+<li><em><strong>完全编程语言</strong></em>：被仔细设计以保证它们的程序一定总是能停机的语言（无法解释自身）；</li>
+<li><em><strong>部分编程语言</strong></em>：与上述相反的语言。</li>
 </ul>
-<p>- <strong><em>一个解释自身的例子</em></strong>：</p>
+<p>- <em><strong>一个解释自身的例子</strong></em>：</p>
 <pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># does_it_say_no.rb</span>
 <span class="token keyword">require</span> <span class="token string">'stringio'</span>
 
@@ -135,8 +140,10 @@ program <span class="token operator">=</span> <span class="token variable">$stdi
   print <span class="token string">'yes'</span>
 <span class="token keyword">else</span>
   print <span class="token string">'no'</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">ruby does_it_say_no.rb <span class="token operator">&lt;</span> does_it_say_no.rb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ruby does_it_say_no.rb <span class="token operator">&lt;</span> does_it_say_no.rb
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="27">
 <li>（Page：250）<strong>可判定问题</strong>：如果存在一个算法，对任何可能的输入都能保证在<strong>有限时间</strong>内解决一个判定性问题，那么这个问题就是“可判定（可计算）”的。</li>
 <li>（Page：251）<strong>不可判定问题</strong>：</li>
@@ -147,7 +154,7 @@ program <span class="token operator">=</span> <span class="token variable">$stdi
 </ul>
 </li>
 </ul>
-<p>- <strong><em>不可避免的矛盾</em></strong>：</p>
+<p>- <em><strong>不可避免的矛盾</strong></em>：</p>
 <ul>
 <li><em>halts?</em> 的分析结果与代码的实际运行结果是矛盾的（要么给出错误答案、要么陷入无限循环）；</li>
 <li>可以类比为自然语言中的“<strong>说谎者悖论</strong>”，即：<strong>可否判断“我现在说的这句话是谎话”这句话的真假？</strong></li>
@@ -166,8 +173,10 @@ program <span class="token operator">=</span> <span class="token variable">$stdi
   <span class="token keyword">while</span> <span class="token keyword">true</span>
     <span class="token comment" spellcheck="true"># 什么也不做；</span>
   <span class="token keyword">end</span>
-<span class="token keyword">end</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-bash"><code class="language-bash">ruby do_the_opposite.rb <span class="token operator">&lt;</span> do_the_opposite.rb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">ruby do_the_opposite.rb <span class="token operator">&lt;</span> do_the_opposite.rb
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>程序行为为何难以预测？</strong><ul>
 <li>任何拥有足够能力引用自身的系统，都无法正确回答每一个关于自身的问题（<em>哥德尔第一不完备定理</em>）；</li>

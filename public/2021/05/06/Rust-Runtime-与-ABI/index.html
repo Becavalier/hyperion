@@ -11,15 +11,15 @@
 </blockquote>
 <p>话说回来，执行模型本身是“脱离”于语言的具体语法与语义的，这意味着源代码本身无法直观地反映出其全部的执行细节。一般来说，编程语言的执行模型可以通过编译器或解释器来实现（对应于两种不同的执行方式）。对于编译器来说，它可以将高层次的上层代码转换为较低层次的中间（IR）或者汇编代码，而在这些代码中，上层代码所隐含的执行模型已经被“解构”到低层次代码的执行语义中了。而对于解释器来说，上层语言所隐含的执行语义则需要通过对程序进行结构化分析，再根据具体 token 类别的不同来分别进行相应的处理。而通常来说，我们会将「所有这些无法从程序源代码上直观体现的、为支持执行模型，使得程序可以正常运行而进行的处理和实现」统称为“<strong>运行时系统</strong>（Runtime System）”。</p>
 <p>一门编程语言的运行时系统，提供了以该语言编写的程序可以在其中运行的环境。这个环境涉及到程序能够正确运行的多个重要方面，大到对应用程序内存的管理、提供程序与操作系统的可交互接口；小到正确设置函数调用时的 <em>prologue</em> 与 <em>epilogue</em> 等等。还是以 C 语言为例，当我们运行一个需要动态链接的 C 应用时，个人认为动态链接器的行为也属于运行时系统的范畴。比如当我们在类 Unix 系统上运行这个应用时，操作系统将会以动态链接器作为执行入口，动态链接器首先完成自身的符号重定位，然后对将要运行的 C 应用进行所有依赖共享库的地址空间加载、符号重定位等一系列工作，最后再将执行流程（PC）转交给应用本身。而动态链接器的这一系列工作其目的便是为了能够正确执行我们的目标 C 应用，<strong>只是这部分流程并非局限于 C 语言本身</strong>，属于独立于具体语言的运行时系统组成。</p>
-<p>而对于 C 语言本身来说，也有其专有的运行时系统组成，对于这部分内容我们一般称之为 <strong>CRT</strong>（C-Runtime）。在类 Unix 系统中，CRT 一般以几个不同目标文件的形式提供（<em>crt1.o</em> \ <em>crti.o</em> \ <em>crtn.o<em>）。其中，</em>crt1.o</em> 中包含了程序的实际入口函数（_start），在这部分汇编实现中，运行时系统一般会正确设置 <em>argc</em> 与 <em>argv</em> 的参数，并最后调用 C 源代码中定义的 <em>main</em> 函数。而在 <em>main</em> 函数返回后，其还会调用 <em>exit</em> 系统调用以正确退出程序。另外的目标文件 <em>crti.o</em> 与 <em>crtn.o</em> 提供了部分用于辅助全局构造与析构相关功能的实现组成，这里不详细展开。</p>
+<p>而对于 C 语言本身来说，也有其专有的运行时系统组成，对于这部分内容我们一般称之为 <strong>CRT</strong>（C-Runtime）。在类 Unix 系统中，CRT 一般以几个不同目标文件的形式提供（<em>crt1.o</em> \ <em>crti.o</em> \ <em>crtn.o</em>）。其中，<em>crt1.o</em> 中包含了程序的实际入口函数（_start），在这部分汇编实现中，运行时系统一般会正确设置 <em>argc</em> 与 <em>argv</em> 的参数，并最后调用 C 源代码中定义的 <em>main</em> 函数。而在 <em>main</em> 函数返回后，其还会调用 <em>exit</em> 系统调用以正确退出程序。另外的目标文件 <em>crti.o</em> 与 <em>crtn.o</em> 提供了部分用于辅助全局构造与析构相关功能的实现组成，这里不详细展开。</p>
 <p>总而言之，对于“运行时系统”的识别边界并没有十分详细、清楚的区分条件（目前来看）。针对不同的编程语言、技术体系，有些时候可能需要用不同的视角来进行判断。而在下文对 Rust Runtime System 的陈述中，我们将主要介绍与 Rust 语言本身相关的那部分运行时系统组成，而对于独立于语言的部分（比如上文中提供到动态链接器）则不会涉及。</p>
 <p>对于 Rust ABI 的部分，我们所讨论的内容不会详细到 ABI 的每一个具体细节。但实际上 Rust ABI 所涉及的内容与 C/C++ 十分类似，比如：内置类型的大小和在内存中的存储方式（字节序）、组合类型的存储方式和内存分布、函数调用方式（<em>calling convention</em>）、寄存器使用约定、虚函数表的内容和布局形式等等。在本文中，我们会概述现阶段 Rust ABI 的整体情况，以给大家一个直观的印象。</p>
 <h2 id="Rust-Runtime-System"><a href="#Rust-Runtime-System" class="headerlink" title="Rust Runtime System"></a>Rust Runtime System</h2><p>为了保证阅读上的流畅性，后续我们会直接将 “Runtime System” 简称为 “Runtime”。从 Rust 官方的 FAQ 文档中我们可以得知，Rust 语言几乎没有运行时系统（如下引用所示）。而这使得它可以更方便地与其他带有 GC 的语言进行集成。</p>
 <blockquote>
 <p>By avoiding GC, Rust can offer numerous benefits: predictable cleanup of resources, lower overhead for memory management, and essentially no runtime system. </p>
 </blockquote>
-<p>但“几乎没有”并不代表完全没有，Rust 的一部分标准库实现可以被认定为属于 Rust 运行时系统的功能范畴，这部分标准库提供了与：<em>Panic<em>、</em>回溯（backtrace）<em>、</em>Stack Unwinding</em> 以及<em>栈保护</em>等概念有关的具体实现。不仅如此，同 C 语言类似，Rust 同样有着一部分运行时系统功能为实际的 <code>main</code> 函数调用提供了准备。</p>
-<p>我们可以从 Rust 项目的源代码位置 <strong><em>rust/library/std/src/rt.rs</em></strong> 处看到 Rust Runtime 的完整实现。这段代码实现十分简短，完整的代码参考如下：</p>
+<p>但“几乎没有”并不代表完全没有，Rust 的一部分标准库实现可以被认定为属于 Rust 运行时系统的功能范畴，这部分标准库提供了与：<em>Panic</em>、<em>回溯（backtrace）</em>、<em>Stack Unwinding</em> 以及<em>栈保护</em>等概念有关的具体实现。不仅如此，同 C 语言类似，Rust 同样有着一部分运行时系统功能为实际的 <code>main</code> 函数调用提供了准备。</p>
+<p>我们可以从 Rust 项目的源代码位置 <em><strong>rust/library/std/src/rt.rs</strong></em> 处看到 Rust Runtime 的完整实现。这段代码实现十分简短，完整的代码参考如下：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">//! Runtime services</span>
 <span class="token comment" spellcheck="true">//!</span>
 <span class="token comment" spellcheck="true">//! The `rt` module provides a narrow set of runtime services,</span>
@@ -72,10 +72,12 @@
         argc<span class="token punctuation">,</span>
         argv<span class="token punctuation">,</span>
     <span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="导出的-Panicking-内部接口"><a href="#导出的-Panicking-内部接口" class="headerlink" title="导出的 Panicking 内部接口"></a>导出的 Panicking 内部接口</h3><p>从上往下看这段代码，首先可以发现这里重新导出了一些与 <code>panic!</code> 宏相关的内部函数，我们来一一看下。</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// Re-export some of our utilities which are expected by other crates.</span>
-<span class="token keyword">pub</span> <span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token punctuation">:</span><span class="token punctuation">:</span>panicking<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">{</span>begin_panic<span class="token punctuation">,</span> begin_panic_fmt<span class="token punctuation">,</span> panic_count<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">pub</span> <span class="token keyword">use</span> <span class="token keyword">crate</span><span class="token punctuation">:</span><span class="token punctuation">:</span>panicking<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">{</span>begin_panic<span class="token punctuation">,</span> begin_panic_fmt<span class="token punctuation">,</span> panic_count<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>其中，名为 <code>begin_panic</code> 的函数是宏 <code>panic!</code> 与 <code>assert!</code> 对应变体的实际入口函数，该函数可以接受任意的（<code>std::any::Any</code>）参数类型作为 Panic Payload。函数内部通过调用 <code>rust_panic_with_hook</code> 函数执行了为触发 Panic 所做的一些处理，这些处理包括：处理递归的 Panic（比如在 Panic Hook 中触发 Panic）、执行 Panic Hook（自定义或默认的）、输出 Panic 信息，最后通过调用 Panic Runtime 提供的 <code>__rust_start_panic</code> 函数，Rust 可以选择性地通过 <code>panic_abort</code> 或 <code>panic_unwind</code>（默认情况）这两种不同的方式实现最后的 Panic 副作用。其中，前者将直接调用诸如 C 标准库中的 <code>abort</code> 函数来结束当前进程；而后者则会通过调用平台相关的 <em>Stack Unwinding</em> 逻辑来“解构”与异常相关的调用栈帧，直到可以将（如果有）控制逻辑转移给最外层的 <code>std::panic::catch_unwind</code> 函数栈帧。一个有关设置 Panic Hook 与 Panic 捕获的简单例子可以参考如下：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token keyword">fn</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
     <span class="token comment" spellcheck="true">// setup a panic hook, will be called once a panic occurs.</span>
@@ -95,7 +97,8 @@
         )
      */</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:#?}"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><code>begin_panic_fmt</code> 函数与 <code>begin_panic</code> 类似，只不过它主要用来处理接收了类似 <code>format!</code> 宏格式参数的 <code>panic!</code> 调用，该函数在执行过程中也会间接调用 <code>rust_panic_with_hook</code> 函数，其后续处理流程与上述一致。</p>
 <p>最后导出的 <code>panic_count</code> 模块中主要包含了与 “Panic 计数” 相关的一些内部接口，这些计数逻辑会计算发生的、分别独立于进程和线程（通过 TLS）的 Panic 数量，并进行不同的处理。其中的基本逻辑是：当发生 Panic 时，计数器会加一；相反，当 Panic 被捕获和处理后（比如通过 <code>catch_unwind</code>），计数器会减一。而在正常情况下，发生 Panic 会直接导致 Rust 程序的运行终止。</p>
 <h3 id="Runtime-入口函数"><a href="#Runtime-入口函数" class="headerlink" title="Runtime 入口函数"></a>Runtime 入口函数</h3><p>出于对代码生成大小的考虑，实际的 Runtime 入口函数被拆分成了两部分，分别对应 <code>lang_start</code> 与 <code>lang_start_internal</code>，其中前者为首先被调用（由属性 <code>#[lang = &quot;start&quot;]</code> 标记）的函数，该函数在其内部直接调用了后者。调用的方式如下所示：</p>
@@ -112,11 +115,12 @@
         argc<span class="token punctuation">,</span>
         argv<span class="token punctuation">,</span>
     <span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其中传入的第一个参数为一个闭包（Closure）。在该闭包内部，一个指向 <code>main</code> 函数的指针被作为参数传递给了 <code>__rust_begin_short_backtrace</code> 函数。Rust 自 1.47.0 版本后，在默认情况下，应用发生 Panic 时将会输出更加精简的 <em>stack backtrace</em> 信息，而这种改变便是由函数 <code>__rust_begin_short_backtrace</code> 与 <code>__rust_end_short_backtrace</code> 一起配合并共同完成的。</p>
-<p>这两个函数需要成对使用，两者在其内部并没有任何特殊逻辑，而只是简单地调用了传入其中的函数，并将调用结果返回。从 Rust 应用的完整调用栈（<em>call stack*）上来看，处于 <code>__rust_begin_short_backtrace</code> 和 <code>__rust_end_short_backtrace</code> 之间的函数调用过程便可被视作完整的用户代码调用过程。而 Rust 在遇到 Panic 而需要打印当前的 *backtrace</em> 时，它实际上会遍历每一个栈帧，而通过栈帧附带的“符号名”来区分当前栈帧是否为上述两个函数中的某一个，进而 Rust 能够区分哪部分栈帧属于用户代码、哪部分属于运行时系统。</p>
-<p>再回到之前的闭包，当函数 <code>__rust_begin_short_backtrace</code> 在其内部调用了传入的 <code>main</code> 函数并返回后，Rust 在此返回值的基础之上又调用了名为 <code>report</code> 的函数。从上面给出的 Runtime 入口函数 <code>lang_start</code> 的实现代码中可以看到，<code>main</code> 函数所对应的类型 <em>fn() -&gt; T</em> 其返回值 <em>T</em> 实际上带有一个名为 <code>crate::process::Termination</code> 的 <em>trait bound<em>，而该 trait 便提供了名为 <code>report</code> 的方法。该方法在调用后会返回一个用于表示*</em>状态信息**的 *i32</em> 类型整数，该整数随后将会被传递给操作系统以作为状态信息。如下图所示，实际上 Rust 对诸如 <code>()</code> \ <code>!</code> \ <code>Result&lt;(), E&gt;</code> 等常见的 <code>main</code> 函数返回值都默认实现了该 trait。通常情况下，Rust 使用来自 libc 的宏 <code>libc::EXIT_SUCCESS</code> 的值（整数 0）来表示成功状态；而使用宏 <code>libc::EXIT_FAILURE</code> 的值（整数 1）来表示失败状态。在这些 <code>main</code> 函数常见返回值类型对该 trait 的实现中，你可以看到对这些值的使用。</p>
-<p><img src="1.png" alt=""></p>
+<p>这两个函数需要成对使用，两者在其内部并没有任何特殊逻辑，而只是简单地调用了传入其中的函数，并将调用结果返回。从 Rust 应用的完整调用栈（<em>call stack</em>）上来看，处于 <code>__rust_begin_short_backtrace</code> 和 <code>__rust_end_short_backtrace</code> 之间的函数调用过程便可被视作完整的用户代码调用过程。而 Rust 在遇到 Panic 而需要打印当前的 <em>backtrace</em> 时，它实际上会遍历每一个栈帧，而通过栈帧附带的“符号名”来区分当前栈帧是否为上述两个函数中的某一个，进而 Rust 能够区分哪部分栈帧属于用户代码、哪部分属于运行时系统。</p>
+<p>再回到之前的闭包，当函数 <code>__rust_begin_short_backtrace</code> 在其内部调用了传入的 <code>main</code> 函数并返回后，Rust 在此返回值的基础之上又调用了名为 <code>report</code> 的函数。从上面给出的 Runtime 入口函数 <code>lang_start</code> 的实现代码中可以看到，<code>main</code> 函数所对应的类型 <em>fn() -&gt; T</em> 其返回值 <em>T</em> 实际上带有一个名为 <code>crate::process::Termination</code> 的 <em>trait bound</em>，而该 trait 便提供了名为 <code>report</code> 的方法。该方法在调用后会返回一个用于表示<strong>状态信息</strong>的 <em>i32</em> 类型整数，该整数随后将会被传递给操作系统以作为状态信息。如下图所示，实际上 Rust 对诸如 <code>()</code> \ <code>!</code> \ <code>Result&lt;(), E&gt;</code> 等常见的 <code>main</code> 函数返回值都默认实现了该 trait。通常情况下，Rust 使用来自 libc 的宏 <code>libc::EXIT_SUCCESS</code> 的值（整数 0）来表示成功状态；而使用宏 <code>libc::EXIT_FAILURE</code> 的值（整数 1）来表示失败状态。在这些 <code>main</code> 函数常见返回值类型对该 trait 的实现中，你可以看到对这些值的使用。</p>
+<p><img src="1.png"></p>
 <p>接下来，函数 <code>lang_start_internal</code> 在调用时传入的最后两个参数 <em>argc</em> 与 <em>argv</em> 想必你已经十分熟悉了，两者与 C/C++ 程序中 <code>main</code> 函数所接收到的两个参数其含义和数值类型完全一致。流程继续行进到 <code>lang_start_internal</code> 函数的内部。在该函数内部，Rust 首先调用了名为 <code>sys_common::rt::init</code> 的“运行时初始化”函数，该函数主要完成了以下几件事情：</p>
 <ul>
 <li>初始化用于存放 <em>argc</em> 与 <em>argv</em> 的全局静态变量；</li>
@@ -141,7 +145,8 @@
         <span class="token keyword">let</span> thread <span class="token operator">=</span> Thread<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token function">Some</span><span class="token punctuation">(</span><span class="token string">"main"</span><span class="token punctuation">.</span><span class="token function">to_owned</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         thread_info<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">set</span><span class="token punctuation">(</span>main_guard<span class="token punctuation">,</span> thread<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在调用完初始化函数后，我们在 Rust 源代码中定义的 <code>main</code> 函数便开始被真正地调用了。这里 <code>main</code> 函数实际上会被放置在 <code>catch_unwind</code> 中进行调用，以检查主函数在实际调用过程中是否产生了 Panic，借此来设置不同的返回值。紧接着在 <code>main</code> 函数执行完毕并返回后，Rust 通过调用 <code>sys_common::rt::cleanup</code> 函数完成对运行时上下文的清理，这些清理工作包括：</p>
 <ul>
 <li>输出并禁用 <em>stdout</em> 缓冲区；</li>
@@ -149,14 +154,15 @@
 </ul>
 <p>最后，Rust 返回用户指定的或默认的（101 - 发生错误）退出状态码到操作系统，应用结束运行。</p>
 <p>到这里一切看起来都很简单，我们可观测到的 Rust Runtime 并没有提供过多的功能，但实际上还有一个问题没有解决。我们在文章开头曾提到，名为 <code>lang_start</code> 的函数会被 Rust 首先调用，而后才是我们定义在 Rust 源代码中的 <code>main</code> 函数。但究竟 <code>lang_start</code> 函数是如何被调用的呢？函数在调用时传入的 <em>argc</em> 与 <em>argv</em> 参数又是怎样获得的呢？</p>
-<h4 id="入口点（Entry-Point）"><a href="#入口点（Entry-Point）" class="headerlink" title="入口点（Entry Point）"></a>入口点（Entry Point）</h4><p>实际上，我们上述介绍的<strong>函数 <code>lang_start</code> 只是 Rust Runtime 的入口点，而非整个程序的执行入口</strong>。当我们在通过 <em>rustc</em> 编译 Rust 源代码时，Rust 编译器会帮助我们动态生成一个名为 “main” 的函数，这个函数的签名同我们在 C/C++ 中定义的 <em>main</em> 函数基本一致。接着，Rust 借助在编译过程中链接的 <em>libc</em> 的帮助下，这个 <em>main</em> 函数便可以被正确调用（一般在 <em>_start</em> 中由汇编指定）。而我们在上文最开始介绍的 <code>lang_start</code> 函数便会由这个 <em>rustc</em> 自动生成的 <em>main</em> 函数来调用。具体可以参考 Rust 源代码 <strong><em>compiler/rustc_codegen_ssa/src/base.rs</em></strong> 中的 <code>create_entry_fn</code> 函数：</p>
+<h4 id="入口点（Entry-Point）"><a href="#入口点（Entry-Point）" class="headerlink" title="入口点（Entry Point）"></a>入口点（Entry Point）</h4><p>实际上，我们上述介绍的<strong>函数 <code>lang_start</code> 只是 Rust Runtime 的入口点，而非整个程序的执行入口</strong>。当我们在通过 <em>rustc</em> 编译 Rust 源代码时，Rust 编译器会帮助我们动态生成一个名为 “main” 的函数，这个函数的签名同我们在 C/C++ 中定义的 <em>main</em> 函数基本一致。接着，Rust 借助在编译过程中链接的 <em>libc</em> 的帮助下，这个 <em>main</em> 函数便可以被正确调用（一般在 <em>_start</em> 中由汇编指定）。而我们在上文最开始介绍的 <code>lang_start</code> 函数便会由这个 <em>rustc</em> 自动生成的 <em>main</em> 函数来调用。具体可以参考 Rust 源代码 <em><strong>compiler/rustc_codegen_ssa/src/base.rs</strong></em> 中的 <code>create_entry_fn</code> 函数：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// location: compiler/rustc_codegen_ssa/src/base.rs.</span>
 <span class="token keyword">fn</span> create_entry_fn<span class="token operator">&lt;</span><span class="token string">'a, '</span>tcx<span class="token punctuation">,</span> Bx<span class="token punctuation">:</span> BuilderMethods<span class="token operator">&lt;</span><span class="token string">'a, '</span>tcx<span class="token operator">>></span><span class="token punctuation">(</span>
     cx<span class="token punctuation">:</span> <span class="token operator">&amp;</span>'a Bx<span class="token punctuation">:</span><span class="token punctuation">:</span>CodegenCx<span class="token punctuation">,</span>
     rust_main<span class="token punctuation">:</span> Bx<span class="token punctuation">:</span><span class="token punctuation">:</span>Value<span class="token punctuation">,</span>
     rust_main_def_id<span class="token punctuation">:</span> DefId<span class="token punctuation">,</span>
     use_start_lang_item<span class="token punctuation">:</span> bool<span class="token punctuation">,</span>
-<span class="token punctuation">)</span> <span class="token punctuation">-></span> Bx<span class="token punctuation">:</span><span class="token punctuation">:</span>Function <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span> <span class="token punctuation">-></span> Bx<span class="token punctuation">:</span><span class="token punctuation">:</span>Function <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当然，在某些特殊场景下，我们也可以通过一些方式来让 <em>rustc</em> 不使用那个默认的、由 <em>lang item</em> 标记的 <code>lang_start</code> 函数。比如借助 <code>#[start]</code> 属性，我们可以让 <em>rustc</em> 在编译时直接使用我们指定的入口函数。一个简单的示例如下所示。</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#![feature(start)]</span>
 <span class="token attribute attr-name">#[start]</span>
@@ -173,14 +179,15 @@
         <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{:?}"</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// print out the argc and argv.</span>
     <span class="token punctuation">}</span>
     <span class="token number">0</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但这样做的问题在于：由于 <em>rustc</em> 直接使用了我们指定的入口函数（这个函数仍然是由编译器自动生成的 <em>main</em> 函数调用的），而没有执行 Rust 默认的 Runtime 初始化函数，因此我们上述介绍的那些在 Rust Runtime 中完成的事情，在这种情况下都不会被执行。而这是否会对应用的实际表现产生影响，则需要视具体情况而定。</p>
 <h4 id="输入参数（argc-argv）"><a href="#输入参数（argc-argv）" class="headerlink" title="输入参数（argc / argv）"></a>输入参数（argc / argv）</h4><p>对于程序运行时输入的 <em>argc</em> 与 <em>argv</em> 两个参数，本质上 Rust 会通过两种方式来获取：</p>
 <ul>
 <li>Runtime 启动时通过 <code>main</code> 函数直接传入，并保存于静态变量中；</li>
 <li>借助 FFI 通过链接的外部系统库来获得。</li>
 </ul>
-<p>其中第一种方式，比如在与 libc 进行链接时，位于 _start 标签处的汇编代码便可能会对 <em>argc</em> 与 <em>argv</em> 这两个参数进行处理。而在 libc 实际调用 <em>main</em> 函数时（在 Rust 中由 <em>rustc</em> 动态生成），这两个参数便会被放置在栈上，进而直接作为 <em>main</em> 函数的参数传入其中。而根据链接的具体 libc 其种类的不同，比如 glibc 则可能会采用 “<em>init_array 扩展*” 的方式来获取 *argc</em> 与 <em>argv</em> 的实际值。</p>
+<p>其中第一种方式，比如在与 libc 进行链接时，位于 _start 标签处的汇编代码便可能会对 <em>argc</em> 与 <em>argv</em> 这两个参数进行处理。而在 libc 实际调用 <em>main</em> 函数时（在 Rust 中由 <em>rustc</em> 动态生成），这两个参数便会被放置在栈上，进而直接作为 <em>main</em> 函数的参数传入其中。而根据链接的具体 libc 其种类的不同，比如 glibc 则可能会采用 “<em>init_array 扩展</em>” 的方式来获取 <em>argc</em> 与 <em>argv</em> 的实际值。</p>
 <p>第二种方式的一个典型例子便是 macOS 系统上的 <code>_NSGetArgc</code> 与 <code>_NSGetArgv</code> 方法。这两个方法均由操作系统提供，可以直接用来获得传递给当前运行进程的 <em>argc</em> 与 <em>argv</em> 参数信息。因此，当我们在 Rust 中尝试通过 <code>std::env::args</code> 来获取当前进程的输入参数时，如下代码所示，在 macOS 系统上 Rust 将会直接通过 FFI 调用这两个函数来获取这些信息。</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token comment" spellcheck="true">// location: library/std/src/sys/unix/args.rs.</span>
 #<span class="token punctuation">[</span><span class="token function">cfg</span><span class="token punctuation">(</span>target_os <span class="token operator">=</span> <span class="token string">"macos"</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
@@ -192,9 +199,10 @@
         <span class="token keyword">fn</span> <span class="token function">_NSGetArgv</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token operator">*</span><span class="token keyword">mut</span> libc<span class="token punctuation">:</span><span class="token punctuation">:</span>c_char<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token comment" spellcheck="true">// ...</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="Rust-ABI"><a href="#Rust-ABI" class="headerlink" title="Rust ABI"></a>Rust ABI</h2><p>同样的，从 Rust 官方的 FAQ 中我们也可以了解到，实际上目前 Rust 还没有稳定的 ABI。因此这里只简短地挑几个方面讲讲。</p>
-<h3 id="内存布局（Memory-Layout）"><a href="#内存布局（Memory-Layout）" class="headerlink" title="内存布局（Memory Layout）"></a>内存布局（Memory Layout）</h3><p>对于诸如 <em>i32</em> \ <em>f32</em> \ <em>&amp;T</em> \ <em>\</em>const T* 等基本类型以及复合类型 <em>array</em> 来说，Rust ABI 保证其与 C/C++ 是相互兼容的。</p>
+<h3 id="内存布局（Memory-Layout）"><a href="#内存布局（Memory-Layout）" class="headerlink" title="内存布局（Memory Layout）"></a>内存布局（Memory Layout）</h3><p>对于诸如 <em>i32</em> \ <em>f32</em> \ <em>&amp;T</em> \ <em>*const T</em> 等基本类型以及复合类型 <em>array</em> 来说，Rust ABI 保证其与 C/C++ 是相互兼容的。</p>
 <p>而对于某些复合类型，从 Rustonomicon 中我们得知，在默认情况下，Rust 编译器对 <code>struct</code> 内部字段的内存排列方式并不固定。在某些情况下出于优化目的，其实际的字段内存排列顺序可能与定义时的“可见排列顺序”并不相同。而为了使内存布局保持稳定，我们可以通过添加额外的诸如 <code>#[repr(C)]</code> 等属性来指定被标记结构体应该采用哪种 ABI 规定的内存排列方式。如下所示我们规定结构体 Foo 应该按照 C 语言的 ABI 来进行实际的内存布局。同样的方式也可被应用于 <code>enum</code> 类型，但需要注意 Rust 与 C 中的 enum 本质并不相同。</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#[repr(C)]</span>
 <span class="token keyword">struct</span> Foo <span class="token punctuation">{</span>
@@ -202,7 +210,8 @@
     b<span class="token punctuation">:</span> f64<span class="token punctuation">,</span>
     c<span class="token punctuation">:</span> bool<span class="token punctuation">,</span>
     d<span class="token punctuation">:</span> i32<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>除此之外，对于某些特殊类型（比如 <code>Option&lt;T&gt;</code> \ <code>enum</code> ），Rust 编译器可能会使用“<strong>空指针优化</strong>（<em>Null-pointer Optimization</em>）”来优化这些类型的内存布局。此时，<code>Option&lt;T&gt;</code> 其内存布局将与 T 的内存布局保持一致（T 必须为 <em>non-null</em>）。</p>
 <h3 id="对齐（Alignment）"><a href="#对齐（Alignment）" class="headerlink" title="对齐（Alignment）"></a>对齐（Alignment）</h3><p>Rust 中<strong>所有类型都有以“字节”为单位的对齐要求</strong>。基本类型（整数、浮点数、布尔值，以及字符值）通常对齐到它们类型本身的大小（当然也受到具体平台的限制）。默认情况下，复合类型（如 <code>struct</code>）的整体大小需要是其内部字段最大对齐大小的整数倍。并且，内部的每一个字段的起始偏移也需要为该字段对齐字节大小的整数倍（同 C/C++ 一致）。某些情况下，Rust 会自动插入“对齐字节”以满足上述要求。</p>
 <p>而动态大小类型（DSTs）其大小与对齐方式可能无法在静态编译时得知。对零大小类型（ZSTs）的操作通常会被编译器优化为 “no-op”，且对 ZSTs 的引用必须是 <em>non-null</em> 且适当对齐的。而解引用一个 <em>null</em> 或未对齐的 ZST 指针是未定义行为（UB）。</p>
@@ -210,44 +219,46 @@
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#[no_mangle]</span>
 <span class="token keyword">pub</span> <span class="token keyword">extern</span> <span class="token string">"C"</span> <span class="token keyword">fn</span> <span class="token function">call_from_c</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Just called a Rust function from C!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>同样，我们也可以显式指定想要使用的其他 ABI，比如 <em>_cdecl</em>：</p>
 <pre class="line-numbers language-rust"><code class="language-rust"><span class="token attribute attr-name">#[no_mangle]</span>
 <span class="token keyword">pub</span> <span class="token keyword">extern</span> <span class="token string">"cdecl"</span> <span class="token keyword">fn</span> <span class="token function">call_from_c</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Just called a Rust function from C!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><em><a href="https://en.wikipedia.org/wiki/Runtime_system" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Runtime_system</a>.</em></li>
-<li><em><a href="https://en.wikipedia.org/wiki/Execution_model" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Execution_model</a>.</em></li>
-<li><em><a href="https://en.wikipedia.org/wiki/Runtime_(program_lifecycle_phase)" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Runtime_(program_lifecycle_phase)</a>.</em></li>
-<li><em><a href="https://whatis.techtarget.com/definition/runtime-system" target="_blank" rel="noopener">https://whatis.techtarget.com/definition/runtime-system</a>.</em></li>
-<li><em><a href="https://www.techopedia.com/definition/24023/runtime-system" target="_blank" rel="noopener">https://www.techopedia.com/definition/24023/runtime-system</a>.</em></li>
-<li><em><a href="https://edge.seas.harvard.edu/runtime-systems" target="_blank" rel="noopener">https://edge.seas.harvard.edu/runtime-systems</a>.</em></li>
-<li><em><a href="https://stackoverflow.com/questions/42728239/runtime-system-in-c" target="_blank" rel="noopener">https://stackoverflow.com/questions/42728239/runtime-system-in-c</a>.</em></li>
-<li><em><a href="https://www.quora.com/Is-there-an-execution-model-for-every-programming-language-I-cannot-find-any-for-C++" target="_blank" rel="noopener">https://www.quora.com/Is-there-an-execution-model-for-every-programming-language-I-cannot-find-any-for-C++</a>.</em></li>
-<li><em><a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf" target="_blank" rel="noopener">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf</a>.</em></li>
-<li><em><a href="https://webassembly.github.io/spec/core/exec/index.html" target="_blank" rel="noopener">https://webassembly.github.io/spec/core/exec/index.html</a>.</em></li>
-<li><em><a href="https://prev.rust-lang.org/en-US/faq.html" target="_blank" rel="noopener">https://prev.rust-lang.org/en-US/faq.html</a>.</em></li>
-<li><em><a href="https://ferrous-systems.github.io/rust-three-days-course/presentation/index.html?chapter=libcore-and-libstd&amp;locale=en-US" target="_blank" rel="noopener">https://ferrous-systems.github.io/rust-three-days-course/presentation/index.html?chapter=libcore-and-libstd&amp;locale=en-US</a>.</em></li>
-<li><em><a href="https://blog.mgattozzi.dev/rusts-runtime" target="_blank" rel="noopener">https://blog.mgattozzi.dev/rusts-runtime</a>.</em></li>
-<li><em><a href="https://en.wikipedia.org/wiki/Stack_trace" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Stack_trace</a>.</em></li>
-<li><em><a href="https://rustc-dev-guide.rust-lang.org/panic-implementation.html" target="_blank" rel="noopener">https://rustc-dev-guide.rust-lang.org/panic-implementation.html</a>.</em></li>
-<li><em><a href="https://en.wikipedia.org/wiki/Call_stack#Unwinding" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Call_stack#Unwinding</a>.</em></li>
-<li><em><a href="https://doc.rust-lang.org/beta/std/panic/fn.catch_unwind.html" target="_blank" rel="noopener">https://doc.rust-lang.org/beta/std/panic/fn.catch_unwind.html</a>.</em></li>
-<li><em><a href="https://mashplant.online/2020/09/06/panic-in-wasm/" target="_blank" rel="noopener">https://mashplant.online/2020/09/06/panic-in-wasm/</a>.</em></li>
-<li><em><a href="https://blog.rust-lang.org/2020/10/08/Rust-1.47.html#shorter-backtraces" target="_blank" rel="noopener">https://blog.rust-lang.org/2020/10/08/Rust-1.47.html#shorter-backtraces</a>.</em></li>
-<li><em><a href="https://en.wikipedia.org/wiki/Buffer_overflow_protection" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Buffer_overflow_protection</a>.</em></li>
-<li><em><a href="https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html" target="_blank" rel="noopener">https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html</a>.</em></li>
-<li><em><a href="https://users.rust-lang.org/t/who-calls-lang-start/51446/2" target="_blank" rel="noopener">https://users.rust-lang.org/t/who-calls-lang-start/51446/2</a>.</em></li>
-<li><em><a href="https://stackoverflow.com/questions/67444319/how-does-rust-begin-short-backtrace-work-in-rust" target="_blank" rel="noopener">https://stackoverflow.com/questions/67444319/how-does-rust-begin-short-backtrace-work-in-rust</a>.</em></li>
-<li><em><a href="https://stackoverflow.com/questions/67445967/how-does-rust-retrieve-the-input-argc-and-argv-values-from-a-running-program" target="_blank" rel="noopener">https://stackoverflow.com/questions/67445967/how-does-rust-retrieve-the-input-argc-and-argv-values-from-a-running-program</a>.</em></li>
-<li><em><a href="https://gankra.github.io/blah/rust-layouts-and-abis/" target="_blank" rel="noopener">https://gankra.github.io/blah/rust-layouts-and-abis/</a>.</em></li>
-<li><em><a href="https://people.gnome.org/~federico/blog/rust-stable-abi.html" target="_blank" rel="noopener">https://people.gnome.org/~federico/blog/rust-stable-abi.html</a>.</em></li>
-<li><em><a href="https://users.rust-lang.org/t/rust-function-calling-conventions/13499" target="_blank" rel="noopener">https://users.rust-lang.org/t/rust-function-calling-conventions/13499</a>.</em></li>
-<li><em><a href="https://doc.rust-lang.org/nomicon/ffi.html" target="_blank" rel="noopener">https://doc.rust-lang.org/nomicon/ffi.html</a>.</em></li>
-<li><em><a href="https://www.reddit.com/r/rust/comments/50qk14/rust_abi/" target="_blank" rel="noopener">https://www.reddit.com/r/rust/comments/50qk14/rust_abi/</a>.</em></li>
-<li><em><a href="https://github.com/rust-lang/rust/issues/29633" target="_blank" rel="noopener">https://github.com/rust-lang/rust/issues/29633</a>.</em></li>
-<li><em><a href="https://doc.rust-lang.org/unstable-book/language-features/lang-items.html" target="_blank" rel="noopener">https://doc.rust-lang.org/unstable-book/language-features/lang-items.html</a>.</em></li>
-<li><em><a href="http://www.dpldocs.info/experimental-docs/core.sys.darwin.crt_externs._NSGetArgc.html" target="_blank" rel="noopener">http://www.dpldocs.info/experimental-docs/core.sys.darwin.crt_externs._NSGetArgc.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runtime_system">https://en.wikipedia.org/wiki/Runtime_system</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Execution_model">https://en.wikipedia.org/wiki/Execution_model</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Runtime_(program_lifecycle_phase)">https://en.wikipedia.org/wiki/Runtime_(program_lifecycle_phase)</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://whatis.techtarget.com/definition/runtime-system">https://whatis.techtarget.com/definition/runtime-system</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://www.techopedia.com/definition/24023/runtime-system">https://www.techopedia.com/definition/24023/runtime-system</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://edge.seas.harvard.edu/runtime-systems">https://edge.seas.harvard.edu/runtime-systems</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/42728239/runtime-system-in-c">https://stackoverflow.com/questions/42728239/runtime-system-in-c</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://www.quora.com/Is-there-an-execution-model-for-every-programming-language-I-cannot-find-any-for-C++">https://www.quora.com/Is-there-an-execution-model-for-every-programming-language-I-cannot-find-any-for-C++</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf">http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://webassembly.github.io/spec/core/exec/index.html">https://webassembly.github.io/spec/core/exec/index.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://prev.rust-lang.org/en-US/faq.html">https://prev.rust-lang.org/en-US/faq.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://ferrous-systems.github.io/rust-three-days-course/presentation/index.html?chapter=libcore-and-libstd&amp;locale=en-US">https://ferrous-systems.github.io/rust-three-days-course/presentation/index.html?chapter=libcore-and-libstd&amp;locale=en-US</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://blog.mgattozzi.dev/rusts-runtime">https://blog.mgattozzi.dev/rusts-runtime</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Stack_trace">https://en.wikipedia.org/wiki/Stack_trace</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://rustc-dev-guide.rust-lang.org/panic-implementation.html">https://rustc-dev-guide.rust-lang.org/panic-implementation.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Call_stack#Unwinding">https://en.wikipedia.org/wiki/Call_stack#Unwinding</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/beta/std/panic/fn.catch_unwind.html">https://doc.rust-lang.org/beta/std/panic/fn.catch_unwind.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://mashplant.online/2020/09/06/panic-in-wasm/">https://mashplant.online/2020/09/06/panic-in-wasm/</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://blog.rust-lang.org/2020/10/08/Rust-1.47.html#shorter-backtraces">https://blog.rust-lang.org/2020/10/08/Rust-1.47.html#shorter-backtraces</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Buffer_overflow_protection">https://en.wikipedia.org/wiki/Buffer_overflow_protection</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html">https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://users.rust-lang.org/t/who-calls-lang-start/51446/2">https://users.rust-lang.org/t/who-calls-lang-start/51446/2</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/67444319/how-does-rust-begin-short-backtrace-work-in-rust">https://stackoverflow.com/questions/67444319/how-does-rust-begin-short-backtrace-work-in-rust</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/67445967/how-does-rust-retrieve-the-input-argc-and-argv-values-from-a-running-program">https://stackoverflow.com/questions/67445967/how-does-rust-retrieve-the-input-argc-and-argv-values-from-a-running-program</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://gankra.github.io/blah/rust-layouts-and-abis/">https://gankra.github.io/blah/rust-layouts-and-abis/</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://people.gnome.org/~federico/blog/rust-stable-abi.html">https://people.gnome.org/~federico/blog/rust-stable-abi.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://users.rust-lang.org/t/rust-function-calling-conventions/13499">https://users.rust-lang.org/t/rust-function-calling-conventions/13499</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/nomicon/ffi.html">https://doc.rust-lang.org/nomicon/ffi.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://www.reddit.com/r/rust/comments/50qk14/rust_abi/">https://www.reddit.com/r/rust/comments/50qk14/rust_abi/</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://github.com/rust-lang/rust/issues/29633">https://github.com/rust-lang/rust/issues/29633</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/unstable-book/language-features/lang-items.html">https://doc.rust-lang.org/unstable-book/language-features/lang-items.html</a>.</em></li>
+<li><em><a target="_blank" rel="noopener" href="http://www.dpldocs.info/experimental-docs/core.sys.darwin.crt_externs._NSGetArgc.html">http://www.dpldocs.info/experimental-docs/core.sys.darwin.crt_externs._NSGetArgc.html</a>.</em></li>
 </ol>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-05-06T10:41:14.000Z"> 2021 / 05 / 09, 16:06:55</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2021/04/22/Rust-and-WebAssembly/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2021/05/10/JIT Compilation：理解与实现/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

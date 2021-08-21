@@ -11,13 +11,13 @@
 <li>（Page：12）<strong>严格模式下禁止自动或隐式创建全局变量</strong>。在 RHS 查询（引用变量的值）下，若在作用域链中找不到变量，则会抛出 ReferenceError 异常。而在 LHS 查询（变量出现在赋值操作左侧）下，<strong>若在作用域链中找不到变量，非严格模式下引擎会自动在顶层作用域创建一个全局变量</strong>，严格模式下同样抛出 ReferenceError 异常。</li>
 <li>（Page：<a name="14" href="#14">14</a>）作用域：</li>
 </ol>
-<p>- <strong><em>词法作用域</em></strong>：</p>
+<p>- <em><strong>词法作用域</strong></em>：</p>
 <ul>
 <li>最为普通的，被大多数编程语言所采用；</li>
 <li>定义在“词法阶段”的作用域，<strong>即由开发者在写代码时将变量和块作用域写在哪里（词法关系）来决定的</strong>；</li>
 <li>关注函数在何处<strong>声明</strong>。</li>
 </ul>
-<p>- <strong><em>动态作用域</em></strong>：</p>
+<p>- <em><strong>动态作用域</strong></em>：</p>
 <ul>
 <li>被如 Bash、Perl 等编程语言采用。</li>
 <li><strong>动态作用域是基于调用栈在运行时确定的，而不是代码中的词法作用域嵌套</strong>。比如在进行 RHS 查询时，会根据调用栈向上查找变量，而不是代码的词法相对位置；</li>
@@ -29,7 +29,7 @@
 <ul>
 <li>动态改变词法作用域会导致 JavaScript 引擎无法在编译时对作用域查找进行优化，因此大多数情况下会禁用优化，进而影响性能。</li>
 </ul>
-<p>- <strong><em>eval</em></strong>：</p>
+<p>- <em><strong>eval</strong></em>：</p>
 <ul>
 <li><strong>严格模式下有自己的词法作用域</strong>，无法修改所在位置的作用域。</li>
 </ul>
@@ -38,8 +38,9 @@
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"var b = 3;"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1 3.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>with</em></strong>：</p>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token string">"var b = 3;"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 1 3.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>with</strong></em>：</p>
 <ul>
 <li>可以将一个对象处理为一个完全隔离的词法作用域，<strong>这个对象的属性也会被处理为定义在该作用域内的词法标识符</strong>；</li>
 <li>在 <em>with {}</em> 内部声明的标识符属于 <em>with</em> 所在的作用域，而非扩展出的作用域；</li>
@@ -50,7 +51,8 @@
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> o <span class="token operator">=</span> <span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 对 y 的无效引用会导致在顶层全局作用域内自动创建该变量；</span>
 <span class="token function">foo</span><span class="token punctuation">(</span>o<span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
 <li>（Page：24）<strong>最小特权原则</strong>：在软件设计中，应该最小限度地暴露必要的内容，而将其他内容都“隐藏”起来。</li>
 <li>（Page：27）利用 IIFE 实现<strong>函数作用域</strong>：</li>
@@ -69,7 +71,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 3.</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="7">
 <li>（Page：30）<strong>块作用域</strong>：</li>
 </ol>
@@ -88,7 +91,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span>
 foo <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>（Page：44）<strong>闭包</strong>：当函数可以记住并访问所在词法作用域时，就产生了闭包，即使函数时在当前词法作用域之外执行。</li>
 </ol>
@@ -104,9 +108,10 @@ foo <span class="token operator">=</span> <span class="token keyword">function</
   <span class="token keyword">return</span> bar<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> baz <span class="token operator">=</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 2.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>IIFE 构建的闭包（<u><a href="https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke" target="_blank" rel="noopener">关于 Event Loop</a></u>）：</li>
+<li>IIFE 构建的闭包（<u><a target="_blank" rel="noopener" href="https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke">关于 Event Loop</a></u>）：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 相当于 “var j = i”；</span>
@@ -114,8 +119,9 @@ foo <span class="token operator">=</span> <span class="token keyword">function</
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span> j <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="1.png" alt=""></p>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="1.png"></p>
 <ol start="10">
 <li>（Page：54）简单的模块机制：</li>
 </ol>
@@ -135,7 +141,8 @@ foo <span class="token operator">=</span> <span class="token keyword">function</
     define<span class="token punctuation">:</span> define<span class="token punctuation">,</span>
     <span class="token keyword">get</span><span class="token punctuation">:</span> <span class="token keyword">get</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="11">
 <li>（Page：65）箭头函数中的<strong>词法 this</strong>：</li>
 </ol>
@@ -150,7 +157,8 @@ foo <span class="token operator">=</span> <span class="token keyword">function</
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-obj<span class="token punctuation">.</span><span class="token function">cool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+obj<span class="token punctuation">.</span><span class="token function">cool</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-2-部分-this-和对象原型"><a href="#第-2-部分-this-和对象原型" class="headerlink" title="第 2 部分 - this 和对象原型"></a>第 2 部分 - this 和对象原型</h3><ol start="12">
 <li>（Page：79）在任何情况下，<strong>this 都不指向函数的词法作用域</strong>。</li>
 <li>（Page：84）<strong>当被调用函数体处于严格模式下时，其内部的 this 无法绑定到全局对象</strong>。</li>
@@ -162,7 +170,8 @@ obj<span class="token punctuation">.</span><span class="token function">cool</sp
 <span class="token comment" spellcheck="true">// new Person('YHSPY');</span>
 <span class="token keyword">var</span> person <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 person<span class="token punctuation">.</span>__proto__ <span class="token operator">=</span> Person<span class="token punctuation">.</span>prototype<span class="token punctuation">;</span>
-Person<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span> <span class="token string">'YHSPY'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Person<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>person<span class="token punctuation">,</span> <span class="token string">'YHSPY'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="15">
 <li>（Page：99）箭头函数的 this 会<strong>由外层作用域来决定</strong>（词法作用域），当外层函数被绑定到固定的 this 后，内存箭头函数在调用时的 this 便无法再被更改。</li>
 <li>（Page：101）判断 this 的绑定对象：</li>
@@ -179,7 +188,8 @@ Person<span class="token punctuation">.</span><span class="token function">call<
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 arr<span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// (2) [empty, 1].</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// (2) [empty, 1].</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="19">
 <li>（Page：114）对象（浅）不变性：</li>
 </ol>
@@ -187,22 +197,26 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><strong>只影响目标对象和直接属性</strong>；</li>
 <li>当需要用到“深不变性”时，需要考虑程序设计是否有问题。</li>
 </ul>
-<p>- <strong><em>对象常量属性</em></strong>：不可修改、重定义或删除。</p>
+<p>- <em><strong>对象常量属性</strong></em>：不可修改、重定义或删除。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>myObject<span class="token punctuation">,</span> <span class="token string">'key'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
   value<span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
   writable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   configurable<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>- <strong><em>禁止扩展</em></strong>：禁止添加新属性且保留已有属性。</p>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>禁止扩展</strong></em>：禁止添加新属性且保留已有属性。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span> existingKey<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>- <strong><em>密封</em></strong>：不能添加新属性，也不能重新配置或删除现有属性（可以修改值）。</p>
+Object<span class="token punctuation">.</span><span class="token function">preventExtensions</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>- <em><strong>密封</strong></em>：不能添加新属性，也不能重新配置或删除现有属性（可以修改值）。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span> existingKey<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>- <strong><em>冻结</em></strong>：不能添加新属性，不能重新配置或删除现有属性，也无法修改属性值。</p>
+Object<span class="token punctuation">.</span><span class="token function">seal</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>- <em><strong>冻结</strong></em>：不能添加新属性，不能重新配置或删除现有属性，也无法修改属性值。</p>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span> existingKey<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
-Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+Object<span class="token punctuation">.</span><span class="token function">freeze</span><span class="token punctuation">(</span>myObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="20">
 <li>（Page：118）访问描述符 getter 与 setter：</li>
 </ol>
@@ -215,7 +229,8 @@ Object<span class="token punctuation">.</span><span class="token function">freez
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 myObject<span class="token punctuation">.</span>v <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myObject<span class="token punctuation">.</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="21">
 <li>（Page：121）<code>in</code> 与 <code>for..in</code> 均会查找对象的原型链。</li>
 <li>（Page：145）对象“属性屏蔽”的复杂性：如果 foo 不直接存在于 myObject 中而是存在于原型链上层时 <code>myObject.foo = &quot;bar&quot;</code> 会出现的三种情况：</li>

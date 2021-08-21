@@ -2,6 +2,7 @@
 title: GC：理解与实现（基于 Mark-and-Sweep）
 intro: 本文主要介绍了如何使用 C++ 快速构建一个简单的 Garbage Collector。为了简化实现过程，实践中我们将使用相对简单的 “Mark-and-Sweep” 算法，以及一些可选的算法变体（多空闲链表、位图标记）。
 comments: true
+published: false
 date: 2021-05-25 16:02:13
 tags:
 - GC

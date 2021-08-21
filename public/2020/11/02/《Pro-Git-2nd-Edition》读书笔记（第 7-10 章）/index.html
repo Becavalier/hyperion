@@ -8,17 +8,19 @@
 <span class="token function">git</span> show <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 &lt;branch> 分支最近一次提交的详情；</span>
 <span class="token function">git</span> reflog  <span class="token comment" spellcheck="true"># 查看历史上 HEAD 所指向的提交，每一次 HEAD 发生变化时都会被记录；</span>
 <span class="token function">git</span> show <span class="token operator">&lt;</span>branch<span class="token operator">></span>@<span class="token punctuation">{</span>n<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 查看 &lt;branch> 分支在第 n 次前的提交；</span>
-<span class="token function">git</span> log --left-right <span class="token operator">&lt;</span>branch-A<span class="token operator">></span><span class="token punctuation">..</span>.<span class="token operator">&lt;</span>branch-B<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 &lt;branch-A> 与 &lt;branch-B> 包含，但又不被两者同时包含的提交；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> log --left-right <span class="token operator">&lt;</span>branch-A<span class="token operator">></span><span class="token punctuation">..</span>.<span class="token operator">&lt;</span>branch-B<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 &lt;branch-A> 与 &lt;branch-B> 包含，但又不被两者同时包含的提交；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>reflog 引用日志仅对自己的本地仓库有效</strong>（可类比于 Shell 历史记录）；</li>
 <li>可以用 “HEAD^” 来指代该引用的上一个提交，即 “HEAD 的<strong>父提交</strong>”。而 “HEAD^2” 则指代 “HEAD 的<strong>第二父提交</strong>”；“HEAD~” 与 “HEAD^“ 等价，而 “HEAD~2” 则指代 “HEAD 的<strong>祖父提交</strong>”，即 “HEAD^^”；</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="55">
 <li>（Page：208）<strong>交互式暂存</strong>：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> add -i  <span class="token comment" spellcheck="true"># 以“交互模式”来暂存变更；</span>
-<span class="token function">git</span> add -p/--patch  <span class="token comment" spellcheck="true"># 部分暂存；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> add -p/--patch  <span class="token comment" spellcheck="true"># 部分暂存；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="56">
 <li>（Page：212）<strong>储藏与清理</strong>：</li>
 </ol>
@@ -33,7 +35,8 @@
 <span class="token function">git</span> stash branch <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 以最近一次的的储藏记录创建一个新的分支；</span>
 <span class="token function">git</span> clean -d -f  <span class="token comment" spellcheck="true"># 移除所有未被追踪的文件；</span>
 <span class="token function">git</span> clean -d -n  <span class="token comment" spellcheck="true"># 预测将被移除的文件（dry-run）；</span>
-<span class="token function">git</span> clean -i<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> clean -i
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>为 <code>git stash pop</code> 与 <code>git stash apply</code> 添加 “–index” <strong>可以恢复之前已暂存的变更</strong>（默认恢复为未暂存的状态）；</li>
 </ul>
@@ -50,18 +53,21 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">grep</span> -n <span class="token operator">&lt;</span>keyword<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查找工作目录中文件包含关键字 &lt;keyword> 的行，并输出行号；</span>
 <span class="token function">git</span> <span class="token function">grep</span> --count <span class="token operator">&lt;</span>keyword<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 输出搜索的统计性信息；</span>
 <span class="token function">git</span> <span class="token function">grep</span> -p <span class="token operator">&lt;</span>keyword<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 搜索并输出匹配的所在函数（方法）；</span>
-<span class="token function">git</span> <span class="token function">grep</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&lt;</span>keyword<span class="token operator">></span> <span class="token operator">&lt;</span>branch/tag<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> <span class="token function">grep</span> <span class="token punctuation">[</span>options<span class="token punctuation">]</span> <span class="token operator">&lt;</span>keyword<span class="token operator">></span> <span class="token operator">&lt;</span>branch/tag<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>Git 日志搜索：</li>
 </ul>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log -S <span class="token operator">&lt;</span>keyword<span class="token operator">></span> --oneline  <span class="token comment" spellcheck="true"># 查找变更了关键字 &lt;keyword> 的提交；</span>
-<span class="token function">git</span> log -L :<span class="token operator">&lt;</span>funcname<span class="token operator">></span>:<span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 &lt;file> 文件中 &lt;funcname> 的每一次变更（仅适用于函数）；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> log -L :<span class="token operator">&lt;</span>funcname<span class="token operator">></span>:<span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看 &lt;file> 文件中 &lt;funcname> 的每一次变更（仅适用于函数）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="59">
 <li>（Page：225）<strong>重写历史</strong>：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit --amend  <span class="token comment" spellcheck="true"># 修改最后一次提交（会直接带走暂存区的改动）；</span>
 <span class="token function">git</span> rebase -i HEAD~<span class="token punctuation">{</span>n<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 修改最后 n 次提交（压缩、拆分、修改、移除等）；</span>
-<span class="token function">git</span> filter-branch --tree-filter <span class="token string">'&lt;command>'</span> HEAD --all  <span class="token comment" spellcheck="true"># 在所有分支的检出项目的每一个提交后运行指定的命令，然后重新提交结果；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> filter-branch --tree-filter <span class="token string">'&lt;command>'</span> HEAD --all  <span class="token comment" spellcheck="true"># 在所有分支的检出项目的每一个提交后运行指定的命令，然后重新提交结果；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="60">
 <li>（Page：231）<strong>重置揭密</strong>：</li>
 </ol>
@@ -72,11 +78,12 @@
 <span class="token function">git</span> reset --mixed HEAD~  <span class="token comment" spellcheck="true"># 默认情况（撤销提交，并同时取消暂存）；</span>
 <span class="token function">git</span> reset --hard HEAD~  <span class="token comment" spellcheck="true"># 更进一步，同时清理工作区的变更；</span>
 <span class="token function">git</span> reset HEAD <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 将索引中特定文件的内容恢复为 HEAD；</span>
-<span class="token function">git</span> reset <span class="token operator">&lt;</span>commit-id<span class="token operator">></span> <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 从对应某次提交中恢复某个文件（默认是 --mixed）；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> reset <span class="token operator">&lt;</span>commit-id<span class="token operator">></span> <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 从对应某次提交中恢复某个文件（默认是 --mixed）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>Git 的“三棵树”：<strong>HEAD</strong>（上一次提交的快照，下一次提交的父节点）、<strong>index</strong>（预期的下一次提交快照）以及 <strong>Woring Directory</strong>（沙盒）。其中，前两者的内容被存储在 “.git” 文件夹内，工作目录会将它们解包为实际的文件以便编辑；</li>
 </ul>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ul>
 <li><code>git commit</code> 在执行时会**取得索引（index）中的内容并将它保存为一个永久的快照，然后创建一个指向该快照的提交对象，最后更新当前分支所来指向本次提交；</li>
 <li><code>git reflog</code> 可用于找回曾经的丢失的 HEAD；</li>
@@ -89,11 +96,11 @@
 <li><strong>压缩历史</strong>：通过 <code>git reset HEAD~~ --soft</code> 回退到旧版本，但是当前索引中的改动不会发生变化，此时在通过 <code>git commit</code> 进行提交即可压缩之前 “HEAD~” 对应的那个提交；</li>
 <li><code>git checkout</code> 对工作目录是安全的，它会通过检查来确保不会将已更改的文件弄丢。而 <code>git reset --hard</code> 则会不做检查就全面地替换所有东西。并且，两者更新 HEAD 的方式也不相同：</li>
 </ul>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ul>
 <li><code>git reset</code> 与 <code>git checkout</code> 对比（其中 “REF” 表示该命令移动了 HEAD 指向的分支引用，而 “HEAD” 则表示只移动了 HEAD 自身）：</li>
 </ul>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ol start="61">
 <li>（Page：251）<strong>高级合并</strong>：</li>
 </ol>
@@ -105,7 +112,8 @@
 <span class="token function">git</span> checkout --ours<span class="token punctuation">(</span>--theirs<span class="token punctuation">)</span> <span class="token keyword">.</span>
 <span class="token function">git</span> merge -Xours<span class="token punctuation">(</span>-Xtheirs<span class="token punctuation">)</span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 合并时直接选择一边；</span>
 <span class="token function">git</span> revert HEAD~1  <span class="token comment" spellcheck="true"># 还原上一个提交；</span>
-<span class="token function">git</span> revert <span class="token operator">&lt;</span>start-commit<span class="token operator">></span><span class="token punctuation">..</span><span class="token operator">&lt;</span>end-commit<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> revert <span class="token operator">&lt;</span>start-commit<span class="token operator">></span><span class="token punctuation">..</span><span class="token operator">&lt;</span>end-commit<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>三方合并的三个版本</strong>：Git 在索引中存储了所有这些版本，在 “stages” 下每一个都有一个数字与它们关联。“stage 1” 是它们共同的祖先版本，“stage 2” 是你的版本（当前分支），“stage 3” 来自于 MERGE_HEAD，即你将要合并入的版本（“theirs”）;</li>
 <li><strong>撤销合并</strong>：<ul>
@@ -119,7 +127,8 @@
 <ol start="62">
 <li>（Page：269）<strong>Rerere</strong>（Reuse Recorded Resolution）：允许你让 Git 记住解决一个块冲突的方法，这样在下一次看到相同冲突时，Git 可以为你自动地解决它。如果做了很多次重新合并，或者想要一个特性分支始终与你的 master 分支保持最新但却不想要一大堆合并，或者经常变基，打开 rerere 功能可以帮助你的生活变得更美好。</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global rerere.enabled <span class="token boolean">true</span>  <span class="token comment" spellcheck="true"># 启用 Rerere；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global rerere.enabled <span class="token boolean">true</span>  <span class="token comment" spellcheck="true"># 启用 Rerere；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="63">
 <li>（Page：<a name="275" href="#275">275</a>）<strong>使用 Git 调试</strong>：</li>
 </ol>
@@ -133,7 +142,8 @@
 <span class="token function">git</span> bisect start <span class="token operator">&lt;</span>bad-commit<span class="token operator">></span> <span class="token operator">&lt;</span>good-commit<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 指定查找范围；</span>
 <span class="token function">git</span> bisect run <span class="token operator">&lt;</span>script<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 运行脚本（正常返回 0，否则非 0）使用二分法查找；</span>
 <span class="token comment" spellcheck="true"># 展示文件中每一行最后一次修改的提交；</span>
-<span class="token function">git</span> blame -C -L 1,2 <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> blame -C -L 1,2 <span class="token operator">&lt;</span>file<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>一般调试流程</strong>：先用 <code>git bisect</code> 找到第一次出现的“坏”提交，然后再使用 <code>git blame</code> 来查找产生“坏”变更的具体人员信息。</li>
 </ul>
@@ -147,9 +157,10 @@
 <span class="token function">git</span> submodule update --remote --merge<span class="token punctuation">(</span>--rebase<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 让 Git 自动进入子模块，并直接合并上游变更到本地（非游离状态）；</span>
 <span class="token function">git</span> push --recurse-submodules<span class="token operator">=</span>check  <span class="token comment" spellcheck="true"># 在推送主仓库变更时，检查子模块改动是否已经被推送，若否则终止推送；</span>
 <span class="token function">git</span> rev-parse HEAD  <span class="token comment" spellcheck="true"># 获得 HEAD 对应的提交 ID；</span>
-<span class="token function">git</span> submodule foreach <span class="token operator">&lt;</span>command<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在每一个子模块中执行命令；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> submodule foreach <span class="token operator">&lt;</span>command<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在每一个子模块中执行命令；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>子模块会添加信息到项目中的 “<strong>.gitmodules</strong>” 文件内；</li>
+<li>子模块会添加信息到项目中的 “**.gitmodules**” 文件内；</li>
 <li>子模块会以 “<strong>160000</strong>” 模式（将一次提交记作<strong>一项目录</strong>，而非一个子目录或者一个文件）进行提交；</li>
 <li>当通过 <code>git submodule update</code> 从子模块仓库中抓取修改时，Git将会获得这些改动并更新子目录中的文件，但是会将子仓库留在一个称作 “<strong>Detached HEAD</strong>” 的状态，即“没有本地工作分支跟踪改动”的状态。</li>
 </ul>
@@ -167,17 +178,20 @@
 <span class="token comment" spellcheck="true"># 基于打包文件克隆一个项目；</span>
 <span class="token function">git</span> clone <span class="token operator">&lt;</span>bundle-name<span class="token operator">></span> <span class="token operator">&lt;</span>repo-name<span class="token operator">></span> 
 <span class="token comment" spellcheck="true"># 从打包文件中导入变更记录到 &lt;import-branch>；</span>
-<span class="token function">git</span> fetch <span class="token operator">&lt;</span>bundle-name<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>:<span class="token operator">&lt;</span>import-branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> fetch <span class="token operator">&lt;</span>bundle-name<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>:<span class="token operator">&lt;</span>import-branch<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="66">
 <li>（Page：301）<strong>替换</strong>：用其他对象假装替换数据库中的 Git 对象，<strong>在连接不同仓库中的历史变更时很有用</strong>。</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> replace <span class="token operator">&lt;</span>old-commit<span class="token operator">></span> <span class="token operator">&lt;</span>new-commit<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> replace <span class="token operator">&lt;</span>old-commit<span class="token operator">></span> <span class="token operator">&lt;</span>new-commit<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="67">
 <li>（Page：309）<strong>凭证存储</strong>：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 设置凭证存储方式（cache、store、osxkeychain 等等）；</span>
 <span class="token function">git</span> config --global credential.helper cache --timeout <span class="token operator">&lt;</span>seconds<span class="token operator">></span>
-<span class="token function">git</span> config --global credential.helper store --file <span class="token operator">&lt;</span>path<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> config --global credential.helper store --file <span class="token operator">&lt;</span>path<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>默认所有都不缓存，每一次连接都会询问你的用户名和密码</strong>；</li>
 <li>“<strong>cache</strong>” 模式会将凭证存放在内存中一段时间。密码永远不会被存储在磁盘中，并且在15分钟后从内存中清除；</li>
@@ -187,34 +201,38 @@
 <h3 id="八、自定义-Git"><a href="#八、自定义-Git" class="headerlink" title="八、自定义 Git"></a>八、自定义 Git</h3><ol start="68">
 <li>（Page：315）得到当前版本的 <strong>Git 支持选项列表</strong>：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">man</span> git-config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">man</span> git-config
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><strong>常用配置项</strong>：</p>
 <ul>
-<li><strong><em>core.editor</em></strong>：Git 使用的文本编辑器；</li>
-<li><strong><em>commit.template</em></strong>：提交时使用的默认信息模板；</li>
-<li><strong><em>core.pager</em></strong>：指定 Git 运行诸如 <code>git log</code> 和 <code>git diff</code> 等命令所使用的分页器（默认是 “less”）；</li>
-<li><strong><em>user.signingkey</em></strong>：设置 GPG Key；</li>
-<li><strong><em>core.excludesfile</em></strong>：设置全局生效的 .gitignore 文件；</li>
-<li><strong><em>help.autocorrect</em></strong>：设置在打错命令时的处理方式（仅提示、模糊匹配自动运行）；</li>
-<li><strong><em>color.ui</em></strong>：是否开启自动着色；</li>
-<li><strong><em>merge.tool</em></strong>：设置合并工具；</li>
-<li><strong><em>core.autocrlf</em></strong>：在提交时自动把回车和换行转换成换行（主要用于 Windows 系统）；</li>
-<li><strong><em>core.whitespace</em></strong>：探测和修正多余空白字符问题；</li>
+<li><em><strong>core.editor</strong></em>：Git 使用的文本编辑器；</li>
+<li><em><strong>commit.template</strong></em>：提交时使用的默认信息模板；</li>
+<li><em><strong>core.pager</strong></em>：指定 Git 运行诸如 <code>git log</code> 和 <code>git diff</code> 等命令所使用的分页器（默认是 “less”）；</li>
+<li><em><strong>user.signingkey</strong></em>：设置 GPG Key；</li>
+<li><em><strong>core.excludesfile</strong></em>：设置全局生效的 .gitignore 文件；</li>
+<li><em><strong>help.autocorrect</strong></em>：设置在打错命令时的处理方式（仅提示、模糊匹配自动运行）；</li>
+<li><em><strong>color.ui</strong></em>：是否开启自动着色；</li>
+<li><em><strong>merge.tool</strong></em>：设置合并工具；</li>
+<li><em><strong>core.autocrlf</strong></em>：在提交时自动把回车和换行转换成换行（主要用于 Windows 系统）；</li>
+<li><em><strong>core.whitespace</strong></em>：探测和修正多余空白字符问题；</li>
 </ul>
 <ol start="69">
-<li>（Page：325）<strong>Git 属性</strong>：基于路径的设置项（<strong><em>.gitattributes</em></strong> / <strong><em>.git/info/attributes</em></strong>）。可以对项目中的文件或目录单独<strong>定义不同的合并策略</strong>，让 Git 知道<strong>怎样比较非文本文件</strong>，或者让 Git 在提交或检出前过滤内容等。</li>
+<li>（Page：325）<strong>Git 属性</strong>：基于路径的设置项（***.gitattributes*** / <em><strong>.git/info/attributes</strong></em>）。可以对项目中的文件或目录单独<strong>定义不同的合并策略</strong>，让 Git 知道<strong>怎样比较非文本文件</strong>，或者让 Git 在提交或检出前过滤内容等。</li>
 </ol>
 <pre class="line-numbers language-shell"><code class="language-shell"># .gitattributes
-*.pbxproj binary<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+*.pbxproj binary
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="70">
 <li>（Page：328）<strong>Git 过滤器</strong>：可以用来<strong>实现文件提交或检出时的关键字替换</strong>（比如“提交时移除敏感信息”）。一个过滤器由 “clean”（文件被暂存时触发）和 “smudge”（文件被检出时触发）两个子过滤器组成。</li>
 </ol>
 <pre class="line-numbers language-shell"><code class="language-shell"># .gitattributes
-*.c filter=indent<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+*.c filter=indent
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> config --global filter.indent.clean indent
-<span class="token function">git</span> config --global filter.indent.smudge <span class="token function">cat</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> config --global filter.indent.smudge <span class="token function">cat</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="71">
-<li>（Page：333）<strong>Git 钩子</strong>：钩子都被存储在 Git 目录下的 hooks 子目录中。也即绝大部分项目中的 “<strong>.git/hooks</strong>”（移除示例文件后缀的 “.sample” 即可启用）。</li>
+<li>（Page：333）<strong>Git 钩子</strong>：钩子都被存储在 Git 目录下的 hooks 子目录中。也即绝大部分项目中的 “**.git/hooks**”（移除示例文件后缀的 “.sample” 即可启用）。</li>
 </ol>
 <h3 id="九、Git-与其他系统"><a href="#九、Git-与其他系统" class="headerlink" title="九、Git 与其他系统"></a>九、Git 与其他系统</h3><p>（略）</p>
 <h3 id="十、Git-内部原理"><a href="#十、Git-内部原理" class="headerlink" title="十、Git 内部原理"></a>十、Git 内部原理</h3><ol start="72">
@@ -225,7 +243,8 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 将 stdin 的数据保存于 .git 目录的 objects 文件夹内，并返回相应的键值（SHA-1）；</span>
 <span class="token keyword">echo</span> <span class="token string">"Hello, world!"</span> <span class="token operator">|</span> <span class="token function">git</span> hash-object -w --stdin
 <span class="token comment" spellcheck="true"># 通过键值取回文件内容；</span>
-<span class="token function">git</span> cat-file -p <span class="token operator">&lt;</span>sha1-hash<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> cat-file -p <span class="token operator">&lt;</span>sha1-hash<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>每次通过 <code>git hash-object</code> 存储文件时，会根据文件内容的不同（SHA-1 不同）以储存其对应不同版本的数据（生成不同的键值）；</li>
 <li>上述类型的对象我们称之为数据对象（Blob Object），其中并没有存储被保存文件内容对应的文件名。而这部分则需要“<strong>树对象</strong>”的帮助；</li>
@@ -240,16 +259,18 @@
 <span class="token comment" spellcheck="true"># 将暂存区内容写入一个树对象（会返回对应的树对象 ID）；</span>
 <span class="token function">git</span> write-tree
 <span class="token comment" spellcheck="true"># 查看数据对象/树对象内容；</span>
-<span class="token function">git</span> cat-file -p <span class="token operator">&lt;</span>sha1-hash<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> cat-file -p <span class="token operator">&lt;</span>sha1-hash<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>树对象还可以再包含树对象及数据对象；</li>
-<li><strong>&lt;file-mode&gt;</strong>：100644-普通文件；100755-可执行文件；12000-符号链接；</li>
+<li>**&lt;file-mode&gt;**：100644-普通文件；100755-可执行文件；12000-符号链接；</li>
 </ul>
 <ol start="76">
 <li>（Page：410）<strong>提交对象</strong>：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建一个提交对象（基于一个树对象 ID 与可选的父提交对象 ID）；</span>
-<span class="token keyword">echo</span> <span class="token string">'Commit Message.'</span> <span class="token operator">|</span> <span class="token function">git</span> commit-tree <span class="token operator">&lt;</span>tree-sha1-hash<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">echo</span> <span class="token string">'Commit Message.'</span> <span class="token operator">|</span> <span class="token function">git</span> commit-tree <span class="token operator">&lt;</span>tree-sha1-hash<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>提交对象的格式：它先指定一个<strong>顶层树对象，代表当前项目快照</strong>；然后是<strong>作者/提交者信息</strong>；留空一行，最后是<strong>提交注释</strong>；</li>
 <li>Git 所做的实质工作：将被改写的文件保存为数据对象（<code>git hash-object</code>），更新暂存区（<code>git update-index</code>），记录树对象（<code>git write-tree</code>），最后创建一个指明了顶层树对象和父提交的提交对象（<code>git commit-tree</code>）；</li>
@@ -261,9 +282,10 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 更新一个引用的值；</span>
 <span class="token function">git</span> update-ref <span class="token operator">&lt;</span>ref-path<span class="token operator">></span> <span class="token operator">&lt;</span>ref-value<span class="token operator">></span>
 <span class="token comment" spellcheck="true"># 查看或设置“符号引用”；</span>
-<span class="token function">git</span> symbolic-ref HEAD <span class="token operator">&lt;</span>ref-path<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> symbolic-ref HEAD <span class="token operator">&lt;</span>ref-path<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>被存放在 “<strong>.git/refs</strong>” 文件夹下，其下的每一个文件都对应一个引用别名，文件内部包含有引用对应的 SHA-1 字符串；</li>
+<li>被存放在 “**.git/refs**” 文件夹下，其下的每一个文件都对应一个引用别名，文件内部包含有引用对应的 SHA-1 字符串；</li>
 <li><strong>分支的本质</strong>：一个指向某一系列提交之首的指针或引用；</li>
 <li>HEAD 文件是一个符号引用（包含指向其他引用的指针），<strong>指向目前所在的分支</strong>；</li>
 <li>当执行 <code>git commit</code> 时，该命令会创建一个提交对象，并用 HEAD 文件中那个引用所指向的 SHA-1 值设置其父提交字段；</li>
@@ -272,7 +294,8 @@
 <li>（Page：417）<strong>标签引用</strong>：类似于一个“提交对象”。它包含一个标签创建者信息、一个日期、一段注释信息，以及一个指针。主要的区别在于，<strong>标签对象通常指向一个提交对象，而不是一个树对象</strong>。</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 创建轻量标签（一个标签引用，指向一个 SHA-1）；</span>
-<span class="token function">git</span> update-ref refs/tags/<span class="token operator">&lt;</span>tag-name<span class="token operator">></span> <span class="token operator">&lt;</span>commit-sha1-hash<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> update-ref refs/tags/<span class="token operator">&lt;</span>tag-name<span class="token operator">></span> <span class="token operator">&lt;</span>commit-sha1-hash<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>对于“附注标签”，Git 会创建一个标签对象，并记录一个引用来指向该标签对象，而不是直接指向提交对象。</li>
 </ul>
@@ -282,14 +305,15 @@
 <ul>
 <li>远程引用和分支（refs/heads）之间最主要的区别在于：<strong>远程引用是只读的</strong>。虽然可以 <code>git checkout</code> 到某个远程引用，但是 Git 并不会将 HEAD 引用指向该远程引用。因此，你永远不能通过 <code>git commit</code> 命令来更新远程引用。Git 将这些远程引用作为记录远程服务器上各分支最后已知位置状态的<strong>书签</strong>来管理。</li>
 </ul>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ol start="81">
 <li>（Page：420）Git 会使用 <strong>Zlib</strong> 来压缩“对象数据库”中的对象资源。Git 最初向磁盘中存储对象时所使用的格式被称为“<strong>松散</strong>”对象格式（<strong>即每个版本都有对应的完整数据对象文件</strong>）。但是，Git 会时不时地将多个这些对象打包成一个称为“<strong>包文件</strong>”的二进制文件，以节省空间和提高效率。当版本库中有太多的松散对象，或者你手动执行 <code>git gc</code> 命令，或者你向远程服务器执行推送时，Git 都会这样做。</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 打包对象。会生成 “.idx” 结尾的包索引文件与 “.pack” 结尾的包文件；</span>
 <span class="token function">git</span> gc
 <span class="token comment" spellcheck="true"># 查看已打包内容；</span>
-<span class="token function">git</span> verify-pack -v <span class="token operator">&lt;</span>idx-file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> verify-pack -v <span class="token operator">&lt;</span>idx-file<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>Git 打包对象时，会查找命名及大小相近的文件，并只保存文件不同版本之间的差异内容</strong>。并且，Git 会<strong>使最新的版本保存完整内容，旧版本则以差异方式保存</strong>。而这是因为大部分情况下需要快速访问文件的最新版本。</li>
 </ul>
@@ -298,11 +322,13 @@
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push origin <span class="token operator">&lt;</span>local-ref<span class="token operator">></span>:refs/head/<span class="token operator">&lt;</span>remote-ref<span class="token operator">></span>
 <span class="token function">git</span> push origin :<span class="token operator">&lt;</span>ref<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 删除引用（把 &lt;src> 留空）；</span>
-<span class="token function">git</span> push origin --delete <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 同上，自 Git v1.7 之后；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> push origin --delete <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 同上，自 Git v1.7 之后；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-text"><code class="language-text">[remote "origin"]
   url = git@github.com:Becavalier/SHDB.git
   fetch = +refs/heads/*:refs/remotes/origin/*
-  push = refs/heads/*:refs/heads/qa/*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+  push = refs/heads/*:refs/heads/qa/*
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>上述 refspec 中，“refs/heads/*” 为<strong>远程</strong>版本库中的引用；“refs/remotes/origin/*” 为<strong>本地</strong>所对应的位置。“+” 号表示让 Git <strong>即使在不能快进（Fast-Forward）的情况下也 要更新引用</strong>；</li>
 <li>最后一句表示在执行 <code>git push origin</code> 时默认把本地的分支 “*” 推送到远程的 “qa/*” 分支；</li>
@@ -317,7 +343,8 @@
 <span class="token comment" spellcheck="true"># 查看 HEAD 的变化记录；</span>
 <span class="token function">git</span> reflog
 <span class="token comment" spellcheck="true"># 立即清理无用的变化记录（高危）；</span>
-<span class="token function">git</span> prune --expire now<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> prune --expire now
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>git gc</code> 会<strong>收集所有松散对象并将它们放置到包文件中，将多个包文件合并为一个大的包文件，移除与任何提交都不相关的陈旧对象</strong>；可以通过修改 <code>gc.auto</code> 与 <code>gc.autopacklimit</code> 来改变该命令的自动触发阈值；</li>
 <li><code>git gc</code> 也会<strong>打包引用到一个单独的文件</strong>（.git/packed-refs），方式同数据对象；</li>

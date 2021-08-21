@@ -4,7 +4,7 @@
 <li>（Page：147）文件是对磁盘的建模。<strong>可以把每个文件看成一个地址空间</strong>。</li>
 <li>（Page：149）<strong>文件结构</strong>：</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ul>
 <li><em>字节序列</em>（Unix &amp; Windows）；</li>
 <li><em>记录序列</em>：文件是具有固定长度记录的序列；</li>
@@ -136,10 +136,10 @@
 <ol start="38">
 <li>（Page：154）目录系统：</li>
 </ol>
-<p>- <strong><em>一级目录系统</em></strong>：</p>
+<p>- <em><strong>一级目录系统</strong></em>：</p>
 <p>在一个“<strong>跟目录</strong>”中包含所有的文件。常用于简单的嵌入式装置，诸如电话、数码相机以及一些便携式音乐播放器等。</p>
-<p>- <strong><em>层次目录系统</em></strong>：</p>
-<p><img src="2.png" alt=""></p>
+<p>- <em><strong>层次目录系统</strong></em>：</p>
+<p><img src="2.png"></p>
 <p>使用基于“目录树”的层次结构。</p>
 <ol start="39">
 <li>（Page：156）<strong>目录操作</strong>：</li>
@@ -154,8 +154,8 @@
 <li><em>link</em>：允许在多个目录中出现同一个文件（硬链接）；</li>
 <li><em>unlink</em>：删除目录项。</li>
 </ul>
-<p>- <strong><em>硬链接 VS 软连接</em></strong>：</p>
-<p><img src="3.png" alt=""></p>
+<p>- <em><strong>硬链接 VS 软连接</strong></em>：</p>
+<p><img src="3.png"></p>
 <ul>
 <li><strong>硬链接</strong>：多个文件名指向同一个索引节点（inode），<strong>相当于文件的另外的一个入口</strong>。只有删除了源文件及所有对应的硬链接文件，文件实体才会被删除。硬链接文件是普通文件，可以用 rm 命令删除。硬链接不能跨文件系统、不能链接到目录；</li>
 <li><strong>软连接</strong>：类似 Windows 的“快捷方式”。类似一个文本文件，里面存放的是<strong>源文件的路径</strong>，路径指向源文件实体。删除源文件，软连接文件依然存在，但是无法访问指向的源文件路径内容。软连接和源文件是不同类型的文件，也是不同的文件，inode 号也不相同。通过改变“源文件路径”（比如改成网络上的地址），软连接可以进行跨域的文件访问。</li>
@@ -163,10 +163,10 @@
 <ol start="40">
 <li>（Page：157）文件系统的实现：</li>
 </ol>
-<p>- <strong><em>文件系统布局</em></strong>：</p>
-<p><img src="4.png" alt=""></p>
+<p>- <em><strong>文件系统布局</strong></em>：</p>
+<p><img src="4.png"></p>
 <p>多数磁盘划分为一个或多个分区，每个分区有独立的文件系统。磁盘的 0 号扇区为“<strong>主引导记录</strong>（MBR）”，用于引导计算机。MBR 的结尾为“<strong>分区表</strong>”，给出了每个分区的起始和结束地址。该表中的一个分区被标记为“<strong>活动分区</strong>”，它的第一个块称为“<strong>引导块</strong>”。</p>
-<p>- <strong><em>操作系统启动流程</em></strong>：</p>
+<p>- <em><strong>操作系统启动流程</strong></em>：</p>
 <ul>
 <li>BIOS -&gt; </li>
 <li>MBR -&gt; </li>
@@ -174,7 +174,7 @@
 <li>读入第一个块内容 -&gt;</li>
 <li>启动操作系统。</li>
 </ul>
-<p>- <strong><em>磁盘分区布局</em></strong>：</p>
+<p>- <em><strong>磁盘分区布局</strong></em>：</p>
 <ul>
 <li><em>超级块</em>：包含文件系统的关键参数，如：确定文件系统类型使用的“魔数”、文件系统中块的数量等；</li>
 <li><em>空闲块管理</em>：管理所有空闲块；</li>
@@ -185,25 +185,25 @@
 <ol start="41">
 <li>（Page：157）<strong>文件的实现</strong>：如何记录各个文件分别用到哪些磁盘块？</li>
 </ol>
-<p>- <strong><em>连续分配</em></strong>：</p>
+<p>- <em><strong>连续分配</strong></em>：</p>
 <p>把每个文件作为一连串连续数据块存储在磁盘上。数据以“块”为单位进行存放，文件最后部分若不满 1 块，新文件将从后续的新块继续存储。</p>
 <p>实现简单，读操作性能好。但会产生碎片。</p>
-<p>- <strong><em>链表分配</em></strong>：</p>
-<p><img src="5.png" alt=""></p>
+<p>- <em><strong>链表分配</strong></em>：</p>
+<p><img src="5.png"></p>
 <p>为每个文件构造磁盘块链表，<strong>每个块的第一个字作为指向下一块的指针</strong>，块的其他部分存放数据。</p>
 <p>随机访问相对缓慢，且不利于对齐（磁盘块的大小不一）。</p>
-<p>- <strong><em>使用内存中的表进行链表分配</em></strong>（MS-DOS）：</p>
+<p>- <em><strong>使用内存中的表进行链表分配</strong></em>（MS-DOS）：</p>
 <p>取出每个磁盘块的指针字，单独放到内存中的一张“文件分配表（FAT）”中进行维护。整个磁盘块都可以存放数据。</p>
 <p>FAT 表的体积可能很大，不适用于大型磁盘。</p>
-<p>- <strong><em>i 节点</em></strong>：</p>
-<p><img src="6.png" alt=""></p>
+<p>- <em><strong>i 节点</strong></em>：</p>
+<p><img src="6.png"></p>
 <p>为每个文件赋予一个称为 “i 节点” 的数据结构，其中列出了文件属性和文件块的磁盘地址。“i 节点” 仅在文件被 <code>open</code> 打开时才会放到内存中。</p>
 <ol start="41">
 <li>（Page：160）<strong>目录的实现</strong>：</li>
 </ol>
 <p>打开文件时，操作系统利用用户给出的路径名查找相应<strong>目录项</strong>。而目录系统的主要功能是：<strong>把 ASCII 文件名映射成定位文件数据所需的信息</strong>。</p>
-<p>- <strong><em>文件名定长目录项</em></strong>：</p>
-<p><img src="7.png" alt=""></p>
+<p>- <em><strong>文件名定长目录项</strong></em>：</p>
+<p><img src="7.png"></p>
 <ul>
 <li>目录中有一个<strong>固定大小</strong>的目录项列表，每个文件对应一项；</li>
 <li>目录项中包含：<ul>
@@ -214,8 +214,8 @@
 </li>
 <li>(b) 文件属性也可直接放置在 “i 节点” 中，目录项中仅包含文件名和 “i 节点号”。</li>
 </ul>
-<p>- <strong><em>文件名可变长目录项</em></strong>：</p>
-<p><img src="8.png" alt=""></p>
+<p>- <em><strong>文件名可变长目录项</strong></em>：</p>
+<p><img src="8.png"></p>
 <ul>
 <li>(a) 文件名与目录项存放在一起；</li>
 <li>(b) 使目录项自身具有固定长度（指向文件名的指针+属性结构体）。文件名实体在“堆”中管理；</li>
@@ -232,7 +232,7 @@
 <li>（Page：163）日志文件系统（NTFS \ ext3 \ ReiserFS）：保存一个用于记录系统下一步将要做什么的日志。当系统在完成它们即将完成的任务前崩溃时，重新启动后，可以通过查看日志，获取崩溃前计划完成的任务，并完成它们。</li>
 <li>（Page：165）虚拟文件系统：</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ul>
 <li>对具体文件系统的<strong>抽象</strong>；</li>
 <li>向上提供面向用于的统一标准接口（如 POSIX），向下提供对应于具体文件系统的接口；</li>
@@ -241,7 +241,7 @@
 <ol start="45">
 <li>（Page：167）文件系统管理和优化：</li>
 </ol>
-<p>- <strong><em>磁盘空间管理</em></strong>：</p>
+<p>- <em><strong>磁盘空间管理</strong></em>：</p>
 <p>几乎所有的文件系统都<strong>把文件分割成固定大小的块来存储，各块之间不一定相邻</strong>。</p>
 <ul>
 <li><em>块大小</em>：大的块对于小文件会浪费磁盘空间；小的块对于大文件会降低性能。性能与空间利用率之间的取舍。<strong>对超过 1TB 的磁盘容量，可以选择将块大小设置为 64KB</strong>。</li>
@@ -251,7 +251,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ul>
 <li><em>磁盘配额</em>：多用户系统常提供的一种机制，系统管理员分给每个用户拥有文件和块的最大数量，操作系统确保每个用户不超过分给他们的配额。</li>
 </ul>
@@ -259,35 +259,35 @@
 <h3 id="第-5-章-输入-输出"><a href="#第-5-章-输入-输出" class="headerlink" title="第 5 章 - 输入/输出"></a>第 5 章 - 输入/输出</h3><ol start="46">
 <li>（Page：189）I/O 设备：</li>
 </ol>
-<p>- <strong><em>概念上的两类设备</em></strong>：</p>
+<p>- <em><strong>概念上的两类设备</strong></em>：</p>
 <ul>
 <li><strong>块设备</strong>：将信息存储在固定大小的块中，每个块有自己的地址。所有传输以一个或多个完整连续的块为单位。基本特征是每个块都能独立于其他块而读写。如：硬盘、光盘和 USB 等设备；</li>
 <li><strong>字符设备</strong>：以“<strong>字符</strong>”为单位发送或接收一个字符流，而不考虑任何块结构。字符设备不可寻址，如：打印机、鼠标等。</li>
 </ul>
-<p>- <strong><em>设备控制器</em></strong>：</p>
+<p>- <em><strong>设备控制器</strong></em>：</p>
 <p>I/O 设备一般由<strong>机械部件</strong>与<strong>电子部件</strong>两部分组成。前者为设备本体，后者为设备控制器，或适配器。控制器的任务是把串行的位流转换成字节块，并进行必要的错误校正工作。</p>
-<p>- <strong><em>内存映射 I/O</em></strong>：</p>
+<p>- <em><strong>内存映射 I/O</strong></em>：</p>
 <p>每个控制器有几个<strong>寄存器</strong>（具有单独的 I/O 端口）可以与 CPU 进行通信。通过写入寄存器，操作系统可以命令设备发送数据、接受数据等。通过读寄存器，操作系统可以了解设备状态，是否准备好接收一个新命令等。除寄存器外，许多设备还有一个操作系统可以读写的“<strong>数据缓冲区</strong>”（可被映射到内存地址空间），可用于获取设备传递的信息。内存映射 I/O 的优点：</p>
 <ul>
 <li>不需要特殊的 <code>in</code> 与 <code>out</code> 汇编指令，驱动程序可以使用 C 语言编写（直接操作内存）；</li>
 <li>不需要特殊的保护机制阻止用户进程执行 I/O 操作，只需要操作系统避免把包含控制寄存器的那部分地址空间放入任何用户的 VAS 中即可；</li>
 <li>可以引用内存的每一条指令也可以引用控制寄存器。</li>
 </ul>
-<p>- <strong><em>直接存储器存取</em></strong>（DMA）：</p>
-<p><img src="11.png" alt=""></p>
+<p>- <em><strong>直接存储器存取</strong></em>（DMA）：</p>
+<p><img src="11.png"></p>
 <p><strong>CPU 可以从 I/O 控制器每次请求一个字节的数据，但会浪费 CPU 的时间</strong>，DMA 可以解决此问题。只有硬件具有 DMA 控制器时操作系统才能使用 DMA。它可以独立于 CPU 而访问系统总线。</p>
-<p>- <strong><em>中断</em></strong>：</p>
-<p><img src="12.png" alt=""></p>
+<p>- <em><strong>中断</strong></em>：</p>
+<p><img src="12.png"></p>
 <p>中断发生时，中断控制器会在地址线上放置一个数字表明哪个设备需要关注，并置起一个中断 CPU 的信号。该数字被用做指向“中断向量表”的索引，以便执行相应的中断服务处理程序。一般情况下，陷阱（trap）和中断使用相同的机制，且常常共享相同的中断向量。</p>
 <ul>
-<li><strong><em>精确中断</em></strong>：在发生中断时满足以下要求（CPU 可流水线以提前执行指令，但在发生中断时要满足以下要求）<ul>
+<li><em><strong>精确中断</strong></em>：在发生中断时满足以下要求（CPU 可流水线以提前执行指令，但在发生中断时要满足以下要求）<ul>
 <li>PC 保存在一个已知的地方；</li>
 <li>PC 所指向的指令之前的所有指令已完全执行；</li>
 <li>PC 所指向的指令之后的所有指令都未执行；</li>
 <li>PC 所指向的指令的执行状态是已知的。</li>
 </ul>
 </li>
-<li><strong><em>不精确中断</em></strong>：不满足上述要求的中断（包含了超标量、流水线、乱序执行）。</li>
+<li><em><strong>不精确中断</strong></em>：不满足上述要求的中断（包含了超标量、流水线、乱序执行）。</li>
 </ul>
 <ol start="47">
 <li>（Page：196）I/O 的实现方式：</li>
@@ -300,7 +300,7 @@
 <ol start="48">
 <li>（Page：199）I/O 软件层次：</li>
 </ol>
-<p>- <strong><em>中断处理程序</em></strong>：（一个大致流程）</p>
+<p>- <em><strong>中断处理程序</strong></em>：（一个大致流程）</p>
 <ul>
 <li>保存没有被中断硬件保存的所有寄存器；</li>
 <li>为中断服务过程设置上下文，包括设置 TLB、MMU 和页表；</li>
@@ -313,21 +313,21 @@
 <li>装入进程的寄存器；</li>
 <li>开始运行新进程。</li>
 </ul>
-<p>- <strong><em>设备驱动程序</em></strong>：</p>
+<p>- <em><strong>设备驱动程序</strong></em>：</p>
 <p>一般由设备制造商提供，用于通过某些设备特定的代码来对其进行控制。</p>
 <p>（其他略）</p>
 <h3 id="第-6-章-死锁"><a href="#第-6-章-死锁" class="headerlink" title="第 6 章 - 死锁"></a>第 6 章 - 死锁</h3><ol start="49">
 <li>（Page：249）“死锁”<strong>定义</strong>：如果一个进程集合中的<strong>每个进程都在等待只能由该进程集合中的其他进程才能引发的事件</strong>，那么，该进程集合就是死锁的。</li>
 <li>（Page：249）资源死锁：</li>
 </ol>
-<p>- <strong><em>发生条件</em></strong>：</p>
+<p>- <em><strong>发生条件</strong></em>：</p>
 <ul>
 <li><em>互斥条件</em>：每个资源要么已经分配给了一个进程，要么就是可用的；</li>
 <li><em>占有和等待条件</em>：已经得到了某个资源的进程可以再请求新的资源；</li>
 <li><em>不可抢占条件</em>：已分配给一个进程的资源不能强制性地被抢占，它只能被所占有进程显式释放；</li>
 <li><em>环路等待条件</em>：死锁发生时，系统中一定有由两个或两个以上进程组成的一条环路，该环路的每个进程都在等待下一个进程所占有资源的释放。</li>
 </ul>
-<p>- <strong><em>处理方法</em></strong>：</p>
+<p>- <em><strong>处理方法</strong></em>：</p>
 <ul>
 <li>忽略问题；</li>
 <li>检查死锁并恢复：让死锁发生，检测它们是否发生，一旦发生则采取相应行动；</li>
@@ -337,14 +337,14 @@
 <ol start="51">
 <li>（Page：251）处理细节：</li>
 </ol>
-<p>- <strong><em>忽略问题</em></strong>：</p>
+<p>- <em><strong>忽略问题</strong></em>：</p>
 <p>即“<strong>鸵鸟算法</strong>”，假装根本没有问题发生（忽略潜在错误的发生）。</p>
-<p>- <strong><em>死锁检查与恢复</em></strong>：</p>
+<p>- <em><strong>死锁检查与恢复</strong></em>：</p>
 <ul>
 <li><em>（检测）每种类型一个资源</em>：</li>
 </ul>
 <p>构建进程资源分配图对应的“有向图”，然后判断该图上是否有“环路”。若有，则处在环路上的所有进程均为死锁进程。</p>
-<p><img src="13.png" alt=""></p>
+<p><img src="13.png"></p>
 <ul>
 <li><em>（检测）每种类型多个资源</em>：（略）</li>
 <li><em>从死锁中恢复</em>：<ul>
@@ -354,10 +354,10 @@
 </ul>
 </li>
 </ul>
-<p>- <strong><em>死锁避免</em></strong>：</p>
-<p><img src="14.png" alt=""></p>
+<p>- <em><strong>死锁避免</strong></em>：</p>
+<p><img src="14.png"></p>
 <p>CPU 在调度时需要“绕过”上面资源轨迹图中的红框以及阴影部分。可以借助“<strong>银行家算法</strong>”解决。</p>
-<p>- <strong><em>死锁预防</em></strong>：</p>
+<p>- <em><strong>死锁预防</strong></em>：</p>
 <ul>
 <li>破坏互斥条件；</li>
 <li>破坏占有并等待条件；</li>

@@ -13,7 +13,8 @@
   window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'dadadada...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="73">
 <li>（Page：1323）Canvas 与 WebGL：（略）；</li>
 </ol>
@@ -48,21 +49,22 @@
 <span class="token punctuation">}</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span>worker <span class="token keyword">of</span> workers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   worker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>view<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>Atomics 静态方法</strong>：<ul>
-<li><em>add(typedArray, index, value)</em>：加；</li>
-<li><em>sub(typedArray, index, value)</em>：减；</li>
-<li><em>and(typedArray, index, value)</em>：与；</li>
-<li><em>or(typedArray, index, value)</em>：或；</li>
-<li><em>xor(typedArray, index, value)</em>：异或。</li>
-<li><em>compareExchange(typedArray, index, expectedValue, replacementValue)</em>：相等时替换，返回旧值；</li>
-<li><em>exchange(typedArray, index, value)</em>：替换，返回旧值；</li>
-<li><em>isLockFree(size)</em>：是一个“优化原语”，用来验证是否是能够使用原子操作的 TypedArray 标准字节长度之一；</li>
-<li><strong><em>load(typedArray, index)</em></strong>：读；</li>
-<li><strong><em>store(typedArray, index, value)</em></strong>：写；</li>
-<li>（Int32Array）<em>notify(typedArray, index, count)</em>：提醒在<strong>等待队列</strong>中休眠的代理；</li>
-<li>（Int32Array）<em>wait(typedArray, index, value[, timeout])</em>：若给定位置的值没有发生变化、仍然是给定的值时，线程将会睡眠，直到被唤醒或超时。</li>
+<li>*add(typedArray, index, value)*：加；</li>
+<li>*sub(typedArray, index, value)*：减；</li>
+<li>*and(typedArray, index, value)*：与；</li>
+<li>*or(typedArray, index, value)*：或；</li>
+<li>*xor(typedArray, index, value)*：异或。</li>
+<li>*compareExchange(typedArray, index, expectedValue, replacementValue)*：相等时替换，返回旧值；</li>
+<li>*exchange(typedArray, index, value)*：替换，返回旧值；</li>
+<li>*isLockFree(size)*：是一个“优化原语”，用来验证是否是能够使用原子操作的 TypedArray 标准字节长度之一；</li>
+<li>***load(typedArray, index)***：读；</li>
+<li>***store(typedArray, index, value)***：写；</li>
+<li>（Int32Array）*notify(typedArray, index, count)*：提醒在<strong>等待队列</strong>中休眠的代理；</li>
+<li>（Int32Array）*wait(typedArray, index, value[, timeout])*：若给定位置的值没有发生变化、仍然是给定的值时，线程将会睡眠，直到被唤醒或超时。</li>
 </ul>
 </li>
 <li>Atomics API <strong>模仿 Linux Futex</strong>（快速用户控件排斥量）：</li>
@@ -91,7 +93,8 @@
 <span class="token punctuation">}</span>
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   Atomics<span class="token punctuation">.</span><span class="token function">notify</span><span class="token punctuation">(</span>view<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="75">
 <li>（Page：1466）<strong>跨上下文消息</strong>：是一种<strong>在不同执行上下文（如不同工作线程或不同源的页面）间传递信息的能力</strong>。</li>
 </ol>
@@ -111,7 +114,8 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- child.html --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
@@ -124,28 +128,29 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="76">
 <li>（Page：1469）<strong>Encoding API</strong>：用于实现<strong>字符串与 TypedArray 之间的转换</strong>（<em>Firefox 与 Safari 不支持</em>）。</li>
 </ol>
 <ul>
-<li><strong><em>TextEncoder</em></strong>；</li>
-<li><strong><em>TextEncoderStream</em></strong>；</li>
-<li><strong><em>TextDecoder</em></strong>；</li>
-<li><strong><em>TextDecoderStream</em></strong>。</li>
+<li><em><strong>TextEncoder</strong></em>；</li>
+<li><em><strong>TextEncoderStream</strong></em>；</li>
+<li><em><strong>TextDecoder</strong></em>；</li>
+<li><em><strong>TextDecoderStream</strong></em>。</li>
 </ul>
 <ol start="77">
 <li>（Page：1480）<strong>File API</strong> 与 <strong>Blob API</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>FileReader</em></strong>：表示一种<strong>异步</strong>文件读取机制；<ul>
-<li><em>readAsText(file, encoding)</em>：读取纯文本内容；</li>
-<li><em>readAsDataURL(file)</em>：读取文件内容，转换为 “data:URL” 格式；</li>
-<li><em>readAsBinaryString(file)</em>：读取原始二进制格式内容；</li>
-<li><em>readAsText(file)</em>：读取文件内容，并存放到 ArrayBuffer 中。</li>
+<li><em><strong>FileReader</strong></em>：表示一种<strong>异步</strong>文件读取机制；<ul>
+<li>*readAsText(file, encoding)*：读取纯文本内容；</li>
+<li>*readAsDataURL(file)*：读取文件内容，转换为 “data:URL” 格式；</li>
+<li>*readAsBinaryString(file)*：读取原始二进制格式内容；</li>
+<li>*readAsText(file)*：读取文件内容，并存放到 ArrayBuffer 中。</li>
 </ul>
 </li>
-<li><strong><em>FileReaderSync</em></strong>：表示一种同步文件读取机制（只可在 Worker 中使用）；</li>
+<li><em><strong>FileReaderSync</strong></em>：表示一种同步文件读取机制（只可在 Worker 中使用）；</li>
 <li><strong>Blob</strong>（binary large object）表示“二进制大对象”，是 JavaScript <strong>对不可修改二进制数据的封装类型</strong>；</li>
 <li><strong>对象 URL</strong>：有时也称为 “Blob URL”，是指<strong>引用存储在 File 或 Blob 中数据的 URL</strong>（这个 URL 可以直接当成普通 URL 来使用，两者均引用了某一种资源）。<code>window.URL.createObjectURL(object)</code> 可用于<strong>创建</strong>对象 URL 引用；<code>window.URL.revokeObjectURL(objectURL)</code> 用于<strong>释放</strong>对象 URL 引用。</li>
 </ul>
@@ -164,7 +169,8 @@
 noti<span class="token punctuation">.</span>onshow <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Notification was shown!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 noti<span class="token punctuation">.</span>onclick <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Notification was clicked!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 noti<span class="token punctuation">.</span>onclose <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Notification was closed!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-noti<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Notification experienced an error!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+noti<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Notification experienced an error!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="80">
 <li>（Page：1517）Page Visibility API：（略）；</li>
 <li>（Page：1518）<strong>Streams API</strong>：</li>
@@ -197,7 +203,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>可写流</strong>：是<strong>底层数据槽的封装</strong>。底层数据槽处理通过流的公共接口写入的数据；</li>
 </ul>
@@ -213,7 +220,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
     writableStreamDefaultWriter<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span><span class="token punctuation">;</span>    
   <span class="token punctuation">}</span>
   writableStreamDefaultWriter<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>转换流</strong>：用于<strong>组合“可读流”与“可写流”</strong>。数据在两个流之间的转换是通过 transform 方法完成的；</li>
 </ul>
@@ -222,11 +230,12 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
   <span class="token function">transform</span><span class="token punctuation">(</span>chunk<span class="token punctuation">,</span> controller<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     controller<span class="token punctuation">.</span><span class="token function">enqueue</span><span class="token punctuation">(</span>chunk <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>管道</strong>：可用于<strong>连接流</strong>。<ul>
-<li><em>ReadableStream.pipeThrough(transformStream)</em>：可用于将 ReadableStream 接入 TransformStream；</li>
-<li><em>ReadableStream.pipeTo(writableStream)</em>：（同上）但无法进行“链式调用”。仅适用于链式调用最后是一个 WritableStream 的情况。</li>
+<li>*ReadableStream.pipeThrough(transformStream)*：可用于将 ReadableStream 接入 TransformStream；</li>
+<li>*ReadableStream.pipeTo(writableStream)*：（同上）但无法进行“链式调用”。仅适用于链式调用最后是一个 WritableStream 的情况。</li>
 </ul>
 </li>
 </ul>
@@ -235,7 +244,7 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
 </ol>
 <ul>
 <li><em>High Resolution Time API</em>；<ul>
-<li><strong><em>window.performance.now()</em></strong>：返回一个<strong>微秒</strong>精度的浮点值。计时器在执行上下文创建时从 0 开始单调递增；</li>
+<li>***window.performance.now()<em><strong>：返回一个</strong>微秒</em>*精度的浮点值。计时器在执行上下文创建时从 0 开始单调递增；</li>
 </ul>
 </li>
 <li><em>Performance Timeline API</em>；</li>
@@ -262,14 +271,16 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
     <span class="token keyword">this</span><span class="token punctuation">.</span>message <span class="token operator">=</span> message<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">CustomError</span><span class="token punctuation">(</span><span class="token string">'My error message.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">CustomError</span><span class="token punctuation">(</span><span class="token string">'My error message.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>全局的错误处理程序（表现依浏览器不同而有差异）：</li>
 </ul>
 <pre class="line-numbers language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>onerror <span class="token operator">=</span> <span class="token punctuation">(</span>message<span class="token punctuation">,</span> url<span class="token punctuation">,</span> line<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>考虑兼容性的<strong>错误上报函数</strong>（也可用来跨域）：<ul>
 <li>所有浏览器都支持 Image 对象；</li>
@@ -283,7 +294,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
   <span class="token keyword">let</span> encodedSev <span class="token operator">=</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>sev<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">let</span> encodedMsg <span class="token operator">=</span> <span class="token function">encodeURIComponent</span><span class="token punctuation">(</span>msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
   img<span class="token punctuation">.</span>src <span class="token operator">=</span> <span class="token template-string"><span class="token string">`log.php?sev=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>encodedSev<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;msg=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>encodedMsg<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="86">
 <li>（Page：1637）代码调试：</li>
 </ol>
@@ -299,8 +311,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
 <li>第一代 Web 服务很大程度上是以 <strong>XML</strong> 为基础的，以服务器间通信为主要特征；</li>
 <li>最简单的 JSON 可以是一个数值，或一个<strong>双引号</strong>的字符串；</li>
 <li>两个方法：<ul>
-<li><strong><em>JSON.parse(text[, reviver])</em></strong>；</li>
-<li><strong><em>JSON.stringify(value[, replacer [, space]])</em></strong>。</li>
+<li>***JSON.parse(text[, reviver])***；</li>
+<li>***JSON.stringify(value[, replacer [, space]])***。</li>
 </ul>
 </li>
 </ul>
@@ -315,7 +327,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
   headers<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Headers</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="91">
 <li>（Page：1771）<strong>Beacon API</strong>:</li>
 </ol>
@@ -327,7 +340,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
   navigator<span class="token punctuation">.</span><span class="token function">sendBeacon</span><span class="token punctuation">(</span><span class="token string">"/log"</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     date<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="92">
 <li>（Page：1774）Web Socket：（略）；</li>
 </ol>
@@ -351,7 +365,8 @@ noti<span class="token punctuation">.</span>onerror <span class="token operator"
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Foo<span class="token punctuation">.</span>bar<span class="token punctuation">)</span><span class="token punctuation">;</span>
-Foo<span class="token punctuation">.</span><span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Foo<span class="token punctuation">.</span><span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>中期的模块规范：Commonjs、AMD、CMD；</li>
 <li><strong>ES6 模块规范</strong>：<ul>
@@ -372,7 +387,8 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
   <span class="token comment" spellcheck="true">// module implementation.</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>ES6 模块导出</strong>：<ul>
 <li><code>export</code> 关键字必须在模块<strong>顶级作用域</strong>；</li>
@@ -389,38 +405,38 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
 <li>（Page：1873）三种 Worker 类型：</li>
 </ol>
 <ul>
-<li>（<strong>Worker</strong>）<strong><em>专用 Worker</em></strong>：普通 Web Worker；<ul>
+<li>（<strong>Worker</strong>）<em><strong>专用 Worker</strong></em>：普通 Web Worker；<ul>
 <li><strong>隐式使用了 MessagePorts 在两个上下文之间的通信</strong>；</li>
 <li>对应全局对象 DedicatedWorkerGlobalScope（继承自 WokerGlobalScope）；<ul>
 <li><em>name</em>：可选的字符串标识符；</li>
-<li><strong><em>postMessage()</em></strong>：向父上下文发送消息；</li>
-<li><em>close()</em>：终止当前工作线程，<strong>非同步停止</strong>，仅会<strong>通知工作者线程取消事件循环中的所有任务</strong>；</li>
-<li><strong><em>importScripts()</em></strong>：用于向工作线程导入任意数量的脚本（将按引用顺序同步执行）。</li>
+<li>***postMessage()***：向父上下文发送消息；</li>
+<li>*close()*：终止当前工作线程，<strong>非同步停止</strong>，仅会<strong>通知工作者线程取消事件循环中的所有任务</strong>；</li>
+<li>***importScripts()***：用于向工作线程导入任意数量的脚本（将按引用顺序同步执行）。</li>
 </ul>
 </li>
 <li>必须使用<strong>同源脚本</strong>创建 Worker，而可以使用 <code>importScripts()</code> 在工作线程内部再<strong>加载其他源的脚本</strong>，并且该过程可以跨域；</li>
 <li><code>Worker</code> 对象支持的事件处理程序属性和方法：<ul>
 <li><em>onerror</em>：工作线程发生 ErrorEvent 类型错误事件时调用；</li>
-<li><strong><em>onmessage</em></strong>：工作线程向父上下文发送消息时调用；</li>
+<li><em><strong>onmessage</strong></em>：工作线程向父上下文发送消息时调用；</li>
 <li><em>onmessageerror</em>：工作线程接收到无法反序列化的消息时发生；</li>
-<li><strong><em>postMessage()</em></strong>：异步地向工作线程发送消息；</li>
-<li><em>terminate()</em>：<strong>立即</strong>终止工作线程。一旦调用，工作线程的消息队列就会被清理并锁住；</li>
+<li>***postMessage()***：异步地向工作线程发送消息；</li>
+<li>*terminate()*：<strong>立即</strong>终止工作线程。一旦调用，工作线程的消息队列就会被清理并锁住；</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>（<strong>SharedWorker</strong>）<strong><em>共享 Worker</em></strong>：可以<strong>被多个不同的上下文使用</strong>，包括不同的页面（比如用一个共享线程管理多个同源页面 WebSocket 消息的发送与接收）；<ul>
+<li>（<strong>SharedWorker</strong>）<em><strong>共享 Worker</strong></em>：可以<strong>被多个不同的上下文使用</strong>，包括不同的页面（比如用一个共享线程管理多个同源页面 WebSocket 消息的发送与接收）；<ul>
 <li>对应全局对象 SharedWorkerGlobalScope（继承自 WokerGlobalScope）；<ul>
 <li><em>name</em>：可选的字符串标识符；</li>
-<li><strong><em>importScripts()</em></strong>：用于向共享线程导入任意数量的脚本；</li>
-<li><em>close()</em>：<strong>立即</strong>终止共享线程（前提是没有已连接端口）；</li>
-<li><strong><em>onconnect</em></strong>：与共享线程<strong>建立连接时触发，包含连接页面的端口号</strong>。</li>
+<li>***importScripts()***：用于向共享线程导入任意数量的脚本；</li>
+<li>*close()*：<strong>立即</strong>终止共享线程（前提是没有已连接端口）；</li>
+<li><em><strong>onconnect</strong></em>：与共享线程<strong>建立连接时触发，包含连接页面的端口号</strong>。</li>
 </ul>
 </li>
 <li>每一个共享线程的<strong>标识</strong>源自解析后的<strong>脚本 URL</strong>、<strong>工作者线程名称</strong>和<strong>文档源</strong>（同源页面下相同标识的共享线程将仅会创建一次）；</li>
 </ul>
 </li>
-<li>（<strong>ServiceWorker</strong>）<strong><em>服务 Worker</em></strong>：主要用于<strong>拦截、重定向和修改页面发出的请求</strong>（详情略）。<ul>
+<li>（<strong>ServiceWorker</strong>）<em><strong>服务 Worker</strong></em>：主要用于<strong>拦截、重定向和修改页面发出的请求</strong>（详情略）。<ul>
 <li>对应全局对象 ServiceWorkerGlobalScope（继承自 WokerGlobalScope）；</li>
 </ul>
 </li>
@@ -429,12 +445,12 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
 <li>（Page：1902）三种<strong>在上下文间转移信息的方式</strong>：</li>
 </ol>
 <ul>
-<li><strong><em>结构化克隆算法</em></strong>：在目标上下文中生成传递对象的一个<strong>副本</strong>；<ul>
+<li><em><strong>结构化克隆算法</strong></em>：在目标上下文中生成传递对象的一个<strong>副本</strong>；<ul>
 <li>可以识别对象中包含的循环引用；</li>
 <li>原型链不会被克隆。</li>
 </ul>
 </li>
-<li><strong><em>可转移对象</em></strong>：可以把所有权从一个上下文<strong>转移</strong>到另一个上下文；<ul>
+<li><em><strong>可转移对象</strong></em>：可以把所有权从一个上下文<strong>转移</strong>到另一个上下文；<ul>
 <li>可转移类型：<ul>
 <li><em>ArrayBuffer</em>；</li>
 <li><em>MessagePort</em>；</li>
@@ -444,7 +460,7 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
 </li>
 </ul>
 </li>
-<li><strong><em>共享数组缓冲区</em></strong>：SharedArrayBuffer。</li>
+<li><em><strong>共享数组缓冲区</strong></em>：SharedArrayBuffer。</li>
 </ul>
 <h3 id="第-28-章-最佳实践"><a href="#第-28-章-最佳实践" class="headerlink" title="第 28 章 - 最佳实践"></a>第 28 章 - 最佳实践</h3><ol start="97">
 <li>（Page：2013）性能：</li>
@@ -474,7 +490,8 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
   <span class="token function">process</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">process</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token function">process</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>iterations <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">--</span>iterations <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>一次声明多个变量（减少关键字识别过程）；</li>
 <li>插入迭代性值（自增/自减与其他语句组合使用）；</li>
@@ -509,7 +526,8 @@ Foo<span class="token punctuation">.</span><span class="token function">baz</spa
 <span class="token punctuation">}</span>
 <span class="token keyword">for</span> <span class="token keyword">await</span> <span class="token punctuation">(</span><span class="token keyword">const</span> x <span class="token keyword">of</span> emitter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>for-await-of 循环可以<strong>同时处理同步与异步可迭代对象</strong>；</li>
 <li>异步迭代器会<strong>保证每次迭代时，代码的按顺序执行</strong>（即使后面的值先于前面的值解决）；</li>

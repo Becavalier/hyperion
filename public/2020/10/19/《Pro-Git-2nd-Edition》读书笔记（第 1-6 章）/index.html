@@ -7,14 +7,14 @@
 <li>（Page：13）Git 使用 <strong>SHA-1</strong> 来进行快照的完整性校验。</li>
 <li>（Page：<a name="14" href="#14">14</a>）Git 的三种状态：<strong>已修改</strong>（Modified）、<strong>已暂存</strong>（Staged）、<strong>已提交</strong>（Commited）。</li>
 </ol>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="6">
 <li>（Page：17）Git 的配置信息存在于三个地方：</li>
 </ol>
 <ul>
-<li><strong><em>/etc/gitconfig</em></strong>：所有用户的全局设置；</li>
-<li><strong><em>~/.gitconfig / ~/.config/git/config</em></strong>：当前用户的设置；</li>
-<li><strong><em>.git/config</em></strong>：当前仓库的设置。</li>
+<li><em><strong>/etc/gitconfig</strong></em>：所有用户的全局设置；</li>
+<li><em><strong>~/.gitconfig / ~/.config/git/config</strong></em>：当前用户的设置；</li>
+<li><em><strong>.git/config</strong></em>：当前仓库的设置。</li>
 </ul>
 <ol start="7">
 <li>（Page：18）初次使用 Git 需要通过 <code>git config</code> 来设置用户名与邮件地址等，这些信息会被写入到每一次提交中，不可更改（–global 表示当前用户设置，–system 表示所有用户设置）：</li>
@@ -27,39 +27,43 @@
 <span class="token function">git</span> config --global core.editor vim
 
 <span class="token comment" spellcheck="true"># 查看配置（如有重复，则会使用最后一个出现的配置）；</span>
-<span class="token function">git</span> config --list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> config --list
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="二、Git-基础"><a href="#二、Git-基础" class="headerlink" title="二、Git 基础"></a>二、Git 基础</h3><ol start="8">
 <li>（Page：20）初始化新仓库：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> init  <span class="token comment" spellcheck="true"># 创建一个 .git 子目录，包含仓库相关文件；</span>
-<span class="token function">git</span> remote add origin <span class="token operator">&lt;</span>upstream<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> remote add origin <span class="token operator">&lt;</span>upstream<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="9">
 <li>（Page：21）使用 Git 时文件的生命周期：</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ol start="10">
 <li>（Page：23）<code>git add</code> 更适合被理解为“<strong>添加内容到下一次提交中</strong>”（添加新文件、变更，将有冲突的文件标记为已解决等）。</li>
 <li>（Page：25）状态简览：<code>git status -s</code>。</li>
 </ol>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ul>
-<li><strong><em>??</em></strong>：未跟踪；</li>
-<li><strong><em>右 M</em></strong>：被修改但未被暂存；</li>
-<li><strong><em>左 M</em></strong>：修改且已被暂存；</li>
-<li><strong><em>A</em></strong>：新添加到暂存区的文件；</li>
+<li>***??***：未跟踪；</li>
+<li><em><strong>右 M</strong></em>：被修改但未被暂存；</li>
+<li><em><strong>左 M</strong></em>：修改且已被暂存；</li>
+<li><em><strong>A</strong></em>：新添加到暂存区的文件；</li>
 </ul>
 <ol start="12">
 <li>（Page：25）.gitignore 中的文件名支持 <strong>Glob 模式匹配</strong>（Shell 使用的简化正则）。</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ol start="13">
 <li>（Page：27）<strong>查看已暂存的</strong>，将要添加到下次提交的内容。默认情况下 <code>git diff</code> 仅查看还未被暂存的改动差异：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> --staged<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> --staged
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="14">
 <li>（Page：31）<strong>跳过使用暂存区</strong>，仅对非新增文件的改动生效（不建议使用）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit -a -m <span class="token operator">&lt;</span>message<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit -a -m <span class="token operator">&lt;</span>message<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="15">
 <li>（Page：31）移除文件（默认情况下 <code>git rm</code> 不允许直接删除<strong>含有已暂存改动（新文件或新改动）</strong>的文件）：</li>
 </ol>
@@ -69,7 +73,8 @@
 <span class="token comment" spellcheck="true"># 删除文件并提交改动（同上）；</span>
 <span class="token function">git</span> <span class="token function">rm</span> -f <span class="token operator">&lt;</span>file<span class="token operator">></span>
 <span class="token comment" spellcheck="true"># 从 Git 仓库中删除文件，但保留在工作目录中；</span>
-<span class="token function">git</span> <span class="token function">rm</span> --cache <span class="token operator">&lt;</span>file<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> <span class="token function">rm</span> --cache <span class="token operator">&lt;</span>file<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="16">
 <li>（Page：33）移动文件：</li>
 </ol>
@@ -78,35 +83,41 @@
 <span class="token comment" spellcheck="true"># 等价的方式；</span>
 <span class="token function">mv</span> <span class="token operator">&lt;</span>from<span class="token operator">></span> <span class="token operator">&lt;</span>to<span class="token operator">></span>
 <span class="token function">git</span> <span class="token function">rm</span> <span class="token operator">&lt;</span>from<span class="token operator">></span>
-<span class="token function">git</span> add <span class="token operator">&lt;</span>to<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> add <span class="token operator">&lt;</span>to<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="17">
 <li>（Page：34）查看日志：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log -p  <span class="token comment" spellcheck="true"># 显示提交差异；</span>
 <span class="token function">git</span> log --pretty<span class="token operator">=</span><span class="token operator">&lt;</span>oneline<span class="token operator">|</span>short<span class="token operator">|</span>full<span class="token operator">|</span>fuller<span class="token operator">></span>
 <span class="token function">git</span> log --oneline --graph  <span class="token comment" spellcheck="true"># 显示分支合并历史；</span>
-<span class="token function">git</span> log --oneline --decorate --graph -all<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="6.png" alt=""></p>
+<span class="token function">git</span> log --oneline --decorate --graph -all
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="6.png"></p>
 <ol start="18">
 <li>（Page：37）格式化日志输出（主要用于<strong>自动化的日志提取</strong>）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log --pretty<span class="token operator">=</span>format:<span class="token string">"%h - %an, %ar : %s"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="5.png" alt=""></p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log --pretty<span class="token operator">=</span>format:<span class="token string">"%h - %an, %ar : %s"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="5.png"></p>
 <ol start="19">
 <li>（Page：39）<strong>格式化日志记录查找</strong>：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> log --grep <span class="token operator">&lt;</span>keyword<span class="token operator">></span> --since <span class="token operator">&lt;</span>date<span class="token operator">></span> --all-match -- <span class="token operator">&lt;</span>path<span class="token operator">></span>
-<span class="token function">git</span> log -p -S <span class="token operator">&lt;</span>keyword<span class="token operator">></span> -- <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看添加或移除了某个关键字的提交详情；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p><img src="7.png" alt=""></p>
+<span class="token function">git</span> log -p -S <span class="token operator">&lt;</span>keyword<span class="token operator">></span> -- <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看添加或移除了某个关键字的提交详情；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="7.png"></p>
 <ol start="20">
 <li>（Page：40）修改提交内容及提交信息（<strong>会将暂存区的内容合并到上一次提交中，并同时可以修改提交信息</strong>）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit --amend<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> commit --amend
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="21">
 <li>（Page：42）回退暂存区与工作区的改动：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> reset HEAD <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 回退暂存区改动；</span>
-<span class="token function">git</span> checkout -- <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 回退工作区改动；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> checkout -- <span class="token operator">&lt;</span>file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 回退工作区改动；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="22">
 <li>（Page：43）管理远程仓库：</li>
 </ol>
@@ -114,12 +125,14 @@
 <span class="token function">git</span> remote add <span class="token operator">&lt;</span>name<span class="token operator">></span> <span class="token operator">&lt;</span>url<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 添加远程仓库；</span>
 <span class="token function">git</span> remote show <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看某个远程仓库的更多信息；</span>
 <span class="token function">git</span> remote <span class="token function">rm</span> <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 移除本地远程仓库；</span>
-<span class="token function">git</span> remote <span class="token function">rename</span> <span class="token operator">&lt;</span>old<span class="token operator">></span> <span class="token operator">&lt;</span>new<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 更名本地远程仓库；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> remote <span class="token function">rename</span> <span class="token operator">&lt;</span>old<span class="token operator">></span> <span class="token operator">&lt;</span>new<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 更名本地远程仓库；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
 <li>（Page：<a name="44" href="#44">44</a>）拉取远程仓库信息：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> fetch <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 不会自动合并到本地分支；</span>
-<span class="token function">git</span> pull <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 会自动合并到本地的“跟踪分支”（一般即默认分支）；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> pull <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 会自动合并到本地的“跟踪分支”（一般即默认分支）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="24">
 <li>（Page：47）操作标签：</li>
 </ol>
@@ -132,26 +145,29 @@
 <span class="token function">git</span> show <span class="token operator">&lt;</span>tag<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 查看某个标签的信息；</span>
 <span class="token function">git</span> push origin --tags
 <span class="token function">git</span> push origin <span class="token operator">&lt;</span>tag<span class="token operator">></span>
-<span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>branch<span class="token operator">></span> <span class="token operator">&lt;</span>tag<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在特定标签上创建一个新分支；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>branch<span class="token operator">></span> <span class="token operator">&lt;</span>tag<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在特定标签上创建一个新分支；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="25">
 <li>（Page：52）Git 图形化工具：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash">gitk<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash">gitk
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="三、Git-分支"><a href="#三、Git-分支" class="headerlink" title="三、Git 分支"></a>三、Git 分支</h3><ol start="26">
 <li>（Page：53）暂存操作会使用 SHA-1 算法来<strong>计算每一个暂存文件的校验和</strong>，然后将当前版本的文件快照保存到 Git 仓库中（使用 <strong>blob 对象</strong>），最终将校验和加入到暂存区等待提交。当使用 <code>git commit</code> 提交操作时，Git 会首<strong>先计算每一个子目录的校验和，然后将这些校验和保存为树对象</strong>（记录目录结构与 blob 索引）。随后，Git 会创建一个提交对象，除了包含上述信息外，<strong>还包括指向这个树对象的指针（由 Commit ID 唯一表示）</strong>。</li>
 </ol>
-<p><img src="8.png" alt=""></p>
+<p><img src="8.png"></p>
 <ol start="27">
 <li>（Page：54）每一个提交记录都包含有指向上一次提交对象（父对象）的指针。</li>
 <li>（Page：55）基于当前提交对象创建一个分支（<strong>在当前提交对象上创建一个指针</strong>）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> branch <span class="token operator">&lt;</span>branch-name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> branch <span class="token operator">&lt;</span>branch-name<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="29">
 <li>（Page：56）<strong>HEAD 指向了当前所在的本地分支</strong>，会随着 <code>git checkout</code> 切换分支而发生改变。</li>
 <li>（Page：59）Git 的分支实质上<strong>仅是包含所指对象校验和的文件</strong>（40 字节的 SHA-1 字符串 + 1 字节的换行符）。</li>
 <li>（Page：<a name="63" href="#63">63</a>）<code>git merge</code> 时的 “Fast-Forward” 模式：当试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者时，<strong>只会简单地将指针向前推进</strong>（快进）。而在所合并到分支不是合并分支的直接祖先时，Git 会选择两个分支的末端所指的快照，以及这两个分支的公共祖先，进行简单的三方合并（Three-way Merge）。</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ul>
 <li><strong>如果在 C4 和 C3/C5 中出现了对同一个文件的同一个区域的修改</strong>，则在合并时会产生<strong>冲突</strong>。</li>
 </ul>
@@ -161,50 +177,58 @@
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> branch -v  <span class="token comment" spellcheck="true"># 查看每一个分支的最后一次提交；</span>
 <span class="token function">git</span> branch --merged  <span class="token comment" spellcheck="true"># 过滤列表中已合并到当前分支的分支；</span>
 <span class="token function">git</span> branch --no-merged  <span class="token comment" spellcheck="true"># 过滤列表中未合并到当前分支的分支；</span>
-<span class="token function">git</span> branch -d <span class="token operator">&lt;</span>branch-name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 对于尚未合并到当前分支的分支会失效（需要使用 -D 选项）；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> branch -d <span class="token operator">&lt;</span>branch-name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 对于尚未合并到当前分支的分支会失效（需要使用 -D 选项）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="33">
 <li>（Page：73）远程跟踪分支：远程分支状态的引用，以 “<strong>remote/branch</strong>” 的形式命名。<code>git fetch</code> 可以更新跟踪分支的状态，但不会与本地分支自动合并。</li>
 </ol>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ol start="34">
 <li>（Page：79）推送分支：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>local-branch<span class="token operator">></span>:<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 推送本地分支到远程的某个分支；</span>
-<span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 推送本地分支到远程的同名分支；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 推送本地分支到远程的同名分支；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="35">
 <li>（Page：79）从远程跟踪分支创建自己的本地跟踪分支：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> checkout --track <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>
 <span class="token function">git</span> checkout -b <span class="token operator">&lt;</span>local-branch<span class="token operator">></span> <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>
-<span class="token function">git</span> checkout <span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 简写版，一般会自动创建本地跟踪分支；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> checkout <span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 简写版，一般会自动创建本地跟踪分支；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="36">
 <li>（Page：80）本地跟踪分支：即在使用 <code>git pull</code> 时 Git 能够自动识别去哪个服务器上抓取、合并到哪个分支。可以使用 <code>git remote show &lt;upstream&gt;</code> 来查看本地关于 “upstream” 已有的跟踪分支。</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> checkout <span class="token operator">&lt;</span>local-branch<span class="token operator">></span>
 <span class="token function">git</span> branch -u <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 为当前本地分支设置上游跟踪分支；</span>
 <span class="token function">git</span> merge @<span class="token punctuation">{</span>u<span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 合并远程跟踪分支到本地跟踪分支；</span>
-<span class="token function">git</span> branch -vv  <span class="token comment" spellcheck="true"># 查看设置的所有跟踪分支；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> branch -vv  <span class="token comment" spellcheck="true"># 查看设置的所有跟踪分支；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="37">
-<li>（Page：81）<code>git pull</code> 与 <code>git fetch</code> 的区别：前者会自动合并远程分支的改动到本地的远程跟踪分支；后者则仅仅更新本地缓存的远程跟踪分支，需要自行进行合并（<code>git merge @{u}</code>）到本地跟踪分支。</li>
+<li>（Page：81）<code>git pull</code> 与 <code>git fetch</code> 的区别：前者会自动合并远程分支的改动到本地的远程跟踪分支；后者则仅仅更新本地缓存的远程跟踪分支，需要自行进行合并（<code>git merge @&#123;u&#125;</code>）到本地跟踪分支。</li>
 <li>（Page：81）删除远程分支（<strong>Git 服务器不会立即删除数据，而是会保留数据直到垃圾回收的进行</strong>）：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> --delete <span class="token operator">&lt;</span>branch-name<span class="token operator">></span>
-<span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> :<span class="token operator">&lt;</span>branch-name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> :<span class="token operator">&lt;</span>branch-name<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ol start="39">
 <li>（Page：82）变基：<strong>将一系列提交按照原有次序依次应用到另一个分支上</strong>。</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> rebase <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 将当前分支的改动（相对于公共祖先）重新应用到 &lt;branch> 分支对应的修改记录上（改动的仍是当前分支）；</span>
 <span class="token function">git</span> pull --rebase <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 将远程跟踪分支的改动变基到本地跟踪分支；</span>
-<span class="token function">git</span> rebase <span class="token operator">&lt;</span>base-branch<span class="token operator">></span> <span class="token operator">&lt;</span>topic-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 将特性分支（topic）变基到目标分支（base）上；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p><img src="11.png" alt=""></p>
+<span class="token function">git</span> rebase <span class="token operator">&lt;</span>base-branch<span class="token operator">></span> <span class="token operator">&lt;</span>topic-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 将特性分支（topic）变基到目标分支（base）上；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><img src="11.png"></p>
 <ul>
 <li><strong>将 “client” 分支变基到主分支</strong>：取出 “client” 分支，找出处于 “client” 分支与 “server” 分支的共同祖先之后的修改，然后把它们在 “master” 分支上重放一遍：</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> rebase --onto master server client<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> rebase --onto master server client
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li><strong>“变基”的重要原则</strong>：<strong>不要对在你的仓库外有副本的分支执行变基</strong>。若遭遇该处境，你首先需要检查自己做了哪些修改，以及他们覆盖了哪些修改。Git 同时也会为每一次的修改计算 SHA-1 校验和，并在变基时自动整理没有应用的修改。因此可以<strong>为强制变基后的结果再次执行变基</strong>来尝试解决类似的问题：</li>
 </ul>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> pull --rebase  <span class="token comment" spellcheck="true"># 在拉取代码时使用变基代替合并，或者先 “fetch” 再自行 “rebase”；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> pull --rebase  <span class="token comment" spellcheck="true"># 在拉取代码时使用变基代替合并，或者先 “fetch” 再自行 “rebase”；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="四、服务器上的-Git"><a href="#四、服务器上的-Git" class="headerlink" title="四、服务器上的 Git"></a>四、服务器上的 Git</h3><p>（略）</p>
 <h3 id="五、分布式-Git"><a href="#五、分布式-Git" class="headerlink" title="五、分布式 Git"></a>五、分布式 Git</h3><ol start="40">
 <li>（Page：111）<strong>集成管理者工作流程</strong>：每个开发者拥有自己仓库的写权限和其他所有人仓库的读权限。这种情形下通常会有个代表“官方”项目的权威的仓库。要为这个项目做贡献，你需要从该项目克隆出一个自己的公开仓库，然后将自己的修改推送上去。接着你可以请求官方仓库的维护者拉取更新合并到主项目。维护者可以将你的仓库作为远程仓库添加进来，在本地测试你的变更，将其合并入他们的分支并推送回官方仓库。</li>
@@ -229,7 +253,8 @@
 <ol start="42">
 <li>（Page：114）查找<strong>空白错误</strong>（行位的空格、Tab，以及行首空格后跟 Tab 的行为）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> --check<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">diff</span> --check
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="43">
 <li>（Page：120）只有当上游分支（&lt;upstream&gt;\&lt;branch&gt;）可以直接通过 Fast-Forward 达到本地跟踪分支的状态时，<code>git push</code> 才允许进行推送（否则若会产生合并节点，则需要在首先在本地进行合并）。</li>
 <li>（Page：123）<strong>推送新分支时同时设置上游跟踪分支</strong>：</li>
@@ -239,13 +264,15 @@
 <span class="token function">git</span> push -u <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>local-branch<span class="token operator">></span>:<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 这里本地跟踪分支与远程分支同名；</span>
 <span class="token comment" spellcheck="true"># 等价于：</span>
 <span class="token function">git</span> push <span class="token operator">&lt;</span>upstream<span class="token operator">></span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>
-<span class="token function">git</span> branch <span class="token operator">&lt;</span>local-branch<span class="token operator">></span> -u <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 这里本地跟踪分支与远程分支同名；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> branch <span class="token operator">&lt;</span>local-branch<span class="token operator">></span> -u <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 这里本地跟踪分支与远程分支同名；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="45">
 <li>（Page：129）关于 <code>git request-pull</code>：该命令主要用于<strong>生成一段总结性文字，包含一些当前待提交的改动信息，以便发送给仓库负责人，以拉取待提交的代码</strong>。而非类似于 Github 中 “Pull Request” 的特性。</li>
 <li>（Page：131）使用邮件提交补丁（变更）：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 在本地生成补丁列表，包含那些在当前分支而不在目标分支的改动；</span>
-<span class="token function">git</span> format-patch -M <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token function">git</span> format-patch -M <span class="token operator">&lt;</span>upstream<span class="token operator">></span>/<span class="token operator">&lt;</span>remote-branch<span class="token operator">></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>可以使用 <code>git send-email</code> 或 <code>git imap-send</code> 命令来以邮件的形式（分别对应 SMTP 协议与 IMAP 协议）发送补丁文件；</li>
 </ul>
@@ -254,7 +281,8 @@
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> apply --check <span class="token operator">&lt;</span>patch-file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 检查补丁文件是否可用；</span>
 <span class="token function">git</span> am <span class="token operator">&lt;</span>patch-file<span class="token operator">></span>
-<span class="token function">git</span> am -i -3 <span class="token operator">&lt;</span>patch-file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在“交互模式”下进行补丁应用，同时采用“三方合并（当前分支必须与补丁有公共提交）”；</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> am -i -3 <span class="token operator">&lt;</span>patch-file<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 在“交互模式”下进行补丁应用，同时采用“三方合并（当前分支必须与补丁有公共提交）”；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>git apply</code> 采用了一种“全部应用，否则全部撤销”的模型，即补丁只有“全部内容都被应用”和“完全不被应用”两个状态；</li>
 <li><code>git format-patch</code> 会生成 “<strong>mbox</strong>” 格式的补丁文件，它是一种用来在单个文本文件中存储一个或多个电子邮件消息的简单纯文本格式；</li>
@@ -272,7 +300,8 @@
 <span class="token function">git</span> <span class="token function">diff</span> <span class="token operator">&lt;</span>branch-B<span class="token operator">></span><span class="token punctuation">..</span><span class="token operator">&lt;</span>branch-A<span class="token operator">></span>
 <span class="token comment" spellcheck="true"># 检查 &lt;branch> 与本地的差异（包括本地未提交的改动）；</span>
 <span class="token function">git</span> <span class="token function">diff</span> <span class="token operator">&lt;</span>branch<span class="token operator">></span>
-<span class="token function">git</span> <span class="token function">diff</span> HEAD<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token function">git</span> <span class="token function">diff</span> HEAD
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="49">
 <li>（Page：140）几种常用工作流（workflow）：</li>
 </ol>
@@ -285,23 +314,26 @@
 <ol start="50">
 <li>（Page：146）根据已有的标签<strong>为当前提交生成可读的名称</strong>（可以被直接引用）：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> describe <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 该分支必须存在已有的注解标签；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> describe <span class="token operator">&lt;</span>branch<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 该分支必须存在已有的注解标签；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="51">
 <li>（Page：147）创建<strong>归档快照</strong>：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> archive <span class="token operator">&lt;</span>branch<span class="token operator">></span> --prefix<span class="token operator">=</span><span class="token string">'project/'</span> <span class="token operator">|</span> <span class="token function">gzip</span> <span class="token operator">></span> <span class="token variable"><span class="token variable">`</span><span class="token function">git</span> describe <span class="token operator">&lt;</span>branch<span class="token operator">></span><span class="token variable">`</span></span>.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> archive <span class="token operator">&lt;</span>branch<span class="token operator">></span> --prefix<span class="token operator">=</span><span class="token string">'project/'</span> <span class="token operator">|</span> <span class="token function">gzip</span> <span class="token operator">></span> <span class="token variable"><span class="token variable">`</span><span class="token function">git</span> describe <span class="token operator">&lt;</span>branch<span class="token operator">></span><span class="token variable">`</span></span>.tar.gz
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="52">
 <li>（Page：148）生成<strong>提交简报</strong>：</li>
 </ol>
-<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> shortlog --no-merges <span class="token operator">&lt;</span>branch<span class="token operator">></span> --not <span class="token operator">&lt;</span>tag<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 生成自标签 &lt;tag> 之后的分支 &lt;branch> 的所有提交改动；</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> shortlog --no-merges <span class="token operator">&lt;</span>branch<span class="token operator">></span> --not <span class="token operator">&lt;</span>tag<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 生成自标签 &lt;tag> 之后的分支 &lt;branch> 的所有提交改动；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="六、Github"><a href="#六、Github" class="headerlink" title="六、Github"></a>六、Github</h3><ol start="53">
 <li>（Page：178）GitHub 在服务器上把合并请求分支视为一种 “<strong>假分支</strong>”，默认情况下通过克隆不会得到它们。可以使用 <code>git ls-remote &lt;upstream&gt;</code> 来查看服务器上有哪些引用：</li>
 </ol>
 <ul>
-<li><strong><em>refs/heads/*</em></strong>：分支对应的引用；</li>
-<li><strong><em>refs/tags/*</em></strong>：标签对应的引用；</li>
-<li><strong><em>refs/pull/&lt;pr#&gt;/head</em></strong>：合并请求的引用，该引用指向的提交记录与合并请求分支中的最后一个提交记录是同一个；</li>
-<li><strong><em>refs/pull/&lt;pr#&gt;/merge</em></strong>：合并请求的引用，该引用表示合并后生成的对应提交记录。</li>
+<li>***refs/heads/****：分支对应的引用；</li>
+<li>***refs/tags/****：标签对应的引用；</li>
+<li><em><strong>refs/pull/&lt;pr#&gt;/head</strong></em>：合并请求的引用，该引用指向的提交记录与合并请求分支中的最后一个提交记录是同一个；</li>
+<li><em><strong>refs/pull/&lt;pr#&gt;/merge</strong></em>：合并请求的引用，该引用表示合并后生成的对应提交记录。</li>
 </ul>
 <p>* <strong>可以通过添加 “refspec” 的方式来把远程的名称映射到本地 .git 目录</strong>。</p>
 <br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-19T13:26:29.000Z"> 2021 / 03 / 03, 12:21:26</time></span></div></article><br><a name="comments"></a><div class="article-end-saparator"><span class="line"></span><span class="text">这是文章底线，下面是评论</span><span class="line"></span></div><div class="comments-display-container"><div class="placeholder"><i class="fa fa-battery-empty">&nbsp;&nbsp;暂无评论，欢迎勾搭 ：）</i></div></div><div class="dot-decoration"></div><div class="comments-input"><textarea name="comment" placeholder="请输入评论内容 ..."></textarea><div><input type="text" placeholder="请输入昵称 ..."><button class="submit-comment">发布</button></div></div><span class="next-post"><a href="/2020/10/05/《垃圾回收算法与实现》读书笔记（第 1-5 章）/" itemprop="url">Older Post ⇒</a></span><span class="prev-post"><a href="/2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/" itemprop="url">⇐ Next Post </a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

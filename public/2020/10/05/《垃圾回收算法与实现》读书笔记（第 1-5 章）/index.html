@@ -3,51 +3,51 @@
 <p>所有涉及的 GC 算法如下：</p>
 <ul>
 <li><strong>GC 标记-清除</strong>：<ul>
-<li><strong><em>多个空闲链表</em></strong>：可优化遍历空闲链表较慢的问题；</li>
-<li><strong><em>BiBOP 法</em></strong>：可优化“碎片化”问题；</li>
-<li><strong><em>位图标记</em></strong>：解决与 COW 不兼容的问题；</li>
-<li><strong><em>延迟清除法</em></strong>：可用于减小 GC 的最大暂停时间。</li>
+<li><em><strong>多个空闲链表</strong></em>：可优化遍历空闲链表较慢的问题；</li>
+<li><em><strong>BiBOP 法</strong></em>：可优化“碎片化”问题；</li>
+<li><em><strong>位图标记</strong></em>：解决与 COW 不兼容的问题；</li>
+<li><em><strong>延迟清除法</strong></em>：可用于减小 GC 的最大暂停时间。</li>
 </ul>
 </li>
 <li><strong>引用计数法</strong>：<ul>
-<li><strong><em>延迟引用计数法</em></strong>：减轻了因根引用频繁变化而导致的计数器增减带来的额外负担；</li>
-<li><strong><em>Sticky 引用计数法</em></strong>：减少引用计数器的位宽；</li>
-<li><strong><em>1 位引用计数法</em></strong>：缓存友好，且一定程度上节省内存消耗；</li>
-<li><strong><em>部分标记-清除算法</em></strong>：解决“循环引用”问题。</li>
+<li><em><strong>延迟引用计数法</strong></em>：减轻了因根引用频繁变化而导致的计数器增减带来的额外负担；</li>
+<li><em><strong>Sticky 引用计数法</strong></em>：减少引用计数器的位宽；</li>
+<li><em><strong>1 位引用计数法</strong></em>：缓存友好，且一定程度上节省内存消耗；</li>
+<li><em><strong>部分标记-清除算法</strong></em>：解决“循环引用”问题。</li>
 </ul>
 </li>
 <li><strong>GC 复制算法</strong>：<ul>
-<li><strong><em>Cheney GC 复制算法</em></strong>：缓解复制对象时产生额外函数调用栈的问题；</li>
-<li><strong><em>近似深度优先搜索方法</em></strong>：改良了 Cheney 的算法，对缓存友好。可尽量保证处在相同页面上的对象之间是存在引用关系的；</li>
-<li><strong><em>多空间复制算法</em></strong>：有效利用了堆。</li>
+<li><em><strong>Cheney GC 复制算法</strong></em>：缓解复制对象时产生额外函数调用栈的问题；</li>
+<li><em><strong>近似深度优先搜索方法</strong></em>：改良了 Cheney 的算法，对缓存友好。可尽量保证处在相同页面上的对象之间是存在引用关系的；</li>
+<li><em><strong>多空间复制算法</strong></em>：有效利用了堆。</li>
 </ul>
 </li>
 <li><strong>GC 标记-压缩</strong>：<ul>
-<li><strong><em>Two-Finger 算法</em></strong>：内存使用效率较 LISP2 稍高；搜索次数只有 2 次，吞吐量稍高；</li>
-<li><strong><em>表格算法</em></strong>：缓存友好；</li>
-<li><strong><em>ImmixGC 算法</em></strong>：堆的精细化管理，可以有效地解决碎片化问题（复杂度高）。</li>
+<li><em><strong>Two-Finger 算法</strong></em>：内存使用效率较 LISP2 稍高；搜索次数只有 2 次，吞吐量稍高；</li>
+<li><em><strong>表格算法</strong></em>：缓存友好；</li>
+<li><em><strong>ImmixGC 算法</strong></em>：堆的精细化管理，可以有效地解决碎片化问题（复杂度高）。</li>
 </ul>
 </li>
 <li><strong>保守式 GC</strong>：<ul>
-<li><strong><em>间接引用</em></strong>：让保守 GC 可以使用复制 GC 算法；</li>
-<li><strong><em>MostlyCopyingGC</em></strong>：可在不明确的根的环境中使用 GC 复制算法；</li>
-<li><strong><em>黑名单</em></strong>：可以改善“指针错误识别”的问题。</li>
+<li><em><strong>间接引用</strong></em>：让保守 GC 可以使用复制 GC 算法；</li>
+<li><em><strong>MostlyCopyingGC</strong></em>：可在不明确的根的环境中使用 GC 复制算法；</li>
+<li><em><strong>黑名单</strong></em>：可以改善“指针错误识别”的问题。</li>
 </ul>
 </li>
 <li><strong>分代垃圾回收</strong>：<ul>
-<li><strong><em>Ungar 分代垃圾回收算法</em></strong>：改善了 GC 花费的时间。分代垃圾回收花费的时间是 GC 复制算法的 1/4；；</li>
-<li><strong><em>多代垃圾回收</em></strong>：进一步改善 GC 花费的时间；</li>
-<li><strong><em>列车垃圾回收</em></strong>：缩减了各老年代 GC 造成的 mutator 最大暂停时间。且可回收“循环垃圾”（引用贯穿各个空间）。</li>
+<li><em><strong>Ungar 分代垃圾回收算法</strong></em>：改善了 GC 花费的时间。分代垃圾回收花费的时间是 GC 复制算法的 1/4；；</li>
+<li><em><strong>多代垃圾回收</strong></em>：进一步改善 GC 花费的时间；</li>
+<li><em><strong>列车垃圾回收</strong></em>：缩减了各老年代 GC 造成的 mutator 最大暂停时间。且可回收“循环垃圾”（引用贯穿各个空间）。</li>
 </ul>
 </li>
 <li><strong>增量式垃圾回收</strong>：<ul>
-<li><strong><em>Steele 算法</em></strong>：写入屏障更为严格；</li>
-<li><strong><em>汤浅算法</em></strong>：以 GC 开始时对象间的引用关系为基础。</li>
+<li><em><strong>Steele 算法</strong></em>：写入屏障更为严格；</li>
+<li><em><strong>汤浅算法</strong></em>：以 GC 开始时对象间的引用关系为基础。</li>
 </ul>
 </li>
 <li><strong>RC Immix 算法</strong>：<ul>
-<li><strong><em>合并型引用计数法</em></strong>：增加了吞吐量。将计数器的增减一并执行，而非每次变化；</li>
-<li><strong><em>RC Immix 算法</em></strong>：吞吐量得到了大幅改善。</li>
+<li><em><strong>合并型引用计数法</strong></em>：增加了吞吐量。将计数器的增减一并执行，而非每次变化；</li>
+<li><em><strong>RC Immix 算法</strong></em>：吞吐量得到了大幅改善。</li>
 </ul>
 </li>
 </ul>
@@ -67,16 +67,16 @@
 <li><strong>头</strong>（一个）：包含有对象的<strong>大小</strong>和<strong>种类</strong>信息，由 GC 算法进行控制和使用；</li>
 <li><strong>域</strong>（多个）：对象使用者可以直接访问的内存部分（可存放指针与非指针数据）。</li>
 </ul>
-<p><img src="1.png" alt=""></p>
+<p><img src="1.png"></p>
 <ol start="4">
 <li>（Page：14）对象和指针：</li>
 </ol>
 <ul>
 <li>若指针可以指向对象除首地址以外的地方（<em>aliasing</em>），则 GC 将会变得复杂（如 C/C++）。在大多数语言处理程序中，指针都默认指向对象的首地址。</li>
 </ul>
-<p><img src="16.png" alt=""></p>
+<p><img src="16.png"></p>
 <ol start="5">
-<li>（Page：17）GC 中的“<strong>根</strong>（<em>root*）”：是指向对象的指针的“起点”（<u>调用栈</u>、<u>寄存器</u>、<u>全局变量空间</u>），可以被 *mutator</em> 直接引用。<em>mutator</em> 的本质即“应用程序”，其可进行两种操作 —— “<strong>生成对象</strong>”与“<strong>更新指针</strong>”。</li>
+<li>（Page：17）GC 中的“<strong>根</strong>（<em>root</em>）”：是指向对象的指针的“起点”（<u>调用栈</u>、<u>寄存器</u>、<u>全局变量空间</u>），可以被 <em>mutator</em> 直接引用。<em>mutator</em> 的本质即“应用程序”，其可进行两种操作 —— “<strong>生成对象</strong>”与“<strong>更新指针</strong>”。</li>
 <li>（Page：19）一些 GC 评判标准：</li>
 </ol>
 <ul>
@@ -86,7 +86,7 @@
 <li><strong>访问局部性</strong>：把具有引用关系的对象安排在堆中较近的位置，就能够提高其在缓存中读取的命中概率。</li>
 </ul>
 <h3 id="Chapter-2：“标记-清除”算法"><a href="#Chapter-2：“标记-清除”算法" class="headerlink" title="Chapter 2：“标记-清除”算法"></a>Chapter 2：“标记-清除”算法</h3><p>算法由“<strong>标记</strong>”以及“<strong>清除</strong>”两个阶段组成。其中，标记阶段负责把所有活动对象都做上标记；而清除阶段则是把那些没有被标记的对象（非活动对象）进行回收。在半个世纪后的今天，该算法依然是各种处理程序常用的 GC 算法。</p>
-<p><img src="17.png" alt=""></p>
+<p><img src="17.png"></p>
 <ol start="7">
 <li>（Page：26）标记阶段使用“<strong>深度优先搜索（DFS）</strong>”一般会比“广度优先搜索（BFS）”占用更低的内存使用量。因为 BFS 需要额外的栈来存放待遍历的子树（指针），最多需要存放<u>与最后一层子节点相同个数的子树</u>（指针）；相反，DFS 最多只会<u>有与树高度呈正比数量的节点（指针）在内存中</u>。</li>
 <li>（Page：26）“清除阶段”在整理“空闲链表”时，如果某个对象需要被清理，则可以直接动态<strong>在该对象的域中分配一个字段 <em>next</em></strong>（对象原本的内容会被破坏）以存储空闲链表下一个对象的位置（指针）。</li>
@@ -124,7 +124,7 @@
 <ol start="12">
 <li>（Page：32）<strong>多空闲链表</strong>：可用于优化分配内存时空闲链表的查找速度。通常，该方法会为分块大小设定一个上限，分块如果大于等于这个大小，就全部采用单独的一个空闲链表来进行处理（基于 <em>locality</em>）。</li>
 </ol>
-<p><img src="2.png" alt=""></p>
+<p><img src="2.png"></p>
 <ol start="13">
 <li>（Page：34）<strong>BiBOP</strong>（<em>Big Bag Of Pages</em>）：<strong>将大小相近的对象整理成固定大小的块进行管理，即把堆分割成固定大小的块，让每个块只能够配置同样大小的对象</strong>。该算法需配合“多空闲链表”一起使用。</li>
 </ol>
@@ -132,11 +132,11 @@
 <li><strong>优点</strong>：一定程度上消除“碎片化”；</li>
 <li><strong>缺点</strong>：在多个块中分散残留着同样大小的对象，降低了堆的使用效率。</li>
 </ul>
-<p><img src="3.png" alt=""></p>
+<p><img src="3.png"></p>
 <ol start="14">
 <li>（Page：35）<strong>位图标记</strong>（<em>Bitmap Marking</em>）：收集堆中各个对象的标志位并表格化，不跟对象本身一起管理。在标记时，不在对象头中置位，而是在“位图表格”中单独处理（实现方式：散列表、树形结构、数组等）。其优点在于：<strong>与 COW 兼容</strong>，且清除操作更加高效。</li>
 </ol>
-<p><img src="4.png" alt=""></p>
+<p><img src="4.png"></p>
 <ul>
 <li><strong>一些注意事项</strong>：<ul>
 <li>位图表格中位的位置要和堆里的各个对象一一对应（比如一个字节对应一位，或使用计数器来记录当前扫描对象的索引）；</li>
@@ -150,9 +150,9 @@
 <li>（Page：38）<strong>延迟清除</strong>（<em>Lazy Sweep</em>）：一定程度上可用于减小 GC 的最大暂停时间。其基本原理是<u><strong>只在分配时执行必要的遍历和清理工作</strong></u>。即每次需要分配内存时，直接遍历当前堆对象，查找是否有未被标记且大小合适的块可以返回，若有则返回。同时过程中，将遍历到的块置位。下次再分配时仍<strong>从上一次找到分块的右侧分块开始继续遍历</strong>，直到遍历完所有堆对象。若没有找到合适的块，则执行标记，然后再重新遍历。若仍未找到分块，则返回错误。</li>
 </ol>
 <h3 id="Chapter-3：“引用计数”算法"><a href="#Chapter-3：“引用计数”算法" class="headerlink" title="Chapter 3：“引用计数”算法"></a>Chapter 3：“引用计数”算法</h3><ol start="16">
-<li>（Page：43）该方式<strong>将内存管理与 mutator 的运行同时进行</strong>（而“标记-清除”法只会在没有分块时才将垃圾一并回收）。<u>对计数器进行增减时需要“<strong>先增再减</strong>”，以避免当 <em>\</em>ptr* 与 <em>obj</em> 是同一对象时引发的“空指针引用”情况</u>。</li>
+<li>（Page：43）该方式<strong>将内存管理与 mutator 的运行同时进行</strong>（而“标记-清除”法只会在没有分块时才将垃圾一并回收）。<u>对计数器进行增减时需要“<strong>先增再减</strong>”，以避免当 <em>*ptr</em> 与 <em>obj</em> 是同一对象时引发的“空指针引用”情况</u>。</li>
 </ol>
-<p><img src="18.png" alt=""></p>
+<p><img src="18.png"></p>
 <ol start="17">
 <li>（Page：44）“引用计数”算法的特点：</li>
 </ol>
@@ -172,7 +172,7 @@
 </li>
 </ul>
 <ol start="18">
-<li>（Page：46）<strong>延迟引用计数</strong>（<em>Deferred Reference Counting<em>）：让从*</em>根引用的指针<strong>（栈上对象）其变化不反映在计数器上（而堆上的引用改变扔会计数）。即使用 **ZCT</strong>（<em>Zero Count Table</em>）表结构存储引用计数变为 0 的对象。<strong>当 ZCT 无法存放对象时</strong>，会进行 *root</em> 引用对象的计数变更，然后查找整个 ZCT 中引用计数仍然为 0 的对象，并进行释放操作。最后再将 <em>root</em> 引用对象的计数递减。</li>
+<li>（Page：46）<strong>延迟引用计数</strong>（<em>Deferred Reference Counting</em>）：让从<strong>根引用的指针</strong>（栈上对象）其变化不反映在计数器上（而堆上的引用改变扔会计数）。即使用 <strong>ZCT</strong>（<em>Zero Count Table</em>）表结构存储引用计数变为 0 的对象。<strong>当 ZCT 无法存放对象时</strong>，会进行 <em>root</em> 引用对象的计数变更，然后查找整个 ZCT 中引用计数仍然为 0 的对象，并进行释放操作。最后再将 <em>root</em> 引用对象的计数递减。</li>
 </ol>
 <blockquote>
 <p>Deferred reference counting reduces the cost of maintaining reference counts by avoiding adjustments when the reference is stored on the stack.</p>
@@ -180,7 +180,7 @@
 <blockquote>
 <p>On many systems, <strong>the majority of stores are made into local variables, which are kept on the stack</strong>. Deferred reference counting leaves those out and counts only references stored in heap objects. This requires compiler support, but can lead to substantial performance improvements.</p>
 </blockquote>
-<p><img src="5.png" alt=""></p>
+<p><img src="5.png"></p>
 <ul>
 <li><strong>优点</strong>：<u>减轻了因根引用频繁变化而导致的计数器增减带来的额外负担</u>；</li>
 <li><strong>缺点</strong>：<ul>
@@ -205,8 +205,8 @@
 <ol start="20">
 <li>（Page：52）<strong>1 位引用计数</strong>（<em>1bit Reference Counting</em>）：Sticky 引用计数法的一个极端例子，即引用<strong>计数器只有 1 位大小</strong>（0 - 表示被引用数为 1，1 - 表示被引用数大于等于 2）。</li>
 </ol>
-<p><img src="8.png" alt=""></p>
-<p><img src="6.png" alt=""></p>
+<p><img src="8.png"></p>
+<p><img src="6.png"></p>
 <ul>
 <li>实现细节：<ul>
 <li><strong>计数跟随指针</strong>，而非对象。可直接通过指针的“低二/三位”来存放这些信息（指针一般按照 4 / 8 字节对齐）；</li>
@@ -220,7 +220,7 @@
 <ol start="21">
 <li>（Page：55）<strong>部分标记-清除</strong>（<em>Partial Mark &amp; Sweep</em>）：只对“<strong>可能有循环引用的对象群</strong>”使用 GC 标记-清除算法（这里用于<strong>查找非活动对象</strong>），而对其他对象进行内存管理时使用引用计数法。</li>
 </ol>
-<p><img src="19.png" alt=""></p>
+<p><img src="19.png"></p>
 <ul>
 <li>该算法中有四种对象类型，对应四种颜色。实现时需要往头中分配 2 位空间，用于标记这四种颜色类型：<ul>
 <li><strong>黑</strong>（BLACK）：绝对不是垃圾的对象（对象产生时的初始颜色）；</li>
@@ -252,7 +252,7 @@
 <h3 id="Chapter-4：“GC-复制”算法"><a href="#Chapter-4：“GC-复制”算法" class="headerlink" title="Chapter 4：“GC 复制”算法"></a>Chapter 4：“GC 复制”算法</h3><ol start="22">
 <li>（Page：67）“GC 复制”算法的<strong>大致流程</strong>：只把某个空间内的活动对象复制到其他空间，再把原空间里的所有对象都回收掉。原空间一般被称为 “<strong>From 空间</strong>”，存放活动对象的新空间被称为 “<strong>To 空间</strong>”。GC 复制算法是利用 From 空间进行分配的，当 From 空间被完全占满时，GC 会将活动对象全部复制到 To 空间。当复制完成后，该算法会把 From 空间和 To 空间<strong>互换</strong>（即作用对调），GC 就结束了。From 空间和 To 空间大小必须一致。这是为了保证能把 From 空间中的所有活动对象都收纳到 To 空间内。</li>
 </ol>
-<p><img src="7.png" alt=""></p>
+<p><img src="7.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li>每一个 From 空间的对象都会有<strong>两个字段</strong>：<ul>
@@ -281,7 +281,7 @@
 <ol start="22">
 <li>（Page：74）来自 Cheney 的“<strong>迭代进行复制算法</strong>“：优化递归的 copy 过程。</li>
 </ol>
-<p><img src="9.png" alt=""></p>
+<p><img src="9.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li>引入了另一个指针 <em>scan</em>，用于在 To 空间内搜索复制完成的对象；</li>
@@ -303,12 +303,12 @@
 <ol start="23">
 <li>（Page：78）<strong>近似深度优先搜索方法</strong>：</li>
 </ol>
-<p><img src="10.png" alt=""></p>
+<p><img src="10.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li>四个重要变量：<ul>
-<li><em>page<em>：将堆分割成一个个页面的数组。</em>page[i]</em> 指向第 i 个页面的开头；</li>
-<li><em>local_scan<em>：将每个页面中搜索用的指针作为元素的数组。</em>local_scan[i]</em> 指向第 i 个页面中下一个应该搜索的位置；</li>
+<li><em>page</em>：将堆分割成一个个页面的数组。<em>page[i]</em> 指向第 i 个页面的开头；</li>
+<li><em>local_scan</em>：将每个页面中搜索用的指针作为元素的数组。<em>local_scan[i]</em> 指向第 i 个页面中下一个应该搜索的位置；</li>
 <li><em>major_scan</em>：指向搜索尚未完成的页面开头的指针；</li>
 <li><em>free</em>：指向分块开头的指针。</li>
 </ul>
@@ -321,7 +321,7 @@
 <ol start="24">
 <li>（Page：83）<strong>多空间复制算法</strong>：把堆 N 等分，对其中 2 块空间执行 GC 复制算法（From 和 To），对剩下的 N-2 块空间执行 GC 标记-清除算法。</li>
 </ol>
-<p><img src="11.png" alt=""></p>
+<p><img src="11.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li>每次 GC 执行完毕，To 和 From 空间将会依次向右移动。</li>
@@ -338,7 +338,7 @@
 <ol start="25">
 <li>（Page：89）<strong>LISP2 算法</strong>：</li>
 </ol>
-<p><img src="12.png" alt=""></p>
+<p><img src="12.png"></p>
 <ul>
 <li><strong>实现细节</strong>：<ul>
 <li><strong>标记阶段</strong>：与“标记-清除”算法类似。</li>
@@ -360,9 +360,9 @@
 <ol start="26">
 <li>（Page：95）<strong>Two-Finger 算法</strong>：需要搜索 2 次堆。</li>
 </ol>
-<p><img src="13.png" alt=""></p>
+<p><img src="13.png"></p>
 <ul>
-<li><strong><em>制约条件</em></strong>：必须将所有对象整理成大小一致（方便对象间的移动）；</li>
+<li><em><strong>制约条件</strong></em>：必须将所有对象整理成大小一致（方便对象间的移动）；</li>
 <li><strong>实现步骤</strong>：<ul>
 <li><em>标记对象</em>；</li>
 <li><em>移动对象</em>；</li>
@@ -390,18 +390,18 @@
 <ol start="27">
 <li>（Page：100）<strong>表格算法</strong>：</li>
 </ol>
-<p><img src="14.png" alt=""></p>
+<p><img src="14.png"></p>
 <ul>
 <li><strong>实现步骤</strong>：<ul>
 <li><em>标记对象</em>；</li>
-<li><em>移动连续对象（群）以及构筑间隙表格（break table, bt）</em>；间隙表格由 <strong><em>(活动对象群首地址 live, 移动分块总大小 size)</em></strong> 组成；</li>
+<li><em>移动连续对象（群）以及构筑间隙表格（break table, bt）</em>；间隙表格由 <em><strong>(活动对象群首地址 live, 移动分块总大小 size)</strong></em> 组成；</li>
 <li><em>更新指针（通过 “bt”）并清理标记</em>。</li>
 </ul>
 </li>
 <li><strong>实现细节</strong>：<ul>
 <li>活动对象群的移动是<strong>连续的</strong>，其中 <em>scan</em> 指针用于寻找活动对象群；<em>free</em> 指针是指向对象群目标空间的指针；<em>live</em> 指针用于标记活动对象的原空间位置；</li>
 <li>“间隙表格”会被放在空闲空间里；随着“移动对象群”的过程进行，间隙表格也需要动态地在内存中调整位置；</li>
-<li>更新指针时，由于 <em>bt</em> 只记录了连续活动对象的移动信息，因此对于具体的各个分块指针来说，在这一步需要找到所属那个连续分块的 <em>bt*，以找到正确的 *size</em> 偏移值。</li>
+<li>更新指针时，由于 <em>bt</em> 只记录了连续活动对象的移动信息，因此对于具体的各个分块指针来说，在这一步需要找到所属那个连续分块的 <em>bt</em>，以找到正确的 <em>size</em> 偏移值。</li>
 </ul>
 </li>
 <li><strong>优点</strong>：缓存友好（GC 前后对象相对顺序没有改变）。</li>
@@ -417,14 +417,14 @@
 <ul>
 <li><strong>分配过程</strong>：</li>
 </ul>
-<p><img src="15.png" alt=""></p>
+<p><img src="15.png"></p>
 <ul>
 <li>算法说明：<ul>
 <li>该算法把堆分为一定大小的“块”（<em>block</em>），再把每个块分成一定大小的“线”（<em>line</em>）。该算法<strong>以线为单位回收垃圾</strong>。</li>
 <li><strong>块最合适的大小是 32K 字节，线最合适的大小是 128 字节</strong>（来自论文陈述）；</li>
 <li>块的字段组成：<ul>
-<li><em>line[]</em>：每个块的线；</li>
-<li><em>mark_table[]</em>：与<strong>每个线对应</strong>的标记位串。可以对应四个值：<ul>
+<li>*line[]*：每个块的线；</li>
+<li>*mark_table[]*：与<strong>每个线对应</strong>的标记位串。可以对应四个值：<ul>
 <li><em>FREE</em>：没有对象；</li>
 <li><em>MARKED</em>：标记完成；</li>
 <li><em>ALLOCATED</em>：有对象；</li>
@@ -437,7 +437,7 @@
 <li><em>UNAVAILABLE</em>：没有空的线。</li>
 </ul>
 </li>
-<li><em>hole_cnt*：记录各个块的“孔”数。孔拥有连续的大于等于 1 个的空的线。该字段用于表示碎片化严重程度。如果某个块 *hole_cnt</em> 的值很大，那么它里面的对象就不是标记对象，而是复制对象。</li>
+<li><em>hole_cnt</em>：记录各个块的“孔”数。孔拥有连续的大于等于 1 个的空的线。该字段用于表示碎片化严重程度。如果某个块 <em>hole_cnt</em> 的值很大，那么它里面的对象就不是标记对象，而是复制对象。</li>
 </ul>
 </li>
 <li>对象的分类：<ul>
@@ -463,9 +463,9 @@
 <li>在上次 GC 时能回收的线，其总大小减少了一定的量。</li>
 </ul>
 </li>
-<li><strong>压缩阶段 - 搜索备用 From 块</strong>（可能有多个）：从孔数最多的块开始选择判断，寻找“<u><em>From 块中 ALLOCATED 线和 CONSERVATIVE 线的总数 &lt;= 除 From 以外的块中 FREE 线的总数</em></u>”这样的 From 块。</li>
+<li><strong>压缩阶段 - 搜索备用 From 块</strong>（可能有多个）：从孔数最多的块开始选择判断，寻找“<u>*From 块中 ALLOCATED 线和 CONSERVATIVE 线的总数 &lt;= 除 From 以外的块中 FREE 线的总数*</u>”这样的 From 块。</li>
 <li><strong>搜索阶段</strong>：从根开始搜索对象，根据对象分别进行标记处理或复制处理（将备用 From 块里的对象复制到 To 块，并进行压缩）；</li>
-<li><strong>清除阶段</strong>：以“线”为单位来判断对象是活动的还是非活动的，并置位 <em>mark_table[]</em>。</li>
+<li><strong>清除阶段</strong>：以“线”为单位来判断对象是活动的还是非活动的，并置位 *mark_table[]*。</li>
 </ul>
 </li>
 <li><strong>优点</strong>：堆的精细化管理，可以有效地解决碎片化问题。</li>
