@@ -14,7 +14,7 @@
     "preview": "cd ./public && browser-sync start --server --files .",
     "nginx-bp": "nginx -c $(pwd)/nginx.conf",
     "update-ssl": "nginx -s stop && sudo certbot certonly --webroot && npm run nginx-bp",
-    "build-in-container": "docker build -t hyperion-build-container ./build && systemctl enable cgconfig && docker run -it --rm --device-read-iops /dev/xvda:200 --device-read-bps /dev/xvda:20MB --device-write-bps /dev/xvda:20MB -v /www/Hyperion:/app hyperion-build-container"
+    "build-in-container": "docker build -t hyperion-build-container ./build && systemctl enable cgconfig && docker run -it --rm -w/app --device-read-iops /dev/xvda:200 --device-read-bps /dev/xvda:20MB --device-write-bps /dev/xvda:20MB -v /www/Hyperion:/app hyperion-build-container"
   },
   "dependencies": {
     "apollo-server-express": "^2.14.2",
