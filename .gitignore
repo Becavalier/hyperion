@@ -5,3 +5,4 @@ node_modules/
 **/files/*.pdf
 .DS_Store
 public/
+db.json
