@@ -7,7 +7,7 @@ title: 曜彤.手记
 subtitle: YHSPY
 description: 随记，关于互联网技术、产品与创业
 keywords: 博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm
-author: 于航(曜彤)
+author: 于航（Jason Yu）
 language:
 timezone: Asia/Shanghai
 
@@ -93,9 +93,9 @@ deploy:
 
 # About page setting
 about:
-  name: 于航 (曜彤 / Jason Yu)
-  intros: Staff Software Engineer / @PayPal. | Author of 《深入浅出 WebAssembly》&《WebAssembly 入门课》 | QCon / GMTC / TLC conferences speaker & host | TC39 delegate
-  skills: JavaScript, WebAssembly, Rust, C++, Virtual Machine, Entrepreneurship
+  name: 于航（Jason Yu）
+  intros: Staff Software Engineer / @PayPal. | Author of 《深入浅出 WebAssembly》&《WebAssembly 入门课》 | QCon / GMTC / TLC conferences speaker & host | TC39 delegate / Wasm CG Member
+  skills: Frontend, WebAssembly, Entrepreneurship, Team Management
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /resume/me

@@ -5,7 +5,6 @@ if is_home()
     if (index < config.index_generator.per_page)
       a.article(href=config.root + post.path)
         article.item(itemscope, itemprop='blogPost', itemtype='https://schema.org/BlogPosting')
-          div.post-cover(style=`background-image: url(${post.content.includes('<img src="1.png"') ? `${encodeURIComponent(config.root + post.path)}1.png` : '../images/default-doc-placeholder.png'})`)
           div.post-intro
             h2(itemprop='headline')=post.title
             span.post-meta
@@ -107,8 +106,8 @@ else if is_page() && page.title.toLowerCase() =='author'
           a(target="_blank", href=config.about.resume)
             span(class="fa fa-id-card icons" aria-hidden="true")
       .extra-container
-        a(target="_blank", href=config.about.books_shelf)
-          span(class="fa fa-book icons" aria-hidden="true")
+        //- a(target="_blank", href=config.about.books_shelf)
+        //-   span(class="fa fa-book icons" aria-hidden="true")
         a(target="_blank", href=config.about.interview_sheet)
           span(class="fa fa-sticky-note icons" aria-hidden="true")
 else if is_page() && page.title.toLowerCase() =='notes'
