@@ -10,7 +10,7 @@
     "serve": "node ./services/www/index.js",
     "daemon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW build/workbox-config.js",
-    "sync": "git pull --rebase origin master && pm2 reload all && nginx -s reload -c /www/Hyperion/nginx.conf",
+    "sync": "git pull --rebase origin master && npm run build && pm2 reload all && nginx -s reload -c /www/Hyperion/nginx.conf",
     "preview": "cd ./public && browser-sync start --server --files .",
     "nginx-bp": "nginx -c $(pwd)/nginx.conf",
     "update-ssl": "nginx -s stop && sudo certbot certonly --webroot && npm run nginx-bp",
