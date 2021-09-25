@@ -120,7 +120,7 @@ rand = "0.5.5"
 ### Chapter 3 - Common Programming Concepts
 
 5. （Page：37）默认情况下，**Rust 中定义变量是不可变的**（immutable）。可以使用 `mut` 关键字标记定义的变量，以使其在未来可变。
-6. （Page：39）可以使用 `const` 关键字定义常量，此时变量名必须使用大写形式，并且**需要显式指明类型**（***[Github Discussion](https://github.com/rust-lang/rfcs/issues/1349)***）。其基本语义与 C++ 中的 *constexpr* 类似，属于 compile-time 常量。
+6. （Page：39）可以使用 `const` 关键字定义常量，此时变量名必须使用大写形式，并且**需要显式指明类型**（<b>[Github Discussion](https://github.com/rust-lang/rfcs/issues/1349)</b>）。其基本语义与 C++ 中的 *constexpr* 类似，属于 compile-time 常量。
 
 ```rust
 const MAX_POINTS: u32 = 100_000; 
@@ -142,7 +142,7 @@ fn main() {
 
 * ***integers***：*i8* / *u8* / *i16* / *u16* / *i32* / *u32* / *i64* / *u64* / *i128* / *u128* / *isize* / *usize*（最后两种依赖于具体的平台类型，32bit 或 64bit）。其中大部分数字字面量值**可以携带诸如 “*u8*” 的后缀来表示值类型**。 `usize` 值大小应与 C/C++ 中的 `size_t` 保持一致；
   * “隐式的溢出”行为在调试模式下会产生 panic；
-  * 当需要显式处理 *two’s complement wrapping* 的溢出情况时，可以使用 Rust 标准库中诸如 “*wrapping_\**”、“*checked_\**”、“*overflowing_\**” 以及 “*saturating_\**” 等方法。
+  * 当需要显式处理 *two’s complement wrapping* 的溢出情况时，可以使用 Rust 标准库中诸如 “<i>wrapping_\*</i>”、“<i>checked_\*</i>”、“<i>overflowing_\*</i>” 以及 “<i>saturating_\*</i>” 等方法。
 
 ```rust
 fn main() { 
@@ -374,7 +374,7 @@ fn takes_and_gives_back(a_string: String) -> String {  // a_string comes into sc
 
 \- ***引用和借用（Reference & Borrowing）***：
 
-* Rust 中的“引用”同 C/C++ 类似，从语法形式上可以理解为指针（取地址）。但不同点在于 Rust 中的引用可以被重新赋值，即重新引用到其他的变量上。并且借助“自动引用与解引用”机制，只有在赋值（产生副作用）时才需要显式解引用（**\***），而在使用引用所指向变量的值时则不需要。
+* Rust 中的“引用”同 C/C++ 类似，从语法形式上可以理解为指针（取地址）。但不同点在于 Rust 中的引用可以被重新赋值，即重新引用到其他的变量上。并且借助“自动引用与解引用”机制，只有在赋值（产生副作用）时才需要显式解引用（<b>\*</b>），而在使用引用所指向变量的值时则不需要。
 
 ```rust
 fn main() {

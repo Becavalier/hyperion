@@ -1,5 +1,5 @@
 ---
-title: Docker 最佳实践（二）
+title: Docker 基础记录（二）
 intro: 接着上一篇文章，我们继续深入了解并学习关于 Docker 的基础知识以及相关基于 Docker 实现的典型架构解决方案。Docker 在协调线下／上多环境开发等场景下有着其独特的优势。
 comments: true
 date: 2017-11-07 13:52:09

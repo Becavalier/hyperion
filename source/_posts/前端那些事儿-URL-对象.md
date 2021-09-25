@@ -34,7 +34,7 @@ console.log(urlC.toString());  // 输出 “https://www.yhspy.com/about/”；
 
 该方法用来从一个 File 对象或一个 Blob 对象中创建对应该资源的 URL 对象。你可以理解为 `URL.createObjectURL(blob)` 方法会自动帮你从一个 File 对象或者一个 Blob 对象中创建一个对应该资源的引用，而通过该引用你可以直接在诸如 `<img>` 标签中的 `src` 属性里使用该引用对应的资源实体。
 
-**3. 静态方法： ** URL.revokeObjectURL(*blob*)：
+**3. 静态方法：** URL.revokeObjectURL(*blob*)：
 
 对于每一个使用 `URL.createObjectURL(blob)` 方法创建的资源引用来说，当 File 或 Blob 资源不再使用时一定要通过 `URL.revokeObjectURL(blob)` 及时地进行释放，该方法会通知浏览器哪些 URL 引用资源不再使用，以便及时的清理和释放内存。
 

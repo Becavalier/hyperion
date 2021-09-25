@@ -65,7 +65,7 @@ script.src = 'foo.js';
 document.head.appendChild(script);
 ```
 
-* 声明式的资源获取请求，可以**指明哪些资源是在页面加载完成后即刻需要的**：***\<link rel="preload" href="foo.js"\>***。这一机制使得资源可以更早的得到加载并可用，且更不易阻塞页面的初步渲染，进而提升性能（当动态脚本加载被设置为“同步”时，可以通过此方式来优化性能）。
+* 声明式的资源获取请求，可以**指明哪些资源是在页面加载完成后即刻需要的**：`<link rel="preload" href="foo.js"\>`。这一机制使得资源可以更早的得到加载并可用，且更不易阻塞页面的初步渲染，进而提升性能（当动态脚本加载被设置为“同步”时，可以通过此方式来优化性能）。
 
 13. （Page：106）XHTML 模式下 *\<script\>* 内联代码的“防御式”写法：
 
@@ -85,7 +85,7 @@ document.head.appendChild(script);
 
 * 在 XML（XHTML）中，**CDATA 块表示文档中可以包含任意文本的区块，其内容不会被作为标签来解析**；
 * XHTML 模式会在页面的 MIME 类型被指定为 “**application/xhtml+xml**” 时触发；
-* 在非 XHTML 模式中，**不需要（不建议）指定 *type="text/javascript"*”**。
+* 在非 XHTML 模式中，<b>不需要（不建议）指定 *type="text/javascript"*”</b>。
 
 14. （Page：114）\<noscript\> 标签可用于在浏览器不支持（或被关闭）JavaScript 时显示位于其内部被特殊准备的内容。
 
@@ -155,7 +155,7 @@ for (const value of [1, 2, 3, 4]) {
 * ***Undefined***：原始值。未初始化变量的默认值。由 Null 值派生而来；
 * ***Null***：原始值。表示**空对象指针**；
 * ***Boolean***：原始值；
-* ***Number***：原始值。八进制值通过 “**0o**” 前缀来表示，原先的 “0” 前缀在 ES6 后已经被抛弃（***Newer languages have been abandoning the prefix 0, as decimal numbers are often represented with leading zeroes**. The prefix q was introduced to avoid the prefix o being mistaken for a zero, while the prefix 0o was introduced to avoid starting a numerical literal with an alphabetic character (like o or q), since these might cause the literal to be confused with a variable name. The prefix 0o also follows the model set by the prefix 0x used for hexadecimal literals in the C language;*）。十六进制用前缀 “**0x**” 来表示；
+* ***Number***：原始值。八进制值通过 “**0o**” 前缀来表示，原先的 “0” 前缀在 ES6 后已经被抛弃（**Newer languages have been abandoning the prefix 0, as decimal numbers are often represented with leading zeroes**. The prefix q was introduced to avoid the prefix o being mistaken for a zero, while the prefix 0o was introduced to avoid starting a numerical literal with an alphabetic character (like o or q), since these might cause the literal to be confused with a variable name. The prefix 0o also follows the model set by the prefix 0x used for hexadecimal literals in the C language;）。十六进制用前缀 “**0x**” 来表示；
 * ***String***：原始值。字符串是不可变的（immutable）。String() 构造方法会在内部**首先调用其参数的 toString() 方法**，来尝试将其值转换为对应的字符串表示。对于 null 与 undefined 则直接返回对应的字面量字符串；
 * ***Symbol***：原始值。且符号实例是**唯一、不可变**的。其用途是确保对象属性使用唯一标识符，不会发生属性冲突的危险；
 * ***Object***：引用值。是派生**其他对象的基类**（不一定适合 JavaScript 中的所有对象，比如宿主对象 BOM 和 DOM。**仅适合 ECMAScript 中的对象行为**）。每个 Object 实例都有如下属性和方法：
@@ -169,8 +169,8 @@ for (const value of [1, 2, 3, 4]) {
 
 \- ***一些特殊的 Case***：
 
-* ***typeof NaN === 'number'***：源自于 IEEE-754 中 NaN 本身是一种合法的浮点数表示形式，并且 ECMAScript 标准中规定可以将 NaN 算作一种数字类型（***[4.3.20 Number type](http://www.ecma-international.org/ecma-262/5.1/#sec-4.3.20)***）；
-* ***typeof null === 'object'***：由于 null 被定义为“空对象指针”，因此也算是对“复杂类型”的一个空引用。
+* `typeof NaN === 'number'`：源自于 IEEE-754 中 NaN 本身是一种合法的浮点数表示形式，并且 ECMAScript 标准中规定可以将 NaN 算作一种数字类型（<b>[4.3.20 Number type](http://www.ecma-international.org/ecma-262/5.1/#sec-4.3.20)</b>）；
+* `typeof null === 'object'`：由于 null 被定义为“空对象指针”，因此也算是对“复杂类型”的一个空引用。
 
 19. （Page：166）模板字面量标签函数（Tagged Templates）：可以**自定义模板插值行为**。
 
@@ -291,7 +291,7 @@ console.log(obj instanceof String);  // true.
 ```
 
 32. （Page：336）JavaScript 字符串使用了两种 Unicode 编码混合的策略：**UCS-2** 与 **UTF-16**。对于 **U+0000~U+FFFF** 范围内的 65536 个字符，统称为 Unicode 的**基本多语言平面**（BMP）。
-33. （Page：362）`encodeURI` 用于编码整个 URL（比如“**空格**”），而 `encodeURIComponent` 仅用于编码 URL 中的单独组件（比如“**#**”、“**?**” 等）。
+33. （Page：362）`encodeURI` 用于编码整个 URL（比如“**空格**”），而 `encodeURIComponent` 仅用于编码 URL 中的单独组件（比如“<b>#</b>”、“<b>?</b>” 等）。
 34. （Page：376）可以通过全局属性 `globalThis` 来**获得全局的 this 值**。
 
 ### 第 6 章 - 集合引用类型

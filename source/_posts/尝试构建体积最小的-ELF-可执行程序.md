@@ -100,5 +100,5 @@ ld -s -static -T main.lds -o main main.o
 
 > Most ELF executables are built with both a program header table and a section header table. However, ***only the former is required in order for the OS to load, link and execute a program***. It should be noted that most programs that work with ELF files are dependent on the section header table as an index to the file's contents. Thus, utilities such as gdb and objdump will often have limited functionality when working with an executable with no section header table. Some other utilities may refuse to work with them at all.
 
-由于 GNU 下的 strip 无法移除 ELF 可执行文件中的 .shstrtab 段，并且观察发现在各个 Section 之间仍然有很多空白没有任何实际用处的 Padding 存在，因此最后我们再使用 **[sstrip](https://github.com/aunali1/super-strip)**（Super Strip）来对 ELF 文件进行处理。处理后的文件大小达到了 229 Byte。
+由于 GNU 下的 strip 无法移除 ELF 可执行文件中的 .shstrtab 段，并且观察发现在各个 Section 之间仍然有很多空白没有任何实际用处的 Padding 存在，因此最后我们再使用 <b>[sstrip](https://github.com/aunali1/super-strip)</b>（Super Strip）来对 ELF 文件进行处理。处理后的文件大小达到了 229 Byte。
 

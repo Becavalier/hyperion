@@ -14,10 +14,10 @@ tags:
 41. （Page：530）ECMAScript 使用一些内部特性来**描述对象属性的特征**。
 
 * 数据属性：
-  * ***[[Configurable]]***：表示属性是否可以通过 `delete` 删除并重新定义，是否可以修改它的特性（若设为 *false* 则无法再被修改回来），以及是否可以把它改为访问器属性。默认为 *true*；
-  * ***[[Enumerable]]***：表示属性是否可以通过 for-in 循环返回。默认为 *true*；
-  * ***[[Writabe]]***：表示属性值是否可以被修改。默认为 *true*；
-  * ***[[Value]]***：包含属性实际的值。
+  * <b>[[Configurable]]</b>：表示属性是否可以通过 `delete` 删除并重新定义，是否可以修改它的特性（若设为 *false* 则无法再被修改回来），以及是否可以把它改为访问器属性。默认为 *true*；
+  * <b>[[Enumerable]]</b>：表示属性是否可以通过 for-in 循环返回。默认为 *true*；
+  * <b>[[Writabe]]</b>：表示属性值是否可以被修改。默认为 *true*；
+  * <b>[[Value]]</b>：包含属性实际的值。
 
 ```javascript
 let person = {};
@@ -30,10 +30,10 @@ Object.defineProperty(person, 'name', {
 ```
 
 * 访问器属性（**不包含数据值，不能与“数据属性”混用**）：
-  * ***[[Configurable]]***：（同上）；
-  * ***[[Enumerable]]***：（同上）；
-  * ***[[Get]]***：获取函数，在读取属性时调用（不设置则不可读）；
-  * ***[[Set]]***：设置函数，在写入属性时调用（不设置则不可写）。
+  * <b>[[Configurable]]</b>：（同上）；
+  * <b>[[Enumerable]]</b>：（同上）；
+  * <b>[[Get]]</b>：获取函数，在读取属性时调用（不设置则不可读）；
+  * <b>[[Set]]</b>：设置函数，在写入属性时调用（不设置则不可写）。
 
 ```javascript
 let foo = {
@@ -137,7 +137,7 @@ console.log(p instanceof Object);  // true.
 
 ![](1.jpg)
 
-  * **每个函数都会创建一个 prototype 属性，指向其原型对象**（显式原型）。这个属性包含该由特定引用类型的实例共享的属性和方法。每次创建一个新对象时，对象内部的隐式原型指针 “**\_\_proto\_\_**” 都会指向构造该对象的那个函数的显式原型；
+  * **每个函数都会创建一个 prototype 属性，指向其原型对象**（显式原型）。这个属性包含该由特定引用类型的实例共享的属性和方法。每次创建一个新对象时，对象内部的隐式原型指针 “<b>\_\_proto\_\_</b>” 都会指向构造该对象的那个函数的显式原型；
   * prototype 原型链上的 constructor 与构造函数自身**循环引用**；
   * `isPrototypeOf` 仅在传入参数的隐式原型指向调用它的对象时返回 true；
   * `Object.getPrototypeOf` 可以获取一个参数的隐式原型；
@@ -331,19 +331,19 @@ revoke();  // proxy is invalid after this.
 * 可以为代理再添加另外一个代理；
 * 通过 Proxy 访问对象的内部属性时，**会改变对象引用的 this 值**；
 * 代理捕获器与反射方法：
-  * ***(Relfect.) get()***：会在获取属性值的操作中被调用；
-  * ***(Relfect.) set()***：会在设置属性值的操作中被调用；
-  * ***(Relfect.) has()***：会在 in 操作符中被调用；
-  * ***(Relfect.) defineProperty()***：会在 Object.defineProperty 中被调用；
-  * ***(Relfect.) getOwnPropertyDescriptor()***：会在 Object.getOwnPropertyDescriptor 中被调用；
-  * ***(Relfect.) deleteProperty()***：会在 delete 操作符中被调用；
-  * ***(Relfect.) ownKeys()***：会在 Object.keys 及类似方法中被调用；
-  * ***(Relfect.) getPrototypeOf()***：会在 Object.getPrototypeOf 中被调用；
-  * ***(Relfect.) setPrototypeOf()***：会在 Object.setPrototypeOf 中被调用；
-  * ***(Relfect.) isExtensible()***：会在 Object.isExtensible（可扩展，即可以添加新属性）中被调用；
-  * ***(Relfect.) preventExtensions()***：会在 Object.preventExtensions 中被调用；
-  * ***(Relfect.) apply()***：会在调用函数时被调用；
-  * ***(Relfect.) construct()***：会在 new 操作符中被调用。
+  * <i>(Relfect.) get()</i>：会在获取属性值的操作中被调用；
+  * <i>(Relfect.) set()</i>：会在设置属性值的操作中被调用；
+  * <i>(Relfect.) has()</i>：会在 in 操作符中被调用；
+  * <i>(Relfect.) defineProperty()</i>：会在 Object.defineProperty 中被调用；
+  * <i>(Relfect.) getOwnPropertyDescriptor()</i>：会在 Object.getOwnPropertyDescriptor 中被调用；
+  * <i>(Relfect.) deleteProperty()</i>：会在 delete 操作符中被调用；
+  * <i>(Relfect.) ownKeys()</i>：会在 Object.keys 及类似方法中被调用；
+  * <i>(Relfect.) getPrototypeOf()</i>：会在 Object.getPrototypeOf 中被调用；
+  * <i>(Relfect.) setPrototypeOf()</i>：会在 Object.setPrototypeOf 中被调用；
+  * <i>(Relfect.) isExtensible()</i>：会在 Object.isExtensible（可扩展，即可以添加新属性）中被调用；
+  * <i>(Relfect.) preventExtensions()</i>：会在 Object.preventExtensions 中被调用；
+  * <i>(Relfect.) apply()</i>：会在调用函数时被调用；
+  * <i>(Relfect.) construct()</i>：会在 new 操作符中被调用。
 * 代理模式：
   * ***跟踪属性访问***；
   * ***隐藏属性***；
@@ -512,7 +512,7 @@ class TrackablePromise extends Promise {
 ```
 
 * 常用场景：
-  * ***实现 sleep()***：
+  * <b>实现 sleep() 函数</b>：
 
 ```javascript
 async function sleep(delay) {

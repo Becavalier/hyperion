@@ -4,7 +4,7 @@ intro: CRTP 的全称为 “Curiously Recurring Template Pattern”，是一种 
 comments: true
 date: 2020-08-06 17:02:38
 tags:
-- C++
+- Cpp
 ---
 
 CRTP 的全称为 “Curiously Recurring Template Pattern”，是一种 C++ 模板编程中的常用模式。其形式是**将派生类作为基类的模板参数**。从“类型理论”上来讲，这是一类 “***F-bounded polymorphism***”。
@@ -123,7 +123,7 @@ int main(int argc, char **argv) {
 
 * **std::enable_shared_from_this**；
 
-一种 std::enable_shared_from_this 的常见实现方式是：**保留对 this 的弱引用（例如通过 std::weak_ptr）**。当 std::shared_ptr 的构造函数检测到 std::enable_shared_from_this 这个基类的存在时，会将新创建的 std::shared_ptr 分配给内部存储的弱引用。**\***为已经由另一个 std::shared_ptr 管理的对象构造另一个 std::shared_ptr 不会检查内部存储的弱引用，因此会导致未定义的行为。
+一种 `std::enable_shared_from_this` 的常见实现方式是：**保留对 this 的弱引用（例如通过 std::weak_ptr）**。当 `std::shared_ptr` 的构造函数检测到 `std::enable_shared_from_this` 这个基类的存在时，会将新创建的 `std::shared_ptr` 分配给内部存储的弱引用。<b>\*</b>为已经由另一个 `std::shared_ptr` 管理的对象构造另一个 `std::shared_ptr` 不会检查内部存储的弱引用，因此会导致未定义的行为。
 
 ```cpp
 #include <memory>

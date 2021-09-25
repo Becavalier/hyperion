@@ -225,7 +225,7 @@ fn main() {
     }
 }
 ```
-* *let* 表达式：本质上为 ***let PATTERN = EXPRESSION;***。
+* *let* 表达式：本质上为 `let PATTERN = EXPRESSION;`。
 * 函数（或闭包）参数：
 
 ```rust
@@ -697,7 +697,7 @@ fn main() {
 \- ***在外部类型上“实现”外部 trait***：
 
 * 可以借助 *newtype pattern* 来“打破” trait 定义的“孤儿法则（triat 的定义或者类型的定义，二者之一必须在本地，才可以为某个类型实现某个 *triat*）”；
-* 此处的 *newtype pattern* 只是一个 workaround，意味着**其添加的行为只会影响 *newtype*，而无法实际影响外部的类型**。
+* 此处的 *newtype pattern* 只是一个 workaround，意味着<b>其添加的行为只会影响 *newtype*，而无法实际影响外部的类型</b>。
 
 ```rust
 use std::fmt;

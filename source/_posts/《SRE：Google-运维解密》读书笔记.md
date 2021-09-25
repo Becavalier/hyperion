@@ -2,6 +2,7 @@
 title: 《SRE：Google 运维解密》读书笔记
 intro: SRE 这个词实际上是在我从业的第三个年头时，才在一次偶然的对话中得知的，而 DevOps 这个词在中国互联网企业里则比 SRE 要更为人所熟知，两者在某种程度上有一定的关联。那么 SRE 究竟是什么呢？看看 Google 是怎么讲的。
 comments: true
+published: false
 date: 2021-08-25 11:17:49
 tags:
 - 运维

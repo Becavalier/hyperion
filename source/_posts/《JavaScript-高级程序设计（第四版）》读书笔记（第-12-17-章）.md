@@ -14,9 +14,9 @@ tags:
 50. （Page：873）`window` 对象：
 * ***top / self / parent***：分别指向“最上层”、“自身”以及“父层”窗口；
 * ***screenLeft / screenTop***：表示窗口相对**屏幕**左侧、顶部的位置；
-* ***moveTo() / moveBy()***：移动窗口（可能被禁用）；
-* ***resizeTo() / resizeBy()***：缩放窗口（可能被禁用）；
-* ***scrollTo() / scrollBy()***：滚动窗口；
+* （方法）***moveTo / moveBy***：移动窗口（可能被禁用）；
+* （方法）***resizeTo / resizeBy***：缩放窗口（可能被禁用）；
+* （方法）***scrollTo / scrollBy***：滚动窗口；
 
 ```javascript
 // scroll document to a fixed position (1000, 0).
@@ -46,12 +46,12 @@ if (typeof innerWidth !== 'number') {
 ```
 
 * ***pageXOffset / pageYOffset***：获得文档相对于当前视口的滚动距离（X/Y）；
-* ***open()***：导航到指定 URL 或打开新浏览器窗口；
-* ***close()***：关闭当前窗口；
+* （方法）***open***：导航到指定 URL 或打开新浏览器窗口；
+* （方法）***close***：关闭当前窗口；
 * ***closed***：判断所引用窗口是否已关闭（**常用于 window.open() 的返回窗口**）；
 * ***opener***：仅存在于新创建窗口返回的 window 对象上，**指向打开它的窗口**。将该属性设置为 null 表示新打开的标签页不需要与打开它的标签页通信，因此可以在独立进程中运行；
-* ***setTimeout() / setInterval()***：函数第二个参数指定的时间为**向异步队列添加新任务之前等待的时间**（同步任务会优先执行）。被添加到队列中的任务会按照顺序执行；
-* ***alert() / confirm() / prompt()***：系统对话框；
+* （方法）***setTimeout / setInterval***：函数第二个参数指定的时间为**向异步队列添加新任务之前等待的时间**（同步任务会优先执行）。被添加到队列中的任务会按照顺序执行；
+* （方法）***alert / confirm / prompt***：系统对话框；
 
 51. （Page：895）`window.location` 对象：
 
@@ -64,9 +64,9 @@ if (typeof innerWidth !== 'number') {
 * ***host***：服务器名及端口号；
 * ***hostname***：服务器名；
 * ***href***：当前页面完整 URL（同 *location.toString()*）。修改该值或 *window.location*，可以导航到特定的 URL；
-* ***assign()***：导航到特定 URL；
-* ***replace()***：导航到特定 URL（但不增加新历史记录，仅替换）；
-* ***reload()***：重新加载当前页面。传递参数为 true 时会从服务器请求而不使用缓存；
+* （方法）***assign***：导航到特定 URL；
+* （方法）***replace***：导航到特定 URL（但不增加新历史记录，仅替换）；
+* （方法）***reload***：重新加载当前页面。传递参数为 true 时会从服务器请求而不使用缓存；
 * ***pathname***：URL 中的路径/文件名；
 * ***port***：端口号；
 * ***protocol***：页面使用的协议；
@@ -84,7 +84,7 @@ if (typeof innerWidth !== 'number') {
 
 * ***plugins***：包含浏览器所安装插件的信息；
 * ***userAgent***：获得用户代理信息；
-* ***registerProtocolHandler()***：可以将某个网站注册为处理某种特定类型信息的应用程序；
+* （方法）***registerProtocolHandler***：可以将某个网站注册为处理某种特定类型信息的应用程序；
 
 53. （Page：914）`window.screen` 对象：保存着**客户端显示器信息**。
 54. （Page：916）`window.history` 对象：
@@ -93,16 +93,16 @@ if (typeof innerWidth !== 'number') {
 
 \- ***属性和方法***：
 
-* ***go() / back() / forward()***：可以在用户历史记录中进行导航；
+* （方法）***go / back / forward***：可以在用户历史记录中进行导航；
 * ***length***：返回当前历史记录中的条目数量；
-* ***pushState()***：向当前浏览器会话的历史堆栈中**添加一个状态，但不向服务器发送请求，同时触发 `popstate` 事件**（浏览器地址栏会反映出新的状态）；
+* （方法）***pushState***：向当前浏览器会话的历史堆栈中**添加一个状态，但不向服务器发送请求，同时触发 `popstate` 事件**（浏览器地址栏会反映出新的状态）；
 
 ```javascript
 let stateObj = { foo: 'bar' };
 window.history.pushState(stateObj, '', 'baz.html');
 ```
 
-* ***replaceState()***：（同上）但不会创建新历史纪录，只会覆盖当前状态；
+* （方法）***replaceState***：（同上）但不会创建新历史纪录，只会覆盖当前状态；
 * ***state***：获取当前页面状态；
 
 ### 第 13 章 - 客户端检测
@@ -155,14 +155,14 @@ window.history.pushState(stateObj, '', 'baz.html');
 * ***images***：包含文档中所有的 \<img\> 元素；
 * ***links***：包含文档中所有带 href 的 \<a\> 元素；
 * ***implementation***：一个对象，提供了与浏览器 DOM 实现相关的信息和能力（已废弃，均返回 true）；
-* ***write() / writeln()***：向网页输出流中写入内容；
-* ***open() / close()***：打开/关闭网页输出流；
+* （方法）***write / writeln***：向网页输出流中写入内容；
+* （方法）***open / close***：打开/关闭网页输出流；
 * （Node.DOCUMENT_TYPE_NODE***doctype***：返回**文档类型对象**；
   * *name*：返回文档类型名称。
-* （Node.TEXT_NODE）***createTextNode(text)***：创建文本节点；
-* （Node.COMMENT_NODE）***createComment(text)***：创建注释节点；
-* （Node.DOCUMENT_FRAGMENT_NODE）***createDocumentFragment()***：创建文档片段（**可用作被实际添加文档的父节点，以避免浏览器的多次渲染**）；
-* （Node.ATTRIBUTE_NODE）***createAttribute() / setAttributeNode()***：创建和设置属性节点；
+* （Node.TEXT_NODE）（方法）***createTextNode***：创建文本节点；
+* （Node.COMMENT_NODE）（方法）***createComment***：创建注释节点；
+* （Node.DOCUMENT_FRAGMENT_NODE）（方法）***createDocumentFragment***：创建文档片段（**可用作被实际添加文档的父节点，以避免浏览器的多次渲染**）；
+* （Node.ATTRIBUTE_NODE）（方法）***createAttribute / setAttributeNode***：创建和设置属性节点；
 
 
 \- ***DOM 节点查询属性和方法***：
@@ -171,13 +171,13 @@ window.history.pushState(stateObj, '', 'baz.html');
 * （节点操作）***nodeValue***：文本节点返回文本值；元素节点始终返回 null；
 * （节点操作）***nodeType***：返回节点的类型常量；
 * ***childNodes***：返回类数组 NodeList，存放子元素实例；
-  * ***item()***：返回该集合中某位置的元素；
+  * （方法）***item***：返回该集合中某位置的元素；
 * ***parentNode***：返回父元素实例；
 * ***previousSibling***：返回前一个同胞元素；
 * ***nextSibling***：返回下一个同胞元素；
 * ***firstChild***：返回该元素的第一个子元素；
 * ***lastChild***：返回该元素的最后一个子元素；
-* ***hasChildNodes()***：返回当前元素是否有子元素；
+* （方法）***hasChildNodes***：返回当前元素是否有子元素；
 * ***ownerDocument***：返回当前元素的所在文档节点；
 
 \- ***DOM 节点操作属性和方法***：
@@ -185,26 +185,26 @@ window.history.pushState(stateObj, '', 'baz.html');
 * （Node.ELEMENT_NODE）***id***：获取/设置当前元素的 ID；
 * （Node.ELEMENT_NODE）***className***：获取/设置当前元素的类名；
 * （Node.ELEMENT_NODE）***title***：获取/设置当前元素的标题；
-* （Node.ELEMENT_NODE）***getAttribute() / setAttribute() / removeAttribute()***：获取/设置/移除当前元素的 **HTML 属性**（属性名要保持一致，获取的属性值通常以“**字符串**”的形式来表示）；
-* （Node.ELEMENT_NODE）***attributes / getAttributeNode()***：获取当前元素的属性集合（NamedNodeMap 对象，保存了 Attr 节点）；
-  * *getNamedItem(name)*：返回某个**属性节点**；
-  * *removeNamedItem(name)*：删除某个属性节点；
-  * *setNamedItem(name)*：设置某个属性节点；
-  * *item(pos)*：获得索引位置 pos 处的节点。
-* （Node.ELEMENT_NODE）***createElement()***：创建新元素；
-* （Node.TEXT_NODE）***appendData(text)***：向文本节点末尾添加数据；
-* （Node.TEXT_NODE）***deleteData(offset, count)***：删除文本；
-* （Node.TEXT_NODE）***insertData(offset, text)***：插入文本；
-* （Node.TEXT_NODE）***replaceData(offset, count, text)***：替换文本；
-* （Node.TEXT_NODE）***splitText(offset)***：拆分文本（与 *normalize* 作用相反）；
-* （Node.TEXT_NODE）***substringData(offset, count)***：提取文本子串；
+* （Node.ELEMENT_NODE）（方法）***getAttribute / setAttribute / removeAttribute***：获取/设置/移除当前元素的 **HTML 属性**（属性名要保持一致，获取的属性值通常以“**字符串**”的形式来表示）；
+* （Node.ELEMENT_NODE）<b><i>attributes / getAttributeNode()</i></b>：获取当前元素的属性集合（NamedNodeMap 对象，保存了 Attr 节点）；
+  * （方法）*getNamedItem*：返回某个**属性节点**；
+  * （方法）*removeNamedItem*：删除某个属性节点；
+  * （方法）*setNamedItem*：设置某个属性节点；
+  * （方法）*item*：获得索引位置 pos 处的节点。
+* （Node.ELEMENT_NODE）（方法）***createElement***：创建新元素；
+* （Node.TEXT_NODE）（方法）***appendData***：向文本节点末尾添加数据；
+* （Node.TEXT_NODE）（方法）***deleteData***：删除文本；
+* （Node.TEXT_NODE）（方法）***insertData***：插入文本；
+* （Node.TEXT_NODE）（方法）***replaceData***：替换文本；
+* （Node.TEXT_NODE）（方法）***splitText***：拆分文本（与 *normalize* 作用相反）；
+* （Node.TEXT_NODE）（方法）***substringData***：提取文本子串；
 * （Node.TEXT_NODE）***length***：返回文本节点长度；
-* ***appendChild()***：为当前元素添加子元素（位于末尾）；
-* ***insertBefore()***：为当前元素添加子元素（位于参考节点之前）；
-* ***replaceChild()***：替换子元素；
-* ***removeChild()***：移除子元素；
-* ***cloneNode()***：克隆当前元素（可选是否深复制）。**新复制的元素会丢失原有的事件处理器**；
-* ***normalize()***：检测当前节点的所有后代，**删除不包含文本的文本节点，或合并互为同胞关系的文本节点**；
+* （方法）***appendChild***：为当前元素添加子元素（位于末尾）；
+* （方法）***insertBefore***：为当前元素添加子元素（位于参考节点之前）；
+* （方法）***replaceChild***：替换子元素；
+* （方法）***removeChild***：移除子元素；
+* （方法）***cloneNode***：克隆当前元素（可选是否深复制）。**新复制的元素会丢失原有的事件处理器**；
+* （方法）***normalize***：检测当前节点的所有后代，**删除不包含文本的文本节点，或合并互为同胞关系的文本节点**；
 
 
 56. （Page：1043）**MutationObserver** 接口（取代了废弃的 MutationEvent）：可以用于监听 DOM 改动。
@@ -232,9 +232,9 @@ observer.disconnect();
 
 57. （Page：1071）Selector API：
 
-* ***querySelector(\<css-selector\>)***：返回符合条件的**第一个元素**；
-* ***querySelectorAll(\<css-selector\>)***：返回一个包含**所有匹配元素的 NodeList 静态实例**；
-* ***matches(\<css-selector\)***：返回是否存在所匹配的元素。
+* （方法）***querySelector***：返回符合条件的**第一个元素**；
+* （方法）***querySelectorAll***：返回一个包含**所有匹配元素的 NodeList 静态实例**；
+* （方法）***matches***：返回是否存在所匹配的元素。
 
 58. （Page：1075）**元素遍历**（Element Traversal 规范）：
 
@@ -246,20 +246,20 @@ observer.disconnect();
 
 59. （Page：1077）**HTML5**：
 
-* ***getElementsByClassName()***：根据类名获取元素（返回 NodeList）；
+* （方法）***getElementsByClassName***：根据类名获取元素（返回 NodeList）；
 * ***dataset***：包含当前元素上的所有**自定义属性**（以 “data-” 作为前缀开头）；
 * ***innerHTML***：读取/更换**当前元素内部（不包含该元素）**的 HTML 字符串（**HTML5 下通过该属性动态插入的 \<script\> 标签是不会被执行的**）；
 * ***outerHTML***：读取/更换**当前元素及其内部**的 HTML 字符串；
-* ***insertAdjacentHTML()***：插入 HTML 元素；
-* ***insertAdjacentText()***：插入文本（节点）；
-* ***scrollIntoView()***：**滚动浏览器窗口或容器窗口以便包含元素进入视口**；
+* （方法）***insertAdjacentHTML***：插入 HTML 元素；
+* （方法）***insertAdjacentText***：插入文本（节点）；
+* （方法）***scrollIntoView***：**滚动浏览器窗口或容器窗口以便包含元素进入视口**；
 * ***classList***：包含当前元素所有类型的一个集合（DOMTokenList）；
   * *add(value)*：向类名列表中添加类名；
   * *contains(value)*：返回给定类名是否存在；
   * *remove(value)*：删除指定类名；
   * *toggle(value)*：若指定类名存在，则删除；否则添加。
 * （HTMLDocument）***activeElement***：返回**当前拥有焦点的 DOM 元素**（默认为 *document.body*）；
-* （HTMLDocument）***hasFocus()***：返回文档当前**是否拥有焦点**（表明用户是否在操作页面）；
+* （HTMLDocument）（方法）***hasFocus***：返回文档当前**是否拥有焦点**（表明用户是否在操作页面）；
 * （HTMLDocument）***readyState***：表明当前文档的**状态**；
   * *loading*：文档正在加载；
   * *complete*：文档加载完成。
@@ -270,7 +270,7 @@ observer.disconnect();
 \- ***专有扩展（未进入标准）***：
 
 * ***children***：返回一个 HTMLCollection，**包含所有 Element 类型的子节点**；
-* ***contains()***：用于验证个元素是否为另一个元素的后代；
+* （方法）***contains***：用于验证个元素是否为另一个元素的后代；
 * ***innerText***：读取/更换**当前元素内部（不包含该元素）**的文本（按照 DFS 的顺序将子树中的所有文本节点值拼接起来）；
 * ***outerText***：（同上，但包含当前节点）；
 
@@ -313,10 +313,8 @@ observer.disconnect();
 
 62. （Page：1119）DOM 节点相关属性和方法：
 
-* ***isSameNode(node)***：验证两个节点是否**相同**（同一个引用）；
-* ***isEqualNode(node)***：验证两个节点是否**相等**（节点类型相同、属性相同，子节点也相等）；
-* （已废弃）***setUserData(key, value, callback)***：为 DOM 节点附加额外数据，并监听节点的复制、删除、重命名或导入文档；
-* （已废弃）***getUserData(key)***：获取 DOM 节点上的附加数据；
+* （方法）***isSameNode***：验证两个节点是否**相同**（同一个引用）；
+* （方法）***isEqualNode***：验证两个节点是否**相等**（节点类型相同、属性相同，子节点也相等）；
 * （HTMLIFrameElement）***contentDocument***：包含子内联窗格中内容的 ***document*** 对象指针（受跨域限制）；
 * （HTMLIFrameElement）***contentWindow***：包含子内联窗格的 ***window*** 对象指针（受跨域限制）。
 
@@ -332,7 +330,7 @@ observer.disconnect();
   * *item(index)*：根据索引获得 CSS 属性名；
   * *removeProperty(propertyName)*：移除 CSS 属性值；
   * *setProperty(propertyName, value, priority)*：添加 CSS 属性值；
-* （Window）***getComputedStyle()***：获得给定元素的**计算样式**，返回一个 CSSStyleDeclaration 对象；
+* （Window）（方法）***getComputedStyle***：获得给定元素的**计算样式**，返回一个 CSSStyleDeclaration 对象；
 
 64. （Page：1131）**操作样式表**：
 
@@ -383,10 +381,10 @@ observer.disconnect();
 
 ![](4.png)
 
-* ***getBoundingClientRect()***：返回一个 DOMRect 对象，包含元素在页面中相对于视口的位置信息。
+* （方法）***getBoundingClientRect***：返回一个 DOMRect 对象，包含元素在页面中相对于视口的位置信息。
 
-66. （Page：1144）**DOM 遍历**：**[NodeIterator](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator)** \ **[TreeWalker](https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker)**（两套 DOM API）；
-66. （Page：1156）**DOM 范围**：**[Range](https://developer.mozilla.org/zh-CN/docs/Web/API/Range)**；
+66. （Page：1144）**DOM 遍历**：<b>[NodeIterator](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator)</b> \ <b>[TreeWalker](https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker)</b>（两套 DOM API）；
+66. （Page：1156）**DOM 范围**：<b>[Range](https://developer.mozilla.org/zh-CN/docs/Web/API/Range)</b>；
 
 ### 第 17 章 - 事件
 
@@ -423,8 +421,8 @@ if (btn) {
 ```
 
 * **DOM2**：新增两个 API。
-  * ***addEventListener()***：添加事件处理程序（默认注册在事件流的**冒泡阶段**）；
-  * ***removeEventListener()***：移除事件处理程序；
+  * （方法）***addEventListener***：添加事件处理程序（默认注册在事件流的**冒泡阶段**）；
+  * （方法）***removeEventListener***：移除事件处理程序；
 
 ```javascript
 let btn = document.getElementById('myBtn');
@@ -443,9 +441,9 @@ btn.removeEventListener('click', handler, true);
 * ***defaultPrevented***：表示是否阻止默认事件；
 * ***detail***：事件相关其他信息；
 * ***eventPhase***：表示调用事件处理程序的阶段；
-* ***preventDefault()***：取消事件的默认行为（cancelable 为 true 时可调用）；
-* ***stopImmediatePropagation()***：取消后续事件捕获冒泡，并阻止后续调用任何事件处理程序；
-* ***stopPropagation()***：取消所有后续事件的捕获或冒泡（bubbles 为 true 时可调用）；
+* （方法）***preventDefault***：取消事件的默认行为（cancelable 为 true 时可调用）；
+* （方法）***stopImmediatePropagation***：取消后续事件捕获冒泡，并阻止后续调用任何事件处理程序；
+* （方法）***stopPropagation***：取消所有后续事件的捕获或冒泡（bubbles 为 true 时可调用）；
 * ***target***（IE 中为 *srcElement*）：**事件目标**；
 * ***trusted***：事件是否由浏览器生成；
 * ***type***：**事件类型**；

@@ -368,7 +368,7 @@ license = "MIT OR Apache-2.0"
 ```
 
 * 可以使用 `cargo publish` 发布 crate；
-* **\***目前 crates.io 暂无 namespacing 机制（考虑到 Namespace Squatting 等一系列潜在的问题）；
+* 目前 crates.io 暂无 namespacing 机制（考虑到 Namespace Squatting 等一系列潜在的问题）；
 
 42. （Page：332）使用 `cargo yank --vers <version>` 阻止某一版本 crate 被**新的项目**使用；反之：`cargo yank --vers <version> --undo`。
 43. （Page：333）**Cargo Workspace**：

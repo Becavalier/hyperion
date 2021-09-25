@@ -18,14 +18,14 @@ HTTP 协议的默认端口号是80端口。HTTP 协议是单向的、无状态�
 
 当服务器与客户端建立了 TCP 连接之后即可进行 HTTP 的请求与响应，首先浏览器客户端会向服务器发送一个 HTTP 请求，请求中包含一个 HTTP 请求头部，和可能携带的信息。如图，比如当我们访问“百度”网站的时候，浏览器向百度的服务器发的一个 HTTP 请求头部包含以下内容：
 
-* ** Accept：** 表示浏览器支持的 MIME 类型；（HTML，图片等类型）
-* ** Accept-Encoding：** 表示浏览器支持的压缩编码格式；（gzip, deflate, sdch）
-* ** Accept-Language：** 表示浏览器支持的语言；（zh-CN 表示中文）
-* ** Cache-Control：** 表示浏览器的缓冲控制时间；（max-age=0 即缓存时间为0）
-* ** Connection：** 表示客户端与服务连接类型；（Keep-Alive 表示持久连接）
-* ** Cookie：** 表示浏览器本地存储的 Cookie 内容；
-* ** Host：** 表示请求的服务器域名；（https://www.baidu.com/）
-* ** User-Agent：** 表示本地浏览器客户端的信息；(包括浏览器版本、类型、CPU 信息等）
+* **Accept：** 表示浏览器支持的 MIME 类型；（HTML，图片等类型）
+* **Accept-Encoding：** 表示浏览器支持的压缩编码格式；（gzip, deflate, sdch）
+* **Accept-Language：** 表示浏览器支持的语言；（zh-CN 表示中文）
+* **Cache-Control：** 表示浏览器的缓冲控制时间；（max-age=0 即缓存时间为0）
+* **Connection：** 表示客户端与服务连接类型；（Keep-Alive 表示持久连接）
+* **Cookie：** 表示浏览器本地存储的 Cookie 内容；
+* **Host：** 表示请求的服务器域名；（https://www.baidu.com/）
+* **User-Agent：** 表示本地浏览器客户端的信息；(包括浏览器版本、类型、CPU 信息等）
 
 
 ![请求响应的状态码](1.png)
@@ -36,8 +36,8 @@ HTTP 协议的默认端口号是80端口。HTTP 协议是单向的、无状态�
 
 上述响应头的部分字段意义如下：
 
-* ** Bdpagetype / Bdqid / Cxy_all：** 百度服务器传来的特殊字段；
-* ** Server：** 表示服务器的类型；（BWS：Baidu Web Server）
-* ** Set-Cookie：** 服务器想要设置的本地 Cookie 内容；
+* **Bdpagetype / Bdqid / Cxy_all：** 百度服务器传来的特殊字段；
+* **Server：** 表示服务器的类型；（BWS：Baidu Web Server）
+* **Set-Cookie：** 服务器想要设置的本地 Cookie 内容；
 
 至此，一次简单的 HTTP 请求与响应就完成了。

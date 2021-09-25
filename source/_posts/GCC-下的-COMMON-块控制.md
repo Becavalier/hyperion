@@ -69,11 +69,11 @@ int externIntVar = 100;
 ```
 * **-fno-common**：
 
-当然，我们也可以通过为 GCC 传递参数 “**-fno-common**” 参数来让编译器将 C 源代码中的未初始化的全局变量直接放置到 .bss 段。这对于需要保持较高运行性能的程序可能会有一定的帮助（以下引用来自 GCC 帮助文档）：
+当然，我们也可以通过为 GCC 传递参数 “<b>-fno-common</b>” 参数来让编译器将 C 源代码中的未初始化的全局变量直接放置到 .bss 段。这对于需要保持较高运行性能的程序可能会有一定的帮助（以下引用来自 GCC 帮助文档）：
 
 > Compiling with -fno-common is useful on targets for which it provides better performance, ...
 
-* **\_\_attribute\_\_((common))**：
+* <b>\_\_attribute\_\_((common))</b>：
 
 关于编译器扩展 `__attribute__((common))` 的用法一般而言很少用到，可以想到的是这样一种应用场景：使用 C++ 编写的主程序文件想要与已有的 C 静态库进行链接，并且该 C 静态库中有被放置于 COMMON 块中的未初始化的全局变量，而为了能够让链接器完成符号的决议过程，而不是被主程序中的强符号覆盖，这里我们可以在 C++ 主程序中，将同名的未初始化的全局变量用上述扩展进行标记，以强制（默认在 C++ 下，未初始化的全局变量会被放入 .bss 段中）将该符号放置于 COMMON 块中参与决议，即 COMMON 块中的符号决议流程。
 

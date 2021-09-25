@@ -54,7 +54,7 @@ SYMBOL TABLE:
 000000000000000e g       *ABS*	0000000000000000 _binary_text_size
 ```
 
-可以看到，整个目标文件只有一个 .data 段，用来存放先前文本文件中的内容。并且同时，objcopy 还为我们增加了一些辅助的导出符号，比如 “**_binary_text_start**” 和 “**_binary_text_end**” 这两个指针分别指向了作为 Section 内容的文本文件的头和尾。另外的 “_binary_text_size” 作为一个 ABS 类型的符号主要用于作为编译器或链接器的元信息。接下来，这里我们使用 readelf 来看一下整个目标文件的全貌：
+可以看到，整个目标文件只有一个 .data 段，用来存放先前文本文件中的内容。并且同时，objcopy 还为我们增加了一些辅助的导出符号，比如 “<b>_binary_text_start</b>” 和 “<b>_binary_text_end</b>” 这两个指针分别指向了作为 Section 内容的文本文件的头和尾。另外的 “_binary_text_size” 作为一个 ABS 类型的符号主要用于作为编译器或链接器的元信息。接下来，这里我们使用 readelf 来看一下整个目标文件的全貌：
 
 ```bash
 readelf -a text.o

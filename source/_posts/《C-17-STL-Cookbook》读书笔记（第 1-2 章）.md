@@ -4,7 +4,7 @@ intro: 看到知乎上有人推荐的一本书。
 comments: true
 date: 2020-07-22 00:08:03
 tags:
-- C++
+- Cpp
 ---
 
 看到知乎上有人推荐的一本书。
@@ -69,7 +69,7 @@ int main(int argc, char **argv) {
 }
 ```
 
-* 在 “***[const|volatile][T][&|&&][identifier]***” 形式的表达式中，当其中的 [&|&&] 引用部分存在时，[const|volatile] 将不属于 `decltype([identifier])` 所推断类型的一部分（引用本身无法被 rebind，因此也就没有 constness 的概念，一旦初始化不会再被改变）。**区分 const T& 与 T& const**。总结来说，具有 copyable 属性的值或对象（普通值 \ 指针等）在传递时都会忽略 top-level constness；
+* 在 “<b>[const|volatile][T][&|&&][identifier]</b>” 形式的表达式中，当其中的 [&|&&] 引用部分存在时，[const|volatile] 将不属于 `decltype([identifier])` 所推断类型的一部分（引用本身无法被 rebind，因此也就没有 constness 的概念，一旦初始化不会再被改变）。<b>区分 const T& 与 T& const</b>。总结来说，具有 copyable 属性的值或对象（普通值 \ 指针等）在传递时都会忽略 top-level constness；
 * 可以使用 `std::tie` 来实现类似的 Unpacking，其一个优势在于对于**不需要的字段可以通过** `std::ignore` **的方式将其丢弃**。而在 Structured-Bindings 中，则需要为容器中的每一个字段都提供相应的绑定变量；
 * 结构化绑定也是一种为已存在对象添加的别名，但**一个结构化绑定不一定使用引用类型来实现**：
 

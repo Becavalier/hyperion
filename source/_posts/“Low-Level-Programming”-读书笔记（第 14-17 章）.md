@@ -152,11 +152,11 @@ int main(int argc, char** argv) {
 
 通过在旧 rbp 值的高地址侧插入一个 **Stack Guard** 的方式来检测 Stack Overrunning 是否发生。在 ret 指令执行之前，**编译器会发出特殊检查，以验证 Stack Guard 的完整性**。如果发现其值被更改则会直接终止程序的执行。该技术默认在 GCC 及 MSVC 中开启。
 
-* ***ASLR (Address Space Layout Randomization)***：
+* ***ASLR（Address Space Layout Randomization）***：
 
 将每个 Program Segment 都加载到地址空间中的随机位置上，这使得猜测函数的正确地址变得几乎不可能。大部分常用的操作系统均支持该功能。
 
-* ***EDP (Data Execution Prevention)***：
+* ***EDP（Data Execution Prevention）***：
 
 此技术可以保护某些内存页，以避免执行存储在这些内存页上的指令。
 
@@ -292,7 +292,7 @@ __attribute__((visibility("hidden")))
 void foo() {}  // 会变成 local 符号；
 ```
 
-* 可以选择在编译时为 GCC 传递 “**-fvisibility=hidden**” 来隐藏所有符号，然后仅将需要的符号再显式导出。
+* 可以选择在编译时为 GCC 传递 “<b>-fvisibility=hidden</b>” 来隐藏所有符号，然后仅将需要的符号再显式导出。
 
 109. （Page：315）GCC 中可以通过为标记为 “hidden” 的内部方法添加 `__attribute__((alias("aliasName")))` 别名的方式，使得它们在被 wrapper 方法调用时减少一次内存地址的解引用过程（是依赖于编译器的特性）。
 110. （Page：）X86-64 **Code Model**（GCC）：

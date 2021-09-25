@@ -24,7 +24,7 @@ DNS 协议用于将域名解析为 IP 地址。ARP 协议用于通过 IP 地址�
 
 #### 4. URL 与 URI：
 
-URI 是统一资源定位符的简写，主要用对应的定位符来定位某一种资源。URL 是 URI 的一个子集，主要用来表示资源在互联网中的地点。URI 格式：**http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1**。这里扩展一下“HTTP基本认证（Basic Authentication）”。上述的 URI 完整格式中“user:pass@”部分即对应一个基本认证的登录部分。基本认证主要需要服务器返回一个 “**WWW-Authenticate Basic realm="My Realm"**” 头部，在该头部指定了服务器需要的认证方式和显示给用户的备注信息。服务器端可以通过 `$_SERVER["PHP_AUTH_USER"]` 和 `$_SERVER["PHP_AUTH_PW"]`来获得用户输入的验证信息。
+URI 是统一资源定位符的简写，主要用对应的定位符来定位某一种资源。URL 是 URI 的一个子集，主要用来表示资源在互联网中的地点。URI 格式：**http://user:pass@www.example.com:80/dir/index.html?uid=1#ch1**。这里扩展一下“HTTP基本认证（Basic Authentication）”。上述的 URI 完整格式中“user:pass@”部分即对应一个基本认证的登录部分。基本认证主要需要服务器返回一个 “<b>WWW-Authenticate Basic realm="My Realm"</b>” 头部，在该头部指定了服务器需要的认证方式和显示给用户的备注信息。服务器端可以通过 `$_SERVER["PHP_AUTH_USER"]` 和 `$_SERVER["PHP_AUTH_PW"]`来获得用户输入的验证信息。
 
 
 ```php

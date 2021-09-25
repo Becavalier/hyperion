@@ -18,8 +18,6 @@ tags:
 1. 仓库地址：[https://github.com/Becavalier/MachineLearning](https://github.com/Becavalier/MachineLearning)；
 2. 实验数据地址：[http://archive.ics.uci.edu/ml/](http://archive.ics.uci.edu/ml/)；
 
-
-
 #### 2、遇到的问题：
 
 1. 为了防止单一特征的数值过大影响欧氏距离的计算，在进行距离计算前统一进行归一化处理；
@@ -27,8 +25,6 @@ tags:
 3. 欧式距离并不适合该模型的惰性训练和预测，可能原因是：并不是所有给出的特征都与最后需要进行分类的特征有很强的相关性，最后的分类结果大多会受到这些无用特征的影响，这些特征变成了噪声；
 4. 计算**距离权重**的方式可以采用距离倒数或者高斯函数的方式；
 5. 最优 K 可以通过交叉验证的方式进行测量；
-
-
 
 #### 3、待优化：
 

@@ -2,6 +2,7 @@
 title: Privacy Policy for TOVD
 intro: This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. Our Privacy Policy for TOVD is created with the help of the Free Privacy Policy Generator.
 comments: true
+published: false
 date: 2019-09-13 22:05:42
 tags:
 - Others

@@ -23,7 +23,7 @@ tags:
 ![](3.png)
 
 
-关于 Ignition 生成的比特码结构如下所示。Ignition 本身是一种基于累加器的寄存器型解释器，关于比特码的执行流程可以参考**[这篇文章](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775)**。
+关于 Ignition 生成的比特码结构如下所示。Ignition 本身是一种基于累加器的寄存器型解释器，关于比特码的执行流程可以参考<b>[这篇文章](https://medium.com/dailyjs/understanding-v8s-bytecode-317d46c94775)</b>。
 
 ![](4.png)
 

@@ -89,7 +89,7 @@ tags:
 
 #### 代码（3 个项目）
 
-* ***QuickForth (Forth Machine Prototype)***（X86/64 汇编）；
+* ***QuickForth（Forth Machine Prototype）***（X86/64 汇编）；
 一个基于 X86/64 汇编编写的 Forth 虚拟机。主要用来练手。
 * ***TWVM (WebAssembly VM) 重写***（C++）；
 轻量级的 WebAssembly 虚拟机，一直想找时间重写，从年初拖到了年尾。

@@ -4,7 +4,7 @@ intro: 接上篇。
 comments: true
 date: 2020-07-28 12:14:05
 tags:
-- C++
+- Cpp
 ---
 
 接上篇。
@@ -419,7 +419,7 @@ int main(int argc, char **argv) {
 * **map**：*(E → F) × Seq<‍E> → Seq<‍F>*
 * **filter**：*(E → boolean) × Seq<‍E> → Seq<‍E>*
 * **reduce**：*(F × E → F) × Seq<‍E> × F → F*
-* reducer 的一种常见形式：***func(accum, input)***；当其作为参数传给 map 以及 filter 时，仍然返回类似的形式;
+* reducer 的一种常见形式：<b>func(accum, input)</b>；当其作为参数传给 map 以及 filter 时，仍然返回类似的形式;
 
 ```cpp
 template<typename T>

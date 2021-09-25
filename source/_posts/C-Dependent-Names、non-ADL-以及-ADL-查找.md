@@ -4,7 +4,7 @@ intro: 记录下 C++ 中对于 Dependent Names 在 non-ADL 以及 ADL 这两种�
 comments: true
 date: 2020-08-18 18:13:58
 tags:
-- C++
+- Cpp
 ---
 
 记录下 C++ 中对于 Dependent Names 在 non-ADL 以及 ADL 这两种情况下的名字查找规则。

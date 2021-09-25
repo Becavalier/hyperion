@@ -100,7 +100,7 @@ git reset <commit-id> <file>  # 从对应某次提交中恢复某个文件（默
 
 ![](2.png)
 
-* `git commit` 在执行时会**取得索引（index）中的内容并将它保存为一个永久的快照，然后创建一个指向该快照的提交对象，最后更新当前分支所来指向本次提交；
+* `git commit` 在执行时会取得索引（index）中的内容并将它保存为一个永久的快照，然后创建一个指向该快照的提交对象，最后更新当前分支所来指向本次提交；
 * `git reflog` 可用于找回曾经的丢失的 HEAD；
 * `git reset` 命令会以特定的顺序重写这“三棵树”，在指定以下选项时停止:
   - 移动 HEAD 分支的指向（若指定了 --soft，则到此停止）；
@@ -173,7 +173,7 @@ git rev-parse HEAD  # 获得 HEAD 对应的提交 ID；
 git submodule foreach <command>  # 在每一个子模块中执行命令；
 ```
 
-* 子模块会添加信息到项目中的 “**.gitmodules**” 文件内；
+* 子模块会添加信息到项目中的 “<b>.gitmodules</b>” 文件内；
 * 子模块会以 “**160000**” 模式（将一次提交记作**一项目录**，而非一个子目录或者一个文件）进行提交；
 * 当通过 `git submodule update` 从子模块仓库中抓取修改时，Git将会获得这些改动并更新子目录中的文件，但是会将子仓库留在一个称作 “**Detached HEAD**” 的状态，即“没有本地工作分支跟踪改动”的状态。
 
@@ -234,7 +234,7 @@ man git-config
 * ***core.autocrlf***：在提交时自动把回车和换行转换成换行（主要用于 Windows 系统）；
 * ***core.whitespace***：探测和修正多余空白字符问题；
 
-69. （Page：325）**Git 属性**：基于路径的设置项（***.gitattributes*** / ***.git/info/attributes***）。可以对项目中的文件或目录单独**定义不同的合并策略**，让 Git 知道**怎样比较非文本文件**，或者让 Git 在提交或检出前过滤内容等。
+69. （Page：325）**Git 属性**：基于路径的设置项（<b>.gitattributes</b> / <b>.git/info/attributes</b>）。可以对项目中的文件或目录单独**定义不同的合并策略**，让 Git 知道**怎样比较非文本文件**，或者让 Git 在提交或检出前过滤内容等。
 
 ```shell
 # .gitattributes
@@ -253,7 +253,7 @@ git config --global filter.indent.clean indent
 git config --global filter.indent.smudge cat
 ```
 
-71. （Page：333）**Git 钩子**：钩子都被存储在 Git 目录下的 hooks 子目录中。也即绝大部分项目中的 “**.git/hooks**”（移除示例文件后缀的 “.sample” 即可启用）。
+71. （Page：333）**Git 钩子**：钩子都被存储在 Git 目录下的 hooks 子目录中。也即绝大部分项目中的 “<b>.git/hooks</b>”（移除示例文件后缀的 “.sample” 即可启用）。
 
 ### 九、Git 与其他系统
 
@@ -289,7 +289,7 @@ git cat-file -p <sha1-hash>
 ```
 
 * 树对象还可以再包含树对象及数据对象；
-* **\<file-mode\>**：100644-普通文件；100755-可执行文件；12000-符号链接；
+* <b>\<file-mode\></b>：100644-普通文件；100755-可执行文件；12000-符号链接；
 
 76. （Page：410）**提交对象**：
 
@@ -311,7 +311,7 @@ git update-ref <ref-path> <ref-value>
 git symbolic-ref HEAD <ref-path>
 ```
 
-* 被存放在 “**.git/refs**” 文件夹下，其下的每一个文件都对应一个引用别名，文件内部包含有引用对应的 SHA-1 字符串；
+* 被存放在 “<b>.git/refs</b>” 文件夹下，其下的每一个文件都对应一个引用别名，文件内部包含有引用对应的 SHA-1 字符串；
 * **分支的本质**：一个指向某一系列提交之首的指针或引用；
 * HEAD 文件是一个符号引用（包含指向其他引用的指针），**指向目前所在的分支**；
 * 当执行 `git commit` 时，该命令会创建一个提交对象，并用 HEAD 文件中那个引用所指向的 SHA-1 值设置其父提交字段；

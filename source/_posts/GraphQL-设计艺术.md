@@ -134,6 +134,6 @@ fragment post on PostComment {
 
 #### 实践资源
 
-GraphQL 官方给出了多语言版本的后端实现，可以参考 “**[GraphQL Code](http://graphql.cn/code/)**” 来查找合适的 GraphQL 后端运行时支持。
+GraphQL 官方给出了多语言版本的后端实现，可以参考 “<b>[GraphQL Code](http://graphql.cn/code/)</b>” 来查找合适的 GraphQL 后端运行时支持。
 
 前端实现可以直接基于 HTTP 的 ***GET*** 请求与 ***POST*** 请求来进行，按照合法的参数格式传递“需求描述”代码即可。

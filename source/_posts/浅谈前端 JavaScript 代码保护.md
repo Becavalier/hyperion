@@ -123,7 +123,7 @@ console.log(ast.print_to_string());  // "var x=26;var y=-96;console.log(-70);".
 
 #### “入侵式”混淆
 
-对于经由 UglifyJS 和 GCC 等传统 JavaScript 代码混淆工具处理后的代码，我们尚能清楚地了解代码的大致执行逻辑。而对于某些更加激进（*aggressive*）的 JavaScript 代码混淆工具来说，经由它们处理后生成的明文代码已基本丧失了可读性。比如本文开头的那段 JavaScript 代码在经由 “**[javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)**” 默认配置下的代码混淆功能处理后，可以得到以下结果。能够看到，这部分代码已基本丧失可读性。
+对于经由 UglifyJS 和 GCC 等传统 JavaScript 代码混淆工具处理后的代码，我们尚能清楚地了解代码的大致执行逻辑。而对于某些更加激进（*aggressive*）的 JavaScript 代码混淆工具来说，经由它们处理后生成的明文代码已基本丧失了可读性。比如本文开头的那段 JavaScript 代码在经由 “<b>[javascript-obfuscator](https://github.com/javascript-obfuscator/javascript-obfuscator)</b>” 默认配置下的代码混淆功能处理后，可以得到以下结果。能够看到，这部分代码已基本丧失可读性。
 
 ```javascript
 const _0x1dc7 = ['12nNpunz', 'log', '3dzOihv', 'length', '140940hmJpHd', '570593RvJQQj', '30406WiuNiv', '154511VRvByU', '1HvqfmW', '522351ALcOFX', 'map', '1318841sxtxER', '36YiKqrR', '16126qXbaLY'];
@@ -189,7 +189,7 @@ console[_0x84e884(0x1d7)](sortarr(newArr));
 * **第一阶段**：将明文的 JavaScript 源代码通过静态编译转换为基于特定 JavaScript 引擎（VM）的内部中间代码。这些代码可能以二进制或可读文本的形式存在，在某些情况下，可将二进制代码经过 Base64 编码后分发。在这种情况下，编码后的代码体积会增长 25% 左右；
 * **第二阶段**：将上述经过编码的二进制或可读文本代码连同其适用的 VM 实现一同放到浏览器中运行。这时，浏览器将通过运行 VM 来间接执行第一阶段产生的二进制或可读文本代码。通常考虑到性能，浏览器中的 VM 其实现可基于 WebAssembly 字节码或 ASM.js。
 
-比如以 [JerryScript](https://github.com/pando-project/jerryscript) 这个开源的轻量级 JavaScript 引擎为例，从其文档中我们可以得知，输入的 JavaScript 代码在被真正执行前会被首先转译成中间状态的 Bytecode 字节码格式，而这些编译好的字节码可以连同附加的元数据一起被组织成 JerryScript 内部的 Snapshot 快照格式，这些 Snapshot 可以被 JerryScript 引擎重新加载而继续执行。因此，这里的 Snapshot 便可作为对外分发的一种内部格式。当然，为了进一步保证中间代码格式的私有性，可以选择自行构建相应的 JavaScript VM，以将中间代码的格式和执行模型私有化。基于 JerryScript 构建的 JavaScript 代码保护 POC 可以参考**[这里](https://github.com/Becavalier/Zero)**。
+比如以 [JerryScript](https://github.com/pando-project/jerryscript) 这个开源的轻量级 JavaScript 引擎为例，从其文档中我们可以得知，输入的 JavaScript 代码在被真正执行前会被首先转译成中间状态的 Bytecode 字节码格式，而这些编译好的字节码可以连同附加的元数据一起被组织成 JerryScript 内部的 Snapshot 快照格式，这些 Snapshot 可以被 JerryScript 引擎重新加载而继续执行。因此，这里的 Snapshot 便可作为对外分发的一种内部格式。当然，为了进一步保证中间代码格式的私有性，可以选择自行构建相应的 JavaScript VM，以将中间代码的格式和执行模型私有化。基于 JerryScript 构建的 JavaScript 代码保护 POC 可以参考<b>[这里](https://github.com/Becavalier/Zero)</b>。
 
 ![](2.png)
 

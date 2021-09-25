@@ -163,7 +163,7 @@ init─┬─Xvnc
 
 而使用了 `screen` 命令后就不同了，此时 bash 是 screen 的子进程，而 screen 是 init（PID 为1）的子进程。那么当 ssh 断开连接时，HUP 信号自然不会影响到 screen 下面的子进程了。
 
-本文转载整理自“IBM 开发者社区”，同时修正了原文中的几处错误，此处为 **[原文链接](http://www.ibm.com/developerworks/cn/linux/l-cn-nohup/#ibm-pcon)**。
+本文转载整理自“IBM 开发者社区”，同时修正了原文中的几处错误，此处为 <b>[原文链接](http://www.ibm.com/developerworks/cn/linux/l-cn-nohup/#ibm-pcon)</b>。
 
 
 

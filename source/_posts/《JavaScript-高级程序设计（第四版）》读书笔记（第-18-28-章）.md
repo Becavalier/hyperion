@@ -65,18 +65,18 @@ for (worker of workers) {
 ```
 
 * **Atomics 静态方法**：
-  * *add(typedArray, index, value)*：加；
-  * *sub(typedArray, index, value)*：减；
-  * *and(typedArray, index, value)*：与；
-  * *or(typedArray, index, value)*：或；
-  * *xor(typedArray, index, value)*：异或。
-  * *compareExchange(typedArray, index, expectedValue, replacementValue)*：相等时替换，返回旧值；
-  * *exchange(typedArray, index, value)*：替换，返回旧值；
-  * *isLockFree(size)*：是一个“优化原语”，用来验证是否是能够使用原子操作的 TypedArray 标准字节长度之一；
-  * ***load(typedArray, index)***：读；
-  * ***store(typedArray, index, value)***：写；
-  * （Int32Array）*notify(typedArray, index, count)*：提醒在**等待队列**中休眠的代理；
-  * （Int32Array）*wait(typedArray, index, value[, timeout])*：若给定位置的值没有发生变化、仍然是给定的值时，线程将会睡眠，直到被唤醒或超时。
+  * <i>add(typedArray, index, value)</i>：加；
+  * <i>sub(typedArray, index, value)</i>：减；
+  * <i>and(typedArray, index, value)</i>：与；
+  * <i>or(typedArray, index, value)</i>：或；
+  * <i>xor(typedArray, index, value)</i>：异或。
+  * <i>compareExchange(typedArray, index, expectedValue, replacementValue)</i>：相等时替换，返回旧值；
+  * <i>exchange(typedArray, index, value)</i>：替换，返回旧值；
+  * <i>isLockFree(size)</i>：是一个“优化原语”，用来验证是否是能够使用原子操作的 TypedArray 标准字节长度之一；
+  * <i>load(typedArray, index)</i>：读；
+  * <i>store(typedArray, index, value)</i>：写；
+  * （Int32Array）<i>notify(typedArray, index, count)</i>：提醒在**等待队列**中休眠的代理；
+  * （Int32Array）<i>wait(typedArray, index, value[, timeout])</i>：若给定位置的值没有发生变化、仍然是给定的值时，线程将会睡眠，直到被唤醒或超时。
 * Atomics API **模仿 Linux Futex**（快速用户控件排斥量）：
 
 ```javascript
@@ -155,10 +155,10 @@ setTimeout(() => {
 77. （Page：1480）**File API** 与 **Blob API**：
 
 * ***FileReader***：表示一种**异步**文件读取机制；
-  * *readAsText(file, encoding)*：读取纯文本内容；
-  * *readAsDataURL(file)*：读取文件内容，转换为 “data:URL” 格式；
-  * *readAsBinaryString(file)*：读取原始二进制格式内容；
-  * *readAsText(file)*：读取文件内容，并存放到 ArrayBuffer 中。
+  * <i>readAsText(file, encoding)</i>：读取纯文本内容；
+  * <i>readAsDataURL(file)</i>：读取文件内容，转换为 “data:URL” 格式；
+  * <i>readAsBinaryString(file)</i>：读取原始二进制格式内容；
+  * <i>readAsText(file)</i>：读取文件内容，并存放到 ArrayBuffer 中。
 * ***FileReaderSync***：表示一种同步文件读取机制（只可在 Worker 中使用）；
 * **Blob**（binary large object）表示“二进制大对象”，是 JavaScript **对不可修改二进制数据的封装类型**；
 * **对象 URL**：有时也称为 “Blob URL”，是指**引用存储在 File 或 Blob 中数据的 URL**（这个 URL 可以直接当成普通 URL 来使用，两者均引用了某一种资源）。`window.URL.createObjectURL(object)` 可用于**创建**对象 URL 引用；`window.URL.revokeObjectURL(objectURL)` 用于**释放**对象 URL 引用。
@@ -251,7 +251,7 @@ const { writable, readable } = new TransformStream({
 82. （Page：1535）**计时 API**；
 
 * *High Resolution Time API*；
-  * ***window.performance.now()***：返回一个**微秒**精度的浮点值。计时器在执行上下文创建时从 0 开始单调递增；
+  * `window.performance.now()`：返回一个**微秒**精度的浮点值。计时器在执行上下文创建时从 0 开始单调递增；
 * *Performance Timeline API*；
 * *Navigation Timing API*；
 * *User Timing API*；
@@ -318,8 +318,8 @@ const logError = (sev, msg) => {
 * 第一代 Web 服务很大程度上是以 **XML** 为基础的，以服务器间通信为主要特征；
 * 最简单的 JSON 可以是一个数值，或一个**双引号**的字符串；
 * 两个方法：
-  * ***JSON.parse(text[, reviver])***；
-  * ***JSON.stringify(value[, replacer [, space]])***。
+  * <i>JSON.parse(text[, reviver])</i>；
+  * <i>JSON.stringify(value[, replacer [, space]])</i>。
 
 ### 第 24 章 - 网络请求与远程资源
 
@@ -413,21 +413,21 @@ Foo.baz();
   * **隐式使用了 MessagePorts 在两个上下文之间的通信**；
   * 对应全局对象 DedicatedWorkerGlobalScope（继承自 WokerGlobalScope）；
     * *name*：可选的字符串标识符；
-    * ***postMessage()***：向父上下文发送消息；
-    * *close()*：终止当前工作线程，**非同步停止**，仅会**通知工作者线程取消事件循环中的所有任务**；
-    * ***importScripts()***：用于向工作线程导入任意数量的脚本（将按引用顺序同步执行）。
+    * <i>postMessage()</i>：向父上下文发送消息；
+    * <i>close()</i>：终止当前工作线程，**非同步停止**，仅会**通知工作者线程取消事件循环中的所有任务**；
+    * <i>importScripts()</i>：用于向工作线程导入任意数量的脚本（将按引用顺序同步执行）。
   * 必须使用**同源脚本**创建 Worker，而可以使用 `importScripts()` 在工作线程内部再**加载其他源的脚本**，并且该过程可以跨域；
   * `Worker` 对象支持的事件处理程序属性和方法：
     * *onerror*：工作线程发生 ErrorEvent 类型错误事件时调用；
     * ***onmessage***：工作线程向父上下文发送消息时调用；
     * *onmessageerror*：工作线程接收到无法反序列化的消息时发生；
-    * ***postMessage()***：异步地向工作线程发送消息；
-    * *terminate()*：**立即**终止工作线程。一旦调用，工作线程的消息队列就会被清理并锁住；
+    * <i>postMessage()</i>：异步地向工作线程发送消息；
+    * <i>terminate()</i>：**立即**终止工作线程。一旦调用，工作线程的消息队列就会被清理并锁住；
 * （**SharedWorker**）***共享 Worker***：可以**被多个不同的上下文使用**，包括不同的页面（比如用一个共享线程管理多个同源页面 WebSocket 消息的发送与接收）；
   * 对应全局对象 SharedWorkerGlobalScope（继承自 WokerGlobalScope）；
     * *name*：可选的字符串标识符；
-    * ***importScripts()***：用于向共享线程导入任意数量的脚本；
-    * *close()*：**立即**终止共享线程（前提是没有已连接端口）；
+    * <i>importScripts()</i>：用于向共享线程导入任意数量的脚本；
+    * <i>close()</i>：**立即**终止共享线程（前提是没有已连接端口）；
     * ***onconnect***：与共享线程**建立连接时触发，包含连接页面的端口号**。
   * 每一个共享线程的**标识**源自解析后的**脚本 URL**、**工作者线程名称**和**文档源**（同源页面下相同标识的共享线程将仅会创建一次）；
 * （**ServiceWorker**）***服务 Worker***：主要用于**拦截、重定向和修改页面发出的请求**（详情略）。
