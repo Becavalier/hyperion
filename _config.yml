@@ -94,8 +94,8 @@ deploy:
 # About page setting
 about:
   name: 于航（Jason Yu）
-  intros: Staff Software Engineer / @PayPal. | Author of 《深入浅出 WebAssembly》&《WebAssembly 入门课》 | QCon / GMTC / TLC conferences speaker & host | TC39 delegate / Wasm CG Member
-  skills: Frontend, WebAssembly, Entrepreneurship, Team Management
+  intros: Staff Software Engineer / @PayPal. | Author of the book《深入浅出 WebAssembly》 | Author of the courses《WebAssembly 入门课》&《深入 C 语言与程序运行原理》 | QCon / GMTC / TLC conferences speaker & host
+  skills: Frontend, ASM / C / C++ / Rust / JS, WebAssembly, Entrepreneurship, Team Management
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /resume/me
