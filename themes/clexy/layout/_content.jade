@@ -174,7 +174,6 @@ else if is_post()
           for tag in page.tags.data
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name}
             | &nbsp;&nbsp;
-      br
       !=page.content
       br
       div.article-bottom-meta
