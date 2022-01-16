@@ -106,7 +106,7 @@ body
   background $background-color
   margin 0
   height 100vh
-  min-width 520px
+  min-width 375px
   flex-direction row // mobile first
   font-family $body-font
   font-size 1.62rem
@@ -612,6 +612,8 @@ hr
 @media (max-width 1248px)
   body
     flex-direction column
+    main
+      flex none
     header
       text-align center
       max-width 100%
@@ -632,6 +634,7 @@ hr
 @media (max-width 800px)
   body
     main
+      padding 20px
       div.comments-input
         margin 20px 0 40px
       article.full 
