@@ -52,7 +52,7 @@ mysql -u root -p <your@password>
 > flush privileges;
 ```
 
-接下来便可以通过 SQLyog 等数据库远程连接工具以“remote”用户登陆 MariaDB。我们仍然可以使用 `service` 命令来查看当前数据库的状态或者停止启动数据库，在使用 `service` 执行对应的命令时，该命令会被自动跳转到对应的 `systemctl` 命令进行执行。
+接下来便可以通过 SQLyog 等数据库远程连接工具以 “remote” 用户登陆 MariaDB。我们仍然可以使用 `service` 命令来查看当前数据库的状态或者停止启动数据库，在使用 `service` 执行对应的命令时，该命令会被自动跳转到对应的 `systemctl` 命令进行执行。
 
 ```bash
 service mariadb status

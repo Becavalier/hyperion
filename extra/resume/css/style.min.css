@@ -103,7 +103,7 @@ body {
 p {
 	font-size: .9em;
 	line-height: 1.4em;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	color: #333;
 }
 
@@ -223,6 +223,14 @@ section:last-child {
 .sectionContent {
 	float: right;
 	width: 72.5%;
+	border-bottom: solid 1px #dedede;
+	margin-top: 15px;
+}
+.sectionContent:nth-child(2) {
+	margin-top: 0;
+}
+.sectionContent:nth-last-child(2) {
+	border: none;
 }
 
 .sectionTitle h1 {
@@ -279,7 +287,7 @@ h2 .subDetails {
 .sectionContent .speech-img {
 	width: 100%;
 	margin: 5px 0;
-	border: solid 5px lightgrey;
+	border: solid 5px #dedede;
 }
 
 @media all and (max-width:850px) {

@@ -1,4 +1,4 @@
-async function fetchNoteContent(id) {
+const fetchNoteContent = async (id) => {
   try {
     const { data } = await axios.get('/graphql', {
       params: {
@@ -18,7 +18,7 @@ query getNoteContentById($id: String!) {
   }
 }
 
-async function setupNoteContent(nextSibling) {
+const setupNoteContent = async (nextSibling) => {
   if (!nextSibling.innerHTML) {
     const id = nextSibling.getAttribute('id')
     // fetch content if needed.

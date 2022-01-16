@@ -1,8 +1,11 @@
 const fs = require('fs');
-const challengeBase = '/var/www/challenges/';
+const path = require('path');
+const endPoint = '.well-known/acme-challenge';
 
 module.exports = app => {
-  app.get('/.well-known/acme-challenge/:fileName', (req, res) => {
-    res.send(fs.readFileSync(`${challengeBase}${req.params.fileName}`));
+  app.get(`/${endPoint}/:fileName`, (req, res) => {
+    const { fileName } = req.params;
+    const dest = path.resolve(__dirname, `../../../public/${endPoint}`, fileName);
+    res.send(fs.readFileSync(dest));
   });
 };

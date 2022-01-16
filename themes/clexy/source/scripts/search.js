@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async e => {
             </li>
           `);
         });
-        return `${dom}</ul>`;
+        return `${dom}</ul><br>`;
       } else {
         return false;   
       }
@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async e => {
         target.innerText = '搜索';
       }
     } else {
-      alert(":( Nothing to search!");
+      alert(":( 你要搜啥？");
     }
   });
 });

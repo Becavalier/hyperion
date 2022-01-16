@@ -87,7 +87,7 @@ $post-meta-color       = $gray
 $body-link-color       = $black
 $body-link-hover-color = $gray
 
-$background-color   = $light-gray
+$background-color   = $white
 $accent-color       = $shade-gray
 $quote-accent-color = $black
 
@@ -101,11 +101,13 @@ html
   font-size 62.5%
 
 body
+  display flex
   color $body-color
   background $background-color
   margin 0
   height 100vh
-  flex-direction column // mobile first
+  min-width 520px
+  flex-direction row // mobile first
   font-family $body-font
   font-size 1.62rem
   font-weight $body-weight
@@ -137,7 +139,9 @@ header
   overflow-y hidden
   overflow-x hidden
   position relative
-  text-align center
+  text-align right
+  padding 20px
+  max-width 400px
   .rss
     img
       width 20px
@@ -189,13 +193,14 @@ header
   nav ul
     list-style none
     margin 0
-    padding 0
+    padding-top 24px
     li
-      display inline-block
-      padding 12px 0 12px 12px
+      display block
+      line-height 1.6em
+      padding 0
       &:after
-        content '·'
-        padding-left 12px
+        content ''
+        padding 0
       &:last-child
         &:after
           content ''
@@ -224,7 +229,7 @@ header
     background-position center
     position relative
     z-index 2
-    margin auto auto 20px auto
+    margin auto 0 20px auto
 
 // Header animation
 @keyframes slide
@@ -242,11 +247,17 @@ main
   flex 2
   hypens auto
   overflow-x hidden
-  padding 20px // Smaller padding on small screens
+  padding 40px
   text-align left
   word-break normal
   word-wrap break-word
   // Links to articles
+  form
+    .form-column 
+      input[type="name"]
+      input[type="email"]
+        width 35%
+        margin .5em .5em .5em 0
   a.article
     color $body-color
     text-decoration none
@@ -308,6 +319,7 @@ main
       padding 8px
   // Article list
   article.item
+    max-width 1200px
     border-bottom 1px solid hsla(0, 0, 0, .15)
     color $body-color
     padding 35px 20px
@@ -315,11 +327,6 @@ main
     display flex
     flex-direction row
     align-items center
-    div.post-cover
-      height 150px
-      width 220px
-      background-size cover
-      margin-right 15px
     div.post-intro
       flex 1
       display flex
@@ -327,7 +334,6 @@ main
       justify-content center
       align-items center
     h2
-      font-size 32px
       break-word normal
       color $body-color
       margin-bottom 16px
@@ -357,9 +363,8 @@ main
     padding-bottom 20px
     span.page-tag-anchor
       margin-top 5px
-    h1.post-heading
+    .align-center
       text-align center
-      margin auto
     ol
       li
         margin 10px 0
@@ -547,13 +552,13 @@ h6
   text-rendering optimizeLegibility
 
 h1
-  font-size 4.3rem
+  font-size 4.1rem
   letter-spacing -2px
   line-height 1.2em
   text-indent -3px
 
 h2
-  font-size 3.8rem
+  font-size 3.5rem
   letter-spacing -1px
   line-height 1.2em
   text-indent -2px
@@ -603,120 +608,53 @@ hr
 // 5. Media Queries
 // ===========================================================================
 
-@media (min-width 1800px)
-  body
-    main
-      article
-        max-width 1248px
-    header
-      max-width 400px !important
 
 @media (max-width 1248px)
   body
-    main
-      article
-        .books-container
-            .book-item
-              span.progress-pages
-                display none
-        &.item
-          div.post-cover
-            display none
-
-@media (min-width 1024px)
-  body
-    display flex
-    flex-direction row
+    flex-direction column
     header
-      flex 1
-      text-align right
-      padding 40px
-      max-width 300px
-      min-width 260px
-      .logo
-        margin-right 0
+      text-align center
+      max-width 100%
+      flex none
+      div.logo
+        margin 0 auto 10px
       nav
+        max-width 400px
+        margin 0 auto 20px
         ul
-          padding-top 24px
-          li
-            display block
-            line-height 1.6em
-            padding 0
-            &:after
-              content ''
-              padding 0
-    main
-      flex 2
-      padding 40px
-      form
-        .form-column
-          input[type="name"]
-          input[type="email"]
-            width 35%
-            margin .5em .5em .5em 0
-
-@media (max-width 1024px)
-  body
-    main
-      article
-        &.item
-          div.post-cover
-            display block
+          padding 0
+          display flex
+          justify-content space-around
+          align-items center
+          li.menu-item
+            margin 5px 10px
 
 @media (max-width 800px)
   body
-    main 
-      article
-        &.full
-          ul.catelog-items, ul.book-list
-            padding-inline-start 0
-        &.item
-          div.post-cover
-            display none
-
-@media (max-width 700px)
-  body
     main
-      .comments-input
+      div.comments-input
         margin 20px 0 40px
-      article
+      article.full 
         h1
           font-size 3.0rem
-        h2
-          font-size 2.8rem
-        h3
-          font-size 2.6rem
-        h4
-          font-size 2.4rem
-        ul
-          padding-inline-start 0
-          padding-left 0
-          li
-            margin 5px 0
-          &.catelog-items li
-            margin 10px 0
-        .books-container
-          .book-item
-            span.progress-pages
-              display none
-        .author-container
-          .avatar-name
-            font-size 2.9rem
-          .avatar-description
-            font-size 1.6rem
-            margin 7px 0     
-
-@media (max-width 570px)
-  body
-    main
-      article.full
-        blockquote
-          margin .5em 0 .5em 1em
-        ul.notes-list
+        div.content
+          blockquote
+            margin .5em 0 .5em 1em
+          h2
+            font-size 2.8rem
+          h3
+            font-size 2.6rem
+          h4
+            font-size 2.4rem
           ul
             padding-inline-start 0
-            li > ul
-              padding-inline-start 1em
+            padding-left 0
+        div.author-container
+          div.avatar-name
+            font-size 2.9rem
+          div.avatar-description
+            font-size 1.6rem
+            margin 7px 0     
 
 // ===========================================================================
 // 6. Custimization
@@ -879,41 +817,20 @@ input, textarea
     opacity 0
     z-index -200
     
-article 
-  max-width 1120px
+article
   margin auto
+  div.content
+    max-width 1200px
+    margin auto
   video
     display: block;
     margin: auto;
     max-width: 100%;
     border: solid 1px #ccc;
     max-height: 500px;
-  .books-container
-    margin 20px 0
-    .book-item
-      display flex
-      align-items center
-      border-bottom solid 1px #ddd
-      padding 15px 0
-      &:last-child
-        border-bottom none
-      &.complete
-        background-color #efefef
-      span
-        flex 1
-        text-overflow ellipsis
-        overflow hidden
-        white-space nowrap
-        &.progress-pages
-          flex 0 0 80px
-          text-align center
-      button
-        flex 0 0 50px
-        background none
-        border none
-        text-decoration underline
   &.notes-page
     ul.notes-list
+      font-size 16px
       padding-inline-start 0
       > li:before
         content none
@@ -925,7 +842,7 @@ article
         overflow hidden
         white-space nowrap
       div.content
-        background-color #f1f1f1
+        background-color $white
         display none
         flex-direction column
         border-left solid 1px #ccc
@@ -1011,7 +928,7 @@ article
     p
       text-indent 0
   p
-    margin 25px 0
+    margin 15px 0
     line-height 2.9rem
     word-break break-all
     text-indent 2em
