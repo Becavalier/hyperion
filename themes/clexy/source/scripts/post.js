@@ -1,9 +1,9 @@
 const DEFAULT_INDEX = 0;
 
 document.addEventListener('DOMContentLoaded', async e => { 
-
   // back to top;
-  const action = () => {
+  const ttIns = document.querySelector('.touch-top');
+  const ttAction = () => {
     if (window.getComputedStyle(document.body, null).getPropertyValue('flex-direction') === 'column') {
       window.scrollTo({ 
         top: 0, 
@@ -13,9 +13,24 @@ document.addEventListener('DOMContentLoaded', async e => {
       document.querySelector('main').scrollTop = 0;
     }
   };
-  document.querySelector('.touch-top').addEventListener('touchstart', action);
-  document.querySelector('.touch-top').addEventListener('click', action);
+  ttIns.addEventListener('touchstart', ttAction);
+  ttIns.addEventListener('click', ttAction);
 
+  // post zooming.
+  const zoomInLimit = 1.3;
+  const zoomOutLimit = .7;
+  const zoomInIns = document.querySelector('.zoom.in');
+  const zoomOutIns = document.querySelector('.zoom.out')
+  const zoomAction = (close = true) => () => {
+    const ins = document.querySelector('div.content');
+    let v = parseFloat(ins.style.zoom) || 1;
+    v += (close ? .1 : -.1);
+    ins.style.zoom = v >= zoomInLimit ? zoomInLimit : (v <= zoomOutLimit ? zoomOutLimit : v);
+  }
+  zoomInIns.addEventListener('touchstart', zoomAction());
+  zoomInIns.addEventListener('click', zoomAction());
+  zoomOutIns.addEventListener('touchstart', zoomAction(false));
+  zoomOutIns.addEventListener('click', zoomAction(false));
 
   // image zooming;
   const canvasContainer = document.querySelector('.canvas-containter');

@@ -706,28 +706,46 @@ input, textarea
     font-size 25px
     cursor pointer
 
-.touch-top
+.touch-top, .zoom
   position fixed
   right 20px
-  bottom 30px
   border-radius 50%
   background-color #fafafa
-  width 50px
-  height 50px
+  width 40px
+  height 40px
   text-align center
   vertical-align middle
-  border solid 4px #141414
+  border solid 3px #141414
   cursor pointer
   overflow hidden
   z-index 999
-  span
-    width: 0
-    height: 0
-    border-left 10px solid transparent
-    border-right 10px solid transparent
-    border-bottom 19px solid #141414
+   
+.touch-top 
+  bottom 30px
+  > span
+    width 0
+    height 0
+    border-left 8px solid transparent
+    border-right 8px solid transparent
+    border-bottom 13px solid #141414
     position relative
-    top -9px
+    top -10px
+
+.zoom.in 
+  bottom 150px
+  > span
+    font-size 32px
+    font-weight 500
+    top 7px
+    position relative
+
+.zoom.out 
+  bottom 90px
+  > span
+    font-size 32px
+    font-weight 500
+    top 4px
+    position relative
 
 .comments-display-container
   padding 25px
