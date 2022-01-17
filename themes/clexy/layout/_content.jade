@@ -161,10 +161,10 @@ else if is_post()
   script(src=config.root + 'scripts/post.js', type='text/javascript')
   div.touch-top
     span
-  div(class='zoom in')
-    span='+'
-  div(class='zoom out')
-    span='-'
+  //- div(class='zoom in')
+  //-   span='+'
+  //- div(class='zoom out')
+  //-   span='-'
   article(post-id=page.title).full
     h1(itemprop='headline', class='align-center')=page.title
     div.content

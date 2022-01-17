@@ -27,9 +27,7 @@ document.addEventListener('DOMContentLoaded', async e => {
     v += (close ? .1 : -.1);
     ins.style.zoom = v >= zoomInLimit ? zoomInLimit : (v <= zoomOutLimit ? zoomOutLimit : v);
   }
-  zoomInIns.addEventListener('touchstart', zoomAction());
   zoomInIns.addEventListener('click', zoomAction());
-  zoomOutIns.addEventListener('touchstart', zoomAction(false));
   zoomOutIns.addEventListener('click', zoomAction(false));
 
   // image zooming;
