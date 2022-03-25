@@ -30,7 +30,6 @@ sub,
 sup,
 var,
 b,
-i,
 dl,
 dt,
 dd,
@@ -115,7 +114,7 @@ a {
 
 #cv {
 	width: 90%;
-	max-width: 1003px;
+	max-width: 1140px;
 	background: #f3f3f3;
 	margin: 30px auto;
 }
@@ -259,8 +258,18 @@ h2 .subDetails {
 
 .subDetails {
 	font-size: .8em;
-	margin: 3px 0;
+	margin: 8px 0;
   font-style: italic;
+}
+
+.subDetails.invalid {
+	opacity: .75;
+}
+
+.subDetails .period::after{
+	content: '|';
+	margin: 0 10px;	
+	font-style: normal;
 }
 
 .sectionContent ul.keySkills {
@@ -448,10 +457,6 @@ h2 .subDetails {
 	animation-name: reset, fade-in;
 	animation-duration: 1.5s;
 	animation-timing-function: ease-in;
-}
-
-.sectionMeta {
-  margin: 10px 0;
 }
 
 .sectionContent ul {

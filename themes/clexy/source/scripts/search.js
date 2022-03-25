@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async e => {
         target.innerText = '搜索';
       }
     } else {
-      alert(":( 你要搜啥？");
+      alert("What do you want to search？");
     }
   });
 });

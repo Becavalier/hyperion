@@ -1,19 +1,12 @@
 script(src=config.root + 'scripts/index.js', type='text/javascript')
 if config.disqus_shortname && !is_page()
-  - var disqus_type = page.comments ? 'embed' : 'count'
   script(async).
-    (function(h,g,l,k,j,i){j=h.createElement(g),i=h.getElementsByTagName(g)[0],
-    j.src = '//' + l + '.disqus.com/' + k + '.js', i.parentNode.insertBefore(j, i)})
-    (document,'script','#{config.disqus_shortname}','#{disqus_type}');
-
-  script(async).
-    var disqus_shortname = '#{config.disqus_shortname}';
-    (function () {
-    var s = document.createElement('script'); s.async = true;
-    s.type = 'text/javascript';
-    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
-    }());
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://#{config.disqus_shortname}.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
 
 if theme.google_analytics 
   script(src='https://www.googletagmanager.com/gtag/js?id=UA-135435065-1', type='text/javascript', async)

@@ -185,24 +185,24 @@ else if is_post()
           | Last built on
           time(itemprop='dateModified', datetime=page.date.toISOString())=full_date(new Date(page.updated), ' YYYY / MM / DD, HH:mm:ss')
   br
-  a(name="comments")
-  div.article-end-saparator
-    span(class="line")
-    span(class="text")
-      | 这是文章底线，下面是评论
-    span(class="line")
-  if page.comments
-    div.comments-display-container
-      div.placeholder
-        i(class="fa fa-battery-empty")
-          | &nbsp;&nbsp;暂无评论，欢迎勾搭 ：）
-    div.dot-decoration
-    div.comments-input
-      textarea(name="comment", placeholder="请输入评论内容 ...")
-      div
-        input(type="text", placeholder="请输入昵称 ...")
-        button.submit-comment
-          | 发布
+  //- a(name="comments")
+  //- div.article-end-saparator
+  //-   span(class="line")
+  //-   span(class="text")
+  //-     | 这是文章底线，下面是评论
+  //-   span(class="line")
+  //- if page.comments
+  //-   div.comments-display-container
+  //-     div.placeholder
+  //-       i(class="fa fa-battery-empty")
+  //-         | &nbsp;&nbsp;暂无评论，欢迎勾搭 ：）
+  //-   div.dot-decoration
+  //-   div.comments-input
+  //-     textarea(name="comment", placeholder="请输入评论内容 ...")
+  //-     div
+  //-       input(type="text", placeholder="请输入昵称 ...")
+  //-       button.submit-comment
+  //-         | 发布
   if page.next
     span(class='next-post')
       a(href=config.root + page.next.path, itemprop='url') #{ 'Older Post ⇒'}
