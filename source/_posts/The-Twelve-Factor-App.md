@@ -1,7 +1,7 @@
 ---
 title: The Twelve-Factor App
 intro: 如今，软件通常会作为一种服务来交付，它们被称为网络应用程序，或软件即服务（SaaS）。12-Factor 为构建如下的 SaaS 应用提供了方法论。这套理论适用于任意语言和后端服务（数据库. 消息队列. 缓存等）开发的应用程序。 
-comments: true
+comments: false
 date: 2017-11-12 11:47:34
 tags:
 - Twelve-Factor

@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 深入研究报告 - 碎片知识
 intro: 本文主要内容是对 WebAssembly 的一些碎片化的概念进行整合。同时还包括一些 Q&A 的问题与答案。WebAssembly 接下来主要会在多线程和垃圾回收两个方面进行更多的讨论和提案修改，而 GC 标准的确定又会为 Post-MVP 中的诸如 DOM 引用与操作等前端相关功能特性打下基础。
-comments: true
+comments: false
 date: 2017-07-19 16:31:39
 tags:
 - WebAssembly

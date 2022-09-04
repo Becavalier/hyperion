@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 12-16 章）
 intro: 书接上回，第 12-16 章的笔记。
-comments: true
+comments: false
 date: 2021-04-01 18:07:48
 tags:
 - Rust
@@ -11,7 +11,7 @@ tags:
 
 ### Chapter 12 - An I/O Project: Building a Command Line Program
 
-33. （Page：268）基本代码（Monolithic）：
+33. [Page: 268] 基本代码（Monolithic）：
 
 \- ***src/main.rs***：
 
@@ -137,7 +137,7 @@ Trust me.";
 }
 ```
 
-34. （Page：）**TDD**（Test-Driven Development）的基本实施步骤：
+34. [Page: 286] **TDD**（Test-Driven Development）的基本实施步骤：
 
 * 编写一个会导致失败的测试，并确定其失败原因符合预期；
 * 添加或修改实现代码使得该测试可以通过；
@@ -146,7 +146,7 @@ Trust me.";
 
 ### Chapter 13 - Functional Language Features: Iterators and Closures
 
-35. （Page：288）**闭包**（Closure）：
+35. [Page: 288] **闭包**（Closure）：
 
 * 即“**匿名函数**”（与 C++ 中的 Lambda 类似），可以赋值给变量、作为参数或返回值；
 * 普通函数通常需要被作为公共接口，从而提供给外部用户使用，因此需要类型注解；而闭包通常仅用于非暴露的内部代码，且作为匿名函数使用。不仅如此，闭包实现通常较短且仅与其定义上下文的一小块逻辑相关联，因此**编译器可以可靠地自动推断闭包函数的输入参数与返回值的类型**；
@@ -203,7 +203,7 @@ where T: Fn(u32) -> u32, {
 }
 ```
 
-36. （Page：303）**迭代器**（Iterator）：
+36. [Page: 303] **迭代器**（Iterator）：
 
 * 允许**按顺序**对一个序列中的元素依次进行处理；
 * Rust 中的迭代器是 “**lazy**” 的，即在每一次调用 `next()` 时（显式/隐式）才会返回集合中的元素。***for-in* 语句会转移迭代器对象的所有权**；
@@ -306,7 +306,7 @@ fn main() {
 
 ### Chapter 14 - More About Cargo and Crates.io
 
-37. （Page：320）自定义**发布和开发时选项**：
+37. [Page: 320] 自定义**发布和开发时选项**：
 
 ```toml
 [profile.dev]  # from 1 to 3.
@@ -316,7 +316,7 @@ opt-level = 0
 opt-level = 3
 ```
 
-38. （Page：321）**文档注释**：`///`。
+38. [Page: 321] **文档注释**：`///`。
 
 * 在执行 `cargo doc --open` 时会自动生成含有描述公有 API 使用方法的 HTML 版本文档；
 * 在执行 `cargo test` 时，文档注释中的测试用例也会自动执行；
@@ -342,7 +342,7 @@ pub fn add_one(x: i32) -> i32 {
 }
 ```
 
-39. （Page：323）用于**整体描述模块内容的注释**类型：
+39. [Page: 323] 用于**整体描述模块内容的注释**类型：
 
 * 一般用在 *crate root* 文件（模块）中。
 
@@ -354,8 +354,8 @@ pub fn add_one(x: i32) -> i32 {
 /// Adds one to the number given.
 ```
 
-40. （Page：329）可以使用 `pub use` 重新整理导出 API 接口的引用结构。
-41. （Page：330）为将要发布的 crate 添加**元信息**：
+40. [Page: 329] 可以使用 `pub use` 重新整理导出 API 接口的引用结构。
+41. [Page: 330] 为将要发布的 crate 添加**元信息**：
 
 ```toml
 [package]
@@ -370,8 +370,8 @@ license = "MIT OR Apache-2.0"
 * 可以使用 `cargo publish` 发布 crate；
 * 目前 crates.io 暂无 namespacing 机制（考虑到 Namespace Squatting 等一系列潜在的问题）；
 
-42. （Page：332）使用 `cargo yank --vers <version>` 阻止某一版本 crate 被**新的项目**使用；反之：`cargo yank --vers <version> --undo`。
-43. （Page：333）**Cargo Workspace**：
+42. [Page: 332] 使用 `cargo yank --vers <version>` 阻止某一版本 crate 被**新的项目**使用；反之：`cargo yank --vers <version> --undo`。
+43. [Page: 333] **Cargo Workspace**：
 
 * “工作空间”由一系列的“包”组成，它们**共享同一个 Cargo.lock 文件和编译输出目录**，可用于组织大型 Rust 项目中相关的包；
 * 工作目录中的每一个 *library crate* 都**需要被单独发布**。
@@ -385,11 +385,11 @@ members = [
 ]
 ```
 
-44. （Page：339）使用 `cargo install` 安装来自 Crates.io 的二进制包（默认安装在 *$HOME/.cargo/bin*），并可在系统的全局环境下使用。
+44. [Page: 339] 使用 `cargo install` 安装来自 Crates.io 的二进制包（默认安装在 *$HOME/.cargo/bin*），并可在系统的全局环境下使用。
 
 ### Chapter 15 - Smart Pointers
 
-45. （Page：341）**智能指针**（Smart Pointer）：
+45. [Page: 341] **智能指针**（Smart Pointer）：
 
 * Rust 中引用和智能指针的区别：引用是一种指针，这种指针仅能够**“借用”数据**；而智能指针则**“拥有”它们所指向的数据**；
 * **智能指针通常使用 struct 实现**，且实现了 `Deref` 与 `Drop` 两个 traits；
@@ -400,7 +400,7 @@ members = [
   * `Rc<T>`：基于“引用计数”的智能指针，允许拥有多个所有权；
   * `Ref<T>` 与 `RefMut<T>`：通过 `RefCell<T>` 访问，该类型在运行时而不是编译时强制执行借用规则。
 
-46. （Page：342）`Box<T>`：
+46. [Page: 342] `Box<T>`：
 
 * 适用场景：
   * 如果有一个在编译时无法得知其大小的类型，并且想要在需要精确大小的上下文中使用该类型的值；
@@ -436,7 +436,7 @@ fn main() {
 }
 ```
 
-47. （Page：348）`Deref` trait：
+47. [Page: 348] `Deref` trait：
 
 * 对于**可变引用**，可以实现 `DerefMut` trait 来支持其解引用行为。
 
@@ -486,7 +486,7 @@ fn main() {
 }
 ```
 
-48. （Page：354）`Drop` trait：
+48. [Page: 354] `Drop` trait：
 
 * 可以**自定义当某个值脱离当前作用域时的行为**；
 * 变量会根据它们创建时**相反的顺序**来依次调用该方法；
@@ -523,7 +523,7 @@ fn main() {
 }
 ```
 
-49. （Page：358）`Rc<T>`：
+49. [Page: 358] `Rc<T>`：
 
 * 基于“**引用计数**”的智能指针；
 * 仅适用于“单线程”场景；
@@ -548,14 +548,14 @@ fn main() {
 }
 ```
 
-50. （Page：363）`RefCall<T>`：
+50. [Page: 363] `RefCall<T>`：
 
 * 代表**对它所持有数据的单一所有权**，主要在当确定代码遵循借用规则，但编译器无法理解并保证这一点的时候使用。
 * 仅适用于“单线程”场景；
 * 支持**运行时**的**可变与不可变引用**；
 * ***Interior Mutability***：是 Rust 中的一种设计模式，它允许**通过数据的不可变引用来在运行时对数据进行变更**。被该类型“包裹”的对象可以通过不可变引用来进行变更。
 
-51. （Page：371）结合使用 `RefCell<T>` 与 `Rc<T>`：
+51. [Page: 371] 结合使用 `RefCell<T>` 与 `Rc<T>`：
 
 * 可用于实现**可变数据的多重所有权**：
 
@@ -580,7 +580,7 @@ fn main() {
 }
 ```
 
-52. （Page：373）**循环引用**：
+52. [Page: 373] **循环引用**：
 
 \- ***一个产生循环引用的例子***：
 
@@ -646,7 +646,7 @@ fn main() {
 
 ### Chapter 16 - Fearless Concurrency
 
-53. （Page：383）使用线程：
+53. [Page: 383] 使用线程：
 
 * 由编程语言提供的线程一般被称为 “*green thread*”，与操作系统提供的线程一般呈“**多对多**”关系。前者会实际运行在后者的上下文中；**由于“多对多”模型需要更多的运行时（由编程语言自行插入到二进制可执行文件中的）代码，因此默认情况下 Rust 标准库仅提供“一对一”的线程模型**；
 * 默认情况下，当主线程退出时，其他线程会停止运行并被销毁。可以使用创建线程时返回的 *JoinHandle* 类型上的 *join()* 方法，来让当前线程等待（阻塞），直到新创建线程的执行完成。
@@ -688,7 +688,7 @@ fn main() {
 }
 ```
 
-54. （Page：391）**Message Passing**：
+54. [Page: 391] **Message Passing**：
 
 * 线程或参与者通过互相发送包含数据的消息进行通信。“*Do not communicate by sharing memory; instead, share memory by communicating.*”；
 * 可以通过**克隆 transmitter**（*clone()*）来支持多个线程的消息发送端；
@@ -720,7 +720,7 @@ fn main() {
 }
 ```
 
-55. （Page：398）**共享状态**多线程：
+55. [Page: 398] **共享状态**多线程：
 
 * 支持“多所有权”，允许**多个线程处理某个特定资源（内存）**；
 * 使用“**互斥锁**（Mutex，*Mutual Exclusion*）”仅允许一次从一个线程访问数据，以防止数据竞争问题。一个线程需要首先发出信号，告知其想要获得互斥锁，互斥锁是 Mutex 中的一种数据结构，用于表明当前谁拥有对某个数据的独占权。而当线程使用数据完毕后，需要释放锁。
@@ -772,10 +772,10 @@ fn main() {
   * *RefCell\<T\>* / *Rc\<T\>*；
   * *Mutex\<T\>* / *Arc\<T\>*。
 
-56. （Page：406）`Send` trait：
+56. [Page: 406] `Send` trait：
 
 * 一个实现了该 trait 的类型其所有权可以**在多个线程间转移**。
 
-57. （Page：407）`Sync` trait：
+57. [Page: 407] `Sync` trait：
 
 * 一个实现了该 trait 的类型可以**被多个线程引用**。

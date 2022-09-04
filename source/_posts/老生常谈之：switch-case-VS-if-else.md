@@ -1,7 +1,7 @@
 ---
 title: 老生常谈之：switch-case VS if-else
 intro: “在同等条件下，使用 switch-case 与 if-else 哪一个可以在 C++ 中生成质量更好、性能更高的目标代码呢？”这似乎是一个老生常谈的问题，今天我们就来深入研究一下。
-comments: true
+comments: false
 date: 2020-07-18 21:36:02
 tags:
 - Cpp

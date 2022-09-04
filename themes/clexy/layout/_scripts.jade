@@ -1,5 +1,5 @@
 script(src=config.root + 'scripts/index.js', type='text/javascript')
-if config.disqus_shortname && !is_page()
+if config.disqus_shortname && page.comments && !is_page()
   script(async).
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');

@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 7-11 章）
 intro: 书接上回，第 7-11 章的笔记。
-comments: true
+comments: false
 date: 2021-03-27 21:11:50
 tags:
 - Rust
@@ -11,14 +11,14 @@ tags:
 
 ### Chapter 7 - Managing Growing Projects with Packages, Crates, and Modules
 
-14. （Page：125）Rust 的**模块系统**元素包括：
+14. [Page: 125] Rust 的**模块系统**元素包括：
 
 * **包**（packages）：一个可用于构建、测试和共享 crate 的 Cargo 特性；
 * **Crates**：以树状结构组织的、可被用作**库**或**可执行文件**的一系列模块；
 * **模块**（modules）：可用于组织代码、作用域及路径可访问性；
 * **路径**（paths）：一种用于命名“项目”的方式，如 struct、function 或 module。
 
-15. （Page：125）包和 Crates：
+15. [Page: 125] 包和 Crates：
 
 * **Crate**：
   * 可以是一个库（library）或二进制（binary）文件；
@@ -29,7 +29,7 @@ tags:
   * 每个包都提供了一个 Cargo.toml 文件，描述了如何构建它所包含的所有 crate 的相关规则；
   * 一个包必须包含 0 或 1 个库 crate，或多个二进制 crate。但总体而言必须包含至少一个 crate（库/二进制）。
 
-16. （Page：127）**模块**：
+16. [Page: 127] **模块**：
 
 * 默认情况下，模块内定义的代码都是私有的（即仅内部作用域可引用外部作用域的条目）；
 * `use` 关键字可以将一个 path 引入到当前作用域；
@@ -112,7 +112,7 @@ pub fn foo() {
 
 ### Chapter 8 - Common Collections
 
-17. （Page：144）**Vector**：*Vec\<T\>*。
+17. [Page: 144] **Vector**：*Vec\<T\>*。
 
 * 内部元素保存在 heap 上；
 * 向 vector 添加元素可能导致必要的内存重新分配以及对旧元素的拷贝，如果没有足够的内存空间以“连续”的方式存放所有元素，则对 vector 中已有元素的引用可能会指向已经被清理的内存。因此对 vector 中引用元素的定义和使用需要放置在 `push` 等操作后面，**“引用定义”与“向 vector 添加元素”两者在作用域上不能交叉**；
@@ -170,7 +170,7 @@ fn main() {
 }
 ```
 
-18. （Page：150）**String**：
+18. [Page: 150] **String**：
 
 * 内部数据保存在 heap 上；
 * 字符串内容基于 UTF-8 编码（***grapheme clusters*** -> ***Unicode scalar*** -> ***bytes***，\**an extended grapheme cluster is a sequence of one or more Unicode scalars that (when combined) produce a single human-readable character*）；
@@ -210,7 +210,7 @@ fn main() {
 }
 ```
 
-19. （Page：158）**HashMap**：*HashMap\<K, V\>*。
+19. [Page: 158] **HashMap**：*HashMap\<K, V\>*。
 
 * 内部数据保存在 heap 上。
 
@@ -256,12 +256,12 @@ fn main() {
 
 ### Chapter 9 - Error Handling
 
-20. （Page：164）Rust 中的两种错误类型：
+20. [Page: 164] Rust 中的两种错误类型：
 
 * **可恢复**：比如“文件未找到”，可以使用 *Result\<T, E\>* 类型处理；
 * **不可恢复**：比如“数字访问越界”，可以使用 *panic!* 宏进行处理。
 
-21. （Page：165）***panic!*** 宏：
+21. [Page: 165] ***panic!*** 宏：
 
 * 默认情况下，**在发生 panic 时，Rust 会进行 *stack-unwinding***。可以通过设置 Cargo.toml 的方式来让 Rust 直接退出应用而不进行 unwinding（交由操作系统处理）。此时生成的**二进制文件的体积也会相对减小**；
 
@@ -292,7 +292,7 @@ fn main() {
 }
 ```
 
-22. （Page：168）***Result\<T, E\>*** 类型：
+22. [Page: 168] ***Result\<T, E\>*** 类型：
 
 * 泛型参数 T 表示成功时**需要正常返回的数据**；
 * 泛型参数 E 表示**失败时需要返回的，描述所发生错误的信息**。
@@ -320,7 +320,7 @@ fn main() {
 }
 ```
 
-23. （Page：173）**错误传播**：
+23. [Page: 173] **错误传播**：
 
 * 用于将错误对象从 callee 传播到上层 caller；
 * 可以通过将 `?` 运算符置于返回值为 <b>Result\<T, E\></b>（本质上为实现了 ***std::ops::Try*** 的方法）的表达式后面，以标记默认将该返回值的错误信息（若有）向上层调用者传播。通过运算符传播的错误信息会通过 *from* 方法（定义于标准库中的 *From* trait）进行错误信息的类型转换（将一个特定的错误类型转换为**当前返回的错误类型**）。
@@ -370,7 +370,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
 }
 ```
 
-24. （Page：178）**main 函数的返回值**：
+24. [Page: 178] **main 函数的返回值**：
 
 * *Box\<dyn Error\>* 为一个 *triat object*，意味着返回值可以包含任意类型的 Error。
 
@@ -378,7 +378,7 @@ fn read_username_from_file() -> Result<String, io::Error> {
 fn main() -> Result<(), Box<dyn Error>> {}
 ```
 
-25. （Page：178）何时使用 `painc!`？
+25. [Page: 178] 何时使用 `painc!`？
 
 * 默认情况下返回 *Result\<T, E\>* 对象；
 * `unwrap()`，`expect()` 与 `panic!()` 一般优先用于原型测试代码中；
@@ -411,7 +411,7 @@ fn main() {
 
 ### Chapter 10 - Generic Types, Traits, and Lifetimes
 
-26. （Page：186）**泛型**（Generic）：
+26. [Page: 186] **泛型**（Generic）：
 
 * **对类型的抽象**；
 * 可以建立针对 *function*、*struct*、*method* 以及 *enum* 等类型的泛型。
@@ -446,7 +446,7 @@ enum Option<T> {
 }
 ```
 
-27. （Page：196）**特质**（Trait）：
+27. [Page: 196] **特质**（Trait）：
 
 * 一个 *trait* 可以告诉编译器一种特定类型所具有的“功能”，并且可以将这个“功能”共享给其他类型。我们可以使用 *trait* 以一种抽象的方式来定义类型之间的共享行为（与其他语言中的 *interface* 类似，但仍有些许区别）；
 * 内聚性（孤儿法则）：***triat* 的定义或者类型的定义，二者之一必须在本地**（当前 crate），才可以为某个类型实现某个 *triat*。（比如：无法为 `Vec<T>` 类型实现 *Display* trait）；
@@ -538,7 +538,7 @@ impl<T: Display + PartialOrd> Pair<T> {
 impl<T: Display> ToString for T {}
 ```
 
-28. （Page：208）**Lifetime**：*The Rust’s most distinctive feature*。本身也是一种泛型，可以帮助 Borrow Checker 在编译器检查引用的生命期。
+28. [Page: 208] **Lifetime**：*The Rust’s most distinctive feature*。本身也是一种泛型，可以帮助 Borrow Checker 在编译器检查引用的生命期。
 
 ![](1.png)
 
@@ -612,7 +612,7 @@ fn first_word(s: &str) -> &str {
 let s: &'static str = "I have a static lifetime.";
 ```
 
-29. （Page：222）同时使用泛型、Trait 以及 Lifetime：
+29. [Page: 222] 同时使用泛型、Trait 以及 Lifetime：
 
 ```rust
 use std::fmt::Display;
@@ -632,7 +632,7 @@ fn longest_with_an_announcement<'a, T> (
 
 ### Chapter 11 - Writing Automated Tests
 
-30. （Page：223）如何编写**测试脚本**：
+30. [Page: 223] 如何编写**测试脚本**：
 
 * 一个测试函数通常执行**三个动作**：
   * 设置需要的状态或数据；
@@ -699,7 +699,7 @@ mod tests {
 }
 ```
 
-31. （Page：241）**控制测试的运行**：
+31. [Page: 241] **控制测试的运行**：
 
 * 设置可以使用的**测试线程数量**：`cargo test -- --test-threads=<num>`；
 * 默认情况下，**在成功的测试 case 中输出的内容（*printed-value*）不会显示在控制台中**，可以使用命令 `cargo test -- --show-output` 让 Rust 将该内容打印；
@@ -713,7 +713,7 @@ mod tests {
 fn expensive_test() {}
 ```
 
-32. （Page：248）测试体系：
+32. [Page: 248] 测试体系：
 
 \- ***单元测试***：
 

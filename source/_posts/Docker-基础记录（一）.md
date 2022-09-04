@@ -1,7 +1,7 @@
 ---
 title: Docker 基础记录（一）
 intro: Docker 改变了人们日常从开发到部署的工作流方式。不仅如此，Dokcer 在云计算、大数据处理甚至深度学习基础系统架构等方面都有其用武之地和独到之处。Docker 出现的一个重要应用场景就是可以方便地加强开发环境与部署环境的一致性。
-comments: true
+comments: false
 date: 2017-11-04 17:36:20
 tags:
 - Docker

@@ -1,7 +1,7 @@
 ---
 title: WebAssembly Summit 2020 — 议题深度解析（下）
 intro: 在上一篇文章中，我们介绍了 WebAssembly Summit 各位嘉宾在上半场带来的 Wasm 在标准制定、编译优化以及浏览器引擎上的一些精彩分享。本文我们将继续回顾在大会下半场中，分享者为我们带来的，Wasm 在现阶段各类工程领域中的一些精彩实践。
-comments: true
+comments: false
 date: 2020-03-12 15:08:42
 tags:
 - WebAssembly
@@ -57,7 +57,7 @@ Kevin 为我们带来了 Wasm 与云技术相结合的一些实践。借助于 W
 
 Brion 是维基媒体基金会（Wikimedia Foundation）的一名软件架构师，他为我们带来了维基百科网站为支持“视频播放能力”所历经的一系列探索与实践。在网站建设的初期，维基百科曾经历了从使用 GIF 图片、Java Applet、浏览器插件再到 Flash 的一系列变革。而直到 Emscripten 的出现，才为“多浏览器兼容的高效视频播放”这一需求提供了转机，ogv.js 便诞生于此。
 
-ogv.js 是一个可以在浏览器中使用的多媒体播放器。如下图所示为其整体的设计架构，其中 Demuxer 作为核心组件主要用于解码并提取各类型媒体文件中的音视频内容，因此，这部分计算逻辑较多的工作便交由 Wasm 来进行加速。不仅如此，ogv.js 还可以同时利用浏览器支持的“多核心（Multi Cores）Worker”特性来对整个解码过程进行加速。与此同时，随着 Wasm 最新的 SIMD 标准被越来越多的浏览器实现，ogv.js 在处理视频像素矩阵以及各类相关编解码工作时，还可以利用该特性来进一步加速。而不得不提到的是，2019年 Wasm 的一个最重要的实践应用领域便是音视频处理领域。
+ogv.js 是一个可以在浏览器中使用的多媒体播放器。如下图所示为其整体的设计架构，其中 Demuxer 作为核心组件主要用于解码并提取各类型媒体文件中的音视频内容，因此，这部分计算逻辑较多的工作便交由 Wasm 来进行加速。不仅如此，ogv.js 还可以同时利用浏览器支持的“多核心（Multi Cores）Worker”特性来对整个解码过程进行加速。与此同时，随着 Wasm 最新的 SIMD 标准被越来越多的浏览器实现，ogv.js 在处理视频像素矩阵以及各类相关编解码工作时，还可以利用该特性来进一步加速。而不得不提到的是，2019 年 Wasm 的一个最重要的实践应用领域便是音视频处理领域。
 
 ![ogv.js 设计架构](4.png)
 
@@ -76,15 +76,15 @@ AS 作为一个 TypeScript（下文简称 TS）到 WebAssembly 编译器，它�
 
 # 发展和现状
 
-Ben 作为 WebAssembly Working Group 的主席，带领我们回顾了 Wasm 从其出生，到 MVP 标准被四大浏览器实现，再到 WASI 的出现，以及 Post-MVP 标准不断制定的这五年时间里 Wasm 在各个重要节点发生的变化。Wasm 项目启动于2015年的5月，当时对应的 WAT 规范被称为 “ml-proto”，对应的字节码规范则被称为 “v8-native-prototype”。Ben 作为 Google 员工便接下了编写从 ml-proto 可读文本到 v8-native-prototype 字节码转换工具的任务，这个工具在当时被称为 “sexpr-wasm”，即现在的 WABT。而该工具的第一个版本，便是由 Ben 在当时花了两周时间完成的。从下图可以看到 Ben 在当时编写 sexpr-wasm 时，在各个功能组件阶段所花费的时间，以及对应每天提交的 Commit  数量。 
+Ben 作为 WebAssembly Working Group 的主席，带领我们回顾了 Wasm 从其出生，到 MVP 标准被四大浏览器实现，再到 WASI 的出现，以及 Post-MVP 标准不断制定的这五年时间里 Wasm 在各个重要节点发生的变化。Wasm 项目启动于 2015 年 5 月，当时对应的 WAT 规范被称为 “ml-proto”，对应的字节码规范则被称为 “v8-native-prototype”。Ben 作为 Google 员工便接下了编写从 ml-proto 可读文本到 v8-native-prototype 字节码转换工具的任务，这个工具在当时被称为 “sexpr-wasm”，即现在的 WABT。而该工具的第一个版本，便是由 Ben 在当时花了两周时间完成的。从下图可以看到 Ben 在当时编写 sexpr-wasm 时，在各个功能组件阶段所花费的时间，以及对应每天提交的 Commit  数量。 
 
 ![sexpr-wasm 初期开发进度](6.png)
 
 
-“APIE” 是由四个单词 “**Ability**”、“**Producer**”、“**Interop**” 以及 “**Embedder**” 组成，这四个单词分别从四个不同的角度分别描述了 Wasm 的发展程度，即：Wasm 能够做什么（能力）、谁可以生成 Wasm（生产者）？Wasm 可以和谁进行互操作（交互）？谁可以使用 Wasm（平台）？2017年，Wasm 取得了四大浏览器 Chrome、Edge、Firefox 以及 Webkit 对其 MVP 标准的一致性支持。这一年 Wasm 标准开始加入 GC 与 Host Binding 提案以增强其与平台之间的互操作性；2018年，Wasm 生态加入了 Reference Types 和 Wasm C API 提案，开始将 GC 这个棘手的难题分解成若干相关的子提案以快速推进 Wasm 的发展。而 Wasm C API 的出现则为各类平台方便使用 Wasm 提供了帮助；2019年，这一年的 Wasm 生态又加入了很多新的成员，WASI 的出现又进一步提高了 Wasm 与平台之间的互操作性，使得其 out-of-web 成为可能；而 Type Function Reference 与 Type Imports 提案的出现也进一步推动了 GC 的最终实现。
+“APIE” 是由四个单词 “**Ability**”、“**Producer**”、“**Interop**” 以及 “**Embedder**” 组成，这四个单词分别从四个不同的角度分别描述了 Wasm 的发展程度，即：Wasm 能够做什么（能力）、谁可以生成 Wasm（生产者）？Wasm 可以和谁进行互操作（交互）？谁可以使用 Wasm（平台）？2017 年，Wasm 取得了四大浏览器 Chrome、Edge、Firefox 以及 Webkit 对其 MVP 标准的一致性支持。这一年 Wasm 标准开始加入 GC 与 Host Binding 提案以增强其与平台之间的互操作性；2018 年，Wasm 生态加入了 Reference Types 和 Wasm C API 提案，开始将 GC 这个棘手的难题分解成若干相关的子提案以快速推进 Wasm 的发展。而 Wasm C API 的出现则为各类平台方便使用 Wasm 提供了帮助；2019 年，这一年的 Wasm 生态又加入了很多新的成员，WASI 的出现又进一步提高了 Wasm 与平台之间的互操作性，使得其 out-of-web 成为可能；而 Type Function Reference 与 Type Imports 提案的出现也进一步推动了 GC 的最终实现。
 
-![截至2019年8月所有开放的 Wasm 提案](7.png)
+![截至 2019 年 8 月所有开放的 Wasm 提案](7.png)
 
 
 # 后记
-自笔者2017年接触 Wasm 至今，其发展速度着实超过了任何一个其他类似的 W3C 标准化组织。从 MVP 标准的落地，到 WWG 的成立，再到全球第一次 WebAssembly Summit 的成功举办，仿佛又映射了 Atwood 的那句名言：“任何可以使用 JavaScript 来编写的应用，最终都会由 JavaScript 编写”，只不过这次的主角变成了 Wasm。当然我们都知道这只是这只是一句玩笑话，但也确实从侧面反映出来 JavaScript 如日中天的这样一个时代。经过了将近五年的发展，Wasm 逐渐在国外技术社区掀起新一轮的技术浪潮，随之而来的是众多的虚拟机、编译器以及各类配套的底层工具链如雨后春笋般涌现。而通过这次的 Summit 我们发现，Wasm 已经逐渐开始在应用层面显示出它的能力，并逐渐开始向云技术、物联网以及区块链等多个重要领域发起“进攻”。最后，让我们一同拭目以待，期待未来的 Wasm 能够引领新一轮的互联网技术变革。也同时祝愿我们能够在2020年成功为大家带来中国的 WebAssembly Summit China 峰会，期待与你届时的相遇。
+自笔者 2017 年接触 Wasm 至今，其发展速度着实超过了任何一个其他类似的 W3C 标准化组织。从 MVP 标准的落地，到 WWG 的成立，再到全球第一次 WebAssembly Summit 的成功举办，仿佛又映射了 Atwood 的那句名言：“任何可以使用 JavaScript 来编写的应用，最终都会由 JavaScript 编写”，只不过这次的主角变成了 Wasm。当然我们都知道这只是这只是一句玩笑话，但也确实从侧面反映出来 JavaScript 如日中天的这样一个时代。经过了将近五年的发展，Wasm 逐渐在国外技术社区掀起新一轮的技术浪潮，随之而来的是众多的虚拟机、编译器以及各类配套的底层工具链如雨后春笋般涌现。而通过这次的 Summit 我们发现，Wasm 已经逐渐开始在应用层面显示出它的能力，并逐渐开始向云技术、物联网以及区块链等多个重要领域发起“进攻”。最后，让我们一同拭目以待，期待未来的 Wasm 能够引领新一轮的互联网技术变革。也同时祝愿我们能够在 2020 年成功为大家带来中国的 WebAssembly Summit China 峰会，期待与你届时的相遇。

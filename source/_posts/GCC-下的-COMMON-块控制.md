@@ -1,7 +1,7 @@
 ---
 title: GCC 下的 COMMON 块控制
 intro: 在 GCC 下，我们可以通过 `__attribute__((common))` 扩展参数来控制编译器对 C 源码中的未初始化全局变量的处理方式。默认情况下，GCC 将采用 COMMON 块来存放未初始化全局变量，这里注意是 C 源代码。
-comments: true
+comments: false
 date: 2020-06-19 11:18:27
 tags:
 - 计算机

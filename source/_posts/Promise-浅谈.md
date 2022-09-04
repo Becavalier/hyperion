@@ -1,7 +1,7 @@
 ---
 title: Promise 浅谈
 intro: Promise A+ 规范表面上解决了在 JavaScript 中异步调用过多会产生“回调地狱”的问题。但实际上，Promise 的核心思想，是回调函数控制机制的改变。以往的回调函数是被动的放在被调用的异步请求中，但基于 Promise 的规范，我们可以先获得一个“通知”，然后再根据情况进行处理。
-comments: true
+comments: false
 date: 2016-12-22 11:55:41
 tags:
 - JavaScript

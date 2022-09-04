@@ -133,6 +133,7 @@ module.exports = app => {
       url: String!
       date: DateScalarType!
       rawDate: String!
+      snippets: [String]!
     }
     type TagSearchResult {
       tagName: String!
@@ -173,17 +174,37 @@ module.exports = app => {
       async searchPostsByKey(parent, args) {
         const key = args.key;
         const reg = new RegExp(`${key}`, 'i');
-        return global.hexoMeta.Posts.filter(post => {       
-          return reg.test(post.raw) || reg.test(post.title)
-        }).map(candidate => {
-          const localDate = dayjs(candidate.date).locale('zh-cn').format('YYYY-MM-DD');
-          return {
-            title: candidate.title,
-            url: `/${localDate.replace(/-/g, '/')}/${candidate.slug}`,
-            date: candidate.date,
-            rawDate: candidate.date
+        const clipSnippet = (text, keyword) => {
+          const result = []
+          const offset = 30;
+          let startPos = 0;
+          while (true) {
+            const idx = text.toLowerCase().indexOf(keyword.toLowerCase(), startPos)
+            if (idx >= 0) {
+              const start = idx - offset;
+              const end = idx + offset;
+              result.push(text.slice(start > 0 ? start : 0, end));
+              startPos += (1 + idx);
+            } else {
+              break;
+            }
           }
-        });
+          return result;
+        };
+        return global.hexoMeta.Posts
+          .filter(post => reg.test(post.raw))
+          .sort((x, y) => new Date(y.date) - (new Date(x.date)))
+          .splice(0, 20)
+          .map(candidate => {
+            const localDate = dayjs(candidate.date).locale('zh-cn').format('YYYY-MM-DD');
+            return {
+              title: candidate.title,
+              url: `/${localDate.replace(/-/g, '/')}/${candidate.slug}`,
+              date: candidate.date,
+              rawDate: candidate.date,
+              snippets: clipSnippet(candidate.content, key),
+            }
+          });
       },
       async searchTagsByKey(parent, args) {
         const key = args.key;

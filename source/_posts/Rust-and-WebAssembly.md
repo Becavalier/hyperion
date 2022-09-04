@@ -1,7 +1,7 @@
 ---
 title: Rust and WebAssembly
 intro: 记录一些 Rust 与 Wasm 的交互细节。
-comments: true
+comments: false
 date: 2021-04-22 17:25:31
 tags:
 - Rust

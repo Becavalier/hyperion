@@ -1,7 +1,7 @@
 ---
 title: 前端那些事儿 - 三字节 BOM 头
 intro: 今天在修复一个后台 BUG 的时候遇到了很奇怪的问题，从服务器端返回来的数据是 JSON 格式的，并且打印以及 Base64 编码解码之后均为正确的 JSON 字符串格式，但偏偏 PHP 内置的 JSON_decode 函数却无法正常解码，一直返回空的解析结果。遂借此机会研究了一番，发现这其中的一些不为人知的秘密。
-comments: true
+comments: false
 date: 2016-01-06 16:10:17
 tags:
 - Web

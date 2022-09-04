@@ -1,7 +1,7 @@
 ---
 title: JIT Compilation：理解与实现
 intro: 本文主要介绍了基础编译技术中的 JIT Compilation 技术，以及如何使用 C++ 快速构建一个简单的 JIT Compiler。
-comments: true
+comments: false
 date: 2021-05-10 08:38:26
 tags:
 - JIT

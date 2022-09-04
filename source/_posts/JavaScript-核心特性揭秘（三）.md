@@ -1,7 +1,7 @@
 ---
 title: JavaScript 核心特性揭秘（三）
 intro: 本文是《JavaScript 核心特性揭秘》系列的第三篇，我们将继续沿着 JavaScript 的核心特性向下探索。JS 天生并不具备诸如“类”，“继承”等一系列专用于面向对象开发（OOP）的特性，那么该如何在 JS 中尽量“完美”地进行面向对象开发呢？如何封装对象？本文将给出答案。
-comments: true
+comments: false
 date: 2016-04-03 18:41:27
 tags:
 - JavaScript

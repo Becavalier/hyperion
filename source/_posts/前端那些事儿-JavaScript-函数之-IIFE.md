@@ -1,7 +1,7 @@
 ---
 title: 前端那些事儿 - JavaScript 函数之 IIFE
 intro: 说到 JavaScript（后面简称 “JS”）的函数，大家肯定都很熟悉，平时写 JS 代码的时候经常会用到自定义函数，简直再熟悉不过。那如果我说到 JS 里的 IIFE，你是否还会像对了解 JS 函数那样熟悉 IIFE 呢？
-comments: true
+comments: false
 date: 2015-11-30 20:57:46
 tags:
 - JavaScript

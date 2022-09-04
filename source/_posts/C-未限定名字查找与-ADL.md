@@ -1,7 +1,7 @@
 ---
 title: C++ 未限定名称查找与 ADL
 intro: 简单总结下 ADL（aka. Koenig Lookup）与 C++ 中对于“未限定名称（unqualified-name，就是指没有指定所在命名空间的名字）”查找之间的关系。
-comments: true
+comments: false
 date: 2020-04-26 21:10:29
 tags:
 - Cpp

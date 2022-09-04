@@ -1,7 +1,7 @@
 ---
 title: CRTP 与常见用例
 intro: CRTP 的全称为 “Curiously Recurring Template Pattern”，是一种 C++ 模板编程中的常用模式。其形式是将派生类作为基类的模板参数。从“类型理论”上来讲，这是一类 “F-bounded polymorphism”。
-comments: true
+comments: false
 date: 2020-08-06 17:02:38
 tags:
 - Cpp

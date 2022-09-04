@@ -1,7 +1,7 @@
 ---
 title: 《JavaScript 高级程序设计（第四版）》读书笔记（第 8-11 章）
 intro: 书接上回，本文为第 8-11 章的笔记。
-comments: true
+comments: false
 date: 2020-12-14 22:42:30
 tags:
 - JavaScript
@@ -11,7 +11,7 @@ tags:
 
 ### 第 8 章 - 对象、类与面向对象编程
 
-41. （Page：530）ECMAScript 使用一些内部特性来**描述对象属性的特征**。
+41. [Page: 530] ECMAScript 使用一些内部特性来**描述对象属性的特征**。
 
 * 数据属性：
   * <b>[[Configurable]]</b>：表示属性是否可以通过 `delete` 删除并重新定义，是否可以修改它的特性（若设为 *false* 则无法再被修改回来），以及是否可以把它改为访问器属性。默认为 *true*；
@@ -114,7 +114,7 @@ function printPerson(id, { name, age }) {
 printPerson(1, person);
 ```
 
-43. （Page：563）ECMAScript 实现**类**的几种方式：
+43. [Page: 563] ECMAScript 实现**类**的几种方式：
 
 * 构造函数模式：
   * 问题：**其定义的方法会在每个实例上都创建一遍**；
@@ -173,7 +173,7 @@ Object.defineProperty(Person.prototype, 'constructor', {
 let p = new Person('Jason', 27);
 ```
 
-44. （Page：600）**继承**：
+44. [Page: 600] **继承**：
 
 * **ECMA-262 把“原型链”定义为 ECMAScript 的主要继承实现方式**；
 * `instanceof` 运算符用于**检测构造函数的 prototype 属性是否出现在某个实例对象的原型链上**（跟 constructor 无关）；
@@ -232,7 +232,7 @@ SubType.prototype.sayAge = function() {
 }
 ```
 
-45. （Page：622）**类**（语法糖）：
+45. [Page: 622] **类**（语法糖）：
 
 * **类定义无法被提升**（不同于函数定义）；
 * 函数受函数作用域限制，**类声明受块作用域限制**；
@@ -405,7 +405,7 @@ function createComparisonFunction(propertyName) {
 
 ### 第 11 章 - Promise 与异步函数
 
-48. （Page：790）**Promise**:
+48. [Page: 790] **Promise**:
 
 * ECMAScript6 增加了对 **Promise/A+** 规范的支持，即 `Promise` 类型；
 * Promise **状态机**（状态变化只能单向传递，不可逆）：

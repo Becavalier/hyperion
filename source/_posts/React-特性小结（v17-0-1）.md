@@ -1,7 +1,7 @@
 ---
 title: React 特性小结（v17.0.1）
 intro: 记录一些之前理解了然后又忘了的知识点。
-comments: true
+comments: false
 date: 2021-02-17 14:27:54
 tags:
 - React

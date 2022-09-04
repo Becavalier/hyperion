@@ -1,7 +1,7 @@
 ---
 title: TLPI 读书笔记（第 1-2 章）
 intro: “The Linux Programming Interface”，内容如题。
-comments: true
+comments: false
 date: 2021-05-19 17:18:20
 tags:
 - Linux
@@ -15,7 +15,7 @@ tags:
 
 ### Chapter 2 - Fundamental Concepts
 
-1. （Page：26）Linux 下的用户和组：
+1. [Page: 26] Linux 下的用户和组：
 
 * **用户信息**：*/etc/passwd*；
   * 登录名；
@@ -30,7 +30,7 @@ tags:
   * 包含的用户名列表。
 * **超级用户**：一般其用户 ID 为 *0*，用户名为 “*root*”。
 
-2. （Page：27）Linux 文件系统相关元素：
+2. [Page: 27] Linux 文件系统相关元素：
 
 * **文件类型**：普通（*plain* / *regular*）文件、设备、管道、套接字、目录，以及符号链接；
 * ***文件夹***：其内容采用类似“文件名表”的形式进行组织，表中的每一个文件名都有一个与其相对应的实体文件**引用**；
@@ -41,17 +41,12 @@ tags:
 * ***当前工作目录***（CWD）：每个进程都有一个“当前工作目录”，一个进程从其父进程继承其“当前工作目录”。Unix 下的 `chdir` 系统调用可用于修改进程的 CWD；
 * ***文件所有权及权限***：每个文件都有一个相关的用户 ID 和组 ID，定义了文件的所有者和所属的组。三类用户（所有者、同组、其他），三个权限位（读、写、执行）。
 
-3. （Page：30）Linux 文件 I/O 模型：
+3. [Page: 30] Linux 文件 I/O 模型：
 
 * ***I/O 普遍性***（*universality*）：同一个系统调用（`open` \ `read` \ `close` 等）可被用在所有类型的文件上。内核会将应用的 I/O 请求翻译成适当的文件系统或设备驱动程序操作，并在目标文件或设备上执行 I/O。内核本质上仅提供一种文件类型：一个**连续的字节流**。Unix 系统没有文件结尾字符，文件的结尾是由一个**没有返回数据的读操作**来标识的。
 * ***文件描述符***：本质是正整数。默认情况下，一个进程在由 Shell 启动时会继承三个特殊的文件描述符：*stdin*（0）、*stdout*（1）、*stderr*（2）；
 * ***stdio 库***：***stdio* 库中的 I/O 函数**（*fopen* / *fclose* / *scanf* / *printf* / *fgets* / *fputs* 等）**构建于系统调用**（*open* / *close* / *read* / *write*）**之上**。
 
-4. （Page：31）Linux 进程：
+4. [Page: 31] Linux 进程：
 
-
-
-5. （Page：）
-6. （Page：）
-7. （Page：）
-8. （Page：）
+（待更新）

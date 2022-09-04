@@ -1,7 +1,7 @@
 ---
 title: Prism.js 在 AJAX 下的应用问题
 intro: Prism.js 是一款用于 Web 端的代码及语法高亮显示插件。整个 Prism 库的应用方法很简单，只需要在页面中加入 “Prism.js” 和 “Prism.css” 两个文件，并将要高亮显示的代码文本放置在特定的标签内即可。但是当 Prism.js 遇到了通过 AJAX 异步加载的内容，问题便出现了。
-comments: true
+comments: false
 date: 2015-01-12 18:24:24
 tags:
 - Web

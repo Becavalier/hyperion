@@ -1,7 +1,7 @@
 ---
 title: 基于 NumPy 和 TensorFlow 的简单 KNN 实现
 intro: 最近花了点时间分别用 NumPy 和 TensorFlow 实现了一个简单基础的 KNN 算法。对于两种实现而言，KNN 算法的原理与常见的问题都是一致的。这里主要记录下实现的代码过程，同时讨论下 KNN 算法本身的一些问题。所有实现均基于 Python3，需要的相关 Lib 可以通过 Pip 进行安装。
-comments: true
+comments: false
 date: 2017-05-26 22:50:24
 tags:
 - KNN

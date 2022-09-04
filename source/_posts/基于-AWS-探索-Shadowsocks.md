@@ -1,7 +1,7 @@
 ---
 title: 基于 AWS 探索 Shadowsocks
 intro: 今天本来想写一篇关于 JQuery 最佳实践的文章，但是写到中途手滑没有保存，遂留到日后再写好了。今天要写的一篇文章是关于 Shadowsocks 在 AWS 上的实践文章。通过本文所述的实践操作，大家可以熟悉 AWS 的常用操作，并逐渐了解 Shadowsocks 的核心原理。同时，这也是一次记录与整理。
-comments: true
+comments: false
 date: 2016-08-16 23:24:45
 tags:
 - AWS

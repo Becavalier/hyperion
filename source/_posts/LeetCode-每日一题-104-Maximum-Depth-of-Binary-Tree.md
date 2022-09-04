@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 104. Maximum Depth of Binary Tree
 intro: LeetCode 每日一题系列。本文算法题目：给出一个二叉树和其根节点，给出该二叉树的最大深度（指树中最长路径所经过的所有节点数量）。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Tree】 【Depth-first Search】
-comments: true
+comments: false
 date: 2016-09-17 22:32:01
 tags:
 - 算法

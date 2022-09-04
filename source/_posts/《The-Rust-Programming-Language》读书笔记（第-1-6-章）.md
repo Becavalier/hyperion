@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 1-6 章）
 intro: 2021 年的计划事项之一 - 学习 Rust。希望不会打击一个 C++er 的脆弱内心 :(
-comments: true
+comments: false
 date: 2021-03-23 21:07:38
 tags:
 - Rust
@@ -13,8 +13,8 @@ Rust Version：**1.49 or later**。
 
 ### Chapter 1 - Getting Started
 
-1. （Page：8）可以使用 *rustup*（Rust 官方的“安装管理” CLI 工具）来管理 Rust 的**安装**、**升级**，以及**本地文档**的使用。也可以使用 *rustfmt* 来**格式化 Rust 源代码**，以统一为一致的编码风格。
-2. （Page：11）Rust 的基本编码风格是“**4 空格缩进**”，应用基本结构如下：
+1. [Page: 8] 可以使用 *rustup*（Rust 官方的“安装管理” CLI 工具）来管理 Rust 的**安装**、**升级**，以及**本地文档**的使用。也可以使用 *rustfmt* 来**格式化 Rust 源代码**，以统一为一致的编码风格。
+2. [Page: 11] Rust 的基本编码风格是“**4 空格缩进**”，应用基本结构如下：
 
 ```rust
 fn main() {
@@ -22,7 +22,7 @@ fn main() {
 }
 ```
 
-3. （Page：13）使用 Cargo：
+3. [Page: 13] 使用 Cargo：
 
 \- ***创建、编译、运行及检查 Rust 项目***：
 
@@ -53,7 +53,7 @@ edition = "2018"
 
 ### Chapter 2 - Programming a Guessing Game
 
-4. （Page：36）完整示例代码：
+4. [Page: 36] 完整示例代码：
 
 \- ***Rust***：
 
@@ -119,14 +119,14 @@ rand = "0.5.5"
 
 ### Chapter 3 - Common Programming Concepts
 
-5. （Page：37）默认情况下，**Rust 中定义变量是不可变的**（immutable）。可以使用 `mut` 关键字标记定义的变量，以使其在未来可变。
-6. （Page：39）可以使用 `const` 关键字定义常量，此时变量名必须使用大写形式，并且**需要显式指明类型**（<b>[Github Discussion](https://github.com/rust-lang/rfcs/issues/1349)</b>）。其基本语义与 C++ 中的 *constexpr* 类似，属于 compile-time 常量。
+5. [Page: 37] 默认情况下，**Rust 中定义变量是不可变的**（immutable）。可以使用 `mut` 关键字标记定义的变量，以使其在未来可变。
+6. [Page: 39] 可以使用 `const` 关键字定义常量，此时变量名必须使用大写形式，并且**需要显式指明类型**（<b>[Github Discussion](https://github.com/rust-lang/rfcs/issues/1349)</b>）。其基本语义与 C++ 中的 *constexpr* 类似，属于 compile-time 常量。
 
 ```rust
 const MAX_POINTS: u32 = 100_000; 
 ```
 
-7. （Page：40）**Shadowing**（遮蔽）：重新定义同名变量，以覆盖先前的定义（**可以更改值类型、可变性**）。
+7. [Page: 40] **Shadowing**（遮蔽）：重新定义同名变量，以覆盖先前的定义（**可以更改值类型、可变性**）。
 
 ```rust
 fn main() { 
@@ -136,7 +136,7 @@ fn main() {
 }
 ```
 
-8. （Page：42）**值类型**（默认均放于栈上）：
+8. [Page: 42] **值类型**（默认均放于栈上）：
 
 \- ***标量类型***：表示一个单一值。
 
@@ -223,7 +223,7 @@ fn main() {
 }
 ```
 
-9. （Page：50）**函数**：
+9. [Page: 50] **函数**：
 
 * 必须明确指出函数形参、返回值的具体类型；
 * statement 与 expression：前者没有返回值，仅表达一个动作（比如 `let` 语句）；后者有具体的返回值（比如 `{}`、字面量数字），且组成不包含结束的 “;”；后者可以成为前者的组成部分。默认情况下，**没有显式标记返回值的函数，其在调用后默认会返回一个空 tuple**（一般被称为 *unit value*）。
@@ -242,7 +242,7 @@ fn add(x: i32, y: i32) -> i32 {
 }
 ```
 
-10. （Page：58）**控制流**：
+10. [Page: 58] **控制流**：
 
 * ***if***：
   * *if...else* 结构可以作为表达式**返回一个值**；
@@ -307,7 +307,7 @@ fn main() {
 
 ### Chapter 4 - Understanding Ownership
 
-11. （Page：67）**Ownership**（所有权）：
+11. [Page: 67] **Ownership**（所有权）：
 
 * Rust 的（堆）内存管理策略：内存是**通过一个所有权系统来管理的**，该系统有一套规则，编译器**在编译时进行检查**，因此不会降低应用的运行时效率；
 * **编译时大小可确定的基本类型，其默认的赋值语义为 *copy***；
@@ -439,7 +439,7 @@ fn first_word(s: &str) -> &str {  // accpet both String and String Slices.
 
 ### Chapter 5 - Using Structs to Structure Related Data
 
-12. （Page：94）**Struct**：
+12. [Page: 94] **Struct**：
 
 * Struct 的实例**只能将整个实例被标记为“可变”，而无法仅标记其中的某个字段**；
 
@@ -578,7 +578,7 @@ fn main() {
 
 ### Chapter 6 - Enums and Pattern Matching
 
-13. （Page：114）**Enum**：
+13. [Page: 114] **Enum**：
 
 * Rust 中的 enum 类型是一个抽象类型，其抽象层级比 struct 更高（使用层面）。可以理解为**可容纳所有相同类型的一个集合**；
 * 默认情况下，**enum 类型的大小为可容纳其内部可能的最大元素的大小**；

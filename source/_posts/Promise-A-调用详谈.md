@@ -1,7 +1,7 @@
 ---
 title: Promise A+ 调用详谈
 intro: Promise A+ 规范是对 Promise A 规范的增强和补充，本文不会对 Promise A+ 规范进行详细的讲解，而会从应用的角度来对 Promise A+ 规范的实现流程进行梳理。我们会以 ES6 的 Promise A+ 实现的常用应用方式入手，最后从几段代码的剖析中结束文章内容。
-comments: true
+comments: false
 date: 2017-02-28 10:52:03
 tags:
 - JavaScript

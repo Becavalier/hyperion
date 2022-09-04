@@ -1,7 +1,7 @@
 ---
 title: ld 链接控制脚本与默认脚本
 intro: 我们可以通过 `ld -verbose` 命令来查看 GNU 链接器 ld 默认使用的内部链接控制脚本。这里直接列出该控制脚本的内容。
-comments: true
+comments: false
 date: 2020-06-19 18:02:50
 tags:
 - 计算机

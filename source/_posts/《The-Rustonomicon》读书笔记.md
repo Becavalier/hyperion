@@ -1,7 +1,7 @@
 ---
 title: 《The Rustonomicon》读书笔记
 intro: “The Dark Arts of Unsafe Rust”。
-comments: true
+comments: false
 date: 2021-04-13 00:56:32
 tags:
 - Rust
@@ -11,8 +11,8 @@ tags:
 
 ### Chapter 1 - Meet Safe and Unsafe
 
-1. （Page：3）可以使用编译器标记 `#![forbid(unsafe_code)]` 来表明仅允许使用安全（非 `unsafe`）的 Rust 语言特性。
-2. （Page：4）**为何可以在 Rust 中引用临时值**（即 C++ 中的“右值”）？
+1. [Page: 3] 可以使用编译器标记 `#![forbid(unsafe_code)]` 来表明仅允许使用安全（非 `unsafe`）的 Rust 语言特性。
+2. [Page: 4] **为何可以在 Rust 中引用临时值**（即 C++ 中的“右值”）？
 
 * 表达式的**临时作用域**是用于临时变量的一个范围，该临时变量在环境上下文中使用时将保留该表达式的结果，除非将其进行常量传播（当可以在不更改运行时行为的情况下将表达式以常量写入，借用并在原始写入表达式的位置解引用该借用时，将值表达式提升为 “`'static`” 插槽）。除了 *lifetime* 扩展外，表达式的临时作用域是包含该表达式的最小作用域；
 * 由于 “*temporary lifetime extension*” 机制的存在，`let` 语句中表达式的临时作用域有时会扩展到包含 `let` 语句的块的范围。当基于某些句法规则，导致通常的临时作用域太小时，便会执行此操作。
@@ -24,7 +24,7 @@ let x = &mut 0;
 println!("{}", x);  // 1.
 ```
 
-3. （Page：4）Rust 中一些**常见的 unsafe 函数或 trait**：
+3. [Page: 4] Rust 中一些**常见的 unsafe 函数或 trait**：
 
 * `slice::get_unchecked`：在不进行边界检查的情况下，**返回对一个元素或子序列的引用**。当索引的位置超出集合大小时，其行为是未定义的，因此对于传入的索引值要提前确认其是否有效。
 
@@ -72,7 +72,7 @@ fn main() {
 * *marker trait* `Sync`：保证实现该 trait 的实体可以通过引用，被安全地在多个线程间共享；
 * *trait* `GlobalAlloc`：可用于自定义内存分配器。
 
-4. （Page：6）unsafe 的能力：
+4. [Page: 6] unsafe 的能力：
 
 * 解引用原始指针；
 * 调用 unsafe 方法（包括 C 方法，编译器 intrinsics，以及原始分配器）；
@@ -80,11 +80,11 @@ fn main() {
 * 改变 static 静态全局变量的值；
 * 访问 union 中的字段。
 
-5. （Page：9）unsafe 操作的合理性必然取决于通过其他 “safe” 操作建立的状态。
+5. [Page: 9] unsafe 操作的合理性必然取决于通过其他 “safe” 操作建立的状态。
 
 ### Chapter 2 - Data Representation in Rust
 
-6. （Page：10）**对齐**：
+6. [Page: 10] **对齐**：
 
 * 所有类型都有以“字节”为单位的对齐要求。最小的对齐要求为 1 字节，其他大小均须为 2 的整数次幂个字节；**Primitives 类型（整数、浮点数、布尔值，以及字符值）通常对齐到它们类型本身的大小**（当然也受到具体平台的限制）。类型的大小必须始终是其对齐字节的倍数（如 *struct*），这样可以确保对于该类型的数组，可以始终通过偏移其大小的整数倍字节来索引数字中该类型的元素；
 * 对于动态大小类型，其大小与对齐方式可能无法在静态编译时得知；
@@ -128,7 +128,7 @@ enum Foo {
 assert_eq!(core::mem::size_of::<Option<&T>>(), core::mem::size_of::<&T>());
 ```
 
-7. （Page：13）特殊大小类型：
+7. [Page: 13] 特殊大小类型：
 
 \- ***动态大小类型（DSTs）***：
 
@@ -189,7 +189,7 @@ let res: Result<u32, Void> = Ok(0);
 let Ok(num) = res;
 ```
 
-8. （Page：17）可选的数据布局形式（repr）：
+8. [Page: 17] 可选的数据布局形式（repr）：
 
 \- <b>repr(C)</b>：
 
@@ -227,7 +227,7 @@ pub struct Rect { x: f32, y: f32, width: f32, height: f32 }
 
 ### Chapter 3 - Ownership and Lifetimes
 
-9. （Page：21）**当变量或指针在同一时间指向了同一块发生重叠的内存区域时**，即可称它们发生了 *alias*。由于 Rust 的所有权机制可以避免这种情况的发生，因此编译器也可以进行相应的优化：
+9. [Page: 21] **当变量或指针在同一时间指向了同一块发生重叠的内存区域时**，即可称它们发生了 *alias*。由于 Rust 的所有权机制可以避免这种情况的发生，因此编译器也可以进行相应的优化：
 
 * 对于某些值，当其没有被指针引用时，可以被存放到寄存器中；
 * 通过证明在上一次读操作后，内存没有被改变，来减少一些无用的内存读操作（多次读合并为一次）；
@@ -262,7 +262,7 @@ fn compute(input: &u32, output: &mut u32) {
 }
 ```
 
-10. （Page：23）*Lifetimes* 基本：
+10. [Page: 23] *Lifetimes* 基本：
 
 * 每一个 `let` 表达式都会隐式地引入一个 *lifetime* 作用域。而 borrow-checker 会尽量使得每一个 scope 都仅采用必须的最小范围。如下例所示。
 
@@ -291,7 +291,7 @@ z = y;
 }
 ```
 
-11. （Page：27）一个 aliasing 导致 *lifetime* 出错的例子：
+11. [Page: 27] 一个 aliasing 导致 *lifetime* 出错的例子：
 
 \- ***Rust 代码***：
 
@@ -327,7 +327,7 @@ fn main() {
 }
 ```
 
-12. （Page：28）*lifetime* 作用域：
+12. [Page: 28] *lifetime* 作用域：
 
 * *lifetime* 作用域一般为从其创建到最后一次被使用中间的一段范围；
 * 对于含有析构函数（***Drop*** trait）的值，其所保有的引用的 *lifetime* 将会从该值的定义持续到当前 scope 结束的整个部分。
@@ -357,7 +357,7 @@ x = &data[3];  // We start a new borrow here.
 println!("{}", x);
 ```
 
-13. （Page：29）lifetime 的**局限性**：下述代码从引用的语义上来看，没有产生 aliasing 的问题，但实际 borrow-checker 在进行类似 desugar 之后的检查分析时，仍会检测到 aliasing，进而阻止编译通过。这是由于：**Rust 编译器并不理解“可变借用（*&mut self*）”已不再需要，而是选择保守地将其可用范围扩展到整个当前的 lifetime 作用域**。
+13. [Page: 29] lifetime 的**局限性**：下述代码从引用的语义上来看，没有产生 aliasing 的问题，但实际 borrow-checker 在进行类似 desugar 之后的检查分析时，仍会检测到 aliasing，进而阻止编译通过。这是由于：**Rust 编译器并不理解“可变借用（*&mut self*）”已不再需要，而是选择保守地将其可用范围扩展到整个当前的 lifetime 作用域**。
 
 \- ***Rust 代码***：
 
@@ -399,7 +399,7 @@ fn main() {
 }
 ```
 
-14. （Page：32）**Unbounded Lifetimes**：
+14. [Page: 32] **Unbounded Lifetimes**：
 
 * 可能产生的场景：
   * 没有与 input 参数绑定的 output 参数上的 lifetime；
@@ -412,7 +412,7 @@ fn get_str<'a>() -> &'a str {
 }
 ```
 
-15. （Page：33）**HRTB**s（Higher-Rank Trait Bounds）：
+15. [Page: 33] **HRTB**s（Higher-Rank Trait Bounds）：
 
 * 用于标记 `Fn` trait 中参数和返回值的 lifetime。
 
@@ -436,7 +436,7 @@ fn main() {
 }
 ```
 
-16. （Page：42）**Variance**：
+16. [Page: 42] **Variance**：
 
 ![](1.png)
 
@@ -449,14 +449,14 @@ fn main() {
 
 ![](2.png)
 
-17. （Page：43）**Drop Checker**：
+17. [Page: 43] **Drop Checker**：
 
 * 变量被释放的顺序与它们的定义顺序相反；
 * `struct` 与 `tuple` 中字段的释放顺序与它们的定义顺序相同，但实际 borrow-checker 并不会严格进行区分；
 * **为了使泛型类型正确实现 Drop，其泛型参数（T）的存活时间必须严格超过该泛型类型**；
 * 当类型字段的 drop 顺序变得重要时，可以使用 `ManuallyDrop` 来手动控制类型各个字段的 drop 顺序。
 
-18. （Page：49）**PhantomData**：
+18. [Page: 49] **PhantomData**：
 
 * 是一个 *marker type*，不会占用任何空间，可用于为**支持静态分析**而模拟给定类型的字段。
 * 可用于绑定未使用的 lifetime、泛型参数到复合类型：
@@ -487,7 +487,7 @@ struct Vec<T> {
 
 ### Chapter 4 - Type Conversions
 
-19. （Page：57）**Casts**：
+19. [Page: 57] **Casts**：
 
 * <i>*T as *U</i>，<i>T, U: Sized</i>；
 * <i>*T as integer</i>；
@@ -501,7 +501,7 @@ struct Vec<T> {
 * <i>fn as *T</i>，<i>T: Sized</i>；
 * <i>fn as integer</i>。
 
-20. （Page：60）**Transmutes**：
+20. [Page: 60] **Transmutes**：
 
 * `mem::transmute<T, U>`：需要保证 T 与 U 具有同样的大小； 
 * `mem::transmute_copy<T, U>(src: &T) -> U`：会从 <i>&T</i> 拷贝 <i>size_of\<U\></i> 字节数据，并将这些数据解释为 U 的类型。当类型 U 比 T 大时，会导致 UB； 
@@ -513,7 +513,7 @@ struct Vec<T> {
 
 ### Chapter 5 - Working With Uninitialized Memory
 
-21. （Page：62）**未初始化内存**：
+21. [Page: 62] **未初始化内存**：
 
 * Rust 中的所有栈变量（函数局部变量）定义，在其遇到显式的赋值行为之前，都是处于“**未初始化**”状态的；
 
@@ -560,7 +560,7 @@ println!("{}", x);
 
 * 当一个变量的值被移出后，该变量将默认变为逻辑上的“未初始化”状态，当且仅当该变量的值类型没有实现 Copy trait。
 
-22. （Page：66）未初始化实例：
+22. [Page: 66] 未初始化实例：
 
 * 可以使用 `MaybeUninit<T>` 构建对应类型 T 的未初始化实例：
   * 当用 `=` 进行赋值操作时，Rust 会默认先将左侧变量所持有的内容 drop 掉。而 drop 一个 `MaybeUninit<T>` 不会发生任何事；

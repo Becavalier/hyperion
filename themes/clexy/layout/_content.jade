@@ -17,7 +17,7 @@ if is_home()
 //- articles page;
 if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
   article.full
-    h1(itemprop='headline')=page.title + ' (' + site.posts.length + ')'
+    h1(itemprop='headline')=page.label + ' (' + site.posts.length + ')'
       a(href=config.root + 'search/')
         i(class='fa fa-search')
     div.content
@@ -52,10 +52,10 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
                   a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} &nbsp;
       if site.posts.toArray().length !== 0
         | </ul>
-else if is_page() && page.title.toLowerCase() =='author'
+else if is_page() && page.title.toLowerCase() =='about'
   article.full
-    h1(itemprop='headline')=page.title
-    div.author-container
+    h1(itemprop='headline')=page.label
+    div.about-container
       div.avatar
       if (config.about !== undefined)
         div.avatar-name
@@ -101,32 +101,12 @@ else if is_page() && page.title.toLowerCase() =='author'
           a(target="_blank", href=config.about.resume)
             span(class="fa fa-id-card icons" aria-hidden="true")
       div.extra-container
-        //- a(target="_blank", href=config.about.books_shelf)
-        //-   span(class="fa fa-book icons" aria-hidden="true")
         a(target="_blank", href=config.about.interview_sheet)
           span(class="fa fa-sticky-note icons" aria-hidden="true")
-else if is_page() && page.title.toLowerCase() =='notes'
-  script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
-  script(src=config.root + 'scripts/notes.js', type='text/javascript')
-  article(class='full notes-page')
-    - var notes_items = site.pages.filter(i => i.page === 'notes')
-    h1(itemprop='headline')=page.title + ' (' + notes_items.length + ')'
-    div.content
-      each val, key in notes_items.sort((x, y) => y.category > x.category).reduce((prev, curr) => { if(!prev[curr.cateogry]) { prev[curr.cateogry] = [] } prev[curr.cateogry].push(curr); return prev; }, {})
-        h5='- ' + key
-        ul.notes-list
-          for notes in val.sort((x, y) => y.title < x.title)
-            li 
-              div(class="title") （
-                a(target="_blank", href=notes.link)
-                  u 链接
-                  | ）
-                span=notes.title + ' - ' + full_date(new Date(notes.date), 'MM / YYYY')
-              div(class="content", id=notes.id)
 else if is_page() && page.title.toLowerCase() =='readings'
   article(class='full readings-page')
     - var reading_posts = site.pages.filter(i => i.page === 'readings')
-    h1(itemprop='headline', class='header')=page.title + ' (' + reading_posts.length + ')'
+    h1(itemprop='headline', class='header')=page.label + ' (' + reading_posts.length + ')'
     div.content
       span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。标题最前面的个人打分仅供参考。'
       each val, key in reading_posts.reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
@@ -143,7 +123,7 @@ else if is_page() && page.title.toLowerCase() =='search'
   script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
   script(src=config.root + 'scripts/search.js', type='text/javascript')
   article(class='full search-page')
-    h1(itemprop='headline')=page.title
+    h1(itemprop='headline')=page.label
     div.content
       div(class='search-container')
         input(class='input-search', autofocus, type='text', placeholder="请输入要搜索的关键字 ...")
@@ -153,7 +133,6 @@ else if is_page() && page.title.toLowerCase() =='search'
         i(class="fa fa-battery-empty")
           | &nbsp;&nbsp;暂无相关内容 T T
       div(class='search-result-container' data-type='Post')
-      div(class='search-result-container' data-type='Tag')
     
 else if is_post()
   script(src='https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js', type='text/javascript')
@@ -161,10 +140,6 @@ else if is_post()
   script(src=config.root + 'scripts/post.js', type='text/javascript')
   div.touch-top
     span
-  //- div(class='zoom in')
-  //-   span='+'
-  //- div(class='zoom out')
-  //-   span='-'
   article(post-id=page.title).full
     h1(itemprop='headline', class='align-center')=page.title
     div.content
@@ -185,32 +160,19 @@ else if is_post()
           | Last built on
           time(itemprop='dateModified', datetime=page.date.toISOString())=full_date(new Date(page.updated), ' YYYY / MM / DD, HH:mm:ss')
   br
-  //- a(name="comments")
-  //- div.article-end-saparator
-  //-   span(class="line")
-  //-   span(class="text")
-  //-     | 这是文章底线，下面是评论
-  //-   span(class="line")
-  //- if page.comments
-  //-   div.comments-display-container
-  //-     div.placeholder
-  //-       i(class="fa fa-battery-empty")
-  //-         | &nbsp;&nbsp;暂无评论，欢迎勾搭 ：）
-  //-   div.dot-decoration
-  //-   div.comments-input
-  //-     textarea(name="comment", placeholder="请输入评论内容 ...")
-  //-     div
-  //-       input(type="text", placeholder="请输入昵称 ...")
-  //-       button.submit-comment
-  //-         | 发布
-  if page.next
-    span(class='next-post')
-      a(href=config.root + page.next.path, itemprop='url') #{ 'Older Post ⇒'}
   if page.prev
+    span(class='next-post')
+      a(href=config.root + page.prev.path, itemprop='url') #{ '下一篇 ⇒'}
+  if page.next
     span(class='prev-post')
-      a(href=config.root + page.prev.path, itemprop='url') #{ '⇐ Next Post '}
+      a(href=config.root + page.next.path, itemprop='url') #{ '⇐ 上一篇'}
   br
-  include _comments
+  if config.disqus_shortname && page.comments
+    section#comments
+      div
+        h2 文章评论（Disqus）
+        #disqus_thread
+          noscript Please enable JavaScript to view the #[a(href='//disqus.com/?ref_noscript') comments powered by Disqus].
   br
   br
   br
@@ -248,7 +210,7 @@ else if is_tag()
     | </ul>
 else if is_page() && page.title.toLowerCase() =='tags'
   article.full
-    h1(itemprop='headline')=page.title
+    h1(itemprop='headline')=page.label
     div.tag-item
       for tag in site.tags.data
         a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}

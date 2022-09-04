@@ -1,7 +1,7 @@
 ---
 title: NASM 小记录
 intro: 本文记录一些在使用 NASM 时遇到的常用信息，以供快速查阅之用。
-comments: true
+comments: false
 date: 2020-06-25 13:42:46
 tags:
 - NASM

@@ -1,7 +1,7 @@
 ---
 title: 54th day at PayPal
 intro: Hello guys, It’s been a while since the last article. I have resigned from Alibaba at the end of June and turned to another job in which the company’s name is PayPal. There are a lot of things I want to tell you guys since this new job is different from the previous one. Time goes on so fast. It’s already eight weeks since I joined this new company. I don’t want to talk much about the business background of PayPal, but the working style and life here instead.  
-comments: true
+comments: false
 published: false
 date: 2019-08-23 18:25:33
 tags:

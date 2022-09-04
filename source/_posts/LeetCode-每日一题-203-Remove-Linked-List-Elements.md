@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 203. Remove Linked List Elements
 intro: LeetCode 每日一题系列，今天第十七题。好久不见，不管事情有多忙，算法还是要继续学习和研究下去，今天的是一道十分简单的链表题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Linked List】
-comments: true
+comments: false
 date: 2016-06-15 16:47:28
 tags:
 - 算法

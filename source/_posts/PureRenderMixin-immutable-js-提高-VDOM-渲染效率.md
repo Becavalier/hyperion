@@ -1,7 +1,7 @@
 ---
 title: PureRenderMixin & immutable.js 提高 VDOM 渲染效率
 intro: 最近用了一段时间的 Reactjs，其实大部分前端框架的核心原理都很相似，包括响应式、足够轻量级、基于 Virtual-DOM 等特性。从整体上来看，Vuejs 是基于模版进行应用构建的，在中小型应用中有一定的优势。而 Reactjs 则需要我们在 JavaScript 中使用 JSX 手动的来创建 DOM。
-comments: true
+comments: false
 date: 2017-05-18 16:04:49
 tags:
 - React

@@ -1,7 +1,7 @@
 ---
 title: 前端那些事儿 - URL 对象
 intro: 在 W3C 最新的 “File API Editor's Draft, 19 April 2016” 草案中已经明确定义了“URL 对象”的相关属性和方法。“URL 对象”提供了一些专用的属性和方法以用来创建和处理 URL 相关的信息。本文列出了一些基本用法和介绍，在投入生产环境中使用时一定要先关注其**浏览器兼容性列表**，以防止出现兼容性问题。
-comments: true
+comments: false
 date: 2016-05-12 09:28:58
 tags:
 - JavaScript

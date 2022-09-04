@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 189. Rotate Array
 intro: LeetCode 每日一题系列，今天第七题。今天的题型还是基于数组的变换，观察题目不仅仅是要理解题目的意思，更要去发现题目中的规律，擅于归纳。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Array】
-comments: true
+comments: false
 date: 2016-04-19 09:25:56
 tags:
 - 算法

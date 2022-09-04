@@ -1,49 +1,49 @@
 const DEFAULT_INDEX = 0;
+const SEARCH_RESULT_THRESHOLD = 10;
 
-document.addEventListener('DOMContentLoaded', async e => { 
-  // wrapping DOM;
+const escapeHTML = (str) => {
+  const p = document.createElement("p");
+  p.appendChild(document.createTextNode(str));
+  return p.innerHTML;
+}
+document.addEventListener('DOMContentLoaded', async () => { 
   const wrapFuncs = {
     wrapSearchPostResultSnippet: results => {
       if (results.length > 0) {
         results.sort((x, y) => new Date(y.date).getTime() - new Date(x.date).getTime())
-        let dom = `
-          <h4>文章</h4>
-          <ul class="catelog-items">
+        return `
+          <h4>文章（仅显示最近 ${SEARCH_RESULT_THRESHOLD} 条）</h4>
+          <ul class="search-catelog-items">
+          ${
+            results.slice(0, SEARCH_RESULT_THRESHOLD).reduce((prev, i) => {
+              prev += (`
+                <li itemprop="name">
+                  <a target="_blank" href="${i.url}" itemprop="url">
+                    <span>${i.title}</span>&nbsp;|&nbsp;<time itemprop="datePublished" datetime="${i.rawDate}">${i.date}</time>
+                  </a>
+                  <ul>${
+                    i.snippets.reduce((prevSnippet, j) => {
+                      prevSnippet += `<li>... ${escapeHTML(j)} ...</li>`
+                      return prevSnippet
+                    }, '')
+                  }</ul>
+                </li>
+              `);
+              return prev
+            }, '')
+          }
+          </ul><br>
         `;
-        results.forEach(i => {
-          dom += (`
-            <li itemprop="name">
-              <time itemprop="datePublished" datetime="${i.rawDate}">${i.date}</time> &nbsp;|&nbsp; <a href="${i.url}" itemprop="url">${i.title}</a>
-            </li>
-          `);
-        });
-        return `${dom}</ul><br>`;
       } else {
         return false;   
       }
     },
-    wrapSearchTagResultSnippet: results => {
-      if (results.length > 0) {
-        let dom = `
-          <h4>标签</h4>
-          <div class="tag-item">
-        `;
-        results.forEach(i => {
-          dom += (`
-            <a href="/tags/${i.tagName}" itemprop="url">#${i.tagName}</a>
-          `);
-        });
-        return `${dom}</div>`;
-      } else {
-        return false;   
-      }
-    }
   };
 
-  const mountDOMs = document.querySelectorAll('.search-result-container');
-  const searchKeyDOM = document.querySelector('.input-search');
+  const mountDOMs = document.querySelectorAll('div.search-result-container');
+  const searchKeyDOM = document.querySelector('input.input-search');
   const emptySignDOM = document.querySelector('div.no-result');
-  const submitButtonDOM = document.querySelector('.submit-search');
+  const submitButtonDOM = document.querySelector('button.submit-search');
 
   searchKeyDOM.addEventListener('keydown', e => {
     if (e.keyCode === 13) {
@@ -68,9 +68,7 @@ document.addEventListener('DOMContentLoaded', async e => {
       url
       date
       rawDate
-    }
-    searchTagsByKey(key: $searchKey) {
-      tagName
+      snippets
     }
   }
             `,
@@ -80,7 +78,6 @@ document.addEventListener('DOMContentLoaded', async e => {
           }
         });
 
-        // exception handling;
         if (Array.isArray(response.data.errors) && response.data.errors.length > 0) {
           alert(response.data.errors[DEFAULT_INDEX].message);
           return;
@@ -94,26 +91,25 @@ document.addEventListener('DOMContentLoaded', async e => {
           }
         } = response;
 
-        let _t = [];
+        const result = [];
         mountDOMs.forEach(dom => {
           const { type } = dom.dataset;
-          _t.push({
+          result.push({
             html: wrapFuncs[`wrapSearch${type}ResultSnippet`].call(this, searchKeys[`search${type}sByKey`]),
             type,
           });
         });
 
-        if (_t.filter(i => i.html).length === 0) {
+        if (result.filter(i => i.html).length === 0) {
           mountDOMs.forEach(dom => {
             dom.innerHTML = '';
           });
           emptySignDOM.style.display = 'block';
         } else {
           emptySignDOM.style.display = 'none';
-          // mount;
           mountDOMs.forEach(dom => {
             const { type } = dom.dataset;
-            const html = _t.filter(i => i.type === type)[DEFAULT_INDEX].html;
+            const { html } = result.filter(i => i.type === type)[DEFAULT_INDEX];
             if (html) {
               dom.innerHTML = '';
               dom.insertAdjacentHTML('afterbegin', html);
@@ -126,8 +122,6 @@ document.addEventListener('DOMContentLoaded', async e => {
         target.disabled = false;
         target.innerText = '搜索';
       }
-    } else {
-      alert("What do you want to search？");
     }
   });
 });

@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+// const fs = require('fs');
+// const path = require('path');
 const crypto = require('crypto');
 const UglifyES = require('uglify-es');
 const csso = require('csso');
@@ -15,7 +15,7 @@ hexo.extend.filter.register('before_post_render', data => {
   return data;
 });
 
-// compress;
+// compression;
 hexo.extend.filter.register('after_render:js', (str, data) => {
   return UglifyES.minify(str).code;
 });
@@ -39,6 +39,14 @@ hexo.extend.filter.register('after_render:css', (str, data) => {
 //   }
 //   return data;
 // });
+
+// handle pattern like "（Page: 1）" with special styles.
+hexo.extend.filter.register('before_post_render', data => {
+  if (data.layout === 'post' && typeof(data.content) === 'string') {
+    data.content = data.content.replace(/\[Page:\s*(\d+)\]\s*/g, '<span class="pn">Page $1</span> ');
+  }
+  return data;
+});
 
 // hexo.extend.filter.register('before_exit', data => {
 //   for (let key in hexo.assetsContainer) {

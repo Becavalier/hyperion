@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 1. Two Sum
 intro: LeetCode 每日一题系列，今天第一题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。提高算法能力，势在必行。【Array】【HashMap】
-comments: true
+comments: false
 date: 2016-04-11 22:40:19
 tags:
 - 算法

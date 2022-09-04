@@ -1,7 +1,7 @@
 ---
 title: Frequently used TOEFL oral short sentences
 intro: Some of frequently used oral short sentences in TOEFL examination. Reocrding here for further recap and exercise in the future. Totally about 900 items without classification.
-comments: true
+comments: false
 date: 2019-07-11 16:28:21
 tags: 
 - TOEFL

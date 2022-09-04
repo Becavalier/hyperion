@@ -1,7 +1,7 @@
 ---
 title: GraphQL 设计艺术
 intro: 最近一个月做了个重要的决定，将之前用了将近4年的 PHP 博客迁移成了主流的静态博客。但实际上大部分静态博客都是采用 Disque 来从第三方集成评论系统，由于个人觉得 Disque 与新博客的整体风格不搭，并且在国内其加载速度较慢，遂决定自己开发这部分子功能。而后端接口则摒弃了传统的 REST 模式，采用了曾风靡一时的 GraphQL 模式（抽象查询语言）。与 REST 所不同的是，GraphQL 对 API 请求资源的描述采用了更加“细腻”的方式。
-comments: true
+comments: false
 date: 2019-03-03 19:50:24
 tags:
 - GraphQL

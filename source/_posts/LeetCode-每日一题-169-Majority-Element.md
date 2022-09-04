@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 169. Majority Element
 intro: LeetCode 每日一题系列，今天第五题。昨天由于事情比较多所以没有抽出时间更新文章，今天来一道简单的题，在星期六的日子里轻松一下。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Divide and Conquer】【Array】【Bit Manipulation】
-comments: true
+comments: false
 date: 2016-04-16 20:09:00
 tags:
 - 算法

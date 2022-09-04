@@ -1,7 +1,7 @@
 ---
 title: V8 内存优化之 Ignition 解释器
 intro: 由于 V8 的 "full-codegen" 基线编译器在解析 AST 之后生成的机器码十分冗长，因此会大量占用 V8 的堆内存。V8 为了减少生成的机器码以缓解内存压力，尝试了大量“延迟解析和编译（Lazy parsing and compiling）”的工作。比如对于一段代码，如果这段代码中的函数没有在初始化时被调用，则该调用过程将会被“延迟”进行，直到第一次函数调用时再编译该函数对应的代码。
-comments: true
+comments: false
 date: 2017-09-07 18:16:40
 tags:
 - V8

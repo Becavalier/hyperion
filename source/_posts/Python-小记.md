@@ -1,7 +1,7 @@
 ---
 title: Python 小记
 intro: 最近在工作中一直在从事 Python 相关的工作，因为以前 Python 用的比较少，特地趁此机会好好学习和复习一下，将一些基础性的知识点整理在这里。同时也方便以后的回顾和查找。关于 Python 的编码规范，有两种常用规范可以选择。一个是 PEP8，另一个是 Google Python 规范。
-comments: true
+comments: false
 date: 2017-07-13 23:54:21
 tags:
 - Python

@@ -3,10 +3,9 @@ logo: /images/logo.png
 menu:
   首页: ' '
   文章: articles
-  记录: notes
   阅读: readings
   标签: tags
-  关于: author
+  关于: about
 
 # Content
 excerpt_link: Read More

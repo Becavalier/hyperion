@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 258. Add Digits
 intro: LeetCode 每日一题系列，今天第十二题。“Digital Root” 又名数根 (又称位数根或数字根) 是自然数的一种性质，今天我们就来看一道跟“数根”有关的题目。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】
-comments: true
+comments: false
 date: 2016-05-06 18:35:40
 tags:
 - 算法

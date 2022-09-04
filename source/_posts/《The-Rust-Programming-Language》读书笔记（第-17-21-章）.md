@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 17-21 章）
 intro: 书接上回，第 17-21 章的笔记。
-comments: true
+comments: false
 date: 2021-04-08 23:48:43
 tags:
 - Rust
@@ -11,14 +11,14 @@ tags:
 
 ### Chapter 17 - Object Oriented Programming Features of Rust
 
-58. （Page：408）Rust 中的 OOP：
+58. [Page: 408] Rust 中的 OOP：
 
 * 封装：`struct` / `impl` 结构的封装，与 `pub` 提供的成员可见性控制；
 * 继承：**不支持**。对于代码重用，可以使用 trait 的默认实现；
 * 多态：**不支持**。Rust 支持 *bounded parametric polymorphism*，即通过泛型（抽象不同类型）与 trait（对类型的限制）实现的与传统多态类似的效果。
 * **Rust 不支持传统 OOP 模式的一部分原因**：继承在许多编程语言中已不再是一种编程设计解决方案，因为它经常面临**共享不必要代码的风险**。子类不应该总是共享其父类的所有特征，但是继承会导致该问题，而这会使程序的设计不那么灵活。同时，它还引入了对子类进行调用没有意义，或会导致错误的方法的可能性，因为这些方法不适用于子类。此外，某些语言仅允许子类从一个类继承，从而进一步限制了程序设计的灵活性。由于这些原因，Rust 采用了一种不同的方法，即使用“特征对象”而不是继承。
 
-59. （Page：412）**Trait Object**：
+59. [Page: 412] **Trait Object**：
 
 * 一个 *trait object* 既指向（***object* 需要通过指针引用**）了实现了该 trait 的类型实例，也指向用于在运行时查找该类型上实现的 trait 方法的表；*trait object* 可用于取代泛型或具体类型；
 * 相较于单态化（*monomorphized*）的 “*generic struct* + *trait bounds*” 模式，多态化的 “*struct* + *concrete trait objects*” 可以支持在运行时为 *trait objects* 填充多种具体类型；
@@ -59,7 +59,7 @@ impl Screen {
   * 返回值类型不能是 *Self*（别名，**指代正在实现该 trait 的类型**）；
   * 不能使用泛型参数。
 
-60. （Page：419）实现“面向对象”设计模式：
+60. [Page: 419] 实现“面向对象”设计模式：
 
 * **状态模式**（*state pattern*）：一个值的实际行为基于其内部状态对象进行变化，而无法直接从外部进行干预。
   * 含有冗余代码；
@@ -190,7 +190,7 @@ fn main() {
 
 ### Chapter 18 - Patterns and Matching
 
-61. （Page：433）一个“模式”包含对下面这些元素的组合：
+61. [Page: 433] 一个“模式”包含对下面这些元素的组合：
 
 * 字面量值；
 * 数组、枚举、struct 或元组的解构；
@@ -198,7 +198,7 @@ fn main() {
 * 通配符；
 * 占位符。
 
-62. （Page：436）Rust 中的几种模式匹配场景：
+62. [Page: 436] Rust 中的几种模式匹配场景：
 
 *while...let*：**条件循环**；
 
@@ -238,7 +238,7 @@ fn main() {
 }
 ```
 
-63. （Page：439）**Refutability**：
+63. [Page: 439] **Refutability**：
 
 * *refutable*：对某些可能的值，模式匹配可能会失败。
 
@@ -255,7 +255,7 @@ if let Some(x) = a_value {}
 let x = 5;
 ```
 
-64. （Page：442）**模式匹配语法**：
+64. [Page: 442] **模式匹配语法**：
 
 * 匹配字面量值：
 
@@ -366,7 +366,7 @@ fn main() {
 }
 ```
 
-65. （Page：449）**忽略模式中的部分值**：
+65. [Page: 449] **忽略模式中的部分值**：
 
 * 忽略函数定义的某个参数：
 
@@ -409,7 +409,7 @@ match origin {
 }
 ```
 
-66. （Page：453）**Match Grard**：在 match-arm 中可以额外使用的 *if* 关键字；在进行匹配时，该 *if* 所表达的条件也需要被匹配。
+66. [Page: 453] **Match Grard**：在 match-arm 中可以额外使用的 *if* 关键字；在进行匹配时，该 *if* 所表达的条件也需要被匹配。
 
 ```rust
 let num = Some(4);
@@ -420,7 +420,7 @@ match num {
 }
 ```
 
-67. （Page：455）`@` 绑定：
+67. [Page: 455] `@` 绑定：
 
 ```rust
 enum Message {
@@ -440,7 +440,7 @@ match msg {
 
 ### Chapter 19 - Advanced Features
 
-68. （Page：457）不安全的 Rust：
+68. [Page: 457] 不安全的 Rust：
 
 * unsafe 不会禁用 Rust 固有的诸如 borrow-checker 等安全检查；使用 unsafe 关键字只能使我们访问五个特殊的 cases，编译器将不会检查这五个 cases 下的内存安全性。
 
@@ -545,7 +545,7 @@ fn main() {
 }
 ```
 
-69. （Page：467）**高级 Traits**：
+69. [Page: 467] **高级 Traits**：
 
 \- ***使用 Associated Types 为 trait 指定“占位”类型***：
 
@@ -721,7 +721,7 @@ fn main() {
 }
 ```
 
-70. （Page：479）**高级类型**：
+70. [Page: 479] **高级类型**：
 
 \- ***使用“类型别名”创建同义类型***：
 
@@ -756,7 +756,7 @@ fn generic<T: Sized>(t: T) {}  // by default, the size of T should be known at c
 fn generic<T: ?Sized>(t: &T) {}  
 ```
 
-71. （Page：486）**高级函数与闭包**：
+71. [Page: 486] **高级函数与闭包**：
 
 \- ***函数指针***：
 
@@ -800,14 +800,14 @@ fn returns_closure() -> Box<dyn Fn(i32) -> i32> {
 }
 ```
 
-72. （Page：489）**宏**：
+72. [Page: 489] **宏**：
 
 * 使用 `macro_rules!` 的声明式宏（***未来将不推荐使用***）；
 * 使用 `#[derive]` 的自定义宏，可以使用在 *strcut* 与 *enum* 上；
 * “类属性宏”，用于在任意条目上定义自定义属性；
 * “类函数宏”，使用方式类似函数，操作于传入的“符号”上。
 
-73. （Page：490）**声明式宏**：
+73. [Page: 490] **声明式宏**：
 
 ```rust
 #[macro_export]
@@ -836,7 +836,7 @@ fn main() {
 }
 ```
 
-74. （Page：492）**用于从属性生成代码的“过程式宏”**：
+74. [Page: 492] **用于从属性生成代码的“过程式宏”**：
 
 * 目前，**过程式宏仅能实现在其自己的独立 crate 中**。
 
@@ -894,7 +894,7 @@ fn main() {
 }
 ```
 
-75. （Page：498）**类属性宏**：
+75. [Page: 498] **类属性宏**：
 
 * 允许创建除 *derive* 以外新的属性，更加灵活。
 
@@ -912,7 +912,7 @@ fn index() {}
 pub fn route(attr: TokenStream, item: TokenStream) -> TokenStream {}
 ```
 
-76. （Page：499）**类函数宏**：
+76. [Page: 499] **类函数宏**：
 
 * 使用方式同函数调用类似。比 `macro_rules!`（仅支持类 *match* 模式）的宏方式更加灵活。
 
@@ -934,7 +934,7 @@ pub fn sql(input: TokenStream) -> TokenStream {}
 
 ### Chapter 21 - Appendix
 
-77. （Page：544）**Raw Identifier**：
+77. [Page: 544] **Raw Identifier**：
 
 * 一种特殊语法，可以使我们**使用语言关键字作为标识符**；
 * 一般仅用于代码库的“前向兼容”。
@@ -948,7 +948,7 @@ fn main() {
 }
 ```
 
-78. （Page：551）**可继承的 traits**：
+78. [Page: 551] **可继承的 traits**：
 
 * `Debug`：可以在格式化字符串中使用调试格式 “*{:?}*”，以检查值的具体结构；
 * `PartialEq`：可以使类型实例进行相等性比较（`==`、`!=`）；
@@ -963,7 +963,7 @@ fn main() {
 * `Hash`：允许获取任意大小类型的实例，并使用哈希函数将该实例映射到固定大小的值；
 * `Default`：允许为类型创建默认值。
 
-79. （Page：555）**相关工具**：
+79. [Page: 555] **相关工具**：
 
 * *rustfmt*：代码格式化。运行 `cargo fmt` 以格式化整个项目中的代码；
 * *rustfix*：自动修复编译器警告。运行 `cargo fix` 以进行自动修复；

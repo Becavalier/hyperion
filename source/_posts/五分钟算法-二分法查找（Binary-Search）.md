@@ -1,7 +1,7 @@
 ---
 title: 五分钟算法 - 二分法查找（Binary Search）
 intro: 二分法查找（Binary Search）顾名思义就是利用“二分法”从一个特定的已排序序列集合（Sorted Array）中来查找指定大小或维度值的位置。但对于一个容量比较小的集合来说，一般通过完全“遍历”（时间复杂度 T(n) = O(n)）来查找特定元素的位置即可。
-comments: true
+comments: false
 date: 2016-04-09 09:09:20
 tags:
 - 算法

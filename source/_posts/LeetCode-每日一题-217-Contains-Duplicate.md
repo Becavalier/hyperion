@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 217. Contains Duplicate
 intro: LeetCode 每日一题系列，今天第三题。早上写了三种解题方法，前两种 “Time Limit Exceeded” 了，第三种通过了 Judge，不过三种方法都可以实现，只是效率不同。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Array】【HashTable】
-comments: true
+comments: false
 date: 2016-04-13 09:45:09
 tags:
 - 算法

@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告 - 本地存储与转移
 intro: 为了提升 WebAssembly 应用的初期模块加载效率和整体使用体验，我们可以将已经编译好的 WebAssembly 模块存储在本地的 IndexedDB 数据库当中，当下一次用到该模块时可以直接从本地读取并实例化，减少了再次从网络传输和编译的时间。同样我们也可以将 WebAssembly 部分的代码逻辑放到 Worker 线程中运行，这样可以使 WebAssembly 模块的密集运算不影响到主线程的正常工作，本次我们来讨论上述这些事情。
-comments: true
+comments: false
 date: 2017-06-16 09:57:50
 tags:
 - WebAssembly

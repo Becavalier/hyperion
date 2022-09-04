@@ -1,7 +1,7 @@
 ---
 title: Rust Runtime 与 ABI
 intro: 本文主要介绍了 Rust 语言的 Runtime 与 ABI 的相关内容。由于这两个概念均较为底层且通用，而不会涉及诸如 `std::Vec` 等具体标准库应用层类型的实现细节，因此这里放到一起作为本文主要内容。
-comments: true
+comments: false
 date: 2021-05-06 18:41:14
 tags:
 - Rust

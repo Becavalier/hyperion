@@ -1,7 +1,7 @@
 ---
 title: JavaScript 核心特性揭秘（一）
 intro: 我们在日常使用 JavaScript（后面简称 “JS”） 的过程中可能只关注到了 JS 本身带来的，在页面动态交互方面的功能与其对应实现，而 JS 的背后到底是怎么运行代码和处理数据的呢？本文及接下来的几篇文章将会介绍一些 JavaScript 的内部核心特性。
-comments: true
+comments: false
 date: 2016-03-26 22:43:16
 tags:
 - JavaScript

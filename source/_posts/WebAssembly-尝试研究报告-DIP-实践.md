@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告 - DIP 实践
 intro: 从本次报告开始，我们将花一点时间从零开始构建一个基于 WebAssembly 的 DIP（数字图像处理）应用。该应用的主要功能是可以给一段在线视频添加实时滤镜。在 JS 层我们的主要任务是截取视频中的每一帧画面，同时把该帧画面转换成对应的像素矩阵，然后调用 Wasm 模块对这些像素矩阵进行滤镜处理，最后再将处理后的像素矩阵绘制到页面上。对视频进行实时帧像素处理的部分我们会放到 WebAssembly 模块中来实现。
-comments: true
+comments: false
 date: 2017-06-16 14:13:41
 tags:
 - WebAssembly

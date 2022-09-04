@@ -1,7 +1,7 @@
 ---
 title: 《JavaScript 高级程序设计（第四版）》读书笔记（第 12-17 章）
 intro: 书接上回，本文为第 12-17 章的笔记。
-comments: true
+comments: false
 date: 2020-12-18 23:24:24
 tags:
 - JavaScript
@@ -11,7 +11,7 @@ tags:
 
 ### 第 12 章 - BOM
 
-50. （Page：873）`window` 对象：
+50. [Page: 873] `window` 对象：
 * ***top / self / parent***：分别指向“最上层”、“自身”以及“父层”窗口；
 * ***screenLeft / screenTop***：表示窗口相对**屏幕**左侧、顶部的位置；
 * （方法）***moveTo / moveBy***：移动窗口（可能被禁用）；
@@ -53,7 +53,7 @@ if (typeof innerWidth !== 'number') {
 * （方法）***setTimeout / setInterval***：函数第二个参数指定的时间为**向异步队列添加新任务之前等待的时间**（同步任务会优先执行）。被添加到队列中的任务会按照顺序执行；
 * （方法）***alert / confirm / prompt***：系统对话框；
 
-51. （Page：895）`window.location` 对象：
+51. [Page: 895] `window.location` 对象：
 
 * `window.location` 与 `document.location` **指向同一个对象**；
 * 除 hash 属性外，**只要修改 location 的一个属性，就会导致页面重新加载新的 URL**。
@@ -76,7 +76,7 @@ if (typeof innerWidth !== 'number') {
 * ***password***：域名前指定的密码；
 * ***origin***：URL 的源地址。
 
-52. （Page：904）`window.navigator` 对象：
+52. [Page: 904] `window.navigator` 对象：
 
 * 用于**标识浏览器**（描述了浏览器状态和标识）。
 
@@ -86,8 +86,8 @@ if (typeof innerWidth !== 'number') {
 * ***userAgent***：获得用户代理信息；
 * （方法）***registerProtocolHandler***：可以将某个网站注册为处理某种特定类型信息的应用程序；
 
-53. （Page：914）`window.screen` 对象：保存着**客户端显示器信息**。
-54. （Page：916）`window.history` 对象：
+53. [Page: 914] `window.screen` 对象：保存着**客户端显示器信息**。
+54. [Page: 916] `window.history` 对象：
 
 * 保存有当前窗口首次使用以来**用户的导航历史记录**。
 
@@ -111,7 +111,7 @@ window.history.pushState(stateObj, '', 'baz.html');
 
 ### 第 14 章 - DOM
 
-55. （Page：970）DOM：**HTML 与 XML 文档的编程接口**。DOM 表示由多层节点构成的文档，通过它开发者可以添加、删除和修改页面的各个部分。
+55. [Page: 970] DOM：**HTML 与 XML 文档的编程接口**。DOM 表示由多层节点构成的文档，通过它开发者可以添加、删除和修改页面的各个部分。
 
 * ***DOM Level 1***：1998 年成为 W3C 推荐标准，提供了基本文档结构和查询接口；
 * 在 JavaScript 中，**所有节点类型都继承 Node 类型**；
@@ -207,7 +207,7 @@ window.history.pushState(stateObj, '', 'baz.html');
 * （方法）***normalize***：检测当前节点的所有后代，**删除不包含文本的文本节点，或合并互为同胞关系的文本节点**；
 
 
-56. （Page：1043）**MutationObserver** 接口（取代了废弃的 MutationEvent）：可以用于监听 DOM 改动。
+56. [Page: 1043] **MutationObserver** 接口（取代了废弃的 MutationEvent）：可以用于监听 DOM 改动。
 
 * 回调函数会接收一个 `MutationRecords`，记录所有变更的详细信息。记录**按照变化事件发生的顺序被添加**，核心为“异步回调与记录队列模型”；
 * MutationObserver 实例拥有对要观察目标节点的“**弱引用**”，而目标节点则拥有对 MutationObserver 的“**强引用**”。MutationRecord 可能包含有对 DOM 节点的引用，因此若保存这些实例，则可能对节点的垃圾回收产生影响。
@@ -230,13 +230,13 @@ observer.disconnect();
 
 ### 第 15 章 - DOM 扩展
 
-57. （Page：1071）Selector API：
+57. [Page: 1071] Selector API：
 
 * （方法）***querySelector***：返回符合条件的**第一个元素**；
 * （方法）***querySelectorAll***：返回一个包含**所有匹配元素的 NodeList 静态实例**；
 * （方法）***matches***：返回是否存在所匹配的元素。
 
-58. （Page：1075）**元素遍历**（Element Traversal 规范）：
+58. [Page: 1075] **元素遍历**（Element Traversal 规范）：
 
 * ***childElementCount***：返回子元素数量（不包含文本节点和注释）；
 * ***firstElementChild***：指向第一个 **Element 类型**的子元素（Element 版的 *firstChild*）；
@@ -244,7 +244,7 @@ observer.disconnect();
 * ***previousElementSibling***：指向前一个 **Element 类型**的同胞元素（Element 版的 *previousSibling*）；
 * ***nextElementSibling***：指向后一个 **Element 类型**的同胞元素（Element 版的 *nextSibling*）；
 
-59. （Page：1077）**HTML5**：
+59. [Page: 1077] **HTML5**：
 
 * （方法）***getElementsByClassName***：根据类名获取元素（返回 NodeList）；
 * ***dataset***：包含当前元素上的所有**自定义属性**（以 “data-” 作为前缀开头）；
@@ -276,7 +276,7 @@ observer.disconnect();
 
 ### 第 16 章 - DOM2 和 DOM3
 
-60. （Page：1106）DOM 子集：
+60. [Page: 1106] DOM 子集：
 
 * ***DOM Core***：在 DOM1 核心部分基础上，为节点**增加方法和属性**；
 * ***DOM Views***：定义**基于样式信息的不同视图**；
@@ -286,7 +286,7 @@ observer.disconnect();
 * ***DOM HTML***：在 DOM1 部分基础上，**增加属性、方法和新接口**；
 * ***DOM Mutation Observers***：定义**基于 DOM 变化触发回调**的接口。
 
-61. （Page：1107）XML 命名空间：可以实现**在一个格式规范的文档中混用不同的 XML 语言**。
+61. [Page: 1107] XML 命名空间：可以实现**在一个格式规范的文档中混用不同的 XML 语言**。
 
 ```html
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -311,14 +311,14 @@ observer.disconnect();
   * （HTMLDocument）*getElementByTagNameNS(namespaceURI, tagName)*：返回指定命名空间中所有符合标签名的元素（NodeList）。
   * ...（其他不一一列举，均与“命名空间”相关）
 
-62. （Page：1119）DOM 节点相关属性和方法：
+62. [Page: 1119] DOM 节点相关属性和方法：
 
 * （方法）***isSameNode***：验证两个节点是否**相同**（同一个引用）；
 * （方法）***isEqualNode***：验证两个节点是否**相等**（节点类型相同、属性相同，子节点也相等）；
 * （HTMLIFrameElement）***contentDocument***：包含子内联窗格中内容的 ***document*** 对象指针（受跨域限制）；
 * （HTMLIFrameElement）***contentWindow***：包含子内联窗格的 ***window*** 对象指针（受跨域限制）。
 
-63. （Page：1123）**样式属性**：
+63. [Page: 1123] **样式属性**：
 
 * ***style***：返回一个 CSSStyleDeclaration 实例，**包含所有通过 HTML style 属性为元素设置的所有样式信息**（样式名为“**驼峰大小写**”形式）；
   * *cssText*：包含 style 属性中的 CSS 代码；
@@ -332,7 +332,7 @@ observer.disconnect();
   * *setProperty(propertyName, value, priority)*：添加 CSS 属性值；
 * （Window）（方法）***getComputedStyle***：获得给定元素的**计算样式**，返回一个 CSSStyleDeclaration 对象；
 
-64. （Page：1131）**操作样式表**：
+64. [Page: 1131] **操作样式表**：
 
 * **`CSSStyleSheet` 类型表示通用的 CSS 样式表**，包括使用 \<link\> 引入（HTMLLinkElement）和 \<style\> 元素定义（HTMLStyleElement）的样式表：
   * 继承关系：CSSStyleSheet -> StyleSheet；
@@ -350,7 +350,7 @@ observer.disconnect();
   * *deleteRule(index)*：在指定位置删除 cssRules 中的规则；
   * *insertRule(rule, index)*：在指定位置向 cssRules 中插入规则。
 
-65. （Page：1137）**元素尺寸**：
+65. [Page: 1137] **元素尺寸**：
 
 \- ***偏移尺寸属性***：
 
@@ -383,8 +383,8 @@ observer.disconnect();
 
 * （方法）***getBoundingClientRect***：返回一个 DOMRect 对象，包含元素在页面中相对于视口的位置信息。
 
-66. （Page：1144）**DOM 遍历**：<b>[NodeIterator](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator)</b> \ <b>[TreeWalker](https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker)</b>（两套 DOM API）；
-66. （Page：1156）**DOM 范围**：<b>[Range](https://developer.mozilla.org/zh-CN/docs/Web/API/Range)</b>；
+66. [Page: 1144] **DOM 遍历**：<b>[NodeIterator](https://developer.mozilla.org/zh-CN/docs/Web/API/NodeIterator)</b> \ <b>[TreeWalker](https://developer.mozilla.org/zh-CN/docs/Web/API/TreeWalker)</b>（两套 DOM API）；
+66. [Page: 1156] **DOM 范围**：<b>[Range](https://developer.mozilla.org/zh-CN/docs/Web/API/Range)</b>；
 
 ### 第 17 章 - 事件
 
@@ -393,7 +393,7 @@ observer.disconnect();
 
 ![](5.png)
 
-68. （Page：1181）**事件处理程序**（Event Handler）：
+68. [Page: 1181] **事件处理程序**（Event Handler）：
 
 * **HTML 内联**：直接定义在 HTML 元素上的事件处理器会创建一个特殊的包装函数，该函数内有一个特殊的局部变量 **event**。在该函数中，**this 的值相当于事件的目标元素**；
 
@@ -433,7 +433,7 @@ if (btn) {
 btn.removeEventListener('click', handler, true);
 ```
 
-69. （Page：1194）**事件对象**（event）的属性和方法：
+69. [Page: 1194] **事件对象**（event）的属性和方法：
 
 * ***bubbles***：表示事件是否冒泡；
 * ***cancelable***：表示是否可以取消事件的默认行为；
@@ -450,7 +450,7 @@ btn.removeEventListener('click', handler, true);
 * ***View***：与事件相关的抽象视图。
 
 
-70. （Page：1211）**事件类型**：
+70. [Page: 1211] **事件类型**：
 
 * **用户界面（UI）事件**：涉及与 BOM 交互的通用浏览器事件；
   * ***load***：windows 上当**页面（所有外部资源）加载完毕后**触发；\<img\> 元素上当**图片加载完成后**触发（**当该元素对象具有 src 属性后，便会立即触发资源下载过程**）；\<object\> 元素上当相应对象加载完成后触发；
@@ -507,7 +507,7 @@ obj.dispatchEvent(event);
 
 * **其他事件**：（参考 MDN）。
 
-71. （Page：1296）事件优化：
+71. [Page: 1296] 事件优化：
 
 * **事件委托**：利用“事件冒泡”，**只在父节点（比如 document）使用一个事件处理程序**来处理多个类别的事件；
 * **删除事件处理程序**：**在元素移除之前，删除其上的事件处理程序**，防止可能的内存泄漏。

@@ -1,7 +1,7 @@
 ---
 title: ES 8 新特性一览
 intro: 已经脱离“前端组织”很久了，最近在看前端圈子的进展，发现 ES8 (ECMAScript2018) 已经于上个月发布了。快来看看有哪些新特性吧。2017 年前端迎来了很多东西，而从 Wasm 到 ES8，语言和技术开始走向融合，最终还是会迎来大团圆的结局。
-comments: true
+comments: false
 date: 2017-07-06 14:06:03
 tags:
 - JavaScript

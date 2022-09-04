@@ -1,7 +1,7 @@
 ---
 title: CentOS 7.2 之 MySQL 到 MariaDB 的迁移
 intro: CentOS 自从 7.0 以后，其操作系统默认的数据库系统从之前的 MySQL 变成了 MariaDB。MariaDB 数据库管理系统是 MySQL 的一个分支，主要由开源社区在维护，采用 GPL 授权许可 MariaDB 的目的是完全兼容 MySQL，包括 API 和命令行，使之能轻松成为 MySQL 的代替品。
-comments: true
+comments: false
 date: 2017-01-29 22:57:05
 tags:
 - Linux

@@ -94,12 +94,11 @@ deploy:
 # About page setting
 about:
   name: 于航（Jason Yu）
-  intros: Software Engineer / @PayPal | Striving for a better self, to be a qualified technologist and team leader (maybe :)
+  intros: Software Engineer / @PayPal | Striving for a better self, to be a qualified person :)
   skills: Web Frontend, x86-64, ASM / C / C++, WebAssembly, Entrepreneurship
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
   resume: /resume/me
-  books_shelf: /books
   interview_sheet: /workspace/interview-template.md
 
 # PWA

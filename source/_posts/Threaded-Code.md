@@ -1,7 +1,7 @@
 ---
 title: 【译】Threaded Code
 intro: 本文用于记录有关 Threaded Code 的一些内容。此文原文较老（2003），仅供参考。
-comments: true
+comments: false
 date: 2020-08-21 07:01:46
 tags:
 - 虚拟机

@@ -366,7 +366,7 @@ main
     .align-center
       text-align center
     ol
-      li
+      > li
         margin 10px 0
         line-height 2.8rem;
       ul
@@ -376,14 +376,31 @@ main
       list-style none
       margin-top 10px
       margin-bottom 10px
-      li
+      > li
         margin 5px 0
         line-height 2.8rem
         &:before
           content "■ "
           padding-right 7px
+    ul.search-catelog-items
+      > li
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        list-style-type none
+        padding 10px
+        &:before
+          content none
+        > ul li 
+          color darkgrey
+          margin 5px 0 0
+          font-size 15px
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+          font-style italic
     ul.catelog-items
-      li
+      > li
         margin 7px 0
         line-height 2.5rem
         overflow: hidden;
@@ -399,7 +416,6 @@ main
       margin-top 0
     img
       // Images are responsive by default
-      border-radius 0
       height auto
       width auto
     // Blockquotes within articles
@@ -467,22 +483,7 @@ main
     border-top 1px solid hsla(0, 0, 0, .15)
     padding-top 20px
     margin-top 20px
-  // Footer
-  footer
-    padding 0
-    text-align center
-    position relative
-    padding 4rem 0
-    border darken($background-color, 15%) 1px solid
-    font-size 1.3rem
-    line-height 2.1em
-    color lighten($body-color, 50%)
-    background darken($background-color, 5%)
-    :not(main) > a
-      color lighten($body-color, 20%)
-      font-weight 700
-      text-decoration none
-  .author-container
+  .about-container
     .avatar
       margin auto
       width 150px
@@ -641,8 +642,6 @@ hr
   body
     main
       padding 20px
-      div.comments-input
-        margin 20px 0 40px
       article
         h1
           font-size 3.0rem
@@ -655,9 +654,9 @@ hr
         div.content
           blockquote
             margin .5em 0 .5em 1em
-          ul.catelog-items, ul.book-list
+          ul.catelog-items, ul.search-catelog-items, ul.search-catelog-items ul, ul.book-list
             padding-inline-start 0
-        div.author-container
+        div.about-container
           div.avatar-name
             font-size 2.9rem
           div.avatar-description
@@ -736,89 +735,6 @@ input, textarea
     position relative
     top -10px
 
-.zoom.in 
-  bottom 150px
-  > span
-    font-size 32px
-    font-weight 500
-    top 7px
-    position relative
-
-.zoom.out 
-  bottom 90px
-  > span
-    font-size 32px
-    font-weight 500
-    top 4px
-    position relative
-
-.comments-display-container
-  padding 25px
-  font-size 14px
-  div.placeholder
-    color #666
-    display block
-    text-align center
-  .comment-snippet
-    padding 20px 0
-    border-bottom solid 1px #ddd
-    &:last-child
-      border none
-      padding-bottom 0
-    div
-      span
-        font-weight bold
-        margin-right 10px
-        &.nickname
-          cursor pointer
-        &.date
-          font-style italic
-          float right
-      &.content
-        word-break break-all
-        text-indent 2em
-        margin-top 8px
-
-.dot-decoration
-  text-align center
-  font-size 20px
-  &:after
-    content '...'
-
-.comments-input
-  margin 20px 20px 40px
-  display flex
-  flex-direction column
-  border solid 1px #141414
-  padding 15px
-  font-size 14px
-  textarea
-    flex 1
-    margin 0px
-    height 100px
-    resize none
-    padding 5px 10px
-    border-radius 2px
-    border solid 1px #ddd
-  div
-    margin-top 10px
-    display flex
-    flex-direction row
-    input[type="text"]
-      flex 1
-      padding 5px 10px
-      border solid 1px #ddd
-    button.submit-comment
-      width 200px
-      background-color #141414
-      color white
-      margin-left 10px
-      font-size 15px
-      height 45px
-      border none
-      &[disabled]
-        background-color grey
-
 .animation-show
   animation-name animationShow
   animation-duration .7s
@@ -845,6 +761,13 @@ input, textarea
     
 article
   margin auto
+  span.pn
+    font-size 12px
+    background-color #636363
+    color #fff
+    padding 3px 5px
+    margin-right 7px
+    font-style italic
   div.content
     max-width 1200px
     margin auto
@@ -854,27 +777,6 @@ article
     max-width: 100%;
     border: solid 1px #ccc;
     max-height: 500px;
-  &.notes-page
-    ul.notes-list
-      font-size 16px
-      padding-inline-start 0
-      > li:before
-        content none
-      div.title
-        cursor pointer
-        padding 10px
-        border solid 1px #ccc
-        text-overflow ellipsis
-        overflow hidden
-        white-space nowrap
-      div.content
-        background-color $white
-        display none
-        flex-direction column
-        border-left solid 1px #ccc
-        border-right solid 1px #ccc
-        border-bottom solid 1px #ccc
-        padding 10px 20px
   &.readings-page
     ul.book-list
       li
@@ -964,8 +866,13 @@ article
       border solid 1px #444
       margin 35px auto
       display block
-      width auto
-      max-width 90%
+      max-width 85%
+      border solid 2px #8c8c8c
+      border-top-left-radius 37px 140px
+      border-top-right-radius 23px 130px
+      border-bottom-left-radius 110px 19px
+      border-bottom-right-radius 120px 24px
+      box-shadow 3px 15px 8px -10px rgba(0, 0, 0, 0.3)
   .tag-item
     margin-top 20px
     display inline-block

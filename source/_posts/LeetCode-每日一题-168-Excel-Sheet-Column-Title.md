@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 168. Excel Sheet Column Title
 intro: LeetCode 每日一题系列，今天第九题。这是一道与数学“进制”相关的题目，从零开始的进位和从一开始的进位处理起来并不相同。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】
-comments: true
+comments: false
 date: 2016-04-21 22:45:22
 tags:
 - 算法

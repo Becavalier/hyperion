@@ -1,7 +1,7 @@
 ---
 title: 常用 Shell 知识点和技巧
 intro: 学过的东西不经常用就会忘，往往再次捡起来又会花费不少时间。趁此机会整理下编写 Shell 脚本相关的知识点语法。这里基于的是 Bash Shell，其他 Shell 也大致一样。行文没有什么入门顺序，想到哪儿写到哪儿。请注意，本文不是入门教程，只是单纯记录。
-comments: true
+comments: false
 date: 2017-05-16 09:32:35
 tags:
 - Shell

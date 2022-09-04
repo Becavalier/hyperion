@@ -1,7 +1,7 @@
 ---
 title: C++ Dependent Names、non-ADL 以及 ADL 查找
 intro: 记录下 C++ 中对于 Dependent Names 在 non-ADL 以及 ADL 这两种情况下的名字查找规则。
-comments: true
+comments: false
 date: 2020-08-18 18:13:58
 tags:
 - Cpp

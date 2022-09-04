@@ -1,7 +1,7 @@
 ---
 title: WebAssembly Summit 2020 — 议题深度解析（上）
 intro: 第一届 WebAssembly Summit 峰会于2月10日在美国山景城的 Google 总部顺利召开。大会分享者有我们熟悉的科技漫画作者—— 来自Mozilla 的 Lin Clark、WebAssembly（下文简称 Wasm）的基础设施工具链 Emscripten / Binaryen 作者——来自 Google 的 Alon，以及众多来自各大知名互联网公司的 Wasm 研究和开发人员。WebAssembly Summit 是由 Wasm 社区举办，专门讨论 Wasm 当前和未来发展，以及其相关议题的全球性大会（A one day, single track, conference about all things WebAssembly.）。
-comments: true
+comments: false
 date: 2020-03-11 17:35:44
 tags:
 - WebAssembly

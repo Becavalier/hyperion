@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 27. Remove Element
 intro: LeetCode 每日一题系列，今天第十六题。今天还是一道关于数组的简单题目，闲暇时间可以用来练练手。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Array】【Two-Pointer】
-comments: true
+comments: false
 date: 2016-05-24 20:49:26
 tags:
 - 算法

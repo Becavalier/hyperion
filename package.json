@@ -13,7 +13,7 @@
     "sync": "git pull --rebase origin master && npm run build && pm2 reload all && nginx -s reload -c $(pwd)/nginx.conf",
     "preview": "cd ./public && browser-sync start --server --files .",
     "nginx-bp": "nginx -c $(pwd)/nginx.conf",
-    "update-ssl": "nginx -s stop && sudo certbot certonly --webroot && npm run nginx-bp",
+    "renew-ssl-cert": "sudo certbot renew",
     "build-in-container": "docker build -t hyperion-build-container ./build && systemctl enable cgconfig && docker run -it --rm -w/app --device-read-iops /dev/xvda:200 --device-read-bps /dev/xvda:20MB --device-write-bps /dev/xvda:20MB -v $(pwd):/app hyperion-build-container",
     "start": "npm run nginx-bp && npm run daemon"
   },

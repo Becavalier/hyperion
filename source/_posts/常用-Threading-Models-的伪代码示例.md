@@ -1,7 +1,7 @@
 ---
 title: 常用 Threading Models 的伪代码示例
 intro: RT。
-comments: true
+comments: false
 date: 2020-08-24 19:45:11
 tags:
 - 虚拟机

@@ -1,7 +1,7 @@
 ---
 title: ECMAScript6 新特性 - 迭代器和 for-of 循环
 intro: ECMAScript6 已经正式发布了一段时间了，作为一个前端开发者，是时候体验一下最新的 JavaScript 特性与改进了。相比 ECMA5 天花乱坠的改动，ECMA6 显得更加实用与稳重。今天让我来看一下其中第一个重要的新特性 - 迭代器与 “for-of” 循环。
-comments: true
+comments: false
 date: 2016-01-08 16:32:54
 tags:
 - JavaScript

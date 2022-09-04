@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 58. Length of Last Word
 intro: LeetCode 每日一题系列。本文算法题目：给出一个字符串，该字符串包含大写字母，小写字母和空格，请编写程序给出最后一个单词（不包含空格，只包含字母）的长度。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【String】
-comments: true
+comments: false
 date: 2016-09-17 17:57:53
 tags:
 - 算法

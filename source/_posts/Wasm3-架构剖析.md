@@ -1,7 +1,7 @@
 ---
 title: 【译】Wasm3 架构剖析
 intro: 本文将剖析 Wasm3 虚拟机架构的组成结构，以及其性能优化的细节。
-comments: true
+comments: false
 date: 2020-08-18 10:49:59
 tags:
 - 虚拟机

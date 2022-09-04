@@ -1,7 +1,7 @@
 ---
 title: English key Points Conclusion .1
 intro: English knowledge series, key points conclusion .1
-comments: true
+comments: false
 date: 2019-09-16 10:02:52
 tags:
 - English

@@ -1,7 +1,7 @@
 ---
 title: Linux 下的 ELF 完整结构分析
 intro: 本文我们将以如下这段代码为例，来分析其对应 ELF Object / Executable 文件在 Linux 下的完整数据结构，以及各结构在操作系统源码中的实际类型定义。
-comments: true
+comments: false
 date: 2020-06-17 14:23:58
 tags:
 - 计算机

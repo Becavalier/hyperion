@@ -1,7 +1,7 @@
 ---
 title: CSS 常用布局解决方案
 intro: 本文记录下 CSS 常用的布局解决方案，对于需要高兼容性的布局可以使用基于 posistion 属性的布局，table 布局方式也经常用到。还有基于margin 和 float 的传统布局方式、利用 BFC 的布局方式和 CSS3 的弹性布局 flex 的布局方式。具体选用哪一种可以依据实际业务加以变通和修改。
-comments: true
+comments: false
 date: 2016-12-15 00:14:47
 tags:
 - CSS
