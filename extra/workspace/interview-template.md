@@ -1,25 +1,25 @@
-> 如果你来到了这里，以下内容仅供参考。会不定期更新，总结于个人经验和看过的书。
+> 以下内容仅供参考，总结于个人经验和看过的书。
 
 
 ## 基本原则
 
-* **全职**：
+* **全职（FTE）**：
   * *面试重点*：
-    * 扎实的技术能力，及足够的技术深度（算法、框架、计算机基础等）；
+    * 扎实的基础技术能力，及足够的技术深度（算法、框架、计算机基础等）；
     * 顺畅和谐的沟通（主要关注是否能快速理解问题、语气、耐心和态度如何）；
     * 以往的工程经验和设计能力；
     * 以往的团队管理与协作能力；
     * 未来中短期的职业生涯规划；
-    * 熟练的英语语言能力（视面试职级和团队而定）。
+    * 熟练的英语语言能力（视职级和团队而定）。
   * *能力需求*：侧重技术的广度和深度能力，及过往项目经验，具备一定的沟通和协作能力，甚至发展潜力；
   * *角色职责*：企业核心人员。可持续培养，**负责长期技术规划和业务推进**。
-* **外包**：
+* **外包（AWF）**：
   * *面试重点*：
     * 短期过往项目经验（查看技术栈是否匹配）；
     * 基本的沟通能力（主要关注是否可以正确理解需求，具备一定的独立性）；
   * *能力需求*：可以正确使用相关工程技能，可以正确理解需求和问题；
   * *角色职责*：快速实施人员。**负责短期项目的低成本快速推进**。
-* **实习**：
+* **实习（Intern）**：
   * *面试重点*：
     * 基本的技术能力（算法、计算机基础等）；
     * 顺畅和谐的沟通（主要关注是否能快速理解问题、语气、耐心和态度如何）；
@@ -152,10 +152,60 @@ function handleClick() {
 
 ### CSS
 
+* 什么是置换元素（Replaced Element）与非置换元素（Non-replaced Element）？
+* 在 HTML 中，块级元素能出现在行内元素中吗？
+* HTML 文档关联 CSS 样式的几种方式？（内联、HTTP 首部、\<link\> 标签等）
+* 使用 CSS 精准匹配下列带有 “apple-” 类名的 \<span\> 元素，并设置其字体颜色为红色：
+
+```html
+<div>
+  <span class="apple-1">1</span>
+  <span class="apple-2">2</span>
+  <span class="banana-3">3</span>
+  <span class="banana-4">4</span>
+</div>
+```
+
+* 什么是 LVFHA 顺序？为什么要遵守？
+* 特指度（Specificity）是什么？它的计算规则是怎样的？继承的属性是否有特指度？
+* 单位 em 与 rem 区别？字体的 em 方框（没有行距的情况下两条基线之间的距离）通常为多大？
+* 单位 vw 和 vh 是怎样进行度量的？
+* 什么是 CSS 插入属性值（attr() 方法）？
+* HSLa 色系是怎样组成的？相比 RGBa 在 3D 颜色空间中有什么区别？
+* 如何在 CSS 中创建变量？
+* 为什么将 *text-indent* 属性设置为 “2em” 可以将中文段落的首行缩进正好两个字符？
+* *line-height* 指的是什么距离？默认情况下通常为多大？
+* *vertical-align* 可用于哪些元素？“middle” 属性值的位置是怎样计算的？
 * 什么是 CSS 盒模型？
-* 单位 em 与 rem 区别？
-* *position: relative* 属性的定位原点是？
-* 如何使用 CSS 将下面 HTML 元素中位于奇数位置（163 与 167 行）的 *a* 标签内的文字变为红色？（*p > a:nth-of-type(odd) { color: red; }*）
+* 边距折叠是指什么？
+* 带有 *position: relative* 属性元素的定位原点是哪里？
+* 带有 *position: absolute* 属性元素的容纳块是什么？
+* 绝对定位的元素如何做到上下左右居中？
+* Flexbox 布局中 *justify-content* 与 *align-content* 属性有何区别？
+* Grid 布局中 fit-content() 函数的计算逻辑是什么？
+* 请大致画出下列 Grid 布局的情况：
+
+```css
+#grid {
+  display: grid;
+  grid-template-areas:
+    "header header header header"
+    "left left ... right"
+    "footer footer footer footer";
+  grid-template-rows: 40px 10em 20px;
+  grid-template-columns: 1fr 20em 20em 1fr;
+}
+span:nth-child(1) { grid-area: header; }
+span:nth-child(2) { grid-area: right; }		
+span:nth-child(3) {
+  grid-row-start: left;
+  grid-column-start: 2;
+}	
+```
+
+* 在表格布局中，默认布局与 “fixed” 布局有何区别？
+* 为什么针对 *transform* 和 （ 属性的动态变化最好可以放在 CSS 动画中进行？
+* 如何使用 CSS 将下面 HTML 元素中位于奇数位置（163 与 167 行）的 \<a\> 标签内的文字变为红色？（<i>p > a:nth-of-type(odd) { color: red; }</i>）
 
 ```html
 <p>
@@ -168,7 +218,7 @@ function handleClick() {
 </p>
 ```
 
-* 为什么使用 “*text-indent: 2em;*” 可以将中文段落的首行缩进正好两个字符？
+
 
 
 ### Git
