@@ -260,6 +260,9 @@ h2 .subDetails {
 	font-size: .8em;
 	margin: 8px 0;
   font-style: italic;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .subDetails.invalid {
