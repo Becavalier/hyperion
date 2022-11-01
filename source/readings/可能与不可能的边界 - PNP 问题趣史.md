@@ -1,5 +1,5 @@
 ---
-title: 《可能与不可能的边界-P/NP问题趣史》
+title: 《可能与不可能的边界 - P/NP 问题趣史》
 page: readings
 score: 4
 comment: 科普读物，读起来挺有趣的

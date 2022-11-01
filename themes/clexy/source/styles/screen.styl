@@ -48,12 +48,13 @@ webfont('Fira Mono', 'fira/700', 700, normal)
 
 // 0.2 Typography
 
-$title-font   = 'Open Sans', sans-serif
-$heading-font = 'Open Sans', sans-serif
-$button-font  = 'Open Sans', sans-serif
-$small-font   = 'Open Sans', sans-serif
-$body-font    = 'Open Sans', sans-serif
-$code-font    = 'Fira Mono', monospace, sans-serif
+$title-font        = 'Open Sans', sans-serif
+$heading-font      = 'Open Sans', sans-serif
+$button-font       = 'Open Sans', sans-serif
+$small-font        = 'Open Sans', sans-serif
+$body-font         = 'Open Sans', sans-serif
+$paragraph-font    = 'Open Sans', sans-serif
+$code-font         = 'Fira Mono', monospace, sans-serif
 
 $title-weight   = 300
 $heading-weight = 300
@@ -99,6 +100,9 @@ $default-padding = 20px
 
 html
   font-size 62.5%
+
+p
+  font-family $body-font
 
 body
   display flex
@@ -183,7 +187,7 @@ header
   // Blog description
   p
     color $description-color
-    font-family $body-font
+    font-family $paragraph-font
     font-size 1.62rem
     font-weight $body-weight
     letter-spacing 0
@@ -861,7 +865,6 @@ article
     word-break break-all
     text-indent 2em
     text-align justify
-    font-family "Microsoft YaHei", sans-serif
     img
       border solid 1px #444
       margin 35px auto
