@@ -8,7 +8,7 @@ tags:
 - 操作系统
 ---
 
-闻名已久的操作系统著作，今日拜读一下。在线版本可以在<b>[这里](https://pages.cs.wisc.edu/~remzi/OSTEP/)</b>找到，本文是第 1-10 章的笔记。内容仅基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。
+闻名已久的操作系统著作，今日拜读一下。在线版本可以在<b>[这里](https://pages.cs.wisc.edu/~remzi/OSTEP/)</b>找到，本文是第 1-13 章的笔记。内容仅基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。
 
 ### Chapter 1: A Dialogue on the Book
 
