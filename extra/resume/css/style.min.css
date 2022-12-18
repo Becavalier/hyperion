@@ -253,7 +253,7 @@ section:last-child {
 
 h2 .subDetails {
 	font-size: .6em;
-	margin-left: 10px;
+	padding: 0 10px;
 }
 
 .subDetails {
