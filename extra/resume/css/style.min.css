@@ -123,6 +123,19 @@ a {
 	padding: 20px 35px;
 	border-bottom: 2px solid #cf8a05;
 	background: #ededed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.mainDetails .basicInfo {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
+
+#contactDetails {
+	flex: 0 0 300px;
 }
 
 #name h1 {
@@ -144,9 +157,8 @@ a {
 }
 
 #headshot {
-	width: 16%;
-	float: left;
-	margin-right: 30px;
+	width: 130px;
+	margin-right: 50px;
 }
 
 #headshot img {
@@ -154,14 +166,6 @@ a {
 	height: auto;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
-}
-
-#name {
-	float: left;
-}
-
-#contactDetails {
-	float: right;
 }
 
 #contactDetails i {
@@ -313,9 +317,11 @@ h2 .subDetails {
 	}
 	#name,
 	#contactDetails {
+		margin: 10px;
 		float: none;
 		width: 100%;
 		text-align: center;
+		flex: 1;
 	}
 	.sectionTitle,
 	.sectionContent {
@@ -334,19 +340,6 @@ h2 .subDetails {
 		margin: 0 auto;
 		min-width: auto;
 	}
-	#headshot {
-		display: block;
-	}
-	#name {
-		float: left;
-		width: auto;
-		text-align: left;
-	}
-	#contactDetails {
-		float: right;
-		width: auto;
-		text-align: left;
-	}
 	.sectionTitle {
 		float: left;
 		width: 25%;
@@ -357,11 +350,17 @@ h2 .subDetails {
 		float: right;
 		width: 72.5%;
 	}
+	.sectionContent ul.keySkills li {
+		font-style: italic;
+		font-weight: bold;
+		color: darkgray;
+	}
 }
 
-@media all and (max-width:480px) {
+@media all and (max-width:680px) {
 	.mainDetails {
 		padding: 15px 15px;
+		flex-direction: column;
 	}
 	section {
 		padding: 15px 0 0;
