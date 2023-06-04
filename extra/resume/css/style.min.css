@@ -87,6 +87,27 @@ section {
 	display: block;
 }
 
+article.dense a.title {
+	font-size: 24px;
+}
+article.dense {
+	margin: 20px 0;
+}
+article.dense:first-child {
+	margin-top: 0;
+}
+article.dense > p:first-child {
+	margin: 0;
+}
+article span.lang {
+	font-size: 12px;
+	font-style: italic;
+}
+article.dense .subDetails {
+	opacity: .7;
+	margin: 2px 0;
+}
+
 html,
 body {
 	background: #181818;
@@ -347,11 +368,6 @@ h2 .subDetails {
 	.sectionContent {
 		float: right;
 		width: 72.5%;
-	}
-	.sectionContent ul.keySkills li {
-		font-style: italic;
-		font-weight: bold;
-		color: darkgray;
 	}
 }
 
