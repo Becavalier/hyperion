@@ -157,14 +157,12 @@ a {
 }
 
 #headshot {
-	width: 130px;
+	width: 145px;
+	height: 145px;
 	margin-right: 50px;
-}
-
-#headshot img {
-	width: 100%;
-	height: auto;
-	-webkit-border-radius: 50%;
+	background-image: url(../images/avatar.jpg);
+	background-position: center;
+	background-size: cover;
 	border-radius: 50%;
 }
 

@@ -17,6 +17,7 @@ tags:
 | ***in dest, src*** | 从给定端口读。 | *in eax, dx* | 目的操作数必须是 eax、ax、al，源操作数是 dx 或端口号。 |
 | ***out dest, src*** | 往给定端口写。 | *out dx, eax* | 目的操作数必须是 dx 或端口号，源操作数是 eax、ax、al。 |
 | ***loop label*** | 条件循环。 | *loop start* | cx / ecx / rcx 为计数寄存器，每次循环后值递减，为 0 时循环结束。 |
+| ***test x, y*** | 测试，将两个操作数按位与。 | *test rax, rbx* | |
 | ***cmp x, y*** | 比较。 | *cmp dx, bx* | 根据表达式 “x - y” 的结果来设置 flags 寄存器。 |
 | ***add dest, src*** | 加法。 | *add rax, 0x1* | 不区分符号。 |
 | ***adc dest, src*** | 加法，累加 CF。 | *adc rax, 0x1* | 不区分符号。 |
