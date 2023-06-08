@@ -47,6 +47,4 @@ tags:
 * ***文件描述符***：本质是正整数。默认情况下，一个进程在由 Shell 启动时会继承三个特殊的文件描述符：*stdin*（0）、*stdout*（1）、*stderr*（2）；
 * ***stdio 库***：***stdio* 库中的 I/O 函数**（*fopen* / *fclose* / *scanf* / *printf* / *fgets* / *fputs* 等）**构建于系统调用**（*open* / *close* / *read* / *write*）**之上**。
 
-4. [Page: 31] Linux 进程：
-
 （待更新）
