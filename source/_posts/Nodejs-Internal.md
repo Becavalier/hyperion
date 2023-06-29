@@ -40,7 +40,7 @@ tags:
   * ***check***：执行由 *setImmediate()* 设定的回调；
   * ***close callbacks***：执行关闭回调，如 *socket.on('close', ...)*。
 
-```
+```text
              ┌───────────────────────────┐
 (phase)   ┌─>│           timers          │  [Callback Queue]
           │  └─────────────┬─────────────┘

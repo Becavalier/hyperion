@@ -41,6 +41,7 @@ tags:
 | ***shr*** | 逻辑右移。 | *shr eax, 2* | 移动时 MSB 补零。 |
 | ***sar*** | 符号位扩展右移。 | *sar eax, 2* | 移动时 MSB 不变。 |
 | ***rol / ror*** | 循环左移（右移）。 | *rol eax, 2* |  |
+| ***bswap*** | 字节交换。 | *bswap rax* | 以“字节”为单位，左右对半交换。 |
 | ***rcl / rcr*** | 带进位循环左移（右移）。 | *rcl eax, 2* | 移动时 CF 会分别补到 LSB 与 MSB |
 | ***shld / shrd dest, src, count*** | double 左移（右移）。 | *shld edx, eax, 16* | 将第一个操作数向左（向右）移动指定的位数，第二个操作数提供要从右侧（左侧）移入的位。 |
 | ***j[cc]*** | 条件跳转。 | *jne [start]* | cc 条件同上。 |
@@ -48,13 +49,17 @@ tags:
 | ***cpuid*** | 查询 CPU 识别信息。 | *mov eax, 0<br>cpuid* | eax 存放 leaf，ecx 存放 sub-leaf。 |
 | ***pushf / pushfd / pushfq*** | 将 flags / eflags / rflags 寄存器的值压入栈。 | *pushf* |  |
 | ***popf / popfd / popfq*** | 将栈上的值压入 flags / eflags / rflags 寄存器。 | *pushf* |  |
+| ***pushad / popad*** | 保存/恢复所有 GPR 寄存器（32 位）。 | *pushad* | eax / ecd / edx / ebx / esp（原始值） / ebp / esi / edi |
 | ***movs / movsb / movsw / movsd / movsq*** | 移动一段连续线性内存数据。 | *rep movsb* | <ol><li>Legacy 模式：*DS:(E)SI -> ES:(E)DI*；</li><li>64 位模式：*(R|E)SI -> (R|E)DI*。</li></ol> DF 标志位决定拷贝方向（低地址 - 1 \ 高地址 - 0），(R|E)SI / (R|E)DI 的值根据方向自动增加或减少。|
 | ***rep*** | 重复执行某个机器指令。 | *rep movsw* | 重复次数由 (E)CX 控制。 |
+| ***repe / repz*** | 若相等（为零）则重复。 | *repe cmpsd* | 重复次数由 (E)CX 控制，或 ZF=0 中止。 |
+| ***repne / repbz*** | 若不相等（不为零）则重复。 | *repne cmpsd* | 重复次数由 (E)CX 控制，或 ZF=1 中止。 |
 | ***aaa*** | 将寄存器 al 中的值转换为非压缩 BCD 码。 | *aaa* | 指令根据 AF 标志位（表示进位/借位情况）进行调整。 |
 | ***sti / cli*** | 置位和复位 IF 标志位。 | *sti* | 当 CPL <= IOPL 时可以操作。 |
 | ***std / cld*** | 置位和复位 DF 标志位。 | *std* |  |
 | ***stc / clc / cmc*** | 置位、复位、取反 CF 标志位。 | *stc* |  |
 | ***iret / iretd / iretq*** | 从一个中断处理程序返回。 | *iret* |  |
+| ***ret [imm16]/ retf [imm16]*** | 带参数的返回指令。 | *ret 8* | 返回时从栈上弹出 imm16 个（通常为偶数）字节的数据。 |
 | ***invd*** | 使处理器的内部高速缓存无效，数据不会写回内存。 | *invd* | CPL=0 时可用。 |
 | ***wbinvd*** | 使处理器的内部高速缓存无效，数据写回内存。 | *wbinvd* | CPL=0 时可用。 |
 | ***clflush*** | 将包含给定地址的缓存行内容回写。 | *clflush [rax]* | CPL=0 时可用。 |
@@ -62,6 +67,18 @@ tags:
 | ***rdpmc*** | 加载指定性能监控计数器（PMC）的值。 | *rdpmc* |  |
 | ***wrmsr*** | 向 MSR 寄存器写入。 | *wrmsr* | 由 ecx 指定 MSR 的地址值。 |
 | ***rdmsr*** | 从 MSR 寄存器读。 | *rdmsr* | （同上） |
+| ***lgdt*** | 将给定位置的数据保存进 GDTR 全局描述符表寄存器。 | *lgdt [pgdt]* | 实模式下也可用。 |
+| ***lldt*** | 将给定位置的数据保存进 LDTR 局部描述符表寄存器。 | *lldt [pldt]* |  |
+| ***ltr*** | 将给定位置的数据（TSS）保存进 TR 任务寄存器。 | *ltr [ecx]* |  |
+| ***lidt*** | 将给定位置的数据保存进 IDTR 中断描述符表寄存器。 | *lidt [pidt]* | 实模式下也可用。 |
+| ***sgdt*** | 保存 GDTR 的内容到指定位置。 | *sgdt [pgdt]* |  |
+| ***arpl*** | 调整段选择子 RPL 字段的值。 | *arpl dx, ax* | 该指令执行时，处理器检查目的操作数的 RPL 字段，如果它在数值上小于源操作数的 RPL 字段，则设置 ZF 标志，并增加目的操作数 RPL 字段的值，使之和源操作数 RPL 字段的值相同。否则，ZF 标志清零。 |
+| ***ud2*** | 产生一个无效操作码异常。 | *ud2* | 一般用于软件测试。 |
+| ***bound [r16], [m16] / bound [r32], [m32]*** | 检查数组的索引是否在边界之内。 | *bound eax, [bounds]* | 目的操作数是寄存器，包含了数组的索引；源操作数指向内存位置，在那里包含了两个成对出现的字或者双字，分别是数组索引的下限和上限。若数组的索引小于下标的下限，或者大于下标的上限，则产生异常。 |
+| ***bts [r/m32], [r32]*** |  | *bts [bitmap], eax* | 测试位串中的某比特，用该比特的值设置标志寄存器的 CF 标志，然后将该比特置 “1”。 |
+| ***invlpg [m]*** | 刷新 TLB 中的单个条目。 | *invlpg [addr]* |  |
+
+
 
 
 常用 LLDB 命令：

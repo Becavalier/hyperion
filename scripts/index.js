@@ -43,7 +43,14 @@ hexo.extend.filter.register('after_render:css', (str, data) => {
 // handle pattern like "（Page: 1）" with special styles.
 hexo.extend.filter.register('before_post_render', data => {
   if (data.layout === 'post' && typeof(data.content) === 'string') {
-    data.content = data.content.replace(/\[Page:\s*(\d+)\]\s*/g, '<span class="pn">Page $1</span> ');
+    data.content = data.content.replace(/\[Page:\s*(\d+)\]\s*/g, '<span class="pn">Page $1</span>');
+  }
+  return data;
+});
+
+hexo.extend.filter.register('after_post_render', data => {
+  if (data.layout === 'post' && typeof(data.content) === 'string') {
+    data.content = data.content.replace(/(<img src="[0-9a-zA-Z.]*?" alt="([\S\s]*?)">)/g, '<p>$1<span class="img-desc">$2</span></p>')
   }
   return data;
 });
