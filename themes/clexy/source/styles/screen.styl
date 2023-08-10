@@ -320,7 +320,7 @@ main
     th, td
       border 1px solid #ddd
       text-align left
-      padding 10px
+      padding 5px 10px
   // Article list
   article.item
     max-width 1200px
@@ -387,12 +387,16 @@ main
           content "■ "
           padding-right 7px
     ul.search-catelog-items
+      margin-top 30px
       > li
         overflow hidden
         text-overflow ellipsis
         white-space nowrap
         list-style-type none
-        padding 10px
+        padding 0 10px
+        > a:before 
+          content "- "
+          vertical-align middle
         &:before
           content none
         > ul li 
@@ -720,7 +724,7 @@ input, textarea
   position fixed
   right 20px
   border-radius 50%
-  background-color #fafafa
+  background-color rgba(255, 255, 255, .7);
   width 40px
   height 40px
   text-align center
@@ -739,7 +743,7 @@ input, textarea
     border-right 8px solid transparent
     border-bottom 13px solid #141414
     position relative
-    top -10px
+    top -12px
 
 .animation-show
   animation-name animationShow

@@ -91,7 +91,7 @@ article.dense a.title {
 	font-size: 24px;
 }
 article.dense {
-	margin: 20px 0;
+	margin: 25px 0;
 }
 article.dense:first-child {
 	margin-top: 0;
@@ -102,6 +102,7 @@ article.dense > p:first-child {
 article span.lang {
 	font-size: 12px;
 	font-style: italic;
+	margin-left: 10px;
 }
 article.dense .subDetails {
 	opacity: .7;

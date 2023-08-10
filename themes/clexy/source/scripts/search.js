@@ -1,5 +1,5 @@
 const DEFAULT_INDEX = 0;
-const SEARCH_RESULT_THRESHOLD = 10;
+const SEARCH_RESULT_THRESHOLD = 15;
 
 const escapeHTML = (str) => {
   const p = document.createElement("p");

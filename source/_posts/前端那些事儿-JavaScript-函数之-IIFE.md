@@ -14,7 +14,7 @@ tags:
 那么什么是 IIFE 呢？首先让我们来看看什么是 JS 的匿名函数：
 
 ```javascript
-function () {
+function() {
   console.debug("anonymous");
 }
 ```
@@ -88,27 +88,27 @@ var myFunc = function() {
 整个 IIFE 函数可以分成两部分，第一部分(1)中的小括号作为函数表达式，整个表达式会返回一个函数对象，第二部分(2)中的整个小括号则被解释器解释为调用了此返回的函数对象，并在小括号内传入了参数。而两个部分合起来，对于解释器来说就相当于直接调用了函数本身。所以实际上只要能够满足构成函数表达式加括号（参数）的形式就可以成功调用函数表达式的函数。比如以下列出的代码块都可以成功调用函数体内的代码。
 
 ```javascript
-(function(a){
+(function(a) {
   console.log(a);   
 })("MY IIFE");
   
-(function(a){
+(function(a) {
   console.log(a);  
 }("MY IIFE"));
   
-!function(a){
+!function(a) {
   console.log(a);  
 }("MY IIFE");
   
-+function(a){
++function(a) {
   console.log(a);   
 }("MY IIFE");
   
--function(a){
+-function(a) {
   console.log(a);   
 }("MY IIFE");
   
-var fn=function(a){
+var fn = function(a) {
   console.log(a);  
 }("MY IIFE");
 ```

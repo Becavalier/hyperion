@@ -103,7 +103,7 @@ function factorial(n, acc = 1) {
 ```
 
 ```javascript
-function () { 
+function() { 
   !return expr;
 }
 ```

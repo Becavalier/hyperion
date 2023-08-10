@@ -609,7 +609,7 @@ function Example(props) {
   useEffect(() => {
     // component mount / update;
     document.title = `You clicked ${count} times`;
-    return function () {
+    return () => {
       // used for cleanup (every time re-rendering or unmount);
     };
   }, [count]);
