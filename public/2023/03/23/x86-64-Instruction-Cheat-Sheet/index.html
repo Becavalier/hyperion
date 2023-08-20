@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>x86-64 Instruction Cheat Sheet | 曜彤.手记</title><meta name="description" content="自用 x86-64 指令速记手册。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="x86-64 Instruction Cheat Sheet" class="full"><h1 itemprop="headline" class="align-center">x86-64 Instruction Cheat Sheet</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-03-23T05:21:26.000Z"> 2023 / 03 / 23, 13:21:26</time></span><span class="page-tag-anchor"><a href="/tags/汇编" itemprop="url">#汇编</a>&nbsp;&nbsp;<a href="/tags/x86" itemprop="url">#x86</a>&nbsp;&nbsp;<a href="/tags/x64" itemprop="url">#x64</a>&nbsp;&nbsp;</span></div><p>自用 x86-64 指令速查手册。</p>
+<table>
+<thead>
+<tr>
+<th>指令（NASM）</th>
+<th>用法</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em><strong>mov dest, src</strong></em></td>
+<td>移动。</td>
+<td><em>mov rax, 0x1</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>in dest, src</strong></em></td>
+<td>从给定端口读。</td>
+<td><em>in eax, dx</em></td>
+<td>目的操作数必须是 eax、ax、al，源操作数是 dx 或端口号。</td>
+</tr>
+<tr>
+<td><em><strong>out dest, src</strong></em></td>
+<td>往给定端口写。</td>
+<td><em>out dx, eax</em></td>
+<td>目的操作数必须是 dx 或端口号，源操作数是 eax、ax、al。</td>
+</tr>
+<tr>
+<td><em><strong>loop label</strong></em></td>
+<td>条件循环。</td>
+<td><em>loop start</em></td>
+<td>cx / ecx / rcx 为计数寄存器，每次循环后值递减，为 0 时循环结束。</td>
+</tr>
+<tr>
+<td><em><strong>test x, y</strong></em></td>
+<td>测试，将两个操作数按位与。</td>
+<td><em>test rax, rbx</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>cmp x, y</strong></em></td>
+<td>比较。</td>
+<td><em>cmp dx, bx</em></td>
+<td>根据表达式 “x - y” 的结果来设置 flags 寄存器。</td>
+</tr>
+<tr>
+<td><em><strong>add dest, src</strong></em></td>
+<td>加法。</td>
+<td><em>add rax, 0x1</em></td>
+<td>不区分符号。</td>
+</tr>
+<tr>
+<td><em><strong>adc dest, src</strong></em></td>
+<td>加法，累加 CF。</td>
+<td><em>adc rax, 0x1</em></td>
+<td>不区分符号。</td>
+</tr>
+<tr>
+<td><em><strong>sub dest, src</strong></em></td>
+<td>减法。</td>
+<td><em>sub rax, 0x1</em></td>
+<td>不区分符号。</td>
+</tr>
+<tr>
+<td><em><strong>sbb dest, src</strong></em></td>
+<td>减法，减去 CF。</td>
+<td><em>sbb rax, 0x1</em></td>
+<td>不区分符号。</td>
+</tr>
+<tr>
+<td><em><strong>div divisor</strong></em></td>
+<td>无符号除法。</td>
+<td><em>div word [0x0230]</em></td>
+<td><ol><li><i>div r/m8</i>：Unsigned divide AX by r/m8, with result stored in AL := Quotient, AH := Remainder.</li><li><i>div r/m16</i>：Unsigned divide DX:AX by r/m16, with result stored in AX := Quotient, DX := Remainder.</li><li><i>div r/m32</i>：Unsigned divide EDX:EAX by r/m32, with result stored in EAX := Quotient, EDX := Remainder.</li><li><i>div r/m64</i>：Unsigned divide RDX:RAX by r/m64, with result stored in RAX := Quotient, RDX := Remainder.</li></ol></td>
+</tr>
+<tr>
+<td><em><strong>mul [r/m]</strong></em></td>
+<td>无符号乘法。</td>
+<td><em>mov rax, 0x8<br>mul rax</em></td>
+<td>结果分别存放到 rdx 与 rax。</td>
+</tr>
+<tr>
+<td><em><strong>imul [r/m]</strong></em></td>
+<td>有符号乘法。</td>
+<td><em>mov rax, 0x8<br>imul rax</em></td>
+<td>结果分别存放到 rdx 与 rax。</td>
+</tr>
+<tr>
+<td><em><strong>neg src</strong></em></td>
+<td>取负。</td>
+<td><em>neg rax</em></td>
+<td>结果值为“取反加一”，等同于 “0 - src”，CF 变为 1。</td>
+</tr>
+<tr>
+<td><em><strong>lds / les / lfs / lgs / lss dest, src</strong></em></td>
+<td>从 src 加载一个 “far pointer”（segment + offset），结果存放在对应的段寄存器和目的寄存器中。<strong>x86-64 下基本不再使用</strong>。</td>
+<td><em>les ax, [far_pointer]</em></td>
+<td>“far pointer” 是 32（16:16）位，48（16:32）位，以及 80（16:64）位的形式。cs 寄存器只能通过 call / jmp / int / ret / iret 等指令更改。</td>
+</tr>
+<tr>
+<td><em><strong>movsx / movsxd dest, src</strong></em></td>
+<td>带符号扩展的移动。</td>
+<td><em>movsx rax, al</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>cbw / cwde / cdqe</strong></em></td>
+<td>符号扩展 al~eax 寄存器，直接更新值。</td>
+<td><em>cbw</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>cwd / cdq / cqo</strong></em></td>
+<td>符号扩展 ax~rax 寄存器，将扩展得到的高位结果存放到 dx~rdx 寄存器。</td>
+<td><em>cwd</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>movzx dest, src</strong></em></td>
+<td>带零扩展的传送。</td>
+<td><em>movzx rax, al</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>cmov[cc] dest, src</strong></em></td>
+<td>条件传送。</td>
+<td><em>cmova rax, rbx</em></td>
+<td>cc 的可用条件，signed 数运算结果：<br> <table><tr><td>G / NLE</td><td>大于 / 不小于等于</td><td>ZF=0 and SF=OF</td></tr><tr><td>L / NGE</td><td>小于 / 不大于等于</td><td>SF≠OF</td></tr><tr><td>GE / NL</td><td>大于等于 / 不小于</td><td>SF=OF</td></tr><tr><td>LE / NG</td><td>小于等于 / 不大于</td><td>ZF=1 or SF≠OF</td></tr></table> <br>unsigned 数运算结果：<br><table><tr><td>A / NBE</td><td>高于 / 不低于等于</td><td>CF=0 and ZF=0</td></tr><tr><td>B / NAE</td><td>低于 / 不高于等于</td><td>CF=1</td></tr><tr><td>AE / NB</td><td>高于等于 / 不低于</td><td>CF=0</td></tr><tr><td>BE / NA</td><td>低于等于 / 不高于</td><td>CF=1 or ZF=1</td></tr></table><br>标志位条件码：<br><table><tr><td>O / NO</td><td>溢出标志</td><td>OF=1 / OF=0</td></tr><tr><td>Z / NZ</td><td>零标志</td><td>ZF=1 / ZF=0</td></tr><tr><td>S / NS</td><td>符号标志</td><td>SF=1 / SF=0</td></tr><tr><td>P / NP</td><td>奇偶标志</td><td>PF=1 / PF=0</td></tr></table></td>
+</tr>
+<tr>
+<td><em><strong>and / or / xor / not dest, src</strong></em></td>
+<td>与、或、异或、非。</td>
+<td><em>xor rax, rax</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>bt [r/m], [r/imm]</strong></em></td>
+<td>从指定位置拷贝某位值到 CF 中。</td>
+<td><em>bt eax, 0</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>bts / btr / btc</strong></em></td>
+<td>执行 bt 的同时，将对应位置位、清位、取反。</td>
+<td><em>bts eax, 0</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>bsf / bsr dest, src</strong></em></td>
+<td>从 LSB -&gt; MSB（forward）/ MSB -&gt; LSB（reverse）查找 src 中第一个被置位的位置，值存放在 dest 中。</td>
+<td><em>bsf ecx, eax</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>shl / sal</strong></em></td>
+<td>逻辑左移。</td>
+<td><em>shl eax, 2</em></td>
+<td>移动时 LSB 补零。</td>
+</tr>
+<tr>
+<td><em><strong>shr</strong></em></td>
+<td>逻辑右移。</td>
+<td><em>shr eax, 2</em></td>
+<td>移动时 MSB 补零。</td>
+</tr>
+<tr>
+<td><em><strong>sar</strong></em></td>
+<td>符号位扩展右移。</td>
+<td><em>sar eax, 2</em></td>
+<td>移动时 MSB 不变。</td>
+</tr>
+<tr>
+<td><em><strong>rol / ror</strong></em></td>
+<td>循环左移（右移）。</td>
+<td><em>rol eax, 2</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>bswap</strong></em></td>
+<td>字节交换。</td>
+<td><em>bswap rax</em></td>
+<td>以“字节”为单位，左右对半交换。</td>
+</tr>
+<tr>
+<td><em><strong>rcl / rcr</strong></em></td>
+<td>带进位循环左移（右移）。</td>
+<td><em>rcl eax, 2</em></td>
+<td>移动时 CF 会分别补到 LSB 与 MSB</td>
+</tr>
+<tr>
+<td><em><strong>shld / shrd dest, src, count</strong></em></td>
+<td>double 左移（右移）。</td>
+<td><em>shld edx, eax, 16</em></td>
+<td>将第一个操作数向左（向右）移动指定的位数，第二个操作数提供要从右侧（左侧）移入的位。</td>
+</tr>
+<tr>
+<td><em><strong>j[cc]</strong></em></td>
+<td>条件跳转。</td>
+<td><em>jne [start]</em></td>
+<td>cc 条件同上。</td>
+</tr>
+<tr>
+<td><em><strong>jcxz</strong></em></td>
+<td>寄存器 cx 内容为 0 时跳转。</td>
+<td><em>jcxz show</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>cpuid</strong></em></td>
+<td>查询 CPU 识别信息。</td>
+<td><em>mov eax, 0<br>cpuid</em></td>
+<td>eax 存放 leaf，ecx 存放 sub-leaf。</td>
+</tr>
+<tr>
+<td><em><strong>pushf / pushfd / pushfq</strong></em></td>
+<td>将 flags / eflags / rflags 寄存器的值压入栈。</td>
+<td><em>pushf</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>popf / popfd / popfq</strong></em></td>
+<td>将栈上的值压入 flags / eflags / rflags 寄存器。</td>
+<td><em>pushf</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>pushad / popad</strong></em></td>
+<td>保存/恢复所有 GPR 寄存器（32 位）。</td>
+<td><em>pushad</em></td>
+<td>eax / ecd / edx / ebx / esp（原始值） / ebp / esi / edi</td>
+</tr>
+<tr>
+<td><em><strong>movs / movsb / movsw / movsd / movsq</strong></em></td>
+<td>移动一段连续线性内存数据。</td>
+<td><em>rep movsb</em></td>
+<td><ol><li>Legacy 模式：<em>DS:(E)SI -&gt; ES:(E)DI</em>；</li><li>64 位模式：*(R</td>
+</tr>
+<tr>
+<td><em><strong>rep</strong></em></td>
+<td>重复执行某个机器指令。</td>
+<td><em>rep movsw</em></td>
+<td>重复次数由 (E)CX 控制。</td>
+</tr>
+<tr>
+<td><em><strong>repe / repz</strong></em></td>
+<td>若相等（为零）则重复。</td>
+<td><em>repe cmpsd</em></td>
+<td>重复次数由 (E)CX 控制，或 ZF=0 中止。</td>
+</tr>
+<tr>
+<td><em><strong>repne / repbz</strong></em></td>
+<td>若不相等（不为零）则重复。</td>
+<td><em>repne cmpsd</em></td>
+<td>重复次数由 (E)CX 控制，或 ZF=1 中止。</td>
+</tr>
+<tr>
+<td><em><strong>aaa</strong></em></td>
+<td>将寄存器 al 中的值转换为非压缩 BCD 码。</td>
+<td><em>aaa</em></td>
+<td>指令根据 AF 标志位（表示进位/借位情况）进行调整。</td>
+</tr>
+<tr>
+<td><em><strong>sti / cli</strong></em></td>
+<td>置位和复位 IF 标志位。</td>
+<td><em>sti</em></td>
+<td>当 CPL &lt;= IOPL 时可以操作。</td>
+</tr>
+<tr>
+<td><em><strong>std / cld</strong></em></td>
+<td>置位和复位 DF 标志位。</td>
+<td><em>std</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>stc / clc / cmc</strong></em></td>
+<td>置位、复位、取反 CF 标志位。</td>
+<td><em>stc</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>iret / iretd / iretq</strong></em></td>
+<td>从一个中断处理程序返回。</td>
+<td><em>iret</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>ret [imm16]/ retf [imm16]</strong></em></td>
+<td>带参数的返回指令。</td>
+<td><em>ret 8</em></td>
+<td>返回时从栈上弹出 imm16 个（通常为偶数）字节的数据。</td>
+</tr>
+<tr>
+<td><em><strong>invd</strong></em></td>
+<td>使处理器的内部高速缓存无效，数据不会写回内存。</td>
+<td><em>invd</em></td>
+<td>CPL=0 时可用。</td>
+</tr>
+<tr>
+<td><em><strong>wbinvd</strong></em></td>
+<td>使处理器的内部高速缓存无效，数据写回内存。</td>
+<td><em>wbinvd</em></td>
+<td>CPL=0 时可用。</td>
+</tr>
+<tr>
+<td><em><strong>clflush</strong></em></td>
+<td>将包含给定地址的缓存行内容回写。</td>
+<td><em>clflush [rax]</em></td>
+<td>CPL=0 时可用。</td>
+</tr>
+<tr>
+<td><em><strong>rdtsc / rdtscp</strong></em></td>
+<td>加载 CPU 上时间戳计数器的值。</td>
+<td><em>rdtsc</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>rdpmc</strong></em></td>
+<td>加载指定性能监控计数器（PMC）的值。</td>
+<td><em>rdpmc</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>wrmsr</strong></em></td>
+<td>向 MSR 寄存器写入。</td>
+<td><em>wrmsr</em></td>
+<td>由 ecx 指定 MSR 的地址值。</td>
+</tr>
+<tr>
+<td><em><strong>rdmsr</strong></em></td>
+<td>从 MSR 寄存器读。</td>
+<td><em>rdmsr</em></td>
+<td>（同上）</td>
+</tr>
+<tr>
+<td><em><strong>lgdt</strong></em></td>
+<td>将给定位置的数据保存进 GDTR 全局描述符表寄存器。</td>
+<td><em>lgdt [pgdt]</em></td>
+<td>实模式下也可用。</td>
+</tr>
+<tr>
+<td><em><strong>lldt</strong></em></td>
+<td>将给定位置的数据保存进 LDTR 局部描述符表寄存器。</td>
+<td><em>lldt [pldt]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>ltr</strong></em></td>
+<td>将给定位置的数据（TSS）保存进 TR 任务寄存器。</td>
+<td><em>ltr [ecx]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>lidt</strong></em></td>
+<td>将给定位置的数据保存进 IDTR 中断描述符表寄存器。</td>
+<td><em>lidt [pidt]</em></td>
+<td>实模式下也可用。</td>
+</tr>
+<tr>
+<td><em><strong>sgdt</strong></em></td>
+<td>保存 GDTR 的内容到指定位置。</td>
+<td><em>sgdt [pgdt]</em></td>
+<td></td>
+</tr>
+<tr>
+<td><em><strong>arpl</strong></em></td>
+<td>调整段选择子 RPL 字段的值。</td>
+<td><em>arpl dx, ax</em></td>
+<td>该指令执行时，处理器检查目的操作数的 RPL 字段，如果它在数值上小于源操作数的 RPL 字段，则设置 ZF 标志，并增加目的操作数 RPL 字段的值，使之和源操作数 RPL 字段的值相同。否则，ZF 标志清零。</td>
+</tr>
+<tr>
+<td><em><strong>ud2</strong></em></td>
+<td>产生一个无效操作码异常。</td>
+<td><em>ud2</em></td>
+<td>一般用于软件测试。</td>
+</tr>
+<tr>
+<td><em><strong>bound [r16], [m16] / bound [r32], [m32]</strong></em></td>
+<td>检查数组的索引是否在边界之内。</td>
+<td><em>bound eax, [bounds]</em></td>
+<td>目的操作数是寄存器，包含了数组的索引；源操作数指向内存位置，在那里包含了两个成对出现的字或者双字，分别是数组索引的下限和上限。若数组的索引小于下标的下限，或者大于下标的上限，则产生异常。</td>
+</tr>
+<tr>
+<td><em><strong>bts [r/m32], [r32]</strong></em></td>
+<td></td>
+<td><em>bts [bitmap], eax</em></td>
+<td>测试位串中的某比特，用该比特的值设置标志寄存器的 CF 标志，然后将该比特置 “1”。</td>
+</tr>
+<tr>
+<td><em><strong>invlpg [m]</strong></em></td>
+<td>刷新 TLB 中的单个条目。</td>
+<td><em>invlpg [addr]</em></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>常用 LLDB 命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em><strong>br l</strong></em></td>
+<td>列出所有断点</td>
+</tr>
+<tr>
+<td><em><strong>br del [n]</strong></em></td>
+<td>删除第 [n] 个断点</td>
+</tr>
+<tr>
+<td><em><strong>br s -a [addr]</strong></em></td>
+<td>在地址 [addr] 设置断点</td>
+</tr>
+<tr>
+<td><em><strong>di -n _start</strong></em></td>
+<td>disassemble 函数 _start</td>
+</tr>
+<tr>
+<td><em><strong>register read [reg]</strong></em></td>
+<td>查看寄存器 [reg] 的内容</td>
+</tr>
+<tr>
+<td><em><strong>register read –format binary [reg]</strong></em></td>
+<td>查看寄存器 [reg] 的内容（二进制格式）</td>
+</tr>
+</tbody></table>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-03-23T05:21:26.000Z"> 2023 / 06 / 28, 22:14:25</time></span></div></div></article><br><span class="next-post"><a href="/2023/04/07/《乌合之众：群体心理学》摘录/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/03/19/《创始人：新管理者如何度过第一个90天》读书笔记（第-5-10-章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

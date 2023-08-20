@@ -1,0 +1,395 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Low-Level Programming》读书笔记（第 14-17 章） | 曜彤.手记</title><meta name="description" content="内容还是太多，所以还是继续书接上文。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Low-Level Programming》读书笔记（第 14-17 章）" class="full"><h1 itemprop="headline" class="align-center">《Low-Level Programming》读书笔记（第 14-17 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-07-06T09:55:14.000Z"> 2020 / 07 / 06, 17:55:14</time></span><span class="page-tag-anchor"><a href="/tags/汇编" itemprop="url">#汇编</a>&nbsp;&nbsp;</span></div><p>内容还是太多，所以继续书接上文。</p>
+<h3 id="Chapter-14：转换细节"><a href="#Chapter-14：转换细节" class="headerlink" title="Chapter 14：转换细节"></a>Chapter 14：转换细节</h3><ol start="91">
+<li><span class="pn">Page 265</span>SSE（Streaming SIMD Extensions）扩展对应的 128 位寄存器：<strong>xmm0</strong> - <strong>xmm15</strong>，主要被应用在两个场景中：<strong>浮点数计算</strong>以及 <strong>SIMD 指令集</strong>。</li>
+<li><span class="pn">Page 265</span>可以使用指令 <strong>movq</strong> \ <strong>movdqa</strong> \ <strong>movdqu</strong> 来操作 xmm 寄存器。其中 movdqa 是<strong>对齐</strong>版本，而 movdqu 是<strong>非对齐</strong>版本。大多数的 SSE 指令要求内存操作数是对齐的，否则可能会有性能上的损耗。</li>
+<li><span class="pn">Page 266</span><strong>X86-64 调用规范</strong>：</li>
+</ol>
+<ul>
+<li>保存 Callee-saved 寄存器的值；</li>
+<li>函数的<strong>整型参数</strong>*被存放在 rdi \ rsi \ rdx \ rcx \ r8 \ r9 寄存器中；<strong>浮点型参数</strong>被存放在 xmm0-xmm7 寄存器中。剩下多余的参数直接存放到栈上，最后一个参数将会位于栈顶；对于大于 32 字节或者有非对齐字段的结构体，将会通过栈进行传递。否则各个字段将被拆解为类似函数参数的方式，以寄存器依次进行传递。对于返回值，整型和指针值通过 rax \ rdx 传递；浮点值通过 xmm0 \ xmm1 传递。</li>
+<li>call 指令被调用，同时返回地址被推到栈上。根据 <strong>Prologue</strong> 与 <strong>Epilogue</strong> 对函数调用前后的栈进行处理（如：保存旧 rbp，移动 rbp，分配栈空间等）。</li>
+</ul>
+<ol start="94">
+<li><span class="pn">Page 267</span>函数调用的 Prologue 与 Epilogue（除此之外，<strong>调用者还需要在函数返回之后清理栈上的参数</strong>）。<code>enter</code> 与 <code>leave</code> 指令可以做到一样的效果，但<strong>性能上可能会稍有损耗</strong>。</li>
+</ol>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global _start</span>
+<span class="token keyword">section .text</span>
+<span class="token label function">inc:</span>
+    <span class="token comment" spellcheck="true">; Prologue;</span>
+    <span class="token comment" spellcheck="true">; enter 0, 0  ; the same effect as Prologue;</span>
+    push <span class="token register variable">rbp</span>  <span class="token comment" spellcheck="true">; save old rbp;</span>
+    mov <span class="token register variable">rbp</span>, <span class="token register variable">rsp</span>  <span class="token comment" spellcheck="true">; set rbp to rsp;</span>
+
+    <span class="token comment" spellcheck="true">; sub rsp, 24  ; automatic memory allocation;</span>
+    mov <span class="token register variable">rax</span>, <span class="token register variable">rdi</span>
+    add <span class="token register variable">rax</span>, <span class="token number">0x1</span>
+
+    <span class="token comment" spellcheck="true">; Epilogue;</span>
+    mov <span class="token register variable">rsp</span>, <span class="token register variable">rbp</span>  <span class="token comment" spellcheck="true">; set rsp to rbp (deallocate all the allocated memory on the stack);</span>
+    pop <span class="token register variable">rbp</span>  <span class="token comment" spellcheck="true">; restore old rbp;</span>
+    <span class="token comment" spellcheck="true">; leave  ; the same effect as Epilogue;</span>
+    ret  <span class="token comment" spellcheck="true">; pop the ret address;</span>
+
+ <span class="token label function">_start:</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">0x1</span>  <span class="token comment" spellcheck="true">; save param into rdi;</span>
+    call inc
+    sub <span class="token register variable">rsp</span>, <span class="token number">0x8</span> <span class="token comment" spellcheck="true">; clean stack (params);</span>
+    mov <span class="token register variable">rdi</span>, <span class="token register variable">rax</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="95">
+<li><span class="pn">Page 271</span>Red Zone：</li>
+</ol>
+<ul>
+<li>位于 rsp 的低地址处（-128）。可用于存放本地变量，共 <strong>128 字节</strong>大小；</li>
+<li>仅适用于“<strong>叶子函数</strong>”进行一定的优化；</li>
+<li>函数仍然可以通过减少 rsp 以获得更大的空间；</li>
+</ul>
+<ol start="96">
+<li><span class="pn">Page 274</span>使用 <code>volatile</code>（易变）关键字可以用来<strong>阻止编译器对特定变量写入时的优化</strong>（如：编译时求值、常量传播等）。</li>
+<li><span class="pn">Page 276</span>保存并恢复计算上下文（所有的跳转均只能在<strong>有效的栈帧</strong>中进行，即不能平行跨函数跳转）：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;setjmp.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+  jmp_buf jb<span class="token punctuation">;</span>    
+  <span class="token keyword">int</span> val <span class="token operator">=</span> <span class="token function">setjmp</span><span class="token punctuation">(</span>jb<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 保存当前的执行上下文；     </span>
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Hello!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>val <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">longjmp</span><span class="token punctuation">(</span>jb<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 恢复执行上下文，并返回值 10；         </span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"End"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="98">
+<li><span class="pn">Page 277</span>在使用优化等级参数（-O1\2\3）的情况下，<strong>只有被标记为</strong> <code>volatile</code> <strong>的局部变量才能在</strong> <code>longjmp</code> <strong>之后保持其值不变</strong>。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;setjmp.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+  jmp_buf jb<span class="token punctuation">;</span>  
+  <span class="token keyword">volatile</span> <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// volatile 变量；</span>
+  <span class="token keyword">int</span> val <span class="token operator">=</span> <span class="token function">setjmp</span><span class="token punctuation">(</span>jb<span class="token punctuation">)</span><span class="token punctuation">;</span>       
+  <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Hello!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  sum<span class="token operator">++</span><span class="token punctuation">;</span> 
+  sum <span class="token operator">+</span><span class="token operator">=</span> val<span class="token punctuation">;</span> 
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>val <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">longjmp</span><span class="token punctuation">(</span>jb<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"End."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="99">
+<li><span class="pn">Page 281</span><code>restrict</code> 关键字：主要用于标记指针类型，即<strong>向编译器承诺只通过该指针来修改所指对象的值</strong>，以允许编译器进行特殊的优化。memcpy 函数的 dest 与 src 两个指针也使用了 restrict 关键字，以承诺读取的内存地址与写入地址没有重叠。类似的效果也可以通过 “<strong>Strict Aliasing</strong>” 来实现，但不推荐。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> restrict px<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span> restrict py<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">*</span>px <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token operator">*</span>py <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 由于我们承诺 x 与 y 的值不同（只能通过指针 px 修改 x 的值，只能通过指针 py 修改 y 的值），编译器便可以安全地将这里优化为 “return 0”;</span>
+  <span class="token keyword">return</span> <span class="token operator">*</span>px<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+  <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>x<span class="token punctuation">,</span> <span class="token operator">&amp;</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="100">
+<li><span class="pn">Page 284</span>一些常见的漏洞利用方法：</li>
+</ol>
+<ul>
+<li><em><strong>Stack Buffer Overrun</strong></em>：</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// warning: this program uses gets(), which is unsafe.</span>
+  <span class="token function">gets</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// buffer overrun;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li> <em><strong>return-to-libc</strong></em>：</li>
+</ul>
+<p>即在 “Stack Buffer Overrun” 的基础上<strong>将返回地址设置为 libc 中的某个函数</strong>，比如 system()。而该函数一般可以以与被攻击程序相同的权限来执行任意的命令行指令。但在 X86-64 上，借助 <strong>ASLR</strong>（地址空间布局随机化）的帮助，完成该攻击的几率几乎为零。</p>
+<ul>
+<li> <em><strong>Format Output Vulnerabilities</strong></em>：</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span><span class="token operator">*</span> argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+  <span class="token keyword">char</span> buffer<span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    
+  <span class="token function">gets</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>    
+  <span class="token function">printf</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// the user input can be treated as format specifiers which is dangerous. </span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="101">
+<li><span class="pn">Page 287</span>常见的栈溢出保护机制：</li>
+</ol>
+<ul>
+<li><em><strong>Security Cookie</strong></em>：</li>
+</ul>
+<p><img src="1.png"></p>
+<p>通过在旧 rbp 值的高地址侧插入一个 <strong>Stack Guard</strong> 的方式来检测 Stack Overrunning 是否发生。在 ret 指令执行之前，<strong>编译器会发出特殊检查，以验证 Stack Guard 的完整性</strong>。如果发现其值被更改则会直接终止程序的执行。该技术默认在 GCC 及 MSVC 中开启。</p>
+<ul>
+<li><em><strong>ASLR（Address Space Layout Randomization）</strong></em>：</li>
+</ul>
+<p>将每个 Program Segment 都加载到地址空间中的随机位置上，这使得猜测函数的正确地址变得几乎不可能。大部分常用的操作系统均支持该功能。</p>
+<ul>
+<li><em><strong>EDP（Data Execution Prevention）</strong></em>：</li>
+</ul>
+<p>此技术可以保护某些内存页，以避免执行存储在这些内存页上的指令。</p>
+<h3 id="Chapter-15：共享对象和代码模型"><a href="#Chapter-15：共享对象和代码模型" class="headerlink" title="Chapter 15：共享对象和代码模型"></a>Chapter 15：共享对象和代码模型</h3><ol start="102">
+<li><span class="pn">Page 292</span>现代的 GNU 风格的哈希表通常会使用 <strong>Bloom 过滤器</strong>来检查某个元素是否被定义在目标文件中。</li>
+<li><span class="pn">Page 292</span>可以使用 <strong>LD_PRELOAD</strong> 环境变量来控制每个应用程序在运行前需要<strong>第一个</strong>进行动态链接的共享库（如果在该库中找到符号，则后续 libc \ libcxx 中的符号便不会再被使用。因此可用于实现某些代码注入的目的）。</li>
+<li><span class="pn">Page 295</span>基于 GOT 的符号相对寻址示意图（更直观一些）：</li>
+</ol>
+<p><img src="2.png"></p>
+<ol start="105">
+<li><span class="pn">Page 297</span><strong>PLT 位于 .text 段</strong>，主要用于函数符号的 Lazy-Resolving。</li>
+<li><span class="pn">Page 304</span>一个应用 GOT / PLT 的汇编例子：</li>
+</ol>
+<p>主程序（main.asm）：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_  </span><span class="token comment" spellcheck="true">; should be imported in every DL files.</span>
+<span class="token keyword">global _start</span>
+
+<span class="token keyword">extern foo</span>
+<span class="token keyword">section .text</span>
+<span class="token label function">_start:</span>
+    call foo wrt ..plt  <span class="token comment" spellcheck="true">; create a PLT entry, use %rip relative address.</span>
+
+    mov <span class="token register variable">rdi</span>, <span class="token number">0</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>共享库（lib.asm）：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_</span>
+<span class="token keyword">global foo:function</span>
+
+<span class="token keyword">section .rodata</span>
+<span class="token label function">msg:</span> db <span class="token string">"SO function called."</span>, <span class="token number">10</span>
+.end
+
+<span class="token keyword">section .text</span>
+<span class="token label function">foo:</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>
+    lea <span class="token register variable">rsi</span>, <span class="token operator">[</span>rel msg<span class="token operator">]</span>  <span class="token comment" spellcheck="true">; -> lea rsi, [rip + offset];</span>
+    mov <span class="token register variable">rdx</span>, msg.end <span class="token operator">-</span> msg  <span class="token comment" spellcheck="true">; calculate the string length;</span>
+    syscall
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>编译运行：</p>
+<pre class="line-numbers language-bash"><code class="language-bash">nasm -flef64 main.asm -o main.o
+nasm -flef64 lib.asm -o lib.o
+ld -shared lib.o -o lib.so
+ld --dynamic-linker<span class="token operator">=</span>/lib64/ld-linux-x86-64.so.2 main.o lib.so -o main
+LD_LIBRARY_PATH<span class="token operator">=</span>. ./main  <span class="token comment" spellcheck="true"># "SO function called.";</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="107">
+<li><span class="pn">Page 307</span>一个完整的 <strong>Dynamic Linking</strong> 的例子：</li>
+</ol>
+<p>主程序（main.asm）：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_</span>
+<span class="token keyword">extern foo</span>
+
+<span class="token keyword">global common_msg:data common_msg.end - common_msg  </span><span class="token comment" spellcheck="true">; export data with type and size attribute;</span>
+<span class="token keyword">global mainfoo:function</span>
+<span class="token keyword">global _start</span>
+
+<span class="token keyword">section .rodata</span>
+<span class="token label function">common_msg:</span> db <span class="token string">"common msg."</span>, <span class="token number">10</span>, <span class="token number">0</span>
+<span class="token label function">.end:</span>
+
+<span class="token label function">main_msg:</span> db <span class="token string">"main msg."</span>, <span class="token number">10</span>, <span class="token number">0</span>
+
+<span class="token keyword">section .text</span>
+<span class="token label function">_start:</span>
+    call foo wrt ..plt
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">0</span>
+    syscall
+
+<span class="token label function">mainfoo:</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rsi</span>, main_msg
+    mov <span class="token register variable">rdx</span>, <span class="token number">8</span>
+    syscall
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>共享库（lib.asm）：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">extern _GLOBAL_OFFSET_TABLE_</span>
+<span class="token keyword">extern common_msg</span>
+<span class="token keyword">extern mainfoo</span>
+
+<span class="token keyword">global foo:function</span>
+
+<span class="token keyword">section .rodata</span>
+<span class="token label function">msg:</span> db <span class="token string">"foo"</span>, <span class="token number">10</span>, <span class="token number">0</span>
+
+<span class="token keyword">section .text</span>
+<span class="token label function">foo:</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>
+    lea <span class="token register variable">rsi</span>, <span class="token operator">[</span>rel msg<span class="token operator">]</span>  <span class="token comment" spellcheck="true">; access msg via relative address;</span>
+    mov <span class="token register variable">rdx</span>, <span class="token number">6</span>
+    syscall
+    call bar
+    call mainfoo wrt ..plt
+    ret
+<span class="token label function">bar:</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">1</span>
+    mov <span class="token register variable">rsi</span>, <span class="token operator">[</span>rel common_msg wrt ..got<span class="token operator">]</span>
+    mov <span class="token register variable">rdx</span>, <span class="token number">5</span>
+    syscall
+    ret
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="108">
+<li><span class="pn">Page 313</span>GCC 中可以使用 <code>__attribute__((visibility(&quot;hidden&quot;)))</code> 来控制共享库中<strong>符号对外部的可见性</strong>。优点：通过隐藏不需要导出或仅用于共享库内部的函数，可以保证共享库的<strong>对外接口足够简洁并易于维护</strong>。当然，也可以选择将符号定义为 static，使其作用域仅限于当前的编译单元。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token function">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">visibility</span><span class="token punctuation">(</span><span class="token string">"hidden"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">void</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">// 会变成 local 符号；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>可以选择在编译时为 GCC 传递 “<b>-fvisibility=hidden</b>” 来隐藏所有符号，然后仅将需要的符号再显式导出。</li>
+</ul>
+<ol start="109">
+<li><span class="pn">Page 315</span>GCC 中可以通过为标记为 “hidden” 的内部方法添加 <code>__attribute__((alias(&quot;aliasName&quot;)))</code> 别名的方式，使得它们在被 wrapper 方法调用时减少一次内存地址的解引用过程（是依赖于编译器的特性）。</li>
+<li><span class="pn">Page 317</span>X86-64 <strong>Code Model</strong>（GCC）：</li>
+</ol>
+<ul>
+<li><strong>-mcmodel=small</strong>：程序和使用到的符号必须在 VAS 的低 2 GB 位置内被链接，指针为 64 bits；</li>
+<li><strong>-mcmodel=kernel</strong>：内核在负 2 GB 的 VAS 中运行；</li>
+<li><strong>-mcmodel=medium</strong>：程序链接在 VAS 的低 2 GB 空间中，小尺寸符号也被放置在此处。较大尺寸的数据被放在 .bss 或者 VAS 的高 2GB 空间中；</li>
+<li><strong>-mcmodel=large</strong>：该模型不对 Section 的地址和大小做任何假设；</li>
+</ul>
+<h3 id="Chapter-16：性能"><a href="#Chapter-16：性能" class="headerlink" title="Chapter 16：性能"></a>Chapter 16：性能</h3><ol start="111">
+<li><span class="pn">Page 328</span>在大多数情况下，过早地进行优化都不会是一个很好的选择。</li>
+<li><span class="pn">Page 329</span>优化方法：<strong>省略栈帧寄存器 rbp</strong>，改用 “rsp-relative addressing”（对应 -fomit-frame-pointer，<strong>目前在 -O1 及以上的优化中是默认启用的</strong>）。潜在问题：栈帧的特征信息变少可能不利于优化之后的代码调试。</li>
+<li><span class="pn">Page 331</span>优化方法：<strong>尾递归</strong>（对应 -foptimize-sibling-calls）。本质就是把递归（call）变成了“循环”（jmp），前提是<strong>递归点之后，ret 之前没有再需要执行的指令</strong>。尾递归的<strong>条件</strong>：</li>
+</ol>
+<ul>
+<li>直接返回结果，而不参与递归运算；</li>
+<li>递归调用自己但直接返回，不参与其他运算过程；</li>
+</ul>
+<p><strong>使用</strong>尾递归版本的 Factorial 阶乘：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global _start</span>
+<span class="token keyword">section .text</span>
+<span class="token label function">fact:</span>
+    mov <span class="token register variable">r11</span>, <span class="token register variable">rsi</span>
+<span class="token label function">.start:</span>    
+    test <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
+    je fact.ret
+    imul <span class="token register variable">r11</span>, <span class="token register variable">rdi</span>
+    dec <span class="token register variable">rdi</span>
+    jmp fact.start
+<span class="token label function">.ret:</span>     
+    ret
+<span class="token label function">_start:</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">3</span>
+    mov <span class="token register variable">rsi</span>, <span class="token number">1</span>
+    call fact
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>不使用</strong>尾递归版本的 Factorial 阶乘：</p>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">global _start</span>
+<span class="token keyword">section .text</span>
+<span class="token label function">fact:</span>
+    cmp <span class="token register variable">rdi</span>, <span class="token number">1</span>
+    je fact.last
+    push <span class="token register variable">rdi</span>  <span class="token comment" spellcheck="true">; no need to subtract/addition %rsp here for push/pop.</span>
+    dec <span class="token register variable">rdi</span>
+    call fact
+    pop <span class="token register variable">rsi</span>  <span class="token comment" spellcheck="true">; get stack value;</span>
+    imul <span class="token register variable">rax</span>, <span class="token register variable">rsi</span>
+    jmp fact.ret
+<span class="token label function">.last:</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">1</span>
+<span class="token label function">.ret:</span>    
+    ret
+<span class="token label function">_start:</span>
+    mov <span class="token register variable">rdi</span>, <span class="token number">3</span>
+    call fact
+    mov <span class="token register variable">r11</span>, <span class="token register variable">rax</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="114">
+<li><span class="pn">Page 333</span>优化方法：<strong>公共子表达式消除</strong>（对应 -fgcse）。对于两个表达式中的<strong>公共部分，将会被单独求值，然后在多个表达式中共享计算结果</strong>。</li>
+<li><span class="pn">Page 334</span>优化方法：<strong>常量传播</strong>（对应 -fipa-cp \ -fgcse \ -fipa-cp-clone）。即对于部分仅依赖于常量的表达式，可以进行编译时求值。</li>
+<li><span class="pn">Page 336</span>优化方法：<strong>RVO</strong> \ <strong>NRVO</strong>。可以减少不必要的栈对象拷贝操作。一般会通过 rdi 隐式传递给构造对象的方法一个参数，方法在其内部直接在根据该隐式参数计算出来的地址上构造对象。</li>
+<li><span class="pn">Page 338</span>诸如 <strong>if-else</strong> \ <strong>switch-case</strong> 等条件结构可能导致分支预测（Branch Prediction）失败进而产生 CPU 时钟损耗。</li>
+<li><span class="pn">Page 339</span>对某些汇编中的<strong>循环结构进行适当的 unroll</strong> 能够有效利用 CPU 的多流水并行机制来加速执行的执行。</li>
+<li><span class="pn">Page 340</span>尽量<strong>将内存的读写（寄存器 &lt;-&gt; 内存）操作分离到不同的区域以避免这两种类型的指令交错</strong>，可以在一定程度上减少 CPU 特殊的上下文切换过程，提高指令执行效率。</li>
+<li><span class="pn">Page 348</span>以<strong>线性按顺序的方式访问内存</strong>，会相较于随机访问有着更好的性能，</li>
+<li><span class="pn">Page 349</span>英特尔推出了一个名为 <strong>AVX</strong> 的新扩展（对比与原有的 <strong>SSE</strong> 扩展），它具有新的寄存器 ymm0-ymm15，其宽度为 <strong>256</strong> 位。其中最低有效的 128 位可以作为旧的 xmm（<strong>128</strong> 位）寄存器进行访问。SIMD 的实际性能取决于 CPU 的 ALU（Arithmetic Logic Unit）的个数。一个简单的基于 SSE 的 SIMD 示例：</li>
+</ol>
+<pre class="line-numbers language-nasm"><code class="language-nasm"><span class="token keyword">section .data</span>
+<span class="token label function">arr_x:</span> dd <span class="token number">1</span>, <span class="token number">0</span>, <span class="token number">1</span>, <span class="token number">1</span>
+<span class="token label function">arr_y:</span> dd <span class="token number">1</span>, <span class="token number">1</span>, <span class="token number">0</span>, <span class="token number">1</span>
+
+<span class="token keyword">section .bss</span>
+<span class="token label function">arr_sum:</span> resd <span class="token number">4</span>
+
+<span class="token keyword">global _start</span>
+<span class="token keyword">section .text</span>
+<span class="token label function">_start:</span>
+    movaps <span class="token register variable">xmm0</span>, <span class="token operator">[</span>arr_x<span class="token operator">]</span>
+    addps <span class="token register variable">xmm0</span>, <span class="token operator">[</span>arr_y<span class="token operator">]</span>
+    movaps <span class="token operator">[</span>arr_sum<span class="token operator">]</span>, <span class="token register variable">xmm0</span>
+    xor <span class="token register variable">rax</span>, <span class="token register variable">rax</span>
+    xor <span class="token register variable">rdi</span>, <span class="token register variable">rdi</span>
+<span class="token label function">.loop:</span>
+    cmp <span class="token register variable">rdi</span>, <span class="token number">0x4</span>
+    je _start.end
+    add <span class="token register variable">eax</span>, dword<span class="token operator">[</span>arr_sum <span class="token operator">+</span> <span class="token number">4</span> <span class="token operator">*</span> <span class="token register variable">rdi</span><span class="token operator">]</span>
+    inc <span class="token register variable">rdi</span>
+    jmp _start.loop
+<span class="token label function">.end:</span>   
+    mov <span class="token register variable">r11</span>, <span class="token register variable">rax</span>
+    mov <span class="token register variable">rax</span>, <span class="token number">60</span>
+    mov <span class="token register variable">rdi</span>, <span class="token register variable">r11</span>  <span class="token comment" spellcheck="true">; 6;</span>
+    syscall
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>编译器通常会<strong>使用 SSE 指令来进行浮点数运算</strong>（如：<code>mulss</code>）。</li>
+</ul>
+<h3 id="Chapter-17：多线程"><a href="#Chapter-17：多线程" class="headerlink" title="Chapter 17：多线程"></a>Chapter 17：多线程</h3><ol start="122">
+<li><span class="pn">Page 357</span>进程的组成：</li>
+</ol>
+<ul>
+<li><strong>VAS</strong> — 部分被可执行文件代码、数据、共享库以及其他映像文件占据。其部分地址可以与其他进程共享；</li>
+<li>所有相关的<strong>状态信息</strong>：打开的文件描述符、寄存器等；</li>
+<li>进程 ID、进程组 ID、用户 ID、组 ID；</li>
+<li>其他<strong>用于进程间通信的资源</strong>：管道、信号量、消息队列等；</li>
+</ul>
+<ol start="123">
+<li><span class="pn">Page 358</span>线程可以自己维护的资源/状态：</li>
+</ol>
+<ul>
+<li>寄存器；</li>
+<li>栈（由栈指针寄存器定义，因此可能被其他线程修改）；</li>
+<li>调度相关的属性，比如优先级；</li>
+<li>等待和阻止信号；</li>
+<li>信号掩码；</li>
+</ul>
+<ol start="124">
+<li><span class="pn">Page 363</span>内存栅栏指令：<code>mfence</code> \ <code>sfence</code>。 </li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-07-06T09:55:14.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2020/07/11/std-optional-与-Optional-References/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2020/06/29/“Low-Level-Programming”-读书笔记（第 5-13 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

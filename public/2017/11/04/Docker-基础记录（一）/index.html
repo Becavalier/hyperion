@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Docker 基础记录（一） | 曜彤.手记</title><meta name="description" content="Docker 改变了人们日常从开发到部署的工作流方式。不仅如此，Dokcer 在云计算、大数据处理甚至深度学习基础系统架构等方面都有其用武之地和独到之处。Docker 出现的一个重要应用场景就是可以方便地加强开发环境与部署环境的一致性。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="Docker 基础记录（一）" class="full"><h1 itemprop="headline" class="align-center">Docker 基础记录（一）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2017-11-04T09:36:20.000Z"> 2017 / 11 / 04, 17:36:20</time></span><span class="page-tag-anchor"><a href="/tags/Docker" itemprop="url">#Docker</a>&nbsp;&nbsp;</span></div><p>Docker 改变了人们日常从开发到部署的工作流方式。不仅如此，Dokcer 在云计算、大数据处理甚至深度学习基础系统架构等方面都有其用武之地和独到之处。Docker 出现的一个重要应用场景就是可以方便地加强开发环境与部署环境的一致性。</p>
+<h4 id="1、新的开发部署流程："><a href="#1、新的开发部署流程：" class="headerlink" title="1、新的开发部署流程："></a>1、新的开发部署流程：</h4><ol>
+<li>开发；</li>
+<li>提交 GIT；</li>
+<li>触发 Hook CI/CD；</li>
+<li>构建 Docker 进行测试；</li>
+<li>推送至私有 Registry；</li>
+<li>运维部署 Dokcer 镜像上线；</li>
+</ol>
+<h4 id="2、操作系统级虚拟化："><a href="#2、操作系统级虚拟化：" class="headerlink" title="2、操作系统级虚拟化："></a>2、操作系统级虚拟化：</h4><p>Docker 是操作系统级虚拟化，不同于“管理程序虚拟化（Hypervisor Virtualization, HV）”，它运行在操作系统内核之上的用户态空间中，可以使多个独立用户空间运行在同一台主机上。</p>
+<h4 id="3、CentOS-Ubuntu-安装-Docker："><a href="#3、CentOS-Ubuntu-安装-Docker：" class="headerlink" title="3、CentOS/Ubuntu 安装 Docker："></a>3、CentOS/Ubuntu 安装 Docker：</h4><pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">uname</span> -a <span class="token comment" spellcheck="true"># 查看当前 Linux 内核版本；</span>
+<span class="token function">sudo</span> yum update <span class="token comment" spellcheck="true"># 升级包及系统内核（3.8以上）；</span>
+
+<span class="token comment" spellcheck="true"># 其他方式：</span>
+<span class="token function">cd</span> /etc/yum.repos.d 
+<span class="token function">wget</span> http://www.hop5.in/yum/el6/hop5.repo <span class="token comment" spellcheck="true"># 下载内核描述文件；</span>
+yum <span class="token function">install</span> kernel-ml-aufs kernel-ml-aufs-devel  <span class="token comment" spellcheck="true"># 升级内核；</span>
+<span class="token function">vi</span> /etc/grub.conf <span class="token comment" spellcheck="true"># 修改 default=0 默认启动内核顺序；</span>
+<span class="token function">reboot</span> 
+
+<span class="token comment" spellcheck="true"># 检查 Device Mapeer；</span>
+<span class="token function">grep</span> device-mapper /proc/devices
+<span class="token function">ls</span> -al /sys/class/misc <span class="token operator">|</span> <span class="token function">grep</span> device-mapper
+
+<span class="token comment" spellcheck="true"># 安装 Docker；</span>
+yum <span class="token function">install</span> docker-io
+
+<span class="token comment" spellcheck="true"># 检查版本；</span>
+docker version
+
+<span class="token comment" spellcheck="true"># 启动 Docker 服务；</span>
+<span class="token function">service</span> docker start
+docker -d <span class="token operator">&amp;</span>
+
+<span class="token comment" spellcheck="true"># 查看 Docker 状态（启动后才能查看）；</span>
+docker info
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4、创建-Docker-容器："><a href="#4、创建-Docker-容器：" class="headerlink" title="4、创建 Docker 容器："></a>4、创建 Docker 容器：</h4><pre class="line-numbers language-bash"><code class="language-bash">docker <span class="token function">help</span> <span class="token operator">&lt;</span>command<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看对应 Docker 命里的帮助文档；</span>
+docker run --name jason_container -i -t ubuntu /bin/bash <span class="token comment" spellcheck="true"># 创建一个 Docker 容器（名字，支持 STDIN 和交互式 Shell，启动后打开容器内的 Bash Shell）；</span>
+docker run --name jason_container -i -t -d ubuntu /bin/bash <span class="token comment" spellcheck="true"># 创建一个长期运行的“守护式容器”；</span>
+
+docker <span class="token function">ps</span> -a <span class="token comment" spellcheck="true"># 查看所有 Docker 容器；</span>
+docker inspect <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看容器的详细配置信息；</span>
+docker <span class="token function">rm</span> -f <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 删除对应名称的 Docker 容器；</span>
+docker start <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 启动该对应名称的 Docker 容器；</span>
+docker restart <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 重新启动该对应名称的 Docker 容器；</span>
+docker attach <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 附着到正在运行的 Docker 容器上；</span>
+docker logs -ft <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看对应 Docker 容器上的日志信息；</span>
+docker <span class="token function">top</span> <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看对应 Docker 容器上的进程信息；</span>
+docker stats <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token punctuation">..</span>. <span class="token comment" spellcheck="true"># 查看 Docker 容器的资源状态；</span>
+docker <span class="token function">exec</span> -d <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token operator">&lt;</span>command<span class="token operator">></span>
+docker stop <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 向容器发送 SIGTERM 信号；</span>
+docker <span class="token function">kill</span> <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 向容器发送 SIGKILL 信号；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5、Docker-镜像："><a href="#5、Docker-镜像：" class="headerlink" title="5、Docker 镜像："></a>5、Docker 镜像：</h4><pre class="line-numbers language-bash"><code class="language-bash">docker images <span class="token comment" spellcheck="true"># 列出所有可用的 Docker 镜像（/var/lib/docker）；</span>
+docker pull <span class="token operator">&lt;</span>image<span class="token operator">></span> <span class="token comment" spellcheck="true"># 拉取镜像；</span>
+docker search <span class="token operator">&lt;</span>image<span class="token operator">></span> <span class="token comment" spellcheck="true"># 在 Docker Hub 上查找公共镜像；</span>
+docker login <span class="token comment" spellcheck="true"># 登陆 Docker Hub （/root/.docker/config.json）；</span>
+docker <span class="token function">logout</span> <span class="token comment" spellcheck="true"># 登出 Docker Hub；</span>
+docker commit -m <span class="token string">"&lt;messages>"</span> -a <span class="token string">"&lt;author>"</span> <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token operator">&lt;</span>repository<span class="token operator">></span> <span class="token comment" spellcheck="true"># 提交镜像；</span>
+
+docker tag <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token operator">&lt;</span>repository<span class="token operator">></span>:<span class="token operator">&lt;</span>tag<span class="token operator">></span> <span class="token comment" spellcheck="true"># 为镜像标记 Tag；</span>
+<span class="token comment" spellcheck="true"># docker tag nginx repo/static:nginx # 为本地的 nginx 镜像打一个仓库为 repo/static 标记为 nginx 的 Tag；</span>
+docker push <span class="token operator">&lt;</span>repository<span class="token operator">></span>:<span class="token operator">&lt;</span>tag<span class="token operator">></span> <span class="token comment" spellcheck="true"># 提交对应 Tag 的镜像；</span>
+<span class="token comment" spellcheck="true"># docker push repo/static # 推送本地所有标记了仓库为 repo/static 的镜像（含多个 Tag）；</span>
+<span class="token comment" spellcheck="true"># docker push repo/static:nginx # 推送本地标记了仓库为 repo/static 的同时标签为 nginx 的镜像；</span>
+
+docker rmi <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token comment" spellcheck="true"># 删除本地的 Docker 镜像；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="6、使用-Dockerfile-来创建镜像："><a href="#6、使用-Dockerfile-来创建镜像：" class="headerlink" title="6、使用 Dockerfile 来创建镜像："></a>6、使用 Dockerfile 来创建镜像：</h4><p><img src="1.png"></p>
+<p>每条 <code>docker run</code> 指令都会创建一个新的镜像层，并进行提交。整个镜像从基础镜像开始向上叠加形成一个镜像栈的结构。整个 Dockerfile 会在构建时传递给 Docker Deamon 守护进程，守护进程会负责整个 Docker 镜像的构建过程。</p>
+<pre class="line-numbers language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># Version: 0.0.1</span>
+FROM ubuntu:14.04
+MAINTAINER YHSPY <span class="token string">'yhorg@hotmail.com'</span>
+ENV REFRESHED_AT 2017-11-05
+ENV DEBIAN_FRONTEND noninteractive
+RUN <span class="token function">apt-get</span> -qq update
+RUN <span class="token function">apt-get</span> update <span class="token operator">&amp;&amp;</span> <span class="token function">apt-get</span> <span class="token function">install</span> -y nginx
+RUN <span class="token keyword">echo</span> <span class="token string">'Hi, I am from your docker container'</span> <span class="token operator">></span> /usr/share/nginx/html/index.html
+CMD <span class="token punctuation">[</span><span class="token string">"bin/bash"</span><span class="token punctuation">]</span> <span class="token comment" spellcheck="true"># Docker 运行时执行的参数；</span>
+<span class="token comment" spellcheck="true"># ENTRYPOINT ["/usr/sbin/nginx", "-g", "deamon off,"] # 默认的 ENTRYPOINT 是 /bin/sh -c；</span>
+<span class="token comment" spellcheck="true"># WORKDIR /opt/webapp # 切换当前工作目录(不能使用～)；</span>
+<span class="token comment" spellcheck="true"># USER &lt;user> # 设置用户组；</span>
+<span class="token comment" spellcheck="true"># ADD 会自动解压源文件；</span>
+<span class="token comment" spellcheck="true"># COPY 只负责复制和粘贴；</span>
+<span class="token comment" spellcheck="true"># LABEL</span>
+<span class="token comment" spellcheck="true"># ARG</span>
+<span class="token comment" spellcheck="true"># STOPSIGNAL</span>
+<span class="token comment" spellcheck="true"># ONBUILD</span>
+EXPOSE 80
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>开始镜像的构建流程。</p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker build -t <span class="token operator">&lt;</span>repository<span class="token operator">></span> <span class="token operator">&lt;</span>path<span class="token operator">></span> <span class="token comment" spellcheck="true"># 依据 Dockerfile 来编译 Docker 镜像；</span>
+docker <span class="token function">history</span> <span class="token operator">&lt;</span>repository<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看 Docker 镜像的构建历史；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>通过下图可以看到，在 Docker 守护进程构建镜像的过程中，针对每一次操作（对文件系统的改变）都会进行一次提交，并且生成一个对应的“镜像层”。同样在向 Docker Hub 推送镜像时，也是分别依次推送该镜像对应的每个“镜像层”。</p>
+<p><img src="2.png"></p>
+<p><img src="3.png"></p>
+<pre class="line-numbers language-bash"><code class="language-bash">docker port <span class="token operator">&lt;</span>name/id<span class="token operator">></span> <span class="token operator">&lt;</span>port<span class="token operator">></span> <span class="token comment" spellcheck="true"># 查看某个容器的端口映射（映射只在容器启动时才会生效或分配）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-11-04T09:36:20.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2017/11/07/Docker-基础记录（二）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2017/09/07/V8-内存优化之-Ignition-解释器/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

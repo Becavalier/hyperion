@@ -1,0 +1,633 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《计算的本质：深入剖析程序和计算机》读书笔记（第 1-2 章） | 曜彤.手记</title><meta name="description" content="旧书清理系列。“可计算理论”基础。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《计算的本质：深入剖析程序和计算机》读书笔记（第 1-2 章）" class="full"><h1 itemprop="headline" class="align-center">《计算的本质：深入剖析程序和计算机》读书笔记（第 1-2 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-12-25T08:50:23.000Z"> 2020 / 12 / 25, 16:50:23</time></span><span class="page-tag-anchor"><a href="/tags/编程语言" itemprop="url">#编程语言</a>&nbsp;&nbsp;</span></div><p>旧书清理系列。“可计算理论”基础。</p>
+<h3 id="第-1-章-刚好够用的-Ruby-基础"><a href="#第-1-章-刚好够用的-Ruby-基础" class="headerlink" title="第 1 章 - 刚好够用的 Ruby 基础"></a>第 1 章 - 刚好够用的 Ruby 基础</h3><ol>
+<li><span class="pn">Page 1</span>交互式 Ruby Shell（REPL）：<code>irb</code>；</li>
+<li><span class="pn">Page 2</span>Ruby 基本语法：</li>
+</ol>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># 局部变量与并行赋值；</span>
+greeting <span class="token operator">=</span> <span class="token string">'hello'</span>
+width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> depth <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">2250</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 数组字面量；</span>
+
+<span class="token comment" spellcheck="true"># 双引号字符串插值；</span>
+<span class="token string">"hello <span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token string">'dlrow'</span><span class="token punctuation">.</span>reverse<span class="token delimiter tag">}</span></span>"</span>  <span class="token comment" spellcheck="true"># 无参信号传递可以省略括号；</span>
+o <span class="token operator">=</span> <span class="token builtin">Object</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">def</span> o<span class="token punctuation">.</span>to_s
+  <span class="token string">'a new object'</span>
+<span class="token keyword">end</span>
+<span class="token string">"here is <span class="token interpolation"><span class="token delimiter tag">#{</span>o<span class="token delimiter tag">}</span></span>"</span>
+
+<span class="token comment" spellcheck="true"># 检查对象（当 IRB 需要显示对象时调用）；</span>
+o <span class="token operator">=</span> <span class="token builtin">Object</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">def</span> o<span class="token punctuation">.</span>inspect
+  <span class="token string">'[my object]'</span>
+<span class="token keyword">end</span>
+o
+
+<span class="token comment" spellcheck="true"># 可变参数方法（“*” 运算符）；</span>
+<span class="token keyword">def</span> <span class="token function">join_with_commas</span><span class="token punctuation">(</span>before<span class="token punctuation">,</span> <span class="token operator">*</span>words<span class="token punctuation">,</span> after<span class="token punctuation">)</span>
+  before <span class="token operator">+</span> words<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span> <span class="token operator">+</span> after
+<span class="token keyword">end</span>
+<span class="token function">join_with_commas</span><span class="token punctuation">(</span><span class="token string">'Testing: '</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">,</span> <span class="token string">'four'</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span>
+arguments <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">]</span>
+<span class="token function">join_with_commas</span><span class="token punctuation">(</span><span class="token string">'Testing: '</span><span class="token punctuation">,</span> <span class="token operator">*</span>arguments<span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 展开数组；</span>
+before<span class="token punctuation">,</span> <span class="token operator">*</span>words<span class="token punctuation">,</span> after <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Testing: '</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">,</span> <span class="token string">'three'</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 代码块；</span>
+<span class="token keyword">def</span> numbers_names
+  <span class="token punctuation">[</span><span class="token keyword">yield</span><span class="token punctuation">(</span><span class="token string">'one'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">yield</span><span class="token punctuation">(</span><span class="token string">'two'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">yield</span><span class="token punctuation">(</span><span class="token string">'three'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">', '</span><span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+numbers_names <span class="token punctuation">{</span> <span class="token operator">|</span>name<span class="token operator">|</span> name<span class="token punctuation">.</span>upcase<span class="token punctuation">.</span>reverse <span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true"># 枚举类型；</span>
+<span class="token comment" spellcheck="true"># def count(arr)</span>
+<span class="token comment" spellcheck="true">#   accumator = 0</span>
+<span class="token comment" spellcheck="true">#   for i in arr</span>
+<span class="token comment" spellcheck="true">#     accumator += 1 if yield(i)</span>
+<span class="token comment" spellcheck="true">#   end</span>
+<span class="token comment" spellcheck="true">#   puts accumator</span>
+<span class="token comment" spellcheck="true"># end</span>
+<span class="token comment" spellcheck="true"># count([1, 2, 3, 4, 5]) { |number| number > 2 }</span>
+
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>count <span class="token punctuation">{</span> <span class="token operator">|</span>number<span class="token operator">|</span> number<span class="token punctuation">.</span>even<span class="token operator">?</span> <span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>select <span class="token punctuation">{</span> <span class="token operator">|</span>number<span class="token operator">|</span> number<span class="token punctuation">.</span>even<span class="token operator">?</span> <span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token symbol">:even?</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 向代码块参数发送一个无参的 even? 消息；</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>any<span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token operator">|</span>number<span class="token operator">|</span> number <span class="token operator">&lt;</span> <span class="token number">8</span> <span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>all<span class="token operator">?</span> <span class="token punctuation">{</span> <span class="token operator">|</span>number<span class="token operator">|</span> number <span class="token operator">&lt;</span> <span class="token number">8</span> <span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">each</span> <span class="token keyword">do</span> <span class="token operator">|</span>number<span class="token operator">|</span>
+  <span class="token keyword">if</span> number<span class="token punctuation">.</span>even<span class="token operator">?</span>
+    puts <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>number<span class="token delimiter tag">}</span></span> is even"</span>
+  <span class="token keyword">else</span>
+    puts <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>number<span class="token delimiter tag">}</span></span> is odd"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map <span class="token punctuation">{</span> <span class="token operator">|</span>number<span class="token operator">|</span> number <span class="token operator">*</span> <span class="token number">3</span> <span class="token punctuation">}</span>
+<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">|</span>result<span class="token punctuation">,</span> number<span class="token operator">|</span> result <span class="token operator">+</span> number <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># 类似 ECMAScript 中的 reduce 方法；</span>
+
+<span class="token comment" spellcheck="true"># 结构体（用于生成其他类）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Point</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token symbol">:y</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># Point 类拥有两个属性 x，y；</span>
+  <span class="token keyword">def</span> <span class="token operator">+</span><span class="token punctuation">(</span>other_point<span class="token punctuation">)</span>
+    <span class="token constant">Point</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>x <span class="token operator">+</span> other_point<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y <span class="token operator">+</span> other_point<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"#&lt;Point (<span class="token interpolation"><span class="token delimiter tag">#{</span>x<span class="token delimiter tag">}</span></span>, <span class="token interpolation"><span class="token delimiter tag">#{</span>y<span class="token delimiter tag">}</span></span>)>"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+a <span class="token operator">=</span> <span class="token constant">Point</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+b <span class="token operator">=</span> <span class="token constant">Point</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span>
+a <span class="token operator">+</span> b
+
+<span class="token comment" spellcheck="true"># Monkey Patching（可以随时给类型或模块添加方法）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Point</span>
+  <span class="token keyword">def</span> <span class="token operator">-</span><span class="token punctuation">(</span>other_point<span class="token punctuation">)</span>
+    <span class="token constant">Point</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>x <span class="token operator">-</span> other_point<span class="token punctuation">.</span>x<span class="token punctuation">,</span> y <span class="token operator">-</span> other_point<span class="token punctuation">.</span>y<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+<span class="token comment" spellcheck="true"># 定义常量（任何以大写字母开头的变量，包括类和模块）；</span>
+<span class="token constant">NUMBERS</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 删除常量；</span>
+<span class="token builtin">Object</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token symbol">:remove_const</span><span class="token punctuation">,</span> <span class="token symbol">:NUMBERS</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 给符号 “NUMBERS” 发送删除消息；</span>
+
+<span class="token comment" spellcheck="true"># 符号（常用做字典的键）；</span>
+<span class="token symbol">:my_symbol</span>
+
+<span class="token comment" spellcheck="true"># 数组；</span>
+numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'zero'</span><span class="token punctuation">,</span> <span class="token string">'one'</span><span class="token punctuation">,</span> <span class="token string">'two'</span><span class="token punctuation">]</span>
+numbers<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">'three'</span><span class="token punctuation">,</span> <span class="token string">'four'</span><span class="token punctuation">)</span>
+numbers<span class="token punctuation">.</span><span class="token function">drop</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 范围；</span>
+ages <span class="token operator">=</span> <span class="token number">18</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token number">30</span>
+ages<span class="token punctuation">.</span>entries
+ages<span class="token punctuation">.</span>include<span class="token operator">?</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># “?” 表明函数会返回一个布尔值（函数名的一部分）；</span>
+
+<span class="token comment" spellcheck="true"># 字典；</span>
+fruit <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">'a'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'apple'</span><span class="token punctuation">,</span> <span class="token string">'b'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'banana'</span><span class="token punctuation">,</span> <span class="token string">'c'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'coconut'</span> <span class="token punctuation">}</span>
+dimensions <span class="token operator">=</span> <span class="token punctuation">{</span> width<span class="token punctuation">:</span> <span class="token number">1000</span><span class="token punctuation">,</span> height<span class="token punctuation">:</span> <span class="token number">2250</span><span class="token punctuation">,</span> depth<span class="token punctuation">:</span> <span class="token number">250</span> <span class="token punctuation">}</span>
+dimensions<span class="token punctuation">[</span><span class="token symbol">:depth</span><span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># Lambda；</span>
+multiply <span class="token operator">=</span> <span class="token operator">-</span><span class="token operator">></span> x<span class="token punctuation">,</span> y <span class="token punctuation">{</span> x <span class="token operator">*</span> y <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true"># #&lt;Proc (lambda)>；</span>
+multiply<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">)</span>
+multiply<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 调用方式与“函数”不同；</span>
+
+<span class="token comment" spellcheck="true"># 函数；</span>
+<span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+  x <span class="token operator">+</span> y
+<span class="token keyword">end</span>
+<span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 类；</span>
+<span class="token keyword">class</span> <span class="token class-name">Calculator</span>
+  <span class="token keyword">def</span> <span class="token function">divide</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    x <span class="token operator">/</span> y
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+c <span class="token operator">=</span> <span class="token constant">Calculator</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">c<span class="token punctuation">.</span>class</span>
+c<span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MultiplyingCalculator</span> <span class="token operator">&lt;</span> <span class="token constant">Calculator</span>  <span class="token comment" spellcheck="true"># 继承；</span>
+  <span class="token keyword">def</span> <span class="token function">multiply</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># super(x, y)  # 可以用 super 调用父类的同名方法；</span>
+    x <span class="token operator">*</span> y
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+mc <span class="token operator">=</span> <span class="token constant">MultiplyingCalculator</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">mc<span class="token punctuation">.</span>class</span>
+mc<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">.</span>superclass
+mc<span class="token punctuation">.</span><span class="token function">multiply</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+mc<span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># 模块（可以被任意包含的代码段封装）；</span>
+<span class="token keyword">module</span> <span class="token constant">Addition</span>
+  <span class="token keyword">def</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+    x <span class="token operator">+</span> y
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">AddingCalculator</span>
+  include <span class="token constant">Addition</span>
+<span class="token keyword">end</span>
+ac <span class="token operator">=</span> <span class="token constant">AddingCalculator</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+<span class="token class-name">ac<span class="token punctuation">.</span>add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Ruby 中的<strong>每一个值都是一个对象</strong>，对象之间彼此靠“<strong>发送消息</strong>”进行通信（风格来源于 Smalltalk）。表达式 “1 + 2” 可以理解为：<em>使用参数 2 给对象 1 发送一个叫做 “+” 的消息，而对象 1 上则有一个可以处理该消息的方法（#+）</em>；</li>
+</ul>
+<pre class="line-numbers language-ruby"><code class="language-ruby">o <span class="token operator">=</span> <span class="token builtin">Object</span><span class="token punctuation">.</span><span class="token keyword">new</span>  <span class="token comment" spellcheck="true"># 新建对象（给 Object 对象发送了 “new” 消息）；</span>
+<span class="token keyword">def</span> o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+  x <span class="token operator">+</span> y
+<span class="token keyword">end</span>
+o<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> o<span class="token punctuation">.</span><span class="token function">add_twice</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true"># 在方法定义内部，当前对象总是接受消息并执行此方法的对象；</span>
+  <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span>
+<span class="token keyword">end</span>
+o<span class="token punctuation">.</span><span class="token function">add_twice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="第-2-章-程序和机器"><a href="#第-2-章-程序和机器" class="headerlink" title="第 2 章 - 程序和机器"></a>第 2 章 - 程序和机器</h3><ol start="3">
+<li><span class="pn">Page 18</span>“语义学（Semantics）”研究的是<strong>单词和它们含义之间的关系</strong>。语义不止关注抽象含义本身的基本性质，还关注具体的记号如何与它们的抽象含义关联起来；</li>
+<li><span class="pn">Page 18</span>三种描述编程语言的方法：</li>
+</ol>
+<ul>
+<li><strong>靠实现规范</strong>：直接以<strong>语言运行时的实现</strong>作为标准，如：Ruby、PHP、Perl 5；</li>
+<li><strong>靠文档规范</strong>：使用<strong>书面化的官方文档</strong>进行描述，如：C++、Java、ECMAScript；</li>
+<li><strong>靠数学方法</strong>：使用<strong>形式语义学中的数学方法</strong>准确描述编程语言的含义。</li>
+</ul>
+<ol start="5">
+<li><span class="pn">Page 20</span>操作语义 - <strong>小步语义</strong>：假想一台机器，用这台机器直接按照某种语言的语法进行操作，<strong>一小步一小步</strong>地对其进行反复<strong>规约</strong>，从而对一个程序求值。如何进行规约的过程（推理规则）通常使用<strong>元语言（数学符号）</strong>编写；</li>
+</ol>
+<ul>
+<li>明确定义了操作应该发生的顺序；</li>
+<li>大部分需要通过以“<strong>迭代</strong>”的方式来求值。</li>
+</ul>
+<p>- <em><strong>定义表达式语义</strong></em>：</p>
+<ul>
+<li>每一个“可规约”的表达式都需要满足“自约束”，即：<strong>向外暴露同样的规约接口，具体实现向内部约束</strong>；</li>
+<li><em><strong>“普通表达式（+-*/）”规约</strong></em>：可以通过“小步语义”来实现；</li>
+<li><em><strong>“变量”规约</strong></em>，抽象机器不仅需要<strong>存储当前表达式，还需要存储从变量名到它们的值的映射</strong> — 上下文环境（env）。这部分可以用“散列表”进行存储；</li>
+<li><em><strong>“语句（“赋值”、“调用”、“回传”等）”规约</strong></em>：可以通过求值来<strong>生成另一个表达式</strong>（如：<em>x = x + 1</em>）。一个语句能够通过求值改变抽象机器的状态，而规约一个表达式则不会（两者的区别）；</li>
+</ul>
+<p>- 1. <em><strong>语句</strong></em>：</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># 语句的最终规约结果（表示语句已执行成功）；</span>
+<span class="token keyword">class</span> <span class="token class-name">DoNothing</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">'do-noting'</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token operator">==</span><span class="token punctuation">(</span>other_statement<span class="token punctuation">)</span>
+    other_statement<span class="token punctuation">.</span>instance_of<span class="token operator">?</span><span class="token punctuation">(</span><span class="token constant">DoNothing</span><span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">false</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 循环语句；</span>
+<span class="token comment" spellcheck="true"># 1. 把 &lt;&lt;while (条件) {主体}>>；规约为 &lt;&lt;if (条件) {主体;while (条件) {主体}} else { do-noting }>> 和一个没有改变的环境。</span>
+<span class="token keyword">class</span> <span class="token class-name">While</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:condition</span><span class="token punctuation">,</span> <span class="token symbol">:body</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"while (<span class="token interpolation"><span class="token delimiter tag">#{</span>condition<span class="token delimiter tag">}</span></span>) { <span class="token interpolation"><span class="token delimiter tag">#{</span>body<span class="token delimiter tag">}</span></span> }"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token punctuation">[</span><span class="token constant">If</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>condition<span class="token punctuation">,</span> <span class="token constant">Sequence</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>body<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">DoNothing</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 序列语句；</span>
+<span class="token comment" spellcheck="true"># 1. 如果第一条语句是 &lt;&lt;do-nothing>>，就规约成第二条语句和原始的环境；</span>
+<span class="token comment" spellcheck="true"># 2. 否则，就对第一条语句规约，得到一个新的序列和一个规约后的环境。</span>
+<span class="token keyword">class</span> <span class="token class-name">Sequence</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:first</span><span class="token punctuation">,</span> <span class="token symbol">:second</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>first<span class="token delimiter tag">}</span></span>; <span class="token interpolation"><span class="token delimiter tag">#{</span>second<span class="token delimiter tag">}</span></span>"</span> 
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect 
+    <span class="token string">"«<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>»"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">case</span> first
+    <span class="token keyword">when</span> <span class="token constant">DoNothing</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+      <span class="token punctuation">[</span>second<span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+    <span class="token keyword">else</span>
+      reduced_first<span class="token punctuation">,</span> reduced_env <span class="token operator">=</span> first<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+      <span class="token punctuation">[</span><span class="token constant">Sequence</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>reduced_first<span class="token punctuation">,</span> second<span class="token punctuation">)</span><span class="token punctuation">,</span> reduced_env<span class="token punctuation">]</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 赋值语句；</span>
+<span class="token comment" spellcheck="true"># 1. 如果赋值操作符右侧表达式可以规约，则得到一个规约了的赋值语句以及一个没有改变的上下文环境；</span>
+<span class="token comment" spellcheck="true"># 2. 否则，更新上下文环境，得到一个 DoNothing 语句及一个更新后的上下文环境。</span>
+<span class="token keyword">class</span> <span class="token class-name">Assign</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:name</span><span class="token punctuation">,</span> <span class="token symbol">:expr</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>name<span class="token delimiter tag">}</span></span> = <span class="token interpolation"><span class="token delimiter tag">#{</span>expr<span class="token delimiter tag">}</span></span>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> expr<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token punctuation">[</span><span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> expr<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+    <span class="token keyword">else</span>
+      <span class="token punctuation">[</span><span class="token constant">DoNothing</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">,</span> env<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name <span class="token operator">=</span><span class="token operator">></span> expr <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 条件语句；</span>
+<span class="token comment" spellcheck="true"># 1. 如果条件能规约，就对其规约，得到一个规约了的条件语句和一个没有改变的环境；</span>
+<span class="token comment" spellcheck="true"># 2. 如果条件是 true，就规约成结果语句和一个没有改变的环境；</span>
+<span class="token comment" spellcheck="true"># 3. 如果条件是 false，就规约成替代语句和一个没有改变的环境。</span>
+<span class="token keyword">class</span> <span class="token class-name">If</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:condition</span><span class="token punctuation">,</span> <span class="token symbol">:consequence</span><span class="token punctuation">,</span> <span class="token symbol">:alternative</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"if (<span class="token interpolation"><span class="token delimiter tag">#{</span>condition<span class="token delimiter tag">}</span></span>) { <span class="token interpolation"><span class="token delimiter tag">#{</span>consequence<span class="token delimiter tag">}</span></span> } else { <span class="token interpolation"><span class="token delimiter tag">#{</span>alternative<span class="token delimiter tag">}</span></span> }"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> condition<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token punctuation">[</span><span class="token constant">If</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>condition<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> consequence<span class="token punctuation">,</span> alternative<span class="token punctuation">)</span><span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+    <span class="token keyword">else</span>
+      <span class="token keyword">case</span> condition
+      <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+        <span class="token punctuation">[</span>consequence<span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+      <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span>
+        <span class="token punctuation">[</span>alternative<span class="token punctuation">,</span> env<span class="token punctuation">]</span>
+      <span class="token keyword">end</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- 2. <em><strong>独立表达式</strong></em>：</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># Number 终结符；</span>
+<span class="token keyword">class</span> <span class="token class-name">Number</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:value</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    value<span class="token punctuation">.</span>to_s
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">false</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># Boolean 终结符；</span>
+<span class="token keyword">class</span> <span class="token class-name">Boolean</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:value</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    value<span class="token punctuation">.</span>to_s
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">false</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># LessThan 非终结符（可以规约）；</span>
+<span class="token keyword">class</span> <span class="token class-name">LessThan</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:left</span><span class="token punctuation">,</span> <span class="token symbol">:right</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token delimiter tag">}</span></span> &lt; <span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token delimiter tag">}</span></span>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> left<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+    <span class="token keyword">elsif</span> right<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span>
+      <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>value <span class="token operator">&lt;</span> right<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># Variable 非终结符（可以规约）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Variable</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:name</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    name<span class="token punctuation">.</span>to_s
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    env<span class="token punctuation">[</span>name<span class="token punctuation">]</span>  <span class="token comment" spellcheck="true"># 从环境中返回变量的值；</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># Add 非终结符（可以规约）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Add</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:left</span><span class="token punctuation">,</span> <span class="token symbol">:right</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token delimiter tag">}</span></span> + <span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token delimiter tag">}</span></span>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 规约方法；</span>
+    <span class="token keyword">if</span> left<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+    <span class="token keyword">elsif</span> right<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span>
+      <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>value <span class="token operator">+</span> right<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># Multiply 非终结符（可以规约）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Multiply</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:left</span><span class="token punctuation">,</span> <span class="token symbol">:right</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> to_s
+    <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token delimiter tag">}</span></span> * <span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token delimiter tag">}</span></span>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> inspect
+    <span class="token string">"&lt;&lt;<span class="token interpolation"><span class="token delimiter tag">#{</span><span class="token keyword">self</span><span class="token delimiter tag">}</span></span>>>"</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> reducible<span class="token operator">?</span>
+    <span class="token keyword">true</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> <span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 规约方法；</span>
+    <span class="token keyword">if</span> left<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">Multiply</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span>
+    <span class="token keyword">elsif</span> right<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      <span class="token constant">Multiply</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span>
+      <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span>value <span class="token operator">*</span> right<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>- <em><strong>定义抽象机器</strong></em>：</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token comment" spellcheck="true"># 机器运行时接受一个表达式，和一个上下文环境（保存变量信息）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Machine</span> <span class="token operator">&lt;</span> <span class="token builtin">Struct</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:stat</span><span class="token punctuation">,</span> <span class="token symbol">:env</span><span class="token punctuation">)</span>
+  <span class="token keyword">def</span> step
+    <span class="token keyword">self</span><span class="token punctuation">.</span>stat<span class="token punctuation">,</span> <span class="token keyword">self</span><span class="token punctuation">.</span>env <span class="token operator">=</span> stat<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+  <span class="token keyword">def</span> run
+    <span class="token keyword">while</span> stat<span class="token punctuation">.</span>reducible<span class="token operator">?</span>
+      puts <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>stat<span class="token delimiter tag">}</span></span>, <span class="token interpolation"><span class="token delimiter tag">#{</span>env<span class="token delimiter tag">}</span></span>"</span>
+      step
+    <span class="token keyword">end</span>
+    puts <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>stat<span class="token delimiter tag">}</span></span>, <span class="token interpolation"><span class="token delimiter tag">#{</span>env<span class="token delimiter tag">}</span></span>"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 使用抽象机器运行一个表达式；</span>
+<span class="token constant">Machine</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+  <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span>run
+<span class="token constant">Machine</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+  <span class="token constant">If</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:y</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+    <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:y</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span> <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span>run
+
+<span class="token comment" spellcheck="true"># x = 1 + 1; y = x + 3, {}</span>
+<span class="token comment" spellcheck="true"># x = 2; y = x + 3, {}</span>
+<span class="token comment" spellcheck="true"># do-noting; y = x + 3, {:x=>&lt;&lt;2>>}</span>
+<span class="token comment" spellcheck="true"># y = x + 3, {:x=>&lt;&lt;2>>}</span>
+<span class="token comment" spellcheck="true"># y = 2 + 3, {:x=>&lt;&lt;2>>}</span>
+<span class="token comment" spellcheck="true"># y = 5, {:x=>&lt;&lt;2>>}</span>
+<span class="token comment" spellcheck="true"># do-noting, {:x=>&lt;&lt;2>>, :y=>&lt;&lt;5>>}</span>
+<span class="token constant">Machine</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+  <span class="token constant">Sequence</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+    <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:y</span><span class="token punctuation">,</span> <span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">.</span>run
+
+<span class="token comment" spellcheck="true"># while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># if (x &lt; 3) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># if (1 &lt; 3) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># if (true) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># x = x * 3; while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># x = 1 * 3; while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># x = 3; while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;1>>}</span>
+<span class="token comment" spellcheck="true"># do-noting; while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;3>>}</span>
+<span class="token comment" spellcheck="true"># while (x &lt; 3) { x = x * 3 }, {:x=>&lt;&lt;3>>}</span>
+<span class="token comment" spellcheck="true"># if (x &lt; 3) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;3>>}</span>
+<span class="token comment" spellcheck="true"># if (3 &lt; 3) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;3>>}</span>
+<span class="token comment" spellcheck="true"># if (false) { x = x * 3; while (x &lt; 3) { x = x * 3 } } else { do-noting }, {:x=>&lt;&lt;3>>}</span>
+<span class="token comment" spellcheck="true"># do-noting, {:x=>&lt;&lt;3>>}</span>
+<span class="token constant">Machine</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span> 
+  <span class="token constant">While</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+    <span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token constant">Multiply</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> 
+<span class="token punctuation">)</span><span class="token punctuation">.</span>run
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="6">
+<li><span class="pn">Page 40</span>操作语义 - <strong>大步语义</strong>：<strong>定义如何从一个表达式或语句直接得到它的结果</strong>。需要将程序执行当成一个“递归”而不是迭代，为了对一个更大的表达式求值，需要对所有比它小的子表达式求值，然后把结果结合起来得到最终答案；</li>
+</ol>
+<ul>
+<li>更为松散，只说明哪些子计算会执行，而不会指明它们按照什么顺序执行。<strong>会执行较小规模的计算，并将其作为更大规模计算的一部分</strong>；</li>
+<li>更多地使用“<strong>递归</strong>”的方式来进行，依赖栈来记住当前处理在整个计算中的位置；</li>
+<li>不需要 Machine 类来反复执行规约和存储中间状态，而是<strong>只对程序的 AST 访问一次就计算出整个程序的结果</strong>。</li>
+</ul>
+<p>- <em><strong>表达式</strong></em>：</p>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">Number</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">self</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Boolean</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">self</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Variable</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    env<span class="token punctuation">[</span>name<span class="token punctuation">]</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Add</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">+</span> right<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Multiply</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">*</span> right<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">LessThan</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">&lt;</span> right<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 避免了类似“小步语义”产生的中间处理过程，只会得到一个包含最终结果的新环境；</span>
+<span class="token keyword">class</span> <span class="token class-name">Assign</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    env<span class="token punctuation">.</span><span class="token function">merge</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name <span class="token operator">=</span><span class="token operator">></span> expr<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">DoNoting</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    env
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">If</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">case</span> condition<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+      consequence<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span>
+      alternative<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 初始环境需要“穿过”这两个求值过程；</span>
+<span class="token keyword">class</span> <span class="token class-name">Sequence</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    second<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>first<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">While</span>
+  <span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">case</span> condition<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span>
+    <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">true</span><span class="token punctuation">)</span>
+      <span class="token function">evaluate</span><span class="token punctuation">(</span>body<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span>env<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># body 必须是能够返回新 env 的语句；</span>
+    <span class="token keyword">when</span> <span class="token constant">Boolean</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token keyword">false</span><span class="token punctuation">)</span>
+      env
+    <span class="token keyword">end</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+puts <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+puts <span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+puts <span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Add</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:y</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># statement = Sequence.new(Assign.new(:x, Add.new(Number.new(1), Number.new(1))),Assign.new(:y, Add.new(Variable.new(:x), Number.new(3))) )</span>
+<span class="token comment" spellcheck="true"># puts statement.evaluate({})</span>
+
+statement <span class="token operator">=</span> <span class="token constant">While</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token constant">Multiply</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">)</span>
+puts statement<span class="token punctuation">.</span><span class="token function">evaluate</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="7">
+<li><span class="pn">Page 45</span><strong>操作语义</strong>（Operational Semantic）：<strong>通过描述一个解析器来说明一种语言的含义</strong>；其中，“<strong>小步语义</strong>”设定了一台能执行小操作的简单抽象机器，它包含了关于如何产生有用中间结果的详尽细节；而“<strong>大步语义</strong>”（参考 <a target="_blank" rel="noopener" href="http://www.lfcs.inf.ed.ac.uk/reports/87/ECS-LFCS-87-36/">ML</a> 语言）把汇编整个计算的重担交给了机器或执行它的人，在仅通过一步操作就把整个程序转换成一个最终结果的过程中，要求它跟踪许多中间子目标；</li>
+<li><span class="pn">Page 46</span><strong>指称语义</strong>（Denotational Semantic）：<strong>关心从程序本来的语言到其他表示的转换</strong>（<em>指语义上的描述，而非语言特征/语法结构的一一对应，因此并不是“转译”</em>）。关注如何借助另一种语言的已有含义 — 一种低级的、更形式化的或者至少比正在描述的语言更好理解的语言 — 解释一个新的语言。<strong>通常用于把程序转成数学化的对象</strong>；</li>
+</ol>
+<pre class="line-numbers language-ruby"><code class="language-ruby"><span class="token keyword">class</span> <span class="token class-name">Number</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { <span class="token interpolation"><span class="token delimiter tag">#{</span>value<span class="token punctuation">.</span>inspect<span class="token delimiter tag">}</span></span> }"</span>  <span class="token comment" spellcheck="true"># 返回 Proc 代码，带有名为 “e” 的环境变量参数；</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Boolean</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { <span class="token interpolation"><span class="token delimiter tag">#{</span>value<span class="token punctuation">.</span>inspect<span class="token delimiter tag">}</span></span> }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Variable</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { e[<span class="token interpolation"><span class="token delimiter tag">#{</span>name<span class="token punctuation">.</span>inspect<span class="token delimiter tag">}</span></span>] }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 指称的组合（每一个子表达式都是一个 Proc 源代码）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Add</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { (<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) + (<span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">Multiply</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { (<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) * (<span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">LessThan</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { (<span class="token interpolation"><span class="token delimiter tag">#{</span>left<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) &lt; (<span class="token interpolation"><span class="token delimiter tag">#{</span>right<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 语句的指称语义（对语句的求值会产生一个新的环境）；</span>
+<span class="token keyword">class</span> <span class="token class-name">Assign</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { e.merge({ <span class="token interpolation"><span class="token delimiter tag">#{</span>name<span class="token punctuation">.</span>inspect<span class="token delimiter tag">}</span></span> => (<span class="token interpolation"><span class="token delimiter tag">#{</span>expr<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e) }) }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">DoNothing</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">'-> e { e }'</span>  <span class="token comment" spellcheck="true"># 直接返回当前环境；</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">If</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { if (<span class="token interpolation"><span class="token delimiter tag">#{</span>condition<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e)"</span> <span class="token operator">+</span> 
+    <span class="token string">" then (<span class="token interpolation"><span class="token delimiter tag">#{</span>consequence<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e)"</span> <span class="token operator">+</span> 
+    <span class="token string">" else (<span class="token interpolation"><span class="token delimiter tag">#{</span>alternative<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e)"</span> <span class="token operator">+</span> 
+    <span class="token string">" end }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token comment" spellcheck="true"># 对第一个语句求值的结果会作为对第二个语句求值时的环境；</span>
+<span class="token keyword">class</span> <span class="token class-name">Sequence</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e { (<span class="token interpolation"><span class="token delimiter tag">#{</span>second<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call((<span class="token interpolation"><span class="token delimiter tag">#{</span>first<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e)) }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+<span class="token keyword">class</span> <span class="token class-name">While</span>
+  <span class="token keyword">def</span> to_ruby
+    <span class="token string">"-> e {"</span> <span class="token operator">+</span>
+    <span class="token string">" while (<span class="token interpolation"><span class="token delimiter tag">#{</span>condition<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e); e = (<span class="token interpolation"><span class="token delimiter tag">#{</span>body<span class="token punctuation">.</span>to_ruby<span class="token delimiter tag">}</span></span>).call(e); end;"</span> <span class="token operator">+</span> 
+    <span class="token string">" e"</span> <span class="token operator">+</span>
+    <span class="token string">" }"</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+statement <span class="token operator">=</span> <span class="token constant">While</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span>
+  <span class="token constant">LessThan</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token constant">Assign</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">,</span> <span class="token constant">Multiply</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token constant">Variable</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token symbol">:x</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">Number</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># -> e { while (-> e { (-> e { e[:x] }).call(e) &lt; (-> e { 5 }).call(e) }).call(e); e = (-> e { e.merge({ :x => (-> e { (-> e { e[:x] }).call(e) * (-> e { 3 }).call(e) }).call(e) }) }).call(e); end; e }</span>
+puts statement<span class="token punctuation">.</span>to_ruby
+proc <span class="token operator">=</span> <span class="token function">eval</span><span class="token punctuation">(</span>statement<span class="token punctuation">.</span>to_ruby<span class="token punctuation">)</span>
+puts proc<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="9">
+<li><span class="pn">Page 52</span><strong>形式化</strong>语义：用<strong>数学化的方法</strong>表达和分析语义。</li>
+</ol>
+<ul>
+<li>形式化的“指称语义”关注的是：<strong>通过把程序转换成定义良好的数学对象（通常是函数）以获得程序的核心含义</strong>；</li>
+<li>“形式化语义”的一个重要应用是：为一种编程语言的含义<strong>给出一个无歧义的定义</strong>，而不是让其依赖于自然语言规范文档和“由实现规范”这样更加随意的方法；</li>
+<li>“指称语义”比“操作语义”抽象层次更高，它忽略了程序如何执行的细节。</li>
+</ul>
+<ol start="10">
+<li><span class="pn">Page 54</span>实现语法解析器：基于 <b><a target="_blank" rel="noopener" href="https://github.com/cjheath/treetop">Treetop</a></b>。</li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-12-25T08:50:23.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2020/12/30/《计算的本质：深入剖析程序和计算机》读书笔记（第-3-4-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2020/12/24/《JavaScript-高级程序设计（第四版）》读书笔记（第-18-28-章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

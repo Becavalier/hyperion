@@ -1,0 +1,510 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Unix 环境高级编程（第三版）》读书笔记（第 1-5 章） | 曜彤.手记</title><meta name="description" content="继续整理书架上的经典老书。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Unix 环境高级编程（第三版）》读书笔记（第 1-5 章）" class="full"><h1 itemprop="headline" class="align-center">《Unix 环境高级编程（第三版）》读书笔记（第 1-5 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-07-04T07:55:00.000Z"> 2023 / 07 / 04, 15:55:00</time></span><span class="page-tag-anchor"><a href="/tags/Unix" itemprop="url">#Unix</a>&nbsp;&nbsp;</span></div><p>继续整理书架上的经典老书。相关代码和注释可以参考<b><a target="_blank" rel="noopener" href="https://github.com/Becavalier/apue-code">这里</a></b>。</p>
+<h3 id="第-1-章-Unix-基础知识"><a href="#第-1-章-Unix-基础知识" class="headerlink" title="第 1 章 - Unix 基础知识"></a>第 1 章 - Unix 基础知识</h3><ol>
+<li>口令文件（/etc/passwd）中记载了有关登录用户的信息：</li>
+</ol>
+<ul>
+<li>登录名；</li>
+<li>加密口令（已被移到另一个文件中）；</li>
+<li>用户 ID；<ul>
+<li>用户 ID 为 0 的用户为超级用户，登录名通常为 “root”。</li>
+</ul>
+</li>
+<li>组 ID；<ul>
+<li>组文件 “/etc/group” 将组名映射为数值的组 ID；</li>
+<li>允许同组的各个成员之间共享资源。</li>
+</ul>
+</li>
+<li>注释字段；</li>
+<li>用户登录后的起始目录；</li>
+<li>默认的 Shell 程序。</li>
+</ul>
+<ol start="2">
+<li>Shell：</li>
+</ol>
+<ul>
+<li>POSIX 1003.2 对 Shell 进行了标准化；</li>
+<li>几种常见的 Shell 版本：<ul>
+<li>Bourne Shell (bash)：由 Steve Bourne 在贝尔实验室开发；</li>
+<li>Borune-again Shell：GNU Shell，设计遵循 POSIX 标准，也保留了与 bash 的兼容性；</li>
+<li>C Shell：由 Bill Joy 于伯克利开发，控制流类似于 C 语言；</li>
+<li>Korn Shell：由贝尔实验室的 David Korn 开发；</li>
+<li>TENEX C Shell：C Shell 的加强版，从 TENEX 系统借鉴了很多特色。</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>POSIX.1 推荐将文件名限制在以下字符集之内：“<b>a-zA-Z0-9.-_</b>”。</li>
+<li>一个进程内的所有线程共享同一地址空间、文件描述符、栈以及与进程相关的属性。</li>
+<li>整型变量 <strong>errno</strong>：被设置为具有特定错误信息的值。</li>
+</ol>
+<ul>
+<li>在多线程环境中，每个线程都有属于自己的局部 errno 值；</li>
+<li>如果没有出错，该值不会被清除。因此，<strong>仅当函数的返回值指明出错时，才检验其值</strong>；</li>
+<li>任何函数都不会将该值设为 0。</li>
+</ul>
+<ol start="6">
+<li>时间值：</li>
+</ol>
+<ul>
+<li><strong>日历时间</strong>：自 UTC 时间 1970 年 1 月 1 日 00:00:00 以来经过的秒数累计值。常用 <code>time_t</code> 类型保存；</li>
+<li><strong>进程时间（CPU 时间）</strong>：用来度量进程使用的处理器资源，以“<strong>时钟滴答</strong>”计算。常用 <code>clock_t</code> 类型保存；<ul>
+<li>时钟时间（墙上时钟时间）：进程运行的时间总量；</li>
+<li>用户 CPU 时间：执行用户指令所用的时间量；</li>
+<li>系统 CPU 时间：为该进程执行内核指令所用的时间量。</li>
+</ul>
+</li>
+</ul>
+<ol start="7">
+<li>Unix 所使用的技术是<strong>为每个系统调用在标准 C 库中设置一个具有同样名字的函数</strong>。</li>
+</ol>
+<h3 id="第-2-章-Unix-标准及实现"><a href="#第-2-章-Unix-标准及实现" class="headerlink" title="第 2 章 - Unix 标准及实现"></a>第 2 章 - Unix 标准及实现</h3><ol start="8">
+<li>Unix 标准化：</li>
+</ol>
+<ul>
+<li>ISO C 标准：<ul>
+<li>定义了 C 语言的语法、语义，以及标准库；</li>
+<li>该标准由 WG14 工作组负责维护；</li>
+<li>标准头文件：</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>头文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&lt;assert.h&gt;</td>
+<td>提供带有条件编译的宏，用于支持断言。</td>
+</tr>
+<tr>
+<td>&lt;complex.h&gt; <sub>(since C99)</sub></td>
+<td>支持复数计算。</td>
+</tr>
+<tr>
+<td>&lt;ctype.h&gt;</td>
+<td>提供针对字符的类型检测函数，如 <code>isalpha</code>。</td>
+</tr>
+<tr>
+<td>&lt;errno.h&gt;</td>
+<td>提供与错误处理相关的宏。</td>
+</tr>
+<tr>
+<td>&lt;fenv.h&gt; <sub>(since C99)</sub></td>
+<td>提供与浮点数环境相关的函数。</td>
+</tr>
+<tr>
+<td>&lt;float.h&gt;</td>
+<td>有关浮点数类型的常量。</td>
+</tr>
+<tr>
+<td>&lt;inttypes.h&gt; <sub>(since C99)</sub></td>
+<td>提供针对整数的类型转换能力。</td>
+</tr>
+<tr>
+<td>&lt;iso646.h&gt; <sub>(since C95)</sub></td>
+<td>提供一组帮助非 QWERTY 键盘的地区使用 C 语言逻辑运算符的宏。</td>
+</tr>
+<tr>
+<td>&lt;limits.h&gt;</td>
+<td>有关整数类型的常量。</td>
+</tr>
+<tr>
+<td>&lt;locale.h&gt;</td>
+<td>提供有关本地化的功能。</td>
+</tr>
+<tr>
+<td>&lt;math.h&gt;</td>
+<td>提供常见的数学处理函数。</td>
+</tr>
+<tr>
+<td>&lt;setjmp.h&gt;</td>
+<td>提供非本地跳转能力。</td>
+</tr>
+<tr>
+<td>&lt;signal.h&gt;</td>
+<td>提供信号处理能力。</td>
+</tr>
+<tr>
+<td>&lt;stdalign.h&gt; <sub>(since C11)</sub></td>
+<td>提供有关对齐的功能。</td>
+</tr>
+<tr>
+<td>&lt;stdarg.h&gt;</td>
+<td>支持可变长参数函数。</td>
+</tr>
+<tr>
+<td>&lt;stdatomic.h&gt; <sub>(since C11)</sub></td>
+<td>支持原子操作。</td>
+</tr>
+<tr>
+<td>&lt;stdbit.h&gt; <sub>(since C23)</sub></td>
+<td>以“字节”或“位”的视角检索类型的宏。</td>
+</tr>
+<tr>
+<td>&lt;stdbool.h&gt; <sub>(since C99)</sub></td>
+<td>提供布尔类型的宏。</td>
+</tr>
+<tr>
+<td>&lt;stdckdint.h&gt; <sub>(since C23)</sub></td>
+<td>有关检查整数操作是否溢出的宏。</td>
+</tr>
+<tr>
+<td>&lt;stddef.h&gt;</td>
+<td>提供了常用的宏定义。</td>
+</tr>
+<tr>
+<td>&lt;stdint.h&gt; <sub>(since C99)</sub></td>
+<td>提供固定长度的整数类型，如 <code>int32_t</code>。</td>
+</tr>
+<tr>
+<td>&lt;stdio.h&gt;</td>
+<td>支持 IO 操作。</td>
+</tr>
+<tr>
+<td>&lt;stdlib.h&gt;</td>
+<td>提供了实用程序：内存管理、字符串转换、随机数、算法等。</td>
+</tr>
+<tr>
+<td>&lt;stdnoreturn.h&gt; <sub>(since C11)</sub></td>
+<td>提供了对 “noreturn” 封装的宏。</td>
+</tr>
+<tr>
+<td>&lt;string.h&gt;</td>
+<td>提供字符串处理函数。</td>
+</tr>
+<tr>
+<td>&lt;tgmath.h&gt; <sub>(since C99)</sub></td>
+<td>提供了泛型的基础数学处理函数。</td>
+</tr>
+<tr>
+<td>&lt;threads.h&gt; <sub>(since C11)</sub></td>
+<td>支持线程相关操作。</td>
+</tr>
+<tr>
+<td>&lt;time.h&gt;</td>
+<td>提供日期/时间处理函数。</td>
+</tr>
+<tr>
+<td>&lt;uchar.h&gt; <sub>(since C11)</sub></td>
+<td>提供 UTF-16 和 UTF-32 字符处理函数。</td>
+</tr>
+<tr>
+<td>&lt;wchar.h&gt; <sub>(since C95)</sub></td>
+<td>提供针对扩展的多字节和宽字符处理函数。</td>
+</tr>
+<tr>
+<td>&lt;wctype.h&gt; <sub>(since C95)</sub></td>
+<td>提供针对宽字符的类型检测函数，如 <code>iswalpha</code>。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>IEEE POSIX：<ul>
+<li>可移植操作系统接口（Portable Operating System Interface），包括很多标记为 1003 的标准和草案；</li>
+<li>标准 IEEE Std 1003.1 - 操作系统接口标准，定义了“符合 POSIX 的”操作系统必须提供的各种服务（接口）；</li>
+<li>POSIX.1（1003.1）中的 X/Open（XSI）系统接口选项描述了可选的接口，也定义了 “遵循 XSI” 的实现必须支持哪些部分。</li>
+</ul>
+</li>
+<li>Single UNIX Specification (SUS)：POSIX.1 的一个超集，定义的一些附加接口扩展了 POSIX.1 规范提供的功能。该标准由 X/Open 和开放系统软件基金会（OSF）共同出版。<strong>一个系统想要称为 Unix 系统，则必须支持这些接口</strong>。Unix 系统供应商必须以文件形式提供符合性声明，并通过验证符合性测试，才能得到使用 Unix 商标的许可证。</li>
+</ul>
+<ol start="9">
+<li>Unix 系统实现：</li>
+</ol>
+<ul>
+<li>SVR (Unix System V Release)：是由 AT&amp;T 的 Unix 系统实验室提供的实现；</li>
+<li>BSD (Berkeley Software Distribution)：是由加州大学伯克利分校的计算机系统研究组（CSRG）研究开发的；</li>
+<li>FreeBSD：为了继续坚持 BSD 系列，形成了 FreeBSD 项目；</li>
+<li>Linux：由 Linus 于 1991 年为替代 MINIX 而研发的；</li>
+<li>Mac OS X：使用了完全不同的技术，核心 OS 称为 “Darwin”，它基于 Mach 内核、FreeBSD 等内核扩展而成；</li>
+<li>Solaris：由 Sun 公司开发的 Unix 系统版本。</li>
+</ul>
+<ol start="10">
+<li>限制：</li>
+</ol>
+<ul>
+<li><strong>编译时限制</strong>：影响程序的编译过程，如：<em>short</em> 类型的最大值是什么？这些限制可以提前在头文件中（一般是 “unistd.h”）定义；</li>
+<li><strong>运行时限制</strong>：影响程序的具体运行时行为，如：文件名最多允许多少个字符？这类限制需要通过特定函数查询；</li>
+<li>在运行时得到关于限制的具体实现值：<ul>
+<li>全局的运行时限制：<code>sysconf</code>；</li>
+<li>与文件\目录有关的运行时限制：<code>pathconf</code>、<code>fpathconf</code>。</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token keyword">long</span> <span class="token function">sysconf</span> <span class="token punctuation">(</span><span class="token keyword">int</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">long</span> <span class="token function">pathconf</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> pathname<span class="token punctuation">,</span> <span class="token keyword">int</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">long</span> <span class="token function">fpathconf</span> <span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">int</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>ISO C 限制：均列在头文件 &lt;limits.h&gt; 中，在一个给定系统上不会改变；</li>
+<li>POSIX 限制：与基本 POSIX.1 接口有关的部分可以分为七类。<ul>
+<li>数值限制：LONG_BIT、SSIZE_MAX、WORD_BIT；</li>
+<li>最小值：不会随系统而改变，是最具约束性的值；</li>
+<li>最大值：_POSIX_CLOCKRES_MIN；</li>
+<li>运行时可以增加的值：CHARCLASS_NAME_MAX、COLL_WEIGHTS_MAX、LINE_MAX、NGROUPS_MAX、RE_DUP_MAX；</li>
+<li>运行时不变值（可能不确定）；</li>
+<li>其他不变值：NL_ARGMAX、NL_MSGMAX、NL_SETMAX、NL_TEXTMAX；</li>
+<li>路径名可变值：FILESIZEBITS、LINK_MAX、MAX_CANON、MAX_INPUT、NAME_MAX、PATH_MAX、PIPE_BUF、SYMLINK_ MAX。</li>
+</ul>
+</li>
+<li>XSI 限制：<ul>
+<li>最小值：NL_LANGMAX、NZERO、<em>XOPEN_IOV_MAX、XOPEN_NAME_MAX、XOPEN_PATH</em> MAX；</li>
+<li>运行时不变值（可能不确定）： IOV_MAX 和 PAGE_SIZE。</li>
+</ul>
+</li>
+</ul>
+<ol start="11">
+<li>基本系统数据类型：与具体实现有关，通常定义于 &lt;sys/types.h&gt;。</li>
+</ol>
+<p><img src="1.png"></p>
+<h3 id="第-3-章-文件-I-O"><a href="#第-3-章-文件-I-O" class="headerlink" title="第 3 章 - 文件 I/O"></a>第 3 章 - 文件 I/O</h3><ol start="12">
+<li>不带缓冲的 I/O：</li>
+</ol>
+<ul>
+<li>I/O 函数的每次调用都会直接对应到系统调用；</li>
+<li>对应函数不是 ISO C 的组成部分，但是 POSIX.1 和 SUS 的组成部分。</li>
+</ul>
+<ol start="13">
+<li>文件描述符（fd）：</li>
+</ol>
+<ul>
+<li>幻数 0、1、2 分别对应 STDIN_FILENO、STDOUT_FILENO、STDERR_FILENO（&lt;unistd.h&gt;）；</li>
+<li>值的变化范围是 “0 ~ OPEN_MAX - 1”。</li>
+</ul>
+<ol start="14">
+<li>文件打开：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token keyword">int</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">,</span> <span class="token keyword">int</span> oflag<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">/* mode_t mode */</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">openat</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">,</span> <span class="token keyword">int</span> oflag<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">/* mode_t mode */</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><em>fd</em> 参数：<ul>
+<li>若 path 为绝对路径，则两个函数相同；</li>
+<li>若 path 为相对路径，则 fd 指出了路径开始地址（目录）。若 fd 值为 “AT_FDCWD”，则路径开始地址为当前目录。</li>
+</ul>
+</li>
+<li><em>oflag</em> 参数：<ul>
+<li>访问方式标志 O_RDONLY、O_WRONLY、O_RDWR、O_EXEC、O_SEARCH，五选一；</li>
+<li>O_APPEND：每次写时追加到文件结尾。<strong>该操作使得文件每次被写之前，内核都会原子地调整偏移量到结尾</strong>；</li>
+<li>O_CLOEXEC：将 FD_CLOEXEC 常量设置为 fd 标志；</li>
+<li>O_CREAT：若文件不存在则创建。需要设置 <em>mode</em> 参数的访问权限位；</li>
+<li>O_DIRECTORY：若 path 引用的不是目录则出错；</li>
+<li>O_EXCL：若同时指定了 O_CREAT 而文件存在，则出错。“检查文件是否存在和创建文件”的原子性；</li>
+<li>O_NOCTTY：若 path 引用的是终端设备，则不将该设备分配作为此进程的控制终端；</li>
+<li>O_NOFOLLOW：若 path 引用的是符号链接，则出错；</li>
+<li>O_NONBLOCK：若 path 引用的是 FIFO、块文件、字符文件，则为文件的本次和后续 I/O 操作设置非阻塞方式；</li>
+<li>O_SYNC：<strong>使每次 write 等待物理 I/O 操作完成</strong>；数据库系统一般使用。<em>fsync() 可以整合之前的多次写，然后再等待将其批量写入磁盘，因此某些情况下效率会优于 O_SYNC</em>。</li>
+<li>O_TRUNC：如果文件存在，而且为只读或读写成功打开，则将其长度截断为 0；</li>
+<li>O_TTY_INIT：如果打开一个还未打开的终端设备，设置非标准 termios 参数值，使其符合 SUS 标准；</li>
+<li>O_DSYNC：使每次 write 等待物理 I/O 操作完成，但若该写操作并不影响读取刚写入的数据，则不需等待文件属性被更新；</li>
+<li>O_RSYNC：使每个以 fd 为参数进行的 read 操作等待，直到所有对文件同一部分挂起的写操作都完成。</li>
+</ul>
+</li>
+<li>常量 _POSIX_NO_TRUNC 用于决定当文件名过长时截断，还是返回错误。该值可能会根据操作系统的不同而变化；</li>
+<li>openat 函数解决的两个问题：<ul>
+<li>让线程可以使用相对路径打开目录中的文件；</li>
+<li>避免 <em>TOCTTOU</em>（time-of-check-to-time-of-use）问题。即：如果有两个基于文件的两数调用，其中第二个调用依赖于第一个调用的结果，那么程序是脆弱的。因为两个调用并不是原子操作，在两个两数调用之间文件可能改变了，这样也就造成了第一个调用的结果就不再有效，使得程序最终的结果是错误的。本质上是由于 “<em>data racing</em>” 导致的问题。</li>
+</ul>
+</li>
+</ul>
+<p><p><img src="2.png" alt="一个 TOCTTOU 问题的例子"><span class="img-desc">一个 TOCTTOU 问题的例子</span></p></p>
+<ol start="15">
+<li>创建文件：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token keyword">int</span> <span class="token function">creat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> path<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>等同于 *open(path, O_WRONLY | O_CREAT | O_TRUNC, mode);*；</li>
+<li>配合 O_RDWR 参数，open 函数可以实现文件的创建、写，和读。</li>
+</ul>
+<ol start="16">
+<li>关闭文件：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token keyword">int</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>关闭文件时会释放该进程在文件上的所有记录锁；</li>
+</ul>
+<ol start="17">
+<li>为打开文件设置偏移量：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+off_t <span class="token function">lseek</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> off_t offset<span class="token punctuation">,</span> <span class="token keyword">int</span> whence<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>函数执行成功返回当前偏移量；出错返回 -1（某些偏移量也可能为负值）；</li>
+<li>仅修改文件偏移量，不进行 I/O 操作；</li>
+<li>含有空洞的文件可能占用较少的磁盘块；</li>
+<li><em>whence</em> 参数：<ul>
+<li>若值为 SEEK_SET，则设置偏移量为距文件开头 offset 个字节；</li>
+<li>若值为 SEEK_CUR，则设置偏移量为其当前值加 offset（可为正负）个字节；</li>
+<li>若值为 SEEK_END，则设置偏移量为文件长度加 offset（可为正负）个字节。</li>
+</ul>
+</li>
+<li>off_t 类型的大小：可以通过特定选项查询；或通过定义 _FILE_OFFSET_BITS 来设置（可能影响可移植性）。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项名称</th>
+<th>说明</th>
+<th>name 参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>_POSIX_V7_ILP32_OFF32</td>
+<td>int、long、指针和 off_t 类型是 32 位</td>
+<td>_SC_V7_ILP32_OFF32</td>
+</tr>
+<tr>
+<td>_POSIX_V7_ILP32_OFFBIG</td>
+<td>int、long、指针类型是 32 位，off_t 类型至少是 64 位</td>
+<td>_SC_V7_ILP32_OFFBIG</td>
+</tr>
+<tr>
+<td>_POSIX_V7_LP64_OFF64</td>
+<td>int 类型是 32 位，long、指针和 off_t 类型是 64 位</td>
+<td>_SC_V7_LP64_OFF64</td>
+</tr>
+<tr>
+<td>_POSIX_V7_LP64_OFFBIG</td>
+<td>int 类型是 32 位，long、指针和 off_t 类型至少是 64 位</td>
+<td>_SC_V7_LP64_OFFBIG</td>
+</tr>
+</tbody></table>
+<ol start="18">
+<li>读取文件：函数执行成功则返回读到的字节数；若达到尾端，则返回 0。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token comment" spellcheck="true">// ssize_t => signed size_t.</span>
+ssize_t <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">void</span><span class="token operator">*</span> buf<span class="token punctuation">,</span> size_t nbytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="19">
+<li>写入文件：函数执行成功则返回已写入的字节数；若出错，则返回 -1。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+ssize_t <span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span> buf<span class="token punctuation">,</span> size_t nbytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>当 buf 的大小等于磁盘块长度时（st_blksize），I/O 操作的效率得以最大化。预读技术：<em>If user space is reading a file one byte at a time, Linux does not actually read the data that way; instead, it issues reads for a bigger chunk, say 64KB, which gets stored in the page cache.</em></li>
+</ul>
+<ol start="20">
+<li>文件共享：</li>
+</ol>
+<p><p><img src="3.png" alt="两个独立进程各自打开同一个文件"><span class="img-desc">两个独立进程各自打开同一个文件</span></p></p>
+<ul>
+<li>基本内核结构：<ul>
+<li>进程表（所有进程）-&gt; 进程表项 -&gt; 打开文件描述符表 -&gt; fd 表项：<ul>
+<li>打开文件的 fd 标志；</li>
+<li>指向文件表项的指针。</li>
+</ul>
+</li>
+<li>文件表（所有打开文件）-&gt; 文件表项：<ul>
+<li>文件状态标志（读、写、同步、非阻塞等）；</li>
+<li>当前文件偏移量；</li>
+<li>指向该文件 v 节点表项的指针。</li>
+</ul>
+</li>
+<li>v 节点结构（每个打开文件）：属于内核的内存结构。<strong>目的是对在一个计算机系统上的多文件系统类型提供支持</strong>（抽象层）。<ul>
+<li>文件类型；</li>
+<li>文件操作的函数指针；</li>
+<li>i 节点：索引节点，存在于磁盘上。包含文件所有者、长度、指向文件实际数据块在磁盘上所在位置的指针。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>每个进程都有自己的文件表项，这样可以独立设置当前文件偏移量</strong>；</li>
+<li>可能有多个文件描述符指向同一文件表项的情况（dup、fork）。</li>
+</ul>
+<ol start="21">
+<li>文件原子定位+读写：XSI 扩展。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+ssize_t <span class="token function">pread</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">void</span><span class="token operator">*</span> buf<span class="token punctuation">,</span> size_t nbytes<span class="token punctuation">,</span> off_t offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ssize_t <span class="token function">pwrite</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span><span class="token operator">*</span> buf<span class="token punctuation">,</span> size_t nbytes<span class="token punctuation">,</span> off_t offset<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="22">
+<li>复制文件描述符：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token keyword">int</span> <span class="token function">dup</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 返回可用 fd 的最小值； </span>
+<span class="token keyword">int</span> <span class="token function">dup2</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">int</span> fd2<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// fd2 可指定新的描述符值，；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p><p><img src="4.png" alt="共享 fd 的内核数据结构"><span class="img-desc">共享 fd 的内核数据结构</span></p></p>
+<ul>
+<li>dup 返回的 fd 一定是可用 fd 的最小值；</li>
+<li>dup2 是一个原子操作；</li>
+<li>dup2 可指定新的描述符值。若 fd2 已经打开，则先将其关闭；若 fd2 等于 fd，则返回 fd2；否则，fd2 的 FD_CLOEXEC 标志被清除，fd2 在进程调用 exec 时是打开状态的。</li>
+</ul>
+<ol start="23">
+<li>内核缓冲区同步：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token keyword">void</span> <span class="token function">sync</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 将所有修改过的块缓冲区排入写队列，但不等待实际写操作结束；</span>
+<span class="token keyword">int</span> <span class="token function">fsync</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 等待实际写操作结束（数据 + 文件属性）；</span>
+<span class="token keyword">int</span> <span class="token function">fdatasync</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 等待实际写操作结束（数据）；</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>fsync 和 fdatasync 执行成功返回 0，否则 -1，并设置 errno；</li>
+<li>称为 “update” 的系统守护进程会周期性（一般 30s）地调用 sync 函数；</li>
+<li>fsync 可用于数据库程序。</li>
+</ul>
+<ol start="24">
+<li>改变已打开文件的属性：</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token keyword">int</span> <span class="token function">fcntl</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">int</span> cmd<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment" spellcheck="true">/* int arg */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>出错返回 -1，成功返回某个值；</li>
+<li>5 种功能：<ul>
+<li>复制一个已有的描述符；<ul>
+<li>F_DUPFD：复制 fd，返回的新 fd 值大于等于第三个参数。FD_CLOEXEC 被清除；</li>
+<li>F_DUPFD_CLOEXEC：复制 fd，同时设置 FD_CLOEXEC。</li>
+</ul>
+</li>
+<li>获取/设置文件描述符标志；<ul>
+<li>F_GETFD：返回 fd 的文件描述符标志；</li>
+<li>F_SETFD：设置 fd 的文件描述符标志。</li>
+</ul>
+</li>
+<li>获取/设置文件状态标志；<ul>
+<li>F_GETFL：返回 fd 的文件状态标志；</li>
+<li>F_SETFL：设置 fd 的文件状态标志（不能设置访问方式标志）。</li>
+</ul>
+</li>
+<li>获取/设置异步 I/O 所有权；<ul>
+<li>F_GETOWN：获取当前接收 SIGIO 和 SIGURG 信号的进程 ID 和进程组 ID；</li>
+<li>F_SETOWN：设置当前接收 SIGIO 和 SIGURG 信号的进程 ID 和进程组 ID。<em>arg 为正表示进程 ID，为负表示进程组 ID</em>。</li>
+</ul>
+</li>
+<li>获取/设置记录锁（cmd = F_GETLK / F_SETLK / F_SETLKW）。</li>
+</ul>
+</li>
+</ul>
+<ol start="25">
+<li>杂项设备操作：操作特殊文件的底层设备参数。</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span>  </span><span class="token comment" spellcheck="true">// Sysem V.</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/ioctl.h></span>  </span><span class="token comment" spellcheck="true">// BSD and Linux.</span>
+<span class="token keyword">int</span> <span class="token function">ioctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">int</span> request<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>request 参数依赖于具体的设备类型（device-dependent）；</li>
+<li>每个设备驱动程序可以定义它自己的一组 ioctl 命令。</li>
+</ul>
+<ol start="26">
+<li>/dev/fd 目录：</li>
+</ol>
+<ul>
+<li>目录项直接对应于当前打开的所有 fd。<strong>Linux 实现把 fd 映射成指向底层物理文件的符号链接</strong>；</li>
+<li>主要由 shell 使用，允许使用路径名作为调用参数的程序，用处理其他路径名相同的方式处理标准输入输出（如标准输入：/dev/fd/0）。</li>
+</ul>
+<h3 id="第-4-章-文件和目录"><a href="#第-4-章-文件和目录" class="headerlink" title="第 4 章 - 文件和目录"></a>第 4 章 - 文件和目录</h3><p>（待更新）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-07-04T07:55:00.000Z"> 2023 / 07 / 18, 11:21:48</time></span></div></div></article><br><span class="next-post"><a href="/2023/07/13/你需要知道的-C++-Stack-Unwinding/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/06/18/《穿越计算机的迷雾（第2版）》读书笔记/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

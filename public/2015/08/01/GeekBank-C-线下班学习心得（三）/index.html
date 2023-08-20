@@ -1,0 +1,237 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>GeekBank C++ 线下班学习心得（三） | 曜彤.手记</title><meta name="description" content="今天是“GeekBand 极客班线下 C++ 培训”的第三周课程，本篇文章记录了大部分与产品设计及其整体生命周期相关的知识要点。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="GeekBank C++ 线下班学习心得（三）" class="full"><h1 itemprop="headline" class="align-center">GeekBank C++ 线下班学习心得（三）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2015-08-01T09:34:18.000Z"> 2015 / 08 / 01, 17:34:18</time></span><span class="page-tag-anchor"><a href="/tags/日记" itemprop="url">#日记</a>&nbsp;&nbsp;</span></div><h4 id="淘宝产品经理分享："><a href="#淘宝产品经理分享：" class="headerlink" title="淘宝产品经理分享："></a>淘宝产品经理分享：</h4><ul>
+<li><strong>王程远</strong>（淘宝“闲鱼” APP 项目组项目经理）；</li>
+<li>淘宝规则部门 -&gt; 淘宝基础产品部门 -&gt; 手机淘宝 -&gt; 闲鱼；</li>
+<li>996 朝九晚九每周六天；</li>
+</ul>
+<h4 id="团队合作："><a href="#团队合作：" class="headerlink" title="团队合作："></a>团队合作：</h4><ul>
+<li>产品 = 商业模式 + 功能 + 设计 + 技术 + 内容；</li>
+<li>产品的成功是归功于整个团队的精诚合作，产品的失败只归咎于产品负责人 - Marty Cagan；</li>
+<li><strong>基本团队组成</strong>：产品经理、交互设计师、视觉设计师、服务端开发、客户端前端开发、测试、投资人、产品运营、用户运营、内容运营、市场运营、BI、安全、客服、用研、法务；</li>
+<li><strong>PRD</strong>：产品需求文档（Product Requirement Document）；</li>
+<li><strong>KPI</strong>：关键绩效指标（Key Performance Indicator）；</li>
+<li><strong>UED</strong>：用户体验设计（User Experience Design）；</li>
+<li><strong>MRD</strong>：市场需求文档（Market Requirements Document）；</li>
+<li><strong>TC</strong>：测试用例（Test Case）；</li>
+</ul>
+<p>产品经理需要具备对于技术和视觉设计和交互设计的基础了解，不关注具体的技术实现，而关注技术实现对产品方面的影响。不要过多的干涉设计，让设计师进行主导。</p>
+<p>产品经理需要思考战略：有对产品的整体观，看终局（市场最终的结局是什么样子、未来的方向）、做布局（必须做哪几件重要的事情）、定位（告诉自己和用户：我是谁，我在哪来，我能为你解决什么）、策略（哪些路径可以走，选择哪些路径，用什么样的节奏和方法）。</p>
+<p>注重看产品的更新版本，看连续两次版本更新的功能差别。</p>
+<h4 id="项目启动前到产品上线："><a href="#项目启动前到产品上线：" class="headerlink" title="项目启动前到产品上线："></a>项目启动前到产品上线：</h4><p><strong>MRD的内容</strong>：（大体包括：怎么做，用什么方法做）</p>
+<ol>
+<li>为谁解决这个问题（目标用户）；</li>
+<li>产品要解决的问题（产品价值）；</li>
+<li>市场有多大（市场规模）；</li>
+<li>成功的必要条件（解决方案的关键点）；</li>
+<li>有哪些同类产品（竞争格局）；</li>
+<li>如何把产品推向市场（营销组合策略）；</li>
+<li>怎样判断产品的成功（KPI）；</li>
+</ol>
+<p><strong>投资评估</strong>：</p>
+<ul>
+<li>投入：时间成本，产品开发成本，运营成本，市场成本；</li>
+<li>回报：可量化的回报指标；</li>
+<li>风险：风险概率，严重程度和可控性；</li>
+<li>评估周期：快速；（功能不能太多，否则评估过程会耗费很多时间）</li>
+</ul>
+<p><strong>投资和投机</strong>：</p>
+<ul>
+<li>投资：合作关系，共同的利益点，利益最大化；</li>
+<li>投机：以自己的利益最大化为主；</li>
+</ul>
+<p><strong>功能需求</strong>：（从一个输入框说起）</p>
+<ol>
+<li><p>前置条件（进入页面）:</p>
+</li>
+<li><ol>
+<li>用户状态：用户状态正常，完成支付宝实名认证；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>登录状态：已登录；</li>
+</ol>
+</li>
+<li><p>标题属性：</p>
+</li>
+<li><ol>
+<li>是否必填；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>字数限制；</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>默认提示文案；</li>
+</ol>
+</li>
+<li><p>内容安全校验：</p>
+</li>
+<li><ol>
+<li>触发校验点；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>先分清，再调用违禁词表；</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>命中关键字，弹出提示；</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>提交时判断违禁词类型；</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>emoji 加入到违禁词表；</li>
+</ol>
+</li>
+<li><p>失焦后越策类型：</p>
+</li>
+<li><ol>
+<li>调用类目预测接口，返回类目 ID 和类目名称；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>返回值为空时，缺省类目“ID=1278786”；</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>修改失焦后重新调用；</li>
+</ol>
+</li>
+<li><p>提交校验项：</p>
+</li>
+<li><ol>
+<li>字数校验；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>违禁词校验；</li>
+</ol>
+</li>
+</ol>
+<p><strong>非功能需求</strong>：</p>
+<ol>
+<li><p>数据采集，用于评估产品效果；</p>
+</li>
+<li><ol>
+<li>设计评估指标；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>设计客户端数据埋点，PC 埋点；</li>
+</ol>
+</li>
+<li><p>灰度要求：</p>
+</li>
+<li><ol>
+<li>A/B Test;</li>
+</ol>
+</li>
+<li><p>项目要求：时间、资源；</p>
+</li>
+<li><p>初始化数据；</p>
+</li>
+<li><p>风险评估和方案：</p>
+</li>
+<li><ol>
+<li>Anti-Spam 反垃圾；</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>安全风险；</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>开关；</li>
+</ol>
+</li>
+<li><p>关键性能需求：</p>
+</li>
+<li><ol>
+<li>响应时长：时间结降级方案；</li>
+</ol>
+</li>
+<li><p>2 流量消耗：图片降级方案；</p>
+</li>
+<li><p>帮助和反馈课题；</p>
+</li>
+</ol>
+<p>后台设置开关控制前端的控件显示（防止错误出现影响用户体验）；</p>
+<p><strong>PRD评审</strong>：（功能评审，版本评审）</p>
+<ol>
+<li>功能没有价值 =&gt; 回到问题和目标，数据和经验先明确提出来，引导建设性问题；</li>
+<li>过度设计，成本太高 =&gt; 尽量避免完美主义；</li>
+<li>产品设计失误或缺失 =&gt; 定位问题，引导讨论优化方案；</li>
+<li>技术细节过度讨论 =&gt; 指定相关人给出方案，迅速推进；</li>
+</ol>
+<p><strong>设计评审</strong>：</p>
+<ul>
+<li>项目初期：“How” and “Why”；</li>
+<li>项目中期：“Strength” and “Weather”；</li>
+<li>项目后期：“Variable” and “Wrap up details”；</li>
+</ul>
+<p><strong>如何优雅的参加设计评审</strong>：</p>
+<ul>
+<li>先听后说；</li>
+<li>在表达个人看法喜好时一定要提前声明；</li>
+<li>关键的问题先提问；</li>
+<li>找出当前设计方案中的精华部分；</li>
+<li>找出问题，指出设计师可能遗漏的方向，避免直接给出解决方案；</li>
+</ul>
+<p><strong>技术方案评审关注的几个重点</strong>：</p>
+<ul>
+<li>底层设计的拓展性；</li>
+<li>Native or H5（Web 页面）；</li>
+<li>接口设计；</li>
+<li>数据结构；</li>
+<li>跨平台的一致性；</li>
+<li>Kickoff：确定需求、设计、技术方案、沟通方式、项目时间点；</li>
+</ul>
+<p><strong>3P（产品经理、设计师、开发工程师）的爱恨情仇</strong>：不要以专业自居（比如设计和开发之间）；</p>
+<p><strong>发布上线</strong>：（两周开发一周测试）</p>
+<ol>
+<li>灰度发布：检验 BUG 性能指标关键指标监控；</li>
+<li>APP 发布到渠道；</li>
+<li>Web、H5 和服务端发布；</li>
+</ol>
+<h4 id="项目启动后："><a href="#项目启动后：" class="headerlink" title="项目启动后："></a>项目启动后：</h4><p><strong>３种典型的运营</strong>：</p>
+<ul>
+<li>用户运营（KPI = 拉新 + 暂存 +流失召回）；</li>
+<li>内容/社区运营（KPI = 内容质量 +　数量 + 互动 + 建立模式）；</li>
+<li>市场/营销运营（KPI = 品牌影响力 +　营销指标）；</li>
+</ul>
+<p><strong>用户运营</strong>：</p>
+<ul>
+<li>获取新用户：用户分类和分层，获取用户渠道，数据：各种 ROI；</li>
+<li>留存和流失：找到用户暂留关键，流失用户召回，数据：用户留存；</li>
+<li>核心体现：建立 HOOK Model，数据：关键漏斗转化率；</li>
+</ul>
+<p><strong>常用指标</strong>：</p>
+<ul>
+<li>用户获取成本：CAC；</li>
+<li>用户活跃：DAU（APP 的核心价值）；</li>
+<li>周活跃用户数：WAU；</li>
+<li>月活跃用户数：MAU；</li>
+<li>日参与次数：DEC；</li>
+<li>日均使用市场：DAOT/AT；</li>
+<li>留存 + 流失：</li>
+<li>次日留存；</li>
+<li>三日留存；</li>
+<li>七日留存；</li>
+</ul>
+<p><strong>内容 / 社区运营</strong>：</p>
+<ul>
+<li>设计用户发现内容的路径；</li>
+<li>直接产生内容；</li>
+<li>驱动用户产生内容；</li>
+<li>设计浮现机制；</li>
+<li>驱动内容消费；</li>
+</ul>
+<p><strong>用户发现内容的路径：</strong></p>
+<ul>
+<li>类目、广告、属性、搜索、人、算法推荐；</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2015-08-01T09:34:18.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2015/08/11/浅谈-CORS：跨域资源共享/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2015/07/25/GeekBank-C-线下班学习心得（二）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

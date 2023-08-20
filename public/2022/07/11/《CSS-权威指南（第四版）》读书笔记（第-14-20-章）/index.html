@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《CSS 权威指南（第四版）》读书笔记（第 14-20 章） | 曜彤.手记</title><meta name="description" content="“旧书清理”系列。这里是 14-20 章的内容，主要介绍了：CSS 中的表格布局、列表和生成内容、变形、过渡等。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《CSS 权威指南（第四版）》读书笔记（第 14-20 章）" class="full"><h1 itemprop="headline" class="align-center">《CSS 权威指南（第四版）》读书笔记（第 14-20 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2022-07-11T04:11:09.000Z"> 2022 / 07 / 11, 12:11:09</time></span><span class="page-tag-anchor"><a href="/tags/CSS" itemprop="url">#CSS</a>&nbsp;&nbsp;</span></div><p>“旧书清理”系列。这里是 14-20 章的内容，主要介绍了：CSS 中的表格布局、列表和生成内容、变形、过渡等。</p>
+<h3 id="第-14-章-CSS-中的表格布局"><a href="#第-14-章-CSS-中的表格布局" class="headerlink" title="第 14 章 - CSS 中的表格布局"></a>第 14 章 - CSS 中的表格布局</h3><ol start="64">
+<li><span class="pn">Page 735</span>表格的视觉排布：</li>
+</ol>
+<ul>
+<li>表格内部元素生成矩形框，有内容、内边距和边框，但<strong>没有外边距</strong>；</li>
+<li>对应表格的 display 值：可在其他元素上应用表格布局。<ul>
+<li><em>table</em>：将元素定义为块级表格。即定义一个生成块级框的矩形框（table）；</li>
+<li><em>inline-table</em>：将元素定义为行内表格。即定义一个生成行内框的矩形框；</li>
+<li><em>table-row</em>：将元素定义为由单元格构成的行（tr）；</li>
+<li><em>table-row-group</em>：将元素定义为由一行或多行构成的行组（tbody）；</li>
+<li><em>table-header-group</em>：与上类似，视觉上不同（thead）；</li>
+<li><em>table-footer-group</em>：与上类似，视觉上不同（tfoot）；</li>
+<li><em>table-column</em>：将元素声明为由单元格构成的列（col）；</li>
+<li><em>table-column-group</em>：将元素声明为有一列或多列构成的列组（colgroup）；</li>
+<li><em>table-cell</em>：将元素定义为表格中的一个单元格（th、td）；</li>
+<li><em>table-caption</em>：定义表题（caption）。</li>
+</ul>
+</li>
+<li>在某些情况下，CSS 会以“匿名对象”的形式插入 HTML 中缺少的表格元素以补其完整的层级结构；</li>
+<li>表格中的层：（底）表格 -&gt; 列组 -&gt; 列 -&gt; 行组 -&gt; 行 -&gt; 单元格（顶）。属于不同层的样式会单独绘制并相互覆盖；</li>
+<li><strong>border-collapse</strong>：控制表格单元格的边框模式。可选值如下：<ul>
+<li><em>collapse</em>：折叠式边框。<ul>
+<li>表格不能有内边距；</li>
+<li>边框可独立应用于单元格、行、行组、列、列组及表格；</li>
+<li>单元格边框之间没有间距，“占上风的”边框胜出（根据顺序判断边框的隐藏、宽窄、样式等）；</li>
+<li>胜出的边框居中放在单元格之间假想的栅格线上；</li>
+<li>在计算表格宽度或高度时，位于表格外沿的边框，其宽度仅计算一半。</li>
+</ul>
+</li>
+<li><em>separate</em>：默认值。分离式边框。<ul>
+<li>相邻单元格的边框彼此独立；</li>
+<li>边框可独立应用于单元格及表格；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>（table）<strong>border-spacing</strong>：控制表格单元格边框的间距（可单独甚至横向和纵向间隔）；</li>
+<li>（table）<strong>empty-cells</strong>：控制空单元格（显示或隐藏）；</li>
+<li>（table）<strong>table-layout</strong>：声明表格宽度具体使用哪种计算方式。高度通常由用户代理自动计算，显式设置的高度值可能会得到不一致的表现。可选值如下：<ul>
+<li><em>auto</em>：默认值。采用自动布局（列宽度由表格全部单元格中的内容决定）；</li>
+<li><em>fixed</em>：采用固定宽度布局（<strong>列宽度仅由表格第一行决定，因此性能较好</strong>）。<ul>
+<li>如果列元素的 width 属性值不是 auto，设定的就是整列的宽度；</li>
+<li>如果列宽度为 auto，但表格<strong>第一行</strong>中位于这一列的单元格的 witdh 值不是 auto，则该值为整列的宽度；</li>
+<li>如果列的宽度仍为自动确定的，则自动确定并尽可能保证各列宽度相等。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单元格中内容的对齐可以使用 text-align 与 vertical-align 属性。<strong>表格中行基线是由行中初行基线最低的单元格的该基线定义的</strong>，因此当 vertical-align 属性使用值 baseline 时，单元格与该行基线对齐。</li>
+</ul>
+<h3 id="第-15-章-列表和生成的内容"><a href="#第-15-章-列表和生成的内容" class="headerlink" title="第 15 章 - 列表和生成的内容"></a>第 15 章 - 列表和生成的内容</h3><ol start="65">
+<li><span class="pn">Page 771</span>列表的视觉排布：</li>
+</ol>
+<ul>
+<li>对应列表的 display 值：list-item；</li>
+<li>（list）<strong>list-style-type</strong>：设定列表项目使用的记号类型，该值可被继承。值 none 并不影响有序列表的计数；</li>
+<li>（list）<strong>list-style-image</strong>：为列表设定图像记号，该值可被继承；</li>
+<li>（list）<strong>list-style-position</strong>：设定列表记号的位置（内部 or 外部）；</li>
+<li>（list）<strong>list-style</strong>：上述属性的简写形式，未明确指定的属性将使用默认值；</li>
+<li>大多数现代浏览器采用的列表默认缩进量为 40px；</li>
+<li><strong>列表记号相对于列表项目的内容区定位</strong>，即紧挨内容区，永远在其临近的外侧。<strong>可以使用 “::marker” 伪属性控制列表记号的部分样式</strong>，包括：大小、字体、颜色，以及内容。</li>
+</ul>
+<ol start="66">
+<li><span class="pn">Page 786</span>生成内容（<strong>content</strong>）：</li>
+</ol>
+<ul>
+<li>可以使用字符串值，使用 “\A” 对内容进行换行；</li>
+<li>可以使用 <em>url(…)</em> 链接外部资源（图像、声音等媒体）；</li>
+<li>可以使用 <em>attr(…)</em> 插入属性值；</li>
+<li>可以使用关键字 “open-quote” 与 “close-quote” 插入引号，使用 <strong>quotes</strong> 属性控制引号的插入规则；</li>
+<li>可以使用计数器：<ul>
+<li>三个步骤：<ul>
+<li><strong>counter-reset</strong>：重置计数器，设置初值（默认为 0）。在相同的元素上重置并使用计数器时，<strong>计数器先重置再显示</strong>。不能在伪元素上重置计数器；</li>
+<li><strong>counter-increment</strong>：递增指定计数器的值（默认为 1）。在相同的元素上递增并使用计数器时，<strong>计数器先递增再显示</strong>；</li>
+<li>使用 <em>counter(counter-ident, list-style-type)</em> 插入指定标识计数器的当前值。</li>
+</ul>
+</li>
+<li><strong>计数器仅在当前嵌套层级内有效</strong>，可以使用 <em>counters(counter-ident, string, list-style-type)</em> 将嵌套的新计数器追加到现有计数器上；</li>
+<li>可以使用 “@counter-style” 块定义新的计数模式：</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 计数器实例 */</span>
+<span class="token atrule"><span class="token rule">@counter-style</span> custom-counter</span> <span class="token punctuation">{</span>
+  <span class="token property">system</span><span class="token punctuation">:</span> cyclic<span class="token punctuation">;</span>
+  <span class="token property">symbols</span><span class="token punctuation">:</span> <span class="token string">"\1F44D"</span> <span class="token string">"\1F44E"</span> <span class="token string">"\1F44F"</span><span class="token punctuation">;</span>
+  <span class="token property">suffix</span><span class="token punctuation">:</span> <span class="token string">". "</span><span class="token punctuation">;</span>
+  <span class="token property">prefix</span><span class="token punctuation">:</span> <span class="token string">"-> "</span><span class="token punctuation">;</span>
+  <span class="token property">range</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token number">2</span>, <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">;</span>
+  <span class="token property">fallback</span><span class="token punctuation">:</span> square<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@counter-style</span> custom-counter-extra</span> <span class="token punctuation">{</span>
+  <span class="token property">system</span><span class="token punctuation">:</span> extends custom-counter<span class="token punctuation">;</span>
+  <span class="token property">suffix</span><span class="token punctuation">:</span> <span class="token string">"~ "</span><span class="token punctuation">;</span>
+  <span class="token property">prefix</span><span class="token punctuation">:</span> <span class="token string">" ~"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">ul </span><span class="token punctuation">{</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> custom-counter-extra<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="第-16-章-变形"><a href="#第-16-章-变形" class="headerlink" title="第 16 章 - 变形"></a>第 16 章 - 变形</h3><ol start="67">
+<li><span class="pn">Page 825</span>变形：</li>
+</ol>
+<ul>
+<li>每个元素都有自己的参照系，各轴都相对自身而动。如果旋转了元素，x、y、z 各轴随之旋转；</li>
+<li>范围框：即边框框，元素边框的外边界。对于表格形式显示的元素，其范围框是表格的容器框，包括表格框和表题框；</li>
+<li>变形的发生顺序会影响元素最终的视觉效果；</li>
+<li>元素初始状态的变形与发生过渡和动画之后的变形，两者效果是叠加的；</li>
+<li>变形暂不能应用在 “atomic” 行内框上（如 span、a 等）；</li>
+<li>变形函数：作为 <strong>transform</strong> 属性的值使用。<ul>
+<li><em>translateX</em>：平移函数，沿 x 轴平移；</li>
+<li><em>translateY</em>：平移函数，沿 y 轴平移；</li>
+<li><em>translateZ</em>：平移函数，沿 z 轴平移；</li>
+<li><em>translate</em>：2D 平移函数，沿 x、y 轴平移；</li>
+<li><em>translate3d</em>：3D 平移函数，沿 x、y、z 轴平移；</li>
+<li><em>scaleX</em>：缩放函数，在 x 轴缩放；</li>
+<li><em>scaleY</em>：缩放函数，在 y 轴缩放；</li>
+<li><em>scaleZ</em>：缩放函数，在 z 轴缩放；</li>
+<li><em>scale</em>：2D 缩放函数，在 x、y 轴缩放；</li>
+<li><em>scale3d</em>：3D 缩放函数，在 x、y、z 轴缩放；</li>
+<li><em>rotateX</em>：旋转函数，绕 x 轴旋b转；</li>
+<li><em>rotateY</em>：旋转函数，绕 y 轴旋转；</li>
+<li><em>rotateZ</em>：旋转函数，绕 z 轴旋转；</li>
+<li><em>rotate</em>：2D 旋转函数，同 rotateZ 类似；</li>
+<li><em>rotate3d</em>：3D 缩放函数，绕空间中某一向量旋转。<strong>与分散到各个轴独立旋转的结果不一致</strong>；</li>
+<li><em>skewX</em>：侧斜函数，沿 x 轴倾斜；</li>
+<li><em>skewY</em>：侧斜函数，沿 y 轴倾斜；</li>
+<li><em>skew</em>：2D 侧斜函数，沿 x、y 轴倾斜。<strong>与分散到各个轴独立倾斜的结果不一致</strong>；</li>
+<li><em>perspective</em>：视域函数，需放到变形函数的最前面，为元素赋予前后深度（即 z 轴视距）；</li>
+<li><em>matrix</em>：以六个值 a~f 确定的变换矩阵指定 2D 平面中的变形；</li>
+<li><em>matrix3d</em>：以列主序排列一个 4x4 的齐次矩阵，指定 3D 平面中的变形。</li>
+</ul>
+</li>
+<li><strong>transform-origin</strong>：指定变形原点（默认情况下为元素的绝对中心）；</li>
+<li><strong>transform-style</strong>：设定 3D 变形方式（默认情况下为 flat，子元素变形随父元素变形而产生的 3D 效果会被“拍扁”）；</li>
+<li><strong>perspective</strong>：设定共有视域，创建的 3D 空间为所有子元素共有；</li>
+<li><strong>perspective-origin</strong>：设定视域原点（消隐点）；</li>
+<li><strong>backface-visibility</strong>：决定当元素的背面朝向我们时是否渲染。</li>
+</ul>
+<h3 id="第-17-章-过渡"><a href="#第-17-章-过渡" class="headerlink" title="第 17 章 - 过渡"></a>第 17 章 - 过渡</h3><ol start="68">
+<li><span class="pn">Page 862</span>过渡：</li>
+</ol>
+<ul>
+<li><strong>transition-property</strong>：指定想应用过渡效果的 CSS 属性名，具体值以逗号分隔，值 “all” 对应于所有元素，需放于首位；</li>
+<li><strong>transition-duration</strong>：指定过渡的发生时间，具体值以逗号分隔，对应于每个指定元素；</li>
+<li><strong>transition-timing-function</strong>：控制过渡步调（可以指定多种时序函数）；</li>
+<li><strong>transition-delay</strong>：设置过渡开始延迟；</li>
+<li><strong>transition</strong>：过渡的简写属性，可包含多组过渡设置；</li>
+<li>过渡发生时会优先使用目标选择符下设置的过渡属性，因此正向和反向过渡均可以单独设置；</li>
+<li>支持动画的 CSS 属性均可应用过渡效果；</li>
+<li>可以通过监听目标元素上的 “transitionend” 事件来判断过渡是否完成。某些单个属性可能触发多次该事件，分别对应不同的过渡细节。</li>
+</ul>
+<h3 id="第-18-章-动画"><a href="#第-18-章-动画" class="headerlink" title="第 18 章 - 动画"></a>第 18 章 - 动画</h3><ol start="69">
+<li><span class="pn">Page 897</span>动画：</li>
+</ol>
+<ul>
+<li>自定义关键帧：</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> fadeout</span> <span class="token punctuation">{</span>
+  <span class="token selector">from </span><span class="token punctuation">{</span>   <span class="token comment" spellcheck="true">/* 定义关键帧 */</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">50% </span><span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">.5</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to </span><span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token atrule"><span class="token rule">@keyframes</span> round</span> <span class="token punctuation">{</span>
+  <span class="token selector">from </span><span class="token punctuation">{</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">to </span><span class="token punctuation">{</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">50%</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>应用动画：</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 多个动画会同时应用，后面动画中出现的属性会覆盖前面出现的同名属性 */</span>
+  <span class="token property">animation-name</span><span class="token punctuation">:</span> fadeout, round<span class="token punctuation">;</span>  
+  <span class="token property">animation-duration</span><span class="token punctuation">:</span> <span class="token number">500</span>ms, <span class="token number">5</span>s<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 定义动画时长 */</span>
+  <span class="token property">animation-iteration-count</span><span class="token punctuation">:</span> <span class="token number">1</span>, <span class="token number">2</span><span class="token punctuation">;</span> 
+  <span class="token property">animation-direction</span><span class="token punctuation">:</span> alternate<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置动画的播放方向 */</span>
+  <span class="token property">animation-delay</span><span class="token punctuation">:</span> <span class="token number">0</span>s<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置动画的播放延迟 */</span>
+  <span class="token property">animation-timing-function</span><span class="token punctuation">:</span> linear<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置动画时序 */</span>
+  <span class="token property">animation-play-state</span><span class="token punctuation">:</span> running<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置动画播放状态 */</span>
+  <span class="token property">animation-fill-mode</span><span class="token punctuation">:</span> forwards<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置动画结束前后是否应用原来的属性值 */</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>若没有指定开始和结束关键帧，则用户代理将<strong>使用要应用动画效果的属性的原始值构建一个 0%（to）和 100%（from）关键帧</strong>；</li>
+<li>如果有多个动画为同一个属性指定了不同的值，最后一个应用的动画将覆盖之前动画中声明的值；</li>
+<li>动画在 UI 线程中的优先级最低。不透明度或变形动画通常由 GPU 执行，<strong>为了提升性能，只要可能，就应该把 transform 和 opacity 属性放到动画中</strong>。</li>
+</ul>
+<h3 id="第-19-章-滤镜、混合、剪裁和遮罩"><a href="#第-19-章-滤镜、混合、剪裁和遮罩" class="headerlink" title="第 19 章 - 滤镜、混合、剪裁和遮罩"></a>第 19 章 - 滤镜、混合、剪裁和遮罩</h3><ol start="70">
+<li><span class="pn">Page 950</span>CSS 滤镜：</li>
+</ol>
+<ul>
+<li>可用滤镜值：参考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN</a>。</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
+  <span class="token property">filter</span><span class="token punctuation">:</span> <span class="token function">blur</span><span class="token punctuation">(</span><span class="token number">1</span>px<span class="token punctuation">)</span> <span class="token function">contrast</span><span class="token punctuation">(</span><span class="token number">.5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">/* 滤镜效果按顺序应用 */</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="71">
+<li><span class="pn">Page 957</span>合成与混合：</li>
+</ol>
+<ul>
+<li>可用效果值：参考 <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode">MDN</a>；</li>
+<li><strong>isolation</strong>：设置在容器元素上，决定该元素内的后代元素是否独立混合（具有堆叠上下文的元素，比如设置了 “transform” 属性的元素会自动独立出来）。而具体的混合模式属性应用在各个子元素或图像上。</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">div </span><span class="token punctuation">{</span>
+  <span class="token property">mix-blend-mode</span><span class="token punctuation">:</span> multiply<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置元素与多个背着物之间的混合模式 */</span>
+  <span class="token property">background-blend-mode</span><span class="token punctuation">:</span> screen<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 设置元素多个背景图之间的混合模式 */</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="72">
+<li><span class="pn">Page 971</span>剪裁和遮罩：略。</li>
+</ol>
+<h3 id="第-20-章-针对特定媒体的样式"><a href="#第-20-章-针对特定媒体的样式" class="headerlink" title="第 20 章 - 针对特定媒体的样式"></a>第 20 章 - 针对特定媒体的样式</h3><p>（略）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-07-11T04:11:09.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2022/09/21/张家界-长沙-海南环岛-10-日游攻略/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/06/15/《CSS-权威指南（第四版）》读书笔记（第-7-13-章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

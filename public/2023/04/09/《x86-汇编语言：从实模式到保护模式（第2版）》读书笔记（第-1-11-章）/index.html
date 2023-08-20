@@ -1,0 +1,454 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 1-11 章） | 曜彤.手记</title><meta name="description" content="一本 2023 年的新书，很适合 x86 体系入门，这里挑些重点记一记。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 1-11 章）" class="full"><h1 itemprop="headline" class="align-center">《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 1-11 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-04-09T02:51:58.000Z"> 2023 / 04 / 09, 10:51:58</time></span><span class="page-tag-anchor"><a href="/tags/汇编" itemprop="url">#汇编</a>&nbsp;&nbsp;<a href="/tags/x86" itemprop="url">#x86</a>&nbsp;&nbsp;<a href="/tags/x64" itemprop="url">#x64</a>&nbsp;&nbsp;</span></div><p>一本 2023 年的新书，很适合 x86 体系入门，这里挑些重点记一记。相关代码和注释可以参考**<a target="_blank" rel="noopener" href="https://github.com/Becavalier/x86-asm-snippets">这里</a>**。</p>
+<h3 id="第-1-章-十六进制计数法"><a href="#第-1-章-十六进制计数法" class="headerlink" title="第 1 章 - 十六进制计数法"></a>第 1 章 - 十六进制计数法</h3><p>（略）</p>
+<h3 id="第-2-章-计算机和汇编语言"><a href="#第-2-章-计算机和汇编语言" class="headerlink" title="第 2 章 - 计算机和汇编语言"></a>第 2 章 - 计算机和汇编语言</h3><ol>
+<li>Intel 处理器的发展：4004（4 位）、8088（8 位）、8086（16 位）、80286、80386、80486、Pentium、…。</li>
+<li>人们最早用的是开关、跳线以及纸带来给计算机编程。</li>
+</ol>
+<h3 id="第-3-章-分段机制和逻辑地址"><a href="#第-3-章-分段机制和逻辑地址" class="headerlink" title="第 3 章 - 分段机制和逻辑地址"></a>第 3 章 - 分段机制和逻辑地址</h3><ol start="3">
+<li><strong>处理器的字长</strong>：指寄存器和算术逻辑部件的数据宽度。</li>
+<li>8086 处理器：</li>
+</ol>
+<p><img src="1.jpg"></p>
+<ul>
+<li>诞生于 1978 年；</li>
+<li>访问内存时使用的是<strong>逻辑地址</strong>：“段地址”+“段内偏移”，指令中的地址均相对于某个段；</li>
+<li>16 位 <em>ip</em> 寄存器；</li>
+<li>4 个 16 位段寄存器：<ul>
+<li><em>cs</em>：指定代码段位置；</li>
+<li><em>ds</em>：指定数据段位置；</li>
+<li><em>es</em>：附加段，冗余的段寄存器；</li>
+<li><em>ss</em>：栈段寄存器。</li>
+</ul>
+</li>
+<li>实模式下，栈空间最大为 64KB；</li>
+<li>加电启动时状态：<ul>
+<li>cs -&gt; 0xffff；</li>
+<li>ip -&gt; 0x0。</li>
+</ul>
+</li>
+<li>提供了 20 根地址线，可寻址 1MB 内存：<ul>
+<li>大部分用于访问 <strong>DRAM</strong>（0x0~0x9ffff），少部分用于访问 <strong>ROM-BIOS</strong>（0xf0000~0xfffff），和<strong>外围板卡</strong>（0xa0000\～0xeffff）。ROM 部分存有固化的开机启动代码（通常为跳转指令，将 cs/ip 跳回 ROM 的低地址区），通常也被称为 BIOS；</li>
+<li>段只能起始于被 16 整除的物理内存地址（可以被表示）；</li>
+<li>段逻辑地址（16 位） =&gt; 段物理地址（20 位） &gt;&gt; 4；</li>
+<li><strong>单个段最大 64KB（16 位）</strong>。</li>
+</ul>
+</li>
+</ul>
+<p><img src="6.jpg"></p>
+<ul>
+<li>只能使用寄存器 bx、si、di、bp 来提供段内偏移地址，8086 中很多寄存器有特殊用途：<ul>
+<li>bx（bh + bl）：基址寄存器（Base Address Register）；</li>
+<li>ax（ah + al）：累加器寄存器（Accumulator）：与它有关的指令还会做指令长度上的优化；</li>
+<li>cx（ch + cl）：计数器（Counter）；</li>
+<li>dx（dh + dl）：数据寄存器（Data）：专门用于和外部设备之间进行数据传送；</li>
+<li>si：源索引寄存器（Source Index）；</li>
+<li>di：目标寄存器（Destination Index）：用于数据传送操作。</li>
+</ul>
+</li>
+<li>固定数量的基址和变址组合：<ul>
+<li>[bx + si]；</li>
+<li>[bx + di]；</li>
+<li>[bp + si]；</li>
+<li>[bp + di]。</li>
+</ul>
+</li>
+<li>寻址方式：<ul>
+<li>寄存器寻址；</li>
+<li>立即数寻址；</li>
+<li>内存寻址：指定偏移地址（有效地址）如何计算：<ul>
+<li>直接寻址：mov ax, [0x5c0f]；</li>
+<li>基址寻址：mov [bx], dx；（<strong>当使用 bp 作为基址寄存器时，对应的段寄存器默认为 ss</strong>，bp 常用于栈内寻址）</li>
+<li>变址寻址：mov [si], dx；（使用变址寄存器 si 和 di）</li>
+<li>基址变址寻址：mov ax, [bx + si + 0x100]。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无条件转移指令：“16 位” 是指要转移到的<strong>目标位置的偏移地址是 16 位的</strong>。<ul>
+<li><em>相对短转移</em>：段内转移，允许转移到距离当前指令 -128～127 字节的地方。指令必须使用关键字 “short”；</li>
+<li><em>16 位相对近转移</em>：段内转移，允许转移到距离当前指令 -32768～32767 字节的地方。指令必须使用关键字 “near”；</li>
+<li><em>16 位间接绝对近转移</em>：段内转移，目标地址通过 16 位通用寄存器或内存地址间接给出；</li>
+<li><em>16 位直接绝对远转移</em>：直接在指令中给出段地址和偏移地址的转移指令；</li>
+<li><em>16 位间接绝对远转移</em>：指令必须使用关键字 “far”。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第-4-章-汇编语言和汇编软件"><a href="#第-4-章-汇编语言和汇编软件" class="headerlink" title="第 4 章 - 汇编语言和汇编软件"></a>第 4 章 - 汇编语言和汇编软件</h3><ol start="5">
+<li>汇编语言对指令的大小写没有特别的要求。</li>
+<li>NASM -&gt; Netwide Assembler。</li>
+</ol>
+<h3 id="第-5-章-虚拟机的安装和使用"><a href="#第-5-章-虚拟机的安装和使用" class="headerlink" title="第 5 章 - 虚拟机的安装和使用"></a>第 5 章 - 虚拟机的安装和使用</h3><ol start="7">
+<li>计算机的加电与复位：</li>
+</ol>
+<ul>
+<li><em>RESET 引脚</em>：接受复位信号。复位后 CPU 会进行硬件初始化、BIST 内部自测试，并将内部所有寄存器的内容恢复到预置状态；</li>
+<li>主引导扇区（MBR）：即 “0 盘面 0 磁道 1 扇区”。BIOS 会将该扇区内容加载到内存地址 <strong>0x0000:0x7c00</strong> 的位置（来自 Intel 第一代个人电脑芯片 8088，后续 CPU 为了保持兼容，一直使用这个地址），然后跳转到该位置执行。该扇区大小通常为 512 字节。</li>
+</ul>
+<ol start="8">
+<li>硬盘的访问模式：</li>
+</ol>
+<ul>
+<li>CHS（Cylinder-head-sector）模式：通过磁柱，磁头，扇区寻址；</li>
+<li>LBA（Logical Block Address）模式：物理扇区被组织成逻辑扇区，逻辑扇区号连续递增。</li>
+</ul>
+<ol start="9">
+<li>一个简单的启动程序：</li>
+</ol>
+<pre class="line-numbers language-assembly"><code class="language-assembly">mov ax, 0xb800
+
+; x86 下的段寄存器只能间接赋值；
+mov ds, ax  
+
+; ds 会作为默认的数据段寄存器，也可以显式使用 es；
+mov byte [0x00], 'a'  
+mov byte [0x02], 's'
+mov byte [0x04], 'm'
+jmp $  ; 死循环；
+times 510-($-$$) db 0
+db 0x55, 0xaa
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="第-6-章-编写主引导扇区代码"><a href="#第-6-章-编写主引导扇区代码" class="headerlink" title="第 6 章 - 编写主引导扇区代码"></a>第 6 章 - 编写主引导扇区代码</h3><ol start="10">
+<li><strong>一个有效的主引导扇区，其最后 2 字节应当是 0x55 和 0xaa</strong>。正常情况下，一段精心编写的主引导扇区代码将检测用来启动计算机的操作系统，并计算出它所在的硬盘位置。然后，它把操作系统的自举代码加载到内存，也用jmp指令跳转到那里继续执行，直到操作系统完全启动。</li>
+<li>显卡有自己的存储器（VRAM），要显示的内容都预先写入显存。</li>
+</ol>
+<ul>
+<li>两种基本模式：<ul>
+<li><em>文本模式</em>：用于显示字符的工作方式（字符代码存入显存，由字符发生器和控制电路决定如何渲染）；</li>
+<li><em>图形模式</em>：用于显示图形的工作方式。</li>
+</ul>
+</li>
+<li>由于历史的原因，所有在个人计算机上使用的显卡，在加电自检之后都会把自己初始化为 <strong>80×25 文本模式</strong>。在这种模式下，屏幕上可以显示 25 行，每行 80 个字符，每屏总共 2000 个字符；</li>
+<li><strong>0xb8000～0xbffff</strong>（段起始 0xb800）这段 32KB 物理地址空间，通常默认被用来映射显存；</li>
+<li>屏幕上的<strong>每个字符对应着显存中连续 2 字节</strong>，前一个是字符的 ASCII 代码，后面是字符的显示属性。</li>
+</ul>
+<p><img src="2.jpg"></p>
+<ul>
+<li>光标寄存器：0xe（高 8 位）、0xf（低 8 位），可读可写，合起来形成一个 16 位数值，控制光标在屏幕上的位置。<ul>
+<li>端口 0x3d4（索引寄存器）存储要访问的寄存器索引值；</li>
+<li>端口 0x3d5 用于数据读写。</li>
+</ul>
+</li>
+</ul>
+<ol start="12">
+<li>Nasm 伪指令（不对应处理器指令，由编译器处理）：db、dw、dd、dq。</li>
+<li><strong>对于寄存器清零，使用 <em>xor</em> 指令生成的机器码更短</strong>：</li>
+</ol>
+<pre class="line-numbers language-assembly"><code class="language-assembly">mov rax, 0
+xor rax, rax  ; better!
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ol start="14">
+<li>段内近转移：</li>
+</ol>
+<pre class="line-numbers language-assembly"><code class="language-assembly">infi: jmp near infi
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><em>near</em> 关键字表示代码转移位置在当前段内，相对量为 16 位；</li>
+<li>取指令的位置：CS &lt;&lt; 4 + IP；</li>
+<li><code>jmp</code> 指令的几种形式：<ul>
+<li>绝对地址跳转 -&gt; <em>jmp 0x5000:0xf0c0</em>；</li>
+<li>相对偏移地址跳转（目标位置相对当前指令的偏移量）-&gt; <em>jmp near infi</em>。</li>
+</ul>
+</li>
+</ul>
+<ol start="15">
+<li>Nasm 伪指令：</li>
+</ol>
+<ul>
+<li>重复指令：<code>times 20 mov ax, bx</code>；</li>
+<li>当前指令行的位置：<code>$</code>；</li>
+<li>当前汇编段的起始位置：<code>$$</code>；</li>
+<li>当前位置已经过的段大小：<code>$ - $$</code>；</li>
+<li>保留指定数量字节，但不初始化值：<code>resb 256</code>、<code>resw 100</code>、<code>resd 50</code>；</li>
+<li>定义常数：<code>app_start equ 100</code>。</li>
+</ul>
+<ol start="16">
+<li><strong>Bochs</strong>：开源的 x86 PC 模拟器。用软件来模拟处理器取指令和执行指令的过程，以及整个计算机硬件。</li>
+</ol>
+<ul>
+<li>可用于调试 MBR 程序；</li>
+<li>现代处理器加电时的状态：<ul>
+<li>cs -&gt; 0xf000；</li>
+<li>ip -&gt; 0xfff0；</li>
+<li>其余高地址线 -&gt; 高电平：处理器设计者希望把 ROM-BIOS 放到 4GB 可寻址内存的最高端，这样，4GB 以下连同低端 1MB 都是连续的 RAM 区，可以为操作系统管理内存带来方便。</li>
+</ul>
+</li>
+<li>常用命令：<ul>
+<li><em>s</em>：step；</li>
+<li><em>n</em>：next；</li>
+<li><em>c</em>：continue；</li>
+<li><em>u/N</em>：反编译接下来的 N 条指令；</li>
+<li><em>print-stack N</em>：查看栈（ss:sp）内容；</li>
+<li><em>info eflags</em>：查看 flags 寄存器状态，大写为置位；</li>
+<li><em>sreg</em>：查看段寄存器内容；</li>
+<li><em>creg</em>：查看控制寄存器内容；</li>
+<li>*page [m]*：查看线性地址到物理地址的映射信息；</li>
+<li><em>info tss</em>：查看当前任务（TR）的 TSS 内容；</li>
+<li><em>info ldt</em>：查看当前任务（LDTR）的 LDT 内容；</li>
+<li><em>info gdt</em>：查看 GDT 的内容；</li>
+<li><em>info tab</em>：查看当前页表的内容。</li>
+</ul>
+</li>
+</ul>
+<ol start="17">
+<li>在 32 位和 64 位处理器中，段寄存器 cs、ss、ds、es、fs 和 gs 均为 16 位，除此之外还额外增加了一个不可访问的部分，叫作“<strong>段描述符高速缓存器</strong>”。该部分由 CPU 内部使用，其中存放了段的起始地址、扩展范围以及各种属性。</li>
+</ol>
+<h3 id="第-7-章-相同的功能，不同的代码"><a href="#第-7-章-相同的功能，不同的代码" class="headerlink" title="第 7 章 - 相同的功能，不同的代码"></a>第 7 章 - 相同的功能，不同的代码</h3><ol start="18">
+<li>汇编语言源程序的编译符合一种假设，即编译后的代码将从某个内存段中偏移地址为 0 的地方开始加载。</li>
+</ol>
+<p><img src="3.jpg"></p>
+<ul>
+<li>逻辑地址 0x0000:0x7c00 与 0x07c0:0x0000 指向同一个物理地址；</li>
+<li>基于段寄存器的数据访问“分段”是 CPU 的特性之一。</li>
+</ul>
+<ol start="19">
+<li>对 CPU 来说，<strong>加减法不区分操作数的符号性</strong>（通常没有减法运算电路），<strong>乘除法区分操作数的符号性</strong>。对于参与乘除法的操作数，需要正确使用零扩展和符号扩展来改变其长度。</li>
+</ol>
+<h3 id="第-8-章-比高斯更快的计算"><a href="#第-8-章-比高斯更快的计算" class="headerlink" title="第 8 章 - 比高斯更快的计算"></a>第 8 章 - 比高斯更快的计算</h3><ol start="20">
+<li>栈对应的内存段（栈段）由段寄存器 ss 指向，sp 寄存器指向下一个数据压入栈的位置（栈顶）。</li>
+</ol>
+<pre class="line-numbers language-assembly"><code class="language-assembly">push ax
+push word [label]  ; sp => sp - 2.
+pop ax
+pop word [label]
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>push</code> 指令使得 sp 向低地址方向增长，数据压入地址：ss &lt;&lt; 4 + sp，<code>pop</code> 类似；</li>
+<li><code>push</code> 与 <code>pop</code> 指令的操作数宽度只能为 2、4 或 8 个字节。</li>
+</ul>
+<h3 id="第-9-章-硬盘和显卡的访问与控制"><a href="#第-9-章-硬盘和显卡的访问与控制" class="headerlink" title="第 9 章 - 硬盘和显卡的访问与控制"></a>第 9 章 - 硬盘和显卡的访问与控制</h3><ol start="21">
+<li>Nasm 定义段：</li>
+</ol>
+<pre class="line-numbers language-assembly"><code class="language-assembly">section .code align=16 vstart=0
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>段用于分隔程序中的不同内容；</li>
+<li>汇编指令 “<em>section</em>” 或者 “<em>segment</em>” 用于定义段；</li>
+<li>汇编指令 “<em>section.&lt;段名称&gt;.start</em>” 用于引用段地址（相对于文件开头的偏移量）；</li>
+<li>参数 “<em>vstart</em>”（Virtual Start Address）控制段内标号的汇编地址计算方式。定义时，地址为段内的偏移距离加上该参数的值；</li>
+<li>Intel 处理器要求段在内存中的起始物理地址最低于 16 字节对齐（通过 <em>align</em> 参数）；</li>
+<li>段起始位置在汇编时确定，根据对齐方式和段大小从低地址到高地址自动选择。</li>
+</ul>
+<ol start="22">
+<li>程序头部的基本信息：</li>
+</ol>
+<ul>
+<li>程序尺寸，以字节为单位的大小；</li>
+<li>程序入口点，包括段地址和（段内）偏移地址；</li>
+<li>段重定位表：程序加载到内存后，对引用到的地址进行重定位。</li>
+</ul>
+<ol start="23">
+<li>加载器的工作流程：</li>
+</ol>
+<ul>
+<li>初始化栈段（ss、sp）；</li>
+<li>载入程序的物理加载地址；</li>
+<li>初始化段寄存器（ds、es）；</li>
+<li>从硬盘特定 LBA 读取程序头，获知程序大小；</li>
+<li>继续读取完整的应用信息到内存；</li>
+<li>依次对程序头部重定位表中的条目进行重定位（根据物理加载地址更新符号引用地址）；</li>
+<li>更新 ss、sp、cs、ds（栈段、代码段、数据段）指向程序主体；</li>
+<li>跳转到程序入口执行。</li>
+</ul>
+<ol start="24">
+<li>计算机内部总线系统：</li>
+</ol>
+<p><img src="4.jpg"></p>
+<ul>
+<li>输出控制设备集中器（ICH）：连接不同总线，协调各个 I/O 接口对处理器的访问。即“南桥”；</li>
+<li>每种相似类型的设备都有各自的总线体系，对应不同的线路复用和仲裁方式（USB 总线、IDE/SATA 总线等）；</li>
+<li>I/O 端口和端口访问：<ul>
+<li>端口本质上是一些位于 I/O 接口电路中的寄存器，对应不同功能；</li>
+<li>端口实现方式：<ul>
+<li>映射到指定物理内存段；</li>
+<li>独立编址：通过引脚 M/IO# 来控制某一时刻是内存生效还是 I/O 端口生效。</li>
+</ul>
+</li>
+<li>访问端口：<code>in</code>、<code>out</code>。</li>
+</ul>
+</li>
+<li>访问硬盘：<ul>
+<li>读写以“扇区”单位；</li>
+<li>逻辑扇区编址方法采用 LBA48，采用 48 位比特表示逻辑扇区号；</li>
+<li>8 个命令块端口：<ul>
+<li><em>0x1f0</em>：Data Port；</li>
+<li><em>0x1f1</em>：Error；</li>
+<li><em>0x1f2</em>：Sector Count；</li>
+<li><em>0x1f3</em>：LBA low byte (Logical Block Address)；</li>
+<li><em>0x1f4</em>：LBA mid byte；</li>
+<li><em>0x1f5</em>：LBA hi byte；</li>
+<li><em>0x1f6</em>：1B1D TOP4LBA: B=LBA, D=drive；</li>
+<li><em>0x1f7</em>：Command/status。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol start="25">
+<li>四种常见的 <code>call</code> 指令调用方式：</li>
+</ol>
+<ul>
+<li>段内：用 <code>ret</code> 返回，直接从栈中恢复 IP 寄存器的值；<ul>
+<li>相对近调用：<em>call label</em>；</li>
+<li>间接绝对近调用：<em>call cx</em>。</li>
+</ul>
+</li>
+<li>跨段：用 <code>retf</code> 返回，从栈中同时恢复 IP 和 cs 寄存器的值；<ul>
+<li>直接绝对远调用：<em>call 0x2000:0x0030</em>；</li>
+<li>间接绝对远调用：*call far [bx]*。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第-10-章-中断和动态时钟显示"><a href="#第-10-章-中断和动态时钟显示" class="headerlink" title="第 10 章 - 中断和动态时钟显示"></a>第 10 章 - 中断和动态时钟显示</h3><ol start="26">
+<li>外部硬件中断：</li>
+</ol>
+<ul>
+<li>由外围硬件设备发出的中断信号引发的，以请求处理器提供服务；</li>
+<li>Intel 处理器上对应的两个引脚：<ul>
+<li>NMI（Non Maskable Interrupt）：必须加以处理的严重中断信号（<strong>非屏蔽中断</strong>）；</li>
+<li>INTR：不紧急，不着急处理的中断信号（<strong>可屏蔽中断</strong>）。</li>
+</ul>
+</li>
+<li>Intel 处理器规定，NMI 中断信号由 0 跳变到 1 后，至少要维持 <strong>4 个以上的时钟周期</strong>才算是有效的，才能被识别；</li>
+<li><strong>实模式下，NMI 中断使用统一的中断号 2，而不进行细分</strong>；</li>
+</ul>
+<p><img src="5.jpg"></p>
+<ul>
+<li>8259 可编程中断控制器：每片八个引脚，两片级联使用（主从关系）可提供 15 个中断号；<ul>
+<li>内部包含一个中断屏蔽寄存器（IMR），控制来自各个引脚的中断信号是否能够通过 8259 送往 CPU；</li>
+<li>中断优先级：IR0 引脚优先级最高，IR7 引脚优先级最低。计算机启动之后，主片的中断向量为 0x08～0x0F；从片的中断向量是 0x70～0x77；</li>
+<li>主片端口号：0x20、0x21；从片端口号：0xa0、0xa1；</li>
+<li>中断处理程序结束前需要更新中断服务寄存器（ISR）的对应状态，即发送中断结束命令（EOI），值 0x20。</li>
+</ul>
+</li>
+<li>CPU 标志寄存器中的 IF 标志位控制其是否响应 INTR 中断（0 - 忽略；1 - 响应）；</li>
+<li><strong>中断向量表（IVT）</strong>：存放中断处理程序的入口地址；<ul>
+<li>建立和初始化工作由 BIOS 在计算机启动时完成。默认情况下，所有中断处理程序均指向同一个入口地址（仅包含一条返回指令）。后续该部分内容由操作系统负责初始化；</li>
+<li>实模式下，位于物理地址 0x00000~0x003ff（<strong>低端 1KB</strong>）；</li>
+<li>每个中断在 IVT 中占 2 个字（处理程序的<strong>逻辑段地址</strong>+<strong>偏移地址</strong>）。</li>
+</ul>
+</li>
+<li>CPU 处理中断流程：<ul>
+<li>保护断点现场。FLAGS 压栈；清除 IF、TF 位；cs、ip 值压栈；</li>
+<li>执行中断处理程序。终端号 x 4 =&gt; 中断入口点偏移；取出段地址和偏移地址，更新 cs、ip；</li>
+<li>返回到断点处继续执行。通过 <code>iret</code> 指令返回中断；从栈中恢复 cs、ip、FLAGS，继续执行主程序。</li>
+</ul>
+</li>
+<li>当 CPU 执行任何一条改变栈段寄存器 ss 的指令时，它会在这条指令和下一条指令执行完期间禁止中断（<strong>ss 与 sp 应该先后被一起修改</strong>）。</li>
+</ul>
+<ol start="27">
+<li>实时时钟、CMOS RAM、BCD 编码：</li>
+</ol>
+<ul>
+<li>实时时钟电路（RTC）芯片由一个石英晶体振荡器（晶振）驱动，经分频后用于对静态存储器（CMOS RAM）进行每秒一次的时间刷新；<ul>
+<li>时基选择：振荡器的频率可以选择：4.194304 MHz、1.048576MHz 和 32.768kHz（默认）；</li>
+<li>分频器选择：将振荡器频率转换为较低频率。</li>
+</ul>
+</li>
+<li>RTC 芯片也可以提供闹钟和周期性的中断功能：接入 8259 从片 IR0 引脚，默认中断号 0x70，需再配合 CMOS RAM 上的寄存器 C 来识别以下具体中断类型；<ul>
+<li>周期性中断：由时基频率 + 分频器频率决定；</li>
+<li>更新周期结束中断：每次时间和日期更新完毕时触发；</li>
+<li>闹钟中断：实时时钟到达指定闹点时触发。</li>
+</ul>
+</li>
+<li>RTC 芯片端口 0x70 的最高位（bit 7）控制着 NMI 中断的可用性（0 - 开；1 - 关）；</li>
+<li>CMOS RAM 中保存的日期和时间信息通常以 BCD 码形式编码；</li>
+<li>CMOS RAM 中除时间日期信息外，还保存有整机的配置信息（硬件类型、开机密码，以及辅助存储设备启动顺序等）；</li>
+<li>CMOS RAM 大小一般为 256 字节（包含扩展部分）；</li>
+<li>CMOS RAM 内的四个寄存器：<ul>
+<li>寄存器 A：控制时基选择和周期性中断发生的速率；</li>
+<li>寄存器 B：各类“开关”位（周期性中断、闹钟中断、更新结束中断等）、数据模式、格式、夏令时支持等；</li>
+<li>寄存器 C：只读。标志寄存器，反映了发生中断的类型，读操作后对应位自动置 0；</li>
+<li>寄存器 D：另一个标志寄存器。</li>
+</ul>
+</li>
+</ul>
+<ol start="28">
+<li>内部中断（异常）：</li>
+</ol>
+<ul>
+<li>发生在处理器内部，是在执行指令的过程中出现了问题或者故障引起的。如：“除零中断”、“结果溢出中断”、“非法指令中断”。</li>
+<li>一般可分为三种类型：<ul>
+<li>指令执行异常：处理器在执行指令的过程中，检测到了程序中的错误，并由此而引发的异常；</li>
+<li>程序调试异常：为调试程序而特意准备，通常由 <code>into</code>、<code>int3</code> 和 <code>bound</code> 等指令主动发起；</li>
+<li>机器检查异常：处理器型号相关，用于检测和报告与硬件有关的总线错误、奇偶校验错误、高速缓存错误等。</li>
+</ul>
+</li>
+<li><strong>NMI、内部中断、和指令引起的软件中断不受 IF 标志位的影响</strong>，也不需要中断识别总线周期，中断类型是固定的，可立即转入相应的处理程序；</li>
+<li>根据异常情况的性质和严重性，异常又分为以下三种，并分别实施不同的处理：<ul>
+<li>故障（Faults）。通常是可以纠正的，比如“缺页异常”；</li>
+<li>陷阱（Traps）。通常用于调试目的，在执行了截获<strong>陷阱条件</strong>的指令之后立即产生（如果条件成立）；</li>
+<li>终止（Aborts）。标志着最严重的错误。</li>
+</ul>
+</li>
+</ul>
+<ol start="29">
+<li>软中断：</li>
+</ol>
+<ul>
+<li>使用指令产生的中断。不需要识别总线周期，中断号在指令中给出；<ul>
+<li><code>int3</code>：断点中断指令，机器指令 0xcc。常用于单步调试；</li>
+<li><code>int [imm8]</code>：执行给定中断号 imm8 对应的处理程序；</li>
+<li><code>into</code>：溢出中断指令，当标志位 OF = 1 时产生中断。</li>
+</ul>
+</li>
+<li>操作系统调用采用唯一的中断号，配合通过寄存器传递的系统调用号，通过查询系统调用表来找到需要执行的代码入口；</li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/BIOS_interrupt_call">BIOS 中断</a>：在计算机执行引导扇区之前，方便地使用基本硬件访问功能；<ul>
+<li>寄存器 ah 存放具体功能编号（针对不同中断号）。如 <em>mov ah, 0; int 0x16</em>，访问键盘服务；</li>
+<li>每个外部设备接口都有自己的 ROM，存放有自己功能的调用例程和设备初始化代码。按照规范，前两个单元的内容是 0x55 和 0xAA，第三个单元是本 ROM 中以 512 字节为单位的代码长度；从第四个单元开始，是实际的 ROM 代码。BIOS 会在计算机启动期间，以 2KB 为单位搜索内存地址 C0000～E0000 之间的区域，当发现某个区域的头两个字节是 0x55 和 0xAA 时，那意味着该区域有 ROM 代码存在。接着，通过累加和检查和验证，进入实际 ROM 代码执行。这些代码会初始化外部设备的相关寄存器和工作状态，填写相关的中断向量表，使它们指向自带的中断处理程序。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第-11-章-32-位-x86-处理器编程架构"><a href="#第-11-章-32-位-x86-处理器编程架构" class="headerlink" title="第 11 章 - 32 位 x86 处理器编程架构"></a>第 11 章 - 32 位 x86 处理器编程架构</h3><ol start="30">
+<li>IA-32：Intel 32 位处理器架构。</li>
+</ol>
+<ul>
+<li>发展于 1978 年的 8086 处理器；</li>
+<li><strong>32 根数据线，以及至少 32 根地址线</strong>。可访问至少 4GB 内存，每次可连续读写 4 字节（双字）数据；</li>
+<li>32 位通用目的寄存器：eax \ ebx \ ecx \ edx \ esi \ edi \ esp \ ebp；<ul>
+<li>高 16 位部分不可独立使用；</li>
+<li>源操作数与目的操作数必须具有相同长度。</li>
+</ul>
+</li>
+<li>32 位标志寄存器 eflags，32 位指令指针寄存器 eip；</li>
+<li>仍基于分段模型，段基地址 32 位，段内偏移量 32 位。16 位段寄存器 cs \ ss \ ds \ es \ fs \ gs 中存放段选择子，即要访问的段（段选择器）。真正的段基地址存放在对应的描述符高速缓存中；</li>
+<li>支持使用<strong>平坦模型</strong>（Flat Mode），即只分一个段，段基址为 0x00000000；</li>
+<li><strong>处理器要求在加载程序时，先定义该程序所拥有的段，然后才允许使用这些段</strong>。定义段时，除基地址（起始地址）外，还附加了段界限、特权级别、类型等属性。当程序访问一个段时，处理器将进行检查，以防止对内存的违规访问；</li>
+<li>提供了 V86（虚拟 8086）模式，在这种模式下，IA-32 处理器被模拟成多个 8086 处理器并行工作（支持同时运行 32 保护模式和 8086 实模式程序）；</li>
+<li>逻辑地址 = 偏移地址（有效地址，EA）+ 段地址；</li>
+<li>分页机制：页大小一般 4KB。每个任务对应 4GB 虚拟线性地址空间，并使用线性地址描述，MMU 负责将该地址转换为物理地址；</li>
+</ul>
+<p><img src="7.jpg"></p>
+<ul>
+<li>内存寻址方式（如上图）：在 32 位处理器上，允许在内存操作数中使用栈指针寄存器 esp。</li>
+</ul>
+<ol start="31">
+<li>现代处理器的结构和特点：</li>
+</ol>
+<ul>
+<li><strong>流水线</strong>：把一条指令的执行过程分解成若干个细小的步骤，并分配给相应的单元来完成。各个单元的执行是独立的、并行的。如此一来，各个步骤的执行在时间上就会重叠起来；</li>
+<li><strong>高速缓存</strong>：利用程序的局部性原理（时间 + 空间），缓存经常使用的数据；</li>
+<li><strong>乱序执行</strong>：将指令拆分为“微指令”后，以乱序方式执行它们，某种程度可以提高效率；</li>
+</ul>
+<pre class="line-numbers language-assembly"><code class="language-assembly">mov eax, [mem1]
+; 拆分为两个微操作，esp 的值可以提前被修改（不需要等待 eax）；
+push eax   
+; esp 值更新后，该指令可以提前执行；
+call func
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>寄存器重命名</strong>：处理器重命名临时寄存器以代表目标逻辑寄存器，借此优化代码的执行顺序；</li>
+</ul>
+<pre class="line-numbers language-assembly"><code class="language-assembly">mov eax, [mem1]
+shl eax, 3
+mov [mem2], eax
+; 以下三条指令将在内部使用不同的临时寄存器并行执行；
+mov eax, [mem3]   
+add eax, 2
+mov [mem4], eax
+; 代码执行完毕前会将临时寄存器的值更新到真实寄存器中；
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>分支目标预测</strong>：预测条件分支的后续执行路径，减少流水线指令清空带来的惩罚。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-04-09T02:51:58.000Z"> 2023 / 07 / 04, 16:00:42</time></span></div></div></article><br><span class="next-post"><a href="/2023/05/11/与-AI-对话/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/04/07/《乌合之众：群体心理学》摘录/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -4,5 +4,4 @@ node_modules/
 .vscode/
 **/files/*.pdf
 .DS_Store
-public/
 db.json

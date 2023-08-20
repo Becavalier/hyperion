@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>ASM.js 标准草案分析（18 August 2014） | 曜彤.手记</title><meta name="description" content="ASM.js 是 JavaScript 的严格子集，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对内存不安全语言（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="ASM.js 标准草案分析（18 August 2014）" class="full"><h1 itemprop="headline" class="align-center">ASM.js 标准草案分析（18 August 2014）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2020-08-09T02:25:05.000Z"> 2020 / 08 / 09, 10:25:05</time></span><span class="page-tag-anchor"><a href="/tags/ASM.js" itemprop="url">#ASM.js</a>&nbsp;&nbsp;</span></div><h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>ASM.js 是 JavaScript 的<strong>严格子集</strong>，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对<strong>内存不安全语言</strong>（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。</p>
+<h3 id="编程模型（Programming-Model）"><a href="#编程模型（Programming-Model）" class="headerlink" title="编程模型（Programming Model）"></a>编程模型（Programming Model）</h3><p>ASM.js 编程模型是围绕整数和浮点运算，以及通过 TypedArray 表示的一个虚拟的 Heap 构建的。尽管 JavaScript 不能提供用于处理整数的构造，但是可以使用以下两个技巧来模拟它们：</p>
+<ul>
+<li>可以使用 TypedArray 的 API 来进行整数的加载和存储；</li>
+<li>整数运算等价于使用整数强制转换的 JavaScript 浮点算术运算符表达式。其中整数强制转换由按位与运算符 “|” 来进行；</li>
+</ul>
+<p>假设我们有一个 Int32Array 类型的 TypedArray，对应的变量名为 HEAP32。按照如下方式，我们可以从<strong>字节偏移</strong>位置 p 处加载一个 32 位整数（4 字节长度）：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">HEAP32<span class="token punctuation">[</span>p <span class="token operator">></span><span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>位移操作将字节偏移量转换为对应的 32 位偏移量；并且按位与运算符确保当 p 访问越界时可以返回数字值而非 undefined。</p>
+<p>以下为整数运算的一个例子：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token punctuation">(</span>x <span class="token operator">+</span> y<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>此编程模型直接受 Emscripten 和 Mandreel 编译器所开创技术的启发。</p>
+<h3 id="验证方法（Validation）"><a href="#验证方法（Validation）" class="headerlink" title="验证方法（Validation）"></a>验证方法（Validation）</h3><p>ASM.js 子语言由静态类型系统定义，可以在 JavaScript 解析（Parsing）时进行检查。ASM.js 代码的验证被设计为“按需付费”的模式，因为它永远不会在不被要求的代码上执行。一个 ASM.js 模块通过特殊的<strong>序言指令</strong>请求验证，类似于 ECMAScript Edition 5 中声明严格模式的指令：</p>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">MyAsmModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">"use asm"</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// module body</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此显式指令使得 JavaScript 引擎可以避免对其他 JavaScript 代码执行无意义且可能需要高昂成本的验证过程。并且仅在与 ASM.js 相关时，才会在 Console 控制台中报告相关的验证错误。</p>
+<h3 id="AOT-编译"><a href="#AOT-编译" class="headerlink" title="AOT 编译"></a>AOT 编译</h3><p>由于 ASM.js 是 JavaScript 的严格子集，因此规范仅定义了 ASM.js 代码的验证逻辑，而执行语义则与 JavaScript 保持相同。但是，经过验证的 ASM.js 代码可以进行 AOT 编译。此外，由 AOT 编译器生成的代码可以非常高效，其特点是：</p>
+<ul>
+<li>可以使用 unboxed 形式的整数和浮点数；</li>
+<li>没有运行时的类型检查；</li>
+<li>没有垃圾收集（GC）；</li>
+<li>高效的 Heap 堆资源加载和存储（实现方式因平台而异）；</li>
+</ul>
+<p>无法验证的代码必须通过传统方式重新执行，例如解释和/或即时（JIT）编译。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>使用 ASM.js 模块要求调用模块对应的函数以获得包含有导出方法（exports）的对象，这称为<strong>链接</strong>（Linking）。还可以通过链接为 ASM.js 模块提供对<strong>标准库</strong>和<strong>自定义 JavaScript 函数</strong>的访问权限。为了能够使用编译后的代码，AOT 实现必须执行某些动态检查，以检查有关被链接库的一些编译时假设。</p>
+<p>下图描绘了 AOT 实现的简单体系结构，或采用简单的解释器。如果动态或静态验证失败，则实现必须回退到解释器。但是，如果两个部分的验证均成功，则调用模块导出的方法时将会使用由 AOT 生成的二进制可执行代码。</p>
+<p><img src="1.png"></p>
+<h3 id="外部代码和数据"><a href="#外部代码和数据" class="headerlink" title="外部代码和数据"></a>外部代码和数据</h3><p>在 ASM.js 模块中，所有代码均是完全静态类型的，并且仅限于非常严格的 ASM.js 方言。但是，模块也可以与可识别的标准 JavaScript 库函数，甚至自定义的动态 JavaScript 函数进行交互。</p>
+<p>一个 ASM.js 模块（实现形式为一个 JavaScript 函数）最多可以使用三个可选参数，从而可以访问外部 JavaScript 代码和数据：</p>
+<ul>
+<li>一个<strong>标准库对象</strong>，提供对 JavaScript 有限标准库子集（Math）中方法的访问;</li>
+<li>一个 FFI 接口，提供外部 JavaScript 函数的访问；</li>
+<li>一个 Heap，提供一个 ArrayBuffer 类型以作为 ASM.js 模块的堆结构；</li>
+</ul>
+<p>这些对象允许 ASM.js 调用外部的 JavaScript（并与外部 JavaScript 共享其 Heap 堆缓冲区）。相反，从模块导出的对象允许外部 JavaScript 调用 ASM.js。</p>
+<p>因此，在一般情况下，一个 ASM.js 的模块声明如下所示：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">MyAsmModule</span><span class="token punctuation">(</span>stdlib<span class="token punctuation">,</span> foreign<span class="token punctuation">,</span> heap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">"use asm"</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// module body...</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    export1<span class="token punctuation">:</span> f1<span class="token punctuation">,</span>
+    export2<span class="token punctuation">:</span> f2<span class="token punctuation">,</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在函数定义的开始部分，通过使用<strong>类型注解</strong>（Type Annotation）来“显式”地标注函数参数类型：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">geometricMean</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  start <span class="token operator">=</span> start<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// start has type int</span>
+  end <span class="token operator">=</span> end<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// end has type int</span>
+  <span class="token keyword">return</span> <span class="token operator">+</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token function">logSum</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token operator">+</span><span class="token punctuation">(</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>使用这些注解有两个目的：首先，提供函数的类型签名，以便 Validator 可以保证所有对该函数的调用都是类型定义良好的。其次，要确保即使函数是从模块导出并由外部 JavaScript 调用的，其参数也会被动态强制转换为预期的类型。这确保了 AOT 实现可以使用 unboxed 的值表示形式。因为一旦动态强制类型转换完成后，函数主体就不再需要进行任何的运行时类型检查。</p>
+<h3 id="把所有部分放在一起"><a href="#把所有部分放在一起" class="headerlink" title="把所有部分放在一起"></a>把所有部分放在一起</h3><p>以下是一个小而完整的 ASM.js 模块示例。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>stdlib<span class="token punctuation">,</span> foreign<span class="token punctuation">,</span> buffer<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token string">"use asm"</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">var</span> exp <span class="token operator">=</span> stdlib<span class="token punctuation">.</span>Math<span class="token punctuation">.</span>exp<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> log <span class="token operator">=</span> stdlib<span class="token punctuation">.</span>Math<span class="token punctuation">.</span>log<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> values <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">stdlib<span class="token punctuation">.</span>Float64Array</span><span class="token punctuation">(</span>buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">logSum</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    start <span class="token operator">=</span> start<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>
+    end <span class="token operator">=</span> end<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> sum <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">,</span> p <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> q <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// asm.js forces byte addressing of the heap by requiring shifting by 3</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span>p <span class="token operator">=</span> start <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">,</span> q <span class="token operator">=</span> end <span class="token operator">&lt;</span><span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token punctuation">(</span>p<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token punctuation">(</span>q<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> p <span class="token operator">=</span> <span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token operator">+</span><span class="token function">log</span><span class="token punctuation">(</span>values<span class="token punctuation">[</span>p<span class="token operator">></span><span class="token operator">></span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token operator">+</span>sum<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">function</span> <span class="token function">geometricMean</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    start <span class="token operator">=</span> start<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>
+    end <span class="token operator">=</span> end<span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token operator">+</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token function">logSum</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token operator">+</span><span class="token punctuation">(</span><span class="token punctuation">(</span>end <span class="token operator">-</span> start<span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">{</span> geometricMean<span class="token punctuation">:</span> geometricMean <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在支持对 ASM.js 进行 AOT 编译的 JavaScript 引擎中，当在合适的全局对象和堆缓冲区（ArrayBuffer）上调用模块将会链接导出对象，以便使用静态编译的函数。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> heap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBuffer</span><span class="token punctuation">(</span><span class="token number">0x10000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment" spellcheck="true">// 64k heap</span>
+<span class="token function">init</span><span class="token punctuation">(</span>heap<span class="token punctuation">,</span> START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">;</span>                       <span class="token comment" spellcheck="true">// fill a region with input values</span>
+<span class="token keyword">var</span> fast <span class="token operator">=</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>window<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> heap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// produce exports object linked to AOT-compiled code</span>
+fast<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// computes geometric mean of input values</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>相比之下，在包含非标准库函数（Math.exp 与 Math.log）的对象上调用模块，将无法生成 AOT 编译的代码（将会回退到 Interpreter 或 JIT 版本的代码）：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> bogusGlobal <span class="token operator">=</span> <span class="token punctuation">{</span>
+  Math<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    exp<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x<span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    log<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> x<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  Float64Array<span class="token punctuation">:</span> Float64Array
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> slow <span class="token operator">=</span> <span class="token function">GeometricMean</span><span class="token punctuation">(</span>bogusGlobal<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> heap<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// produces purely-interpreted/JITted version</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>slow<span class="token punctuation">.</span><span class="token function">geometricMean</span><span class="token punctuation">(</span>START<span class="token punctuation">,</span> END<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">// computes bizarro-geometric mean thanks to bogusGlobal</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h2><p>对 ASM.js 模块的验证依赖于对语法进行分类和约束的静态类型系统。本节定义了验证逻辑所使用的类型。</p>
+<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>ASM.js 的验证机制限制了 JavaScript 程序只能使用可以紧密映射到现代体系架构的有效数据表示形式和机器操作。例如 32 位整数以及相关的整数算术。</p>
+<p>ASM.js 值的类型通过子类型关系相互关联，可以用下图表示：</p>
+<p><img src="2.png"></p>
+<p>浅色方块代表符合该类型的 JavaScript 任意值，这些值可以在 ASM.js 代码和外部 JavaScript 代码之间自由流动（可以理解为当从外部 JavaScript 传回 ASM.js 时，值得类型不会发生改变）。</p>
+<p>深色方块表示不允许转义为外部 JavaScript 代码的类型。（可以在优化的 ASM.js 实现中为这些值提供高效的，unboxed 的表示形式。而如果允许它们转义，则行为将是不健全的）。</p>
+<p>元变量 σ 和 τ 用于表示值类型。</p>
+<h4 id="void"><a href="#void" class="headerlink" title="void"></a>void</h4><p>用于标识不返回任何有用值的函数类型。对于 JavaScript 函数，它们会产生 undefined 值，但是 ASM.js 代码无法使用该值。调用具有 void 返回类型的函数只是为了函数产生的副作用而非返回值。</p>
+<h4 id="double"><a href="#double" class="headerlink" title="double"></a>double</h4><p>即 JavaScript 中数字值对应的<strong>双精度浮点类型</strong>。</p>
+<h4 id="signed"><a href="#signed" class="headerlink" title="signed"></a>signed</h4><p>该类型表示带符号的 32 位整数类型。尽管在 JavaScript 中没有直接对应的整数概念，但是 32 位整数可以被表示为 double 类型，并且可以使用 JavaScript 的算术、关系和按位运算符来执行整数运算。</p>
+<h4 id="unsigned"><a href="#unsigned" class="headerlink" title="unsigned"></a>unsigned</h4><p>该类型表示无符号的 32 位整数类型。同样的，它们不是 JavaScript 中的第一类概念，但可以用 double 类型来进行表示。</p>
+<h4 id="int"><a href="#int" class="headerlink" title="int"></a>int</h4><p>表示<strong>符号性（signedness）未知</strong>的 32 位整数类型。在 ASM.js 中，无法确定一个变量类型的符号性。这样就可以将它们编译为 32 位整数寄存器和内存字。但是，这种表示法会在有符号数和无符号数之间产生重叠，从而导致在确定它们所表示的实际 JavaScript 数字值时存在歧义。例如，0xffffffff 根据符号性的不同，可以表示 4294967295 或 -1。因此，int 类型的值不允许转义为外部的 JavaScript 代码。</p>
+<ul>
+<li>对于一段 4 字节的内存模式为 0xffffffff 的内容，如果将其按照 unsigned 解析：<code>0xffffffff &gt;&gt;&gt; 0</code> 结果为 4294967295；若按照 signed 解析：<code>0xffffffff &gt;&gt; 0</code>，结果为 -1。WebAssembly 中对应的整数类型 i32 与 i64 与此类似，<strong>解析的具体值按具体的指令为主</strong>；</li>
+<li>这里的 <strong>0xffffffff 按照补码形式来存放</strong>；整数，补码与原码相同；负数，补码符号位不变，其他位取反再加一；</li>
+</ul>
+<h4 id="fixnum"><a href="#fixnum" class="headerlink" title="fixnum"></a>fixnum</h4><p>该类型表示 [0，2^31) 范围内的整数值，即一个整数范围。这样无论将unboxed 的 32 位表示形式解释为带符号的还是无符号的，其值都相同。</p>
+<h4 id="intish"><a href="#intish" class="headerlink" title="intish"></a>intish</h4><p>即使 JavaScript 仅支持浮点数运算，大多数操作也可以通过将其结果强制转换为整数来模拟整数算术。例如，将两个整数相加可能会超出 32 位的范围，但是将运算结果强制转换为整数，会产生与在 C 中进行整数加法相同的 32 位整数。</p>
+<p>该 intish 类型表示 JavaScript 整数操作的结果，该结果必须通过显式强制转换将其转换为整数。验证要求将所有 intish 的值立即传递给执行强制转换的运算符或标准库函数，或者通过表达式语句删除该值。这样，每个整数运算都可以被直接编译为对应的机器运算。</p>
+<p>不支持这种方法的一个运算符是<strong>乘法运算符</strong>。（将两个大整数相乘可导致精度的损失）因此，ASM.js 不支持将乘法运算符应用于整数操作数。相反，建议将 <strong>Math.imul</strong> 函数作为实现整数乘法的适当方法。</p>
+<h4 id="double-1"><a href="#double-1" class="headerlink" title="double?"></a>double?</h4><p>该类型表示预期会产生 double 但也可能会产生 undefined 的操作，因此必须通过 ToNumber 将其强制转换回数字。具体来说，返回越界的 TypedArray 元素也会产生 undefined。</p>
+<h4 id="float"><a href="#float" class="headerlink" title="float"></a>float</h4><p>该类型表示 32 位浮点数。</p>
+<h4 id="float-1"><a href="#float-1" class="headerlink" title="float?"></a>float?</h4><p>该类型表示预期会产生 float 但也可能会产生 undefined 的操作，因此必须通过 Math.fround() 将其强制转换回 32 位浮点数。具体来说，返回越界的 TypedArray 元素也会产生 undefined。</p>
+<h4 id="floatish"><a href="#floatish" class="headerlink" title="floatish"></a>floatish</h4><p>与 intish 类似。</p>
+<h4 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h4><p>抽象的 extern 类型表示所有可以转义回外部 JavaScript 的类型的根。</p>
+<h3 id="全局类型"><a href="#全局类型" class="headerlink" title="全局类型"></a>全局类型</h3><p>（略）</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>（略）</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>ECMAScript 的语法规则指定了对 ASM.js 模块的验证细则，但从概念上讲，该验证在抽象语法级别进行。特别是，一个 ASM.js 验证器必须遵守以下规则：</p>
+<ul>
+<li>空语句（;）始终会被忽略。无论是出现在模块的顶层还是在 ASM.js 函数定义内部；</li>
+<li>绑定在 ASM.js 模块中任何地方的变量（无论在模块函数参数列表，全局变量声明，ASM.js 函数名称，ASM.js 函数参数或局部变量声明中）都<strong>不能使用 eval 或 arguments</strong>。</li>
+<li>如果用 JavaScript 等效地解析，括号是没有意义的。即使规范与 <em>Expression</em> 的特定生成（例如文字）匹配，来源也可能包含多余的无意义的括号，而不会影响验证；</li>
+<li>ASI（Automatic Semicolon Insertion）不会影响 ASM.js 模块的验证过程。只要确保在 JavaScript 层面，忽略某些分号是合法的即可；</li>
+</ul>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>参考：<a target="_blank" rel="noopener" href="https://github.com/Becavalier/human-asmjs%E3%80%82">https://github.com/Becavalier/human-asmjs。</a></p>
+<h2 id="验证（静态验证）"><a href="#验证（静态验证）" class="headerlink" title="验证（静态验证）"></a>验证（静态验证）</h2><p>为了确保 JavaScript 函数定义可以正确地表示一个 ASM.js 模块，必须首先对其进行静态验证。本节指定验证规则。规则将在 JavaScript 的<strong>抽象语法树</strong>上进行。非终结符引用 ECMAScript 语法中的产生式定义的解析节点。但请注意，ASM.js 验证器仅接受合法JavaScript 程序的子集。</p>
+<p>验证操作的结果可以是成功（表明解析节点是静态有效的 ASM.js），或者是失败（表明解析节点静态为无效的ASN.js）。</p>
+<p>（略）</p>
+<h2 id="链接（动态验证）"><a href="#链接（动态验证）" class="headerlink" title="链接（动态验证）"></a>链接（动态验证）</h2><p>一个 ASM.js 的 AOT 实现必须在链接时执行一些内部的动态检查，以便能够安全地生成经过 AOT 编译的导出函数。如果任何动态检查失败，则链接的结果便不能为经过 AOT 编译的模块。动态检查包括：</p>
+<ul>
+<li>控制流在到达模块的 return 语句前不能抛出异常；</li>
+<li>所有属性访问操作都必须解析为数据属性；</li>
+<li>堆对象（如果提供的话）必须的一个 ArrayBuffer 的实例;</li>
+<li>堆对象的 byteLength 必须是 <strong>2^n</strong>（n 在 [12, 24）之间），或 <strong>2^24 * n</strong>（n ≥ 1）;</li>
+<li>从 stdlib 对象上获取的方法必须与对应标准库同名函数具有相同的值（SameValue）。</li>
+</ul>
+<p>如果不满足这些条件中的任何一个，则 AOT 编译可能会产生无效的结果，因此 JavaScript 引擎应退回到解释器或基于 JIT 的实现中。</p>
+<h2 id="补充记录"><a href="#补充记录" class="headerlink" title="补充记录"></a>补充记录</h2><ul>
+<li>ASM.js 使用了 Annotation（<strong>形式上</strong>。比如在 BNF 中 “|0” 直接表示一个<strong>终结符</strong>，而非运算符）与 Operator（<strong>实际运算结果</strong>）相结合的方式来保证继承自 C/C++ 的变量能够满足特定类型值的取值范围要求。比如 “x:Identifier<b>|0</b>” 可以确保 x:Identifier 是 int 类型。而 “x:Identifier <strong>&gt;&gt;&gt;</strong> 0” 的<strong>计算结果</strong>可以保证 x:Identifier 是 unsigned 类型。</li>
+<li>怀疑 ASM.js 相较 Native Code 可能变慢的一个点是：C/C++ unsigned -&gt; ASM.js (unsigned)((double) &gt;&gt;&gt; 0)。运算符计算会产生额外的 Overhead？</li>
+<li><strong>“|0”</strong> 会将变量转换（cast）为一个 <strong>Signed 类型的整数</strong>；</li>
+<li>JavaScript 的按位逻辑运算符会对编码为 IEEE-754 的浮点数进行计算。按位运算符首先将整数截断（32 位），然后在执行按位运算前为其操作数做<strong>模转换</strong>，获得 32 位二进制补码值。因此可以通过 <code>x|0</code> 或 <code>x &gt;&gt; 0</code>（<strong>算数右移</strong>）将数字值 x 强制转换为 32 位有符号整数值。对于无符号数，则可以通过 <code>x &gt;&gt;&gt; 0</code>（<strong>逻辑右移</strong>）进行转换。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-08-09T02:25:05.000Z"> 2023 / 04 / 21, 10:01:04</time></span></div></div></article><br><span class="next-post"><a href="/2020/08/17/C-20-The-Big-Four/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2020/08/07/vtable-与-vptr/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

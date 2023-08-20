@@ -1,0 +1,174 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《穿越计算机的迷雾（第二版）》读书笔记 | 曜彤.手记</title><meta name="description" content="李忠老师的另一大作。本书以“电”为始，到加法器，再到晶体管，逐步从历史发展的角度介绍了计算机的基本演化方式，是一本不错的科普书籍。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《穿越计算机的迷雾（第二版）》读书笔记" class="full"><h1 itemprop="headline" class="align-center">《穿越计算机的迷雾（第二版）》读书笔记</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-06-18T01:14:00.000Z"> 2023 / 06 / 18, 09:14:00</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><p>李忠老师的另一大作。本书以“电”为始，到加法器，再到晶体管，逐步从历史发展的角度介绍了计算机的基本演化方式，是一本不错的科普书籍。</p>
+<h3 id="第-1-章-了解计算机，要从电开始"><a href="#第-1-章-了解计算机，要从电开始" class="headerlink" title="第 1 章 - 了解计算机，要从电开始"></a>第 1 章 - 了解计算机，要从电开始</h3><ol>
+<li>无论固体还是液体，<strong>内部如果有能够自由移动的电子或者离子，那么他就可以导电</strong>。绝缘体的特点是分子中正负电荷束缚得很紧，可以自由移动的带电粒子极少，其电阻率很大；导体则相反。在没有接入电源的情况下自由电子在导线中杂乱无章的运动，这种情况下不会在导线中形成电流。若是<strong>导线接入了电源，导线中的自由电子就会在恒定电场的作用下定向移动。自由电子的定向移动就形成了电流</strong>。自由电子定向移动的速度很小（7.5* 10-5 m/s），而闭合用电器的开关用电器几乎是马上就能工作，这是因为电场传递速度快的原因。<strong>电磁场在真空中能够以光速传播，闭合开关时，电路中导线的各个位置几乎同时建立了恒定电场，在恒定电场的作用下，导线中的自由电子同时开始向前运动，所以开关闭合后用电器能够马上工作</strong>。电压是一种吸引力，是由于失去电子和希望重新得到电子而引起的。</li>
+<li>能量守恒定律（Law of conservation of energy）是自然界普遍的基本定律之一。一般表述为：<strong>能量既不会凭空产生，也不会凭空消失，它只会从一种形式转化为另一种形式，或者从一个物体转移到其它物体，而能量的总量保持不变</strong>。也可以表述为：一个系统的总能量的改变只能等于传入或者传出该系统的能量的多少。总能量为系统的机械能、内能（热能）及除机械能和内能以外的任何形式能量的总和。如果一个系统处于孤立环境，即不可能有能量或质量传入或传出系统。对于此情形，能量守恒定律表述为：“孤立系统的总能量保持不变。</li>
+</ol>
+<h3 id="第-2-章-用电来表示数"><a href="#第-2-章-用电来表示数" class="headerlink" title="第 2 章 - 用电来表示数"></a>第 2 章 - 用电来表示数</h3><p>（主要介绍二进制，内容略）</p>
+<h3 id="第-3-章-怎样才能让机器做加法"><a href="#第-3-章-怎样才能让机器做加法" class="headerlink" title="第 3 章 - 怎样才能让机器做加法"></a>第 3 章 - 怎样才能让机器做加法</h3><ol start="3">
+<li>半加器：仅仅是把来自被加数和加数的两个比特加起来，产生一个“和”以及一个进位，<strong>并不考虑从其他列来的进位</strong>。全加器：与半加器相反，实现了二进制加法中每一列的加法过程。</li>
+</ol>
+<p><p><img src="1.jpg" alt="由 3 个全加器组成的 3 比特加法机（结果是 4 比特）"><span class="img-desc">由 3 个全加器组成的 3 比特加法机（结果是 4 比特）</span></p></p>
+<ul>
+<li>A、B：来自被加数和加数的一个比特，它们正好在同一列上；</li>
+<li>Ci：来自右边一列的进位；</li>
+<li>Co：本列产生的进位；</li>
+<li>S：本列的“和”。</li>
+</ul>
+<h3 id="第-4-章-电子计算机发明的前夜"><a href="#第-4-章-电子计算机发明的前夜" class="headerlink" title="第 4 章 - 电子计算机发明的前夜"></a>第 4 章 - 电子计算机发明的前夜</h3><ol start="4">
+<li>交流电：</li>
+</ol>
+<p><p><img src="2.jpg" alt="导体在磁场中的运动轨迹及其随时间变化的电压值"><span class="img-desc">导体在磁场中的运动轨迹及其随时间变化的电压值</span></p></p>
+<ul>
+<li>方向和大小都随时间不断变化。导体在磁场中的运动方向（圆周运动）决定了电流的极性和大小；</li>
+<li>当提高所要传输的电压时，可以降低电能在供电线路上的损耗；</li>
+<li>变压器的原理：一个铁框，用绝缘导线在它的两边分别绕上线圈。左边的线圈称为初级线圈，右边的称为次级线圈；初级线圈和次级线圈的匝数比例决定了交流电的电压传递之比。如果初级线圈有 1000 匝而次级线圈有 5000 匝，那么在次级就能获得比初级高 5 倍的电压，这相当于升压；反之，则为降压；</li>
+<li>在我国，政府对电力供应的各项指标有统一的规定，其中要求交流电的频率必须是 50Hz。</li>
+</ul>
+<ol start="5">
+<li>自感：当导体中的电流发生变化时，它周围的磁场就随着变化，并由此产生磁通量的变化，因而在导体中产生感应电动势，<strong>这个电动势总是阻碍导体中原来电流的变化</strong>，此电动势即自感电动势。</li>
+</ol>
+<h3 id="第-5-章-从逻辑学到逻辑电路"><a href="#第-5-章-从逻辑学到逻辑电路" class="headerlink" title="第 5 章 - 从逻辑学到逻辑电路"></a>第 5 章 - 从逻辑学到逻辑电路</h3><ol start="6">
+<li>在布尔代数里，X 代表一个命题，X = 0 表示命题为假；X = 1 表示命题为真。香农发现，如果用 X 代表一个由继电器和普通开关组成的电路，那么，X = 0 就表示开关合上；X = 1 表示开关打开。</li>
+</ol>
+<p><p><img src="3.jpg" alt="命题演算和现实的开关组合具有完美的一致性"><span class="img-desc">命题演算和现实的开关组合具有完美的一致性</span></p></p>
+<ol start="7">
+<li>一个从逻辑代数到逻辑电路的例子：</li>
+</ol>
+<p><img src="4.png"></p>
+<ul>
+<li>J 为继电器，通电后产生磁吸力；</li>
+<li>上述电路整体产生了一个新的逻辑电路类型 - 异或门。</li>
+</ul>
+<h3 id="第-6-章-加法机的诞生"><a href="#第-6-章-加法机的诞生" class="headerlink" title="第 6 章 - 加法机的诞生"></a>第 6 章 - 加法机的诞生</h3><ol start="8">
+<li>基于异或门实现的全加器：</li>
+</ol>
+<p><img src="5.png"></p>
+<h3 id="第-7-章-会变魔术的触发器"><a href="#第-7-章-会变魔术的触发器" class="headerlink" title="第 7 章 - 会变魔术的触发器"></a>第 7 章 - 会变魔术的触发器</h3><ol start="9">
+<li>振荡器：</li>
+</ol>
+<ul>
+<li><strong>将非门的输出作为输入</strong>，它所产生的方波总是被称为“脉冲”，每秒能产生多少个这样的脉冲，称为这种振荡器的频率；</li>
+<li>最早的目的是为了向天空中扬撒电磁波（使用高速变化的电流）；</li>
+<li>在电子计算机中，通常用于自动提供触发信号（比如“上升沿”）。</li>
+</ul>
+<ol start="10">
+<li>电子三极管：</li>
+</ol>
+<p><img src="6.jpg"></p>
+<ul>
+<li><strong>具有单向导电性</strong>。两极之间在具有电压且真空的环境下，加热阴极，可以向阳极发送电子；</li>
+<li>通过改变栅极上电压的大小和极性，可以改变阳极上电流的强弱，甚至切断它（具有放大效果）；</li>
+<li>晶体三极管具有电流放大作用，其实质是三极管能以基极电流微小的变化量来控制集电极电流较大的变化量。</li>
+</ul>
+<ol start="11">
+<li>触发器（Flip Flop）：</li>
+</ol>
+<p><img src="7.png"></p>
+<ul>
+<li>两个开关 S（Set）和 R（Reset），闭合一个断开另一个，总是会得到两个相反的输出 Q 和 Q’。Q 的输出和 S 的输入总是一致的。一直以来我们把 Q 作为触发器的输出；</li>
+<li>普通的电路，以及常规的逻辑门都有一个共性，那就是输出直接依赖于输入，当输入消失的时候，输出也跟着不存在了。触发器不同，当它触发的时候，输出会发生变化。但是，当输入撤销之后，输出依然能够维持。触发器具有记忆能力。</li>
+</ul>
+<h3 id="第-8-章-学生时代的走马灯"><a href="#第-8-章-学生时代的走马灯" class="headerlink" title="第 8 章 - 学生时代的走马灯"></a>第 8 章 - 学生时代的走马灯</h3><ol start="12">
+<li>D（Data）触发器：</li>
+</ol>
+<p><img src="8.png"></p>
+<ul>
+<li>在 S-R 触发器的基础上，新增了一个“非门”和两个“与门”；同时新增一个控制端输入 CP；</li>
+<li>状态控制：<ul>
+<li>CP = 0：触发器不被外面的数据干扰，继续保持原先保存的那个比特（S、R 输出均为 0）；</li>
+<li>CP = 1：为触发器设置新的比特状态（根据输入 D 设置）。</li>
+</ul>
+</li>
+</ul>
+<ol start="13">
+<li>“上升沿触发”的 D 触发器：</li>
+</ol>
+<p><img src="9.png"></p>
+<ul>
+<li>可以由两个 D 触发器首尾相连组成。相当于两步走：<ul>
+<li>CP = 0 时比特先暂存到第一个触发器；</li>
+<li>CP = 1 时第一个触发器保存的输出再传递到第二个触发器，进而转为最终输出。</li>
+</ul>
+</li>
+<li>只在 CP 脉冲的上升边沿触发；</li>
+</ul>
+<ol start="14">
+<li>走马灯电路：</li>
+</ol>
+<p><img src="10.jpg"></p>
+<ul>
+<li>也被称为“<strong>循环移位寄存器</strong>”；</li>
+<li>可用于实现串行的数据发送和接收：移位寄存器的每一个触发器分别接受并行数据的对应比特，然后开始循环移位，将每一个比特按顺序送出。在接收端，另一个循环移位寄存器将接收到的比特按顺序往后移动。当移动到最后一个触发器时，并行电路同时从每一个触发器那里取走比特，形成并行数据；</li>
+<li>采用“上升沿触发”的 D 触发器构建，使用振荡器产生往复信号。</li>
+</ul>
+<h3 id="第-9-章-计算机时代的开路先锋"><a href="#第-9-章-计算机时代的开路先锋" class="headerlink" title="第 9 章 - 计算机时代的开路先锋"></a>第 9 章 - 计算机时代的开路先锋</h3><ol start="15">
+<li>当开关电路的理论建立起来之后，第一个受益的就是电话交换。<strong>当一部电话拨出号码之后，交换电路就会产生一个输出，使某个继电器吸合，从而将两部电话接通</strong>；当用户煲完了电话粥，挂机之后，继电器断开，让出干线供其他用户使用。本质上，我们现在的电话交换机也是这么工作的。</li>
+<li>晶体管：</li>
+</ol>
+<ul>
+<li>本征半导体：将半导体材料硅提纯并拉为单晶后形成的，一种不存在任何掺杂物质的纯半导体；</li>
+<li><strong>晶体管可代替电子管来制作各种门电路</strong>；</li>
+<li>但凡晶体，组成它们的原子排列得很规则，它们之间的关系也很稳固，这都是电子的功劳；</li>
+<li>一块纯净本征的半导体（比如硅），在一边掺上硼，另一边掺上磷，然后分别引出两根导线。这样，这块半导体的导电性能可以获得很大改善，而且像电子二极管一样，具有单向导电性；</li>
+<li>如果在半导体中掺入砷、镓等原子，制作出来的晶体二极管就会发光，称为发光二极管（LED）；</li>
+<li>晶体三极管：具有放大作用（下图中，电流 I<sub>1</sub> 控制着电流 I<sub>2</sub> 的大小）。</li>
+</ul>
+<p><p><img src="11.png" alt="晶体三极管"><span class="img-desc">晶体三极管</span></p></p>
+<ol start="17">
+<li>由“乒乓触发器”组成的二进制计数器：</li>
+</ol>
+<p><img src="12.png"></p>
+<ul>
+<li>初始状态，将每一个触发器的 Q 输出清零；</li>
+<li>CP 上升沿触发，每次对调两个输出端的状态（由于“乒乓触发器”依次重复模拟上升沿和下降沿，因此可对应于二进制计算的进位过程）。</li>
+</ul>
+<h3 id="第-10-章-用机器做一连串的加法"><a href="#第-10-章-用机器做一连串的加法" class="headerlink" title="第 10 章 - 用机器做一连串的加法"></a>第 10 章 - 用机器做一连串的加法</h3><ol start="18">
+<li>寄存器：由多个 CP 上升沿触发器组成，每个触发器存储一位二进制数字。</li>
+</ol>
+<p><img src="13.png"></p>
+<h3 id="第-11-章-全自动加法计算机"><a href="#第-11-章-全自动加法计算机" class="headerlink" title="第 11 章 - 全自动加法计算机"></a>第 11 章 - 全自动加法计算机</h3><ol start="19">
+<li>RAM 存储器：</li>
+</ol>
+<p><img src="14.png"></p>
+<ul>
+<li>比特存储单元由“上升沿 D 触发器”构建；</li>
+<li>“地址译码器”根据 A0、A1 … 的输入来选择要使用的存储器行；</li>
+<li>输入 R、W 控制存储器的操作类型。</li>
+</ul>
+<ol start="20">
+<li>约翰·冯·诺依曼在《计算机与人脑》这本书里写道：“一条指令，在物理意义上和一个数是相同的”。他认为，<strong>存储器里不但要有这些纯粹的数字，还应当有一些指示如何加工这些数字的指令</strong>。</li>
+<li>半自动加法器：</li>
+</ol>
+<p><img src="15.png"></p>
+<ul>
+<li>通过给前置电路增加“振荡器”可以将其改造为全自动加法器。同时，还需要新增一个“停机”指令的输入端，来在计算完成时及时断开振荡器的输入信号；</li>
+<li>组成部件：<ul>
+<li>RR：循环移位寄存器，用于映射计算步骤；</li>
+<li>译码器：根据 RR 的输入调整不同的信号输出，以操作不同的计算部件；</li>
+<li>AC：计数器，用于提供存储器的访问地址；</li>
+<li>AR：地址寄存器；</li>
+<li>DR：数据存储器；</li>
+<li>IR：指令寄存器；</li>
+<li>EC：译码电路，用于根据 IR 的内容决定 “I 相加” 和 “I 装载” 的输入信号；</li>
+<li>GA、GB：传输门。</li>
+<li>RA：数据寄存器，保存第一个要加的数字；</li>
+<li>TR：临时寄存器，临时保存计算结果。</li>
+</ul>
+</li>
+</ul>
+<h3 id="第-12-章-现代的通用计算机"><a href="#第-12-章-现代的通用计算机" class="headerlink" title="第 12 章 - 现代的通用计算机"></a>第 12 章 - 现代的通用计算机</h3><p>（主要介绍了汇编语言在形式上的基本结构）</p>
+<ol start="22">
+<li>字长表示一台计算机在一次操作中可以处理的二进制比特数。</li>
+</ol>
+<h3 id="第-13-章-集成电路时代"><a href="#第-13-章-集成电路时代" class="headerlink" title="第 13 章 - 集成电路时代"></a>第 13 章 - 集成电路时代</h3><ol start="23">
+<li>所有的电容器都有一个特点，那就是把它接到电源上时，在电源的作用下，一个金属板上的电子会被拉到另一个金属板上，从而，当电源撤走之后，这两块金属板会保持着一块电子多余而另一块电子缺乏的状态，以至于在它们之间存在电压。<strong>可以利用电容器充放电的特点来保存 1 个二进制比特</strong>。充了电的电容器相当于保存了 “1”，而没有充电的则是 “0”。这样，用一只具有开关效能的新型晶体三极管和一只电容就可以存储一个比特。由于电容会慢慢自然放电，因此这种存储器（DRAM）必须以极快的速度定时重写，称为“刷新”。</li>
+<li>可以<strong>用只读存储器（ROM）代替传统的逻辑门电路</strong>：把所有不同的输入看成存储器地址，同时把它们对应的输出固化在存储单元里。这样的好处在于 ROM 中的输入输出映射可以随着硬件架构的改变而灵活变化。</li>
+</ol>
+<p><img src="16.jpg"></p>
+<h3 id="第-14-章-核心与外部设备"><a href="#第-14-章-核心与外部设备" class="headerlink" title="第 14 章 - 核心与外部设备"></a>第 14 章 - 核心与外部设备</h3><ol start="25">
+<li>从模拟信号到数字信号的转换可以通过“采样”完成。采样频率越高，精度越好。</li>
+<li>24 位真彩色：RGB 每个像素对应 3 个字节，共 24 位。</li>
+</ol>
+<h3 id="第-15-章-数字化生存"><a href="#第-15-章-数字化生存" class="headerlink" title="第 15 章 - 数字化生存"></a>第 15 章 - 数字化生存</h3><p>（略）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-06-18T01:14:00.000Z"> 2023 / 07 / 11, 15:43:45</time></span></div></div></article><br><span class="next-post"><a href="/2023/07/04/《Unix-环境高级编程（第3版）》读书笔记（第-1-5-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/06/05/Nodejs-Internal/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

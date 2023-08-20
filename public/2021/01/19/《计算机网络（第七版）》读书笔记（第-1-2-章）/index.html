@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《计算机网络（第七版）》读书笔记（第 1-2 章） | 曜彤.手记</title><meta name="description" content="旧书清理系列。这本书本科选修课学过，工作后也粗略看过。正好赶上 17 年的新版本发行，最后一遍就在这里整理一下吧。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><p class="meta-icp"><a target="_blank" href="https://beian.miit.gov.cn/"><span>吉 ICP 备 10004938-2 号</span></a></p><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《计算机网络（第七版）》读书笔记（第 1-2 章）" class="full"><h1 itemprop="headline" class="align-center">《计算机网络（第七版）》读书笔记（第 1-2 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2021-01-18T16:00:06.000Z"> 2021 / 01 / 19, 00:00:06</time></span><span class="page-tag-anchor"><a href="/tags/计算机" itemprop="url">#计算机</a>&nbsp;&nbsp;</span></div><p>旧书清理系列。这本书本科选修课学过，工作后也粗略看过。正好赶上 17 年的新版本发行，最后一遍就在这里整理一下吧。</p>
+<h3 id="第-1-章-概述"><a href="#第-1-章-概述" class="headerlink" title="第 1 章 - 概述"></a>第 1 章 - 概述</h3><ol>
+<li><span class="pn">Page 1</span>三类网络：</li>
+</ol>
+<ul>
+<li><em><strong>电信网络</strong></em>：向用户提供电话、电报及传真等服务；</li>
+<li><em><strong>有线电视网络</strong></em>：向用户传送电视节目；</li>
+<li><em><strong>计算机网络</strong></em>：使用户能够在计算机之间传递数据。</li>
+</ul>
+<p>（目前的“三网”业务之间有一定的交集）</p>
+<ol start="2">
+<li><span class="pn">Page 5</span>internet 与 Internet：</li>
+</ol>
+<ul>
+<li><em><strong>internet</strong></em>（互连网）：通用名词，泛指由多个计算机网络互连而成的计算机网络；</li>
+<li><em><strong>Internet</strong></em>（互联网）：专有名词，指当前全球最大的、开放的特定互连网，它采用 <strong>TCP/IP</strong> 协议族作为通信规则，前身为美国的 ARPANET。</li>
+</ul>
+<ol start="3">
+<li><span class="pn">Page 6</span>多层次 ISP 互联：</li>
+</ol>
+<p><img src="1.png"></p>
+<ul>
+<li><strong>IP 地址发放</strong>：IP 地址管理机构 -&gt; ISP（拥有自己的通信线路）-&gt; 个人。</li>
+<li><strong>ISP 类型</strong>：<ul>
+<li><em><strong>主干 ISP</strong></em>：由几个专门的公司创建和维护，拥有高速主干网；</li>
+<li><em><strong>地区 ISP</strong></em>：较小的 ISP，通过一个或多个主干 ISP 连接起来；</li>
+<li><em><strong>本地 ISP</strong></em>：可以连接到本地 ISP，也可以直接连接到主干 ISP。主要给用户提供直接服务。</li>
+</ul>
+</li>
+<li><strong>IXP</strong>（互联网交换点，Internet eXchange Point）：可以更快地“转发分组”，更有效地利用网络资源。<strong>它允许两个网络直接相连并交换分组</strong>，而不需要第三个网络，通常采用工作在数据链路层的网络交换机实现。</li>
+</ul>
+<ol start="4">
+<li><span class="pn">Page 12</span>网络边缘<strong>端系统的通信方式</strong>：</li>
+</ol>
+<ul>
+<li><em><strong>C/S</strong></em>：“客户-服务器”方式；</li>
+<li><em><strong>P2P</strong></em>：对等连接，两台主机在通信时不区分哪一个是服务请求方哪一个是提供方（<strong>本质仍是 C/S 模式，只是对等连接中每一台主机即是客户又同时是服务器</strong>）。</li>
+</ul>
+<ol start="5">
+<li><span class="pn">Page 12</span>互联网核心：</li>
+</ol>
+<p><img src="3.png"></p>
+<ul>
+<li><em><strong>电路交换</strong></em>：<em>建立连接 -&gt; 通话 -&gt; 释放连接</em>；在通话的全部时间内，通话的双方始终占用端到端的通信资源；</li>
+<li><em><strong>报文交换</strong></em>：整个报文先传送到相邻节点，全部存储下来后查找转发表，转发到下一个节点；</li>
+<li><em><strong>分组交换</strong></em>：把一个报文划分为几个数据段后，在其前面加上一些由必要控制信息组成的“首部（存有目的地址、源地址以及控制信息）”后，就形成了“<strong>分组</strong>”。分组由“<strong>路由器</strong>”在整个网络中从源到目的进行转发。</li>
+</ul>
+<p>- 分组交换的<strong>优点</strong>：</p>
+<p><img src="2.png"></p>
+<p>- 分组交换的<strong>问题</strong>：</p>
+<ul>
+<li>分组在各路由器存储转发时需要排队，会引起一定的“时延”；</li>
+<li>无法保证通信时端到端所需的带宽；</li>
+<li>分组必须携带的控制信息可能成为一定的开销。</li>
+</ul>
+<ol start="6">
+<li><span class="pn">Page 20</span>几种不同类别的计算机网络：</li>
+</ol>
+<ul>
+<li><em><strong>广域网 WAN</strong></em>：作用范围通常为<strong>几十到几千公里</strong>；</li>
+<li><em><strong>城域网 MAN</strong></em>：作用范围一般为<strong>一个城市</strong>；</li>
+<li><em><strong>局域网 LAN</strong></em>：作用范围通常为<strong>一公里</strong>左右；</li>
+<li><em><strong>个人区域网 PAN</strong></em>：作用范围通常为<strong>十米</strong>左右；</li>
+</ul>
+<ol start="7">
+<li><span class="pn">Page 21</span>计算机网络<strong>性能指标</strong>：</li>
+</ol>
+<ul>
+<li><strong>速率</strong>：bit/s（比特每秒，b/s、bps）；<ul>
+<li>“15 GB 的数据块以 10 G 的速率传送”：表明有 <em><strong>15 x 2^30 x 8</strong></em> 比特的数据块以 <em><strong>10 x 10^9</strong></em> bit/s 的速率传送。</li>
+</ul>
+</li>
+<li><strong>带宽</strong>：表示单位时间内传送数据的能力。频域：信号具有的<strong>频带宽度</strong>，即该信号所包含的各种不同频率成分所占据的频率范围，单位为“赫”；时域：单位时间内网络中某信道所能通过的“<strong>最高数据率</strong>”，单位为 “bit/s”；</li>
+<li><strong>吞吐量</strong>：单位时间内通过某个网络的实际数据率；</li>
+<li><strong>时延</strong>：数据从网络的一端传送到另一端所需的时间（总时延为下述四类时延之和）；<ul>
+<li><strong>发送时延</strong>：主机或路由器发送数据帧所需时间；</li>
+<li><strong>传播时延</strong>：电磁波在信道中传播一定距离所需时间（<em>1000 公里长的光纤线路产生的传播时延大约为 5ms</em>）；</li>
+<li><strong>处理时延</strong>：主机或路由器在收到分组后处理（分析分组首部、提取数据、进行差错校验、查找路由等）所需时间；</li>
+<li><strong>排队时延</strong>：分组在各个路由器输入队列中排队等待所需时间。</li>
+</ul>
+</li>
+</ul>
+<p>- 各类“时延”：</p>
+<p><img src="4.png"></p>
+<p>（对于高速网络链路，提高的仅是数据的发送速率而非比特在链路上的传播速率）</p>
+<ul>
+<li><strong>时延带宽积</strong>：传播时延 x 带宽（表示某一段线路可容纳的比特数，即：以“比特”为单位的链路长度）；</li>
+<li><strong>往返时间 RTT</strong>（Round-Trip Time）：两个节点双向交互一次所需时间；</li>
+<li><strong>利用率</strong>：信道或网络（全网信道利用率的加权平均）利用率过高会产生非常大的时延，一般拥有较大主干网的 ISP 在其信道利用率<strong>超过 50% 时就会准备扩容</strong>，以增大线路带宽。</li>
+</ul>
+<ol start="8">
+<li><span class="pn">Page 27</span>计算机<strong>网络体系结构</strong>：计算机网络的<strong>各层及其协议的集合</strong>。</li>
+</ol>
+<ul>
+<li><strong>网络协议</strong>：为进行网络中的数据交换而建立的规则、标准或约定。其主要由三个要素组成：<ul>
+<li><strong>语法</strong>：数据与控制信息的结构或格式；</li>
+<li><strong>语义</strong>：需要发出何种控制信息，完成何种动作以及做出何种相应；</li>
+<li><strong>同步</strong>：事件实现顺序的详细说明。</li>
+</ul>
+</li>
+<li><strong>分层</strong>的好处：<ul>
+<li><em>各层保持独立</em>：下层只向上层提供<strong>稳定的接口</strong>即可；</li>
+<li><em>高灵活性</em>：任一层可以独立变化和设计，只要保证层间接口关系不变即可；</li>
+<li><em>结构上可分割</em>：各层可采用最合适的技术实现；</li>
+<li><em>易于实现和维护</em>：整个系统被分解为几个相对独立的“子系统”；</li>
+<li><em>可促进标准化工作</em>：每一层所提供的服务都可以被精确描述。</li>
+</ul>
+</li>
+</ul>
+<p>- 计算机网络分层：</p>
+<p><img src="5.png"></p>
+<ul>
+<li>“五层”网络体系结构（为介绍原理而设计）：<ul>
+<li><strong>应用层</strong>：通过应用进程间的交互来完成特定网络应用，该层协议定义的是“<strong>应用进程间通信和交互的规则</strong>”。应用层交互的数据单元称为“<strong>报文</strong>”；</li>
+<li><strong>运输层</strong>：负责向两台主机中进程之间的通信提供<strong>通用的</strong>数据传输服务；<ul>
+<li><strong>传输控制协议（TCP）</strong>：提供<strong>面向连接的、可靠的</strong>数据传输服务，传输单位为“报文段”；</li>
+<li><strong>用户数据报协议（UDP）</strong>：提供<strong>无连接的、尽最大努力的</strong>数据传输服务，传输单位为“用户数据报”。</li>
+</ul>
+</li>
+<li><strong>网络层</strong>：为分组交换网上的不同<strong>主机</strong>提供通信服务。其任务主要为：(1) 将上层的报文封装为分组（IP 数据报）；(2) 选择合适的路由；<ul>
+<li><strong>网际协议（IP）</strong>：无连接。</li>
+</ul>
+</li>
+<li><strong>数据链路层</strong>：将网络层的 IP 数据报组装成“<strong>帧</strong>”，可用于进行“<strong>差错校验和纠正</strong>”。每一个“帧”都包含必要的控制信息（同步信息、地址信息、差错控制等）；</li>
+<li><strong>物理层</strong>：考虑用多大电压表示 “1” 或 “0”、接收方如何识别发送方发送的比特、连接电缆的插头有多少根和引脚如何连接等（物理媒介不在这一层）。</li>
+</ul>
+</li>
+</ul>
+<p>- 数据在各层的传递过程：</p>
+<p><img src="6.png"></p>
+<h3 id="第-2-章-物理层"><a href="#第-2-章-物理层" class="headerlink" title="第 2 章 - 物理层"></a>第 2 章 - 物理层</h3><ol start="9">
+<li><span class="pn">Page 41</span>物理层：考虑<strong>如何才能在连接各种计算机的传输媒体上传输数据比特流</strong>。屏蔽传输媒体和通信手段差异，使数据链路层感受不到差异。该层主要任务为：</li>
+</ol>
+<ul>
+<li><strong>机械特性</strong>：指明接口所用接线器的形状和尺寸、引脚数目和排列、固定和锁定装置等；</li>
+<li><strong>电气特性</strong>：指明在接口电缆的各条线上出现的电压范围；</li>
+<li><strong>功能特性</strong>：指明某条线上出现的某一电平电压的意义；</li>
+<li><strong>过程特性</strong>：指明对于不同功能的各种可能事件的出现顺序。</li>
+</ul>
+<ol start="10">
+<li><span class="pn">Page 43</span>不同类型的<strong>信号</strong>：</li>
+</ol>
+<ul>
+<li><strong>模拟信号</strong>（连续信号）：代表消息的参数取值是连续的；</li>
+<li><strong>数字信号</strong>（离散信号）：代表消息的参数取值是离散的。</li>
+</ul>
+<ol start="11">
+<li><span class="pn">Page 43</span>几种基本<strong>通信方式</strong>：</li>
+</ol>
+<ul>
+<li><strong>单向通信</strong>（单工通信）：<strong>只能有一个方向的通信</strong>。无线电广播或有线电广播，以及电视广播；</li>
+<li><strong>双向交替通信</strong>（半双工通信）：通信双方都可发送信息，<strong>但不能同时发送</strong>；</li>
+<li><strong>双向同时通信</strong>（全双工通信）：通信双方都可发送信息，<strong>且能够同时发送</strong>。</li>
+</ul>
+<ol start="12">
+<li><span class="pn">Page 44</span><strong>调试</strong>：基带信号往往含有较多“<strong>低频</strong>”成分，甚至“直流”成分，而许多信道无法传输这些成分，因此需要对基带信号进行“调制”。</li>
+</ol>
+<ul>
+<li><strong>基带调制</strong>（又称“编码”）：仅对基带信号的波形进行变换，变换后仍为基带信号（由一种数字信号变为另一种形式的数字信号）；<ul>
+<li><strong>不归零制</strong>：正电平代表 1，负电平代表 0；</li>
+<li><strong>归零制</strong>：正脉冲代表 1，负脉冲代表 0；</li>
+<li><strong>曼彻斯特编码</strong>：位周期中心向上跳变代表 0，位周期中心向下跳变代表 1（也可反过来定义）；</li>
+<li><strong>差分曼彻斯特编码</strong>：在每一位的中心处始终都有跳变。边界处有跳变为 0，没有跳变为 1。</li>
+</ul>
+</li>
+</ul>
+<p><img src="7.png"></p>
+<ul>
+<li><strong>带通调制</strong>：需要使用“载波”进行调制，把基带信号的<strong>频率范围搬移到较高的频段，并转换为模拟信号</strong>，转换后为“带通信号”。<ul>
+<li><strong>调幅</strong>（AM）：载波的振幅随基带数字信号而变化；</li>
+<li><strong>调频</strong>（FM）：载波的频率随基带数字信号而变化；</li>
+<li><strong>调相</strong>（PM）：载波的初始相位随基带数字信号而变化。</li>
+</ul>
+</li>
+</ul>
+<p><img src="8.png"></p>
+<ol start="13">
+<li><span class="pn">Page 45</span>信道的容量：</li>
+</ol>
+<ul>
+<li>数字信号的优点：<strong>对于由于传输所造成的失真容错率较高</strong>；</li>
+<li>码元传输速率越高，信号传输距离越远，噪声干扰越大，或传输媒体质量越差，接收端信号的波形失真就越严重；</li>
+<li>在任何信道中，码元传输的速率是有上限的，传输速率超过此上限，就会出现严重的“<strong>码间串扰</strong>”问题，使接收端对码元的判别出现问题。所以，信道的频带越宽，那么就可以用更高速率传送码元而不出现码间串扰；</li>
+<li><strong>信噪比</strong>（S/N）：信号的平均功率和噪声的平均功率之比（dB）；</li>
+<li>信道的极限信息传输速率可以通过“<strong>香农公式</strong>”（表明<strong>信道带宽或信噪比越大，信息的极限传输速率就越高</strong>）来计算。</li>
+</ul>
+<ol start="14">
+<li><span class="pn">Page 47</span>传输媒体：</li>
+</ol>
+<ul>
+<li>双绞线；</li>
+<li>同轴电缆；</li>
+<li>光纤：利用光导纤维传递<strong>光脉冲</strong>进行通信（通信容量大，带宽在 10^8 MHz 左右）。</li>
+</ul>
+<ol start="15">
+<li><span class="pn">Page 53</span><strong>信道复用</strong>技术：</li>
+</ol>
+<ul>
+<li><strong>频分复用</strong>（FDM）：所有用户在同样的时间占用不同的带宽（频率带宽）资源；</li>
+<li><strong>时分复用</strong>（TDM/STDM）：所有用户在不同的时间（周期性出现）占用同样的频带宽度（更利于数字信号的传输）；</li>
+<li><strong>码分复用</strong>（CDM）：用户使用经过特殊挑选的不同码型，因此不会造成干扰。有很强的抗干扰能力。</li>
+<li><strong>波分复用</strong>（WDM/DWDM）：“光”的频分复用。</li>
+</ul>
+<p>（弃）</p>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-01-18T16:00:06.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2021/01/21/《现代操作系统（第四版）》读书笔记（第-1-3-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2021/01/10/《正则指引（第二版）》读书笔记/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
