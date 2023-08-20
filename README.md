@@ -1,5 +1,9 @@
 # Hyperion
-My Hexo blog system (deeply customized).
+
+My Hexo blog system (deeply customized). 
+
+This site could be served either via static mode or normal BS mode.
+
 
 ### Components
 
