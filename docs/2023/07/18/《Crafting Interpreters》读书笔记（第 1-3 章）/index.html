@@ -17,10 +17,25 @@
 <li><em><strong>Virtual Machine</strong></em>: a program that emulates a hypothetical chip supporting your virtual architecture at runtime. </li>
 <li><em><strong>Runtime</strong></em>: provide services like GC, reflection. <strong>In a fully compiled language, the code implementing the runtime gets inserted directly into the resulting executable</strong>. In, say, Go, each compiled application has its own copy of Go’s runtime directly embedded in it. If the language is run inside an interpreter or VM, then the runtime lives there, .e.g Java, Python, and JS.</li>
 </ul>
-<ol start="3">
+<h3 id="Chapter-3-The-Lox-Language"><a href="#Chapter-3-The-Lox-Language" class="headerlink" title="Chapter 3 - The Lox Language"></a>Chapter 3 - The Lox Language</h3><ol start="3">
+<li>An expression’s main job is to <strong>produce a value</strong>, a statement’s job is to <strong>produce an effect</strong>. An expression followed by a semicolon (;) promotes the expression to statement-hood. </li>
+<li><em><strong>first class members</strong></em>: it means they are real values that you can get a reference to, store in variables, pass around, etc.</li>
+<li>Approaches of achieving object:</li>
+</ol>
+<ul>
+<li><em><strong>Class</strong></em>: two core concepts of “instances” and “classes”. <strong>To call a method on an instance, there is always a level of indirection</strong>. You look up the instance’s class and then you find the method there.<ul>
+<li>Instances store the state for each object and have a reference to the instance’s class. </li>
+<li>Classes contain the methods and inheritance chain. </li>
+</ul>
+</li>
+<li><em><strong>Prototype</strong></em>: more fundamental, only objects, and each individual object may contain state and methods. Objects can directly inherit from (delegate to) each other.</li>
+</ul>
+<h3 id="Chapter-4-Scanning"><a href="#Chapter-4-Scanning" class="headerlink" title="Chapter 4 - Scanning"></a>Chapter 4 - Scanning</h3><ol start="6">
+<li></li>
+<li></li>
 <li></li>
 <li></li>
 <li></li>
 <li></li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-07-18T03:25:00.000Z"> 2023 / 08 / 10, 16:28:25</time></span></div></div></article><br><span class="prev-post"><a href="/2023/07/13/你需要知道的-C++-Stack-Unwinding/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-07-18T03:25:00.000Z"> 2023 / 08 / 10, 23:03:06</time></span></div></div></article><br><span class="prev-post"><a href="/2023/07/13/你需要知道的-C++-Stack-Unwinding/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
