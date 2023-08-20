@@ -1,9 +1,9 @@
 module.exports = {
-  globDirectory: "docs/",
+  globDirectory: "public/",
   globPatterns: [
     '**/*.{html,json,js,css}'
   ],
-  swDest: "docs/sw.js",
+  swDest: "public/sw.js",
   skipWaiting: true,
   runtimeCaching: [{
     urlPattern: /\.(?:png|jpg|jpeg|svg|woff2)$/,

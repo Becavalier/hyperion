@@ -38,4 +38,4 @@ PWA supported.
 
 ### TODO
 
-- [x] Migrate to HTTP2;
+- [x] Migrate to HTTP2.
