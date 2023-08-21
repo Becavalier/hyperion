@@ -125,7 +125,7 @@ else if is_page() && page.title.toLowerCase() =='search'
     h1(itemprop='headline')=page.label
     div.content
       div(class='search-container')
-        input(class='input-search', autofocus, type='text', placeholder="请输入要搜索的内容 ...")
+        input(class='input-search', autofocus, type='search', placeholder="请输入要搜索的内容 ...")
         button.submit-search
           | 搜索
       div.no-result

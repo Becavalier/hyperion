@@ -1055,7 +1055,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/18/《Crafting Interpreters》读书笔记（第 1-3 章）/index.html",
-    "revision": "f35435766155a1be2ced0becf076ca1d"
+    "revision": "cdbd027254a5f90f0328d902d53adc07"
   },
   {
     "url": "about/index.html",
@@ -1523,7 +1523,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "0e2a7d5d29d62109cd8dfede9e6037cf"
+    "revision": "79b53d32e9d0fe56f946d937e005ac60"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1727,7 +1727,7 @@ self.__precacheManifest = [
   },
   {
     "url": "search/index.html",
-    "revision": "d28a241d0f0e8a1a6aebe1e99f46fc82"
+    "revision": "58273908865145728e576b7f987a4526"
   },
   {
     "url": "styles/fontawesome.min.css",
@@ -1739,7 +1739,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "dff2f961ccc8d38a0d87ddc5a89e9454"
+    "revision": "f5cfdc6243d9280a6e088baae161145e"
   },
   {
     "url": "tags/AI/index.html",
@@ -1835,7 +1835,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "68a9cf95bffe953813d7c1cbdc72f29b"
+    "revision": "61563d89aa27103bd6bb485b13afdcca"
   },
   {
     "url": "tags/Interpreter/index.html",
