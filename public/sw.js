@@ -219,7 +219,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/05/12/前端那些事儿-URL-对象/index.html",
-    "revision": "645da8f336ef28977d7344b583b0b2f9"
+    "revision": "2b08edab10dd1878642dcf976275095c"
   },
   {
     "url": "2016/05/24/LeetCode-每日一题-27-Remove-Element/index.html",
@@ -1059,7 +1059,7 @@ self.__precacheManifest = [
   },
   {
     "url": "about/index.html",
-    "revision": "9ea33c374802ca8cc8f2fb7441504a8f"
+    "revision": "2d967fcebe299181eb218813608c96a2"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1523,7 +1523,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "2530099ff7967378395a012c97f74fd1"
+    "revision": "0e2a7d5d29d62109cd8dfede9e6037cf"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1707,11 +1707,11 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/me-en/index.html",
-    "revision": "8a5b58918ec7bfbb66b9a12fee132ba5"
+    "revision": "64804cd0825106477058fef63330113d"
   },
   {
     "url": "resume/me/index.html",
-    "revision": "285aeaa8e0270dd01fd87cec83d68ccb"
+    "revision": "2cdfe72d90810b6718788204c823531c"
   },
   {
     "url": "scripts/index.js",
@@ -1723,11 +1723,11 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/search.js",
-    "revision": "71b4292e9b447643e94c1b35dae4968e"
+    "revision": "79ea0bdf8aafd31d02fbebd081ca7cdd"
   },
   {
     "url": "search/index.html",
-    "revision": "6e3bf69470625a8249a7c6db25f5f9cb"
+    "revision": "d28a241d0f0e8a1a6aebe1e99f46fc82"
   },
   {
     "url": "styles/fontawesome.min.css",
@@ -1739,7 +1739,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "794333d59b8c42ebb8930b4ac2a65dfa"
+    "revision": "dff2f961ccc8d38a0d87ddc5a89e9454"
   },
   {
     "url": "tags/AI/index.html",
@@ -1835,7 +1835,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "aa2846fb8322d324a1d3429604fd5b5d"
+    "revision": "68a9cf95bffe953813d7c1cbdc72f29b"
   },
   {
     "url": "tags/Interpreter/index.html",

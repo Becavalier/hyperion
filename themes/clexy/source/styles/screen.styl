@@ -391,21 +391,20 @@ main
       > li
         overflow hidden
         text-overflow ellipsis
-        white-space nowrap
         list-style-type none
-        padding 0 10px
-        > a:before 
-          content "- "
-          vertical-align middle
+        padding 10px 0
+        > a
+          .separator
+            margin 0 5px
+          &:before
+            content "- "
+            vertical-align middle
         &:before
           content none
         > ul li 
           color darkgrey
           margin 5px 0 0
           font-size 15px
-          overflow hidden
-          text-overflow ellipsis
-          white-space nowrap
           font-style italic
     ul.catelog-items
       > li

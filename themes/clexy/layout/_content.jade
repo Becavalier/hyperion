@@ -120,13 +120,12 @@ else if is_page() && page.title.toLowerCase() =='readings'
                 span(class="comment")=book.comment
                 =' — ' + full_date(new Date(book.date), 'MM / YYYY')
 else if is_page() && page.title.toLowerCase() =='search'
-  script(src='https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js', type='text/javascript')
-  script(src=config.root + 'scripts/search.js', type='text/javascript')
+  script(src=config.root + 'scripts/search.js?endpoint=' + (config.algolia ? 'algolia' : 'node'), type='text/javascript')
   article(class='full search-page')
     h1(itemprop='headline')=page.label
     div.content
       div(class='search-container')
-        input(class='input-search', autofocus, type='text', placeholder="请输入要搜索的关键字 ...")
+        input(class='input-search', autofocus, type='text', placeholder="请输入要搜索的内容 ...")
         button.submit-search
           | 搜索
       div.no-result

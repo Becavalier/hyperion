@@ -31,12 +31,12 @@
 
 ### 前端基础
 
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#93">答</a>）HTML \<script\> 标签上使用 async 和 defer 属性的区别？
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#126">答</a>）`var` 和 `let` 的区别？
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#171">答</a>）Symbol 是什么？用途是什么？内置符号都有哪些？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#93">答</a>）HTML \<script\> 标签上使用 async 和 defer 属性的区别？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#126">答</a>）`var` 和 `let` 的区别？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#171">答</a>）Symbol 是什么？用途是什么？内置符号都有哪些？
 * 为什么 *typeof NaN === ‘number’* 会返回 `true`？IEEE-754。
 * IIFE 是什么？有哪些应用场景？
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#440">答</a>）Map 和 WeakMap 区别？WeakMap 的使用场景？Map 和 Set 是有序的吗？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#440">答</a>）Map 和 WeakMap 区别？WeakMap 的使用场景？Map 和 Set 是有序的吗？
 * 修复下述代码输出，使其输出 1..5：
 
 ```javascript
@@ -47,13 +47,13 @@ for (var i = 1; i <= 5; ++i) {
 }
 ```
 
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#482">答</a>）什么是迭代器？
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#499">答</a>）什么是生成器？应用场景？（自定义可迭代对象、实现输入输出、实现递归算法等）什么是迭代器？
-* （<a target="_blank" href="https://yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#540">答</a>）`Object.is` 的相等性判断与 “===” 全等有何不同？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#482">答</a>）什么是迭代器？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#499">答</a>）什么是生成器？应用场景？（自定义可迭代对象、实现输入输出、实现递归算法等）什么是迭代器？
+* （<a target="_blank" href="https://hangyu.site/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#540">答</a>）`Object.is` 的相等性判断与 “===” 全等有何不同？
 * `new` 的基本流程？
-* （<a target="_blank" href="https://yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#661">答</a>）Reflect 的基本场景（Proxy）？
-* （<a target="_blank" href="https://yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#707">答</a>）箭头函数与普通函数的区别？
-* （<a target="_blank" href="https://yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#707">答</a>）什么是闭包？
+* （<a target="_blank" href="https://hangyu.site/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#661">答</a>）Reflect 的基本场景（Proxy）？
+* （<a target="_blank" href="https://hangyu.site/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#707">答</a>）箭头函数与普通函数的区别？
+* （<a target="_blank" href="https://hangyu.site/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#707">答</a>）什么是闭包？
 * 下面代码的输出顺序？
 
 ```javascript
@@ -74,21 +74,21 @@ queueMicrotask(() => {
 console.log(7)
 ```
 
-* （<a target="_blank" href="https://yhspy.com/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#840">答</a>）什么是 `async` 和 `await`？`await` 的执行流程？
-* （<a target="_blank" href="https://yhspy.com/2020/12/18/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-17-%E7%AB%A0%EF%BC%89/#1176">答</a>）事件冒泡与捕获的区别？什么是事件委托？
+* （<a target="_blank" href="https://hangyu.site/2020/12/14/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-8-11-%E7%AB%A0%EF%BC%89/#840">答</a>）什么是 `async` 和 `await`？`await` 的执行流程？
+* （<a target="_blank" href="https://hangyu.site/2020/12/18/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-17-%E7%AB%A0%EF%BC%89/#1176">答</a>）事件冒泡与捕获的区别？什么是事件委托？
 * JSONP 是什么？
-* （<a target="_blank" href="https://yhspy.com/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#278">答</a>）什么是 TDZ 暂时性死区？
-* （<a target="_blank" href="https://yhspy.com/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/#1317">答</a>）使用 `window.requestAnimationFrame()` 和 `setInterval()` 创建动画的区别？
-* （<a target="_blank" href="https://yhspy.com/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/#14">答</a>）什么是词法作用域？什么是动态作用域？
+* （<a target="_blank" href="https://hangyu.site/2020/12/08/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-7-%E7%AB%A0%EF%BC%89/#278">答</a>）什么是 TDZ 暂时性死区？
+* （<a target="_blank" href="https://hangyu.site/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/#1317">答</a>）使用 `window.requestAnimationFrame()` 和 `setInterval()` 创建动画的区别？
+* （<a target="_blank" href="https://hangyu.site/2021/02/05/%E3%80%8A%E4%BD%A0%E4%B8%8D%E7%9F%A5%E9%81%93%E7%9A%84%20JavaScript%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%EF%BC%89/#14">答</a>）什么是词法作用域？什么是动态作用域？
 * 常见的网站和网页性能优化方式？
 * 一个简单 MVVM 框架的实现思路？
-* （<a target="_blank" href="https://yhspy.com/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/#1452">答</a>）什么是 Atomics API？应用场景是什么？
-* （<a target="_blank" href="https://yhspy.com/2017/04/24/BigPipe-%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/">答</a>）BigPipe 的基本原理？
+* （<a target="_blank" href="https://hangyu.site/2020/12/24/%E3%80%8AJavaScript-%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-18-28-%E7%AB%A0%EF%BC%89/#1452">答</a>）什么是 Atomics API？应用场景是什么？
+* （<a target="_blank" href="https://hangyu.site/2017/04/24/BigPipe-%E5%8E%9F%E7%90%86%E5%AE%9E%E7%8E%B0%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E5%88%86%E6%9E%90/">答</a>）BigPipe 的基本原理？
 
 
 ### React
 
-* （<a target="_blank" href="https://yhspy.com/2019/04/26/React-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">答</a>）什么是 HOC 高阶组件？和 Render Props 的区别？
+* （<a target="_blank" href="https://hangyu.site/2019/04/26/React-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/">答</a>）什么是 HOC 高阶组件？和 Render Props 的区别？
 * React Fiber 的基本原理？
 * JSX 的本质是什么？相较于基于模板的 UI 框架有什么优劣？
 * `setState` 的批量更新是什么？下述代码的输出结果？怎样修复使结果按升序输出？
@@ -126,12 +126,12 @@ function handleClick() {
 
 ### HTTP
 
-* （<a target="_blank" href="https://yhspy.com/2017/03/09/HTTP-%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">答</a>）TCP 连接三次握手的流程？为什么断开连接需要四次握手？流程是什么？
-* （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#51">答</a>）PUT 和 POST 方法在语义上的差别？
+* （<a target="_blank" href="https://hangyu.site/2017/03/09/HTTP-%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">答</a>）TCP 连接三次握手的流程？为什么断开连接需要四次握手？流程是什么？
+* （<a target="_blank" href="https://hangyu.site/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#51">答</a>）PUT 和 POST 方法在语义上的差别？
 * 你觉得 GET 方法可以携带 body 吗？
-* （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的“延迟确认”算法？
-* （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的慢启动？
-* （<a target="_blank" href="https://yhspy.com/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#93">答</a>）HTTP/1.0 与 HTTP/1.1 支持“持久连接”的方式分别是什么？
+* （<a target="_blank" href="https://hangyu.site/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的“延迟确认”算法？
+* （<a target="_blank" href="https://hangyu.site/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#81">答</a>）什么是 TCP 的慢启动？
+* （<a target="_blank" href="https://hangyu.site/2021/02/19/%E3%80%8AHTTP-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-6-%E7%AB%A0%EF%BC%89/#93">答</a>）HTTP/1.0 与 HTTP/1.1 支持“持久连接”的方式分别是什么？
 * （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#185">答</a>）缓存 - 服务器指定资源有效期使用的首部有哪些？
 * （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存“再验证”时使用的首部有哪些？
 * （<a target="_blank" href="http://localhost/2021/02/22/%E3%80%8AHTTP%20%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-15%E3%80%8120%20%E7%AB%A0%EF%BC%89/#186">答</a>）缓存 - 客户端进行缓存覆盖和强制重载机制时使用的首部有哪些？
@@ -143,12 +143,12 @@ function handleClick() {
 
 ### 网站架构
 
-* （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#99">答</a>）常见的 LB 模式？LB 算法？
-* （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#78">答</a>）CAP 原理是什么？一般会怎样取舍？
-* （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#106">答</a>）分布式缓存的一致性 Hash 算法？优化？虚拟节点。
+* （<a target="_blank" href="https://hangyu.site/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#99">答</a>）常见的 LB 模式？LB 算法？
+* （<a target="_blank" href="https://hangyu.site/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#78">答</a>）CAP 原理是什么？一般会怎样取舍？
+* （<a target="_blank" href="https://hangyu.site/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#106">答</a>）分布式缓存的一致性 Hash 算法？优化？虚拟节点。
 * 网站访问资源的二八定律？
-* （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#39">答</a>）性能测试、负载测试、压力测试的侧重点？
-* （<a target="_blank" href="https://yhspy.com/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#71">答</a>）集群的 Session 管理一般有哪几种方式？
+* （<a target="_blank" href="https://hangyu.site/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#39">答</a>）性能测试、负载测试、压力测试的侧重点？
+* （<a target="_blank" href="https://hangyu.site/2017/04/29/%E3%80%8A%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84%20-%20%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86%E4%B8%8E%E6%A1%88%E4%BE%8B%E5%88%86%E6%9E%90%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/#71">答</a>）集群的 Session 管理一般有哪几种方式？
 
 ### CSS
 
@@ -224,12 +224,12 @@ span:nth-child(3) {
 ### Git
 
 * *git rebase* 和 *git merge* 的区别？
-* （<a target="_blank" href="https://yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#44">答</a>）*git fetch* 和 *git pull* 的区别？
-* （<a target="_blank" href="https://yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#14">答</a>）Git 的三种状态？
-* （<a target="_blank" href="https://yhspy.com/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#63">答</a>）什么时候会采用 “Fast-forward” 合并模式？
-* （<a target="_blank" href="https://yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/#275">答</a>）调试查出坏 commit 时采用的命令？*git bisect* 和 *git blame*。
+* （<a target="_blank" href="https://hangyu.site/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#44">答</a>）*git fetch* 和 *git pull* 的区别？
+* （<a target="_blank" href="https://hangyu.site/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#14">答</a>）Git 的三种状态？
+* （<a target="_blank" href="https://hangyu.site/2020/10/19/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/#63">答</a>）什么时候会采用 “Fast-forward” 合并模式？
+* （<a target="_blank" href="https://hangyu.site/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/#275">答</a>）调试查出坏 commit 时采用的命令？*git bisect* 和 *git blame*。
 * 拣选提交使用的命令？*git cherry-pick*。
-* （<a target="_blank" href="https://yhspy.com/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/#415">答</a>）Git 分支、引用的本质？
+* （<a target="_blank" href="https://hangyu.site/2020/11/02/%E3%80%8APro-Git-2nd-Edition%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%207-10%20%E7%AB%A0%EF%BC%89/#415">答</a>）Git 分支、引用的本质？
 
 ### 其他
 

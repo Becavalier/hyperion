@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://www.yhspy.com/
+url: https://www.hangyu.site/
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -83,6 +83,19 @@ prism_plugin:
   theme: okaidia
   line_number: true    # default false
 
+algolia:
+  appId: "1R78TOVXIF"
+  apiKey: "820e7a4698c4a73b53d7054a38c80b3f"
+  adminApiKey: "ec24c220e402e80d87d1c855d6ca4744"
+  chunkSize: 5000
+  indexName: "hangyu_site"
+  fields:
+    - content:strip
+    - permalink
+    - tags
+    - title
+    - date
+
 ## Themes: https://hexo.io/themes/
 theme: clexy
 
@@ -94,7 +107,7 @@ deploy:
 # About page setting
 about:
   name: 于航（Jason Yu）
-  intros: Software Engineer / @PayPal | Striving for a better self, breaking through every day :)
+  intros: Software Engineer / @PayPal | Breaking through every day, being a good father :)
   skills: Web Frontend, x86-64, ASM / C / C++, WebAssembly, Entrepreneurship
   email: yhorg@hotmail.com
   github: https://github.com/Becavalier
