@@ -6,7 +6,7 @@
     "version": "5.4.2"
   },
   "scripts": {
-    "build": "hexo clean && hexo g && cp -R extra/* public/ && npm run generate-sw && npm run index-post",
+    "build": "hexo clean && hexo g && cp -R extra/* public/ && npm run generate-sw",
     "serve": "node ./services/www/index.js",
     "daemon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW build/workbox-config.js",
@@ -16,7 +16,8 @@
     "renew-ssl-cert": "sudo certbot renew",
     "build-in-container": "docker build -t hyperion-build-container ./build && systemctl enable cgconfig && docker run -it --rm -w/app --device-read-iops /dev/xvda:200 --device-read-bps /dev/xvda:20MB --device-write-bps /dev/xvda:20MB -v $(pwd):/app hyperion-build-container",
     "start": "npm run nginx-bp && npm run daemon",
-    "index-post": "hexo algolia"
+    "index-post": "hexo algolia",
+    "release": "npm run build && npm run index-post"
   },
   "dependencies": {
     "apollo-server-express": "^2.14.2",

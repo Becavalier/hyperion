@@ -61,10 +61,10 @@ else if is_page() && page.title.toLowerCase() =='about'
         div.avatar-name
           span
             | #{config.about.name}
-        for intro in config.about.intros.split(' | ')
+        for intro in config.about.intros
           div.avatar-description
             span
-              | #{intro}
+              | !{intro}
         if (config.about.skills !== undefined)
           .avatar-skills-block
             for skill in config.about.skills.split(', ')
