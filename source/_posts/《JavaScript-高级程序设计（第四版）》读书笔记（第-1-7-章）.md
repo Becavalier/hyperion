@@ -39,7 +39,7 @@ tags:
 
 ### 第 2 章 - HTML 中的 JavaScript
 
-8. （Page：<a name="93" href="#93">93</a>）***\<script\>*** 元素的几个特殊属性：
+8. [Page: 93] ***\<script\>*** 元素的几个特殊属性：
 
 \- ***async & defer***：
 
@@ -107,7 +107,7 @@ function foo() {
 * **不能 delete 一个未定义的变量**；
 * 只能**使用前缀 “0o” 来表示八进制值，不能使用“前缀 0”**。
 
-16. （Page：<a name="126" href="#126">126</a>）`var` 与 `let`：
+16. [Page: 126] `var` 与 `let`：
 
 * `var` 声明提升（hoist）：在函数内部，使用该关键字声明的变量**会被自动提升到函数作用域顶部**（声明部分，非定义部分），而 `let` 则不会；
 * `var` 声明的范围是**函数作用域**，而 `let` 声明的范围是**块作用域**（较小，是函数作用域的子集），并且在同一个块作用域内不能重复声明；
@@ -187,7 +187,7 @@ decoCurrency`This apple costs me ${cost}.`; // "This apple costs me ￥100.
 
 * `String.raw` 标签函数可用于获取原始的、非转义的模板字面量内容。标签函数第一个参数中的 “**raw**” 属性也可以获得类似的内容。
 
-20. （Page：<a name="171" href="#171">171</a>）符号 **Symbol**：
+20. [Page: 171] 符号 **Symbol**：
 
 ```javascript
 let genericSym = Symbol();
@@ -262,7 +262,7 @@ start: for (let i = 0; i < 10; ++i) {
 * ***try...catch 语句的 catch 块***：会创建一个新的变量对象，包含要抛出的错误对象的声明；
 * ***with 语句***：会添加一个所指定的对象。
 
-27. （Page：<a name="278" href="#278">278</a>）**暂时性死区**（TDZ）：The variables are created when their *containing Lexical Environment is instantiated* but may not be accessed in any way ***until the variable’s LexicalBinding is evaluated***.
+27. [Page: 278] **暂时性死区**（TDZ）：The variables are created when their *containing Lexical Environment is instantiated* but may not be accessed in any way ***until the variable’s LexicalBinding is evaluated***.
 
 ```javascript
 let x = 'outer x'; 
@@ -310,7 +310,7 @@ console.log(obj instanceof String);  // true.
 * `Array.prototype.every` 对数组每一项都运行传入的函数，**若每一项函数都返回 true，则这个方法返回 true**。`Array.prototype.some` 对数组每一项都运行传入的函数，**若有一项函数返回 true，则这个方法返回 true**；
 * `Uint8ClampedArray`（不允许任何方向的元素值溢出）完全是 HTML5 Canvas 元素的历史留存。除非做跟 Canvas 相关的开发，否则不要使用。
 
-37. （Page：<a name="440" href="#440">440</a>）**Map**与**Set**：
+37. [Page: 440] **Map**与**Set**：
 
 * 可以通过“可迭代对象”来初始化；
 
@@ -367,7 +367,7 @@ wm.set(loginButton, { disabled: true });
 
 ### 第 7 章 - 迭代器与生成器
 
-39. （Page：<a name="482" href="#482">482</a>）**迭代器**：
+39. [Page: 482] **迭代器**：
 
 * 开发者无需事先知道如何进行迭代，就能够实现迭代操作；
 * “**迭代器模式**”描述了一个方案，即可以把有些结构变成为“可迭代对象”，因为它们*实现了 Iterable 接口，而且可以通过 Iterable 接口进行消费（对“可迭代”的抽象）。**通过迭代器属性 Symbol.iterator 可以获取/添加一个“迭代器工厂函数”，每次调用这个工厂函数都会返回一个新迭代器**。迭代器对象每次调用 `next` 方法来遍历数据，每次调用该函数会返回一个对象，其中包含迭代器返回的下一个值 **value**，和用于表示是否还有值可迭代的 **done** 属性；
@@ -403,7 +403,7 @@ for (let i of counter) console.log(i);
 * 迭代器维护着一个指向可迭代对象的引用，因此迭代器会阻止 GC 回收对象；
 * 对于 ECMAScript 类型（Array \ Set 等），其**迭代器对象的迭代器对象还是自己**（套娃），因此迭代器对象本身也可以被迭代。**对于 “Symbol.iterator”，可以将其理解为一个为自定义类型实现“可迭代”的必要接口**。
 
-40. （Page：<a name="499" href="#499">499</a>）**生成器**：
+40. [Page: 499] **生成器**：
 
 * **箭头函数不能用来定义生成器**；
 * 调用生成器函数会产生一个“生成器对象”，并处于“**暂停执行**（suspended）”状态。该对象**也实现了 Iterable 接口**，因此具有 next 方法；

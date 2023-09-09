@@ -11,7 +11,7 @@ tags:
 
 ### 第 18 章 - 动画与 Canvas 图形
 
-72. （Page：<a name="1317" href="#1317">1317</a>）`window.requestAnimationFrame()`：
+72. [Page: 1317] `window.requestAnimationFrame()`：
 
 * 需要以 17ms（每秒 60 帧）为时间间隔来绘制动画，而浏览器计时器的**精度不足毫秒**；
 * `setInterval()` 的问题：无法保证时间精度，**作为第二个参数的延时只能保证何时会把代码加入到浏览器的任务队列，而不能保证添加到队列就会立即执行**（如果队列前面还有其他任务，则需要等待这些任务执行完毕。并且队列的执行需要等待主线程的释放）；
@@ -34,7 +34,7 @@ window.addEventListener('scroll', () => {
 
 ### 第 20 章 - JavaScript API
 
-74. （Page：<a name="1452" href="#1452">1452</a>）**Atomics** 与 **SharedArrayBuffer**：
+74. [Page: 1452] **Atomics** 与 **SharedArrayBuffer**：
 
 * SharedArrayBuffer **可以被任意多个执行上下文（Worker）同时使用**，Atomics API 可以保证其上的 JavaScript 操作是**线程安全**的；
 * Atomics API：

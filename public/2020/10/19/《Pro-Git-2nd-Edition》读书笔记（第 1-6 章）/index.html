@@ -128,7 +128,7 @@
 <span class="token function">git</span> remote <span class="token function">rename</span> <span class="token operator">&lt;</span>old<span class="token operator">></span> <span class="token operator">&lt;</span>new<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 更名本地远程仓库；</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
-<li>（Page：<a name="44" href="#44">44</a>）拉取远程仓库信息：</li>
+<li><span class="pn">Page 44</span>拉取远程仓库信息：</li>
 </ol>
 <pre class="line-numbers language-bash"><code class="language-bash"><span class="token function">git</span> fetch <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 不会自动合并到本地分支；</span>
 <span class="token function">git</span> pull <span class="token operator">&lt;</span>name<span class="token operator">></span>  <span class="token comment" spellcheck="true"># 会自动合并到本地的“跟踪分支”（一般即默认分支）；</span>
@@ -165,7 +165,7 @@
 <ol start="29">
 <li><span class="pn">Page 56</span><strong>HEAD 指向了当前所在的本地分支</strong>，会随着 <code>git checkout</code> 切换分支而发生改变。</li>
 <li><span class="pn">Page 59</span>Git 的分支实质上<strong>仅是包含所指对象校验和的文件</strong>（40 字节的 SHA-1 字符串 + 1 字节的换行符）。</li>
-<li>（Page：<a name="63" href="#63">63</a>）<code>git merge</code> 时的 “Fast-Forward” 模式：当试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者时，<strong>只会简单地将指针向前推进</strong>（快进）。而在所合并到分支不是合并分支的直接祖先时，Git 会选择两个分支的末端所指的快照，以及这两个分支的公共祖先，进行简单的三方合并（Three-way Merge）。</li>
+<li><span class="pn">Page 63</span><code>git merge</code> 时的 “Fast-Forward” 模式：当试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么 Git 在合并两者时，<strong>只会简单地将指针向前推进</strong>（快进）。而在所合并到分支不是合并分支的直接祖先时，Git 会选择两个分支的末端所指的快照，以及这两个分支的公共祖先，进行简单的三方合并（Three-way Merge）。</li>
 </ol>
 <p><img src="9.png"></p>
 <ul>
@@ -336,4 +336,4 @@
 <li><strong>refs/pull/&lt;pr#&gt;/merge</strong>：合并请求的引用，该引用表示合并后生成的对应提交记录。</li>
 </ul>
 <p>* <strong>可以通过添加 “refspec” 的方式来把远程的名称映射到本地 .git 目录</strong>。</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-19T13:26:29.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2020/10/05/《垃圾回收算法与实现》读书笔记（第 1-5 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2020-10-19T13:26:29.000Z"> 2023 / 09 / 01, 21:53:29</time></span></div></div></article><br><span class="next-post"><a href="/2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2020/10/05/《垃圾回收算法与实现》读书笔记（第 1-5 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

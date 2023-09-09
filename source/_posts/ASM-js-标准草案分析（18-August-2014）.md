@@ -1,10 +1,10 @@
 ---
-title: ASM.js 标准草案分析（18 August 2014）
-intro: ASM.js 是 JavaScript 的严格子集，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对内存不安全语言（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。
+title: asm.js 标准草案分析（18 August 2014）
+intro: asm.js 是 JavaScript 的严格子集，可作为编译器的一种低级、高效的目标语言。该子语言有效地描述了针对内存不安全语言（例如 C/C++。如：指针可能指向非法值、数组访问可能越界）的沙盒虚拟机。一种静态和动态验证相结合的方式使得 JavaScript 引擎可以针对有效的 ASM.js 代码采用 AOT 优化编译策略。
 comments: false
 date: 2020-08-09 10:25:05
 tags:
-- ASM.js
+- asmjs
 ---
 
 ## 摘要

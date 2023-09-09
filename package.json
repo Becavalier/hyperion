@@ -31,7 +31,7 @@
     "graphql": "^15.5.1",
     "helmet": "^3.23.3",
     "hexo": "^5.4.0",
-    "hexo-algoliasearch-next": "^1.0.0",
+    "hexo-algoliasearch-next": "^1.0.2",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^3.0.0",

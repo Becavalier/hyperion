@@ -105,7 +105,7 @@
 <li><strong>性能计数器</strong>：描述服务器或系统性能的直观数据指标，比如当前系统负载、对象与线程数、CPU / 内存使用率、磁盘与网络 IO 等。其中<strong>理想的系统负载应该对应为系统的 CPU 数量</strong>，因为系统负载指当前正在排队被 CPU 处理的进程数量。</li>
 </ul>
 <ol start="11">
-<li>（Page：<a name="39" href="#39">39</a>）性能测试方法：</li>
+<li><span class="pn">Page 39</span>性能测试方法：</li>
 </ol>
 <ul>
 <li><strong>性能测试</strong>：以系统设计初期规划的性能指标为预期目标，对系统不断施加压力，用来验证在资源可接受范围内，系统在一定压力下能否达到预期的性能指标；</li>
@@ -183,7 +183,7 @@
 <p><strong>服务层</strong>的机器与应用层类似。这些服务器被上层通过分布式服务调用框架访问，框架会在应用层中实现软件负载均衡，并通过服务注册中心对提供服务的机器进行心跳检查，发现有服务不可用，会立即通知客户端程序修改服务访问列表，剔除不可用的服务器。</p>
 <p><strong>数据层</strong>的服务器比较特殊，为了保证数据不丢失，需要在数据写入时同时对集群内的其他服务器同步复制数据，以保证数据的一致性和可用性。</p>
 <ol start="18">
-<li>（Page：<a name="71" href="#71">71</a>）<strong>高可用应用</strong>：</li>
+<li><span class="pn">Page 71</span><strong>高可用应用</strong>：</li>
 </ol>
 <ul>
 <li><strong>无状态性</strong>：即多个服务实例之间完全对等，请求提交到任意服务器，处理结果均完全一致；</li>
@@ -216,7 +216,7 @@
 <li><strong>幂等设计</strong>：由于无法确定一次失败的服务请求是否真的失败了，为了避免服务的二次调用产生“非预期”的结果，我们需要将服务调用幂等化，即对于一次调用和多次调用产生的效果是一致的。</li>
 </ul>
 <ol start="20">
-<li>（Page：<a name="78" href="#78">78</a>）<strong>高可用数据</strong>：</li>
+<li><span class="pn">Page 78</span><strong>高可用数据</strong>：</li>
 </ol>
 <ul>
 <li>主要手段主要是“<strong>数据备份</strong>”与“<strong>失效转移</strong>”；</li>
@@ -264,7 +264,7 @@
 <p>- <em><strong>灰度发布</strong></em>：</p>
 <p>一段时间内只发布线上集群中的一部分机器，待观察一段时间没有问题后，再逐渐发布集群内的其他机器。在进行“灰度发布”的同时，我们甚至可以进行“A/B测试”，以新发布的机器作为对照组，查看新旧软件使用用户的反馈情况。</p>
 <h3 id="第-6-章-永无止境：网站的伸缩性架构"><a href="#第-6-章-永无止境：网站的伸缩性架构" class="headerlink" title="第 6 章 - 永无止境：网站的伸缩性架构"></a>第 6 章 - 永无止境：网站的伸缩性架构</h3><ol start="22">
-<li>（Page：<a name="99" href="#99">99</a>）常见<strong>负载均衡模式</strong>：</li>
+<li><span class="pn">Page 99</span>常见<strong>负载均衡模式</strong>：</li>
 </ol>
 <ul>
 <li>可用于直接实现应用服务器的伸缩性。</li>
@@ -311,7 +311,7 @@
 <li><strong>源地址散列</strong>：根据请求来源的 IP 地址进行 Hash 计算，得到目标应用服务器地址。即<strong>同一个 IP</strong> 的请求总会被分流到同一个服务器上。可用于实现“<strong>会话粘滞</strong>”。</li>
 </ul>
 <ol start="24">
-<li>（Page：<a name="106" href="#106">106</a>）<strong>分布式缓存集群</strong>的伸缩性设计：</li>
+<li><span class="pn">Page 106</span><strong>分布式缓存集群</strong>的伸缩性设计：</li>
 </ol>
 <ul>
 <li><strong>重要原则</strong>：新加入缓存服务器后应使整个缓存服务器集群中已经缓存的数据尽可能还被访问到。为此需要借助“<strong>分布式缓存的一致性 Hash 算法</strong>”。</li>
@@ -379,4 +379,4 @@
 <li><span class="pn">Page 131</span>可扩展的数据结构：<strong>ColumnFamily</strong>。创建表时只需要指定 ColumnFamily 的名字，无需指定字段，可以在数据写入时再指定。</li>
 </ol>
 <h3 id="第-8-章-固若金汤：网站的安全架构"><a href="#第-8-章-固若金汤：网站的安全架构" class="headerlink" title="第 8 章 - 固若金汤：网站的安全架构"></a>第 8 章 - 固若金汤：网站的安全架构</h3><p>（略）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-04-29T11:07:02.000Z"> 2023 / 04 / 21, 10:01:05</time></span></div></div></article><br><span class="next-post"><a href="/2017/05/06/STC-与-PTC/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2017/04/26/淘宝网的-BigRender/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2017-04-29T11:07:02.000Z"> 2023 / 09 / 01, 21:54:50</time></span></div></div></article><br><span class="next-post"><a href="/2017/05/06/STC-与-PTC/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2017/04/26/淘宝网的-BigRender/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

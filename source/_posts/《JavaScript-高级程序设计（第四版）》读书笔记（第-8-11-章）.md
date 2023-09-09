@@ -60,7 +60,7 @@ Object.defineProperty(foo, 'nickname', {
 * Object.getOwnPropertyDescriptor() 可用于**获取指定实例属性的属性描述符**；
 * Object.getOwnPropertyDescriptors() 可用于**批量获取指定对象的实例属性描述符**；
 
-42. （Page：<a name="540" href="#540">540</a>）对象操作：
+42. [Page: 540] 对象操作：
 
 * **合并操作**（`Object.assign`）：
   * 可以将每个源对象中的**可枚举**（Object.propertyIsEnumerable() 返回 true）和**实例属性**（Object.hasOwnProperty() 返回 ture）复制到目标对象；
@@ -297,7 +297,7 @@ class Vehicle {
 
 ### 第 9 章 - 代理与反射
 
-46. （Page：<a name="661" href="#661">661</a>）**代理**：
+46. [Page: 661] **代理**：
 
 * Proxy 对象**无法使用 instaceof 操作符**（没有 Proxy.prototype）；
 * Proxy 中所有可以捕获的方法都有对应的“**反射**”接口（Reflect）。这些接口与捕获器拦截的方法具有相同的名称和函数签名，而且也具有相同的行为；
@@ -353,7 +353,7 @@ revoke();  // proxy is invalid after this.
 
 ### 第 10 章 - 函数
 
-47. （Page：<a name="707" href="#707">707</a>）**函数**：
+47. [Page: 707] **函数**：
 
 * **每个函数都是 Function 类型的实例**（new Function()），因此**函数名是指向函数对象的指针**，且不一定与函数本身紧密绑定。`function Function(){}` 与 `function Object(){}` 这两个**对象**被浏览器特殊对待；
 * Function 构造函数，其最后一个参数始终会被当做函数体，其余均为该函数的参数；
@@ -497,7 +497,7 @@ class TrackablePromise extends Promise {
 }
 ```
 
-49. （Page：<a name="840" href="#840">840</a>）**异步函数**：
+49. [Page: 840] **异步函数**：
 
 * `async` 与 `await` 是语法糖（Syntactic Sugar）；
 * 使用 `async` 标记的函数，在执行后**默认返回 Promise 对象**。而内部使用了 `await` 关键字的函数则必须被标记为 async；

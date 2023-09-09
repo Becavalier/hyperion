@@ -142,7 +142,7 @@ git revert <start-commit>..<end-commit>
 git config --global rerere.enabled true  # 启用 Rerere；
 ```
 
-63. （Page：<a name="275" href="#275">275</a>）**使用 Git 调试**：
+63. [Page: 275] **使用 Git 调试**：
 
 ```bash
 # 查找第一个出现问题的提交；
@@ -302,7 +302,7 @@ echo 'Commit Message.' | git commit-tree <tree-sha1-hash>
 * Git 所做的实质工作：将被改写的文件保存为数据对象（`git hash-object`），更新暂存区（`git update-index`），记录树对象（`git write-tree`），最后创建一个指明了顶层树对象和父提交的提交对象（`git commit-tree`）；
 
 77. [Page: 413] Git 以“**对象类型**”作为开头来构造一个头部信息，如 “blob \ commit \ tree”。接着 Git 会添加一个**空格**，随后是**数据内容的长度**，最后是一个**空字节**（“\0”）。Git 会将上述头部信息和原始数据拼接起来，并计算出这条新内容的 SHA-1 校验和。
-78. （Page：<a name="415" href="#415">415</a>）**Git 引用**：SHA-1 字符串的“**别名**”。
+78. [Page: 415] **Git 引用**：SHA-1 字符串的“**别名**”。
 
 ```bash
 # 更新一个引用的值；

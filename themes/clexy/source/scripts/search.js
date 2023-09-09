@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const wrapFuncs = {
     wrapSearchPostResultSnippet: results => {
       if (results.length > 0) {
-        results.sort((x, y) => new Date(y.date).getTime() - new Date(x.date).getTime())
         return `
           <h4>文章（仅显示最近 ${SEARCH_RESULT_THRESHOLD} 条）</h4>
           <ul class="search-catelog-items">

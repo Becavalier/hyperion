@@ -89,6 +89,7 @@ algolia:
   adminApiKey: "ec24c220e402e80d87d1c855d6ca4744"
   chunkSize: 5000
   indexName: "hangyu_site"
+  attributeForDistinct: "title"
   fields:
     - content:strip
     - permalink
