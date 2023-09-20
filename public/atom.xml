@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-09-08T13:10:30.929Z</updated>
+  <updated>2023-09-14T07:18:57.521Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2023-09-05T14:45:00.000Z</published>
-    <updated>2023-09-08T13:10:30.929Z</updated>
+    <updated>2023-09-14T07:18:57.521Z</updated>
     
     
-    <summary type="html">这是很多人推荐的一本书，被奉为软件工程领域的“圣经”。书中的内容源于作者 Brooks 博士在 IBM 公司任 System 系列计算机以及其软件系统 OS 项目经理时总结的实践经验。</summary>
+    <summary type="html">这是很多人推荐的一本书，曾被奉为软件工程领域的“圣经”。书中的内容源于作者 Brooks 博士在 IBM 公司任 System 系列计算机以及其软件系统 OS 项目经理时总结的实践经验。</summary>
     
     
     
@@ -40,7 +40,7 @@
     <link href="https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-20%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-20%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-09-04T09:39:00.000Z</published>
-    <updated>2023-09-05T06:43:15.945Z</updated>
+    <updated>2023-09-13T02:40:59.648Z</updated>
     
     
     <summary type="html">书接上文。</summary>
@@ -59,7 +59,7 @@
     <link href="https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-07-18T03:25:00.000Z</published>
-    <updated>2023-09-04T09:38:19.618Z</updated>
+    <updated>2023-09-19T13:59:05.389Z</updated>
     
     
     <summary type="html">这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。</summary>

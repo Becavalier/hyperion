@@ -1055,15 +1055,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/index.html",
-    "revision": "e1ec5caedb8ce762bd351f5a249f6bb2"
+    "revision": "f4ee42b388a82f8b9b027cd74d0f8aea"
   },
   {
     "url": "2023/09/04/《Crafting-Interpreters》读书笔记（第 11-20 章）/index.html",
-    "revision": "792fa2c5401f92b6a50a8f23d032ad15"
+    "revision": "50c39b741592783ebf021c732aaec011"
   },
   {
     "url": "2023/09/05/《人月神话》读书笔记/index.html",
-    "revision": "2f7bb38658a90ec3bcd0e63b7570e3ed"
+    "revision": "fc51c729a800f39016b7ec2005eb6a5d"
   },
   {
     "url": "about/index.html",
@@ -1399,111 +1399,111 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/10/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/11/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/12/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/13/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/14/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/15/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/16/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/17/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/18/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/19/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/2/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/20/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/21/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/22/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/23/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/24/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/25/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/26/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/27/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/3/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/4/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/5/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/6/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/7/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/8/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "page/9/index.html",
-    "revision": "d0a185e34b3e06644a78e00a4e8575ce"
+    "revision": "f49985cbe1a3205075b7144938c95212"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1539,7 +1539,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "db39d23907920a47a4ff9cbb30049c8a"
+    "revision": "5f2195f93767a24e17fc9d9e332726b9"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1851,7 +1851,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "73f982f8eadc0f06eba4e3df839cb7df"
+    "revision": "cfb5f0363ea657820ede5d4ce9b623d4"
   },
   {
     "url": "tags/Interpreter/index.html",
