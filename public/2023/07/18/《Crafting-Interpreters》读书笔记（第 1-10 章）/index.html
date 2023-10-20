@@ -1,9 +1,14 @@
-<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Crafting Interpreters》读书笔记（第 1-10 章） | 曜彤.手记</title><meta name="description" content="这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Crafting Interpreters》读书笔记（第 1-10 章）" class="full"><h1 itemprop="headline" class="align-center">《Crafting Interpreters》读书笔记（第 1-10 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-07-18T03:25:00.000Z"> 2023 / 07 / 18, 11:25:00</time></span><span class="page-tag-anchor"><a href="/tags/Compiler" itemprop="url">#Compiler</a>&nbsp;&nbsp;<a href="/tags/Interpreter" itemprop="url">#Interpreter</a>&nbsp;&nbsp;</span></div><p>这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。</p>
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Crafting Interpreters》读书笔记（第 1-10 章） | 曜彤.手记</title><meta name="description" content="这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Crafting Interpreters》读书笔记（第 1-10 章）" class="full"><h1 itemprop="headline" class="align-center">《Crafting Interpreters》读书笔记（第 1-10 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-07-18T03:25:00.000Z"> 2023 / 07 / 18, 11:25:00</time></span><span class="page-tag-anchor"><a href="/tags/Compiler" itemprop="url">#Compiler</a>&nbsp;&nbsp;<a href="/tags/Interpreter" itemprop="url">#Interpreter</a>&nbsp;&nbsp;</span></div><p>这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。</p>
 <h3 id="Lox-Grammer"><a href="#Lox-Grammer" class="headerlink" title="Lox Grammer"></a>Lox Grammer</h3><p>The syntactic grammar is used to parse the linear sequence of tokens into the nested syntax tree structure. It starts with the first rule that matches an entire Lox program (or a single REPL entry).</p>
 <pre class="line-numbers language-bnf"><code class="language-bnf">program        → declaration* EOF ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4 id="Declarations"><a href="#Declarations" class="headerlink" title="Declarations"></a>Declarations</h4><p>A program is a series of declarations, which are the statements that bind new identifiers or any of the other statement types.</p>
+<h4 id="Declarations"><a href="#Declarations" class="headerlink" title="Declarations"></a>Declarations</h4><p>A program is a series of declarations, which are:</p>
+<ul>
+<li>The statements that bind new identifiers or,</li>
+<li>Any of the other statement types.</li>
+</ul>
+<p>And the declarations are not allowed directly inside control flow statements. </p>
 <pre class="line-numbers language-bnf"><code class="language-bnf">declaration    → classDecl
                | funDecl
                | varDecl
@@ -263,6 +268,9 @@ primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression "
 <td><code>if</code> statement</td>
 </tr>
 </tbody></table>
+<ul>
+<li>It is possible to define a more complex grammar that’s difficult to parse using recursive descent. <strong>Predictive parsing gets tricky when you may need to look ahead a large number of tokens to figure out what you’re sitting on</strong>. If you can parse C++ using recursive descent — which many C++ compilers do, you can parse anything.</li>
+</ul>
 <ol start="16">
 <li>A decent parser should:</li>
 </ol>
@@ -274,50 +282,57 @@ primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression "
 <li>Minimize cascaded errors.</li>
 </ul>
 <ol start="17">
-<li><p><strong>Panic mode (error recovery)</strong>: as soon as the parser detects an error, it enters panic mode. It knows at least one token doesn’t make sense given its current state in the middle of some stack of grammar productions. Before it can get back to parsing, it needs to get its state and the sequence of forthcoming tokens aligned such that the next token does match the rule being parsed. This process is called <strong>synchronization</strong> (the traditional place in the grammar to synchronize is between statements). The parser fixes its parsing state by jumping out of any nested productions until it gets back to that rule. Then it synchronizes the token stream by discarding tokens until it reaches one that can appear at that point in the rule.</p>
+<li><p><strong>Panic mode</strong> (a wey of error recovery): as soon as the parser detects an error, it enters panic mode. It knows at least one token doesn’t make sense given its current state in the middle of some stack of grammar productions. Before it can get back to parsing, it needs to get its state and the sequence of forthcoming tokens aligned such that the next token does match the rule being parsed. This process is called <strong>synchronization</strong> (<strong>the traditional place in the grammar to synchronize is between statements</strong>). The parser fixes its parsing state by jumping out of any nested productions until it gets back to that rule. Then it synchronizes the token stream by discarding tokens until it reaches one that can appear at that point in the rule.</p>
 </li>
-<li><p>Error productions (error recovery): augment the grammar with a rule that successfully matches the erroneous syntax. The parser safely parses it but then reports it as an error instead of producing a syntax tree.</p>
+<li><p>Error productions (a way of error recovery): augment the grammar with a rule that successfully matches the erroneous syntax. The parser safely parses it but then reports it as an error instead of producing a syntax tree.</p>
 </li>
 </ol>
 <h3 id="Chapter-7-Evaluating-Expressions"><a href="#Chapter-7-Evaluating-Expressions" class="headerlink" title="Chapter 7 - Evaluating Expressions"></a>Chapter 7 - Evaluating Expressions</h3><ol start="19">
-<li>The leaves of an expression tree, the atomic bits of syntax that all other expressions are composed of, are literals. A literal is a bit of syntax that produces a value. A literal always appears somewhere in the user’s source code.</li>
-<li>Runtime errors are failures that the language semantics demand we detect and report while the program is running (hence the name).</li>
-<li>If you find yourself designing a statically typed language, keep in mind that you can sometimes <strong>give users more flexibility without sacrificing too many of the benefits of static safety by deferring some type checks until runtime</strong>. A key reason users choose statically typed languages is because of the confidence the language gives them that certain kinds of errors can never occur when their program is run. Defer too many type checks until runtime, and you erode that confidence.</li>
+<li>The leaves of an expression tree, the atomic bits of syntax that all other expressions are composed of, are literals. A literal is a bit of syntax that produces a value, <strong>literal always appears somewhere in the user’s source code</strong>. The literal values should be parsed into runtime values in the interpreter implementation.</li>
+<li>Runtime errors are failures that the language semantics demand we detect and report while the program is running.</li>
+<li>If designing a statically typed language, keep in mind that we can sometimes <strong>give users more flexibility without sacrificing too many of the benefits of static safety by deferring some type checks until runtime</strong> (.e.g: casting). A key reason users choose statically typed languages is because of the confidence the language gives them that certain kinds of errors can never occur when their program is run. Defer too many type checks until runtime, and you erode that confidence.</li>
 </ol>
 <h3 id="Chapter-8-Statements-and-State"><a href="#Chapter-8-Statements-and-State" class="headerlink" title="Chapter 8 - Statements and State"></a>Chapter 8 - Statements and State</h3><ol start="22">
-<li>An <strong>expression statement</strong> lets you place an expression where a statement is expected. They exist to evaluate expressions that have side effects. Any time you see a function or method call followed by a ;, you’re looking at an expression statement.</li>
+<li><strong>Expression statement</strong>: lets you place an expression where a statement is expected. They exist to evaluate expressions that have side effects. Any time you see a function or method call followed by a ;, you’re looking at an expression statement.</li>
 <li>Statement BNF grammer: </li>
 </ol>
 <pre class="line-numbers language-bnf"><code class="language-bnf">program        → statement* EOF ;
-statement      → exprStmt | printStmt ;
+statement      → exprStmt 
+               | printStmt ;
 exprStmt       → expression ";" ;
 printStmt      → "print" expression ";" ;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="24">
-<li>Variable syntax:</li>
+<li>Variable:</li>
 </ol>
 <ul>
-<li>Some places where a statement is allowed: like inside a block or at the top level, allow any kind of statement, including declarations. Others allow only the “higher” precedence statements that don’t declare names.</li>
+<li>Some places where a statement is allowed, like inside a block or at the top level, allow any kind of statement, including declarations. Others allow only the “higher” precedence statements that don’t declare names.</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">if</span> <span class="token punctuation">(</span>monday<span class="token punctuation">)</span> print <span class="token string">"Ugh, already?"</span><span class="token punctuation">;</span>      <span class="token comment" spellcheck="true">// Allowed ✓</span>
 <span class="token keyword">if</span> <span class="token punctuation">(</span>monday<span class="token punctuation">)</span> var beverage <span class="token operator">=</span> <span class="token string">"espresso"</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Disallowed ✗</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
-<li>To accommodate the above distinction, we can add another rule for kinds of statements that declare names. Also, to access a variable, we define a new kind of primary expression. See BNF grammer below:</li>
+<li>To accommodate the above distinction, we can <strong>add another rule for kinds of statements that declare names</strong>. Any place where a declaration is allowed also allows non-declaring statements. Also, to access a variable, we define a new kind of primary expression. See BNF grammer below:</li>
 </ul>
 <pre class="line-numbers language-bnf"><code class="language-bnf">program        → declaration* EOF ;
 declaration    → varDecl
                | statement ;
 varDecl        → "var" IDENTIFIER ( "=" expression )? ";" ;
 ( ... )
-primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" | IDENTIFIER ;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+primary        → "true" | "false" | "nil"
+               | NUMBER | STRING
+               | "(" expression ")"
+               | IDENTIFIER ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>The bindings that associate variables to values need to be stored in an <em><strong>environment</strong></em>. We can use the same implementation technique for all variables (local + global), building a chain of environments, one for each scope, all the way up to the top (global). </li>
+</ul>
 <ol start="25">
-<li><p>A rule about variables and scoping is: “<strong>When in doubt, do what Scheme does</strong>”. The Scheme folks have probably spent more time thinking about variable scope than we ever will, one of the main goals of Scheme was to introduce lexical scoping to the world, so it’s hard to go wrong if you follow in their footsteps.</p>
+<li><p>A rule about variables and scoping is: “<strong>When in doubt, do what Scheme does</strong>”. One of the main goals of Scheme was to introduce lexical scoping to the world, so it’s hard to go wrong if you follow in their footsteps.</p>
 </li>
 <li><p>Some statically typed languages like Java and C# specify that the top level of a program isn’t a sequence of imperative statements. Instead, a program is a set of declarations which all come into being simultaneously. The implementation declares all of the names before looking at the bodies of any of the functions. Older languages like C and Pascal don’t work like this. Instead, they force you to add explicit forward declarations to declare a name before it’s fully defined. That was a concession to the limited computing power at the time. <strong>They wanted to be able to compile a source file in one single pass through the text, so those compilers couldn’t gather up all of the declarations first before processing function bodies</strong>.</p>
 </li>
-<li><p>Assignment BNF syntax:</p>
+<li><p>Assignment:</p>
 </li>
 </ol>
 <pre class="line-numbers language-bnf"><code class="language-bnf">expression     → assignment ;
@@ -325,8 +340,8 @@ assignment     → IDENTIFIER "=" assignment
                | equality ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>Like most C-derived languages, assignment is an expression and not a statement.</li>
-<li>As in C, it is the lowest precedence expression form. </li>
+<li>Mostly, assignment is an expression and not a statement.</li>
+<li>As in C, <strong>it is the lowest precedence expression form</strong>. </li>
 <li>Distinguish r-value and l-value: a r-value could be evaluated, and an l-value “evaluates” to a storage location that you can assign into. And the syntax tree needs to reflect that an l-value isn’t evaluated like a normal expression.</li>
 <li>Every valid assignment target happens to also be valid syntax as a normal expression. We can <strong>parse the left-hand side as if it were an expression</strong> and then after the fact produce a syntax tree that turns it into an assignment target. If the left-hand side expression isn’t a valid assignment target, we fail with a syntax error. </li>
 </ul>
@@ -335,14 +350,10 @@ assignment     → IDENTIFIER "=" assignment
 <span class="token function">newPoint</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>y<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Get the expression value.</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="28">
-<li><strong>Lexical scope</strong> (or the less commonly heard static scope) is a specific style of scoping where the text of the program itself shows where a scope begins and ends. In contrast to dynamic scope, where you don’t know what a name refers to until you execute the code.</li>
+<li><strong>Lexical scope</strong> (static scope): a specific style of scoping where the text of the program itself shows where a scope begins and ends. In contrast to dynamic scope, where you don’t know what a name refers to until you execute the code.</li>
 </ol>
 <ul>
-<li>We implement this by defining a fresh environment for each block containing only the variables defined in that scope. When we exit the block, we discard its environment and restore the previous one. Also, we need to chain the environments together. Each environment has a reference to the environment of the immediately enclosing scope. When we look up a variable, we walk that chain from innermost out until we find the variable. Starting at the inner scope is how we make local variables shadow outer ones (it forms a <strong>parent-pointer tree</strong>).</li>
-</ul>
-<p><img src="3.png"></p>
-<ul>
-<li>Block BNF grammar:</li>
+<li>Block syntax:</li>
 </ul>
 <pre class="line-numbers language-bnf"><code class="language-bnf">statement      → exprStmt
                | printStmt
@@ -350,21 +361,25 @@ assignment     → IDENTIFIER "=" assignment
 block          → "{" declaration* "}" ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>Manually changing and restoring a mutable environment field feels inelegant. Another classic approach is to <strong>explicitly pass the environment as a parameter to each visit method</strong>. To “change” the environment, you pass a different one as you recurse down the tree. You don’t have to restore the old one, since the new one lives on the Java stack and is implicitly discarded when the interpreter returns from the block’s visit method.</li>
+<li>We can implement this by defining a fresh environment for each block containing only the variables defined in that scope. When we exit the block, we discard its environment and restore the previous one. Also, we need to chain the environments together. Each environment has a reference to the environment of the immediately enclosing scope. When we look up a variable, we walk that chain from innermost out until we find the variable. Starting at the inner scope is how we make local variables shadow outer ones (it forms a “<strong>parent-pointer tree</strong>“).</li>
+</ul>
+<p><img src="3.png"></p>
+<ul>
+<li>Manually changing and restoring a mutable environment field feels inelegant. Another classic approach is to <strong>explicitly pass the environment as a parameter to each visit method</strong>. To “change” the environment, you pass a different one as you recurse down the tree. You don’t have to restore the old one, since the new one lives on the stack and is implicitly discarded when the interpreter returns from the block’s visit method.</li>
 </ul>
 <ol start="29">
-<li><strong>Implicit declaration</strong>: some languages collapse declaring a new variable and assigning to an existing one to only assignment syntax. Assigning to a non-existent variable automatically brings it into being. It made sense in years past when most scripting languages were heavily imperative and code was pretty flat. </li>
+<li><strong>Implicit variable declaration</strong>: some languages collapse declaring a new variable and assigning to an existing one to only assignment syntax. Assigning to a non-existent variable automatically brings it into being. It made sense in years past when most scripting languages were heavily imperative and code was pretty flat. </li>
 </ol>
 <h3 id="Chapter-9-Control-Flow"><a href="#Chapter-9-Control-Flow" class="headerlink" title="Chapter 9 - Control Flow"></a>Chapter 9 - Control Flow</h3><ol start="30">
-<li><strong>Russell’s paradox</strong>: initially, set theory allowed you to define any sort of set. If you could describe it in English, it was valid. Naturally, given mathematicians’ predilection for self-reference, sets can contain other sets. So Russell, rascal that he was, came up with:</li>
+<li><strong>Russell’s paradox</strong>: initially, set theory allowed you to define any sort of set. If you could describe it in English, it was valid. Naturally, given mathematicians’ predilection for self-reference, sets can contain other sets. So Russell came up with:</li>
 </ol>
 <blockquote>
 <p>R is the set of all sets that do not contain themselves.</p>
 </blockquote>
 <p>So, does R contain itself? If it doesn’t, then according to the second half of the definition it should. But if it does, then it no longer meets the definition. Cue mind exploding.</p>
 <ol start="31">
-<li>Turing-complete: language is expressive enough to be a turing machine. You basically need arithmetic, a little control flow, and the ability to allocate and use (theoretically) arbitrary amounts of memory.</li>
-<li>Branching syntax and semantics:</li>
+<li>Turing-complete: language is expressive enough to be a turing machine, it basically need arithmetic, a little control flow, and the ability to allocate and use (theoretically) arbitrary amounts of memory. Turing machine is equivalent to Church’s “lambda calculus” in power.</li>
+<li>Branching:</li>
 </ol>
 <pre class="line-numbers language-bnf"><code class="language-bnf">statement      → exprStmt
                | ifStmt
@@ -377,7 +392,7 @@ ifStmt         → "if" "(" expression ")" statement
 <li><strong>Dangling else</strong>: a problem in programming of parser generators in which an optional else clause in an if–then(–else) statement results in nested conditionals being ambiguous. Formally, the reference context-free grammar of the language is ambiguous, meaning there is more than one correct parse tree. Instead, most languages and parsers avoid the problem in an ad hoc way. No matter what hack they use to get themselves out of the trouble, they always choose the same interpretation - <strong>the else is bound to the nearest if that precedes it</strong>.</li>
 </ul>
 <ol start="33">
-<li>Logical Operators syntax and semantics:</li>
+<li>Logical Operators:</li>
 </ol>
 <pre class="line-numbers language-bnf"><code class="language-bnf">expression     → assignment ;
 assignment     → IDENTIFIER "=" assignment
@@ -387,10 +402,10 @@ logic_and      → equality ( "and" equality )* ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><strong>“logic_or” and “logic_and” don’t have the same precedence</strong>, the precedence of “logic_and” is higher than “logic_or”. “And” is often seen as the multiplication in Boole’s algebra, and “Or” is seen as the addition, which is why they commonly inherit the precedance of their namesakes.</li>
-<li>The syntax doesn’t care that they short-circuit which is a semantic concern.</li>
+<li>The syntax itself doesn’t care that they short-circuit which is a semantic concern, should be handled at runtime.</li>
 </ul>
 <ol start="34">
-<li>“loop” syntax and semantics:</li>
+<li>Loops:</li>
 </ol>
 <pre class="line-numbers language-bnf"><code class="language-bnf">statement      → exprStmt
                | forStmt
@@ -404,18 +419,17 @@ forStmt        → "for" "(" ( varDecl | exprStmt | ";" )
                  expression? ")" statement ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
+<li><strong>Syntactic sugar</strong>: making some common code patterns more pleasant to write. <ul>
 <li>“forStmt” could be implemented as a syntactic sugar of “whileStmt”.</li>
-<li><strong>Syntactic sugar</strong>: making some common code patterns more pleasant to write. <em>Desugaring</em>: a process where the front end takes code using syntax sugar and translates it to a more primitive form that the back end already knows how to execute. <ul>
-<li>Lispers famously claim their language “has no syntax”, while Smalltalkers proudly show that you can fit the entire grammar on an index card. This tribe has the philosophy that the language doesn’t need syntactic sugar. Instead, the minimal syntax and semantics it provides are powerful enough to let library code be as expressive as if it were part of the language itself.</li>
-<li>Syntactic sugar has a bad rap among the PL intelligentsia. There’s a real fetish for minimalism in that crowd. There is some justification for that. Poorly designed, unneeded syntax raises the cognitive load without adding enough expressiveness to carry its weight. </li>
 </ul>
 </li>
+<li><em>Desugaring</em>: a process where the front end takes code using syntax sugar and translates it to a more primitive form that the back end already knows how to execute. </li>
 </ul>
 <h3 id="Chapter-10-Functions"><a href="#Chapter-10-Functions" class="headerlink" title="Chapter 10 - Functions"></a>Chapter 10 - Functions</h3><ol start="35">
 <li>Function Calls:</li>
 </ol>
 <ul>
-<li>The name of the function being called isn’t actually part of the call syntax. The thing being called — <strong>the callee, can be any expression that evaluates to a function</strong> (compared to Pascal, only named functions or functions stored directly in variables can be called). </li>
+<li>The name of the function being called - <strong>the callee, can be any expression that evaluates to a function</strong> (compared to Pascal, only named functions or functions stored directly in variables can be called). </li>
 <li>The call operator “()” has higher precedence than any other operator, BNF grammar as below:</li>
 </ul>
 <pre class="line-numbers language-bnf"><code class="language-bnf">unary          → ( "!" | "-" ) unary | call ;
@@ -423,19 +437,18 @@ call           → primary ( "(" arguments? ")" )* ;
 arguments      → expression ( "," expression )* ;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>Arity: the number of arguments a function or operation expects.</li>
+<li>Native functions (primitives, external functions, foreign functions): functions that the interpreter exposes to user code but that are implemented in the host language, not the language being implemented. </li>
+<li>Lisp-1: refer to languages like Scheme that put functions and variables in the same namespace.</li>
+<li>Lisp-2: for languages like Common Lisp that partition them.</li>
 </ul>
 <ol start="36">
 <li><strong>Currying</strong>: the normal way of defining a function that takes multiple arguments is as a series of nested functions. Each function takes one argument and returns a new function. That function consumes the next argument, returns yet another function, and so on. Eventually, once all of the arguments are consumed, the last function completes the operation.</li>
 <li>Function Declarations:</li>
 </ol>
-<pre class="line-numbers language-bnf"><code class="language-bnf">declaration    → funDecl
-               | varDecl
-               | statement ;
-funDecl        → "fun" function ;
+<pre class="line-numbers language-bnf"><code class="language-bnf">funDecl        → "fun" function ;
 function       → IDENTIFIER "(" parameters? ")" block ;
 parameters     → IDENTIFIER ( "," IDENTIFIER )* ;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>A named function declaration isn’t really a single primitive operation. It’s syntactic sugar for two distinct steps (anonymous functions + assignment): <ul>
 <li>Creating a new function object.</li>
@@ -447,17 +460,10 @@ parameters     → IDENTIFIER ( "," IDENTIFIER )* ;
 <ol start="38">
 <li>Return Statements:</li>
 </ol>
-<pre class="line-numbers language-bnf"><code class="language-bnf">statement      → exprStmt
-               | forStmt
-               | ifStmt
-               | printStmt
-               | returnStmt
-               | whileStmt
-               | block ;
-returnStmt     → "return" expression? ";" ;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bnf"><code class="language-bnf">returnStmt     → "return" expression? ";" ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>Each function call should return something (implicit <code>nil</code> or other valuable data), even if it contains no return statements at all.</li>
-<li>It could be implemented simply by Exception (unwinding the visited call).</li>
+<li><strong>It could be implemented simply by Exception</strong> (unwinding the visited call).</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-07-18T03:25:00.000Z"> 2023 / 09 / 19, 21:59:05</time></span></div></div></article><br><span class="next-post"><a href="/2023/09/04/《Crafting-Interpreters》读书笔记（第 11-20 章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/07/13/关于-C++-Stack-Unwinding-的一点记录/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-07-18T03:25:00.000Z"> 2023 / 10 / 06, 11:16:24</time></span></div></div></article><br><span class="next-post"><a href="/2023/09/04/《Crafting-Interpreters》读书笔记（第 11-30 章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/07/13/关于-C++-Stack-Unwinding-的一点记录/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -1,6 +1,6 @@
 ---
 title: 《Crafting Interpreters》读书笔记（第 1-10 章）
-intro: 这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。
+intro: 这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。
 comments: false
 date: 2023-07-18 11:25:00
 tags:
@@ -8,7 +8,7 @@ tags:
 - Compiler
 ---
 
-这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。
+这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。
 
 ### Lox Grammer
 
@@ -20,7 +20,12 @@ program        → declaration* EOF ;
 
 #### Declarations
 
-A program is a series of declarations, which are the statements that bind new identifiers or any of the other statement types.
+A program is a series of declarations, which are:
+
+* The statements that bind new identifiers or,
+* Any of the other statement types.
+
+And the declarations are not allowed directly inside control flow statements. 
 
 ```bnf
 declaration    → classDecl
@@ -242,6 +247,8 @@ factor         → unary ( ( "/" | "*" ) unary )* ;
 |  <i>*</i> or <i>+</i>   |  `while` or `for` loop  |
 |  <i>?</i>   | `if` statement |
 
+* It is possible to define a more complex grammar that’s difficult to parse using recursive descent. **Predictive parsing gets tricky when you may need to look ahead a large number of tokens to figure out what you’re sitting on**. If you can parse C++ using recursive descent — which many C++ compilers do, you can parse anything.
+
 16. A decent parser should:
 
 * Detect and report the error.
@@ -250,38 +257,39 @@ factor         → unary ( ( "/" | "*" ) unary )* ;
 * Report as many distinct errors as there are. 
 * Minimize cascaded errors.
 
-17. **Panic mode (error recovery)**: as soon as the parser detects an error, it enters panic mode. It knows at least one token doesn’t make sense given its current state in the middle of some stack of grammar productions. Before it can get back to parsing, it needs to get its state and the sequence of forthcoming tokens aligned such that the next token does match the rule being parsed. This process is called **synchronization** (the traditional place in the grammar to synchronize is between statements). The parser fixes its parsing state by jumping out of any nested productions until it gets back to that rule. Then it synchronizes the token stream by discarding tokens until it reaches one that can appear at that point in the rule.
+17. **Panic mode** (a wey of error recovery): as soon as the parser detects an error, it enters panic mode. It knows at least one token doesn’t make sense given its current state in the middle of some stack of grammar productions. Before it can get back to parsing, it needs to get its state and the sequence of forthcoming tokens aligned such that the next token does match the rule being parsed. This process is called **synchronization** (**the traditional place in the grammar to synchronize is between statements**). The parser fixes its parsing state by jumping out of any nested productions until it gets back to that rule. Then it synchronizes the token stream by discarding tokens until it reaches one that can appear at that point in the rule.
 
-18. Error productions (error recovery): augment the grammar with a rule that successfully matches the erroneous syntax. The parser safely parses it but then reports it as an error instead of producing a syntax tree.
+18. Error productions (a way of error recovery): augment the grammar with a rule that successfully matches the erroneous syntax. The parser safely parses it but then reports it as an error instead of producing a syntax tree.
 
 ### Chapter 7 - Evaluating Expressions
 
-19. The leaves of an expression tree, the atomic bits of syntax that all other expressions are composed of, are literals. A literal is a bit of syntax that produces a value. A literal always appears somewhere in the user’s source code.
-20. Runtime errors are failures that the language semantics demand we detect and report while the program is running (hence the name).
-21. If you find yourself designing a statically typed language, keep in mind that you can sometimes **give users more flexibility without sacrificing too many of the benefits of static safety by deferring some type checks until runtime**. A key reason users choose statically typed languages is because of the confidence the language gives them that certain kinds of errors can never occur when their program is run. Defer too many type checks until runtime, and you erode that confidence.
+19. The leaves of an expression tree, the atomic bits of syntax that all other expressions are composed of, are literals. A literal is a bit of syntax that produces a value, **literal always appears somewhere in the user’s source code**. The literal values should be parsed into runtime values in the interpreter implementation.
+20. Runtime errors are failures that the language semantics demand we detect and report while the program is running.
+21. If designing a statically typed language, keep in mind that we can sometimes **give users more flexibility without sacrificing too many of the benefits of static safety by deferring some type checks until runtime** (.e.g: casting). A key reason users choose statically typed languages is because of the confidence the language gives them that certain kinds of errors can never occur when their program is run. Defer too many type checks until runtime, and you erode that confidence.
 
 ### Chapter 8 - Statements and State
 
-22. An **expression statement** lets you place an expression where a statement is expected. They exist to evaluate expressions that have side effects. Any time you see a function or method call followed by a ;, you’re looking at an expression statement.
+22. **Expression statement**: lets you place an expression where a statement is expected. They exist to evaluate expressions that have side effects. Any time you see a function or method call followed by a ;, you’re looking at an expression statement.
 23. Statement BNF grammer: 
 
 ```bnf
 program        → statement* EOF ;
-statement      → exprStmt | printStmt ;
+statement      → exprStmt 
+               | printStmt ;
 exprStmt       → expression ";" ;
 printStmt      → "print" expression ";" ;
 ```
 
-24. Variable syntax:
+24. Variable:
 
-* Some places where a statement is allowed: like inside a block or at the top level, allow any kind of statement, including declarations. Others allow only the “higher” precedence statements that don’t declare names.
+* Some places where a statement is allowed, like inside a block or at the top level, allow any kind of statement, including declarations. Others allow only the “higher” precedence statements that don’t declare names.
 
 ```c
 if (monday) print "Ugh, already?";      // Allowed ✓
 if (monday) var beverage = "espresso";  // Disallowed ✗
 ```
 
-* To accommodate the above distinction, we can add another rule for kinds of statements that declare names. Also, to access a variable, we define a new kind of primary expression. See BNF grammer below:
+* To accommodate the above distinction, we can **add another rule for kinds of statements that declare names**. Any place where a declaration is allowed also allows non-declaring statements. Also, to access a variable, we define a new kind of primary expression. See BNF grammer below:
 
 ```bnf
 program        → declaration* EOF ;
@@ -289,13 +297,18 @@ declaration    → varDecl
                | statement ;
 varDecl        → "var" IDENTIFIER ( "=" expression )? ";" ;
 ( ... )
-primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression ")" | IDENTIFIER ;
+primary        → "true" | "false" | "nil"
+               | NUMBER | STRING
+               | "(" expression ")"
+               | IDENTIFIER ;
 ```
 
-25. A rule about variables and scoping is: “**When in doubt, do what Scheme does**”. The Scheme folks have probably spent more time thinking about variable scope than we ever will, one of the main goals of Scheme was to introduce lexical scoping to the world, so it’s hard to go wrong if you follow in their footsteps.
+* The bindings that associate variables to values need to be stored in an ***environment***. We can use the same implementation technique for all variables (local + global), building a chain of environments, one for each scope, all the way up to the top (global). 
+
+25. A rule about variables and scoping is: “**When in doubt, do what Scheme does**”. One of the main goals of Scheme was to introduce lexical scoping to the world, so it’s hard to go wrong if you follow in their footsteps.
 26. Some statically typed languages like Java and C# specify that the top level of a program isn’t a sequence of imperative statements. Instead, a program is a set of declarations which all come into being simultaneously. The implementation declares all of the names before looking at the bodies of any of the functions. Older languages like C and Pascal don’t work like this. Instead, they force you to add explicit forward declarations to declare a name before it’s fully defined. That was a concession to the limited computing power at the time. **They wanted to be able to compile a source file in one single pass through the text, so those compilers couldn’t gather up all of the declarations first before processing function bodies**.
 
-27. Assignment BNF syntax:
+27. Assignment:
 
 ```bnf
 expression     → assignment ;
@@ -303,8 +316,8 @@ assignment     → IDENTIFIER "=" assignment
                | equality ;
 ```
 
-* Like most C-derived languages, assignment is an expression and not a statement.
-* As in C, it is the lowest precedence expression form. 
+* Mostly, assignment is an expression and not a statement.
+* As in C, **it is the lowest precedence expression form**. 
 * Distinguish r-value and l-value: a r-value could be evaluated, and an l-value “evaluates” to a storage location that you can assign into. And the syntax tree needs to reflect that an l-value isn’t evaluated like a normal expression.
 * Every valid assignment target happens to also be valid syntax as a normal expression. We can **parse the left-hand side as if it were an expression** and then after the fact produce a syntax tree that turns it into an assignment target. If the left-hand side expression isn’t a valid assignment target, we fail with a syntax error. 
 
@@ -314,14 +327,9 @@ newPoint(x + 2, 0).y = 3;  // Assignment.
 newPoint(x + 2, 0).y;  // Get the expression value.
 ```
 
-28. **Lexical scope** (or the less commonly heard static scope) is a specific style of scoping where the text of the program itself shows where a scope begins and ends. In contrast to dynamic scope, where you don’t know what a name refers to until you execute the code.
+28. **Lexical scope** (static scope): a specific style of scoping where the text of the program itself shows where a scope begins and ends. In contrast to dynamic scope, where you don’t know what a name refers to until you execute the code.
 
-* We implement this by defining a fresh environment for each block containing only the variables defined in that scope. When we exit the block, we discard its environment and restore the previous one. Also, we need to chain the environments together. Each environment has a reference to the environment of the immediately enclosing scope. When we look up a variable, we walk that chain from innermost out until we find the variable. Starting at the inner scope is how we make local variables shadow outer ones (it forms a **parent-pointer tree**).
-
-![](3.png)
-
-
-* Block BNF grammar:
+* Block syntax:
 
 ```bnf
 statement      → exprStmt
@@ -330,21 +338,26 @@ statement      → exprStmt
 block          → "{" declaration* "}" ;
 ```
 
-* Manually changing and restoring a mutable environment field feels inelegant. Another classic approach is to **explicitly pass the environment as a parameter to each visit method**. To “change” the environment, you pass a different one as you recurse down the tree. You don’t have to restore the old one, since the new one lives on the Java stack and is implicitly discarded when the interpreter returns from the block’s visit method.
+* We can implement this by defining a fresh environment for each block containing only the variables defined in that scope. When we exit the block, we discard its environment and restore the previous one. Also, we need to chain the environments together. Each environment has a reference to the environment of the immediately enclosing scope. When we look up a variable, we walk that chain from innermost out until we find the variable. Starting at the inner scope is how we make local variables shadow outer ones (it forms a "**parent-pointer tree**").
 
-29. **Implicit declaration**: some languages collapse declaring a new variable and assigning to an existing one to only assignment syntax. Assigning to a non-existent variable automatically brings it into being. It made sense in years past when most scripting languages were heavily imperative and code was pretty flat. 
+![](3.png)
+
+
+* Manually changing and restoring a mutable environment field feels inelegant. Another classic approach is to **explicitly pass the environment as a parameter to each visit method**. To “change” the environment, you pass a different one as you recurse down the tree. You don’t have to restore the old one, since the new one lives on the stack and is implicitly discarded when the interpreter returns from the block’s visit method.
+
+29. **Implicit variable declaration**: some languages collapse declaring a new variable and assigning to an existing one to only assignment syntax. Assigning to a non-existent variable automatically brings it into being. It made sense in years past when most scripting languages were heavily imperative and code was pretty flat. 
 
 ### Chapter 9 - Control Flow
 
-30. **Russell’s paradox**: initially, set theory allowed you to define any sort of set. If you could describe it in English, it was valid. Naturally, given mathematicians’ predilection for self-reference, sets can contain other sets. So Russell, rascal that he was, came up with:
+30. **Russell’s paradox**: initially, set theory allowed you to define any sort of set. If you could describe it in English, it was valid. Naturally, given mathematicians’ predilection for self-reference, sets can contain other sets. So Russell came up with:
 
 > R is the set of all sets that do not contain themselves.
 
 So, does R contain itself? If it doesn’t, then according to the second half of the definition it should. But if it does, then it no longer meets the definition. Cue mind exploding.
 
 
-31. Turing-complete: language is expressive enough to be a turing machine. You basically need arithmetic, a little control flow, and the ability to allocate and use (theoretically) arbitrary amounts of memory.
-32. Branching syntax and semantics:
+31. Turing-complete: language is expressive enough to be a turing machine, it basically need arithmetic, a little control flow, and the ability to allocate and use (theoretically) arbitrary amounts of memory. Turing machine is equivalent to Church’s "lambda calculus" in power.
+32. Branching:
 
 ```bnf
 statement      → exprStmt
@@ -357,7 +370,7 @@ ifStmt         → "if" "(" expression ")" statement
 
 * **Dangling else**: a problem in programming of parser generators in which an optional else clause in an if–then(–else) statement results in nested conditionals being ambiguous. Formally, the reference context-free grammar of the language is ambiguous, meaning there is more than one correct parse tree. Instead, most languages and parsers avoid the problem in an ad hoc way. No matter what hack they use to get themselves out of the trouble, they always choose the same interpretation - **the else is bound to the nearest if that precedes it**.
 
-33. Logical Operators syntax and semantics:
+33. Logical Operators:
 
 ```bnf
 expression     → assignment ;
@@ -368,9 +381,9 @@ logic_and      → equality ( "and" equality )* ;
 ```
 
 * **"logic_or" and "logic_and" don't have the same precedence**, the precedence of "logic_and" is higher than "logic_or". "And" is often seen as the multiplication in Boole's algebra, and "Or" is seen as the addition, which is why they commonly inherit the precedance of their namesakes.
-* The syntax doesn’t care that they short-circuit which is a semantic concern.
+* The syntax itself doesn’t care that they short-circuit which is a semantic concern, should be handled at runtime.
 
-34. "loop" syntax and semantics:
+34. Loops:
 
 ```bnf
 statement      → exprStmt
@@ -385,16 +398,15 @@ forStmt        → "for" "(" ( varDecl | exprStmt | ";" )
                  expression? ")" statement ;
 ```
 
-* "forStmt" could be implemented as a syntactic sugar of "whileStmt".
-* **Syntactic sugar**: making some common code patterns more pleasant to write. *Desugaring*: a process where the front end takes code using syntax sugar and translates it to a more primitive form that the back end already knows how to execute. 
-  * Lispers famously claim their language “has no syntax”, while Smalltalkers proudly show that you can fit the entire grammar on an index card. This tribe has the philosophy that the language doesn’t need syntactic sugar. Instead, the minimal syntax and semantics it provides are powerful enough to let library code be as expressive as if it were part of the language itself.
-  * Syntactic sugar has a bad rap among the PL intelligentsia. There’s a real fetish for minimalism in that crowd. There is some justification for that. Poorly designed, unneeded syntax raises the cognitive load without adding enough expressiveness to carry its weight. 
+* **Syntactic sugar**: making some common code patterns more pleasant to write. 
+  * "forStmt" could be implemented as a syntactic sugar of "whileStmt".
+* *Desugaring*: a process where the front end takes code using syntax sugar and translates it to a more primitive form that the back end already knows how to execute. 
 
 ### Chapter 10 - Functions
 
 35. Function Calls:
 
-* The name of the function being called isn’t actually part of the call syntax. The thing being called — **the callee, can be any expression that evaluates to a function** (compared to Pascal, only named functions or functions stored directly in variables can be called). 
+* The name of the function being called - **the callee, can be any expression that evaluates to a function** (compared to Pascal, only named functions or functions stored directly in variables can be called). 
 * The call operator "()" has higher precedence than any other operator, BNF grammar as below:
 
 ```bnf
@@ -403,15 +415,14 @@ call           → primary ( "(" arguments? ")" )* ;
 arguments      → expression ( "," expression )* ;
 ```
 
-* Arity: the number of arguments a function or operation expects.
+* Native functions (primitives, external functions, foreign functions): functions that the interpreter exposes to user code but that are implemented in the host language, not the language being implemented. 
+* Lisp-1: refer to languages like Scheme that put functions and variables in the same namespace.
+* Lisp-2: for languages like Common Lisp that partition them.
 
 36. **Currying**: the normal way of defining a function that takes multiple arguments is as a series of nested functions. Each function takes one argument and returns a new function. That function consumes the next argument, returns yet another function, and so on. Eventually, once all of the arguments are consumed, the last function completes the operation.
 37. Function Declarations:
 
 ```bnf
-declaration    → funDecl
-               | varDecl
-               | statement ;
 funDecl        → "fun" function ;
 function       → IDENTIFIER "(" parameters? ")" block ;
 parameters     → IDENTIFIER ( "," IDENTIFIER )* ;
@@ -425,15 +436,8 @@ parameters     → IDENTIFIER ( "," IDENTIFIER )* ;
 38. Return Statements:
 
 ```bnf
-statement      → exprStmt
-               | forStmt
-               | ifStmt
-               | printStmt
-               | returnStmt
-               | whileStmt
-               | block ;
 returnStmt     → "return" expression? ";" ;
 ```
 
 * Each function call should return something (implicit `nil` or other valuable data), even if it contains no return statements at all.
-* It could be implemented simply by Exception (unwinding the visited call).
+* **It could be implemented simply by Exception** (unwinding the visited call).

@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-09-14T07:18:57.521Z</updated>
+  <updated>2023-10-14T05:16:15.785Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -17,14 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Pratt&#39;s Parser</title>
+    <link href="https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/"/>
+    <id>https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/</id>
+    <published>2023-10-14T03:05:00.000Z</published>
+    <updated>2023-10-14T05:16:15.785Z</updated>
+    
+    
+    <summary type="html">Let&#39;s revisit how Pratt&#39;s parser works in this article and see its difference from the original recursive descendant parser.</summary>
+    
+    
+    
+    
+    <category term="Parser" scheme="https://www.hangyu.site/tags/Parser/"/>
+    
+  </entry>
+  
+  <entry>
     <title>《人月神话》读书笔记</title>
     <link href="https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2023-09-05T14:45:00.000Z</published>
-    <updated>2023-09-14T07:18:57.521Z</updated>
+    <updated>2023-10-01T08:25:14.756Z</updated>
     
     
-    <summary type="html">这是很多人推荐的一本书，曾被奉为软件工程领域的“圣经”。书中的内容源于作者 Brooks 博士在 IBM 公司任 System 系列计算机以及其软件系统 OS 项目经理时总结的实践经验。</summary>
+    <summary type="html">很多人推荐的一本书，曾被奉为软件工程领域的“圣经”。书中的内容源于作者 Brooks 博士在 IBM 公司任 System 系列计算机以及其软件系统 OS 项目经理时总结的实践经验。</summary>
     
     
     
@@ -36,11 +53,11 @@
   </entry>
   
   <entry>
-    <title>《Crafting Interpreters》读书笔记（第 11-20 章）</title>
-    <link href="https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-20%20%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-20%20%E7%AB%A0%EF%BC%89/</id>
+    <title>《Crafting Interpreters》读书笔记（第 11-30 章）</title>
+    <link href="https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-30%20%E7%AB%A0%EF%BC%89/"/>
+    <id>https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-30%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-09-04T09:39:00.000Z</published>
-    <updated>2023-09-13T02:40:59.648Z</updated>
+    <updated>2023-10-19T12:42:50.947Z</updated>
     
     
     <summary type="html">书接上文。</summary>
@@ -59,10 +76,10 @@
     <link href="https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-07-18T03:25:00.000Z</published>
-    <updated>2023-09-19T13:59:05.389Z</updated>
+    <updated>2023-10-06T03:16:24.013Z</updated>
     
     
-    <summary type="html">这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。</summary>
+    <summary type="html">这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。</summary>
     
     
     
@@ -532,25 +549,6 @@
     <category term="Cpp" scheme="https://www.hangyu.site/tags/Cpp/"/>
     
     <category term="C" scheme="https://www.hangyu.site/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JIT Compilation：理解与实现</title>
-    <link href="https://www.hangyu.site/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/"/>
-    <id>https://www.hangyu.site/2021/05/10/JIT%20Compilation%EF%BC%9A%E7%90%86%E8%A7%A3%E4%B8%8E%E5%AE%9E%E7%8E%B0/</id>
-    <published>2021-05-10T00:38:26.000Z</published>
-    <updated>2023-07-16T03:44:01.993Z</updated>
-    
-    
-    <summary type="html">本文主要介绍了基础编译技术中的 JIT Compilation 技术，以及如何使用 C++ 快速构建一个简单的 JIT Compiler。</summary>
-    
-    
-    
-    
-    <category term="JIT" scheme="https://www.hangyu.site/tags/JIT/"/>
-    
-    <category term="Compiler" scheme="https://www.hangyu.site/tags/Compiler/"/>
     
   </entry>
   

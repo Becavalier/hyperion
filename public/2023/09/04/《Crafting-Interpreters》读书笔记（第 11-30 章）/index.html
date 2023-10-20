@@ -1,0 +1,287 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Crafting Interpreters》读书笔记（第 11-30 章） | 曜彤.手记</title><meta name="description" content="书接上文。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Crafting Interpreters》读书笔记（第 11-30 章）" class="full"><h1 itemprop="headline" class="align-center">《Crafting Interpreters》读书笔记（第 11-30 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-09-04T09:39:00.000Z"> 2023 / 09 / 04, 17:39:00</time></span><span class="page-tag-anchor"><a href="/tags/Compiler" itemprop="url">#Compiler</a>&nbsp;&nbsp;<a href="/tags/Interpreter" itemprop="url">#Interpreter</a>&nbsp;&nbsp;</span></div><p>书接上文。</p>
+<h3 id="Chapter-11-Resolving-and-Binding"><a href="#Chapter-11-Resolving-and-Binding" class="headerlink" title="Chapter 11 - Resolving and Binding"></a>Chapter 11 - Resolving and Binding</h3><ol>
+<li>For Closure, when a function is declared, it captures a reference to the current environment. The function should capture a <em><strong>frozen snapshot</strong></em> of the environment as it existed at the moment the function was declared. In this way, we can match the rules of static scope - <strong>a variable usage always resolves to the same declaration, which can be determined just by looking at the text</strong>.</li>
+</ol>
+<pre class="line-numbers language-lox"><code class="language-lox">var a = "global";
+{
+  fun showA() {
+    print a;
+  }
+
+  showA();  // Should be "global".
+  var a = "block";
+  showA();  // Should be "global" too.
+}
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>How to achieve?<ul>
+<li>Immutable data structure: every time we declared a variable it could return a new environment that contained all of the previously declared variables along with the one new name (the Scheme way).</li>
+<li>Calculate how many “hops” away the declared variable will be in the environment chain. </li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Semantic analysis</strong>: write a chunk of code that inspects the user’s program, finds every variable mentioned, and figures out which declaration each refers to. A parser tells only if a program is grammatically correct (a syntactic analysis), semantic analysis goes farther and starts to figure out what pieces of the program actually mean. </li>
+</ol>
+<ul>
+<li>This process could be done in separate passes.</li>
+<li>The type checker for statically typed language could be done based on AST generated by the parser here.</li>
+<li>The resolution information can be saved inside the syntax tree node itself direclty, or in a “side table”.</li>
+</ul>
+<h3 id="Chapter-12-Classes"><a href="#Chapter-12-Classes" class="headerlink" title="Chapter 12 - Classes"></a>Chapter 12 - Classes</h3><ol start="3">
+<li>Three broad paths to object-oriented programming: <strong>classes</strong>, <strong>prototypes</strong>, and <strong>multi-methods</strong>. </li>
+<li>Classes:</li>
+</ol>
+<ul>
+<li>Lifecycle:</li>
+</ul>
+<p><img src="1.png"></p>
+<ul>
+<li>Syntax grammar for “class declaration”:</li>
+</ul>
+<pre class="line-numbers language-bnf"><code class="language-bnf">declaration    → classDecl
+               | funDecl
+               | varDecl
+               | statement ;
+classDecl      → "class" IDENTIFIER "{" function* "}" ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Syntax grammar for “get expressions”: after a primary expression, we allow a series of any mixture of parenthesized calls and dotted property accesses. That dot has the same precedence as the parentheses in a function call expression.</li>
+</ul>
+<pre class="line-numbers language-bnf"><code class="language-bnf">call           → primary ( "(" arguments? ")" | "." IDENTIFIER )* ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Syntax grammar for “set expressions”: </li>
+</ul>
+<pre class="line-numbers language-bnf"><code class="language-bnf">assignment     → ( call "." )? IDENTIFIER "=" assignment
+               | logic_or ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="2.png"></p>
+<ul>
+<li>“properties” V.S. “fields”: fields are named bits of state stored directly in an instance. Properties are the named things, that a get expression may return. </li>
+<li><strong>Bound methods</strong>: have methods “bind” <code>this</code> to the original instance when the method is first grabbed (which is different from JavaScript). </li>
+<li>“Constructing” an object is a pair of operations:<ul>
+<li>The runtime allocates the memory required for a fresh instance.</li>
+<li>Then, a user-provided chunk of code is called which initializes the unformed object.</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Many of the optimizations invented to make dynamic languages fast rest on the observation that: <strong>even in those languages, most code is fairly static in terms of the types of objects it works with and their fields</strong>.</li>
+</ol>
+<h3 id="Chapter-13-Inheritance"><a href="#Chapter-13-Inheritance" class="headerlink" title="Chapter 13 - Inheritance"></a>Chapter 13 - Inheritance</h3><ol start="6">
+<li>Inheritance:</li>
+</ol>
+<ul>
+<li>Inheriting from another class means that everything that’s true of the superclass should be true of the subclass. In statically typed languages, the subclass must also be a subtype, and <strong>the memory layout is controlled so that you can pass an instance of a subclass to a function expecting a superclass and it can still access the inherited fields correctly</strong>.</li>
+<li>Syntax grammar:</li>
+</ul>
+<pre class="line-numbers language-bnf"><code class="language-bnf">classDecl      → "class" IDENTIFIER ( "<" IDENTIFIER )?
+                 "{" function* "}" ;
+primary        → "true" | "false" | "nil" | "this"
+               | NUMBER | STRING | IDENTIFIER | "(" expression ")"
+               | "super" "." IDENTIFIER ;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>With super, the subsequent “.” and property name are inseparable parts of the super expression, so it should be regarded as a token instead of a variable expression. A super call is a super access (getter) followed by a function call.</li>
+<li>For function calls on <code>super</code>, the method lookup should start on the superclass of the class containing the <code>super</code> expression.</li>
+</ul>
+<h3 id="Chapter-14-Chunks-of-Bytecode"><a href="#Chapter-14-Chunks-of-Bytecode" class="headerlink" title="Chapter 14 - Chunks of Bytecode"></a>Chapter 14 - Chunks of Bytecode</h3><ol start="7">
+<li>The drawback of the “tree-walk” interpreter:</li>
+</ol>
+<ul>
+<li>Overhead is high due to the dynamic dispatch of each “visit method” (disallowed inlining and other static optimizations).</li>
+<li>Sprinkling data across the heap in a loosely connected web of objects does bad things for spatial locality.</li>
+<li>Not memory-efficient because of the way of AST nodes’ representation in memory (a simple expression “1 + 2” would need 7 nodes plus some necessary pointers between them).</li>
+</ul>
+<ol start="8">
+<li>Interpreter V.S. Virtual Machine:</li>
+</ol>
+<p><img src="3.png"></p>
+<ol start="9">
+<li>Language test: each test is a program written in the language along with the output or errors it is expected to produce. Then you have a test runner that pushes the test program through your language implementation and validates that it does what it’s supposed to.</li>
+</ol>
+<h3 id="Chapter-15-A-Virtual-Machine"><a href="#Chapter-15-A-Virtual-Machine" class="headerlink" title="Chapter 15 - A Virtual Machine"></a>Chapter 15 - A Virtual Machine</h3><ol start="10">
+<li><strong>Storing “ip” in a local variable</strong>, which the C compiler could keep it in a register of efficient access speed.</li>
+<li>Efficient bytecode dispatch methods: “direct threaded code”, “jump table”, and “computed goto”.</li>
+<li>Register-based bytecode:</li>
+</ol>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> c <span class="token operator">=</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Above code would be compiled into:</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">add <span class="token operator">&lt;</span>a<span class="token operator">></span> <span class="token operator">&lt;</span>b<span class="token operator">></span> <span class="token operator">&lt;</span>c<span class="token operator">></span> <span class="token comment" spellcheck="true">// Read values from a and b, add, store in c.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>It still have a stack. Temporary values still get pushed onto it and popped when no longer needed. The main difference is that instructions can read their inputs from anywhere in the stack and can store their outputs into specific stack slots.</li>
+<li>Decoding is more complex because of the additional operands, but no pushing and popping or other stack manipulation by looping the instructions.</li>
+</ul>
+<h3 id="Chapter-16-Scanning-on-Demand"><a href="#Chapter-16-Scanning-on-Demand" class="headerlink" title="Chapter 16 - Scanning on Demand"></a>Chapter 16 - Scanning on Demand</h3><ol start="13">
+<li>Trie (digital tree, prefix tree): it’s used for locating specific keys from within a set. </li>
+</ol>
+<p><img src="4.png"></p>
+<ul>
+<li>Each string the trie “contains” is represented as a path through the tree of character nodes.</li>
+<li>It’s a special case of deterministic finite automaton (DFA).</li>
+<li>It would be more efficient for identifying identifiers than using a hash map (to look up a string in a hash table, it needs to walk the string to calculate its hash code, find the corresponding bucket in the hash table, and then do a character-by-character equality comparison on any string it happens to find there).</li>
+</ul>
+<ol start="14">
+<li>Contextual keywords: these are identifiers that act like reserved words in some contexts but can be normal user-defined identifiers in others.</li>
+</ol>
+<h3 id="Chapter-17-Compiling-Expressions"><a href="#Chapter-17-Compiling-Expressions" class="headerlink" title="Chapter 17 - Compiling Expressions"></a>Chapter 17 - Compiling Expressions</h3><ol start="15">
+<li>Vaughan Pratt’s “top-down operator precedence parsing”: </li>
+</ol>
+<ul>
+<li>Driven by the function table, columns are:<ul>
+<li>The function to compile a prefix expression starting with a token of that type.</li>
+<li>The function to compile an infix expression whose left operand is followed by a token of that type.</li>
+<li>The precedence of an infix expression that uses that token as an operator.</li>
+</ul>
+</li>
+<li>Each parsing function only parses exactly one type of expression, they don’t cascade to include higher-precedence expression types like recursive descent parser.</li>
+</ul>
+<ol start="16">
+<li><strong>Single-pass compilation</strong>: a compiler has roughly two jobs. It parses the user’s source code to understand what it means. Then it takes that knowledge and outputs low-level instructions that produce the same semantics. Many languages split those two roles into two separate passes in the implementation. A parser produces an AST and then a code generator traverses the AST and outputs target code. For single-pass compilation, these processes will be merged, this way only works for the language that must be designed such that you don’t need much surrounding context to understand a piece of syntax.</li>
+</ol>
+<h3 id="Chapter-18-Types-of-Values"><a href="#Chapter-18-Types-of-Values" class="headerlink" title="Chapter 18 - Types of Values"></a>Chapter 18 - Types of Values</h3><ol start="17">
+<li><em><strong>Is a &lt;= b always the same as !(a &gt; b)?</strong></em> According to IEEE 754, all comparison operators return false when an operand is NaN. That means NaN &lt;= 1 is false and NaN &gt; 1 is also false. </li>
+</ol>
+<h3 id="Chapter-19-Strings"><a href="#Chapter-19-Strings" class="headerlink" title="Chapter 19 - Strings"></a>Chapter 19 - Strings</h3><ol start="18">
+<li><strong>Heap-allocated types</strong>: strings, instances, functions.</li>
+</ol>
+<ul>
+<li>Type punning: it refers to any programming techniques that subvert or circumvent the type system of a programming language in order to achieve an effect that would be difficult or impossible to achieve within the bounds of the formal language.</li>
+<li>The data structure representation could be achieved by type punning in C or inheritance in C++.</li>
+</ul>
+<p><img src="5.png"></p>
+<h3 id="Chapter-20-Hash-Tables"><a href="#Chapter-20-Hash-Tables" class="headerlink" title="Chapter 20 - Hash Tables"></a>Chapter 20 - Hash Tables</h3><ol start="18">
+<li>Birthday paradox: it refers to the counterintuitive fact that <strong>only 23 people are needed for the probability of having at least two share a birthday to exceed 50%</strong>. So, as the number of entries in the hash table increases, the chance of collision increases very quickly. </li>
+<li>Collision resolution:</li>
+</ol>
+<ul>
+<li><strong>Separate chaining</strong>: each bucket contains a colection of entries. In the classic implementation, each bucket points to a linked list of entries. To look up an entry, finding its bucket and then walk the list until finding an entry with the matching key. This way has a lot of overhead from pointers and tends to scatter little linked list nodes around in memory which isn’t great for cache usage. </li>
+</ul>
+<p><img src="6.png"></p>
+<ul>
+<li><strong>Open addressing</strong> (closed hashing): all entries live directly in the bucket array, with one entry per bucket. If two entries collide in the same bucket, finding a different empty bucket to use instead (by certain probing algorithms).</li>
+</ul>
+<p><img src="7.png"></p>
+<ol start="20">
+<li>Hash functions: it takes some larger blob of data and “hashes” it to produce a fixed-size integer hash code whose value depends on all of the bits of the original data. A good hash function has three main goals:</li>
+</ol>
+<ul>
+<li>It must be deterministic. </li>
+<li>It must be uniform.</li>
+<li>It must be fast.</li>
+</ul>
+<ol start="21">
+<li>Hash Tables: an array of entries.</li>
+</ol>
+<ul>
+<li>Load factor: the number of entries (the buckets that have already been occupied) / the number of buckets. The higher the load factor, the greater the chance of collisions.</li>
+<li>Keeping the hash of the string along with the string content for efficient looking up in the hash table.</li>
+<li>FNV-1a hashing algorithm:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">static</span> uint32_t <span class="token function">hashString</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  uint32_t hash <span class="token operator">=</span> <span class="token number">2166136261u</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    hash <span class="token operator">^</span><span class="token operator">=</span> <span class="token punctuation">(</span>uint8_t<span class="token punctuation">)</span>key<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    hash <span class="token operator">*</span><span class="token operator">=</span> <span class="token number">16777619</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> hash<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>Tombstones</strong>: instead of clearing the entry on deletion, we replace it with a special sentinel entry called a “tombstone”. When we are following a probe sequence during a lookup, and we hit a tombstone, we don’t treat it like an empty slot and stop iterating. Instead, we keep going so that deleting an entry doesn’t break any implicit collision chains and we can still find entries after it.</li>
+</ul>
+<ol start="22">
+<li><strong>String interning</strong>: a process of deduplication. We create a collection of “interned” strings. Any string in that collection is guaranteed to be textually distinct from all others. When you intern a string, you look for a matching string in the collection. If found, you use that original one. Otherwise, the string you have is unique, so you add it to the collection.</li>
+</ol>
+<h3 id="Chapter-21-Global-Variables"><a href="#Chapter-21-Global-Variables" class="headerlink" title="Chapter 21 - Global Variables"></a>Chapter 21 - Global Variables</h3><ol start="23">
+<li><strong>Stack effect</strong>: every bytecode instruction has a stack effect that describes how the instruction modifies the stack. For example, OP_ADD pops two values and pushes one, leaving the stack one element smaller than before, the stack effect is “-1”. And the stack effects for any complete expression would be one. And The bytecode for an entire statement has a total stack effect of zero.</li>
+<li>Global variables are late bound in some language implementations. “Late” in this context means “resolved after compile time”. That’s good for keeping the compiler simple, but not great for performance. </li>
+</ol>
+<h3 id="Chapter-22-Local-Variables"><a href="#Chapter-22-Local-Variables" class="headerlink" title="Chapter 22 - Local Variables"></a>Chapter 22 - Local Variables</h3><ol start="25">
+<li>Leveraging stack to hold local variables:</li>
+</ol>
+<p><img src="8.png"></p>
+<p><img src="9.png"></p>
+<h3 id="Chapter-23-Jumping-Back-and-Forth"><a href="#Chapter-23-Jumping-Back-and-Forth" class="headerlink" title="Chapter 23 - Jumping Back and Forth"></a>Chapter 23 - Jumping Back and Forth</h3><ol start="26">
+<li><strong>Backpatching</strong>: emitting the jump instruction first with a placeholder offset operand, and keeping track of where that half-finished instruction is. Next, compile the subsquent statements (like “then”). Once it’s done, we know how far to jump, and replace that placeholder offset with the real one now that we can calculate it. </li>
+<li>“if” statement:</li>
+</ol>
+<p><img src="10.png"></p>
+<ul>
+<li>All the jump instructions have an operand of the relative “offset” that will be jumped over.</li>
+<li>The condition expression value left on the stack should be cleaned in each branch.</li>
+</ul>
+<ol start="28">
+<li>Logical “and” operators:</li>
+</ol>
+<p><img src="11.png"></p>
+<ol start="29">
+<li>Logical “or” operators:</li>
+</ol>
+<p><img src="12.png"></p>
+<ol start="30">
+<li>“while” statement:</li>
+</ol>
+<p><img src="13.png"></p>
+<ol start="31">
+<li>“for” statement:</li>
+</ol>
+<p><img src="14.png"></p>
+<ol start="32">
+<li>Any control flow using “goto” can be transformed into one using just sequencing, loops, and branches.</li>
+</ol>
+<h3 id="Chapter-24-Calls-and-Functions"><a href="#Chapter-24-Calls-and-Functions" class="headerlink" title="Chapter 24 - Calls and Functions"></a>Chapter 24 - Calls and Functions</h3><ol start="33">
+<li>A function object is the runtime representation of a function, but we create it at compile time. The way to think of it is that a function is similar to a string or number literal. It forms a bridge between the compile time and runtime worlds. When we get to function declarations, those really are literals:they are a notation that produces values of a built-in type. So the compiler creates function objects during compilation. Then, at runtime, they are simply invoked.</li>
+</ol>
+<h3 id="Chapter-25-Closures"><a href="#Chapter-25-Closures" class="headerlink" title="Chapter 25 - Closures"></a>Chapter 25 - Closures</h3><ol start="34">
+<li><strong>Closures capture variables not only values</strong>.</li>
+</ol>
+<h3 id="Chapter-26-Garbage-Collection"><a href="#Chapter-26-Garbage-Collection" class="headerlink" title="Chapter 26 - Garbage Collection"></a>Chapter 26 - Garbage Collection</h3><ol start="35">
+<li>Reachability:</li>
+</ol>
+<ul>
+<li>All roots are reachable.<ul>
+<li>Roots: a root is any object that the VM can reach directly without going through a reference in some other object.</li>
+</ul>
+</li>
+<li>Any object referred to from a reachable object is itself reachable.</li>
+</ul>
+<ol start="36">
+<li>Simple “tricolor abstraction” GC algorithm:</li>
+</ol>
+<ul>
+<li><strong>White</strong>: at the beginning of a garbage collection, every object is white. This color means we have not reached or processed the object at all</li>
+<li><strong>Gray</strong>: during marking, when we first reach an object, we darken it gray. This color means we know the object itself is reachable and should not be collected. But we have not yet traced through it to see what other objects it references. In graph algorithm terms, this is the “worklist” — the set of objects we know about but haven’t processed yet.</li>
+<li><strong>Black</strong>: when we take a gray object and mark all of the objects it references, we then turn the gray object black. This color means the mark phase is done processing that object.</li>
+</ul>
+<ol start="37">
+<li>Weak reference: the string table is special and we need special support for it. In particular, it needs a special kind of reference. The table should be able to refer to a string, but that link should not be considered a root when determining reachability. That implies that the referenced object can be freed. When that happens, the dangling reference must be fixed too, sort of like a magic, self-clearing pointer.</li>
+<li>Performance goal: <strong>maximizing throughput and minimizing latency</strong>.</li>
+</ol>
+<p><img src="15.png"></p>
+<ul>
+<li>Throughput: is the total fraction of time spent running user code versus doing garbage collection work. Say you run a clox program for ten seconds and it spends a second of that inside collectGarbage(). That means the throughput is 90%—it spent 90% of the time running the program and 10% on GC overhead.</li>
+<li>Latency: is the longest continuous chunk of time where the user’s program is completely paused while garbage collection happens. It’s a measure of how “chunky” the collector is. Latency is an entirely different metric than throughput.</li>
+</ul>
+<ol start="39">
+<li><strong>Generational hypothesis</strong>: most objects are very short-lived but once they survive beyond a certain age, they tend to stick around quite a long time. The longer an object has lived, the longer it likely will continue to live.</li>
+</ol>
+<h3 id="Chapter-27-Classes-and-Instances"><a href="#Chapter-27-Classes-and-Instances" class="headerlink" title="Chapter 27 - Classes and Instances"></a>Chapter 27 - Classes and Instances</h3><p>(Ignored)</p>
+<h3 id="Chapter-28-Methods-and-Initializers"><a href="#Chapter-28-Methods-and-Initializers" class="headerlink" title="Chapter 28 - Methods and Initializers"></a>Chapter 28 - Methods and Initializers</h3><ol start="40">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-09-04T09:39:00.000Z"> 2023 / 10 / 19, 20:42:50</time></span></div></div></article><br><span class="next-post"><a href="/2023/09/05/《人月神话》读书笔记/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
