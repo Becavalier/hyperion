@@ -1059,7 +1059,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/09/04/《Crafting-Interpreters》读书笔记（第 11-30 章）/index.html",
-    "revision": "d6945593e51527ad57886827fa085241"
+    "revision": "0ec6be5777bf373dde4f5efc2434f944"
   },
   {
     "url": "2023/09/05/《人月神话》读书笔记/index.html",
@@ -1547,7 +1547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "9dad92c4e102948e1683f2ef547db816"
+    "revision": "6e981b3633dfe12eb51fbb12747cc240"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1859,7 +1859,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "ce46b6ac3c0184b93c6467b7c0920ffe"
+    "revision": "5b46eb48c1fe2d334ff6b1a7eb4552ab"
   },
   {
     "url": "tags/Interpreter/index.html",

@@ -291,12 +291,26 @@ static uint32_t hashString(const char* key, int length) {
 
 ### Chapter 28 - Methods and Initializers
 
-40. 
-41. 
-42. 
-43. 
-44. 
-45. 
-46. 
-47. 
-48. 
+40. Typical pattern of optimization:
+
+* Recognize a common operation or sequence of operations that is performance critical. In this case, it is a method access followed by a call.
+* Add an optimized implementation of that pattern.
+* Guard the optimized code with some conditional logic that validates that the pattern actually applies. If it does, stay on the fast path. Otherwise, fall back to a slower but more robust unoptimized behavior. Here, that means checking that we are actually calling a method and not accessing a field.
+
+### Chapter 29 - Superclasses
+
+(Ignored)
+
+### Chapter 30 - Optimization
+
+41. Profiler: a tool that runs your program and tracks hardware resource use as the code executes. Simple ones show you how much time was spent in each function in your program. Sophisticated ones log data cache misses, instruction cache misses, branch mispredictions, memory allocations, and all sorts of other metrics.
+42. Division and modulo are about 30-50 times slower than addition and subtraction on x86.
+43. Achieve modulo with bit masking (if the number is a factor of two): you can calculate a number modulo any power of two by simply AND-ing it with that power of two minus one. 
+
+![](16.png)
+
+44. **NaN tagging**: kind of way to represent values with IEEE-754 format.
+
+![](17.png)
+
+* Most widely used chips today only ever use the low 48 bits for pointers. The remaining 16 bits are either unspecified or always zero.

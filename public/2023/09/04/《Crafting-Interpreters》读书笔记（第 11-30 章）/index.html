@@ -274,14 +274,25 @@ primary        → "true" | "false" | "nil" | "this"
 </ol>
 <h3 id="Chapter-27-Classes-and-Instances"><a href="#Chapter-27-Classes-and-Instances" class="headerlink" title="Chapter 27 - Classes and Instances"></a>Chapter 27 - Classes and Instances</h3><p>(Ignored)</p>
 <h3 id="Chapter-28-Methods-and-Initializers"><a href="#Chapter-28-Methods-and-Initializers" class="headerlink" title="Chapter 28 - Methods and Initializers"></a>Chapter 28 - Methods and Initializers</h3><ol start="40">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>Typical pattern of optimization:</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-09-04T09:39:00.000Z"> 2023 / 10 / 19, 20:42:50</time></span></div></div></article><br><span class="next-post"><a href="/2023/09/05/《人月神话》读书笔记/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<ul>
+<li>Recognize a common operation or sequence of operations that is performance critical. In this case, it is a method access followed by a call.</li>
+<li>Add an optimized implementation of that pattern.</li>
+<li>Guard the optimized code with some conditional logic that validates that the pattern actually applies. If it does, stay on the fast path. Otherwise, fall back to a slower but more robust unoptimized behavior. Here, that means checking that we are actually calling a method and not accessing a field.</li>
+</ul>
+<h3 id="Chapter-29-Superclasses"><a href="#Chapter-29-Superclasses" class="headerlink" title="Chapter 29 - Superclasses"></a>Chapter 29 - Superclasses</h3><p>(Ignored)</p>
+<h3 id="Chapter-30-Optimization"><a href="#Chapter-30-Optimization" class="headerlink" title="Chapter 30 - Optimization"></a>Chapter 30 - Optimization</h3><ol start="41">
+<li>Profiler: a tool that runs your program and tracks hardware resource use as the code executes. Simple ones show you how much time was spent in each function in your program. Sophisticated ones log data cache misses, instruction cache misses, branch mispredictions, memory allocations, and all sorts of other metrics.</li>
+<li>Division and modulo are about 30-50 times slower than addition and subtraction on x86.</li>
+<li>Achieve modulo with bit masking (if the number is a factor of two): you can calculate a number modulo any power of two by simply AND-ing it with that power of two minus one. </li>
+</ol>
+<p><img src="16.png"></p>
+<ol start="44">
+<li><strong>NaN tagging</strong>: kind of way to represent values with IEEE-754 format.</li>
+</ol>
+<p><img src="17.png"></p>
+<ul>
+<li>Most widely used chips today only ever use the low 48 bits for pointers. The remaining 16 bits are either unspecified or always zero.</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-09-04T09:39:00.000Z"> 2023 / 10 / 22, 14:54:36</time></span></div></div></article><br><span class="next-post"><a href="/2023/09/05/《人月神话》读书笔记/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/" itemprop="url">⇐ 上一篇</a></span><br><br><br><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
