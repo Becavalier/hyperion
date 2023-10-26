@@ -1,7 +1,7 @@
 ---
 title: 《你不知道的 JavaScript》读书笔记（上）
 intro: 旧书清理系列。
-comments: false
+comments: true
 date: 2021-02-05 18:12:23
 tags:
 - JavaScript

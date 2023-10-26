@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告（二）
 intro: 在上一篇报告中，我们尝试通过对比 JS 侧的原生排序方法和 Wasm 端使用 C/C++ 编写的排序方法两者对同一大小数组的排序结果，让我们对 Wasm 应用的运行效率有了一个初步的认识。为了进一步优化 Wasm 的排序方法，接下来我们将优化递归版本的快排，并且尝试通过 Emscripten 在本地编译我们的代码。
-comments: false
+comments: true
 date: 2017-06-10 12:30:35
 tags:
 - WebAssembly

@@ -1,7 +1,7 @@
 ---
 title: 使用 objcopy 为 ELF 加入自定义 Section
 intro: 我们可以使用 objcopy 工具为一个 ELF 文件加入自定义的 Section 信息，并在主程序中访问该目标文件中这些自定义的 Section 内的数据。
-comments: false
+comments: true
 date: 2020-06-17 15:42:53
 tags:
 - 计算机

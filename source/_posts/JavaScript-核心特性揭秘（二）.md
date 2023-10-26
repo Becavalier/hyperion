@@ -1,7 +1,7 @@
 ---
 title: JavaScript 核心特性揭秘（二）
 intro: 本文是《JavaScript 核心特性揭秘》系列的第二篇，这一系列的文章并没有按照由浅入深的顺序来写，旨在记录与分享，将碎片化的 JS 知识集中起来。囊括所有你需要知道的 Javascript 核心特性与技巧。文章内容如有错误，欢迎大家积极指正与交流。
-comments: false
+comments: true
 date: 2016-03-29 23:41:39
 tags:
 - JavaScript

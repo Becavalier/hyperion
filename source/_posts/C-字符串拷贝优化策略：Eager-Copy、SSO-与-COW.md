@@ -1,7 +1,7 @@
 ---
 title: C++ 字符串拷贝优化策略：Eager-Copy、SSO 与 COW
 intro: 在 C++ 中，对于一个类型为 std::string 的字符串对象来说，可以有多种方式来拷贝它所对应的资源。而在这些方法中，最常见的三种为：Eager-Copy、SSO 以及 COW。其中最为广泛使用的是 “SSO”，而其他方式则已大都不再被编译器所使用。
-comments: false
+comments: true
 date: 2020-05-24 09:31:12
 tags:
 - Cpp

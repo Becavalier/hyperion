@@ -1,7 +1,7 @@
 ---
 title: 《Pro Git - 2nd Edition》读书笔记（第 1-6 章）
 intro: 旧书清理系列。这本书自 2017 年看了一半后一直没有后续，作为一个有强迫症的天秤座，对于这种事情肯定是无法接受的。
-comments: false
+comments: true
 date: 2020-10-19 21:26:29
 tags:
 - Git

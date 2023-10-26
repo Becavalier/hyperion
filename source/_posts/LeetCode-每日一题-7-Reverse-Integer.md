@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 7. Reverse Integer
 intro: LeetCode 每日一题系列，今天第十四题。今天这道题既可以看成是一道字符串的题目，也可以看成是一道数学相关的题目。两种解题方法对应着两种不同的思路，要学会从不同的角度去思考问题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】
-comments: false
+comments: true
 date: 2016-05-10 18:22:08
 tags:
 - 算法

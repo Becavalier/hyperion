@@ -1,7 +1,7 @@
 ---
 title: BigPipe 原理实现与使用场景分析
 intro: 在昨天的 FCC 上海线下技术分享会上，“糖爸”介绍了来自 Facebook 的 BigPipe 技术，以前只知道原理但并没有动手实践过，今天遂写一篇文章详细记录一下。核心内容：BigPipe 主要利用了 HTTP1.1 的分块传输编码机制，可以有效的降低大页面的请求数量，使前端后端并行处理，提高首屏加载速度。
-comments: false
+comments: true
 date: 2017-04-24 09:17:25
 tags:
 - JavaScript

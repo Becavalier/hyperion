@@ -1,7 +1,7 @@
 ---
 title: Node.js Internal
 intro: 开篇文章记录下有关 Node.js 的一些内容（不定期更新）。
-comments: false
+comments: true
 date: 2023-06-05 10:38:00
 tags:
 - Node.js

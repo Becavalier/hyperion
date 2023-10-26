@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告 - 错误处理
 intro: 前三篇报告分别从代码实践、底层基本原理等方面浅显地讨论了 WebAssembly 的相关特性。从本篇报告开始，我们将正式从 W3C 的标准 Web API 开始入手，深入细节来了解关于 WebAssembly 的更多特性。（由于当前标准变化较快，本文所叙述的内容不一定在未来仍然适用）。
-comments: false
+comments: true
 date: 2017-06-13 23:41:10
 tags:
 - WebAssembly

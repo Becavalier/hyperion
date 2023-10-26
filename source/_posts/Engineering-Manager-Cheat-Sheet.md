@@ -1,7 +1,7 @@
 ---
 title: Engineering Manager "Cheat Sheet"
 intro: This is a self-customized cheat sheet for engineering managers, and here I listed some knowledge collections based on my learning, understanding and experiences so far (keep updating).
-comments: false
+comments: true
 date: 2023-02-15 09:21:00
 tags:
 - 团队管理

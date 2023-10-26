@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 70. Climbing Stairs
 intro: LeetCode 每日一题系列，今天第八题。这是一道读题不用费力、理解十分简单的题目。问题很清晰，但是解决的过程就需要一些思考了。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Dynamic Programming】
-comments: false
+comments: true
 date: 2016-04-20 09:30:51
 tags:
 - 算法

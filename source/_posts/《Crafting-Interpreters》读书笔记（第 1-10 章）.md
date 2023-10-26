@@ -1,7 +1,7 @@
 ---
 title: 《Crafting Interpreters》读书笔记（第 1-10 章）
 intro: 这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。
-comments: false
+comments: true
 date: 2023-07-18 11:25:00
 tags:
 - Interpreter

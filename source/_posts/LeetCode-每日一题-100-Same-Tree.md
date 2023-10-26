@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 100. Same Tree
 intro: LeetCode 每日一题系列，今天第十九题。又是一段时间没有更新了，今天换换思路，不再是 Array 和 String，来玩转一下简单的二叉树吧。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Tree】 【Depth-first-search】
-comments: false
+comments: true
 date: 2016-07-07 18:45:22
 tags:
 - 算法

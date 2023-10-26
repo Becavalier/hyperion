@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 283. Move Zeroes
 intro: LeetCode 每日一题系列，今天第二题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。这道题是今天早上做的，整理成本篇文章。因笔者水平有限，如果有更好的想法欢迎留言。【Array】【TwoPointers】
-comments: false
+comments: true
 date: 2016-04-12 10:16:00
 tags:
 - 算法

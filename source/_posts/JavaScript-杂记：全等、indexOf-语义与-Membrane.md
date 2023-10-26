@@ -1,7 +1,7 @@
 ---
 title: JavaScript 杂记：全等、indexOf 语义与 Membrane
 intro: 专门写篇文章来记录最近一段时间遇到的几个小问题。本文主要介绍 JavaScript 中全等（“===”）运算符和 “Array.prototype.indexOf” 方法在 ECMA262 标准中的语义以及 JavaScript Membrane 的定义。其中 “JavaScript Membrane” 是 TC39 官方给出的对 ES6 中新增的 Proxy 特性正确使用场景的代码描述。
-comments: false
+comments: true
 date: 2019-09-09 20:06:50
 tags:
 - JavaScript

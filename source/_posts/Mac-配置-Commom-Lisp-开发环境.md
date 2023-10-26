@@ -1,7 +1,7 @@
 ---
 title: Mac 配置 Commom Lisp 开发环境
 intro: 由于最近在工作中遇到了一些使用 Lisp 语言编写的项目，因此在这里记录一下在 Mac 上配置 Common Lisp 编译和运行环境的步骤。这里以配置 Open-VRP 项目为主要目标。Open-VRP 是一个使用 Lisp 编写的基于启发式 Tabu Search 算法用于解决类 VRPTW 问题的工具库。
-comments: false
+comments: true
 date: 2017-06-29 13:32:42
 tags:
 - Lisp

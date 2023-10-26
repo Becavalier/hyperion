@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-10-14T05:16:15.785Z</updated>
+  <updated>2023-10-26T03:37:10.262Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/"/>
     <id>https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/</id>
     <published>2023-10-14T03:05:00.000Z</published>
-    <updated>2023-10-14T05:16:15.785Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">Let&#39;s revisit how Pratt&#39;s parser works in this article and see its difference from the original recursive descendant parser.</summary>
@@ -38,7 +38,7 @@
     <link href="https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2023/09/05/%E3%80%8A%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2023-09-05T14:45:00.000Z</published>
-    <updated>2023-10-01T08:25:14.756Z</updated>
+    <updated>2023-10-26T03:37:10.244Z</updated>
     
     
     <summary type="html">很多人推荐的一本书，曾被奉为软件工程领域的“圣经”。书中的内容源于作者 Brooks 博士在 IBM 公司任 System 系列计算机以及其软件系统 OS 项目经理时总结的实践经验。</summary>
@@ -57,7 +57,7 @@
     <link href="https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-30%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/09/04/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%2011-30%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-09-04T09:39:00.000Z</published>
-    <updated>2023-10-22T06:54:36.835Z</updated>
+    <updated>2023-10-26T03:37:10.138Z</updated>
     
     
     <summary type="html">书接上文。</summary>
@@ -76,7 +76,7 @@
     <link href="https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/07/18/%E3%80%8ACrafting-Interpreters%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-10%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-07-18T03:25:00.000Z</published>
-    <updated>2023-10-06T03:16:24.013Z</updated>
+    <updated>2023-10-26T03:37:10.254Z</updated>
     
     
     <summary type="html">这本《Crafting Interpreters》实际上几年前就发现并且收藏了，直到昨天看了作者 Robert Nystrom 的博客后才想起来。Robert 去年刚过而立之年，目前在 Google 从事 Dart 语言的研发工作。我对好书没有抵抗力，立马放下手头的其他书和项目，来感受一下优秀人的文字魅力。后记：如果龙书是编译入门的理论圣经，那这本书就是编译入门的实践宝典，好书。</summary>
@@ -95,7 +95,7 @@
     <link href="https://www.hangyu.site/2023/07/13/%E5%85%B3%E4%BA%8E-C++-Stack-Unwinding-%E7%9A%84%E4%B8%80%E7%82%B9%E8%AE%B0%E5%BD%95/"/>
     <id>https://www.hangyu.site/2023/07/13/%E5%85%B3%E4%BA%8E-C++-Stack-Unwinding-%E7%9A%84%E4%B8%80%E7%82%B9%E8%AE%B0%E5%BD%95/</id>
     <published>2023-07-13T09:57:00.000Z</published>
-    <updated>2023-09-01T13:21:29.051Z</updated>
+    <updated>2023-10-26T03:37:10.260Z</updated>
     
     
     <summary type="html">这篇文章整理了一些关于 C++ Stack Unwinding 的内容。</summary>
@@ -112,7 +112,7 @@
     <link href="https://www.hangyu.site/2023/07/04/%E3%80%8AUnix-%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-5-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/07/04/%E3%80%8AUnix-%E7%8E%AF%E5%A2%83%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-5-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-07-04T07:55:00.000Z</published>
-    <updated>2023-07-18T03:21:48.866Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">继续整理书架上的经典老书。</summary>
@@ -129,7 +129,7 @@
     <link href="https://www.hangyu.site/2023/06/18/%E3%80%8A%E7%A9%BF%E8%B6%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E8%BF%B7%E9%9B%BE%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2023/06/18/%E3%80%8A%E7%A9%BF%E8%B6%8A%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%9A%84%E8%BF%B7%E9%9B%BE%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2023-06-18T01:14:00.000Z</published>
-    <updated>2023-07-11T07:43:45.657Z</updated>
+    <updated>2023-10-26T03:37:10.309Z</updated>
     
     
     <summary type="html">李忠老师的另一大作。本书以“电”为始，到加法器，再到晶体管，逐步从历史发展的角度介绍了计算机的基本演化方式，是一本不错的科普书籍。</summary>
@@ -146,7 +146,7 @@
     <link href="https://www.hangyu.site/2023/06/05/Nodejs-Internal/"/>
     <id>https://www.hangyu.site/2023/06/05/Nodejs-Internal/</id>
     <published>2023-06-05T02:38:00.000Z</published>
-    <updated>2023-06-09T08:14:21.482Z</updated>
+    <updated>2023-10-26T03:37:10.260Z</updated>
     
     
     <summary type="html">开篇文章记录下有关 Node.js 的一些内容（不定期更新）。</summary>
@@ -163,7 +163,7 @@
     <link href="https://www.hangyu.site/2023/06/03/%E3%80%8Ax86-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%9A%E4%BB%8E%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%88%B0%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-20-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/06/03/%E3%80%8Ax86-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%9A%E4%BB%8E%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%88%B0%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-12-20-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-06-03T14:03:00.000Z</published>
-    <updated>2023-09-02T03:56:06.914Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">书接上文。</summary>
@@ -184,7 +184,7 @@
     <link href="https://www.hangyu.site/2023/05/11/%E4%B8%8E-AI-%E5%AF%B9%E8%AF%9D/"/>
     <id>https://www.hangyu.site/2023/05/11/%E4%B8%8E-AI-%E5%AF%B9%E8%AF%9D/</id>
     <published>2023-05-11T13:49:26.000Z</published>
-    <updated>2023-05-17T14:13:55.629Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">人工智能（Artificial Intelligence，简称 AI）是指利用计算机科学、工程学、数学等相关学科研究、开发用于模拟、扩展和扩展人类智能的技术。通常情况下，AI 的目标是创建具有类似于人类思维和行为的智能化机器。</summary>
@@ -201,7 +201,7 @@
     <link href="https://www.hangyu.site/2023/04/09/%E3%80%8Ax86-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%9A%E4%BB%8E%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%88%B0%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-11-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/04/09/%E3%80%8Ax86-%E6%B1%87%E7%BC%96%E8%AF%AD%E8%A8%80%EF%BC%9A%E4%BB%8E%E5%AE%9E%E6%A8%A1%E5%BC%8F%E5%88%B0%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-11-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-04-09T02:51:58.000Z</published>
-    <updated>2023-07-04T08:00:42.912Z</updated>
+    <updated>2023-10-26T03:37:10.260Z</updated>
     
     
     <summary type="html">一本 2023 年的新书，很适合 x86 体系入门，这里挑些重点记一记。</summary>
@@ -222,7 +222,7 @@
     <link href="https://www.hangyu.site/2023/04/07/%E3%80%8A%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97%EF%BC%9A%E7%BE%A4%E4%BD%93%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%8B%E6%91%98%E5%BD%95/"/>
     <id>https://www.hangyu.site/2023/04/07/%E3%80%8A%E4%B9%8C%E5%90%88%E4%B9%8B%E4%BC%97%EF%BC%9A%E7%BE%A4%E4%BD%93%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%8B%E6%91%98%E5%BD%95/</id>
     <published>2023-04-07T04:01:31.000Z</published>
-    <updated>2023-04-21T02:01:05.325Z</updated>
+    <updated>2023-10-26T03:37:10.260Z</updated>
     
     
     <summary type="html">第一次读这种心理学相关的著作，内容很难形成具体的意象，不是很好读。</summary>
@@ -239,7 +239,7 @@
     <link href="https://www.hangyu.site/2023/03/23/x86-64-Instruction-Cheat-Sheet/"/>
     <id>https://www.hangyu.site/2023/03/23/x86-64-Instruction-Cheat-Sheet/</id>
     <published>2023-03-23T05:21:26.000Z</published>
-    <updated>2023-06-28T14:14:25.256Z</updated>
+    <updated>2023-10-26T03:37:10.309Z</updated>
     
     
     <summary type="html">自用 x86-64 指令速记手册。</summary>
@@ -260,7 +260,7 @@
     <link href="https://www.hangyu.site/2023/03/19/%E3%80%8A%E5%88%9B%E5%A7%8B%E4%BA%BA%EF%BC%9A%E6%96%B0%E7%AE%A1%E7%90%86%E8%80%85%E5%A6%82%E4%BD%95%E5%BA%A6%E8%BF%87%E7%AC%AC%E4%B8%80%E4%B8%AA90%E5%A4%A9%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-5-10-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/03/19/%E3%80%8A%E5%88%9B%E5%A7%8B%E4%BA%BA%EF%BC%9A%E6%96%B0%E7%AE%A1%E7%90%86%E8%80%85%E5%A6%82%E4%BD%95%E5%BA%A6%E8%BF%87%E7%AC%AC%E4%B8%80%E4%B8%AA90%E5%A4%A9%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-5-10-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-03-19T10:52:51.000Z</published>
-    <updated>2023-06-04T03:35:49.736Z</updated>
+    <updated>2023-10-26T03:37:10.109Z</updated>
     
     
     <summary type="html">书接上回。</summary>
@@ -277,7 +277,7 @@
     <link href="https://www.hangyu.site/2023/03/17/%E3%80%8A%E5%88%9B%E5%A7%8B%E4%BA%BA%EF%BC%9A%E6%96%B0%E7%AE%A1%E7%90%86%E8%80%85%E5%A6%82%E4%BD%95%E5%BA%A6%E8%BF%87%E7%AC%AC%E4%B8%80%E4%B8%AA90%E5%A4%A9%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-4%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/03/17/%E3%80%8A%E5%88%9B%E5%A7%8B%E4%BA%BA%EF%BC%9A%E6%96%B0%E7%AE%A1%E7%90%86%E8%80%85%E5%A6%82%E4%BD%95%E5%BA%A6%E8%BF%87%E7%AC%AC%E4%B8%80%E4%B8%AA90%E5%A4%A9%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-4%20%E7%AB%A0%EF%BC%89/</id>
     <published>2023-03-17T07:52:53.000Z</published>
-    <updated>2023-06-04T03:41:23.640Z</updated>
+    <updated>2023-10-26T03:37:10.261Z</updated>
     
     
     <summary type="html">从 IC 到管理者，针对这个角色转变过程，这本书能够给予的一些指导性意见。当然，书中提到的“新管理者”实际上泛指从一个旧环境进入到新环境的管理者，其个人的职责转换受到外界环境变化的影响。</summary>
@@ -294,7 +294,7 @@
     <link href="https://www.hangyu.site/2023/03/06/%E3%80%8A%E7%AE%97%E6%B3%954%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/03/06/%E3%80%8A%E7%AE%97%E6%B3%954%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-03-06T00:25:10.000Z</published>
-    <updated>2023-04-21T02:01:05.380Z</updated>
+    <updated>2023-10-26T03:37:10.309Z</updated>
     
     
     <summary type="html">读一读这本算法经典教材。</summary>
@@ -311,7 +311,7 @@
     <link href="https://www.hangyu.site/2023/02/15/Engineering-Manager-Cheat-Sheet/"/>
     <id>https://www.hangyu.site/2023/02/15/Engineering-Manager-Cheat-Sheet/</id>
     <published>2023-02-15T01:21:00.000Z</published>
-    <updated>2023-06-04T13:51:14.856Z</updated>
+    <updated>2023-10-26T03:37:10.261Z</updated>
     
     
     <summary type="html">This is a self-customized cheat sheet for engineering managers, and here I listed some knowledge collections based on my learning, understanding and experiences so far (keep updating).</summary>
@@ -328,7 +328,7 @@
     <link href="https://www.hangyu.site/2022/12/11/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-21-28-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/12/11/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-21-28-%E7%AB%A0%EF%BC%89/</id>
     <published>2022-12-11T12:56:10.000Z</published>
-    <updated>2023-04-21T02:01:05.278Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">书接上回，本文是第 21-28 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</summary>
@@ -347,7 +347,7 @@
     <link href="https://www.hangyu.site/2022/11/01/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/11/01/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/</id>
     <published>2022-11-01T14:01:14.000Z</published>
-    <updated>2023-04-21T02:01:05.270Z</updated>
+    <updated>2023-10-26T03:37:10.253Z</updated>
     
     
     <summary type="html">书接上回，本文是第 14-20 章的笔记。内容仅基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</summary>
@@ -366,7 +366,7 @@
     <link href="https://www.hangyu.site/2022/10/16/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-13-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/10/16/%E3%80%8AOperating-Systems-Three-Easy-Pieces%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-13-%E7%AB%A0%EF%BC%89/</id>
     <published>2022-10-16T15:08:20.000Z</published>
-    <updated>2023-07-04T07:36:17.109Z</updated>
+    <updated>2023-10-26T03:37:10.253Z</updated>
     
     
     <summary type="html">闻名已久的操作系统著作，今日拜读一下，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</summary>
@@ -385,7 +385,7 @@
     <link href="https://www.hangyu.site/2022/09/21/%E5%BC%A0%E5%AE%B6%E7%95%8C-%E9%95%BF%E6%B2%99-%E6%B5%B7%E5%8D%97%E7%8E%AF%E5%B2%9B-10-%E6%97%A5%E6%B8%B8%E6%94%BB%E7%95%A5/"/>
     <id>https://www.hangyu.site/2022/09/21/%E5%BC%A0%E5%AE%B6%E7%95%8C-%E9%95%BF%E6%B2%99-%E6%B5%B7%E5%8D%97%E7%8E%AF%E5%B2%9B-10-%E6%97%A5%E6%B8%B8%E6%94%BB%E7%95%A5/</id>
     <published>2022-09-21T04:14:26.000Z</published>
-    <updated>2023-04-21T02:01:05.448Z</updated>
+    <updated>2023-10-26T03:37:10.270Z</updated>
     
     
     <summary type="html">准备趁着十一国庆和婚假出去好好玩一下，由于疫情影响，加之筹备的时间不多，因此之前想要出国以及去澳门的计划只能暂且搁置。但即便国内，可能任意游玩的地方也需要耐心寻找，避开潜在的疫情隔离风险。经过初步筛查，我们选择了张家界和海南环岛这两个地方，中间途径长沙，正好可以去喝一杯茶颜悦色（乐。整个行程我们会从国庆假期的后半段开始，以避开出行高峰。两个人的总预算在 ￥15000 ~ ￥20000。</summary>
@@ -402,7 +402,7 @@
     <link href="https://www.hangyu.site/2022/07/11/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/07/11/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/</id>
     <published>2022-07-11T04:11:09.000Z</published>
-    <updated>2023-04-21T02:01:05.212Z</updated>
+    <updated>2023-10-26T03:37:10.246Z</updated>
     
     
     <summary type="html">“旧书清理”系列。这里是 14-20 章的内容，主要介绍了：CSS 中的表格布局、列表和生成内容、变形、过渡等。</summary>
@@ -419,7 +419,7 @@
     <link href="https://www.hangyu.site/2022/06/15/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-13-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/06/15/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-7-13-%E7%AB%A0%EF%BC%89/</id>
     <published>2022-06-15T13:06:53.000Z</published>
-    <updated>2023-04-21T02:01:05.213Z</updated>
+    <updated>2023-10-26T03:37:10.110Z</updated>
     
     
     <summary type="html">“旧书清理”系列。这里是 7-11 章的内容，主要介绍了：视觉格式基础、内边距、边框、轮廓、外边距、颜色、背景、渐变、浮动及其形状、定位、弹性盒布局，以及栅格布局。</summary>
@@ -436,7 +436,7 @@
     <link href="https://www.hangyu.site/2022/06/11/%E3%80%8A%E7%9E%AC%E9%97%B4%E4%B9%8B%E7%BE%8E%E3%80%8B%E5%86%85%E5%AE%B9%E8%A6%81%E7%82%B9%E5%B0%8F%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2022/06/11/%E3%80%8A%E7%9E%AC%E9%97%B4%E4%B9%8B%E7%BE%8E%E3%80%8B%E5%86%85%E5%AE%B9%E8%A6%81%E7%82%B9%E5%B0%8F%E8%AE%B0/</id>
     <published>2022-06-11T09:30:00.000Z</published>
-    <updated>2023-04-21T02:01:05.380Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">“打扫旧书”系列，这本书里提到的某些设计要点在如今看来有些过时，因此仅供参考。</summary>
@@ -453,7 +453,7 @@
     <link href="https://www.hangyu.site/2022/05/28/%E3%80%8A%E6%97%A0%E4%BC%A4%E8%B7%91%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2022/05/28/%E3%80%8A%E6%97%A0%E4%BC%A4%E8%B7%91%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2022-05-28T09:32:07.000Z</published>
-    <updated>2023-04-21T02:01:05.355Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">最近几年断断续续跑步，整体上成绩没什么提升。但自从前几天勉强跑了一次半马后，就开始膝关节微痛，虽然我体重不沉，但属实发现连长跑需要的最基本装备都不了解，一件 T 恤，一件运动裤就去跑马了（醉）。没有速干衣、没有控制稳定配速、没有做合理的跑后恢复。所以，找一本书来恶补一下常识 :(</summary>
@@ -470,7 +470,7 @@
     <link href="https://www.hangyu.site/2022/05/04/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2022/05/04/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC%201-6%20%E7%AB%A0%EF%BC%89/</id>
     <published>2022-05-04T14:09:21.000Z</published>
-    <updated>2023-04-21T02:01:05.201Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">“旧书清理”系列。这里是 1-6 章的内容。主要介绍了：CSS 和文档、选择符、特指度和层叠、值和单位、字体、文本属性。</summary>
@@ -487,7 +487,7 @@
     <link href="https://www.hangyu.site/2021/09/25/%E3%80%8AC-Primer-Plus-%E7%AC%AC%E5%85%AD%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     <id>https://www.hangyu.site/2021/09/25/%E3%80%8AC-Primer-Plus-%E7%AC%AC%E5%85%AD%E7%89%88%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
     <published>2021-09-25T10:08:01.000Z</published>
-    <updated>2023-04-21T02:01:05.134Z</updated>
+    <updated>2023-10-26T03:37:10.261Z</updated>
     
     
     <summary type="html">PS.本文仅根据作者自身情况选择性整理，并未囊括所有书中提到的内容（博客中的其他笔记也如此）。文中标注的页面编号对应于本书的当当电子版，而非纸质版。</summary>
@@ -504,7 +504,7 @@
     <link href="https://www.hangyu.site/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-05-23T14:17:23.000Z</published>
-    <updated>2023-04-21T02:01:05.343Z</updated>
+    <updated>2023-10-26T03:37:10.262Z</updated>
     
     
     <summary type="html">书接上回，第 6-9 章的笔记。</summary>
@@ -521,7 +521,7 @@
     <link href="https://www.hangyu.site/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/</id>
     <published>2021-05-19T09:18:20.000Z</published>
-    <updated>2023-06-05T05:03:50.311Z</updated>
+    <updated>2023-10-26T03:37:10.261Z</updated>
     
     
     <summary type="html">“The Linux Programming Interface”，内容如题。</summary>
@@ -538,7 +538,7 @@
     <link href="https://www.hangyu.site/2021/05/11/GCC-%E4%B8%8B%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AF%B9%E9%BD%90%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%EF%BC%88Aligned-Memory-Access%EF%BC%89/"/>
     <id>https://www.hangyu.site/2021/05/11/GCC-%E4%B8%8B%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AF%B9%E9%BD%90%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%EF%BC%88Aligned-Memory-Access%EF%BC%89/</id>
     <published>2021-05-11T09:34:47.000Z</published>
-    <updated>2023-04-21T02:01:05.026Z</updated>
+    <updated>2023-10-26T03:37:10.261Z</updated>
     
     
     <summary type="html">如题所示的一些要点记录。</summary>

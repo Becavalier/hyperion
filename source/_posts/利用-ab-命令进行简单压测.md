@@ -1,7 +1,7 @@
 ---
 title: 利用 ab 命令进行简单压测
 intro: Enter intro here to display on home page
-comments: false
+comments: true
 date: 2015-03-12 23:02:58
 tags:
 - Apache

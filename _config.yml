@@ -140,5 +140,3 @@ feed:
   icon: /images/rss.png
   autodiscovery: true
   template:
-
-disqus_shortname: yao-tong-shou-ji

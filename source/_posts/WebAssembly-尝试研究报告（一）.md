@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告（一）
 intro: 自 WebAssembly 技术从 2016 年出现开始，便一直受到各方的关注。从宏观上来看，使用该技术我们可以通过把 Web 端的复杂运算逻辑放在 C/C++ 代码实现，并且通过 WebAssembly 提供的 JavaScript 接口来与 C/C++ 代码进行交互，进而达到提升 Web 应用运行性能的目的。该技术的 MVP 标准版本刚发布不久，与 DOM 操作相关功能特性的实现还有待后续标准的进一步完善。
-comments: false
+comments: true
 date: 2017-06-09 11:55:00
 tags:
 - WebAssembly

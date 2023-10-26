@@ -1,7 +1,7 @@
 ---
 title: Docker 基础记录（三）
 intro: 本篇将讨论 Docker 用于构建微服务的相关实践。如何将 Docker 用于生产环境，并且构建一个更复杂的多容器应用？同时利用链接和卷等 Docker 特性来管理 Docker 中的应用，以及 Docker 集群等。
-comments: false
+comments: true
 date: 2017-11-09 15:53:48
 tags:
 - Docker

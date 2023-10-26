@@ -1,7 +1,7 @@
 ---
 title: 使用 Noteflight 来快速作曲和 MusicXML 导出
 intro: 最近一直有想法把自己喜欢的一首曲子转换成 MusicXML 格式，用来分享到其他的 Midi 设备上来使用。MacOS 上的大多数乐谱处理软件都需要很高的费用来购买正版。索性无意间发现了 Noteflight，可以直接在线编曲，在线导出成 MusicXML 或者 MIDI 等其他常用格式，使用起来十分方便。
-comments: false
+comments: true
 date: 2017-07-06 14:15:40
 tags:
 - 钢琴

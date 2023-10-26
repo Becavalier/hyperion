@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 6. ZigZag Conversion
 intro: LeetCode 每日一题系列，今天第十三题。“ZigZag” 一词的意思是 “Z 字形，锯齿形”，如果把数字按照 “ZigZag” 的方式进行排列，这会是一道怎样的题目呢？我们一起来看看。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【String】
-comments: false
+comments: true
 date: 2016-05-08 23:06:08
 tags:
 - 算法

@@ -1,7 +1,7 @@
 ---
 title: 《CSAPP（第三版）》读书笔记（第 4-5 章）
 intro: 书接上文，本文为第 4-5 章的笔记。
-comments: false
+comments: true
 date: 2020-11-23 22:57:32
 tags:
 - 计算机

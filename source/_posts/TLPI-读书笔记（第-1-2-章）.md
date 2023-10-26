@@ -1,7 +1,7 @@
 ---
 title: TLPI 读书笔记（第 1-2 章）
 intro: “The Linux Programming Interface”，内容如题。
-comments: false
+comments: true
 date: 2021-05-19 17:18:20
 tags:
 - Linux

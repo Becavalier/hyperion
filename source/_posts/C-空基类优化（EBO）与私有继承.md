@@ -1,7 +1,7 @@
 ---
 title: C++ 空基类优化（EBO）与私有继承
 intro: 通常我们认为“私有继承”和“组合”都有着相同的应用层语义，即：派生类或包含类是通过继承的类或组合的类对象来实现的（is-implemented-in-terms-of）。但在 C++ 中，由于 EBO（Empty Base Optimization）机制的存在，某种情况下我们可能会更倾向于使用私有继承而非组合的方式。
-comments: false
+comments: true
 date: 2020-04-27 20:27:20
 tags:
 - Cpp

@@ -1,7 +1,7 @@
 ---
 title: 《JavaScript 高级程序设计（第四版）》读书笔记（第 12-17 章）
 intro: 书接上回，本文为第 12-17 章的笔记。
-comments: false
+comments: true
 date: 2020-12-18 23:24:24
 tags:
 - JavaScript

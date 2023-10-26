@@ -1,7 +1,7 @@
 ---
 title: WebAssembly Summit 2020 — 议题深度解析（下）
 intro: 在上一篇文章中，我们介绍了 WebAssembly Summit 各位嘉宾在上半场带来的 Wasm 在标准制定、编译优化以及浏览器引擎上的一些精彩分享。本文我们将继续回顾在大会下半场中，分享者为我们带来的，Wasm 在现阶段各类工程领域中的一些精彩实践。
-comments: false
+comments: true
 date: 2020-03-12 15:08:42
 tags:
 - WebAssembly

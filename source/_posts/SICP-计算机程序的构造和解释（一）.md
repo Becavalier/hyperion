@@ -1,7 +1,7 @@
 ---
 title: SICP-计算机程序的构造和解释（一）
 intro: SICP 第一章内容回顾。Lisp 语言的一种最重要的特点就是：计算过程的 Lisp 描述（称为过程）本身又可以作为 Lisp 的数据来表示和操作。
-comments: false
+comments: true
 date: 2019-10-11 20:54:34
 tags:
 - SICP

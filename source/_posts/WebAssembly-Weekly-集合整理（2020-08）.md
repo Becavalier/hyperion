@@ -1,7 +1,7 @@
 ---
 title: WebAssembly Weekly 集合整理（2021 / 05）
 intro: 整理了一下 WebAssembly Weekly 上从 2017 年至 2021 年 5 月这段时间出现的，有关 Wasm 的一些技术实践和技术产品。
-comments: false
+comments: true
 date: 2020-08-25 10:21:49
 tags:
 - WebAssembly

@@ -1,7 +1,7 @@
 ---
 title: ELF 静态 / 动态链接流程解析
 intro: 本文将以两个具体的例子来剖析 ELF 目标文件（.o）和动态库文件（.so）在分别进行静态链接和动态链接时的具体流程。
-comments: false
+comments: true
 date: 2020-06-18 19:24:18
 tags:
 - 计算机

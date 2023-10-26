@@ -1,7 +1,7 @@
 ---
 title: GCC 下默认的对齐指针访问（Aligned Memory Access）
 intro: 如题所示的一些要点记录。
-comments: false
+comments: true
 date: 2021-05-11 17:34:47
 tags:
 - C

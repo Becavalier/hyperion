@@ -1,7 +1,7 @@
 ---
 title: 《JavaScript 语言精髓与编程实践（第三版）》读书笔记（第 1-3 章）
 intro: 今年计划中的最后一本书，当然要以老本行相关的内容（JavaScript）作为收尾。
-comments: false
+comments: true
 date: 2020-12-08 12:47:25
 tags:
 - JavaScript

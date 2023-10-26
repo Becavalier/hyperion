@@ -1,7 +1,7 @@
 ---
 title: 《Crafting Interpreters》读书笔记（第 11-30 章）
 intro: 书接上文。
-comments: false
+comments: true
 date: 2023-09-04 17:39:00
 tags:
 - Interpreter

@@ -1,7 +1,7 @@
 ---
 title: 《Low-Level Programming》读书笔记（第 5-13 章）
 intro: 内容太多，所以分成多篇来记录了，书接上文。
-comments: false
+comments: true
 date: 2020-06-29 00:28:35
 tags:
 - 汇编

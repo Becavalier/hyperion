@@ -1,7 +1,7 @@
 ---
 title: 《Effective C++ 3th》读书笔记（二）
 intro: 文接上回，本文将继续记录常见的 C++ 高效开发范式，这些范式均总结于《Effective C++ 3th》一书。由于该书出版年代较为久远，因此对于书中条款的不适用之处，作者将尽量予以纠正并给出自己的建议。
-comments: false
+comments: true
 date: 2020-04-26 21:28:21
 tags:
 - Cpp

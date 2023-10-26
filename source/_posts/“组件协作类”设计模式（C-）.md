@@ -1,7 +1,7 @@
 ---
 title: “组件协作类”设计模式（C++）
 intro: 该类设计模式主要用于解决组件之间的协作问题。
-comments: false
+comments: true
 date: 2020-05-28 11:40:48
 tags:
 - 设计模式

@@ -1,7 +1,7 @@
 ---
 title: Linux 共享库应用 --version-script
 intro: 传统 Linux 共享库的 SO-NAME 机制无法解决当依赖共享库的次版本号不同时可能带来的符号不兼容问题。为此，可以为共享库添加 Version Script 以标记其中各符号所对应的次版本号，当所依赖版本符号不存在时便可以给出相对友好的提示信息。不仅如此，借助 Version Script 我们还可以向应用程序屏蔽共享库的一些内部工具符号。
-comments: false
+comments: true
 date: 2020-06-23 18:18:37
 tags:
 - 计算机

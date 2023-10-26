@@ -1,7 +1,7 @@
 ---
 title: 与 AI 对话
 intro: 人工智能（Artificial Intelligence，简称 AI）是指利用计算机科学、工程学、数学等相关学科研究、开发用于模拟、扩展和扩展人类智能的技术。通常情况下，AI 的目标是创建具有类似于人类思维和行为的智能化机器。
-comments: false
+comments: true
 date: 2023-05-11 21:49:26
 tags:
 - AI

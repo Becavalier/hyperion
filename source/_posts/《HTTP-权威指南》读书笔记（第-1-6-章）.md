@@ -1,7 +1,7 @@
 ---
 title: 《HTTP 权威指南》读书笔记（第 1-6 章）
 intro: 旧书清理计划。2012 年出版的书，暂时没有新版，选择性读读。
-comments: false
+comments: true
 date: 2021-02-19 19:45:04
 tags:
 - HTTP

@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告 - API 之初始化、内存和表的分配
 intro: 本篇报告我们会花一点时间来详细了解下 WebAssembly JS API 的特性和使用方法。随着 WebAssembly MVP 版本标准的发布，与其对应的 Web API 也有了相应的改动和部分标准化特性。本次报告主要研究 WebAssembly 模块的初始化、内存分配、表分配等相关内容。
-comments: false
+comments: true
 date: 2017-06-14 17:46:46
 tags:
 - WebAssembly

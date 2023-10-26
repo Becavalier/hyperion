@@ -1,7 +1,7 @@
 ---
 title: 为 Swing 控件 JList 动态添加元素
 intro: 最近在做的一些项目中用到了 JavaSE 中 Swing 扩展库的 JList 控件，在使用中逐渐发现 JList 很好用，我们可以更改其样式变成单行的下拉列表形式，或者变成显示多行的选择列表形式。并且还可以同时实现多项选择或者单项选择，也可以显示纯文字选项或者图片，甚至显示各种自定义的样式。
-comments: false
+comments: true
 date: 2015-03-22 00:33:01
 tags:
 - Java

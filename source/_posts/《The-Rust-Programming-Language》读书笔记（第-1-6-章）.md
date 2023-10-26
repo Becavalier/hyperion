@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 1-6 章）
 intro: 2021 年的计划事项之一 - 学习 Rust。希望不会打击一个 C++er 的脆弱内心 :(
-comments: false
+comments: true
 date: 2021-03-23 21:07:38
 tags:
 - Rust

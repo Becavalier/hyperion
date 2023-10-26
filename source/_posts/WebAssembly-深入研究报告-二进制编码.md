@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 深入研究报告 - 二进制编码
 intro: 本篇报告我们来看一下 WebAssembly 的二进制编码格式。为什么 Wasm 会选择设计一种新的二进制编码格式，而不直接使用 ASM.js 的 ASCII 文本格式？Wasm 的 OpCode 操作码格式是怎样的？Wasm 模块在内存中的格式，以及用于验证模块的魔术字符是什么？
-comments: false
+comments: true
 date: 2017-06-20 23:14:21
 tags:
 - WebAssembly

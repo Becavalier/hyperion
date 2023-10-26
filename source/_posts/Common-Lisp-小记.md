@@ -1,7 +1,7 @@
 ---
 title: Common Lisp 小记
 intro: 从今天开始进行为期两周的 Common Lisp 语言学习，在此记录第一部分的学习内容。Lisp 作为一种古老的编程语言，有着其独特的魅力，在灵活的同时又不失性能。Lisp 的名字来源于“表处理（LISt Processing）”，其语言内部含有“原子”和“表”等类型的数据对象。
-comments: false
+comments: true
 date: 2017-06-29 23:27:55
 tags:
 - Lisp

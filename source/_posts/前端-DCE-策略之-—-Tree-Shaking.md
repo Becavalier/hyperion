@@ -1,7 +1,7 @@
 ---
 title: 前端 DCE 策略之 — Tree Shaking
 intro: “Tree Shaking” 是 JavaScript 中一种常用的 DCE(Dead Code Elimination) 手段。它通过依赖于 ES2015/ES6 的模块系统来静态分析出源码依赖结构中的无用代码，然后便可以在打包时大大压缩源代码的体积，同时尽最大程度上的只保留用到的业务功能。
-comments: false
+comments: true
 date: 2017-05-08 14:51:24
 tags:
 - ES6

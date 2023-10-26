@@ -1,7 +1,7 @@
 ---
 title: C++ 编译器优化 - RVO / NRVO
 intro: RVO 即 “Return Value Optimization”，是一种编译器优化技术，编译器可以通过该技术减少函数返回时生成临时值（对象）的个数，在某种程度上提高程序的运行效率，对需要分配大量内存的类对象值复制过程十分友好。NRVO 全称为 “Named Return Value Optimization”，该优化的大致流程与 RVO 类似。
-comments: false
+comments: true
 date: 2019-09-01 17:32:04
 tags:
 - Cpp

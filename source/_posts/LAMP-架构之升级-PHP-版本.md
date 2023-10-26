@@ -1,7 +1,7 @@
 ---
 title: LAMP 架构之升级 PHP 版本
 intro: 当你看到这篇文章的时候 YHSPY.COM 服务器上的 PHP 版本已经从 5.4.27 升级到了 7.0.4，这是一个重大的飞跃。一路升级遇到了很多问题。官方声称 PHP7 最大的升级就是在语言性能上的提升，最大到达了30%。同时也去掉了很多老版本中被标记为 Deprecated 的函数方法，语言整体变得更加稳定。
-comments: false
+comments: true
 date: 2016-03-16 09:12:07
 tags:
 - PHP

@@ -1,7 +1,7 @@
 ---
 title: 简谈 JavaScript 中的数据类型
 intro: 为什么要突然说起 JavaScript（后面简称 “JS”） 的数据类型呢？因为最近在看书的时候发现，JS 的数据类型相比其他语言，比如 Java，C++ 等面向对象的高级语言来说，显得十分简洁，却又十分灵活。JS 是一种轻量级的“解释型”语言，它虽然不支持类，但却提供了比类更加强大的和灵活的语言特性。
-comments: false
+comments: true
 date: 2014-12-27 16:24:58
 tags:
 - JavaScript

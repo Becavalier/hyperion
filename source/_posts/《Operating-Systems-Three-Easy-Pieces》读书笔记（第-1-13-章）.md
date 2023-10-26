@@ -1,7 +1,7 @@
 ---
 title: '《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章）'
 intro: 闻名已久的操作系统著作，今日拜读一下，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。
-comments: false
+comments: true
 date: 2022-10-16 23:08:20
 tags:
 - OS

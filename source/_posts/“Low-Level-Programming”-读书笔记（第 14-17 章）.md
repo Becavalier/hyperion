@@ -1,7 +1,7 @@
 ---
 title: 《Low-Level Programming》读书笔记（第 14-17 章）
 intro: 内容还是太多，所以还是继续书接上文。
-comments: false
+comments: true
 date: 2020-07-06 17:55:14
 tags:
 - 汇编

@@ -1,7 +1,7 @@
 ---
 title: 《Pro Git - 2nd Edition》读书笔记（第 7-10 章）
 intro: 书接上回。
-comments: false
+comments: true
 date: 2020-11-02 17:21:35
 tags:
 - Git

@@ -1,7 +1,7 @@
 ---
 title: 尝试构建体积最小的 ELF 可执行程序
 intro: 本文将尝试构建一个代码量最少、体积最小的 ELF 可执行程序，程序运行时会向 stdout 输出字符串 “Hello, YHSPY!”。
-comments: false
+comments: true
 date: 2020-06-19 15:44:56
 tags:
 - 计算机

@@ -1,7 +1,7 @@
 ---
 title: 《The Rust Programming Language》读书笔记（第 17-21 章）
 intro: 书接上回，第 17-21 章的笔记。
-comments: false
+comments: true
 date: 2021-04-08 23:48:43
 tags:
 - Rust

@@ -1,7 +1,7 @@
 ---
 title: 《Low-Level Programming》读书笔记（第 1-4 章）
 intro: 无意间找到的一本好书，主要介绍 X86-64 体系下的 C 和汇编。其中第十二章关于“编程语言设计”部分的内容，以及第十三章关于“良好编码规范”的内容就简单略过了。
-comments: false
+comments: true
 date: 2020-06-25 16:15:36
 tags:
 - 汇编

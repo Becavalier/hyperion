@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 尝试研究报告（三）
 intro: 在前两次的研究报告，我们中主要介绍了 WebAssembly 在代码方面的应用与编译运行的基本流程。抛开复杂的开发编译工具链，我们来看一看 WebAssembly 底层的实现机制和原理。在编译器层面，WebAssembly 到底做了哪些事情，提供了怎样的优化？这些优化是怎样作用于实际的代码中的？让我们一起来研究一下。
-comments: false
+comments: true
 date: 2017-06-11 11:29:52
 tags:
 - WebAssembly

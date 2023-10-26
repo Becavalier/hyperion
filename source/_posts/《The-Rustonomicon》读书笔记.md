@@ -1,7 +1,7 @@
 ---
 title: 《The Rustonomicon》读书笔记
 intro: “The Dark Arts of Unsafe Rust”。
-comments: false
+comments: true
 date: 2021-04-13 00:56:32
 tags:
 - Rust

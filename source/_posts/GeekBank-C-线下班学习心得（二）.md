@@ -1,7 +1,7 @@
 ---
 title: GeekBank C++ 线下班学习心得（二）
 intro: 今天是“GeekBand 极客班线下 C++ 培训”的第二周课程，浦东12路依旧挤得不行。上午先是产品经理部分的课程答疑与培训，一些课程重点的总结如下。
-comments: false
+comments: true
 date: 2015-07-25 21:08:31
 tags:
 - 日记

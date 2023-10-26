@@ -1,7 +1,7 @@
 ---
 title: vtable 与 vptr
 intro: 这个大众话题一直被放在 TODO 列表里，今天终于有时间来稍微写一下了。问题是之前有人在群里问能不能直接在 C/C++ 代码里访问类的 Virtual Table（后面简称 vtable），但事实情况是由于编译器的 ABI 不同，实际上对于 vtable 的具体结构和内存布局没有标准化的说明，因此不能按照想当然的方式来访问。本文我们来具体深入探究一下。
-comments: false
+comments: true
 date: 2020-08-07 09:51:38
 tags:
 - Cpp

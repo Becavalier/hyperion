@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 342. Power of Four
 intro: LeetCode 每日一题系列，今天第十题。双休日因为事情繁多，所以没有来得及更新，感到十分愧疚。今天的题目是一道关于“二进制”的题目，也是 LeetCode 上的新题。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Bit Manipulation】
-comments: false
+comments: true
 date: 2016-04-25 10:00:00
 tags:
 - 算法

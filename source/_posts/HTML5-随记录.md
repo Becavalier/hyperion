@@ -1,7 +1,7 @@
 ---
 title: HTML5 随记录
 intro: 在此总结记录一些 HTML5 相关的基础知识，主要内容包括一些不经常使用但是却又比较重要的 HTML5 特性。对于需要系统性了解 HTML5 特性的同学可以对照此文查缺补漏。但本文不会记录所有的 HTML5 特性，只挑选一些笔者不常用的特性加以记录与整理。
-comments: false
+comments: true
 date: 2016-07-27 22:45:25
 tags:
 - HTML

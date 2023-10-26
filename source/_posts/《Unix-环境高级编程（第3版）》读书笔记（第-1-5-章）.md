@@ -1,7 +1,7 @@
 ---
 title: 《Unix 环境高级编程（第三版）》读书笔记（第 1-5 章）
 intro: 继续整理书架上的经典老书。
-comments: false
+comments: true
 date: 2023-07-04 15:55:00
 tags:
 - Unix

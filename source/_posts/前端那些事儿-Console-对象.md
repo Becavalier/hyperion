@@ -1,7 +1,7 @@
 ---
 title: 前端那些事儿 - Console 对象
 intro: 我们在日常的 Web 前端开发中经常会遇到需要进行 JavaScript（后面简称 JS） 代码调试的需求，大部分的 JS 初学者可能会选择使用 alert() 方法来打印变量或者对象本身的值来进行调试，但这样却并不能看到对象的具体内容。
-comments: false
+comments: true
 date: 2016-02-09 10:56:11
 tags:
 - JavaScript

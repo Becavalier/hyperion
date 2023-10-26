@@ -1,7 +1,7 @@
 ---
 title: 淘宝网的 BigRender
 intro: 在上一篇博客里我们讲到了来自 Facebook 的 BigPipe 技术是怎样通过减少请求数量，同时使浏览器和服务器可以并行处理来达到最大程度提升首屏加载效率的目的的。而相对的，淘宝网的 BigRender 技术则是一次性从服务器将资源全部输出，那么他是如何效仿 BigPipe 技术的呢？
-comments: false
+comments: true
 date: 2017-04-26 09:24:55
 tags:
 - JavaScript

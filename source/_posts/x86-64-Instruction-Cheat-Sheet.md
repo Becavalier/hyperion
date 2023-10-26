@@ -1,7 +1,7 @@
 ---
 title: x86-64 Instruction Cheat Sheet
 intro: 自用 x86-64 指令速记手册。
-comments: false
+comments: true
 date: 2023-03-23 13:21:26
 tags:
 - 汇编

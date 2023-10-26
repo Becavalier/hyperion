@@ -1,7 +1,7 @@
 ---
 title: UCS-2 编码的妙用
 intro: 我们在日常的开发当中经常会碰到诸如 UTF-8、UTF-16 等字符编码方式，其实这些字符编码方式都是 Unicode 编码的一种实现方式。而今天我们的主角就是Unicode 编码的另一种实现方式 - “UCS-2” 编码。借助于 “UCS-2” 编码，我们可以实现一些相对“特殊”的需求。
-comments: false
+comments: true
 date: 2016-02-19 23:42:57
 tags:
 - 编码

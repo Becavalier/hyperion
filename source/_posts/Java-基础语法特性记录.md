@@ -1,7 +1,7 @@
 ---
 title: Java 基础语法特性记录
 intro: 本文不是针对 Java 的 “step by step” 手把手教程，但你可以通过本文来回顾 Java 的一些基础特性。“对象”是 Java 语言中的主要元素，它将生活中事物之间的逻辑抽象成了类与类之间的关系，这是 Jave 语言的基本思想之一，即“一切元素皆为对象”。
-comments: false
+comments: true
 date: 2016-03-20 22:47:47
 tags:
 - Java

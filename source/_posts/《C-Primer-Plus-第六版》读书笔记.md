@@ -1,7 +1,7 @@
 ---
 title: 《C Primer Plus 第六版》读书笔记
 intro: PS.本文仅根据作者自身情况选择性整理，并未囊括所有书中提到的内容（博客中的其他笔记也如此）。文中标注的页面编号对应于本书的当当电子版，而非纸质版。
-comments: false
+comments: true
 date: 2021-09-25 18:08:01
 tags:
 - C

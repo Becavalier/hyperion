@@ -1,7 +1,7 @@
 ---
 title: 《CSS 权威指南（第四版）》读书笔记（第 1-6 章）
 intro: “旧书清理”系列。这里是 1-6 章的内容。主要介绍了：CSS 和文档、选择符、特指度和层叠、值和单位、字体、文本属性。
-comments: false
+comments: true
 date: 2022-05-04 22:09:21
 tags:
 - CSS

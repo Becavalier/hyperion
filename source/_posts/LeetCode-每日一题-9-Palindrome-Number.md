@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 9. Palindrome Number
 intro: LeetCode 每日一题系列，今天第十五题。“回文”的意思是指将给定的一段文字左右颠倒后原意保持不变的一段文字，但今天的主角不是一段文字，而是一段数字。建议先看原题的链接自己做一下，然后再参考本文给出的分析与解答进行总结。【Math】
-comments: false
+comments: true
 date: 2016-05-12 14:21:03
 tags:
 - 算法

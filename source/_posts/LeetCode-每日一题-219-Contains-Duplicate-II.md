@@ -1,7 +1,7 @@
 ---
 title: LeetCode 每日一题 - 219. Contains Duplicate II
 intro: LeetCode 每日一题系列，今天第四题。这道题与之前的 “217.Contains Duplicate” 基础解法思路大体相似，不过在判断是否含有重复元素的同时，还需要保证元素的索引信息不能够丢失。【Array】【HashTable】
-comments: false
+comments: true
 date: 2016-04-14 09:29:45
 tags:
 - 算法

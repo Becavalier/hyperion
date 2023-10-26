@@ -1,7 +1,7 @@
 ---
 title: WebAssembly 深入研究报告 - 安全性
 intro: 每个 WebAssembly 模块都会在自己独立的沙盒环境中执行导出的函数和代码。这个独立的沙盒环境通过一些错误隔离技术将 Wasm 的运行环境从主机的运行时环境中隔离出来。不仅如此，每一个 Wasm 模块的运行也同样会首先遵循其所在平台环境的安全策略。比如运行在 Web 浏览器中则会遵循同源策略，而在非浏览器环境则一般会遵循 POSIX 安全模型。
-comments: false
+comments: true
 date: 2017-06-28 17:12:35
 tags:
 - WebAssembly

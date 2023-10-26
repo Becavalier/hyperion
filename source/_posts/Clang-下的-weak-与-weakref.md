@@ -1,7 +1,7 @@
 ---
 title: Clang 下的 weak 与 weakref
 intro: 符号表结构中 st_info 字段的高 28 位决定了 ST_BIND 的值，而它的一种枚举值 STB_WEAK 表示了一种特殊类型的符号，即“弱符号”。而对应的一种抽象关系便称为“弱引用”。同时相对的，也有着“强符号”和“强引用”的定义。
-comments: false
+comments: true
 date: 2020-06-18 13:24:56
 tags:
 - 计算机

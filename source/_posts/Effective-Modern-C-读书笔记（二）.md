@@ -1,7 +1,7 @@
 ---
 title: 《Effective Modern C++》读书笔记（二）
 intro: 文接上回，本文为上一文的第二篇。
-comments: false
+comments: true
 date: 2020-05-23 17:19:08
 tags:
 - Cpp

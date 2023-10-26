@@ -1,13 +1,4 @@
 script(src=config.root + 'scripts/index.js', type='text/javascript')
-if config.disqus_shortname && page.comments && !is_page()
-  script(async).
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://#{config.disqus_shortname}.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-
 if theme.google_analytics 
   script(src='https://www.googletagmanager.com/gtag/js?id=UA-135435065-1', type='text/javascript', async)
   script.

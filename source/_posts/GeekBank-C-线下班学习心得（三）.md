@@ -1,7 +1,7 @@
 ---
 title: GeekBank C++ 线下班学习心得（三）
 intro: 今天是“GeekBand 极客班线下 C++ 培训”的第三周课程，本篇文章记录了大部分与产品设计及其整体生命周期相关的知识要点。
-comments: false
+comments: true
 date: 2015-08-01 17:34:18
 tags:
 - 日记

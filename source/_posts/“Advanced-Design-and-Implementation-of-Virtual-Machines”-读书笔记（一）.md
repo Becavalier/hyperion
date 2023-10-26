@@ -1,7 +1,7 @@
 ---
 title: 《Advanced Design and Implementation of VMs》读书笔记（一）
 intro: 很久之前无意间搜罗到的一本介绍 VM 的书，趁此疫情 WFH 期间时间充足读一读。
-comments: false
+comments: true
 date: 2020-06-26 16:42:01
 tags:
 - 虚拟机

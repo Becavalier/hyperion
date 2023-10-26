@@ -1,7 +1,7 @@
 ---
 title: event.target 与 event.srcElement
 intro: window.event 是标准的 window 对象，它包含着事件发生时的状态，所以只在事件的发生过程中才会起作用。而在 window.event 对象中有一个名为 srcElement 的属性，代表着事件发生的源，即代表着事件发生时的 DOM 对象。
-comments: false
+comments: true
 date: 2015-02-13 21:06:41
 tags:
 - JavaScript

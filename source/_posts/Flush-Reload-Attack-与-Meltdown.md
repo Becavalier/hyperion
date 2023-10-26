@@ -1,7 +1,7 @@
 ---
 title: Flush & Reload Attack 与 Meltdown
 intro: 今天听了银奎老师分享的最近火热技术圈的 Meltdown 漏洞的基本原理，才知道原来底层系统的世界是如此的丰富多彩。Meltdown 漏洞的 POC 实现基于了一种名为 “Flush & Reload” 的黑客攻击技术，这项技术的基本原理是利用 Memory 和 Cache 之间的关系，同时利用统计学的置信程度来筛选关键信息的。
-comments: false
+comments: true
 date: 2018-01-08 00:05:08
 tags:
 - 漏洞
