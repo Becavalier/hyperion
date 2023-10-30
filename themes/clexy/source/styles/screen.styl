@@ -146,6 +146,8 @@ header
   text-align right
   padding 40px
   max-width 320px
+  display flex
+  flex-direction column
   .rss
     img
       width 20px
@@ -223,7 +225,6 @@ header
     top 0
     width 400%
     z-index 1
-  //Logo
   .logo
     height 100px
     width 100px
@@ -235,6 +236,7 @@ header
     position relative
     z-index 2
     margin auto 0 20px auto
+    flex-shrink 0
 
 // Header animation
 @keyframes slide
@@ -657,53 +659,58 @@ hr
             margin 5px 10px
 
 @media (max-width 800px)
-  body
-    main
-      padding 20px
-      article
-        h1
-          font-size 2.8rem
-        h2
-          font-size 2.6rem
-        h3
-          font-size 2.4rem
-        h4
-          font-size 2.2rem
-        div.content
-          div.year-group
-            margin-top 20px
-            display block
-            > div
-              margin-bottom 10px
-              > span.sticky
-                position relative
-                top 0
-                margin 0
-              > span.line
-                display none
-          blockquote
-            margin .5em 0 .5em 1em
-          ul.catelog-items, ul.search-catelog-items, ul.search-catelog-items ul, ul.book-list
-            padding-inline-start 0
-        div.about-container
-          div.avatar-name
-            font-size 2.9rem
-          div.avatar-description
-            font-size 1.6rem
-            margin 7px 0     
+  html
+    font-size 56.5%
+    body
+      main
+        padding 20px
+        article
+          h1
+            font-size 2.8rem
+          h2
+            font-size 2.6rem
+          h3
+            font-size 2.4rem
+          h4
+            font-size 2.2rem
+          div.content
+            div.year-group
+              margin-top 20px
+              display block
+              > div
+                margin-bottom 10px
+                > span.sticky
+                  position relative
+                  top 0
+                  margin 0
+                > span.line
+                  display none
+            blockquote
+              margin .5em 0 .5em 1em
+            ul.catelog-items, ul.search-catelog-items, ul.search-catelog-items ul, ul.book-list
+              padding-inline-start 0
+          div.about-container
+            div.avatar-name
+              font-size 2.9rem
+            div.avatar-description
+              font-size 1.6rem
+              margin 7px 0     
 
 // ===========================================================================
 // 6. Custimization
 // ===========================================================================
+div.toc-slot
+  flex 1
 div.toc-body
-  position absolute
-  bottom 40px
-  border solid 1px #7c7c7c
+  position relative
+  border dashed 1px #7c7c7c
   z-index 2
-  padding 0 20px
-  margin 20px 0
+  padding 20px
+  margin 50px 0px 20px
   width 280px
   background-color #141414
+  flex-shrink 1
+  min-height 150px
   > div.bookmark
     position absolute
     height 30px
@@ -718,12 +725,14 @@ div.toc-body
     top 0
     opacity .45
   > ol.toc
-    padding 0
+    padding-left 0
+    margin 0
     font-size 15px
-    line-height 1
+    line-height 1.4
     list-style none
     text-align left
-    position relative
+    overflow-y scroll
+    height 100%
     ol.toc-child
       padding-left 20px
       > li a:before 
@@ -886,7 +895,7 @@ article
       > div.container 
         margin-bottom 50px
         &:nth-child(3)
-          margin-top 40px
+          margin-top 20px
         &:last-child
           margin-bottom 0
       div.title

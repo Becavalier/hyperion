@@ -23,7 +23,7 @@ workbox.core.skipWaiting();
 self.__precacheManifest = [
   {
     "url": "2014/12/23/数据结构-线性顺序表/index.html",
-    "revision": "cff434fc176da21334d789353a351745"
+    "revision": "b7f71eb04ac1d6f9f7df283d6a1303f9"
   },
   {
     "url": "2014/12/24/Android-以-Post-方式发送-Http-请求/index.html",
@@ -47,7 +47,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/01/11/博客正式使用“知识共享-CC”国际协议/index.html",
-    "revision": "fb4763a0f1b50e628fcdd1cecb6c2f86"
+    "revision": "1248cd66c72ed98ffc91f538f3ec1cc8"
   },
   {
     "url": "2015/01/12/Prism-js-在-AJAX-下的应用问题/index.html",
@@ -91,11 +91,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2015/07/25/GeekBank-C-线下班学习心得（二）/index.html",
-    "revision": "12f203bdfcba1468b6a269289535f687"
+    "revision": "110b16fe9c9286c23e0487904f2cec0d"
   },
   {
     "url": "2015/08/01/GeekBank-C-线下班学习心得（三）/index.html",
-    "revision": "bb18b10002b6fde989060552b9393c43"
+    "revision": "b8afd14a88f0a495a0c707693f385919"
   },
   {
     "url": "2015/08/11/浅谈-CORS：跨域资源共享/index.html",
@@ -159,63 +159,63 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/04/11/LeetCode-每日一题-1-Two-Sum/index.html",
-    "revision": "078d742a4174a3231b259c74c30410a4"
+    "revision": "de767bb9b4cb176eae540c779da3d07f"
   },
   {
     "url": "2016/04/12/LeetCode-每日一题-283-Move-Zeroes/index.html",
-    "revision": "b001e1ddf81aeebb3c4e652d66438dd7"
+    "revision": "477f12909d004a41b7b0d46c682157f5"
   },
   {
     "url": "2016/04/13/LeetCode-每日一题-217-Contains-Duplicate/index.html",
-    "revision": "41a0dc118af659eb02bb29029bee7e09"
+    "revision": "8a5a531e18e6b2f9a2d85db5283b6850"
   },
   {
     "url": "2016/04/14/LeetCode-每日一题-219-Contains-Duplicate-II/index.html",
-    "revision": "c23e5b4babee5dd19adbff442de97cf4"
+    "revision": "4ba81bcf59ad169d2ead116e6d3ff728"
   },
   {
     "url": "2016/04/16/LeetCode-每日一题-169-Majority-Element/index.html",
-    "revision": "0551298eebc7ab9e4f470298bfd772e7"
+    "revision": "ece0bb3332c4ccbcc1bf5a7a7c6fcec6"
   },
   {
     "url": "2016/04/17/LeetCode-每日一题-121-Best-Time-to-Buy-and-Sell-Stock/index.html",
-    "revision": "b0ad90e8b49ce1762707bafe5f21c637"
+    "revision": "08711a9b1ee23d95a42ea2a76fceaee1"
   },
   {
     "url": "2016/04/19/LeetCode-每日一题-189-Rotate-Array/index.html",
-    "revision": "69472068658430648d05abd4d132c78f"
+    "revision": "705440a1ecab7f2ac671143ab5da9670"
   },
   {
     "url": "2016/04/20/LeetCode-每日一题-70-Climbing-Stairs/index.html",
-    "revision": "9898bc02f57eff74bb83b88d2ab0c679"
+    "revision": "fc2a91bbad503292d5424f14353600cf"
   },
   {
     "url": "2016/04/21/LeetCode-每日一题-168-Excel-Sheet-Column-Title/index.html",
-    "revision": "6a608d4d83f1ec7d56fd91e9f565a5ed"
+    "revision": "ab97530727f25de2b0fe28d160d39dad"
   },
   {
     "url": "2016/04/25/LeetCode-每日一题-342-Power-of-Four/index.html",
-    "revision": "ec34e834335ed6cd918a681f5184cc6d"
+    "revision": "60c83e012bb3a95d81900864e63fc6ce"
   },
   {
     "url": "2016/05/05/LeetCode-每日一题-344-Reverse-String/index.html",
-    "revision": "643e069bf782b0829692a874032ef2e6"
+    "revision": "14fb8ba1291a618ff1a61ecd3c06212b"
   },
   {
     "url": "2016/05/06/LeetCode-每日一题-258-Add-Digits/index.html",
-    "revision": "6fdeb4de7ba2892bfde576605852495b"
+    "revision": "aa5fe5b5d0c864e275749482419bafbb"
   },
   {
     "url": "2016/05/08/LeetCode-每日一题-6-ZigZag-Conversion/index.html",
-    "revision": "57073e03b7d23270ba062938b6c0a24c"
+    "revision": "4224c33305931d15734a75553f609885"
   },
   {
     "url": "2016/05/10/LeetCode-每日一题-7-Reverse-Integer/index.html",
-    "revision": "d5e1c3b1291c365ad019e4819196794b"
+    "revision": "027a4ca28e15ec74ace3cfbfba24d6ea"
   },
   {
     "url": "2016/05/12/LeetCode-每日一题-9-Palindrome-Number/index.html",
-    "revision": "3c8ccf22972203972f55bd71c943c959"
+    "revision": "630cc9984bacb8de236eedbc29890617"
   },
   {
     "url": "2016/05/12/前端那些事儿-URL-对象/index.html",
@@ -223,23 +223,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/05/24/LeetCode-每日一题-27-Remove-Element/index.html",
-    "revision": "624662efc402d9f47e30b79f36b91330"
+    "revision": "5da79dd1eba7c0cbe9f8155ffccd6be6"
   },
   {
     "url": "2016/06/15/LeetCode-每日一题-203-Remove-Linked-List-Elements/index.html",
-    "revision": "50f2b11975d5c69c163efb7f977aa1fc"
+    "revision": "2c8a45f8ecafbf9c3d71e42259112c81"
   },
   {
     "url": "2016/06/16/LeetCode-每日一题-136-Single-Number/index.html",
-    "revision": "a2a0fcc4700aa0ea2703db2b3616db83"
+    "revision": "2cbb6673ee104561cade6039c6996c53"
   },
   {
     "url": "2016/07/07/LeetCode-每日一题-100-Same-Tree/index.html",
-    "revision": "5696e535c39b03191cb9cedab12f6620"
+    "revision": "86a2da38cefc2ece3460c2f693d9b47e"
   },
   {
     "url": "2016/07/14/Linux-后台运行任务/index.html",
-    "revision": "bcf90b85df5cbd46c67cc966bd5eaa7d"
+    "revision": "b5c8d64f91dab659d82024368cea5df0"
   },
   {
     "url": "2016/07/16/设计模式速谈：一、序论/index.html",
@@ -271,47 +271,47 @@ self.__precacheManifest = [
   },
   {
     "url": "2016/08/16/基于-AWS-探索-Shadowsocks/index.html",
-    "revision": "b85ac2691b7cca2c5ec631e8d1ed2ad2"
+    "revision": "050049b8f4f81fd9b390062174d4e186"
   },
   {
     "url": "2016/09/16/Zoomage-js-正式版-V1-0-0-核心原理介绍/index.html",
-    "revision": "38c807c952373d02c579f0f2e66cf5cf"
+    "revision": "9bb83c38f98e5e9c7a00ef5efe786ff4"
   },
   {
     "url": "2016/09/17/LeetCode-每日一题-104-Maximum-Depth-of-Binary-Tree/index.html",
-    "revision": "21a89ed2ecfea19dcaa1b70886d6e9c7"
+    "revision": "9bff4083a9428085d68038d289e8df4a"
   },
   {
     "url": "2016/09/17/LeetCode-每日一题-58-Length-of-Last-Word/index.html",
-    "revision": "cb63f8300f4221ef6d095b650cd55069"
+    "revision": "2772996c4491c1ff2b7c65af18bb5eba"
   },
   {
     "url": "2016/12/09/前端关键技术点杂烩/index.html",
-    "revision": "109dea6bce7ed8575d945779db06ecdd"
+    "revision": "b0a0af24b23204827feac817c8d5fb81"
   },
   {
     "url": "2016/12/13/前端常见技术点-CSS-DOM-布局/index.html",
-    "revision": "de2d7c2e23c793855faadd62ca6cfe6c"
+    "revision": "0583ff60c7ef5f2cf2bf16c45ae4d2b5"
   },
   {
     "url": "2016/12/13/前端常见技术点-HTML/index.html",
-    "revision": "8fff51e03ca489f3067cdb7c0bec1acf"
+    "revision": "3ac11c6cd51859e4918e423b28fc07ad"
   },
   {
     "url": "2016/12/13/前端常见技术点-JavaScript/index.html",
-    "revision": "708017dc250386830f31d3142f8ee230"
+    "revision": "9bc4c278500162cd8a1be8474cf2065b"
   },
   {
     "url": "2016/12/14/前端项目规划与团队管理/index.html",
-    "revision": "0e7dd6d90df7dcf60c3569ea8be5b54a"
+    "revision": "7e95968c15a3cd5953226064b9a87fc9"
   },
   {
     "url": "2016/12/15/CSS-常用布局解决方案/index.html",
-    "revision": "8964e3305ef5672dcab6b90e2e1582be"
+    "revision": "d4d0316c918324d83887d22fbbfdb41c"
   },
   {
     "url": "2016/12/18/ES-6-ES-2015-常用知识点归纳/index.html",
-    "revision": "801506507170d972f6d4891da982f07b"
+    "revision": "217beef9bcb26df801fd234a45e2bbf1"
   },
   {
     "url": "2016/12/22/Promise-浅谈/index.html",
@@ -323,7 +323,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/01/29/CentOS-7-2-之-MySQL-到-MariaDB-的迁移/index.html",
-    "revision": "17e7c35a59e8d5a3de87ca9a687df3ea"
+    "revision": "9c8eb989e78334c74b863f3c5aeb62a3"
   },
   {
     "url": "2017/02/28/Promise-A-调用详谈/index.html",
@@ -331,7 +331,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/03/09/HTTP-基础整理/index.html",
-    "revision": "91e1f5a129c840675ad2503353482bd2"
+    "revision": "b415a8d698204aff43e6d863939adc09"
   },
   {
     "url": "2017/03/21/一道面试题的思考/index.html",
@@ -339,11 +339,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/03/23/URL-编码的那些事儿/index.html",
-    "revision": "ff4d351be22d59428caf71899fc1655e"
+    "revision": "3092b6942a552f226a6d70f19a9e614e"
   },
   {
     "url": "2017/04/22/机器学习记录-简介/index.html",
-    "revision": "491a566d21300cf12ba93c7b07506871"
+    "revision": "e1c4811e0b3084d46c692abc879c67fe"
   },
   {
     "url": "2017/04/24/BigPipe-原理实现与使用场景分析/index.html",
@@ -355,15 +355,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/04/29/《大型网站技术架构 - 核心原理与案例分析》读书笔记/index.html",
-    "revision": "324db88271c0484d5c5a54659fcaa72a"
+    "revision": "724e8b06917a6553d4a9e60c60febc3e"
   },
   {
     "url": "2017/05/06/STC-与-PTC/index.html",
-    "revision": "b2d75c7da464a7329fa9a3fcef1f77f9"
+    "revision": "89cc176220ee2a29a6db2e5ed6a50136"
   },
   {
     "url": "2017/05/08/“函数柯里化”常见使用场景记录/index.html",
-    "revision": "eca5b86780a5066c6770e166b58ff97e"
+    "revision": "25192823954db99f15d1771715415e31"
   },
   {
     "url": "2017/05/08/前端-DCE-策略之-—-Tree-Shaking/index.html",
@@ -379,11 +379,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/05/26/基于-NumPy-和-TensorFlow-的简单-KNN-实现/index.html",
-    "revision": "65ade0e38062665845f5dd94d97c9890"
+    "revision": "831ce0de1138cd36d9f4ffdbdb5d4fd6"
   },
   {
     "url": "2017/06/09/WebAssembly-尝试研究报告（一）/index.html",
-    "revision": "030e8f13778e5465546a94f6b6edccb5"
+    "revision": "b1513095982d73b0601eaa1fedf01a27"
   },
   {
     "url": "2017/06/10/WebAssembly-尝试研究报告（二）/index.html",
@@ -391,7 +391,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/06/11/WebAssembly-尝试研究报告（三）/index.html",
-    "revision": "e59e40c147e89c9ad61fa552c17ed08a"
+    "revision": "0deeff2fcd1c3d7ba814830c21a54210"
   },
   {
     "url": "2017/06/13/WebAssembly-尝试研究报告-错误处理/index.html",
@@ -399,19 +399,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/06/14/WebAssembly-尝试研究报告-API-之初始化、内存和表的分配/index.html",
-    "revision": "6ef4051d2a975f38d5ae2250e93c1737"
+    "revision": "88390ecf9b071e35b12bd0de5830a39e"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-DIP-实践/index.html",
-    "revision": "394c57fb589d0817d3f302f9d7c5a396"
+    "revision": "4d0e4f2280829f330df6078f5960dc8f"
   },
   {
     "url": "2017/06/16/WebAssembly-尝试研究报告-本地存储与转移/index.html",
-    "revision": "eb8866f0877efe8650da8f34f75cc0eb"
+    "revision": "c5f6b6dfaac0f10d2f5eda59d763f9b7"
   },
   {
     "url": "2017/06/20/WebAssembly-深入研究报告-二进制编码/index.html",
-    "revision": "616b5f0a447dc264aef04e82a4f61f36"
+    "revision": "2c5847ad38d6096a23fa2a3fdbd858e9"
   },
   {
     "url": "2017/06/28/WebAssembly-深入研究报告-安全性/index.html",
@@ -423,11 +423,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/06/29/Mac-配置-Commom-Lisp-开发环境/index.html",
-    "revision": "617daa40bee318fd6739c64e178515e4"
+    "revision": "34a954272b1865b9fdfb3e96b22294bc"
   },
   {
     "url": "2017/07/06/ES-8-新特性一览/index.html",
-    "revision": "447a4d63722d85acb81a9ceede551cb4"
+    "revision": "1e43f418395a8bb143611370be4a013e"
   },
   {
     "url": "2017/07/06/使用-Noteflight-来快速作曲和-MusicXML-导出/index.html",
@@ -435,11 +435,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/07/13/Python-小记/index.html",
-    "revision": "b3167bfcf9c6e67d935e4ffc089ed0ae"
+    "revision": "35f909a45809a2db6dcd066c139f2269"
   },
   {
     "url": "2017/07/19/WebAssembly-深入研究报告-碎片知识/index.html",
-    "revision": "17073a46223e563799e75f8d57d9ce7d"
+    "revision": "de7099c256f3ce06aa0e4d499243fd86"
   },
   {
     "url": "2017/08/22/Redis-源码之内存管理-zmalloc-zfree/index.html",
@@ -451,7 +451,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/09/04/大数据基础架构概述/index.html",
-    "revision": "6428fdc8053017cd76c9117ce6814846"
+    "revision": "a56ce6bb6a692290decc5032a5257a5b"
   },
   {
     "url": "2017/09/07/V8-内存优化之-Ignition-解释器/index.html",
@@ -459,19 +459,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2017/11/04/Docker-基础记录（一）/index.html",
-    "revision": "85509a72b829fdfb60a334252c2152e1"
+    "revision": "618accc1ccd7af7ab60800ad5e19733b"
   },
   {
     "url": "2017/11/07/Docker-基础记录（二）/index.html",
-    "revision": "2ca3716223c7a5710a37b69b7d14436e"
+    "revision": "c13b307e89063f6e5604909715620ebd"
   },
   {
     "url": "2017/11/09/Docker-基础记录（三）/index.html",
-    "revision": "bd171111d3a5c467865b2b233c936d7c"
+    "revision": "6c41427f7be5a8d2cf09c7d507aa552d"
   },
   {
     "url": "2017/11/12/The-Twelve-Factor-App/index.html",
-    "revision": "a45e14c9e30d83cbf9293fea0afcaaac"
+    "revision": "2323ee9ca73dad4223cfb82cd7a6aa5f"
   },
   {
     "url": "2017/12/17/Web-新时代与挑战/index.html",
@@ -491,11 +491,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/01/07/“零售的哲学”-读书笔记/index.html",
-    "revision": "cdb0064728adca8fc3636fd72e0d5145"
+    "revision": "2d0019087a0fe08d2142d13e35d6c5dc"
   },
   {
     "url": "2019/01/08/“阿米巴经营”-读书笔记/index.html",
-    "revision": "1b83874450c6be9fdfea494b85379d00"
+    "revision": "c40ff674f5bb68194895cfb44ef76bce"
   },
   {
     "url": "2019/01/14/“重新定义团队：谷歌如何工作”-读书笔记/index.html",
@@ -503,27 +503,27 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/02/14/日本樱花季游攻略/index.html",
-    "revision": "40ca456188e71a0f575c452d4e75c6cd"
+    "revision": "64fb52dc4c50ea8b9b37b9ddc52a49a2"
   },
   {
     "url": "2019/02/28/今日商业评论—瑞幸咖啡VS星巴克，如何互补？/index.html",
-    "revision": "f114d2a0d7a57fe72aa88d2f69f3db70"
+    "revision": "8a19d7c047eba09000fc19ca48ce69eb"
   },
   {
     "url": "2019/03/03/GraphQL-设计艺术/index.html",
-    "revision": "e0ea0efd1c982cbf111bff71a1736545"
+    "revision": "52eb62622e5353a79aeecb9c234b35fc"
   },
   {
     "url": "2019/03/10/记：阿里-2019-本地生活黑客松决赛/index.html",
-    "revision": "78ec71ff951ea3a1a4d94ef36fbe2246"
+    "revision": "df0dc5e02a2e23e40884951ee8e3c33e"
   },
   {
     "url": "2019/03/30/初聊风险投资（VC）/index.html",
-    "revision": "1298af45f1da75b7228f0bf0e904beab"
+    "revision": "fb5286519fa7e13988912f0d71f56501"
   },
   {
     "url": "2019/04/10/浅谈前端 JavaScript 代码保护/index.html",
-    "revision": "1ef28aee02599114196dc74d7dc9ec52"
+    "revision": "f70d213a4cb6bf1ba0a858c93f5fda57"
   },
   {
     "url": "2019/04/21/FCC-China-DevTalk-访谈实录/index.html",
@@ -531,15 +531,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/04/26/React-知识点整理/index.html",
-    "revision": "338107a7b155434814f6928a33929bbe"
+    "revision": "ecb823ea0625a871529409ca9ee26784"
   },
   {
     "url": "2019/04/30/基本算法概括/index.html",
-    "revision": "d9ee55e673e87484664685d898e428db"
+    "revision": "4d4997ed9267f0fd92b89320ceea9a3b"
   },
   {
     "url": "2019/07/11/Frequently-used-TOEFL-oral-short-sentences/index.html",
-    "revision": "ff51181c1d1ecd4f9dbfd59df2816e0c"
+    "revision": "ef156ddb73de307fca1964361e5ab1a6"
   },
   {
     "url": "2019/07/13/浅谈技术人员资产增值/index.html",
@@ -547,7 +547,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/08/31/C-11-好用的新语法特性/index.html",
-    "revision": "f0d429e4e023f6ce15288f3ad44bd013"
+    "revision": "fc5966162f1d4a5414a1a924108c95a5"
   },
   {
     "url": "2019/08/31/C-左值、右值与右值引用/index.html",
@@ -559,11 +559,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/09/09/JavaScript-杂记：全等、indexOf-语义与-Membrane/index.html",
-    "revision": "442a71d64410420028df672d8311aab2"
+    "revision": "c032d8610616da72bb659ffc2bc88796"
   },
   {
     "url": "2019/09/16/English-key-Points-Conclusion-1/index.html",
-    "revision": "5962f10869bbd1903f54e52d489e8cf7"
+    "revision": "b4a34b5c178766d3f6417426aadccb17"
   },
   {
     "url": "2019/10/11/SICP-计算机程序的构造和解释（一）/index.html",
@@ -571,7 +571,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2019/10/14/浅谈企业股权设计/index.html",
-    "revision": "7ca72e9006a82564146a386fcebeb04a"
+    "revision": "9353865424ac8a0c975be4f5579ac72c"
   },
   {
     "url": "2019/11/22/C-中的移动构造与-noexcept/index.html",
@@ -583,11 +583,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/03/11/WebAssembly-Summit-2020-—-议题深度解析（上）/index.html",
-    "revision": "0babb95d10ee74343f38988fb30c0262"
+    "revision": "6f03426496413a7d84b3a056cbabe17f"
   },
   {
     "url": "2020/03/12/WebAssembly-Summit-2020-—-议题深度解析（下）/index.html",
-    "revision": "68fa579e8a4b6404b3d8e6de043be321"
+    "revision": "12444843590f68856e298cd4dd97e464"
   },
   {
     "url": "2020/04/10/Primer-C-完全笔记（第 1-8 章）/index.html",
@@ -607,15 +607,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/04/24/常用-C-高效开发范式（一）/index.html",
-    "revision": "94a955846ee1a46920d161fbdb90a9a5"
+    "revision": "0d8087288cda6cbf3ab402e2607245f8"
   },
   {
     "url": "2020/04/26/C-未限定名字查找与-ADL/index.html",
-    "revision": "7a39dd1e159b61030fc8525ff61fc178"
+    "revision": "d42ff93bd9608f2c5f8a59b3c10f6944"
   },
   {
     "url": "2020/04/26/常用-C-高效开发范式（二）/index.html",
-    "revision": "4b7f685c54e9135fca00dbfa4d72a9e4"
+    "revision": "2c4c40a8ba2c80dc2eb2d1be52f0de67"
   },
   {
     "url": "2020/04/27/C-空基类优化（EBO）与私有继承/index.html",
@@ -635,15 +635,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/14/Effective-Modern-C-读书笔记（一）/index.html",
-    "revision": "fd1935f5f1c60b69b9275dc4fe24e1ef"
+    "revision": "74712fa607f3f05fc43c8526ffedcdfd"
   },
   {
     "url": "2020/05/23/Effective-Modern-C-读书笔记（二）/index.html",
-    "revision": "c831a99beef8ff9c361e0e22aceb8c28"
+    "revision": "1e068a0fc3ea06e232f5c83745d257a9"
   },
   {
     "url": "2020/05/24/C-字符串拷贝优化策略：Eager-Copy、SSO-与-COW/index.html",
-    "revision": "07c3e7739c89e3d2abc53a808b99b7f8"
+    "revision": "f158fceab72ce8c76273f9f0a24bbce3"
   },
   {
     "url": "2020/05/25/C-17-部分新特性一览/index.html",
@@ -651,47 +651,47 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/05/28/“组件协作类”设计模式（C-）/index.html",
-    "revision": "2d6b280d1267a6418d8a6ca2f99c1638"
+    "revision": "af1bedd5d7e17775d4a4d1458544fb20"
   },
   {
     "url": "2020/05/29/“单一职责类”设计模式（C-）/index.html",
-    "revision": "e458d5f89149d48b61f75f02a38c7dab"
+    "revision": "326069db006d5a09fe205f86755c1ada"
   },
   {
     "url": "2020/06/01/“对象创建类”设计模式（C-）/index.html",
-    "revision": "3ce2a38e888ec7c27ee7e46c767894ba"
+    "revision": "b35895aa22918f5071801dd0116f5eb6"
   },
   {
     "url": "2020/06/02/“对象性能类”设计模式（C-）/index.html",
-    "revision": "052167198cd9e59260ac9d155a8ebfb3"
+    "revision": "bfb390e8c78392a408d054383665867a"
   },
   {
     "url": "2020/06/03/“接口隔离类”设计模式（C-）/index.html",
-    "revision": "62b1fa606386a91fcd32ef62061aa72f"
+    "revision": "6ce772f6a24f2a5220803291239233c9"
   },
   {
     "url": "2020/06/04/“状态变化类”设计模式（C-）/index.html",
-    "revision": "c234abc50977cf378e89c6c809fb0fe8"
+    "revision": "3696bd7a004dad18f961e1c89023205e"
   },
   {
     "url": "2020/06/07/“数据结构类”设计模式（C-）/index.html",
-    "revision": "11bca70e592f7138384b693faeadc8ce"
+    "revision": "998fb5d08664c66aa9f49f210d4c3582"
   },
   {
     "url": "2020/06/08/“行为变化类”设计模式（C-）/index.html",
-    "revision": "bf7c6bbd3686754e373260dcaddf6e09"
+    "revision": "b5f5ce5f858323ea92c96bc1189e9120"
   },
   {
     "url": "2020/06/08/“领域规则类”设计模式（C-）/index.html",
-    "revision": "4006ba4bbada2f5e534d4e1387a9ef05"
+    "revision": "620ff5c5a2f0dc6147d47f030837b3e2"
   },
   {
     "url": "2020/06/16/链接、装载与库相关记录（第 1-6 章）/index.html",
-    "revision": "59d1b974a91901a21eae69e1f29f3075"
+    "revision": "2e28ca98ad9f9e0d8dc566f68fa1c234"
   },
   {
     "url": "2020/06/17/Linux 下的 ELF 完整结构分析/index.html",
-    "revision": "52c0789d47d8431a835ae6b9f1f35cf0"
+    "revision": "934a5d655621c215fbf0c63fb29addf9"
   },
   {
     "url": "2020/06/17/使用-objcopy-为-ELF-加入自定义-Section/index.html",
@@ -699,11 +699,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/18/Clang-下的-weak-与-weakref/index.html",
-    "revision": "26831160bf5ad368a232cfc2b3bc647e"
+    "revision": "05f0e1dc847392ead04731034690ea84"
   },
   {
     "url": "2020/06/18/ELF-静态-动态链接流程解析/index.html",
-    "revision": "af852e7cf586ffbdb4f21a5acfecbe67"
+    "revision": "cc5ad7329c18a4e0dbb0db86fe80c7e7"
   },
   {
     "url": "2020/06/19/GCC-下的-COMMON-块控制/index.html",
@@ -715,11 +715,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/19/尝试构建体积最小的-ELF-可执行程序/index.html",
-    "revision": "133b51ca130eb51334be94a2a29f4cb4"
+    "revision": "ba5704fc3187f8d8390fefe8382ae9bb"
   },
   {
     "url": "2020/06/21/链接、装载与库相关记录（第 7-12 章）/index.html",
-    "revision": "a7f11e208ffb95474283ca81b9cb4b9f"
+    "revision": "09d96f921cfad0d25274a219b7c865f1"
   },
   {
     "url": "2020/06/23/Linux-共享库应用-version-script/index.html",
@@ -727,51 +727,51 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/06/25/“Low-Level-Programming”-读书笔记（第 1-4 章）/index.html",
-    "revision": "d9c38e833db122665b568dd403b37168"
+    "revision": "632e6b1a0a98efbb32ac6ed0f7ffff91"
   },
   {
     "url": "2020/06/25/NASM-小记录/index.html",
-    "revision": "bdfae3ba09f8faf4d85807d22bfc925f"
+    "revision": "8c5792ed1a131214e650028abc96a5bd"
   },
   {
     "url": "2020/06/26/“Advanced-Design-and-Implementation-of-Virtual-Machines”-读书笔记（一）/index.html",
-    "revision": "03e7f1240bdb7c9753b64c5d22ecd3c3"
+    "revision": "992dd22b195d8478e4962f09996a571d"
   },
   {
     "url": "2020/06/29/“Low-Level-Programming”-读书笔记（第 5-13 章）/index.html",
-    "revision": "87c6590fbf40e5b71d7d7fbcfd0a5257"
+    "revision": "fac35ead5a115131018a3ead8a018cdd"
   },
   {
     "url": "2020/07/06/“Low-Level-Programming”-读书笔记（第 14-17 章）/index.html",
-    "revision": "3549131c7a0e18684582216eaf7c5de0"
+    "revision": "cce2e79f6a87db6ab66d0a669b2975a6"
   },
   {
     "url": "2020/07/11/std-optional-与-Optional-References/index.html",
-    "revision": "03b67e0ace095cfa6f2da9bd2c233cdb"
+    "revision": "66fcffaf2ddf1891e885059a7007c294"
   },
   {
     "url": "2020/07/15/《虚拟机系统与进程的通用平台》基础概述/index.html",
-    "revision": "da208ec46f10ce3cd29b34adb7658b6e"
+    "revision": "2fe6d2f66a7616f1b836f329b0ac4738"
   },
   {
     "url": "2020/07/18/老生常谈之：switch-case-VS-if-else/index.html",
-    "revision": "c74c81b3feb709828112f1bfa8241c7c"
+    "revision": "bfae00ca8c7d5b16ce34033f8a338762"
   },
   {
     "url": "2020/07/22/《C-17-STL-Cookbook》读书笔记（第 1-2 章）/index.html",
-    "revision": "9c2a3dedd0ed4e61621d3e98d37275b2"
+    "revision": "8e2d692d671ca0dc9ae4deca24371e03"
   },
   {
     "url": "2020/07/28/《C-17-STL-Cookbook》读书笔记（第 3-4 章）/index.html",
-    "revision": "4b44fa9e67cf9954f6d11030df521813"
+    "revision": "7c95750cd597fb3e9064f7361dbc9c3b"
   },
   {
     "url": "2020/07/31/《C-17-STL-Cookbook》读书笔记（第 5-7 章）/index.html",
-    "revision": "4514acd00e145511e1ac3d07abc4e1c9"
+    "revision": "47e3e8ff3b280f1a88a449943d7dbc1d"
   },
   {
     "url": "2020/08/06/《C-17-STL-Cookbook》读书笔记（第 8-10 章）/index.html",
-    "revision": "edfd0db332f0291fbd47bca1c69ed195"
+    "revision": "7e6121f34f3af314aa21a45bf96df189"
   },
   {
     "url": "2020/08/06/CRTP-与常见用例/index.html",
@@ -783,123 +783,123 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/08/09/ASM-js-标准草案分析（18-August-2014）/index.html",
-    "revision": "fb62d4c1066464aaebac04556e4b68e4"
+    "revision": "6bc5345900dcd6821ad2898cf5de85c8"
   },
   {
     "url": "2020/08/17/C-20-The-Big-Four/index.html",
-    "revision": "86912069c72083d13ae767736786f8f7"
+    "revision": "85a23a725bd34d3e7420c9dd647133cb"
   },
   {
     "url": "2020/08/18/C-Dependent-Names、non-ADL-以及-ADL-查找/index.html",
-    "revision": "55a76d876c70faf92b7aa5cecbef62a2"
+    "revision": "6b0b779a4622ba1b075601ede6b34072"
   },
   {
     "url": "2020/08/18/Wasm3-架构剖析/index.html",
-    "revision": "8086c9438e1a9d5fa9a4aed1d240e8e6"
+    "revision": "462bcf4aa82851a212eefd960a5fc967"
   },
   {
     "url": "2020/08/21/Threaded-Code/index.html",
-    "revision": "9ad60f2b0d3587b9b8a624966a7c6293"
+    "revision": "be2c1ea1c3ec2ab1c7d1b81ec4671fc2"
   },
   {
     "url": "2020/08/24/常用-Threading-Models-的伪代码示例/index.html",
-    "revision": "178879fc6ca9704c9dca12a6b2103c3b"
+    "revision": "e39efc5c58498d1c4edaf05fd6b3c80a"
   },
   {
     "url": "2020/08/25/WebAssembly-Weekly-集合整理（2020-08）/index.html",
-    "revision": "7c29b2873a19fe363284adb902a8c73c"
+    "revision": "ad5d3970e710bd80b4643721af01864c"
   },
   {
     "url": "2020/10/05/《垃圾回收算法与实现》读书笔记（第 1-5 章）/index.html",
-    "revision": "baa72a639b67491df4548000b60a1c71"
+    "revision": "9e2a471bfebe05972fcfc9b3d07bc0c2"
   },
   {
     "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/index.html",
-    "revision": "c43c7903aeadc79da2a28308dc8782d9"
+    "revision": "09a7d8adce6b953c16b707ddf07be3fd"
   },
   {
     "url": "2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/index.html",
-    "revision": "8cc1d9a0ba637708c7a57f9aac252d90"
+    "revision": "a6ebe4d4c96f3609d3229f9e2b52f162"
   },
   {
     "url": "2020/11/05/《现代-C-教程：高速上手-C-11-14-17-20》读书笔记/index.html",
-    "revision": "77509c8e9a39572ef4b5d890a2d35860"
+    "revision": "9ffcddf48f336852a2b844d6b5ce04f0"
   },
   {
     "url": "2020/11/11/《X86-X64-体系探索及编程》读书笔记/index.html",
-    "revision": "f8aa97071b1c6c0e6a3a797e535e2380"
+    "revision": "77e01cb3a32aeccb6241be9cc9477bdd"
   },
   {
     "url": "2020/11/13/《CSAPP-第三版》读书笔记（第 1-3 章）/index.html",
-    "revision": "c9c758f15ea4b04352b94f79c5cbf081"
+    "revision": "cd54f4f8c34b782c2d8d92d16488d455"
   },
   {
     "url": "2020/11/23/《CSAPP-第三版》读书笔记（第-4-5-章）/index.html",
-    "revision": "419f01587129a9531bec0af655e2be2b"
+    "revision": "f73832ad960aaa199ed4c8230b8c7147"
   },
   {
     "url": "2020/11/30/《CSAPP-第三版》读书笔记（第-6-8-章）/index.html",
-    "revision": "19454d5ea599d9bb98bdf531828eb7d8"
+    "revision": "0c1da599d955c81ede94b3a550528e2f"
   },
   {
     "url": "2020/12/04/《CSAPP-第三版》读书笔记（第-9-12-章）/index.html",
-    "revision": "5b5966a93d70c0150382ac134bb6e4f8"
+    "revision": "d8523f78eea1cf815bcf4ec90c7ac1b6"
   },
   {
     "url": "2020/12/08/《JavaScript-语言精髓与编程实践（第三版）》读书笔记（第-1-3-章）/index.html",
-    "revision": "28e911922e945d9e5c8498bd9cc57a75"
+    "revision": "b5484bfbf2456e869c047358485e006d"
   },
   {
     "url": "2020/12/08/《JavaScript-高级程序设计（第四版）》读书笔记（第-1-7-章）/index.html",
-    "revision": "554383b8d7fce8c402d65268ea9f0f08"
+    "revision": "3dba01b39232df2963453abd22283cd5"
   },
   {
     "url": "2020/12/14/《JavaScript-高级程序设计（第四版）》读书笔记（第-8-11-章）/index.html",
-    "revision": "d01910ae2d1eaf95c1169144ca932124"
+    "revision": "93090e730846cc35b0246fdc3b5f66f4"
   },
   {
     "url": "2020/12/18/《JavaScript-高级程序设计（第四版）》读书笔记（第-12-17-章）/index.html",
-    "revision": "10d10894c06b7f672eab7911f0157b83"
+    "revision": "5e646bc8dbaab42045f8e678b3316883"
   },
   {
     "url": "2020/12/24/《JavaScript-高级程序设计（第四版）》读书笔记（第-18-28-章）/index.html",
-    "revision": "3359183f455366a62b39fa06b0ea4a75"
+    "revision": "94eef1b305dc3ccfb5243ec3c9d07c64"
   },
   {
     "url": "2020/12/25/《计算的本质：深入剖析程序和计算机》读书笔记（第-1-2-章）/index.html",
-    "revision": "5986e50ecb85e0e4b394be7b5f922abc"
+    "revision": "cd732a7e4cff258bf3c115453ecc9104"
   },
   {
     "url": "2020/12/30/《计算的本质：深入剖析程序和计算机》读书笔记（第-3-4-章）/index.html",
-    "revision": "475636496489c62f11d6ea997902e1f4"
+    "revision": "c8518cb725da9ae2b23688e7963b3a04"
   },
   {
     "url": "2021/01/03/《计算的本质：深入剖析程序和计算机》读书笔记（第-5-9-章）/index.html",
-    "revision": "64e5e2096159df0fa8f86f23a548cad9"
+    "revision": "a1aaafc7a3a212901eba72a68443ae56"
   },
   {
     "url": "2021/01/10/《正则指引（第二版）》读书笔记/index.html",
-    "revision": "24757e1d715f471e1ab404e3769bc32e"
+    "revision": "bb9dfc4db1cf692f61337c8e39abd4af"
   },
   {
     "url": "2021/01/19/《计算机网络（第七版）》读书笔记（第-1-2-章）/index.html",
-    "revision": "cb86747961bd22b4702a1645994f4d68"
+    "revision": "73d732fac3a1a00a3721e7ad76319b2c"
   },
   {
     "url": "2021/01/21/《现代操作系统（第四版）》读书笔记（第-1-3-章）/index.html",
-    "revision": "cb7771b95ed8eba7e187ae6509fc0c77"
+    "revision": "e7305399269c0d66dbe7d8a4ff0fd0d8"
   },
   {
     "url": "2021/01/27/《现代操作系统（第四版）》读书笔记（第-4-6-章）/index.html",
-    "revision": "d1cef4d2a7209ed5aa4a9c80b3a9c9cd"
+    "revision": "8d2594d781d01ddbeb50f52ac1e5405a"
   },
   {
     "url": "2021/02/05/《你不知道的 JavaScript》读书笔记（上）/index.html",
-    "revision": "c16ecf0b70280e31a5e671455915c082"
+    "revision": "43158d054cd64ebe605bc06278d4c23d"
   },
   {
     "url": "2021/02/10/2020-年度总结（Jason-Yu）/index.html",
-    "revision": "5fdfd5ec5ca461488bef0595e1f716b5"
+    "revision": "9f51f7c0ec3c0e22a0cac0ec7e5c6589"
   },
   {
     "url": "2021/02/17/React-特性小结（v17-0-1）/index.html",
@@ -907,35 +907,35 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/02/19/《HTTP-权威指南》读书笔记（第-1-6-章）/index.html",
-    "revision": "6a9fba03cea5757e849196795dac8ad5"
+    "revision": "e439efe7583c4b08e7cc791608f8a70e"
   },
   {
     "url": "2021/02/22/《HTTP-权威指南》读书笔记（第-7-15、20-章）/index.html",
-    "revision": "e889909bb14daf28d9920d564b9b5f02"
+    "revision": "c57af5f1f062bbf3d979e3d10c4cd703"
   },
   {
     "url": "2021/03/13/《前端函数式演进》读书笔记/index.html",
-    "revision": "cc36fa61fbe54b3ea3f5e89d9dd52548"
+    "revision": "70e304ce22c93fa5d4b99e67a19ebfa4"
   },
   {
     "url": "2021/03/23/《The-Rust-Programming-Language》读书笔记（第-1-6-章）/index.html",
-    "revision": "26a6d1f16c55a35cc578afd686ca371f"
+    "revision": "635f849cb7f5a4be8f39812881d682a7"
   },
   {
     "url": "2021/03/27/《The-Rust-Programming-Language》读书笔记（第-7-11-章）/index.html",
-    "revision": "c6d1ce67ae2d88bd52d0284d1e968f3c"
+    "revision": "0fa545d4f6ede85172754cdc939fe5e1"
   },
   {
     "url": "2021/04/01/《The-Rust-Programming-Language》读书笔记（第-12-16-章）/index.html",
-    "revision": "22682fa1edbbf9bd898a452cd989c586"
+    "revision": "c689032f3efde61ac38b9f84bef3000b"
   },
   {
     "url": "2021/04/08/《The-Rust-Programming-Language》读书笔记（第-17-21-章）/index.html",
-    "revision": "7f6ae493a53d079e021f7ef4ceffdbff"
+    "revision": "a26f4214b015b926d338ed5110c2b48a"
   },
   {
     "url": "2021/04/13/《The-Rustonomicon》读书笔记/index.html",
-    "revision": "0356082244989e34a64c59673d2f51d3"
+    "revision": "0ed80d375ec922aa2111ecca20369d1d"
   },
   {
     "url": "2021/04/22/Rust-and-WebAssembly/index.html",
@@ -943,11 +943,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/06/Rust-Runtime-与-ABI/index.html",
-    "revision": "8e3c9522fe71d0a4232d01d421fc34c2"
+    "revision": "685f21584c4c2e45a00d0a694f1142a8"
   },
   {
     "url": "2021/05/10/JIT Compilation：理解与实现/index.html",
-    "revision": "06b223669d0a09b417f00e3fa056dfe8"
+    "revision": "dd6fd98ea37f47dd1f02bdff21a807c2"
   },
   {
     "url": "2021/05/11/GCC-下默认的对齐指针访问（Aligned-Memory-Access）/index.html",
@@ -955,67 +955,67 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/19/TLPI-读书笔记（第-1-2-章）/index.html",
-    "revision": "8164f5a4b73c0369c512b196413d957e"
+    "revision": "7cf6aa15b53c7b7ef3a8e43df3e5751f"
   },
   {
     "url": "2021/05/23/《垃圾回收算法与实现》读书笔记（第-6-9-章）/index.html",
-    "revision": "e5976564bd474d96d14345fc5665d61f"
+    "revision": "db28aed446eef4aa9efb64cd1900aaaf"
   },
   {
     "url": "2021/09/25/《C-Primer-Plus-第六版》读书笔记/index.html",
-    "revision": "a28332c34007ef091a6d565fbbeaceec"
+    "revision": "e3fd932adb4eb4b0a8238c75c1f690b5"
   },
   {
     "url": "2022/05/04/《CSS-权威指南（第四版）》读书笔记（第 1-6 章）/index.html",
-    "revision": "11fde6308c5aea71377990d9e925ffba"
+    "revision": "2f86b7afe7e92c089d1b6ab450eeab4e"
   },
   {
     "url": "2022/05/28/《无伤跑法》读书笔记/index.html",
-    "revision": "76b349056da1df50dbfb9ed2deaf58e8"
+    "revision": "ced63fa6555b7b527ac70992e6eef350"
   },
   {
     "url": "2022/06/11/《瞬间之美》内容要点小记/index.html",
-    "revision": "a7e3a63bd3408e643a9933c799130881"
+    "revision": "954aacff5ea929558f2c7d02653e2842"
   },
   {
     "url": "2022/06/15/《CSS-权威指南（第四版）》读书笔记（第-7-13-章）/index.html",
-    "revision": "47d151ee28d697f24469a27170dc0633"
+    "revision": "5ab0ac4d72fa0410fc2be0e800636dc5"
   },
   {
     "url": "2022/07/11/《CSS-权威指南（第四版）》读书笔记（第-14-20-章）/index.html",
-    "revision": "7844bb98306a24b9df97009df2c2bf21"
+    "revision": "462182d3e1b2551d3fcf232ace3e1890"
   },
   {
     "url": "2022/09/21/张家界-长沙-海南环岛-10-日游攻略/index.html",
-    "revision": "be58e36bebb93c284033715cf45f2786"
+    "revision": "d4c3a9c8d15c59d7cac3f0f7410ac6f9"
   },
   {
     "url": "2022/10/16/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-1-13-章）/index.html",
-    "revision": "083955aec6111b50e794747afd5d5a89"
+    "revision": "c351b19628a0183cb8841c13c5b3b7ce"
   },
   {
     "url": "2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/index.html",
-    "revision": "712537b3f83d66ac63727098b3d17483"
+    "revision": "2d23719f4bea49fc7e9cfffc23960e91"
   },
   {
     "url": "2022/12/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-21-28-章）/index.html",
-    "revision": "67e6aac4361eddf83bf17ddf15877a7a"
+    "revision": "bc14f2f9165ab6601d60f28de845eeb9"
   },
   {
     "url": "2023/02/15/Engineering-Manager-Cheat-Sheet/index.html",
-    "revision": "7771d61477c66b84cae652cb2a46e2dc"
+    "revision": "9d3be8e2256f1e9ada80cb109824cc2a"
   },
   {
     "url": "2023/03/06/《算法4》读书笔记（第-1-3-章）/index.html",
-    "revision": "6bb5429999107fdc70483fb384b6bd78"
+    "revision": "d6e0d64982c33e5cca5142fe56d41374"
   },
   {
     "url": "2023/03/17/《创始人：新管理者如何度过第一个90天》读书笔记（第 1-4 章）/index.html",
-    "revision": "2f99d634e69abae86e4659e2b6e9393d"
+    "revision": "2ced3139867e4f3bd24e257538e9ea9b"
   },
   {
     "url": "2023/03/19/《创始人：新管理者如何度过第一个90天》读书笔记（第-5-10-章）/index.html",
-    "revision": "a697b711226fee29836bdbc102bd0782"
+    "revision": "35958e72cf7f144d968d6632b4446147"
   },
   {
     "url": "2023/03/23/x86-64-Instruction-Cheat-Sheet/index.html",
@@ -1023,11 +1023,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/04/07/《乌合之众：群体心理学》摘录/index.html",
-    "revision": "9f82a8331bac5a5b5f1522d02aee5fc6"
+    "revision": "475600da4ff19e2fa067f11d843304b6"
   },
   {
     "url": "2023/04/09/《x86-汇编语言：从实模式到保护模式（第2版）》读书笔记（第-1-11-章）/index.html",
-    "revision": "dcdaa4f385160f9e02d30d2310b74149"
+    "revision": "176d1d65108dd2de9eb9b63c939ca6cf"
   },
   {
     "url": "2023/05/11/与-AI-对话/index.html",
@@ -1035,19 +1035,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/06/03/《x86-汇编语言：从实模式到保护模式（第2版）》读书笔记（第-12-20-章）/index.html",
-    "revision": "68017bb057a66d913d4d6d82671f3c14"
+    "revision": "12263b6429ed8b947e4fa9f375616a3b"
   },
   {
     "url": "2023/06/05/Nodejs-Internal/index.html",
-    "revision": "e030aa98ffe8f79f448b9e9572a770ad"
+    "revision": "12baab0e6f125553ee734ebfc29cb1dd"
   },
   {
     "url": "2023/06/18/《穿越计算机的迷雾（第2版）》读书笔记/index.html",
-    "revision": "c7753bbf78c9b01cd4eeaeacdadf922e"
+    "revision": "9150c2912ac4faf8c02ca363446b40f9"
   },
   {
     "url": "2023/07/04/《Unix-环境高级编程（第3版）》读书笔记（第-1-5-章）/index.html",
-    "revision": "3e061811d99018e9dbfa870b6c3c8ac9"
+    "revision": "bd91280f948dc031822ec3405a59c3b2"
   },
   {
     "url": "2023/07/13/关于-C++-Stack-Unwinding-的一点记录/index.html",
@@ -1055,15 +1055,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/index.html",
-    "revision": "88187cf1144f6136e71919540956ed63"
+    "revision": "15d64a1470949636a59b2d4e66c049b5"
   },
   {
     "url": "2023/09/04/《Crafting-Interpreters》读书笔记（第 11-30 章）/index.html",
-    "revision": "fc570656fda4db889b5fc8a5ee23342f"
+    "revision": "b3c0b3ade64d0bd554916d17a45ec618"
   },
   {
     "url": "2023/09/05/《人月神话》读书笔记/index.html",
-    "revision": "226c49bda008eafaa5c15722381a4593"
+    "revision": "2f927316081cd7d61818235191a43170"
   },
   {
     "url": "2023/10/14/Pratt's-Parser/index.html",
@@ -1399,7 +1399,7 @@ self.__precacheManifest = [
   },
   {
     "url": "cards/index.html",
-    "revision": "1dc4a5f42996759670f06588bdf9b7df"
+    "revision": "c639cb29d022f5b96ddb4ca247c5444d"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1555,7 +1555,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "7d50db879b462b7a5dc5b0412730d801"
+    "revision": "9a0d106cc8c78cf47501c794f0c4f5e7"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1759,7 +1759,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/index.js",
-    "revision": "e3357c83560c5329652f15f0113eb71b"
+    "revision": "f85d5b089b5d4fa58423fcd1484cca60"
   },
   {
     "url": "scripts/post.js",
@@ -1783,7 +1783,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "9fbfd992e323b47e5f072a00dd842d1b"
+    "revision": "e65b2a0f239d2b68e68ea8da7d8b7189"
   },
   {
     "url": "tags/AI/index.html",
@@ -1879,7 +1879,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "00f95662256380c360c01b595207e82f"
+    "revision": "8e5023a2ed8a3b00113280ccc0bcad17"
   },
   {
     "url": "tags/Interpreter/index.html",

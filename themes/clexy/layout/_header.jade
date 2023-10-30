@@ -14,9 +14,11 @@ nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
 if is_post() || (is_page() && page.title.toLowerCase() === 'cards')
   - const tocContent = toc(page.content, { list_number: false })
   if tocContent
+    div.toc-slot
     div.toc-body
-      != tocContent
       div.bookmark
+      != tocContent
+      
 //- p(class="meta-icp")
 //-   a(target="_blank", href="https://beian.miit.gov.cn/")
 //-     span

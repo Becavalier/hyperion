@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tocList = Array.from(document.querySelectorAll('.toc li'))
   if (tocList.length > 0) {
     const relayout = throttle(() => {
-      let currentActiveIdx = headerLinks.map(i => i.offsetTop - main.scrollTop).findLastIndex(i => i <= 0);
+      let currentActiveIdx = headerLinks.map(i => i.offsetTop - main.scrollTop).findLastIndex(i => i <= 5);
       if (currentActiveIdx === -1) currentActiveIdx = 0
       tocList.forEach((e, idx) => {
         if (idx === currentActiveIdx) e.classList.add("active");
