@@ -11,10 +11,10 @@ nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
     each url, label in theme.menu
       li(itemprop='name', class="menu-item")
         a(href=config.root + url, alt=label, title=label, itemprop='url')=label
+div.dynamic-slot
 if is_post() || (is_page() && page.title.toLowerCase() === 'cards')
   - const tocContent = toc(page.content, { list_number: false })
   if tocContent
-    div.toc-slot
     div.toc-body
       div.bookmark
       != tocContent
