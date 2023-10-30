@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 12-20 章） | 曜彤.手记</title><meta name="description" content="书接上文。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 12-20 章）" class="full"><h1 itemprop="headline" class="align-center">《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 12-20 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-06-03T14:03:00.000Z"> 2023 / 06 / 03, 22:03:00</time></span><span class="page-tag-anchor"><a href="/tags/汇编" itemprop="url">#汇编</a>&nbsp;&nbsp;<a href="/tags/x86" itemprop="url">#x86</a>&nbsp;&nbsp;<a href="/tags/x64" itemprop="url">#x64</a>&nbsp;&nbsp;</span></div><p>书接上文。相关代码和注释参考<u><a target="_blank" rel="noopener" href="https://github.com/Becavalier/x86-asm-snippets">这里</a></u>。</p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="toc-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E8%BF%9B%E5%85%A5%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="toc-text">第 12 章 - 进入保护模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-13-%E7%AB%A0-%E6%93%8D%E4%BD%9C%E6%95%B0%E5%92%8C%E6%9C%89%E6%95%88%E5%9C%B0%E5%9D%80%E7%9A%84%E5%B0%BA%E5%AF%B8"><span class="toc-text">第 13 章 - 操作数和有效地址的尺寸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-14-%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E4%BF%9D%E6%8A%A4"><span class="toc-text">第 14 章 - 存储器的保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%89%A7%E8%A1%8C"><span class="toc-text">第 15 章 - 程序的动态加载和执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-16-%E7%AB%A0-%E4%BB%BB%E5%8A%A1%E5%92%8C%E7%89%B9%E6%9D%83%E7%BA%A7%E4%BF%9D%E6%8A%A4"><span class="toc-text">第 16 章 - 任务和特权级保护</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-17-%E7%AB%A0-%E5%8D%8F%E5%90%8C%E5%BC%8F%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2"><span class="toc-text">第 17 章 - 协同式任务切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-18-%E7%AB%A0-%E4%B8%AD%E6%96%AD%E5%92%8C%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86%E4%B8%8E%E6%8A%A2%E5%8D%A0%E5%BC%8F%E5%A4%9A%E4%BB%BB%E5%8A%A1"><span class="toc-text">第 18 章 - 中断和异常的处理与抢占式多任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-19-%E7%AB%A0-%E5%88%86%E9%A1%B5%E6%9C%BA%E5%88%B6%E5%92%8C%E5%8A%A8%E6%80%81%E9%A1%B5%E9%9D%A2%E5%88%86%E9%85%8D"><span class="toc-text">第 19 章 - 分页机制和动态页面分配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-20-%E7%AB%A0-%E5%B9%B3%E5%9D%A6%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B%E5%92%8C%E8%BD%AF%E4%BB%B6%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2"><span class="toc-text">第 20 章 - 平坦内存模型和软件任务切换</span></a></li></ol><div class="bookmark"></div></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 12-20 章）" class="full"><h1 itemprop="headline" class="align-center">《x86 汇编语言：从实模式到保护模式（第二版）》读书笔记（第 12-20 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-06-03T14:03:00.000Z"> 2023 / 06 / 03, 22:03:00</time></span><span class="page-tag-anchor"><a href="/tags/汇编" itemprop="url">#汇编</a>&nbsp;&nbsp;<a href="/tags/x86" itemprop="url">#x86</a>&nbsp;&nbsp;<a href="/tags/x64" itemprop="url">#x64</a>&nbsp;&nbsp;</span></div><p>书接上文。相关代码和注释参考<u><a target="_blank" rel="noopener" href="https://github.com/Becavalier/x86-asm-snippets">这里</a></u>。</p>
 <h3 id="第-12-章-进入保护模式"><a href="#第-12-章-进入保护模式" class="headerlink" title="第 12 章 - 进入保护模式"></a>第 12 章 - 进入保护模式</h3><ol start="32">
 <li>段描述符（8 字节）：保存有段描述信息（段起始地址、段界限和访问属性）。每个段地址在访问前，都需要以这种方式登记。其各个组成部分如下：</li>
 </ol>
@@ -202,7 +202,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 </ul>
 </li>
 </ul>
-<p><p><img src="9.jpg" alt="最小 TSS 的基本结构"><span class="img-desc">最小 TSS 的基本结构</span></p> </p>
+<p><p><img src="9.jpg" alt="最小 TSS 的基本结构"><span class="pic-desc">最小 TSS 的基本结构</span></p> </p>
 <ul>
 <li><strong>每个任务都使用一个额外的内存区域来保存相关状态信息，以便于任务切换。该区域即“任务状态段 TSS（Task State Segment）”</strong>；<ul>
 <li>TSS 最小尺寸 104 字节（小于该尺寸会引发处理器中断）；</li>
@@ -284,7 +284,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 </ul>
 </li>
 </ul>
-<p><p><img src="8.jpg" alt="调用门描述符结构"><span class="img-desc">调用门描述符结构</span></p> </p>
+<p><p><img src="8.jpg" alt="调用门描述符结构"><span class="pic-desc">调用门描述符结构</span></p> </p>
 <ul>
 <li>调用门描述符 64 位，其中定义了目标过程（例程）所在代码段的选择子，以及段内偏移。<ul>
 <li><strong>TYPE（4 位）</strong>：表示门的类似（1100 为“调用门”）；</li>
@@ -360,8 +360,8 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <li><p>硬件任务切换：x86 处理器的硬件可以自动进行任务切换，只需要给出新任务的 TSS 选择子或者任务门选择子即可。这个切换过程简单，但是处理器固件要进行各种检查工作，非常耗时。因此在现实中，硬件任务切换就成了摆设，在流行的操作系统诸如 Windows 和 Linux 中，从来没有用过。也正是因为没有人用，所以，<strong>在 64 位处理器上，除非是在传统的保护模式下运行原有的 32 位程序，否则不再支持硬件切换</strong>。</p>
 </li>
 </ol>
-<p><p><img src="13.jpg" alt="任务门描述符结构"><span class="img-desc">任务门描述符结构</span></p> </p>
-<p><p><img src="15.jpg" alt="任务嵌套（基于“中断”或“远过程调用指令”）"><span class="img-desc">任务嵌套（基于“中断”或“远过程调用指令”）</span></p> </p>
+<p><p><img src="13.jpg" alt="任务门描述符结构"><span class="pic-desc">任务门描述符结构</span></p> </p>
+<p><p><img src="15.jpg" alt="任务嵌套（基于“中断”或“远过程调用指令”）"><span class="pic-desc">任务嵌套（基于“中断”或“远过程调用指令”）</span></p> </p>
 <ul>
 <li><strong>基于中断（任务门）</strong>：中断号直接对应任务门来执行任务切换。任务门描述符中 TSS 选择子对应新任务；P 位指该门是否有效（1-有效）；DPL 是任务门描述符的特权级，但对因中断而发起的任务切换不起作用；</li>
 <li><strong>基于 <em>call</em></strong>：操作数是任务的 TSS 描述符选择子或任务门。<code>call</code> 指令发起的任务切换类似于中断方式。当前任务（旧任务）TSS 描述符的B位保持原来的 “1” 不变，寄存器 eflags 的 NT 位也不发生变化；新任务 TSS 描述符的 B 位置 “1”，寄存器 eflags 的 NT 位也置 “1”，表示此任务嵌套于其他任务中。同时，TSS 任务链接域的内容改为旧任务的 TSS 描述符选择子；</li>
@@ -370,7 +370,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="56">
 <li>处理器将控制转移到其他任务的几种方式：</li>
 </ol>
-<p><p><img src="16.jpg" alt="不同任务切换方法对 B 位、NT 位和任务链接域的影响"><span class="img-desc">不同任务切换方法对 B 位、NT 位和任务链接域的影响</span></p> </p>
+<p><p><img src="16.jpg" alt="不同任务切换方法对 B 位、NT 位和任务链接域的影响"><span class="pic-desc">不同任务切换方法对 B 位、NT 位和任务链接域的影响</span></p> </p>
 <ul>
 <li>当前程序、任务或者过程执行一个将控制转移到 GDT 内某个 <strong>TSS 描述符</strong>的 <code>jmp</code> 或者 <code>call</code> 指令；</li>
 <li>当前程序、任务或者过程执行一个将控制转移到 GDT 或者当前 LDT 内某个<strong>任务门描述符</strong>的 <code>jmp</code> 或者 <code>call</code> 指令；</li>
@@ -384,7 +384,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="58">
 <li>保护模式下的中断：</li>
 </ol>
-<p><p><img src="18.jpg" alt="中断门、陷阱门描述符结构"><span class="img-desc">中断门、陷阱门描述符结构</span></p> </p>
+<p><p><img src="18.jpg" alt="中断门、陷阱门描述符结构"><span class="pic-desc">中断门、陷阱门描述符结构</span></p> </p>
 <ul>
 <li>基于中断描述符表（Interrupt Descriptor Table, IDT）。<strong>表中保存的是和中断处理过程有关的描述符</strong>，包括：中断门、陷阱门和任务门（均用于控制转移）；</li>
 <li>中断门、陷阱门描述符只允许存放在 IDT 内，任务门可以位于 GDT、LDT 和 IDT 中；</li>
@@ -392,7 +392,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <li>为了利用高速缓存使处理器的工作性能最大化，<strong>建议 IDT 的基地址是 8 字节对齐的</strong>；</li>
 <li>中断门进入处理程序时，IF 会被复位，以禁止嵌套的中断；陷阱门由于优先级较低，则允许嵌套的其他中断优先处理。</li>
 </ul>
-<p><p><img src="19.jpg" alt="保护模式下的中断处理过程（中断门、陷阱门）"><span class="img-desc">保护模式下的中断处理过程（中断门、陷阱门）</span></p></p>
+<p><p><img src="19.jpg" alt="保护模式下的中断处理过程（中断门、陷阱门）"><span class="pic-desc">保护模式下的中断处理过程（中断门、陷阱门）</span></p></p>
 <ul>
 <li>中断和异常处理程序的特权级保护：<ul>
 <li>目标代码段描述符的特权级（可以用门描述符中的段选择子从 GDT 或 LDT 中找到）需要高于或等于当前特权级 CPL，即满足 “CPL &gt;= 目标代码段 DPL。否则，不允许将控制转移到中断或异常处理程序，引发 #GP 异常；</li>
@@ -410,7 +410,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="59">
 <li>错误代码：有些异常产生时，处理器会在异常处理程序或中断任务的栈中压入一个错误代码。这意味着<strong>异常和特定的段选择子或中断向量有关</strong>。</li>
 </ol>
-<p><p><img src="20.jpg" alt="错误代码格式"><span class="img-desc">错误代码格式</span></p></p>
+<p><p><img src="20.jpg" alt="错误代码格式"><span class="pic-desc">错误代码格式</span></p></p>
 <ul>
 <li>基本格式：<ul>
 <li>EXT 位：置位时，表示异常是由 NMI、硬件中断等外部事件（External Event）引发的；</li>
@@ -424,7 +424,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="60">
 <li>利用硬件中断进行任务切换的问题：效率低。（在 64 位操作系统上已不支持）。</li>
 </ol>
-<p><p><img src="21.jpg" alt="利用硬件中断实施任务切换的全过程"><span class="img-desc">利用硬件中断实施任务切换的全过程</span></p></p>
+<p><p><img src="21.jpg" alt="利用硬件中断实施任务切换的全过程"><span class="pic-desc">利用硬件中断实施任务切换的全过程</span></p></p>
 <ul>
 <li>遍历 TCB 链，找到当前任务，也就是寻找那个状态值为 0xffff 的节点。如果找不到，或者链表为空，则直接转到步骤 6；</li>
 <li>如果找到了，则从当前任务的节点开始继续向后寻找一个状态为空闲的节点，即，状态值为 0x0000 的节点。如果找到，则转到步骤 4；</li>
@@ -439,17 +439,17 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ul>
 <li>为了解决分段机制引起的“内存碎片化”问题，从 80386 处理器开始，引入了分页机制。<strong>该机制只能在保护模式下开启</strong>。</li>
 </ul>
-<p><p><img src="22.jpg" alt="开启分页后，由页部件将线性地址转换为物理地址"><span class="img-desc">开启分页后，由页部件将线性地址转换为物理地址</span></p></p>
+<p><p><img src="22.jpg" alt="开启分页后，由页部件将线性地址转换为物理地址"><span class="pic-desc">开启分页后，由页部件将线性地址转换为物理地址</span></p></p>
 <ul>
 <li>页的最小单位是 4KB（页的物理地址，其低 12 位始终为全零）；</li>
 <li>开启分页后，所有任务的地址空间是强制分离的，即每个任务都有自己独立的 4GB 虚拟内存（同真实的物理内存一样大）。这部分内存被进一步分为私有空间（低地址段 0~0x7fffffff），和全局空间（高地址段 0x80000000~0xffffffff）。私有部分所占用的物理页地址登记在页映射表的低一半，全局部分占用的物理页登记在页映射表的高一半。</li>
 </ul>
-<p><p><img src="23.jpg" alt="页部件把线性地址转换为物理地址"><span class="img-desc">页部件把线性地址转换为物理地址</span></p></p>
-<p><p><img src="24.jpg" alt="页目录项和页表项的组成"><span class="img-desc">页目录项和页表项的组成</span></p></p>
+<p><p><img src="23.jpg" alt="页部件把线性地址转换为物理地址"><span class="pic-desc">页部件把线性地址转换为物理地址</span></p></p>
+<p><p><img src="24.jpg" alt="页目录项和页表项的组成"><span class="pic-desc">页目录项和页表项的组成</span></p></p>
 <ul>
 <li>当任务加载时，操作系统先创建虚拟的段，并根据段地址的高 20 位决定它要用到哪些页目录项和页表项。然后，寻找空闲的页，将原本应该写入段中的数据写到一个或者多个页中，并将页的物理地址填写到相应的页表项中；</li>
 </ul>
-<p><p><img src="25.jpg" alt="控制寄存器 CR3（PDBR）的组成"><span class="img-desc">控制寄存器 CR3（PDBR）的组成</span></p></p>
+<p><p><img src="25.jpg" alt="控制寄存器 CR3（PDBR）的组成"><span class="pic-desc">控制寄存器 CR3（PDBR）的组成</span></p></p>
 <ul>
 <li><strong>寄存器 cr3 中存放着当前任务的页目录表的物理地址</strong>，故又叫作页目录基址寄存器（Page Directory Base Register）；<ul>
 <li>页目录物理基地址的 31~12 位：PDT 物理地址的高 20 位；</li>
@@ -474,7 +474,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <li>从物理内存中分配页时，可以使用“页映射位串（每一位对应一个物理页状态）”来指示每个物理页的位置及分配情况；</li>
 <li><strong>如果页目录表的最后一个目录项指向当前页目录表自己，那么，无论任何时候，当线性地址的高 20 位是 0xfffff 时，访问的就是页目录表自己</strong>；</li>
 </ul>
-<p><p><img src="26.jpg" alt="多任务环境下的页目录表和页表映射"><span class="img-desc">多任务环境下的页目录表和页表映射</span></p></p>
+<p><p><img src="26.jpg" alt="多任务环境下的页目录表和页表映射"><span class="pic-desc">多任务环境下的页目录表和页表映射</span></p></p>
 <ul>
 <li>每个任务都有自己的任务状态段 TSS、任务控制块 TCB，以及局部描述符表 LDT。TSS 和 TCB 应该创建在内核的地址空间里，这是为了保证内核能够访问到它们，并对任务进行管理；</li>
 <li></li>
@@ -528,7 +528,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="67">
 <li>软件任务切换：</li>
 </ol>
-<p><p><img src="29.jpg" alt="新的 TCB 结构（仅供参考）"><span class="img-desc">新的 TCB 结构（仅供参考）</span></p></p>
+<p><p><img src="29.jpg" alt="新的 TCB 结构（仅供参考）"><span class="pic-desc">新的 TCB 结构（仅供参考）</span></p></p>
 <ul>
 <li>仅使用全局的一个 TSS，由所有任务共用。<ul>
 <li>旧任务的状态保存到它自己的 TCB 中，并从新任务的 TCB 中恢复状态到 TSS；</li>

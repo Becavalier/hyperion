@@ -1,17 +1,23 @@
 if theme.logo
   .logo
 h1.title
-  a(href= config.root, alt= config.title, title= config.title, itemprop='headline')= config.title
+  a(href=config.root, alt=config.title, title=config.title, itemprop='headline')=config.title
   if config.feed && config.feed.type == 'atom'
-    a.rss(title='Atom 0.3', target='__blank' href= config.feed.path)
+    a.rss(title='Atom 0.3', target='__blank' href=config.feed.path)
       img(src=config.feed.icon)
-p.description(itemprop='description')!= config.description
+p.description(itemprop='description')!=config.description
 nav(itemscope, itemtype='https://schema.org/SiteNavigationElement')
   ul
     each url, label in theme.menu
       li(itemprop='name', class="menu-item")
-        a(href= config.root + url, alt= label, title= label, itemprop='url')= label
+        a(href=config.root + url, alt=label, title=label, itemprop='url')=label
+if is_post() || (is_page() && page.title.toLowerCase() === 'cards')
+  - const tocContent = toc(page.content, { list_number: false })
+  if tocContent
+    div.toc-body
+      != tocContent
+      div.bookmark
 //- p(class="meta-icp")
-//-   a(target="_blank",href="https://beian.miit.gov.cn/")
+//-   a(target="_blank", href="https://beian.miit.gov.cn/")
 //-     span
 //-      | 吉 ICP 备 10004938-2 号

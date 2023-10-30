@@ -128,8 +128,8 @@ a
   background $blue
   text-shadow none
 
-header,
-main
+main,
+header
   overflow-y auto
   -webkit-overflow-scrolling touch
   padding 20px
@@ -209,6 +209,7 @@ header
         &:after
           content ''
       &.menu-item
+        cursor pointer
         font-size 1.7rem
         margin 5px 0
   .space
@@ -562,19 +563,19 @@ h6
   text-rendering optimizeLegibility
 
 h1
-  font-size 4.1rem
+  font-size 4.0rem
   letter-spacing -2px
   line-height 1.2em
   text-indent -3px
 
 h2
-  font-size 3.5rem
+  font-size 3.6rem
   letter-spacing -1px
   line-height 1.2em
   text-indent -2px
 
 h3
-  font-size 3.3rem
+  font-size 3.2rem
 
 h4
   font-size 2.8rem
@@ -628,11 +629,20 @@ hr
     flex-direction column
     main
       flex none
+      overflow visible
+      article
+        div.content
+          div.year-group
+            > div
+              > span.sticky
+                top 20px
     header
       text-align center
       max-width 100%
       padding 20px
       flex none
+      div.toc-body
+        display none
       div.logo
         margin 0 auto 10px
       nav
@@ -660,6 +670,17 @@ hr
         h4
           font-size 2.2rem
         div.content
+          div.year-group
+            margin-top 20px
+            display block
+            > div
+              margin-bottom 10px
+              > span.sticky
+                position relative
+                top 0
+                margin 0
+              > span.line
+                display none
           blockquote
             margin .5em 0 .5em 1em
           ul.catelog-items, ul.search-catelog-items, ul.search-catelog-items ul, ul.book-list
@@ -674,6 +695,51 @@ hr
 // ===========================================================================
 // 6. Custimization
 // ===========================================================================
+div.toc-body
+  position absolute
+  bottom 40px
+  border solid 1px #7c7c7c
+  z-index 2
+  padding 0 20px
+  margin 20px 0
+  width 280px
+  background-color #141414
+  > div.bookmark
+    position absolute
+    height 30px
+    width 16px
+    padding 0px
+    transform rotate(0deg) skew(0deg)
+    border-left 8px solid white
+    border-right 8px solid ghostwhite
+    border-bottom 20px solid transparent
+    box-sizing: border-box
+    right 0
+    top 0
+    opacity .45
+  > ol.toc
+    padding 0
+    font-size 15px
+    line-height 1
+    list-style none
+    text-align left
+    position relative
+    ol.toc-child
+      padding-left 20px
+      > li a:before 
+        content "|"
+        padding-right 7px
+    li 
+      a
+        width 100%
+        display inline-block
+        overflow hidden
+        text-overflow ellipsis
+        white-space nowrap
+        opacity .45
+      &.active 
+        > a
+          opacity 1
 input, textarea
    -webkit-appearance none
    
@@ -779,12 +845,65 @@ article
   div.content
     max-width 1200px
     margin auto
+    div.year-group
+      display flex
+      > ul
+        margin-top 0
+      > div
+        font-size 2.0rem
+        position relative
+        > span.line
+          height 100%
+          display inline-block
+          width 1px
+          position absolute
+          left 50%
+          background #c2c2c2
+          margin-left -1px
+          margin-top 10px
+        > span.sticky 
+          display inline-block
+          position sticky
+          top 0;
+          z-index 1
+          padding 2px 5px
+          background-color #fafafa
+          border solid 1px
+          margin-top 10px
   video
     display: block;
     margin: auto;
     max-width: 100%;
     border: solid 1px #ccc;
     max-height: 500px;
+  &.cards-page
+    div.content
+      > span.meta
+        font-size 14px
+        font-style italic
+      > span.hidden-anchor 
+        visibility hidden
+      > div.container 
+        margin-bottom 50px
+        &:nth-child(3)
+          margin-top 40px
+        &:last-child
+          margin-bottom 0
+      div.title
+        font-size 18px
+        background-color #3f3f3f
+        color white
+        padding 8px 10px
+        margin-bottom 10px
+        position sticky
+        top 0
+        margin-left -7px
+        margin-right -7px
+        z-index 1
+      div.snippet
+        padding 10px 20px
+        border solid 1px #b2b2b2
+        margin 15px 0
   &.readings-page
     ul.book-list
       li
@@ -880,7 +999,7 @@ article
       border-bottom-left-radius 110px 19px
       border-bottom-right-radius 120px 24px
       box-shadow 3px 15px 8px -10px rgba(0, 0, 0, 0.3)
-    > span.img-desc
+    > span.pic-desc
       display block
       text-indent 0
       text-align center

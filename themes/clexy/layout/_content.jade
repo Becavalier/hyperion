@@ -15,23 +15,25 @@ if is_home()
   h4.page-title See more? Please refer to the "Articles" page : )
 
 //- articles page;
-if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
-  article.full
-    h1(itemprop='headline')=page.label + ' (' + site.posts.length + ')'
+if is_page() && page.title.toLowerCase() === 'articles'
+  article.full.posts
+    h1(itemprop='headline')=page.label + '（' + site.posts.length + '）'
       a(href=config.root + 'search/')
         i(class='fa fa-search')
     div.content
-      !=page.content
-      - var lastyear = 0
+      - let lastyear = 0
       for post, index in site.posts.sort('date', 'desc').toArray()
         if lastyear !== post.date.format('YYYY')
           if index !== 0
-            | </ul>
+            | </ul></div>
           - lastyear = post.date.format('YYYY')
           - count = site.posts.reduce((p, v) => (p + Number(v.date.format('YYYY') === lastyear)), 0)
-          h4=lastyear + ' (' + count + ' 篇)'
+          | <div class="year-group">
+          div
+            span.sticky=lastyear
+            span.line
           | <ul class="catelog-items">
-          li(itemprop='name')
+          li(itemprop='title')
             time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
             |&nbsp;|&nbsp;
             a(target="_blank", href=config.root + post.path, itemprop='url') #{post.title}
@@ -41,7 +43,7 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
                 for tag in post.tags.data
                   a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} &nbsp;
         else
-          li
+          li(itemprop='title')
             time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), 'MM/DD')
             |&nbsp;|&nbsp;
             a(target="_blank", href=config.root + post.path) #{post.title}
@@ -51,9 +53,9 @@ if is_archive() || (is_page() && page.title.toLowerCase() == 'articles')
                 for tag in post.tags.data
                   a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#' + tag.name} &nbsp;
       if site.posts.toArray().length !== 0
-        | </ul>
-else if is_page() && page.title.toLowerCase() =='about'
-  article.full
+        | </ul></div>
+else if is_page() && page.title.toLowerCase() === 'about'
+  article.full.about
     h1(itemprop='headline')=page.label
     div.about-container
       div.avatar
@@ -103,13 +105,29 @@ else if is_page() && page.title.toLowerCase() =='about'
       div.extra-container
         a(target="_blank", href=config.about.interview_sheet)
           span(class="fa fa-sticky-note icons" aria-hidden="true")
-else if is_page() && page.title.toLowerCase() =='readings'
-  article(class='full readings-page')
-    - var reading_posts = site.pages.filter(i => i.page === 'readings')
-    h1(itemprop='headline', class='header')=page.label + ' (' + reading_posts.length + ')'
+else if is_page() && page.title.toLowerCase() === 'cards'
+  article.full.cards-page
+    h1(itemprop='headline', class='header')=page.label
+    - const [defaultPage] = site.pages.filter(i => i.page === 'cards').data
     div.content
-      span(class="meta")='大部分书籍都会有相应的笔记，可以在“文章”栏目里找到。标题前面的个人打分仅供参考。'
-      each val, key in reading_posts.reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
+      span(class="meta")='这里是我的快记，所有的卡片信息会放在这里。'
+      for card in defaultPage.cards
+        span.hidden-anchor(id=card.title)
+          != card.head
+        div.container
+          div.title
+            != card.title
+          for content in card.content 
+            div.snippet 
+              != content
+              div.arrow
+else if is_page() && page.title.toLowerCase() === 'readings'
+  article.full.readings-page
+    - const readingPosts = site.pages.filter(i => i.page === 'readings')
+    h1(itemprop='headline', class='header')=page.label + '（' + readingPosts.length + '）'
+    div.content
+      span(class="meta")='这里是我的已读书单，有些笔记可以在“文章”里找到。标题前面的个人打分仅供参考。'
+      each val, key in readingPosts.reduce((prev, curr) => { const tag = curr.tags.join(', '); if(!prev[tag]) { prev[tag] = [] } prev[tag].push(curr); return prev; }, {})
         h5='- ' + key
         ul.book-list
           for book in val.sort((x, y) => y.date - x.date)
@@ -119,9 +137,9 @@ else if is_page() && page.title.toLowerCase() =='readings'
               a(target="_blank", href=book.douban)=book.title + '：'
                 span(class="comment")=book.comment
                 =' — ' + full_date(new Date(book.date), 'MM / YYYY')
-else if is_page() && page.title.toLowerCase() =='search'
+else if is_page() && page.title.toLowerCase() === 'search'
   script(src=config.root + 'scripts/search.js?endpoint=' + (config.algolia ? 'algolia' : 'node'), type='text/javascript')
-  article(class='full search-page')
+  article.full.search-page
     h1(itemprop='headline')=page.label
     div.content
       div(class='search-container')
@@ -174,11 +192,11 @@ else if is_post()
   br
 else if is_tag()
   article.full
-    h1(itemprop='headline')='tag : ' + page.tag
+    h1(itemprop='headline')='tag：' + page.tag
     !=page.content
-    - var lastyear = 0
-    - var tag_posts = site.tags.findOne({name: page.tag}).posts
-    for post, index in tag_posts.sort('date', 'desc').toArray()
+    - let lastyear = 0
+    - const tagPosts = site.tags.findOne({ name: page.tag }).posts
+    for post, index in tagPosts.sort('date', 'desc').toArray()
       if lastyear !== post.date.format('YYYY')
         if index !== 0
           | </ul>
@@ -203,7 +221,7 @@ else if is_tag()
             a(href=config.root + 'tags/' + tag.name, itemprop='url') #{'#'+tag.name}
             | &nbsp;&nbsp;
     | </ul>
-else if is_page() && page.title.toLowerCase() =='tags'
+else if is_page() && page.title.toLowerCase() === 'tags'
   article.full
     h1(itemprop='headline')=page.label
     div.tag-item
@@ -215,9 +233,8 @@ else if is_page()
     br
     br
     br
-    h3="Some Error Occured (404) :( "
-    if page.updated
-      span.post-meta
-    !=page.content
-    a(href=config.root, itemprop='url')
-      h6='Click "here" to go Home.'
+    h3="Nothing is here (404) :( "
+    h6="Click "
+      a(href=config.root, itemprop='url')
+        | "here" 
+      | to take you home.
