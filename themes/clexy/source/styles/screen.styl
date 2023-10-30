@@ -683,56 +683,57 @@ hr
 // ===========================================================================
 // 6. Custimization
 // ===========================================================================
-div.dynamic-slot
-  flex 1
-div.toc-body
-  position relative
-  border dashed 1px #7c7c7c
-  z-index 2
-  padding 20px
-  margin 50px 0px 20px
-  width 280px
-  background-color #141414
-  flex-shrink 1
-  min-height 150px
-  > div.bookmark
-    position absolute
-    height 30px
-    width 16px
-    padding 0px
-    transform rotate(0deg) skew(0deg)
-    border-left 8px solid white
-    border-right 8px solid ghostwhite
-    border-bottom 20px solid transparent
-    box-sizing: border-box
-    right 0
-    top 0
-    opacity .45
-  > ol.toc
-    padding-left 0
-    margin 0
-    font-size 15px
-    line-height 1.4
-    list-style none
-    text-align left
-    overflow-y scroll
-    height 100%
-    ol.toc-child
-      padding-left 20px
-      > li a:before 
-        content "|"
-        padding-right 7px
-    li 
-      a
-        width 100%
-        display inline-block
-        overflow hidden
-        text-overflow ellipsis
-        white-space nowrap
-        opacity .45
-      &.active 
-        > a
-          opacity 1
+header
+  div.dynamic-slot
+    flex 1
+  div.toc-body
+    position relative
+    border dashed 1px #7c7c7c
+    z-index 2
+    padding 20px
+    margin 50px 0px 20px
+    width 280px
+    background-color #141414
+    flex-shrink 1
+    min-height 150px
+    > div.bookmark
+      position absolute
+      height 30px
+      width 16px
+      padding 0px
+      transform rotate(0deg) skew(0deg)
+      border-left 8px solid white
+      border-right 8px solid ghostwhite
+      border-bottom 20px solid transparent
+      box-sizing: border-box
+      right 0
+      top 0
+      opacity .45
+    > ol.toc
+      padding-left 0
+      margin 0
+      font-size 15px
+      line-height 1.4
+      list-style none
+      text-align left
+      overflow-y scroll
+      height 100%
+      ol.toc-child
+        padding-left 20px
+        > li a:before 
+          content "|"
+          padding-right 7px
+      li 
+        a
+          width 100%
+          display inline-block
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+          opacity .45
+        &.active 
+          > a
+            opacity 1
 input, textarea
    -webkit-appearance none
    

@@ -1555,7 +1555,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "5a6346acf5a555d3abbbab905155a620"
+    "revision": "9f933c5cece3f6dd3f7d679f250687e4"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1783,7 +1783,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "c363fdedc9e15da5e9dd1761d34686cc"
+    "revision": "faa317dccb3fa4f19dc6d471ebfcf55d"
   },
   {
     "url": "tags/AI/index.html",
@@ -1879,7 +1879,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "f05e4686290772b62b4dfc190135e400"
+    "revision": "6a64f9a8e754f0c433d2a530adb667af"
   },
   {
     "url": "tags/Interpreter/index.html",
