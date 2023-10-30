@@ -376,16 +376,16 @@ main
     ul.search-catelog-items
       margin-top 30px
       > li
-        overflow hidden
         text-overflow ellipsis
+        overflow hidden
         list-style-type none
-        padding 10px 0
+        padding 10px
+        border dashed 1px lightgrey
+        margin-bottom 20px
         > a
+          white-space nowrap
           .separator
             margin 0 5px
-          &:before
-            content "- "
-            vertical-align middle
         &:before
           content none
         > ul li 

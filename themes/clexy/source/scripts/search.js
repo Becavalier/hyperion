@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     wrapSearchPostResultSnippet: results => {
       if (results.length > 0) {
         return `
-          <h4>文章（仅显示最近 ${SEARCH_RESULT_THRESHOLD} 条）</h4>
+          <h4>文章（仅显示相关的 ${SEARCH_RESULT_THRESHOLD} 条）</h4>
           <ul class="search-catelog-items">
           ${
             results.slice(0, SEARCH_RESULT_THRESHOLD).reduce((prev, i) => {
