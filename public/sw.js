@@ -1007,7 +1007,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/03/06/《算法4》读书笔记（第-1-3-章）/index.html",
-    "revision": "49115f5a9e88dff1fccee2fbfc3c263e"
+    "revision": "41971394eee4814c329ac1ca3ba23f08"
   },
   {
     "url": "2023/03/17/《创始人：新管理者如何度过第一个90天》读书笔记（第 1-4 章）/index.html",
@@ -1063,11 +1063,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/09/05/《人月神话》读书笔记/index.html",
-    "revision": "c253d38f5b03bcd767830c13f326fba7"
+    "revision": "17a5998c35eb90a68f2e58394110f6e2"
   },
   {
-    "url": "2023/10/14/Pratt's-Parser/index.html",
-    "revision": "fdbffa6a780cab31d457d84301f7e5e5"
+    "url": "2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/index.html",
+    "revision": "517dc188d25d186672073fdb55998404"
+  },
+  {
+    "url": "2023/11/01/WebAssembly-Multi-value-Extension/index.html",
+    "revision": "9bc8f22ebd82210f964afee00b25b5b2"
+  },
+  {
+    "url": "2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/index.html",
+    "revision": "8585366276223d8b3798e20e14e62b4c"
+  },
+  {
+    "url": "2023/11/01/WebAssembly-Sign-extension-operators/index.html",
+    "revision": "31df397590d11396540d20f0cf183fd2"
   },
   {
     "url": "about/index.html",
@@ -1386,6 +1398,10 @@ self.__precacheManifest = [
     "revision": "ea26a7054f6bada69b17d85c25eba8c9"
   },
   {
+    "url": "archives/2023/11/index.html",
+    "revision": "ea26a7054f6bada69b17d85c25eba8c9"
+  },
+  {
     "url": "archives/2023/index.html",
     "revision": "ea26a7054f6bada69b17d85c25eba8c9"
   },
@@ -1395,7 +1411,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "d5f86f46ce9897c45cf530c9477092c4"
+    "revision": "9c46f04f229e1a0e78bdb003deb5fef6"
   },
   {
     "url": "cards/index.html",
@@ -1411,111 +1427,111 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/10/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/11/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/12/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/13/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/14/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/15/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/16/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/17/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/18/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/19/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/2/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/20/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/21/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/22/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/23/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/24/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/25/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/26/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/27/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/3/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/4/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/5/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/6/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/7/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/8/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "page/9/index.html",
-    "revision": "100e003fe51e7de347b64f57bcdde5e1"
+    "revision": "eb6514e732aca6971f5c6ecf1ec78aef"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1555,7 +1571,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "e2278e1a64bbbe9c33d9fb75631fe336"
+    "revision": "52233b63feb04e92b40f834d4bfeafa2"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1759,7 +1775,7 @@ self.__precacheManifest = [
   },
   {
     "url": "scripts/index.js",
-    "revision": "f85d5b089b5d4fa58423fcd1484cca60"
+    "revision": "1843be325c1a98c4c97cd401f12703d2"
   },
   {
     "url": "scripts/post.js",
@@ -1783,7 +1799,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "d0f344d1a8fbf51e05bd1ba5007e34b7"
+    "revision": "b166b29bb409479159937b7701f6e1fd"
   },
   {
     "url": "tags/AI/index.html",
@@ -1879,7 +1895,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "aad9d591b251ae70a7c3a480c249f11c"
+    "revision": "0d7e0d43b7584a0e7aaf927fe07dfc38"
   },
   {
     "url": "tags/Interpreter/index.html",
@@ -1940,10 +1956,6 @@ self.__precacheManifest = [
   {
     "url": "tags/OS/index.html",
     "revision": "99e0c5a66f7dedb2d070043f064c5fef"
-  },
-  {
-    "url": "tags/Parser/index.html",
-    "revision": "518ad00536023768571fcaa5ef1249f5"
   },
   {
     "url": "tags/PHP/index.html",
@@ -2007,7 +2019,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/WebAssembly/index.html",
-    "revision": "c20dcd03d3b0013f70d74c9f52ea95ea"
+    "revision": "814aac0776e58de2e8ee0f95715fa993"
   },
   {
     "url": "tags/x64/index.html",

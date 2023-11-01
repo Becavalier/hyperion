@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-10-26T03:37:10.262Z</updated>
+  <updated>2023-11-01T14:50:34.870Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -17,19 +17,70 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Pratt&#39;s Parser</title>
-    <link href="https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/"/>
-    <id>https://www.hangyu.site/2023/10/14/Pratt&#39;s-Parser/</id>
-    <published>2023-10-14T03:05:00.000Z</published>
-    <updated>2023-10-26T03:37:10.262Z</updated>
+    <title>WebAssembly - Multi-value Extension</title>
+    <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Multi-value-Extension/"/>
+    <id>https://www.hangyu.site/2023/11/01/WebAssembly-Multi-value-Extension/</id>
+    <published>2023-11-01T14:50:00.000Z</published>
+    <updated>2023-11-01T14:50:34.870Z</updated>
     
     
-    <summary type="html">Let&#39;s revisit how Pratt&#39;s parser works in this article and see its difference from the original recursive descendant parser.</summary>
+    <summary type="html">今天来看的提案是 - “Multi-value Extension”。该提案对 MVP 中原有的函数类型，以及 block、loop、if 三种块结构的能力进行了扩展，使它们可以接收多个输入参数，或产生多个结果值。这增加了指令的灵活性，使其拥有更贴近高级语言特性的指令执行流。</summary>
     
     
     
     
-    <category term="Parser" scheme="https://www.hangyu.site/tags/Parser/"/>
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebAssembly - Sign-extension Operators</title>
+    <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Sign-extension-operators/"/>
+    <id>https://www.hangyu.site/2023/11/01/WebAssembly-Sign-extension-operators/</id>
+    <published>2023-11-01T10:13:00.000Z</published>
+    <updated>2023-11-01T11:51:55.006Z</updated>
+    
+    
+    <summary type="html">今天来看的提案是 - “Sign-extension Operators”。该提案设计了一组新的指令，用于支持整数类型的符号扩展。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebAssembly - Non-trapping Float-to-int Conversions</title>
+    <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/"/>
+    <id>https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/</id>
+    <published>2023-11-01T09:18:00.000Z</published>
+    <updated>2023-11-01T11:51:52.056Z</updated>
+    
+    
+    <summary type="html">今天来看的提案是 - “Non-trapping Float-to-int Conversions”。该提案设计了一组新的指令，用于支持浮点数到整数的 saturating 转换，这些指令不会导致 trap（可以理解为软中断，常用于处理运行时异常）。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>WebAssembly - Import / Export Mutable Globals Proposal</title>
+    <link href="https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/"/>
+    <id>https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/</id>
+    <published>2023-10-31T13:14:00.000Z</published>
+    <updated>2023-11-01T14:31:25.831Z</updated>
+    
+    
+    <summary type="html">好久没关注 Wasm 圈子，从今天起准备开一个文章系列，详细介绍一下 Post-MVP 中那些已经进入 Phase 4 的提案。今天的主角是 - “Import / Export Mutable Globals Proposal”。该提案允许从（向）宿主环境导入（出）“mutable global”。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
     
   </entry>
   
@@ -294,10 +345,10 @@
     <link href="https://www.hangyu.site/2023/03/06/%E3%80%8A%E7%AE%97%E6%B3%954%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/"/>
     <id>https://www.hangyu.site/2023/03/06/%E3%80%8A%E7%AE%97%E6%B3%954%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-3-%E7%AB%A0%EF%BC%89/</id>
     <published>2023-03-06T00:25:10.000Z</published>
-    <updated>2023-10-26T03:37:10.309Z</updated>
+    <updated>2023-10-31T13:12:53.236Z</updated>
     
     
-    <summary type="html">读一读这本算法经典教材。</summary>
+    <summary type="html">读一读这本经典算法教材。</summary>
     
     
     
@@ -494,59 +545,6 @@
     
     
     
-    
-    <category term="C" scheme="https://www.hangyu.site/tags/C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《垃圾回收算法与实现》读书笔记（第 6-9 章）</title>
-    <link href="https://www.hangyu.site/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.hangyu.site/2021/05/23/%E3%80%8A%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95%E4%B8%8E%E5%AE%9E%E7%8E%B0%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-6-9-%E7%AB%A0%EF%BC%89/</id>
-    <published>2021-05-23T14:17:23.000Z</published>
-    <updated>2023-10-26T03:37:10.262Z</updated>
-    
-    
-    <summary type="html">书接上回，第 6-9 章的笔记。</summary>
-    
-    
-    
-    
-    <category term="GC" scheme="https://www.hangyu.site/tags/GC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TLPI 读书笔记（第 1-2 章）</title>
-    <link href="https://www.hangyu.site/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.hangyu.site/2021/05/19/TLPI-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-1-2-%E7%AB%A0%EF%BC%89/</id>
-    <published>2021-05-19T09:18:20.000Z</published>
-    <updated>2023-10-26T03:37:10.261Z</updated>
-    
-    
-    <summary type="html">“The Linux Programming Interface”，内容如题。</summary>
-    
-    
-    
-    
-    <category term="Linux" scheme="https://www.hangyu.site/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>GCC 下默认的对齐指针访问（Aligned Memory Access）</title>
-    <link href="https://www.hangyu.site/2021/05/11/GCC-%E4%B8%8B%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AF%B9%E9%BD%90%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%EF%BC%88Aligned-Memory-Access%EF%BC%89/"/>
-    <id>https://www.hangyu.site/2021/05/11/GCC-%E4%B8%8B%E9%BB%98%E8%AE%A4%E7%9A%84%E5%AF%B9%E9%BD%90%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%EF%BC%88Aligned-Memory-Access%EF%BC%89/</id>
-    <published>2021-05-11T09:34:47.000Z</published>
-    <updated>2023-10-26T03:37:10.261Z</updated>
-    
-    
-    <summary type="html">如题所示的一些要点记录。</summary>
-    
-    
-    
-    
-    <category term="Cpp" scheme="https://www.hangyu.site/tags/Cpp/"/>
     
     <category term="C" scheme="https://www.hangyu.site/tags/C/"/>
     
