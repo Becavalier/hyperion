@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-11-01T14:50:34.870Z</updated>
+  <updated>2023-11-02T02:36:36.564Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Multi-value-Extension/"/>
     <id>https://www.hangyu.site/2023/11/01/WebAssembly-Multi-value-Extension/</id>
     <published>2023-11-01T14:50:00.000Z</published>
-    <updated>2023-11-01T14:50:34.870Z</updated>
+    <updated>2023-11-02T02:36:36.564Z</updated>
     
     
     <summary type="html">今天来看的提案是 - “Multi-value Extension”。该提案对 MVP 中原有的函数类型，以及 block、loop、if 三种块结构的能力进行了扩展，使它们可以接收多个输入参数，或产生多个结果值。这增加了指令的灵活性，使其拥有更贴近高级语言特性的指令执行流。</summary>
@@ -55,7 +55,7 @@
     <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/"/>
     <id>https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/</id>
     <published>2023-11-01T09:18:00.000Z</published>
-    <updated>2023-11-01T11:51:52.056Z</updated>
+    <updated>2023-11-02T02:35:06.962Z</updated>
     
     
     <summary type="html">今天来看的提案是 - “Non-trapping Float-to-int Conversions”。该提案设计了一组新的指令，用于支持浮点数到整数的 saturating 转换，这些指令不会导致 trap（可以理解为软中断，常用于处理运行时异常）。</summary>
@@ -72,7 +72,7 @@
     <link href="https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/"/>
     <id>https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/</id>
     <published>2023-10-31T13:14:00.000Z</published>
-    <updated>2023-11-01T14:31:25.831Z</updated>
+    <updated>2023-11-02T02:34:59.060Z</updated>
     
     
     <summary type="html">好久没关注 Wasm 圈子，从今天起准备开一个文章系列，详细介绍一下 Post-MVP 中那些已经进入 Phase 4 的提案。今天的主角是 - “Import / Export Mutable Globals Proposal”。该提案允许从（向）宿主环境导入（出）“mutable global”。</summary>

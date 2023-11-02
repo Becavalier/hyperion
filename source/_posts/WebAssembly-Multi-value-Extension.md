@@ -33,7 +33,7 @@ tags:
 
 这段 Wasm 代码中主要定义了名为 “accumulate” 的函数，该函数接收一个 i32 参数，并返回两个 i32 结果值。其中第一个结果值是由给定输入参数值经过阶加（也有人叫“阶和”）后得到的结果值（如输入参数 3，则计算 “3 + 2 + 1”，结果为 6）；第二个参数值为原方不动的输入参数，这里我们直接返回。
 
-函数的实现逻辑很简单，其中需要注意的不同点是函数的返回值类型 “*(result i32 i32)*”，以及函数体中循环结构 loop 的参数和返回值部分 “*(param i32) (result i32)*”，新的 “Multi-value Extension” 提案可以使我们像这样来使用函数和各类块结构。不同于函数参数，块结构的输入参数不作为 local 使用，而是直接通过栈来传递，因此代码第 9 行 “*(i32.add (local.get $var))*” 我们只为 `i32.add` 指令提供了一个操作数，另一个操作数则直接从栈上获取，该值也即为 loop 结构的输入参数。
+函数的实现逻辑很简单，其中需要注意的不同点是函数的返回值类型 “<i>(result i32 i32)</i>”，以及函数体中循环结构 loop 的参数和返回值部分 “<i>(param i32) (result i32)</i>”，新的 “Multi-value Extension” 提案可以使我们像这样来使用函数和各类块结构。不同于函数参数，块结构的输入参数不作为 local 使用，而是直接通过栈来传递，因此代码第 9 行 “<i>(i32.add (local.get $var))</i>” 我们只为 `i32.add` 指令提供了一个操作数，另一个操作数则直接从栈上获取，该值也即为 loop 结构的输入参数。
 
 
 ```javascript
@@ -51,9 +51,9 @@ WebAssembly.instantiate(wasmModule).then((instance) => {
 
 系列文章：
 
-* <b>[WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/)</b>.
-* <b>[WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/)</b>.
-* <b>[WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/)</b>.
-* <b>[WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/)</b>.
+* [WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/).
+* [WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/).
+* [WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/).
+* [WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/).
 
 

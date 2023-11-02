@@ -38,7 +38,7 @@ tags:
 
 系列文章：
 
-* <b>[WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/)</b>.
-* <b>[WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/)</b>.
-* <b>[WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/)</b>.
-* <b>[WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/)</b>.
+* [WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/).
+* [WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/).
+* [WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/).
+* [WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/).
