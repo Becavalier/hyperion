@@ -31,3 +31,4 @@ tags:
 * [WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/).
 * [WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/).
 * [WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/).
+* [WebAssembly - JavaScript BigInt to WebAssembly i64 Integration](/2023/11/02/WebAssembly-JavaScript-BigInt-to-WebAssembly-i64-integration/).

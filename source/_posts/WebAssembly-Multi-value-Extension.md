@@ -46,14 +46,3 @@ WebAssembly.instantiate(wasmModule).then((instance) => {
 模块的使用方式很简单，可以参考上述 JavaScript 代码。
 
 
-
-<hr>
-
-系列文章：
-
-* [WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/).
-* [WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/).
-* [WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/).
-* [WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/).
-
-

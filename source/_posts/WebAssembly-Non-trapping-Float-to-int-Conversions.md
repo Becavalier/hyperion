@@ -34,11 +34,3 @@ tags:
 * 当转换发生上溢出和下溢出时，返回对应整型的最大值和最小值，而不产生 trap（saturating）；
 * 当转换值为 `NaN` 时，返回 0，而不产生 trap。
 
-<hr>
-
-系列文章：
-
-* [WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/).
-* [WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/).
-* [WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/).
-* [WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/).

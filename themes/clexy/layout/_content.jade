@@ -186,8 +186,10 @@ else if is_post()
   br
   if page.comments
     section#comments
-      div
-        script(src='https://utteranc.es/client.js' repo='Becavalier/utterances-comments' issue-term='title' label='[Comment]' theme='github-light' crossorigin='anonymous' async)
+      h4
+        | 评论 | Comments
+      br
+      script(src='https://utteranc.es/client.js' repo='Becavalier/utterances-comments' issue-term='title' label='[Comment]' theme='github-light' crossorigin='anonymous' async)
   br
   br
 else if is_tag()

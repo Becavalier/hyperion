@@ -23,11 +23,3 @@ tags:
 
 这里需要注意指令 `i64.extend32_s` 和 `i64.extend_i32_s` 的区别：**前者的操作数是 i64 类型，而后者则为 i32 类型**。两个指令均对操作数进行符号扩展，但一个会改变操作数类型，另一个则不会。
 
-<hr>
-
-系列文章：
-
-* <b>[WebAssembly - Import / Export Mutable Globals Proposal](/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/)</b>.
-* <b>[WebAssembly - Non-trapping Float-to-int Conversions](/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/)</b>.
-* <b>[WebAssembly - Sign-extension Operators](/2023/11/01/WebAssembly-Sign-extension-operators/)</b>.
-* <b>[WebAssembly - Multi-value Extension](/2023/11/01/WebAssembly-Multi-value-Extension/)</b>.
