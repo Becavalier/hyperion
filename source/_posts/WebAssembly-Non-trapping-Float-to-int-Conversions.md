@@ -8,7 +8,7 @@ tags:
 ---
 
 
-今天来看的提案是 - “Non-trapping Float-to-int Conversions”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/nontrapping-float-to-int-conversions/blob/main/proposals/nontrapping-float-to-int-conversion/Overview.md)</b>。该提案设计了一组新的指令，用于支持浮点数到整数的 saturating 转换，这些指令不会导致 trap（可以理解为软中断，常用于处理运行时异常）。
+今天来看的提案是 - “Non-trapping Float-to-int Conversions”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/nontrapping-float-to-int-conversions/blob/main/proposals/nontrapping-float-to-int-conversion/Overview.md)</b>。该提案设计了一组新的指令，用于支持浮点数到整数的 saturating 转换，这些指令不会导致 trap（可以理解为软中断，常用于处理运行时异常，需要由宿主环境处理）。
 
 早期 MVP 标准中并没有专门用于进行 saturating 转换的指令，浮点数到整数转换指令（如：*i32.trunc_f32_s*）在发生溢出时会产生 trap。这个行为不符合 LLVM 的“浮点数环境”要求，即：“<i>The default LLVM floating-point environment assumes that floating-point instructions do not have side effects</i>”。因此，在某些特殊情况下，LLVM 的 “cfg-simplification” 优化会产生 “unconditionalized” 的 IR 代码。而当分支语句被同时求值，比如 `if` 语句真假两个分支里的语句被同时求值（实际上是一种 “speculative execution”？），若其中某个会产生副作用（比如 trap），便会导致源代码在编译前后的表现不一致。
 

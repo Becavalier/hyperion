@@ -89,7 +89,7 @@
     <link href="https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/"/>
     <id>https://www.hangyu.site/2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/</id>
     <published>2023-11-01T09:18:00.000Z</published>
-    <updated>2023-11-02T03:34:16.694Z</updated>
+    <updated>2023-11-03T06:57:52.920Z</updated>
     
     
     <summary type="html">今天来看的提案是 - “Non-trapping Float-to-int Conversions”。该提案设计了一组新的指令，用于支持浮点数到整数的 saturating 转换，这些指令不会导致 trap（可以理解为软中断，常用于处理运行时异常）。</summary>
@@ -106,7 +106,7 @@
     <link href="https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/"/>
     <id>https://www.hangyu.site/2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/</id>
     <published>2023-10-31T13:14:00.000Z</published>
-    <updated>2023-11-02T03:34:03.012Z</updated>
+    <updated>2023-11-03T06:59:50.777Z</updated>
     
     
     <summary type="html">好久没关注 Wasm 圈子，从今天起准备开一个文章系列，详细介绍一下 Post-MVP 中那些已经进入 Phase 4 的提案。今天的主角是 - “Import / Export Mutable Globals Proposal”。该提案允许从（向）宿主环境导入（出）“mutable global”。</summary>

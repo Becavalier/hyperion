@@ -1067,7 +1067,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/10/31/WebAssembly-Import-Export-Mutable-Globals-Proposal/index.html",
-    "revision": "4fa747dbba6dc28edada1239dab47fb8"
+    "revision": "ce349534408dd8c3259b532c1a58e8e2"
   },
   {
     "url": "2023/11/01/WebAssembly-Multi-value-Extension/index.html",
@@ -1075,7 +1075,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/index.html",
-    "revision": "874032368542ae5fcb299177a74fdeee"
+    "revision": "83822a8775e9a91773ef6a1319f4c857"
   },
   {
     "url": "2023/11/01/WebAssembly-Sign-extension-operators/index.html",
@@ -1579,7 +1579,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "71d54192b5baf603d824df91bb433431"
+    "revision": "9d92a82d337b22849d849b284d9f1aac"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1903,7 +1903,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "cf2413d08cdfdeebb120324b14709f12"
+    "revision": "7541ae6fb00d38914914aa3fd5d32088"
   },
   {
     "url": "tags/Interpreter/index.html",
