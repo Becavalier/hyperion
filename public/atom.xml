@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-11-04T05:28:37.079Z</updated>
+  <updated>2023-11-04T11:47:28.086Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebAssembly - 128-bit Packed SIMD Extension</title>
+    <link href="https://www.hangyu.site/2023/11/04/WebAssembly-128-bit-packed-SIMD-Extension/"/>
+    <id>https://www.hangyu.site/2023/11/04/WebAssembly-128-bit-packed-SIMD-Extension/</id>
+    <published>2023-11-04T11:42:00.000Z</published>
+    <updated>2023-11-04T11:47:28.086Z</updated>
+    
+    
+    <summary type="html">今天来看的提案是 - “128-bit Packed SIMD Extension”。Wasm 在设计之初的一个重要目标就是提供 “near native” 的指令执行效率，而该提案则通过提供一组通用 Wasm SIMD 指令集，使得 Wasm 可以直接利用现代处理器上的硬件 SIMD 指令来执行更高效的并行算数运算。该能力被广泛应用于多媒体和游戏等领域。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
   
   <entry>
     <title>WebAssembly - Bulk Memory Operations and Conditional Segment Initialization</title>
@@ -530,23 +547,6 @@
     
     
     <category term="CSS" scheme="https://www.hangyu.site/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《瞬间之美 - Web 界面设计如何让用户心动》要点小记</title>
-    <link href="https://www.hangyu.site/2022/06/11/%E3%80%8A%E7%9E%AC%E9%97%B4%E4%B9%8B%E7%BE%8E%E3%80%8B%E5%86%85%E5%AE%B9%E8%A6%81%E7%82%B9%E5%B0%8F%E8%AE%B0/"/>
-    <id>https://www.hangyu.site/2022/06/11/%E3%80%8A%E7%9E%AC%E9%97%B4%E4%B9%8B%E7%BE%8E%E3%80%8B%E5%86%85%E5%AE%B9%E8%A6%81%E7%82%B9%E5%B0%8F%E8%AE%B0/</id>
-    <published>2022-06-11T09:30:00.000Z</published>
-    <updated>2023-10-26T03:37:10.262Z</updated>
-    
-    
-    <summary type="html">“打扫旧书”系列，这本书里提到的某些设计要点在如今看来有些过时，因此仅供参考。</summary>
-    
-    
-    
-    
-    <category term="设计" scheme="https://www.hangyu.site/tags/%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
