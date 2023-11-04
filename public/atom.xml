@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-11-02T15:34:28.096Z</updated>
+  <updated>2023-11-04T05:28:37.079Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebAssembly - Bulk Memory Operations and Conditional Segment Initialization</title>
+    <link href="https://www.hangyu.site/2023/11/03/WebAssembly-Bulk-Memory-Operations-and-Conditional-Segment-Initialization/"/>
+    <id>https://www.hangyu.site/2023/11/03/WebAssembly-Bulk-Memory-Operations-and-Conditional-Segment-Initialization/</id>
+    <published>2023-11-03T03:32:00.000Z</published>
+    <updated>2023-11-04T05:28:37.079Z</updated>
+    
+    
+    <summary type="html">今天来看的提案是 - “Bulk Memory Operations and Conditional Segment Initialization”。该提案提供了更高效的线性内存和 Table 操作指令（类似于某种 “super instruction”），以及针对两者的条件初始化能力。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
   
   <entry>
     <title>WebAssembly - Reference Types</title>
@@ -530,23 +547,6 @@
     
     
     <category term="设计" scheme="https://www.hangyu.site/tags/%E8%AE%BE%E8%AE%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《无伤跑法》读书笔记</title>
-    <link href="https://www.hangyu.site/2022/05/28/%E3%80%8A%E6%97%A0%E4%BC%A4%E8%B7%91%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
-    <id>https://www.hangyu.site/2022/05/28/%E3%80%8A%E6%97%A0%E4%BC%A4%E8%B7%91%E6%B3%95%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</id>
-    <published>2022-05-28T09:32:07.000Z</published>
-    <updated>2023-10-26T03:37:10.262Z</updated>
-    
-    
-    <summary type="html">最近几年断断续续跑步，整体上成绩没什么提升。但自从前几天勉强跑了一次半马后，就开始膝关节微痛，虽然我体重不沉，但属实发现连长跑需要的最基本装备都不了解，一件 T 恤，一件运动裤就去跑马了（醉）。没有速干衣、没有控制稳定配速、没有做合理的跑后恢复。所以，找一本书来恶补一下常识 :(</summary>
-    
-    
-    
-    
-    <category term="健身" scheme="https://www.hangyu.site/tags/%E5%81%A5%E8%BA%AB/"/>
     
   </entry>
   

@@ -478,6 +478,23 @@ main
   section#comments
     padding-top 20px
     margin-top 20px
+    .comment-container
+      display flex
+      position relative
+      justify-content center
+      .loading-mask
+        margin 20px 0
+        position absolute
+        top 0
+        left 0
+        right 0
+        text-align center
+      .utterances
+        position absolute
+        top 0
+        left 0
+        right 0
+        background #fafafa
   .about-container
     .avatar
       margin auto
@@ -657,7 +674,7 @@ hr
             font-size 2.4rem
           h4
             font-size 2.2rem
-          p
+          &.article-post
             text-align left
           &.full
             ul
@@ -877,6 +894,8 @@ article
     max-width: 100%;
     border: solid 1px #ccc;
     max-height: 500px;
+  &.article-post
+    text-align left
   &.cards-page
     div.content
       > span.meta
@@ -988,7 +1007,6 @@ article
     margin 15px 0
     line-height 3.2rem
     text-indent 2em
-    text-align justify
     img
       border solid 1px #444
       margin 35px auto

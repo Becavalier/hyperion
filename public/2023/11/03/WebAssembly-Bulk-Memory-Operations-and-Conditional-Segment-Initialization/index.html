@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>WebAssembly - Bulk Memory Operations and Conditional Segment Initialization | 曜彤.手记</title><meta name="description" content="今天来看的提案是 - “Bulk Memory Operations and Conditional Segment Initialization”。该提案提供了更高效的线性内存和 Table 操作指令（类似于某种 “super instruction”），以及针对两者的条件初始化能力。"><meta name="generator" content="曜彤.手记"><meta name="about" content="[object Object]"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Bulk-Memory-Operations"><span class="toc-text">Bulk Memory Operations</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conditional-Segment-Initialization"><span class="toc-text">Conditional Segment Initialization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Instruction-Encoding"><span class="toc-text">Instruction Encoding</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF"><span class="toc-text">其他信息</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="WebAssembly - Bulk Memory Operations and Conditional Segment Initialization" class="full article-post"><h1 itemprop="headline" class="align-center">WebAssembly - Bulk Memory Operations and Conditional Segment Initialization</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2023-11-03T03:32:00.000Z"> 2023 / 11 / 03, 11:32:00</time></span><span class="page-tag-anchor"><a href="/tags/WebAssembly" itemprop="url">#WebAssembly</a>&nbsp;&nbsp;</span></div><p>今天来看的提案是 - “Bulk Memory Operations and Conditional Segment Initialization”，GitHub 链接在<b><a target="_blank" rel="noopener" href="https://github.com/WebAssembly/bulk-memory-operations/blob/master/proposals/bulk-memory-operations/Overview.md">这里</a></b>。该提案提供了更高效的线性内存和 Table 操作指令（类似于某种 “super instruction”），以及针对两者的条件初始化能力。</p>
+<h3 id="Bulk-Memory-Operations"><a href="#Bulk-Memory-Operations" class="headerlink" title="Bulk Memory Operations"></a>Bulk Memory Operations</h3><p>提案的背景源于 MVP 标准下，Wasm 在编译使用了 memcpy 与 memmove 等批量内存操作函数时会采用 <code>i32.load</code> 与 <code>i32.store</code> 等线性内存指令来模拟实现，而这些指令在每次执行时仅能够操作固定字节宽度的数据，因此，对于内存操作密集型应用来说，这些指令的执行便占用了大量的时钟时间（指令 dispatch 耗费了大量时间）。比如下面这条评论：</p>
+<blockquote>
+<p>In a number of game engines I’ve been optimizing and benchmarking, interestingly the performance of memcpy() does show up relatively high in profiles. (~2%-5% of total execution time).</p>
+</blockquote>
+<p>为此，提案新增了指令可用于批量操作线性内存，当然也包括 table。来看下面这个例子：</p>
+<pre class="line-numbers language-wat"><code class="language-wat">(module
+  (memory (export "memory") 1 1)  ;; Initial -> 1 page, maximum -> 1 page.
+  (data (i32.const 0) "\01\02\03\04")
+  (func $start
+    (memory.copy (i32.const 2) (i32.const 0) (i32.const 2))  ;; Copy memory data.
+  )  
+  (func (export "load8_u") (param i32) (result i32)
+    (i32.load8_u (local.get 0)))
+  (start $start)
+) 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在这段 WAT 中我们定义了两个函数，其中 “$start” 会在模块实例化时被执行，“$load8_u” 会被导出到宿主环境中使用。代码第二行定义了 Wasm 模块使用的线性内存段；第三行定义的 data 段初始化了线性内存中的数据。在代码第五行的函数 “$start” 内部，我们使用了提案新增加的指令 <code>memory.copy</code>，该指令将以默认内存段偏移 “(i32.const 2)” 个字节的地方作为数据拷贝的源地址，以偏移 “(i32.const 0)” 个字节的地方作为目的地址，拷贝长度为 “(i32.const 2)” 字节的数据。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">WebAssembly<span class="token punctuation">.</span><span class="token function">instantiate</span><span class="token punctuation">(</span>wasmModule<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span>instance<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> 
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> load8_u <span class="token punctuation">}</span> <span class="token operator">=</span> instance<span class="token punctuation">.</span>exports<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">load8_u</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// “1 2 1 2”.</span>
+    <span class="token punctuation">}</span>    
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>导出的函数 “$load8_u” 可用于查看默认线性内存指定字节偏移位置处的数据值。通过上述 JavaScript 代码，我们可以使用该 Wasm 模块，并验证指令的执行结果符合我们的预期。</p>
+<h3 id="Conditional-Segment-Initialization"><a href="#Conditional-Segment-Initialization" class="headerlink" title="Conditional Segment Initialization"></a>Conditional Segment Initialization</h3><p>除了对已有线性内存或 table 进行数据拷贝和填充外，对两者的“条件初始化”能力也被考虑了进来。增加这个能力的起因源于“在多个 agent 之间共享 Wasm 模块”的场景。正常情况下，Wasm 模块的线性内存段会在模块实例化时由执行引擎自动完成加载，而当一个 Wasm 模块被多个 agent 同时使用，且它们共享同一块线性内存时，该内存区域便会在不同模块实例化时被多次加载，以至某些来自于前一个模块的计算结果值被覆盖。</p>
+<p>“条件初始化”，意味着原有的线性内存和 table 初始化过程都变得可控，而不再局限于仅由 Wasm 执行环境自动完成。看下面这个例子：</p>
+<pre class="line-numbers language-wat"><code class="language-wat">(module
+  (memory (export "memory") 1 1)
+  (data (i32.const 0) "\01\02\03\04")
+  (data "\05\06\07\08")  ;; Define a "passive" data segment.
+  (func
+    (memory.init 1 (i32.const 2) (i32.const 2) (i32.const 2))  ;; Initialize memory with given segment.
+    (data.drop 1)
+  )  
+  (func (export "load8_u") (param i32) (result i32)
+    (i32.load8_u (local.get 0)))
+  (start 0)
+) 
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>WAT 的大部分内容与上一小节中的例子类似，这里我们在代码第四行又定义了一个 data 段结构，这个段结构由于没有指定初始化偏移位置，因为它被默认定义为 “passive segment”，而对于这种段结构，它不会被自动填充到对应的 memory 或 table 结构中，相反则需要通过显式指令完成这个过程。这个指令就是代码第六行出现的 <code>memory.init</code>，该指令可以将给定的 data 段结构数据填充到指定线性内存段的某个位置。需要注意的是，active 类型的 data 或 element 段会在执行引擎完成数据填充后被自动“丢弃”，正如我们在代码第七行通过指令 <code>data.drop</code> 所做的事一样。被丢弃后的段可用数据长度为 0。</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">WebAssembly<span class="token punctuation">.</span><span class="token function">instantiate</span><span class="token punctuation">(</span>wasmModule<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>instance<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span> 
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> load8_u <span class="token punctuation">}</span> <span class="token operator">=</span> instance<span class="token punctuation">.</span>exports<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">load8_u</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// “1 2 7 8”.</span>
+  <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Instruction-Encoding"><a href="#Instruction-Encoding" class="headerlink" title="Instruction Encoding"></a>Instruction Encoding</h3><p>提案新增加的所有指令可以参考下表：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Opcode</th>
+<th>Immediate</th>
+<th>Desc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>memory.init</em></td>
+<td>0xfc 0x08</td>
+<td>segment:varuint32, memory:0x00</td>
+<td>从一个 “passive data” 段拷贝数据到线性内存</td>
+</tr>
+<tr>
+<td><em>data.drop</em></td>
+<td>0xfc 0x09</td>
+<td>segment:varuint32</td>
+<td>丢弃一个 “passive data” 段</td>
+</tr>
+<tr>
+<td><em>memory.copy</em></td>
+<td>0xfc 0x0a</td>
+<td>memory_dst:0x00 memory_src:0x00</td>
+<td>拷贝内存</td>
+</tr>
+<tr>
+<td><em>memory.fill</em></td>
+<td>0xfc 0x0b</td>
+<td>memory:0x00</td>
+<td>用指定字节填充内存</td>
+</tr>
+<tr>
+<td><em>table.init</em></td>
+<td>0xfc 0x0c</td>
+<td>segment:varuint32, table:0x00</td>
+<td>从一个 “passive element” 段拷贝数据到 table</td>
+</tr>
+<tr>
+<td><em>elem.drop</em></td>
+<td>0xfc 0x0d</td>
+<td>segment:varuint32</td>
+<td>丢弃一个 “passive element” 段</td>
+</tr>
+<tr>
+<td><em>table.copy</em></td>
+<td>0xfc 0x0e</td>
+<td>table_dst:0x00 table_src:0x00</td>
+<td>拷贝 table</td>
+</tr>
+</tbody></table>
+<h3 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息"></a>其他信息</h3><p>提案新增加的 “memory.{init,drop}” 指令使得我们可以直接在 Code Section 内访问 Data Section 中的段结构，这打破了 Wasm 设计上的 “single-pass validation”（即编译模块当前位置需要的信息都可以在前面几步中获得）结构。为此，提案新增加了名为 “DataCount” 的可选 Section (code = 12)，该结构位于 Code Section 之前，其中存放有当前 Wasm 模块中定义的 data 段数量。当验证时出现以下情况则表示模块结构的异常：</p>
+<ul>
+<li>DataCount Section 中存放的 count 值不等于 Data Section 中定义的 data 段数量；</li>
+<li>DataCount Section 未定义，但模块内使用了 <code>memory.init</code> 和 <code>memory.drop</code> 指令。</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-11-03T03:32:00.000Z"> 2023 / 11 / 04, 13:28:37</time></span></div></div></article><br><span class="prev-post"><a href="/2023/11/02/WebAssembly-Reference-Types/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

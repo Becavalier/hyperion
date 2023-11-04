@@ -157,7 +157,7 @@ else if is_post()
   script(src=config.root + 'scripts/post.js', type='text/javascript')
   div.touch-top
     span
-  article(post-id=page.title).full
+  article(post-id=page.title).full.article-post
     h1(itemprop='headline', class='align-center')=page.title
     div.content
       div.article-meta
@@ -189,7 +189,10 @@ else if is_post()
       h4
         | 评论 | Comments
       br
-      script(src='https://utteranc.es/client.js' repo='Becavalier/utterances-comments' issue-term='title' label='[Comment]' theme='github-light' crossorigin='anonymous' async)
+      div.comment-container
+        div.loading-mask
+          | Loading ...
+        script(src='https://utteranc.es/client.js' repo='Becavalier/utterances-comments' issue-term='title' label='[Comment]' theme='github-light' crossorigin='anonymous' async)
   br
   br
 else if is_tag()
