@@ -827,7 +827,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/11/11/《X86-X64-体系探索及编程》读书笔记/index.html",
-    "revision": "d73cf36286fa990769c85d2a67ea6df3"
+    "revision": "7f4f4361fbab845d979819826a6b02a6"
   },
   {
     "url": "2020/11/13/《CSAPP-第三版》读书笔记（第 1-3 章）/index.html",
@@ -879,7 +879,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/01/10/《正则指引（第二版）》读书笔记/index.html",
-    "revision": "540073d8a2bd25f0b2e2d895e72908cf"
+    "revision": "f10f1b7e2377e5f23aa1d5857989a1d6"
   },
   {
     "url": "2021/01/19/《计算机网络（第七版）》读书笔记（第-1-2-章）/index.html",
@@ -887,11 +887,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/01/21/《现代操作系统（第四版）》读书笔记（第-1-3-章）/index.html",
-    "revision": "4e42786b6aa27366110c92ea848ae227"
+    "revision": "495490d8bfa8c5b2c067a9594683681b"
   },
   {
     "url": "2021/01/27/《现代操作系统（第四版）》读书笔记（第-4-6-章）/index.html",
-    "revision": "7644d91853e7abf9ec13feb1b3dca0e7"
+    "revision": "fec490770df61e368f16e7ac69475baa"
   },
   {
     "url": "2021/02/05/《你不知道的 JavaScript》读书笔记（上）/index.html",
@@ -947,7 +947,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/05/10/JIT Compilation：理解与实现/index.html",
-    "revision": "64c6ed83d749ada43d1cf94ea0b5981a"
+    "revision": "82114d1088aa5310485aa18d3f8bc5d9"
   },
   {
     "url": "2021/05/11/GCC-下默认的对齐指针访问（Aligned-Memory-Access）/index.html",
@@ -1011,15 +1011,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/03/17/《创始人：新管理者如何度过第一个90天》读书笔记（第 1-4 章）/index.html",
-    "revision": "6e548fb5e88fb03db19d29284e844c1c"
+    "revision": "581a3624531205bde99517c3a95b014e"
   },
   {
     "url": "2023/03/19/《创始人：新管理者如何度过第一个90天》读书笔记（第-5-10-章）/index.html",
-    "revision": "9baaca5668ab1d86485d246481f7bdb3"
+    "revision": "84809d0daeda325a20ed122eecf2fe36"
   },
   {
     "url": "2023/03/23/x86-64-Instruction-Cheat-Sheet/index.html",
-    "revision": "9dc71621b5ab2ca10bc6ba29e6a2ad15"
+    "revision": "449648729fd4d348b22e59e20375cb07"
   },
   {
     "url": "2023/04/07/《乌合之众：群体心理学》摘录/index.html",
@@ -1035,7 +1035,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/06/03/《x86-汇编语言：从实模式到保护模式（第2版）》读书笔记（第-12-20-章）/index.html",
-    "revision": "f3ac9a77b43d60f2d9a9700b4fca44b2"
+    "revision": "c664f5896fe943b3dcffbd2bb83d93ae"
   },
   {
     "url": "2023/06/05/Nodejs-Internal/index.html",
@@ -1047,7 +1047,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/04/《Unix-环境高级编程（第3版）》读书笔记（第-1-5-章）/index.html",
-    "revision": "d16f82c92f92f66680e05842eec45c47"
+    "revision": "d62f2ecc47d73d60bce0b7a1c59c9eb6"
   },
   {
     "url": "2023/07/13/关于-C++-Stack-Unwinding-的一点记录/index.html",
@@ -1055,7 +1055,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/index.html",
-    "revision": "4184fc7f500dea280990810ca169bd57"
+    "revision": "62a6eaa3b988e63c8785bf170c5d68f5"
   },
   {
     "url": "2023/09/04/《Crafting-Interpreters》读书笔记（第 11-30 章）/index.html",
@@ -1075,11 +1075,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/01/WebAssembly-Non-trapping-Float-to-int-Conversions/index.html",
-    "revision": "72316370fadb2db911bcd073b983c57b"
+    "revision": "0dd477d3fe8a71c77a0e4cad4bb83d71"
   },
   {
     "url": "2023/11/01/WebAssembly-Sign-extension-operators/index.html",
-    "revision": "ae356f027a9e2e46eeff0b3759899931"
+    "revision": "f046c79779f5d8cce6938871eb9f9733"
   },
   {
     "url": "2023/11/02/WebAssembly-JavaScript-BigInt-to-WebAssembly-i64-integration/index.html",
@@ -1091,11 +1091,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/03/WebAssembly-Bulk-Memory-Operations-and-Conditional-Segment-Initialization/index.html",
-    "revision": "387cde7457b72808d31e08d7f843887f"
+    "revision": "3bef4149414ed3882633de96758e38dc"
   },
   {
     "url": "2023/11/04/WebAssembly-128-bit-packed-SIMD-Extension/index.html",
-    "revision": "eda3946a5d92c04b98a821b74ad60307"
+    "revision": "bfd85db0f1ab1fbd5b7fec1cca485fee"
+  },
+  {
+    "url": "2023/11/05/WebAssembly-Relaxed-SIMD/index.html",
+    "revision": "4c68dd508e98893332b9c0ba1ab52e3a"
   },
   {
     "url": "about/index.html",
@@ -1427,7 +1431,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "6b12f63246345a1485729478a03416fe"
+    "revision": "daa203525cf67863707bfdb977de45d2"
   },
   {
     "url": "cards/index.html",
@@ -1443,111 +1447,111 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/10/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/11/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/12/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/13/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/14/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/15/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/16/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/17/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/18/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/19/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/2/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/20/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/21/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/22/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/23/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/24/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/25/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/26/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/27/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/3/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/4/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/5/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/6/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/7/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/8/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "page/9/index.html",
-    "revision": "a3bfdab32f39b57a9cbd52108b96a339"
+    "revision": "9ab0c6c6b6223d5eae9d949d9e4ffc1a"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1587,7 +1591,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "44403e9220be063e3a2c4524918c0a7b"
+    "revision": "2b3551f847128875341492ab13d5baee"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1815,7 +1819,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "06f19872c8acfff1e3827017595fbe3a"
+    "revision": "a5113cdc74ced1a23c6c3c253a44eb1a"
   },
   {
     "url": "tags/AI/index.html",
@@ -1911,7 +1915,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "2dac5b20328167f4228f8ee10da7154e"
+    "revision": "aa16c56f0ad7880e1c6cf1eef6197b56"
   },
   {
     "url": "tags/Interpreter/index.html",
@@ -2035,7 +2039,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/WebAssembly/index.html",
-    "revision": "deadddc595a97e47ea44e78748003e04"
+    "revision": "405c2e21096356a4d08ef9399cb88341"
   },
   {
     "url": "tags/x64/index.html",

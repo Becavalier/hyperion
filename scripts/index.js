@@ -51,7 +51,10 @@ hexo.extend.filter.register('after_post_render', data => {
     })
   }
   if (data.layout === 'post' && typeof(data.content) === 'string') {
+    // Process image description.
     data.content = data.content.replace(/(<img src="[0-9a-zA-Z.]*?" alt="([\S\s]*?)">)/g, '<p>$1<span class="pic-desc">$2</span></p>')
+    // Add wrappers for tables.
+    data.content = data.content.replace(/(<table>[\S\s]*?<\/table>)/g, '<div class="table-container">$1</div>')
   }
   return data
 })

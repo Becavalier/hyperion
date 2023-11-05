@@ -175,7 +175,7 @@
 <ul>
 <li><strong>状态标志位（Status Flags）</strong>：</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>标志位</th>
@@ -213,11 +213,11 @@
 <td>11</td>
 <td>用于 signed 数运算，结果值产生溢出时置位。</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li><strong>系统标志位（System Flags）</strong>：</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>标志位</th>
@@ -250,11 +250,11 @@
 <td>18</td>
 <td>设置地址中的对齐检查。完整开启条件：<ul><li>CR0.AM 置位；</li><li>eflags.AC 置位；</li><li>CPL=3 / 保护模式下。</li></ul></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li><strong>控制标志位（Control Flags）</strong>：</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>标志位</th>
@@ -272,7 +272,7 @@
 <td>9</td>
 <td>控制 CPU 是否响应硬件可屏蔽中断（Maskable Interrupts），该标志位不影响其他类型中断。</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ol start="25">
 <li><span class="pn">Page 94</span>eflags.RF 与 eflags.TF 标志配合使用完成单步调试：</li>
 </ol>
@@ -280,7 +280,7 @@
 <h3 id="第六章-处理器的控制寄存器"><a href="#第六章-处理器的控制寄存器" class="headerlink" title="第六章 - 处理器的控制寄存器"></a>第六章 - 处理器的控制寄存器</h3><ol start="26">
 <li><span class="pn">Page 101</span>x64 上的控制寄存器被扩展为 64 位，有 CR0 ~ CR15 共 16 个，其中仅使用了 CR0、CR2、CR3、CR4，以及 CR8。而为了支持“长模式”，x64 体系引入了 EFER 寄存器。</li>
 </ol>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>寄存器</th>
@@ -311,7 +311,7 @@
 <td>EFER</td>
 <td><ul><li>EFER.LME：1 - 启用“长模式”；</li><li>EFER.LMA：1 - CPU 目前处于“长模式”，该位由 CPU 维护。</li></ul></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ol start="27">
 <li><span class="pn">Page 102</span>中断向量表（IVT）与系统调用：</li>
 </ol>

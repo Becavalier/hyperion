@@ -6,7 +6,7 @@
 <p>The ‘fptoui’ instruction converts its floating-point operand into the nearest (rounding towards zero) unsigned integer value. If the value cannot fit in ty2, the result is a poison value.</p>
 </blockquote>
 <p>另外，该提案也用于支持 SIMD 特性，提供表现一致的 saturating 转换操作。关于新增加的指令，可以参考下表：</p>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -45,7 +45,7 @@
 <td><em>i64.trunc_sat_f64_u</em></td>
 <td>0xfc 0x07</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <p>指令语义同对应的 “trunc_” 指令一致，除了以下几种情况：</p>
 <ul>
 <li>当转换发生上溢出和下溢出时，返回对应整型的最大值和最小值，而不产生 trap（saturating）；</li>

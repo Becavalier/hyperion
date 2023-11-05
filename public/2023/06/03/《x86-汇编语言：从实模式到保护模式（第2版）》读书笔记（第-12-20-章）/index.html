@@ -146,7 +146,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <ol start="40">
 <li>段界限计算：</li>
 </ol>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>属性</th>
@@ -164,7 +164,7 @@ jmp 0x0010:flush        ; 16 bits effective address.
 <td><ul><li>最小：描述符段界限 * 0x1000 + 0xfff；</li><li>最大：由 “B” 位决定，0 - 0xffff，1 - 0xffffffff。</li></ul></td>
 <td>[最小实际段界限 + 1, 最大实际段界限]</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h3 id="第-15-章-程序的动态加载和执行"><a href="#第-15-章-程序的动态加载和执行" class="headerlink" title="第 15 章 - 程序的动态加载和执行"></a>第 15 章 - 程序的动态加载和执行</h3><ol start="41">
 <li>操作系统内核通常不会被直接放到 MBR 里，因为其体积较大。计算机一般先从主引导程序开始执行，加载内核，并转交控制权。然后，内核负责加载用户程序，并提供各种操作系统接口给用户程序调用。</li>
 <li>操作系统内核的基本结构：</li>

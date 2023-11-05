@@ -69,7 +69,7 @@
 </ul>
 </li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>头文件</th>
@@ -200,7 +200,7 @@
 <td>&lt;wctype.h&gt; <sub>(since C95)</sub></td>
 <td>提供针对宽字符的类型检测函数，如 <code>iswalpha</code>。</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li>IEEE POSIX：<ul>
 <li>可移植操作系统接口（Portable Operating System Interface），包括很多标记为 1003 的标准和草案；</li>
@@ -349,7 +349,7 @@ off_t <span class="token function">lseek</span><span class="token punctuation">(
 </li>
 <li>off_t 类型的大小：可以通过特定选项查询；或通过定义 _FILE_OFFSET_BITS 来设置（可能影响可移植性）。</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>选项名称</th>
@@ -377,7 +377,7 @@ off_t <span class="token function">lseek</span><span class="token punctuation">(
 <td>int 类型是 32 位，long、指针和 off_t 类型至少是 64 位</td>
 <td>_SC_V7_LP64_OFFBIG</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ol start="18">
 <li>读取文件：函数执行成功则返回读到的字节数；若达到尾端，则返回 0。</li>
 </ol>

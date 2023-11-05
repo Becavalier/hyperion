@@ -163,7 +163,7 @@
 <ul>
 <li>操作系统维护着一张表（结构体数组），即“<strong>进程表</strong>”，其中每个进程占用一个表项，<strong>包含了进程的状态信息</strong>。大致总结如下：</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>进程管理</th>
@@ -246,7 +246,7 @@
 <td></td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li>“中断向量表”中包含有中断服务程序的<strong>入口地址</strong>。中断处理和调度流程：<ul>
 <li><strong>硬件</strong>压入堆栈当前进程的 PC；</li>
@@ -267,7 +267,7 @@
 <ul>
 <li>同一个进程下的线程共享地址空间；</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>进程中所有线程共享</th>
@@ -302,12 +302,12 @@
 <td>账户信息</td>
 <td></td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li>在传统操作系统中，<strong>每个进程默认有一个地址空间和一个控制线程</strong>；</li>
 <li>三种程序构造模式对比：</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>模型</th>
@@ -326,7 +326,7 @@
 <td>有限状态机</td>
 <td>并行性、非阻塞系统调用、中断</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li>进程用于把资源集中到一起，线程则是在 CPU 上被调度执行的实体。线程试图实现的是，<strong>共享一组资源的多个线程的能力</strong>；</li>
 <li>同一个进程中的线程是没有保护的，意味着一个线程可以读、写甚至清除另一个线程的堆栈；</li>
@@ -336,7 +336,7 @@
 <ol start="17">
 <li><span class="pn">Page 60</span>Posix 线程：</li>
 </ol>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>线程调用</th>
@@ -367,7 +367,7 @@
 <td><em>pthread_attr_destroy</em></td>
 <td>删除一个线程的属性结构</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ol start="18">
 <li><span class="pn">Page 61</span><strong>线程实现</strong>：</li>
 </ol>

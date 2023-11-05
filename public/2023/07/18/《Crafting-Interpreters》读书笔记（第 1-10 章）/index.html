@@ -115,7 +115,7 @@ arguments      → expression ( "," expression )* ;
 <ul>
 <li>Formal grammar: it takes a set of atomic pieces it calls its “alphabet”. Then it defines a (usually infinite) set of “strings” that are “in” the grammar. Each string is a sequence of “letters” in the alphabet. It’s job is to specify which strings are valid and which aren’t.</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Terminology</th>
@@ -138,7 +138,7 @@ arguments      → expression ( "," expression )* ;
 <td>Scanner</td>
 <td>Parser</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h3 id="Chapter-5-Representing-Code"><a href="#Chapter-5-Representing-Code" class="headerlink" title="Chapter 5 - Representing Code"></a>Chapter 5 - Representing Code</h3><ol start="10">
 <li><strong>BNF</strong> (Backus–Naur Form): a metasyntax notation for context-free grammars.</li>
 </ol>
@@ -169,7 +169,7 @@ operator       → "==" | "!=" | "<" | "<=" | ">" | ">="
 <ul>
 <li><strong>Chomsky Hierarchy</strong>: </li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Grammar</th>
@@ -197,7 +197,7 @@ operator       → "==" | "!=" | "<" | "<=" | ">" | ">="
 <td>Recursively enumerable</td>
 <td>Turing machine</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li><strong>Visitor pattern</strong>: approximating the functional style within an OOP language. We can define all of the behavior for a new operation on a set of types in one place, without having to touch the types themselves. <strong>It does this by adding a layer of indirection</strong>. So, it would be better to use it to traverse the AST nodes.</li>
 </ul>
@@ -240,7 +240,7 @@ primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression "
 <ul>
 <li>A recursive descent parser is a literal translation of the grammar’s rules straight into imperative code. Each rule becomes a function, and it produces a syntax tree for that rule and returns it to the caller. When the body of the rule contains a nonterminal — “a reference to another rule”, we call that other rule’s method.</li>
 </ul>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Grammar notation</th>
@@ -267,7 +267,7 @@ primary        → NUMBER | STRING | "true" | "false" | "nil" | "(" expression "
 <td><i>?</i></td>
 <td><code>if</code> statement</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <ul>
 <li>It is possible to define a more complex grammar that’s difficult to parse using recursive descent. <strong>Predictive parsing gets tricky when you may need to look ahead a large number of tokens to figure out what you’re sitting on</strong>. If you can parse C++ using recursive descent — which many C++ compilers do, you can parse anything.</li>
 </ul>

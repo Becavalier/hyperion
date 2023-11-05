@@ -50,7 +50,7 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="Instruction-Encoding"><a href="#Instruction-Encoding" class="headerlink" title="Instruction Encoding"></a>Instruction Encoding</h3><p>提案新增加的所有指令可以参考下表：</p>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -101,7 +101,7 @@
 <td>table_dst:0x00 table_src:0x00</td>
 <td>拷贝 table</td>
 </tr>
-</tbody></table>
+</tbody></table></div>
 <h3 id="其他信息"><a href="#其他信息" class="headerlink" title="其他信息"></a>其他信息</h3><p>提案新增加的 “memory.{init,drop}” 指令使得我们可以直接在 Code Section 内访问 Data Section 中的段结构，这打破了 Wasm 设计上的 “single-pass validation”（即编译模块当前位置需要的信息都可以在前面几步中获得）结构。为此，提案新增加了名为 “DataCount” 的可选 Section (code = 12)，该结构位于 Code Section 之前，其中存放有当前 Wasm 模块中定义的 data 段数量。当验证时出现以下情况则表示模块结构的异常：</p>
 <ul>
 <li>DataCount Section 中存放的 count 值不等于 Data Section 中定义的 data 段数量；</li>
