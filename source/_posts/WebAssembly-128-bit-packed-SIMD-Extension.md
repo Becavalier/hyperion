@@ -7,7 +7,7 @@ tags:
 - WebAssembly
 ---
 
-今天来看的提案是 - “128-bit Packed SIMD Extension”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/simd/blob/main/proposals/simd/SIMD.md)</b>。Wasm 在设计之初的一个重要目标就是提供 “near native” 的指令执行效率，而该提案则通过提供一组通用 Wasm SIMD 指令集，使得 Wasm 可以直接利用现代处理器上的硬件 SIMD 指令来执行更高效的并行算数运算。该能力被广泛应用于多媒体和游戏等领域。
+今天来看的提案是 - “128-bit Packed SIMD Extension”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/simd/blob/main/proposals/simd/SIMD.md)</b>。Wasm 在设计之初的一个重要目标就是提供 “near native” 的指令执行效率，而该提案则通过提供一组通用 Wasm SIMD 指令集，使得 Wasm 可以直接利用现代处理器上的硬件 SIMD 指令来执行更高效的并行算数运算。该能力被广泛应用于多媒体和游戏等领域。该提案的前身是由 TC39 维护的 SIMD.js 提案，目前其已经从 TC39 提案流程中移除，完全转移至 Wasm WG 维护。
 
 该提案新增了一种值类型 `v128`，该类型表示一个 128 位的值，该值可以被直接存放到硬件 ISA 中的向量寄存器（比如 x86-64 下的 XMM\YMM 寄存器）。配合不同的 SIMD 指令，它可以被解释为多种不同的 “packed” 数据，比如：4 个 32 位的浮点数值；8 个 16 位的有符号整数值，等等。提案一共支持 6 种解释模式：<i>i8x16</i>, <i>i16x8</i>, <i>i32x4</i>, <i>i64x2</i>, <i>f32x4</i>, <i>f64x2</i>。在 Wasm 中声明 `v128` 常量时，我们需要指定某一具体的位解释模式。来看一个简单的例子：
 

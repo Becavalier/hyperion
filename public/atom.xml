@@ -38,7 +38,7 @@
     <link href="https://www.hangyu.site/2023/11/04/WebAssembly-128-bit-packed-SIMD-Extension/"/>
     <id>https://www.hangyu.site/2023/11/04/WebAssembly-128-bit-packed-SIMD-Extension/</id>
     <published>2023-11-04T11:42:00.000Z</published>
-    <updated>2023-11-04T11:47:28.086Z</updated>
+    <updated>2023-11-06T01:08:48.426Z</updated>
     
     
     <summary type="html">今天来看的提案是 - “128-bit Packed SIMD Extension”。Wasm 在设计之初的一个重要目标就是提供 “near native” 的指令执行效率，而该提案则通过提供一组通用 Wasm SIMD 指令集，使得 Wasm 可以直接利用现代处理器上的硬件 SIMD 指令来执行更高效的并行算数运算。该能力被广泛应用于多媒体和游戏等领域。</summary>
