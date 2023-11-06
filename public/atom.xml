@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-11-05T14:24:45.845Z</updated>
+  <updated>2023-11-06T11:14:35.994Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -17,11 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>WebAssembly - Tail Call Extension</title>
+    <link href="https://www.hangyu.site/2023/11/06/WebAssembly-Tail-Call-Extension/"/>
+    <id>https://www.hangyu.site/2023/11/06/WebAssembly-Tail-Call-Extension/</id>
+    <published>2023-11-06T11:14:00.000Z</published>
+    <updated>2023-11-06T11:14:35.994Z</updated>
+    
+    
+    <summary type="html">本篇来看的提案是 - “Tail Call Extension”。尾递归优化（TCE）相信大家都很熟悉，这是一种常见的“递归转循环”优化，可以消除函数递归调用过程中产生的栈帧，以实现更快的计算过程。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
+  
+  <entry>
     <title>WebAssembly - Relaxed SIMD</title>
     <link href="https://www.hangyu.site/2023/11/05/WebAssembly-Relaxed-SIMD/"/>
     <id>https://www.hangyu.site/2023/11/05/WebAssembly-Relaxed-SIMD/</id>
     <published>2023-11-05T14:00:00.000Z</published>
-    <updated>2023-11-05T14:24:45.845Z</updated>
+    <updated>2023-11-06T04:20:37.184Z</updated>
     
     
     <summary type="html">本篇来看的提案是 - “Relaxed SIMD”。今天要介绍的这个提案在原始 SIMD 提案的基础上又增加了若干指令，不同的是，这些指令根据执行引擎运行所在平台的不同，可能具有不确定（non-deterministic）的执行结果。</summary>
@@ -530,23 +547,6 @@
     
     
     <category term="旅游" scheme="https://www.hangyu.site/tags/%E6%97%85%E6%B8%B8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>《CSS 权威指南（第四版）》读书笔记（第 14-20 章）</title>
-    <link href="https://www.hangyu.site/2022/07/11/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/"/>
-    <id>https://www.hangyu.site/2022/07/11/%E3%80%8ACSS-%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%EF%BC%88%E7%AC%AC%E5%9B%9B%E7%89%88%EF%BC%89%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%EF%BC%88%E7%AC%AC-14-20-%E7%AB%A0%EF%BC%89/</id>
-    <published>2022-07-11T04:11:09.000Z</published>
-    <updated>2023-10-26T03:37:10.246Z</updated>
-    
-    
-    <summary type="html">“旧书清理”系列。这里是 14-20 章的内容，主要介绍了：CSS 中的表格布局、列表和生成内容、变形、过渡等。</summary>
-    
-    
-    
-    
-    <category term="CSS" scheme="https://www.hangyu.site/tags/CSS/"/>
     
   </entry>
   

@@ -54,12 +54,12 @@ tags:
 在执行引擎中，`i8x16.swizzle` 可能有多种实现方式，恰巧的是，对于 ARM64 体系来说，该指令的语义正好与指令 `TBL` 一致。但在 x86-64 上就没有这么幸运了。为了保持索引越界时的确定性结果，该 Wasm 指令在 x86-64 上可能会采用以下方式实现（伪代码）：
 
 ```asm
-__builtin_simd_wasm_i8x16_splat(0x70)
+_builtin_simd_wasm_i8x16_splat(0x70)
 _asm_paddusb(s)
 _asm_pshufb(a)
 ```
 
-第一条指令 “__builtin_simd_wasm_i8x16_splat” 对应于 Wasm 指令 `i8x16.splat`，该指令会构建一个含有值 “0x70” 的 i8x16 类型向量；指令 _asm_paddusb 对应于 x86-64 的汇编指令 `paddusb`，该指令会使用从上一步得到的结果来对向量 s 进行对应 lane 的 “saturated add” 操作，该操作会保证经加法后所有大于 0xff 的结果值都会被设置为 0xff。最后一条指令 _asm_pshufb 对应于 x86-64 的汇编指令 `pshufb`，该指令会使用向量中每个 lane 从 LBS 开始的低 4 位组成索引值，决定如何从向量 a 中进行选取操作。对于该指令来说，若 MSB 的值为 0，则选择的结果值为 0。对照 SIMD 提案中 `i8x16.swizzle` 指令的执行语义，我们可以得到上述实现中前两条指令的由来。
+第一条指令 “_builtin_simd_wasm_i8x16_splat” 对应于 Wasm 指令 `i8x16.splat`，该指令会构建一个含有值 “0x70” 的 i8x16 类型向量；指令 _asm_paddusb 对应于 x86-64 的汇编指令 `paddusb`，该指令会使用从上一步得到的结果来对向量 s 进行对应 lane 的 “saturated add” 操作，该操作会保证经加法后所有大于 0xff 的结果值都会被设置为 0xff。最后一条指令 _asm_pshufb 对应于 x86-64 的汇编指令 `pshufb`，该指令会使用向量中每个 lane 从 LBS 开始的低 4 位组成索引值，决定如何从向量 a 中进行选取操作。对于该指令来说，若 MSB 的值为 0，则选择的结果值为 0。对照 SIMD 提案中 `i8x16.swizzle` 指令的执行语义，我们可以得到上述实现中前两条指令的由来。
 
 正常情况下，`pshufb` 指令在处理位于区间 “(0x0f, 0x80)” 内的索引值时，其不能正好地贴合 swizzle 指令的语义。比如对于索引值 0x10 (b'00010000) 来说，`pshufb` 指令会从 a 中选择索引位置为 0 的 lane，但实际上该值已经越界。而通过前两条指令的处理，这个索引值会被变为 0x80 (b'10000000)，MSB 为 0 导致 `pshufb` 指令的选择结果值为 0。而这正符合 SIMD 标准的预期。
 
