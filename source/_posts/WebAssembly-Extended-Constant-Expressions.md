@@ -1,63 +1,36 @@
 ---
-title: WebAssembly - Extended Constant Expressions
-intro: 本篇来看的提案是 - “Extended Constant Expressions”。该提案增加了更多可以应用在 Wasm 常量表达式中的常量指令。
+title: WebAssembly - Multiple Memories
+intro: 本篇来看的提案是 - “Multiple Memories”。该提案为 Wasm 提供了多内存段（memory section）支持。
 comments: true
-date: 2023-11-07 16:04:00
+date: 2023-11-07 17:52:00
 tags:
 - WebAssembly
 ---
 
-本篇来看的提案是 - “Extended Constant Expressions”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/extended-const/blob/main/proposals/extended-const/Overview.md#extended-constant-expressions)</b>。该提案增加了更多可以应用在 Wasm 常量表达式中的常量指令。
+本篇来看的提案是 - “Multiple Memories”，GitHub 链接在<b>[这里](https://github.com/WebAssembly/multi-memory/blob/main/proposals/multi-memory/Overview.md)</b>。该提案为 Wasm 提供了多内存段（memory section）支持。
 
+在 MVP 标准中，一个 Wasm 模块只能引用唯一的线性内存段，这导致应用程序很难高效地在多个不同内存段之间转移数据（只能以逐个值的方式来拷贝）。除此之外，提案总结了以下五个场景，这些场景都可以通过为 Wasm 支持多内存段得以更好地实现：
 
-### 常量表达式（Constant Expression）
+* **安全**：Wasm 模块可以通过分离公共和私有内存段的方式来安全地向外部环境交换数据；
+* **隔离**：即使在单个 Wasm 模块内部，同时拥有这两种内存并且将多个线程之间共享的内存，与以单线程方式使用的内存分开也是有益的；
+* **持久化**：应用程序可能希望在每次运行时，通过诸如将内存数据存储在文件中的方式来保持某些内存状态。但它可能不想对其所有内存都这样做，因此通过使用多个内存段分离生命周期是一种更加自然的方式；
+* **链接**：可以更好地支持将多个 Wasm 模块静态链接成单一模块时，对线性内存段的处理；
+* **扩展**：提供了一种方式可以支持在 Wasm32 上使用超过 4GB 的内存；
+* **Polyfilling**：为模拟 GC、Interface Types 等提案功能提供一定支持。
 
-常量表达式，即表达式本身可以在编译期被求值。Wasm 标准中定义，一个常量表达式是由一系列常量指令（即返回值为一个常量）外加对应操作数组成的。在字节码中，整个表达式以 “0b” 结尾，比如 `(i32.const 10)` 便是最常见的一类常量表达式，它定义了一个 i32 类型的常量值 10。根据现有标准规定，我们可以在下列这些语法结构中使用常量表达式：
-
-* global 的初始值（*init*）；
-* active 类型 element 段中的偏移位置（*offset*）；
-* active 类型 data 段中的偏移位置（*offset*）。
-
-它们各自的使用方式可以参考以下代码：
+“多内存段”的支持会影响所有内存相关指令和结构的使用方式，主要改动在于引入了用于指定内存段的索引值。具体可以参考下面这段代码：
 
 ```wat
 (module
-  (memory 1)
-  (table 1 funcref)
-  (data (offset (i32.const 0)) "\10")
-  (elem (table 0) (i32.const 0) funcref (ref.null func))
-  (global i32 (i32.const 10))
-) 
-```
-
-### 动态链接（Dynamic Linking）
-
-MVP 标准中定义的常量指令形式很少，该提案增加了若干可用于常量表达式的指令：`i32.add`、`i32.sub`、`i32.mul`，以及对应的 i64 指令。这些指令的使用方式和语义保持不变，只是它们所在的常量表达式可以在编译时被直接求值。
-
-实际上，“Extended Constant Expressions” 提案的出现背景是为了更好地支持 Wasm 模块的动态链接（dynamic-linking）过程，目前这是一个实验性功能，ABI 并不稳定。这里我们不深入细节，举个简单的例子，假设被动态链接的模块内有多个地方引用了名为 foo 的变量，该变量被定义在这个模块内部。
-
-由于需要动态链接，导致模块在真正被加载和实例化前，其并不知道模块内部的数据会被加载到整个程序内存段中的哪个位置。因此，在本提案出现之前，被动态链接的模块通常会使用如下代码，来进行本地变量的间接调用。即对本地变量 foo 的访问均间接通过访问名为 $foo_addr 的 global 变量完成，该 global 中存放有变量 foo 在内存中的实际地址。不仅如此，这种方式还保证了模块代码的 PIC 性质（不用对代码段进行重定位）。
-
-```wat
-(global $foo_addr (mut i32) (i32.const 0))
-```
-
-当模块被加载后，动态加载器（后简称 DL）会产生类似如下所示的启动代码，来完成对上述 $foo_addr 的重定位过程（可以简单理解为是对值进行修正）。
-
-```wat
-(func $relocate 
-  (global.set $foo_addr 
-    (i32.add (global.get $__memory_base) (i32.const C))
+  (memory 1 1)  ;; Memory 0.
+  (memory 1 1)  ;; Memory 1.
+  (data 0 (i32.const 0) "\10")
+  (data 1 (i32.const 1) "\20")
+  (func (export "foo") (result i32 i32)
+    (i32.store 0 (i32.const 1) (i32.const 10))
+    (i32.store 1 (i32.const 1) (i32.const 20))
+    (i32.load 0 (i32.const 0))
+    (i32.load 1 (i32.const 0))
   )
-)
+)  
 ```
-
-其中，$__memory_base 是 DL 提供的 global，它描述了当前加载模块可以使用的线性内存起始偏移位置，也即模块数据段的实际加载位置。通过 `i32.add` 指令，DL 可以根据模块的实际内存加载位置来修正 $foo_addr 的值，其中常量值 C 为变量 foo 的值在模块数据段内的相对偏移位置。
-
-启动代码的执行是在运行时完成的，因此会占用一定的计算资源。而一旦借助本提案提出的新常量指令，DL 便不再需要生成函数 $relocate，符号重定位过程可以直接内联到 $foo_addr 的代码中。如下所示：
-
-```wat
-(global $foo_addr (i32.add (global.get $__memory_base) (i32.const C)))
-```
-
-这样便可以简化动态链接过程，无需相关启动代码。且 $foo_addr 被声明为“不可变”也能够一定程度上保证代码健壮性。
