@@ -94,7 +94,7 @@ int foo(int (*fn_ptr)(int, int)) {
 }
 ```
 
-在编译后通常会得到如下所示的 WAT。这里原 C 代码中函数指针的调用过程变成了通过 “table slot” 的间接调用过程。而 `funcref` 的行为则保持了同 `anyfunc` 类型一样的特点。
+在编译后通常会得到如下所示的 WAT。这里原 C 代码中函数指针的调用过程变成了通过 “table slot” 的间接调用过程。而 `funcref` 的行为则保持了同 `anyfunc` 类型完全一样的特点。在本提案提出之前，这两者实际上是一个东西，而 `anyfunc` 类型目前已被废弃，不再使用。
 
 ```wat
 (table 3 3 anyfunc)

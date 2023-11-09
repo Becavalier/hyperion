@@ -105,6 +105,11 @@ else if is_page() && page.title.toLowerCase() === 'about'
       div.extra-container
         a(target="_blank", href=config.about.interview_sheet)
           span(class="fa fa-sticky-note icons" aria-hidden="true")
+    hr
+    div.comment-container
+        div.loading-mask
+          | Loading ...
+        script(src='https://utteranc.es/client.js' repo='Becavalier/utterances-comments' issue-term='title' label='[Comment]' theme='github-light' crossorigin='anonymous' async)
 else if is_page() && page.title.toLowerCase() === 'cards'
   article.full.cards-page
     h1(itemprop='headline', class='header')=page.label

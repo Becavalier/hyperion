@@ -1087,7 +1087,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/02/WebAssembly-Reference-Types/index.html",
-    "revision": "ebcf7b999db227c8f62a42cd24ac458a"
+    "revision": "6a254a5d3da79a9a30808297dc57b73d"
   },
   {
     "url": "2023/11/03/WebAssembly-Bulk-Memory-Operations-and-Conditional-Segment-Initialization/index.html",
@@ -1103,19 +1103,23 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/06/WebAssembly-Tail-Call-Extension/index.html",
-    "revision": "f0376f09e0aec8554eb67a7c8e4fcf4a"
+    "revision": "7d5d04447adc5d8a0338e25cc114dfd6"
   },
   {
     "url": "2023/11/07/WebAssembly-Extended-Constant-Expressions/index.html",
-    "revision": "97104e580d102945028bd4549797bdcf"
+    "revision": "ad9ed4e82fb3cb8a2c79d844c1b0d23c"
   },
   {
-    "url": "2023/11/07/WebAssembly-Multiple Memories/index.html",
+    "url": "2023/11/07/WebAssembly-Multiple-Memories/index.html",
     "revision": "a42d46a2eaa143c39e95584ace6bf515"
   },
   {
+    "url": "2023/11/08/WebAssembly-Typed-Function-References/index.html",
+    "revision": "da062307e3892e68b81539c093d551f6"
+  },
+  {
     "url": "about/index.html",
-    "revision": "d69f9ec700963487a1f89bff99d6c781"
+    "revision": "824b3b9ca87206e401170c2822ba5f0f"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1443,7 +1447,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "55246dd7c23ba9f0a7db821e865326ad"
+    "revision": "a0a293fa880b9d7eff67aea7f5f8ce5e"
   },
   {
     "url": "cards/index.html",
@@ -1459,115 +1463,115 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/10/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/11/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/12/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/13/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/14/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/15/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/16/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/17/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/18/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/19/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/2/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/20/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/21/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/22/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/23/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/24/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/25/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/26/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/27/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/28/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/3/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/4/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/5/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/6/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/7/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/8/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "page/9/index.html",
-    "revision": "a1cd28a779c69c9587808398742d1389"
+    "revision": "fa17bc2bf529f97f6b4f1c9649cbd162"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1607,7 +1611,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "7e8b2901b0cce512d25b7506439bdcef"
+    "revision": "c9cdfed299a218c00ec3e97407a7a577"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1835,7 +1839,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "437ef2ad2feb1a86574061f284a4a1ee"
+    "revision": "00e20d779f4eda8641b3059f9a66c32f"
   },
   {
     "url": "tags/AI/index.html",
@@ -1931,7 +1935,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "cea700cba4d1eca841d5d024480d4e21"
+    "revision": "ecaf5415e6d36ee7caaf726e677167f9"
   },
   {
     "url": "tags/Interpreter/index.html",
@@ -2055,7 +2059,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/WebAssembly/index.html",
-    "revision": "59b4b2f72c69cda9405e33338d727dbb"
+    "revision": "e6ec0aa6b78f93d70c6bcf1a9661fea1"
   },
   {
     "url": "tags/x64/index.html",
