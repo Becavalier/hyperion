@@ -6,7 +6,7 @@
   <link href="https://www.hangyu.site/atom.xml" rel="self"/>
   
   <link href="https://www.hangyu.site/"/>
-  <updated>2023-11-10T08:02:41.072Z</updated>
+  <updated>2023-11-13T14:33:08.937Z</updated>
   <id>https://www.hangyu.site/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WebAssembly - GC v1 Extension</title>
+    <link href="https://www.hangyu.site/2023/11/10/WebAssembly-GC-V1-Extension/"/>
+    <id>https://www.hangyu.site/2023/11/10/WebAssembly-GC-V1-Extension/</id>
+    <published>2023-11-10T08:05:00.000Z</published>
+    <updated>2023-11-13T14:33:08.937Z</updated>
+    
+    
+    <summary type="html">本篇来看的提案是 - “GC v1 Extension”。该提案为 Wasm 提供了 v1 版垃圾回收机制（GC）的支持，相关概念的实现基于前述提案 “Reference Types” 以及 “Typed Function Reference”。WasmGC 是自 Wasm MVP 标准发布以来的一次重大更新，它为托管类编程语言（如 Kotlin、PHP 等）提供了可以直接利用宿主 GC 的能力。</summary>
+    
+    
+    
+    
+    <category term="WebAssembly" scheme="https://www.hangyu.site/tags/WebAssembly/"/>
+    
+  </entry>
   
   <entry>
     <title>WebAssembly - Threading</title>
@@ -52,8 +69,8 @@
   
   <entry>
     <title>WebAssembly - Multiple Memories</title>
-    <link href="https://www.hangyu.site/2023/11/07/WebAssembly-Extended-Constant-Expressions/"/>
-    <id>https://www.hangyu.site/2023/11/07/WebAssembly-Extended-Constant-Expressions/</id>
+    <link href="https://www.hangyu.site/2023/11/07/WebAssembly-Multiple-Memories/"/>
+    <id>https://www.hangyu.site/2023/11/07/WebAssembly-Multiple-Memories/</id>
     <published>2023-11-07T09:52:00.000Z</published>
     <updated>2023-11-07T09:52:16.980Z</updated>
     
@@ -69,10 +86,10 @@
   
   <entry>
     <title>WebAssembly - Extended Constant Expressions</title>
-    <link href="https://www.hangyu.site/2023/11/07/WebAssembly-Multiple-Memories/"/>
-    <id>https://www.hangyu.site/2023/11/07/WebAssembly-Multiple-Memories/</id>
+    <link href="https://www.hangyu.site/2023/11/07/WebAssembly-Extended-Constant-Expressions/"/>
+    <id>https://www.hangyu.site/2023/11/07/WebAssembly-Extended-Constant-Expressions/</id>
     <published>2023-11-07T08:04:00.000Z</published>
-    <updated>2023-11-07T08:10:32.443Z</updated>
+    <updated>2023-11-11T07:46:30.836Z</updated>
     
     
     <summary type="html">本篇来看的提案是 - “Extended Constant Expressions”。该提案增加了更多可以应用在 Wasm 常量表达式中的常量指令。</summary>
@@ -524,23 +541,6 @@
     
     
     <category term="算法" scheme="https://www.hangyu.site/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Engineering Manager &quot;Cheat Sheet&quot;</title>
-    <link href="https://www.hangyu.site/2023/02/15/Engineering-Manager-Cheat-Sheet/"/>
-    <id>https://www.hangyu.site/2023/02/15/Engineering-Manager-Cheat-Sheet/</id>
-    <published>2023-02-15T01:21:00.000Z</published>
-    <updated>2023-10-26T03:37:10.261Z</updated>
-    
-    
-    <summary type="html">This is a self-customized cheat sheet for engineering managers, and here I listed some knowledge collections based on my learning, understanding and experiences so far (keep updating).</summary>
-    
-    
-    
-    
-    <category term="团队管理" scheme="https://www.hangyu.site/tags/%E5%9B%A2%E9%98%9F%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
