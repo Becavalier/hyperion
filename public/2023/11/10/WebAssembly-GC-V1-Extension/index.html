@@ -116,7 +116,7 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>通过将非装箱标量值 “typeUnboxedScalar” 与装箱值指针 “Obj*” 一同组成联合体 ObjPointer 来作为对所有堆类型对象的引用，宿主实现可以更加方便地模拟类型多态，并在进行垃圾回收时高效地识别指针与数字值。</p>
-<h4 id="类型定义"><a href="#类型定义" class="headerlink" title="类型定义"></a>类型定义</h4><p>WasmGC 提案提出了新的类型定义方式。比如，我们可以轻松定义“相互递归类型”（mutually recursive types）：</p>
+<h4 id="类型定义"><a href="#类型定义" class="headerlink" title="类型定义"></a>类型定义</h4><p>WasmGC 提案提出了新的类型定义方式。比如，我们可以轻松定义“相互递归类型”（mutually recursive types），这是一种 “iso-recursive” 形式的递归类型：</p>
 <pre class="line-numbers language-wat"><code class="language-wat">(module
   (rec
     (type $t1 (struct (field i32 (ref $t2))))
@@ -124,6 +124,10 @@
   )
 )
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>默认情况下，所有未包裹在 rec 结构内的单独类型定义都是 <em>(rec (type …))</em> 的缩写形式，这在进行类型匹配时需要尤其注意。至于为何这样设计，提案作者 Andreas Rossberg 给出了如下回答：</p>
+<blockquote>
+<p>The factoring of types into recursion groups matters for type equivalence: two types are only deemed equivalent when they are defined at the same position in equivalently structured recursion groups. The reasons for this seemingly restrictive semantics are rather technical, but boil down to having a linear algorithm for deciding type equivalence and performing type canonicalisation, which is important to keep validation in engines tractable.</p>
+</blockquote>
 <p>类型多态也可以在自定义类型中存在：</p>
 <pre class="line-numbers language-wat"><code class="language-wat">(module
   (type $struct (sub (struct (field i32))))
@@ -145,4 +149,4 @@
 <p>在上述类型 $structSub 的定义中，我们使用 sub 关键字标记当前类型为指定类型 $struct 的一个子类型。这样，函数 $bar 的参数便可依据类型多态原则，接受一个 $struct 类型的子类型引用。在运行时，该引用会借由指令 <code>ref.cast</code> 进行适当的转型。我们还可以同时使用 final 关键字来阻止当前类型被进一步“继承”。若 sub 关键字后没有跟随 “<i>&lt;typeidx&gt;</i>” 则表示当前类型不作为任何类型的子类型。</p>
 <h3 id="Web-Embedding"><a href="#Web-Embedding" class="headerlink" title="Web Embedding"></a>Web Embedding</h3><p>在当前的 WasmGC v1 提案中，Wasm 上下文内创建的对象值是以不透明（opaque）值的形式暴露给 JavaScript 的，这也就意味我们无法在 JavaScript 环境下直接访问比如 struct、array 等 Wasm 堆数据类型（<em>TypeError: WebAssembly objects are opaque</em>）。Wasm 与 JS 之间的互操作性可能会在将来的相关提案中扩展。</p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>WasmGC 提案定义了可以由宿主环境管理的堆类型，如 struct、array，以及用于描述这些类型具体特征和关系的类型系统。通过这种方式，托管语言代码在编译至 Wasm 时便可移除 GC 以及内存管理相关代码，使得编译产物的体积大大减小。但另一方面，WasmGC 引入的更多高抽象层次（high-level）类型和指令使得源语言代码的语义可能更难被精准描述，而这些问题都会在 “GC Post-MVP” 阶段被进一步讨论。从代码优化的角度来看，更多的高抽象层次信息为代码的执行规则提供了更多说明，这使得基于 WasmGC 移植的 Wasm 代码相较于 MVP 时期可以被工具链（如 Binaryen）进一步优化。</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-11-10T08:05:00.000Z"> 2023 / 11 / 13, 22:33:08</time></span></div></div></article><br><span class="prev-post"><a href="/2023/11/09/WebAssembly-Threading/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2023-11-10T08:05:00.000Z"> 2023 / 11 / 14, 12:53:15</time></span></div></div></article><br><span class="prev-post"><a href="/2023/11/09/WebAssembly-Threading/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

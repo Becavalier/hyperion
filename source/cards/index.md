@@ -47,3 +47,21 @@ page: cards
 
 谁刨根问底掌握了细节，谁就是赢家。
 
+### 前端 - D3
+
+#### SVG 相关
+
+* ***viewPort***：相当于显示器屏幕；
+* ***viewBox***：相当于在屏幕上截取一小块，放大到整个屏幕窗口；
+* ***preserveAspectRatio***：指定 viewBox 与 viewPort 的对齐方式和缩放方式。
+  * <b><i>\<align\></b></i>：
+    * none：不进行强制统一缩放；
+    * x(Min|Mid|Max)Y(Min|Mid|Max)：参考实例 <b>[Demo](https://codepen.io/giodif/details/VYpaeo)</b>。
+  * <b><i>\<meetOrSlice\></b></i>：
+    * meet：保留宽高比、viewBox 在 viewPort 范围内可见、尽可能放大 viewbox；
+    * slice：保留宽高比、viewPort 覆盖 viewBox、尽可能缩小 viewbox。
+
+#### D3 API 架构（<b><i>[Playground](https://becavalier.github.io/d3-playground/)</i></b>）
+
+![](d3-arch.png)
+

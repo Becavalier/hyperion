@@ -160,7 +160,7 @@ int main(void) {
 
 #### 类型定义
 
-WasmGC 提案提出了新的类型定义方式。比如，我们可以轻松定义“相互递归类型”（mutually recursive types）：
+WasmGC 提案提出了新的类型定义方式。比如，我们可以轻松定义“相互递归类型”（mutually recursive types），这是一种 “iso-recursive” 形式的递归类型：
 
 ```wat
 (module
@@ -170,6 +170,10 @@ WasmGC 提案提出了新的类型定义方式。比如，我们可以轻松定�
   )
 )
 ```
+
+默认情况下，所有未包裹在 rec 结构内的单独类型定义都是 *(rec (type ...))* 的缩写形式，这在进行类型匹配时需要尤其注意。至于为何这样设计，提案作者 Andreas Rossberg 给出了如下回答：
+
+> The factoring of types into recursion groups matters for type equivalence: two types are only deemed equivalent when they are defined at the same position in equivalently structured recursion groups. The reasons for this seemingly restrictive semantics are rather technical, but boil down to having a linear algorithm for deciding type equivalence and performing type canonicalisation, which is important to keep validation in engines tractable.
 
 类型多态也可以在自定义类型中存在：
 

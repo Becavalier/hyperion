@@ -1123,11 +1123,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/11/10/WebAssembly-GC-V1-Extension/index.html",
-    "revision": "9e5ef42066a520b0a3c5a3728ad488df"
+    "revision": "0220e131a2f8b67e263fef1094a04070"
   },
   {
     "url": "about/index.html",
-    "revision": "824b3b9ca87206e401170c2822ba5f0f"
+    "revision": "3406e05b6c86dd6c8a15733095e10bee"
   },
   {
     "url": "archives/2014/12/index.html",
@@ -1459,7 +1459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "cards/index.html",
-    "revision": "5cb92f15b5fa7479582811f664d612d9"
+    "revision": "f187c8a6dc145fffc950ff66e2f882e9"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1619,7 +1619,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "7cd40be5de3f39dcd2a2d1b51c90f963"
+    "revision": "b25f4d5d5439d759f87ec2569e812163"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1815,11 +1815,11 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/me-en/index.html",
-    "revision": "6917a913832f3db54dae74f1e77263d9"
+    "revision": "ec48756c47c9b8aa99353857d1a6d124"
   },
   {
     "url": "resume/me/index.html",
-    "revision": "f7678eb1ab18704a4da5d6c2afce827a"
+    "revision": "abcf03ee823c755e73de0d46cbe64247"
   },
   {
     "url": "scripts/index.js",
@@ -1847,7 +1847,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "00e20d779f4eda8641b3059f9a66c32f"
+    "revision": "e58127e7712e18d42272b73ae2e8c0dc"
   },
   {
     "url": "tags/AI/index.html",
@@ -1943,7 +1943,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "606db8bd62fb5e076aabd77009f4a150"
+    "revision": "07b748fd90ba37a396921a8e21e1e443"
   },
   {
     "url": "tags/Interpreter/index.html",
