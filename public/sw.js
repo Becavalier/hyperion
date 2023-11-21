@@ -1459,7 +1459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "cards/index.html",
-    "revision": "f187c8a6dc145fffc950ff66e2f882e9"
+    "revision": "549a3d70464f2ef34e93193c42ea3939"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1619,7 +1619,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "b25f4d5d5439d759f87ec2569e812163"
+    "revision": "ed61e0e0bdcc9c1952f7edf24c97d2bc"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1943,7 +1943,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "07b748fd90ba37a396921a8e21e1e443"
+    "revision": "6fd3250ad1357f1d98c8fca0b6e89863"
   },
   {
     "url": "tags/Interpreter/index.html",
