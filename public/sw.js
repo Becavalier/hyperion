@@ -815,11 +815,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2020/10/19/《Pro-Git-2nd-Edition》读书笔记（第 1-6 章）/index.html",
-    "revision": "42d09820fc00f33fbcbda5f669bce925"
+    "revision": "417f7b308ce113e14d108fbcf8297316"
   },
   {
     "url": "2020/11/02/《Pro-Git-2nd-Edition》读书笔记（第 7-10 章）/index.html",
-    "revision": "1cea6bdcc0324ffe6be8786066691ceb"
+    "revision": "73bea51421fd96e8da425948fddba69e"
   },
   {
     "url": "2020/11/05/《现代-C-教程：高速上手-C-11-14-17-20》读书笔记/index.html",
@@ -1055,7 +1055,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/18/《Crafting-Interpreters》读书笔记（第 1-10 章）/index.html",
-    "revision": "38481fcf8fbf84e8ec03399a12515434"
+    "revision": "14f6dc0dd37fbb10a384a861651788f2"
   },
   {
     "url": "2023/09/04/《Crafting-Interpreters》读书笔记（第 11-30 章）/index.html",
@@ -1459,7 +1459,7 @@ self.__precacheManifest = [
   },
   {
     "url": "cards/index.html",
-    "revision": "549a3d70464f2ef34e93193c42ea3939"
+    "revision": "3e3a6c8d0faed5d08bab9f35f5444521"
   },
   {
     "url": "css/prism-line-numbers.css",
@@ -1619,7 +1619,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "ed61e0e0bdcc9c1952f7edf24c97d2bc"
+    "revision": "f522b7b4fcc51989484a28646d674f98"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1684,6 +1684,10 @@ self.__precacheManifest = [
   {
     "url": "readings/人月神话.html",
     "revision": "899752ff21a26e43e6b890edf428472f"
+  },
+  {
+    "url": "readings/代码整洁之道：程序员的职业素养.html",
+    "revision": "584272168e4561b4f6aa931696bb2f63"
   },
   {
     "url": "readings/你不知道的 JavaScript.html",
@@ -1847,7 +1851,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "e58127e7712e18d42272b73ae2e8c0dc"
+    "revision": "7dca08eaa76f5ba0a51aaed7dfdd557f"
   },
   {
     "url": "tags/AI/index.html",
@@ -1943,7 +1947,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "6fd3250ad1357f1d98c8fca0b6e89863"
+    "revision": "1cf3a5c827dd9afdb5d83cf9e0d76762"
   },
   {
     "url": "tags/Interpreter/index.html",

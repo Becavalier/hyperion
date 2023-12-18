@@ -929,7 +929,7 @@ article
         margin-right -7px
         z-index 1
       div.snippet
-        padding 10px 20px
+        padding 0px 20px
         border solid 1px #b2b2b2
         margin 15px 0
   &.readings-page
@@ -987,7 +987,7 @@ article
     font-size 1.4rem
     margin 15px 0
     padding 20px
-  code 
+  code[class*="language-"], pre[class*="language-"]
     font-family: $code-font !important
   code:not([class*="language-"])
     border solid 1px #000
@@ -1021,8 +1021,8 @@ article
       display block
       max-width 85%
       border solid 2px #8c8c8c
-      border-top-left-radius 37px 140px
-      border-top-right-radius 23px 130px
+      border-top-left-radius 37px 80px
+      border-top-right-radius 23px 100px
       border-bottom-left-radius 110px 19px
       border-bottom-right-radius 120px 24px
       box-shadow 3px 15px 8px -10px rgba(0, 0, 0, 0.3)
