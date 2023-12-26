@@ -33,6 +33,25 @@ page: cards
 
 程序员大多自负、固执、内向。我们不是因为喜欢和人打交道才做这一行的。大多数人之所以选择以编程为业，是因为喜欢沉浸于弄清各种细枝末节和摆弄各种各样的概念，以证明自己拥有这个星球上最发达的大脑，而厌恶陷入与他人交流的错综复杂的混乱之中。
 
+---
+
+在每分钟进行许多次编码/测试的状态下，你身上的肌肉记忆了要敲哪个键。意识中较基础的部分识别场景，在百分之一秒的时间内做出合适反应，大脑则可放心思考更高层次的问题。真正的挑战是把一个题目练习到炉火纯青，你可以窥见其中的韵律。
+
+---
+
+在工作中，有一种现象叫观察者效应，或者不确定原则。每次你向业务方展示一项功能，他们就获得了比之前更多的信息，这些新信息反过来又会影响他们对整个系统的看法。
+
+--- 
+
+模糊不只来自于分歧或争论。有时候，业务方会想当然地认为看文档的人懂得自己的意思。
+
+--- 
+
+“凡是不能在 5 分钟内解决的争论，都不能靠辩论解决。”争论之所以要花这么多时间，是因为各方都拿不出足够有力的证据。所以这类争论依据的不是事实，而是信念。有时候，最好的办法是抛硬币来决定到底如何选择。如果问题解决了，这个选择就是对的。如果遇到了麻烦，你可以退回来选择另一条路。明智的做法是，选定一个时间点或者设定一系列标准，来决定什么时候放弃。
+
+---
+
+专业开发人员能够清楚区分预估和承诺。只有在确切知道可以完成的前提下，他们才会给出承诺。此外，他们也会小心避免给出暗示性承诺。他们会尽可能清楚地说明预估的概率分布，这样主管就可以做出合适的计划。控制错误的办法之一是“大数定律”。意思是：把大任务分成许多小任务，分开预估再相加，结果会比单独评估大任务要准确。
 
 
 ### 面试框架
@@ -64,147 +83,3 @@ page: cards
 #### D3 API 架构（<b><i>[playground](https://becavalier.github.io/d3-playground/)</i></b>）
 
 ![](d3-arch.png)
-
-
-### 前端 - TypeScript
-
-#### 基础语法
-
-```typescript 
-/**
- * Primitive types.
- */
-const name: string = 'Jason Yu'
-const age: number = 30
-const hasMarried: boolean = true
-const colors : string[] = ['red', 'blue']
-/**
- * Using `any` disables all further type checking, and it is assumed you know the environmen better than TypeScript.
- * Avoid this by "noImplicitAny".
- */
-const obj: any = { x: 0 }  
-const foo = () : number => 1
-const bar = async () : Promise<string> => "string"
-
-/**
- * Object types.
- */
-const printCoord = (pt: { x : number, y: number }) => { console.log(pt.x, pt.y) }
-const printName = (obj : { first: string, last?: string }) => { console.log(obj.first, obj.last) }  // Checking for optional arg is needed.
-const printId = (id: number | string) => { console.log(id) }  // Union type, need a runtime check with "typeof".
-
-/**
- * Type Aliases - reusable types, cannot be changed after being created.
- */
-type Point = {
-  x: number;
-  y: number;
-}
-type ID = number | string;
-
-/**
- * Interfaces - extendable way to name object types.
- */
-interface Point {
-  x: number;
-  y: number;
-}
-interface Point {  // Add more fields to the existing type.
-  z: number;
-}
-const pt : Point = { x: 1, y: 2, z: 3 }
-
-/**
- * Type Assertions - similar to value (down/up) cast.
- */
-// EventTarget <- Node <- Element <- HTMLElement <- HTMLCanvasElement.
-const canvasEle = document.getElementById("canvas") as HTMLCanvasElement;
-// Double assertion.
-const resizeObserver = (window as unknown as Record<string, unknown>)['ResizeObserver'] 
-
-/**
- * Literal Types.
- */
-const printText = (s: string, alignment: "left" | "right" | "center") => {}  // Combining literals into unions.
-const compare = (a: string, b: string) : -1 | 0 | 1 => a === b ? 0 : a > b ? 1 : -1
-declare function handleRequest(url: string, method: "GET" | "POST"): void
-const reqA = { url: "https://hangyu.site", method: "GET" as "GET" }  // Type assertion to always literal type.
-const reqB = { url: "https://hangyu.site", method: "GET" } as const  // Convert the entire object to be type literals.
-handleRequest(reqA.url, reqA.method)
-const liveDangerously = (x?: number | null) => { console.log(x!.toFixed()) }  // Remove "null" and "undefined" from a specific type.
-```
-
-#### Type Narrowing
-
-```typescript
-// "typeof" narrowing.
-const padLeft = (padding: number | string, input: string) => {
-  if (typeof padding === "number") return " ".repeat(padding) + input
-  return padding + input
-}
-// Truthiness narrowing.
-const printAll = (strs: string | string[] | null) => {
-  if (strs && typeof strs === "object") {  // string[].
-    for (const s of strs) { console.log(s) }
-  } else if (typeof strs === "string") {  // string.
-    console.log(strs)
-  }
-}
-// Type predicates - user-defined type guard.
-const isFish = (pet: Fish | Bird): pet is Fish => {  // The return type is a type predicate.
-  return (pet as Fish).swim !== undefined;  // Narrowing the given argument to a specific type.
-}
-// Assertion functions.
-interface Circle {
-  kind: 'circle';  // Literal type.
-  radius: number;
-}
-interface Square {
-  kind: 'square';
-  sideLength: number;
-}
-type Shape = Circle | Square;  // A discriminated union, tags are recognized by their literal types.
-const getArea = (shape: Shape) => {
-  switch (shape.kind) {
-    case "circle":
-      return Math.PI * shape.radius ** 2
-    case "square":
-      return shape.sideLength ** 2
-    default:
-      const _exhaustiveCheck: never = shape  // "shape" is the type of "never" here.
-      return _exhaustiveCheck
-  }
-}
-```
-
-#### More on Functions
-
-```typescript
-type GreetFunction = (msg: string) => void  // Function type.
-const greeter: GreetFunction = (msg: string) => { console.log(msg) }  // The parameter name in the type is required.
-
-// Call signature in an object type.
-type DescribableFn = {
-  description: string;  // Other properties.
-  (arg: number): boolean;
-}
-const myFn: DescribableFn = (arg: number) => arg > 3
-myFn.description = "fn description."
-
-// Construct signature (for function call).
-interface Obj {  // The shape of Obj.
-  value: string;
-  id?: string;
-}
-class Name implements Obj {  // One of the specific implementation.
-  value: string
-  constructor(s: string) { this.value = s }
-}
-type CallConstruct = {
-  new (s: string): Obj;  // The return type should stick to the shape.
-}
-((Ctor: CallConstruct) => new Ctor("Jason"))(Name)
-
-// Generic functions.
-
-```
