@@ -1,13 +1,13 @@
 ---
 title: TypeScript Cheat Sheet
-intro: TypeScript cheat sheet, for quick reference.
+intro: TypeScript cheat sheet, for quick reference only.
 comments: true
 date: 2023-12-23 22:13:00
 tags:
 - TypeScript
 ---
 
-TypeScript cheat sheet, for quick reference.
+TypeScript cheat sheet, for quick reference only.
 
 ### Quick Reference
 

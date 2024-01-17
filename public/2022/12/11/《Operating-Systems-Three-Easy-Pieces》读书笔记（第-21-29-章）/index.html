@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 21-29 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="书接上回，本文是第 21-28 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-21-Beyond-Physical-Memory-Mechanisms"><span class="toc-text">Chapter 21: Beyond Physical Memory - Mechanisms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-22-Beyond-Physical-Memory-Policies"><span class="toc-text">Chapter 22: Beyond Physical Memory - Policies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-23-Complete-Virtual-Memory-Systems"><span class="toc-text">Chapter 23: Complete Virtual Memory Systems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-26-Concurrency-An-Introduction"><span class="toc-text">Chapter 26: Concurrency: An Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-27-Interlude-Thread-API"><span class="toc-text">Chapter 27: Interlude: Thread API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-28-Locks"><span class="toc-text">Chapter 28: Locks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-29-Lock-based-Concurrent-Data-Structures"><span class="toc-text">Chapter 29: Lock-based Concurrent Data Structures</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 21-29 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 21-29 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2022-12-11T12:56:10.000Z"> 2022 / 12 / 11, 20:56:10</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>书接上回，本文是第 21-29 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
+<h3 id="Chapter-21-Beyond-Physical-Memory-Mechanisms"><a href="#Chapter-21-Beyond-Physical-Memory-Mechanisms" class="headerlink" title="Chapter 21: Beyond Physical Memory - Mechanisms"></a>Chapter 21: Beyond Physical Memory - Mechanisms</h3><ol>
+<li><em><strong>Swap space</strong></em>: some space on the disk for moving pages back and forth (memory &lt;-&gt; disk).</li>
+</ol>
+<p><img src="1.png"></p>
+<ul>
+<li>Add the “<strong>present bit</strong>“ in each PTE (page-table entry), to indicate whether the page is present in the physical memory. If it’s set to 0, the page is not in memory but rather on disk somewhere, and it should be retrieved by “<strong>page fault</strong>“ (not only for swapping, but also for on-demand binary loading). When people say a program is “page faulting”, they mean that it is accessing parts of its virtual address space that the OS has swapped out to disk.</li>
+<li>Basic steps: </li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Page-Fault Control Flow Algorithm (Hardware).</span>
+VPN <span class="token operator">=</span> <span class="token punctuation">(</span>VirtualAddress <span class="token operator">&amp;</span> VPN_MASK<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">SHIFT</span>
+<span class="token punctuation">(</span>Success<span class="token punctuation">,</span> TlbEntry<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">TLB_Lookup</span><span class="token punctuation">(</span>VPN<span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Success <span class="token operator">==</span> True<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// TLB Hit</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CanAccess</span><span class="token punctuation">(</span>TlbEntry<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span> <span class="token operator">==</span> True<span class="token punctuation">)</span>
+    Offset <span class="token operator">=</span> VirtualAddress <span class="token operator">&amp;</span> OFFSET_MASK
+    PhysAddr <span class="token operator">=</span> <span class="token punctuation">(</span>TlbEntry<span class="token punctuation">.</span>PFN <span class="token operator">&lt;&lt;</span> SHIFT<span class="token punctuation">)</span> <span class="token operator">|</span> Offset
+    Register <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PhysAddr<span class="token punctuation">)</span>
+  <span class="token keyword">else</span>
+    <span class="token function">RaiseException</span><span class="token punctuation">(</span>PROTECTION_FAULT<span class="token punctuation">)</span>
+<span class="token keyword">else</span> <span class="token comment" spellcheck="true">// TLB Miss  </span>
+  PTEAddr <span class="token operator">=</span> PTBR <span class="token operator">+</span> <span class="token punctuation">(</span>VPN <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>PTE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  PTE <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PTEAddr<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>Valid <span class="token operator">==</span> False<span class="token punctuation">)</span>
+    <span class="token function">RaiseException</span><span class="token punctuation">(</span>SEGMENTATION_FAULT<span class="token punctuation">)</span>
+  <span class="token keyword">else</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CanAccess</span><span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span> <span class="token operator">==</span> False<span class="token punctuation">)</span>
+      <span class="token function">RaiseException</span><span class="token punctuation">(</span>PROTECTION_FAULT<span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>Present <span class="token operator">==</span> True<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// assuming hardware-managed TLB</span>
+      <span class="token function">TLB_Insert</span><span class="token punctuation">(</span>VPN<span class="token punctuation">,</span> PTE<span class="token punctuation">.</span>PFN<span class="token punctuation">,</span> PTE<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span>
+      <span class="token function">RetryInstruction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>Present <span class="token operator">==</span> False<span class="token punctuation">)</span>
+      <span class="token function">RaiseException</span><span class="token punctuation">(</span>PAGE_FAULT<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Page-Fault Control Flow Algorithm (Software).</span>
+PFN <span class="token operator">=</span> <span class="token function">FindFreePhysicalPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>PFN <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// no free page found</span>
+  PFN <span class="token operator">=</span> <span class="token function">EvictPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// replacement algorithm</span>
+<span class="token function">DiskRead</span><span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>DiskAddr<span class="token punctuation">,</span> PFN<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// sleep (wait for I/O)</span>
+PTE<span class="token punctuation">.</span>present <span class="token operator">=</span> True <span class="token comment" spellcheck="true">// update page table:</span>
+PTE<span class="token punctuation">.</span>PFN <span class="token operator">=</span> PFN <span class="token comment" spellcheck="true">// (present/translation)</span>
+<span class="token function">RetryInstruction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// retry instruction</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>Page replacement policy</strong>: the process of picking a page to kick out, or replace.</li>
+<li>Further improvements: to keep a small amount of memory free, most operating systems thus have some kind of <strong>high watermark</strong> (HW) and <strong>low watermark</strong> (LW) to help decide when to start evicting pages from memory. How this works is as follows: when the OS notices that there are fewer than LW pages available, a background thread that is responsible for freeing memory runs. The thread evicts pages until there are HW pages available. The background thread, sometimes called the swap daemon, then goes to sleep, happy that it has freed some memory for running processes and the OS to use. By performing a number of replacements at once, new performance optimizations become possible. For example, many systems will <strong>cluster a number of pages and write them out at once to the swap partition</strong>, thus increasing the efficiency of the disk; as we will see later when we discuss disks in more detail, such clustering reduces seek and rotational overheads of a disk and thus increases performance noticeably.</li>
+</ul>
+<h3 id="Chapter-22-Beyond-Physical-Memory-Policies"><a href="#Chapter-22-Beyond-Physical-Memory-Policies" class="headerlink" title="Chapter 22: Beyond Physical Memory - Policies"></a>Chapter 22: Beyond Physical Memory - Policies</h3><ol>
+<li>Average memory access time (AMAT): <em><strong>AMAT = T<sub>M</sub> + (P<sub>Miss</sub> · T<sub>D</sub>)</strong></em></li>
+</ol>
+<ul>
+<li>T<sub>M</sub>: the cost of accessing memory.</li>
+<li>T<sub>D</sub>: the cost of accessing disk.</li>
+<li>P<sub>Miss</sub> (varies from 0.0 to 1.0): the probability of not finding the data in the cache (a miss).</li>
+</ul>
+<ol start="2">
+<li><strong>“Optimal Replacement” policy</strong>: replaces the page that will be accessed furthest in the future, this policy only serves as a comparison point for other approaches since it should know the future state, and then compute into the perfect result.</li>
+</ol>
+<p><img src="2.png"></p>
+<ol start="3">
+<li><strong>“FIFO” policy</strong>: pick the page that was the “first one” in (the cache state in the below figure is kept in FIFO order, with the first-in page on the left).</li>
+</ol>
+<p><img src="3.png"></p>
+<ol start="4">
+<li><strong>“Random” policy</strong>: picks a random page to replace under memory pressure, doesn’t have any weird corner-case behaviors (.e.g with a “looping sequential” workload).</li>
+<li><strong>“LRU (Least-Recently-Used)” policy</strong>: replaces the least-recently-used page when an eviction must take place. In a approximated LRU, it requires some hardware support in the form of a <strong>use bit</strong>. Whenever a page is referenced (i.e., read or written), the use bit is set by hardware to 1. The hardware never clears the bit, though (i.e., sets it to 0); that is the responsibility of the OS. With <strong>clock algorithm</strong>, all the pages of the system arranged in a circular list. A <strong>clock hand</strong> points to some particular page to begin with (it doesn’t really matter which). When a replacement must occur, the OS checks if the currently-pointed to page P has a use bit of 1 or 0, and also has a <strong>dirty bit</strong> (meaning the page hasn’t been changed, don’t need to write back via I/O) of 0. If 1, this implies that page P was recently used and thus is not a good candidate for replacement. Thus, the use bit for P is set to 0 (cleared), and the clock hand is incremented to the next page (P + 1). The algorithm continues until it finds a use bit that is set to 0, implying this page has not been recently used.</li>
+</ol>
+<p><img src="4.png"></p>
+<ol start="5">
+<li><strong>Thrashing</strong>: occurs in a system with virtual memory when a computer’s real storage resources are overcommitted, leading to a constant state of paging and page faults, slowing most application-level processing. A system thrashing is often a result of a sudden spike in page demand from a small number of running programs. Swap-toke is a lightweight and dynamic thrashing protection mechanism. The basic idea is to set a token in the system, which is randomly given to a process that has page faults when thrashing happens. The process that has the token is given a privilege to allocate more physical memory pages to build its working set, which is expected to quickly finish its execution and release the memory pages to other processes. A timestamp is used to hand over the tokens one by one.</li>
+</ol>
+<h3 id="Chapter-23-Complete-Virtual-Memory-Systems"><a href="#Chapter-23-Complete-Virtual-Memory-Systems" class="headerlink" title="Chapter 23: Complete Virtual Memory Systems"></a>Chapter 23: Complete Virtual Memory Systems</h3><ol>
+<li><p><strong>Demand zeroing</strong>: the OS does very little work when the page is added to your address space, it puts an entry in the page table that marks the page inaccessible (<strong>only bookkeeping here</strong>). If the process then reads or writes the page, a trap into the OS takes place. When handling the trap, the OS notices (usually through some bits marked in the “reserved for OS” portion of the page table entry) that this is actually a demand-zero page; at this point, the OS does the needed work of finding a physical page, zeroing it, and mapping it into the process’s address space. If the process never accesses the page, all such work is avoided.</p>
+</li>
+<li><p>The Linux address space:</p>
+</li>
+</ol>
+<ul>
+<li>Page 0 is marked invalid in order to avoid illegal access via a NULL pointer.</li>
+<li>2 types of kernel virtual addresses:<ul>
+<li><strong>Logical address</strong>: increase size via <code>kmalloc</code>, most kernel data structures live here, <strong>such memory cannot be swapped to disk</strong>. There is a direct mapping between kernel logical addresses and the first portion of physical memory: <ul>
+<li>It’s simple to translate back and forth between kernel logical addresses and physical addresses.</li>
+<li>If a chunk of memory is contiguous in kernel logical address space, it is also contiguous in physical memory. This makes memory allocated in this part of the kernel’s address space suitable for operations which need contiguous physical memory to work correctly, such as I/O transfers to and from devices via DMA.</li>
+</ul>
+</li>
+<li><strong>Virtual address</strong>: increase size via <code>vmalloc</code>, such memory usually is not contiguous but easier to allocate as a result.</li>
+</ul>
+</li>
+<li>Virtual address structure:<ul>
+<li>The top 16 bits are ununsed.</li>
+<li>The bottom 12 bits are used as the offset (4KB).</li>
+<li>The middle 36 bits are used for translation.</li>
+</ul>
+</li>
+</ul>
+<p><img src="5.png"></p>
+<ul>
+<li>Support of huge pages (2MB ~ 1GB):<ul>
+<li>Pros:<ul>
+<li>Reduce the size of the page table.</li>
+<li>Reduce TLB miss rate.</li>
+<li>A shorter TBL-miss lookup path.</li>
+</ul>
+</li>
+<li>Cons:<ul>
+<li>Severe Internal fragmentation.</li>
+<li>Costly swapping.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Memory page sources:<ul>
+<li>Memory-mapped files.</li>
+<li>File data and metadata from devices.</li>
+<li>Heap/stack pages (anonymous memory).</li>
+</ul>
+</li>
+<li><strong>2Q algorithm</strong>: just because a page is accessed once does not entitle it to stay in the buffer. Instead, it should be decided if it is accessed again then only keep it in the buffer.</li>
+</ul>
+<p><img src="6.png"></p>
+<h3 id="Chapter-26-Concurrency-An-Introduction"><a href="#Chapter-26-Concurrency-An-Introduction" class="headerlink" title="Chapter 26: Concurrency: An Introduction"></a>Chapter 26: Concurrency: An Introduction</h3><ol>
+<li>Thread:</li>
+</ol>
+<ul>
+<li>Thread states are saved into TCB (Thread Control Block).</li>
+<li>When context switch occurs, the address space remains the same.</li>
+<li>The stack of each thread is running independently (thread-local storage).</li>
+<li>When do we use thread?<ul>
+<li>For speeding up the execution by parallelization (.e.g SIMD).</li>
+<li>For reusing computational resources when pending on I/O.</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Critical section</strong>: is a piece of code that accesses a shared variable, or more generally, a shared resource. We need each thread to have “<strong>mutual exclusion</strong>“ before entering this area. Ways to solve this issue:</li>
+</ol>
+<ul>
+<li><strong>Atomic instruction</strong>: use atomic instructions, these ones could not be interrupted mid-instruction, because that is precisely the guarantee we receive from the hardware: when an interrupt occurs, either the instruction has not run at all, or it has run to completion; there is no in-between state. These basic instructions can be used for building <strong>synchronization primitives</strong>.</li>
+<li><strong>Condition variables</strong>: the sleeping/waking interaction.</li>
+</ul>
+<h3 id="Chapter-27-Interlude-Thread-API"><a href="#Chapter-27-Interlude-Thread-API" class="headerlink" title="Chapter 27: Interlude: Thread API"></a>Chapter 27: Interlude: Thread API</h3><p>（略）</p>
+<h3 id="Chapter-28-Locks"><a href="#Chapter-28-Locks" class="headerlink" title="Chapter 28: Locks"></a>Chapter 28: Locks</h3><ol>
+<li>Spin/yield lock implementations:</li>
+</ol>
+<ul>
+<li>Turning off interrupts before entering a critical section: only used in limited contexts (.e.g OS internal) as a mutual-exclusion primitive.<ul>
+<li><strong>Pros</strong>: simplicity.</li>
+<li><strong>Cons</strong>: <ul>
+<li>Require calling thread to perform a privileged operations which is risky.</li>
+<li>It doesn’t work on multiprocessors.</li>
+<li>Turning off interrupts for extended periods of time can lead to interrupts becoming lost.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The spinlock with <strong>test-and-set</strong> instruction. This way only works with a preemptive scheduler, otherwise a thread spinning on a CPU will never relinquish it.<ul>
+<li><strong>Pros</strong>: simplicity, with minor hardware support.</li>
+<li><strong>Cons</strong>: <ul>
+<li>It doesn’t provide any fairness guarantees, meaning a thread may get starved (<em><strong>suppose processA start to execute the while loop when processB is already inside the critical section. If processA always exits and enters the critical section within this time interval, then processA will never succeed in entering critical section</strong></em>). </li>
+<li>The performance overheads can be quite painful on a single processor CPU.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __lock_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> lock_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 0: lock is available, 1: lock is held.</span>
+  lock<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// The "test" and "set" operations are done atomically.</span>
+    <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// spin-wait (do nothing).</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  lock<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>The spinlock with <strong>compare-and-swap</strong> (compare-and-exchange) instruction.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// int CompareAndSwap(int *ptr, int expected, int new).</span>
+  <span class="token comment" spellcheck="true">// Change the value at *ptr to "new", if the value of *ptr equals to "expected", then return the original value.</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">CompareAndSwap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>  
+    <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Spin.</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>The spinlock with <strong>load-linked</strong> and <strong>store-conditional</strong> (LL/SC) instructions. The load-linked operates much like a typical load instruction, and the store-conditional only succeeds if no intervening store to the address has taken place.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">LoadLinked</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Spin until it’s zero.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">StoreConditional</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// If set-to-1 was success: done.</span>
+              <span class="token comment" spellcheck="true">// Otherwise: try again.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>The ticket lock with <strong>fetch-and-add</strong> instruction, this way prevents the happening of starvation.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __lock_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> ticket<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> turn<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> lock_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">lock_init</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  lock<span class="token operator">-></span>ticket <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  lock<span class="token operator">-></span>turn <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> myturn <span class="token operator">=</span> <span class="token function">FetchAndAdd</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>lock<span class="token operator">-></span>ticket<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>lock<span class="token operator">-></span>turn <span class="token operator">!=</span> myturn<span class="token punctuation">)</span>
+    <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Spin.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>lock<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  lock<span class="token operator">-></span>turn <span class="token operator">=</span> lock<span class="token operator">-></span>turn <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>The lock with test-and-set and yield:<ul>
+<li>Pros: it’s more slightly efficient than spinlock.</li>
+<li>Cons: it doesn’t provide any fairness guarantees, meaning a thread may get starved.</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>flag<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token function">yield</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Give up the CPU, turn the calling thread into the "ready" state.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><strong>An efficient lock implementation</strong>: combine the old test-and-set idea with an explicit queue of lock waiters.</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __lock_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> flag<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> guard<span class="token punctuation">;</span>
+  queue_t <span class="token operator">*</span>q<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> lock_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">lock_init</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token function">queue_init</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">lock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token operator">-></span>guard<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Acquire guard lock by spinning, for protecting below critical section.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>m<span class="token operator">-></span>flag <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Lock is acquired, this line is only used for the first thread getting the lock, -</span>
+    <span class="token comment" spellcheck="true">// for the thread that is woken up, the lock will be "passed" to it.</span>
+    m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> 
+    m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+    <span class="token function">queue_add</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">,</span> <span class="token function">gettid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// The calling thread is about to park. If it then happens to be interrupted, -</span>
+    <span class="token comment" spellcheck="true">// and another thread calls unpark before park is actually called, -</span>
+    <span class="token comment" spellcheck="true">// the subsequent park returns immediately instead of sleeping.</span>
+    <span class="token function">setpark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// park();  // This will cause a "wakeup/waiting race".</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">unlock</span><span class="token punctuation">(</span>lock_t <span class="token operator">*</span>m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">TestAndSet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m<span class="token operator">-></span>guard<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Acquire guard lock by spinning, for protecting below critical section.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">queue_empty</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    m<span class="token operator">-></span>flag <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Let go of lock; no one wants it.</span>
+  <span class="token keyword">else</span>
+    <span class="token function">unpark</span><span class="token punctuation">(</span><span class="token function">queue_remove</span><span class="token punctuation">(</span>m<span class="token operator">-></span>q<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Hold lock.</span>
+                                <span class="token comment" spellcheck="true">// (for next thread!).</span>
+    m<span class="token operator">-></span>guard <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li>The Linux “<strong>futex</strong>“: it provides more in-kernel functionality, each futex has associated with it a specific physical memory location, as well as a per-futex in-kernel queue.</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">mutex_lock</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>mutex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> v<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Bit 31 was clear, we got the mutex (fastpath)</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">atomic_bit_test_set</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token function">atomic_increment</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">atomic_bit_test_set</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">atomic_decrement</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// Have to waitFirst to make sure futex value we are monitoring is negative (locked).</span>
+    <span class="token comment" spellcheck="true">// Firstly, it spins for a while, hoping that the calling thread can acquire the lock.</span>
+    v <span class="token operator">=</span> <span class="token operator">*</span>mutex<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>v <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+      <span class="token keyword">continue</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// Secondly, puts the calling thread to sleep with syscall, -</span>
+    <span class="token comment" spellcheck="true">// assuming the values of the two passing arguments are equal. Otherwise, it returns immediately.</span>
+    <span class="token comment" spellcheck="true">/*
+      The purpose of the comparison (*mutex) with the expected value (v) is to prevent lost wake-ups. 
+      If another thread changed the value of the futex word after the calling thread decided -
+      to block based on the prior value, and if the other thread executed a FUTEX_WAKE operation -
+      (or similar wake-up) after the value change and before this FUTEX_WAIT operation, -
+      then the calling thread will observe the value change and will not start to sleep.
+    */</span>
+    <span class="token function">futex_wait</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">mutex_unlock</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">*</span>mutex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Adding 0x80000000 to counter results in 0 if and</span>
+  <span class="token comment" spellcheck="true">// only if there are not other interested threads</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">atomic_add_zero</span><span class="token punctuation">(</span>mutex<span class="token punctuation">,</span> <span class="token number">0x80000000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// Clear bit 31.</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// There are other threads waiting for this mutex, wake one of them up.</span>
+  <span class="token function">futex_wake</span><span class="token punctuation">(</span>mutex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><strong>Two-phase lock</strong>: which realizes that spinning can be useful, particularly if the lock is about to be released. So in the <strong>first phase</strong>, the lock spins for a while, hoping that it can acquire the lock. However, if the lock is not acquired during the first spin phase, a <strong>second phase</strong> is entered, where the caller is put to sleep, and only woken up when the lock becomes free later.</li>
+</ol>
+<h3 id="Chapter-29-Lock-based-Concurrent-Data-Structures"><a href="#Chapter-29-Lock-based-Concurrent-Data-Structures" class="headerlink" title="Chapter 29: Lock-based Concurrent Data Structures"></a>Chapter 29: Lock-based Concurrent Data Structures</h3><ol>
+<li><strong>Approximate counter</strong>: it works by <strong>representing a single logical counter via numerous local physical counters</strong>, one per CPU core, as well as a single global counter. In addition to these counters, there are also locks: one for each local counter, and one for the global counter. When a thread running on a given core wishes to increment the counter, it increments its local counter; access to this local counter is synchronized via the corresponding local lock. Because each CPU has its own local counter, threads across CPUs can update local counters without contention, and thus  updates to the counter are scalable. However, to keep the global counter up to date (in case a thread wishes to read its value), the local values are periodically transferred to the global counter, by acquiring the global lock and incrementing it by the local counter’s value; the local counter is then reset to zero.</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __counter_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> global<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Global count.</span>
+  pthread_mutex_t glock<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Global lock.</span>
+  <span class="token keyword">int</span> local<span class="token punctuation">[</span>NUMCPUS<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Per-CPU count.</span>
+  pthread_mutex_t llock<span class="token punctuation">[</span>NUMCPUS<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Per-CPU locks.</span>
+  <span class="token keyword">int</span> threshold<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Update freq.</span>
+<span class="token punctuation">}</span> counter_t<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Init: record threshold, init locks, init values of all local counts and global count.</span>
+<span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>counter_t <span class="token operator">*</span>c<span class="token punctuation">,</span> <span class="token keyword">int</span> threshold<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  c<span class="token operator">-></span>threshold <span class="token operator">=</span> threshold<span class="token punctuation">;</span>
+  c<span class="token operator">-></span>global <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>glock<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> NUMCPUS<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    c<span class="token operator">-></span>local<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>llock<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Update: usually, just grab local lock and update local amount; </span>
+<span class="token comment" spellcheck="true">// Once it has risen ’threshold’, grab global lock and transfer local values to it.</span>
+<span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span>counter_t <span class="token operator">*</span>c<span class="token punctuation">,</span> <span class="token keyword">int</span> threadID<span class="token punctuation">,</span> <span class="token keyword">int</span> amt<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> cpu <span class="token operator">=</span> threadID <span class="token operator">%</span> NUMCPUS<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>llock<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  c<span class="token operator">-></span>local<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span> <span class="token operator">+</span><span class="token operator">=</span> amt<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>c<span class="token operator">-></span>local<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span> <span class="token operator">>=</span> c<span class="token operator">-></span>threshold<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Transfer to global (assumes amt > 0).</span>
+    <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>glock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    c<span class="token operator">-></span>global <span class="token operator">+</span><span class="token operator">=</span> c<span class="token operator">-></span>local<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>glock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    c<span class="token operator">-></span>local<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>llock<span class="token punctuation">[</span>cpu<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Get: just return global amount (approximate).</span>
+<span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span>counter_t <span class="token operator">*</span>c<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>glock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> val <span class="token operator">=</span> c<span class="token operator">-></span>global<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>c<span class="token operator">-></span>glock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> val<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Only approximate!</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><strong>Concurrent linked list</strong>: one technique that researchers have explored to enable more concurrency within a list is something called “<strong>hand-over-hand locking</strong>“. But in practice, it is hard to make such a structure faster than the simple single lock approach, as the overheads of acquiring and releasing locks for each node of a list traversal is prohibitive.</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Basic node structure.</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> __node_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> key<span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> __node_t <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> node_t<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// Basic list structure (one used per list).</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> __list_t <span class="token punctuation">{</span>
+  node_t <span class="token operator">*</span>head<span class="token punctuation">;</span>
+  pthread_mutex_t lock<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> list_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">List_Init</span><span class="token punctuation">(</span>list_t <span class="token operator">*</span>L<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  L<span class="token operator">-></span>head <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token operator">-></span>lock<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">List_Insert</span><span class="token punctuation">(</span>list_t <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Synchronization not needed.</span>
+  node_t <span class="token operator">*</span>new <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>node_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>new <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string">"malloc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  new<span class="token operator">-></span>key <span class="token operator">=</span> key<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token operator">-></span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Just lock critical section.</span>
+  new<span class="token operator">-></span>next <span class="token operator">=</span> L<span class="token operator">-></span>head<span class="token punctuation">;</span>
+  L<span class="token operator">-></span>head <span class="token operator">=</span> new<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token operator">-></span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">List_Lookup</span><span class="token punctuation">(</span>list_t <span class="token operator">*</span>L<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> rv <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token operator">-></span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  node_t <span class="token operator">*</span>curr <span class="token operator">=</span> L<span class="token operator">-></span>head<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>curr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>curr<span class="token operator">-></span>key <span class="token operator">==</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      rv <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+      <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    curr <span class="token operator">=</span> curr<span class="token operator">-></span>next<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>L<span class="token operator">-></span>lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> rv<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Now both success and failure.</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="3">
+<li><strong>Concurrent queue</strong>: two locks here, one for the head of the queue, and one for the tail. And the dummy node added in the queue initialization phase that enables the separation of head and tail operations.</li>
+</ol>
+<p><img src="7.png"></p>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __node_t <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> value<span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> __node_t <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> node_t<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> __queue_t <span class="token punctuation">{</span>
+  node_t <span class="token operator">*</span>head<span class="token punctuation">;</span>
+  node_t <span class="token operator">*</span>tail<span class="token punctuation">;</span>
+  pthread_mutex_t head_lock<span class="token punctuation">,</span> tail_lock<span class="token punctuation">;</span>
+<span class="token punctuation">}</span> queue_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">Queue_Init</span><span class="token punctuation">(</span>queue_t <span class="token operator">*</span>q<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// A dummy node that enables the separation of head and tail operations.</span>
+  node_t <span class="token operator">*</span>tmp <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>node_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+  tmp<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+  q<span class="token operator">-></span>head <span class="token operator">=</span> q<span class="token operator">-></span>tail <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>head_lock<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>tail_lock<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">Queue_Enqueue</span><span class="token punctuation">(</span>queue_t <span class="token operator">*</span>q<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  node_t <span class="token operator">*</span>tmp <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>node_t<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>tmp <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  tmp<span class="token operator">-></span>value <span class="token operator">=</span> value<span class="token punctuation">;</span>
+  tmp<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>tail_lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  q<span class="token operator">-></span>tail<span class="token operator">-></span>next <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+  q<span class="token operator">-></span>tail <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>tail_lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">Queue_Dequeue</span><span class="token punctuation">(</span>queue_t <span class="token operator">*</span>q<span class="token punctuation">,</span> <span class="token keyword">int</span> <span class="token operator">*</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">pthread_mutex_lock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>head_lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  node_t <span class="token operator">*</span>tmp <span class="token operator">=</span> q<span class="token operator">-></span>head<span class="token punctuation">;</span>
+  node_t <span class="token operator">*</span>new_head <span class="token operator">=</span> tmp<span class="token operator">-></span>next<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>new_head <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>head_lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// Queue was empty.</span>
+  <span class="token punctuation">}</span>
+  <span class="token operator">*</span>value <span class="token operator">=</span> new_head<span class="token operator">-></span>value<span class="token punctuation">;</span>
+  q<span class="token operator">-></span>head <span class="token operator">=</span> new_head<span class="token punctuation">;</span>
+  <span class="token function">pthread_mutex_unlock</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>q<span class="token operator">-></span>head_lock<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">free</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><strong>Concurrent hash table</strong>: based on concurrent list. It uses a lock per hash bucket (each of which is represented by a list). Doing so enables many concurrent operations to take place.</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> BUCKETS (101)</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> __hash_t <span class="token punctuation">{</span>
+  list_t lists<span class="token punctuation">[</span>BUCKETS<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> hash_t<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">Hash_Init</span><span class="token punctuation">(</span>hash_t <span class="token operator">*</span>H<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> i<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> BUCKETS<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token function">List_Init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>H<span class="token operator">-></span>lists<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">Hash_Insert</span><span class="token punctuation">(</span>hash_t <span class="token operator">*</span>H<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">List_Insert</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>H<span class="token operator">-></span>lists<span class="token punctuation">[</span>key <span class="token operator">%</span> BUCKETS<span class="token punctuation">]</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">Hash_Lookup</span><span class="token punctuation">(</span>hash_t <span class="token operator">*</span>H<span class="token punctuation">,</span> <span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">List_Lookup</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>H<span class="token operator">-></span>lists<span class="token punctuation">[</span>key <span class="token operator">%</span> BUCKETS<span class="token punctuation">]</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-12-11T12:56:10.000Z"> 2024 / 01 / 11, 17:25:42</time></span></div></div></article><br><span class="next-post"><a href="/2023/02/15/Engineering-Manager-Cheat-Sheet/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

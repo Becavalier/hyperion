@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 14-20 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="书接上回，本文是第 14-20 章的笔记。内容仅基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 14-20 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="书接上回，本文是第 14-20 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-14-Interlude-Memory-API"><span class="toc-text">Chapter 14: Interlude - Memory API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-15-Mechanism-Address-Translation"><span class="toc-text">Chapter 15: Mechanism - Address Translation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-16-Segmentation"><span class="toc-text">Chapter 16: Segmentation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-17-Free-Space-Management"><span class="toc-text">Chapter 17: Free-Space Management</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-18-Paging-Introduction"><span class="toc-text">Chapter 18: Paging - Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-19-Paging-Faster-Translations-TLBs"><span class="toc-text">Chapter 19: Paging - Faster Translations (TLBs)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-20-Paging-Smaller-Tables"><span class="toc-text">Chapter 20: Paging - Smaller Tables</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 14-20 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 14-20 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2022-11-01T14:01:14.000Z"> 2022 / 11 / 01, 22:01:14</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>书接上回，本文是第 14-20 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
 <h3 id="Chapter-14-Interlude-Memory-API"><a href="#Chapter-14-Interlude-Memory-API" class="headerlink" title="Chapter 14: Interlude - Memory API"></a>Chapter 14: Interlude - Memory API</h3><ol>
-<li>Memory Types:</li>
+<li>Memory types:</li>
 </ol>
 <ul>
-<li><em><strong>Stack Memory</strong></em> <em>(Automatic Memory)</em>: allocations and deallocations are managed implicitly by the compiler.</li>
-<li><em><strong>Heap Memory</strong></em>: allocations and deallocations are explicitly handled by programmers.</li>
+<li><em><strong>Stack memory</strong></em> <em>(automatic memory)</em>: allocations and deallocations are managed implicitly by the compiler.</li>
+<li><em><strong>Heap memory</strong></em>: allocations and deallocations are explicitly handled by programmers.</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -15,53 +15,69 @@
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li>Common Errors:</li>
+<li>Common errors when using <em>malloc()</em> and <em>free()</em>:</li>
 </ol>
 <ul>
-<li>Forgetting To Allocate Memory.</li>
-<li>Not Allocating Enough Memory.</li>
-<li>Forgetting to Initialize Allocated Memory.</li>
-<li>Forgetting To Free Memory.</li>
-<li>Freeing Memory Before You Are Done With It.</li>
-<li>Freeing Memory Repeatedly.</li>
-<li>Calling free() Incorrectly.</li>
+<li>Forgetting to allocate memory.</li>
+<li>Not allocating enough memory.</li>
+<li>Forgetting to initialize allocated memory.</li>
+<li>Forgetting to free memory.</li>
+<li>Freeing memory before you are done with it.</li>
+<li>Freeing memory repeatedly.</li>
+<li>Calling <code>free()</code> incorrectly.</li>
 </ul>
 <ol start="3">
-<li>Memory Check Tools: <em>purify</em>, <em>valgrind</em>.</li>
-<li>Memory System Calls: </li>
+<li>Memory check tools: <em>purify</em>, <em>valgrind</em>.</li>
+<li>Memory system calls: </li>
 </ol>
 <ul>
-<li><em><strong>free()</strong></em>: brk, sbrk.</li>
-<li><em><strong>malloc()</strong></em>: mmap.</li>
+<li><em>free()</em>: <code>brk()</code>, <code>sbrk()</code>.</li>
+<li><em>malloc()</em>: <code>mmap()</code>.</li>
 </ul>
+<ol start="5">
+<li>NULL in C:</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">define</span> NULL 0</span>
+<span class="token comment" spellcheck="true">// or.</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> NULL (void*) 0</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="Chapter-15-Mechanism-Address-Translation"><a href="#Chapter-15-Mechanism-Address-Translation" class="headerlink" title="Chapter 15: Mechanism - Address Translation"></a>Chapter 15: Mechanism - Address Translation</h3><ol>
-<li>Hardware-based Address Translation: virtual address -&gt; physical address.</li>
-<li><em><strong>base-and-bounds</strong></em> (dynamic relocation): <strong>base register</strong> + <strong>bounds (limit) register</strong> (may hold the size of the address space, or the physical address of the end of the address space), are all on MMU chip.</li>
+<li>Hardware-based address translation: virtual address -&gt; physical address.</li>
+<li><em><strong>base-and-bounds</strong></em> (aka “dynamic relocation”): <strong>base register</strong> + <strong>bounds (limit) register</strong> (may hold the size of the address space, or the physical address of the end of the address space), are all on the MMU chip. <strong>This approach has the drawback of internal fragmentation, which could be optimized via segmentation</strong>.</li>
 </ol>
 <ul>
+<li>Basic steps:<ul>
 <li>Step 1: physical address = virtual address + base register (offset).</li>
-<li>Step 2: check the final physical address or virtual address against the bounds register to see whether the address is illegal.</li>
+<li>Step 2: check the final physical address or virtual address against the bounds register to see whether the address is illegal. </li>
 </ul>
-<p>- <strong>Dynamic Relocation: Hardware Requirements</strong>:</p>
+</li>
+<li><strong>Dynamic relocation: hardware requirements</strong>:</li>
+</ul>
 <p><img src="1.png"></p>
-<p>- <strong>Dynamic Relocation: Operating System Responsibilities</strong>:</p>
+<ul>
+<li><strong>Dynamic relocation: operating system responsibilities</strong>:</li>
+</ul>
 <p><img src="2.png"></p>
 <ol start="3">
-<li><em><strong>Limited Direct Execution</strong></em> Interactions (Dynamic Relocation):</li>
+<li><em><strong>Limited direct execution</strong></em> with dynamic memory relocation:</li>
 </ol>
-<p>- <strong>Boot</strong>:</p>
+<ul>
+<li><strong>Boot</strong>:</li>
+</ul>
 <p><img src="3.png"></p>
-<p>- <strong>Runtime</strong>:</p>
+<ul>
+<li><strong>Runtime</strong>:</li>
+</ul>
 <p><img src="4.png"></p>
 <h3 id="Chapter-16-Segmentation"><a href="#Chapter-16-Segmentation" class="headerlink" title="Chapter 16: Segmentation"></a>Chapter 16: Segmentation</h3><ol>
 <li><em><strong>Segmentation</strong></em>: a segment is just a contiguous portion of the address space of a particular length, it allows the OS to place each one of those segments in different parts of physical memory, and thus avoid filling physical memory with unused virtual address space.</li>
 </ol>
 <ul>
 <li>Each segment of the VAS has a base and bound registers pair (multiple).</li>
-<li>The hardware uses <strong>segment registers</strong> during translation, </li>
+<li>The hardware uses <strong>segment registers</strong> during translation.</li>
 </ul>
 <ol start="2">
-<li>Segment Register Values (with Protection): </li>
+<li>Segment register values (with protection): </li>
 </ol>
 <p><img src="5.png"></p>
 <ul>
@@ -72,35 +88,36 @@
 <li><strong>Protection</strong>: for supporting sharing between different VAS.</li>
 </ul>
 <ol start="3">
-<li>Coarse-grained and Fine-grained Segmentation:</li>
+<li>Coarse-grained and fine-grained segmentation:</li>
 </ol>
 <ul>
 <li><em>Coarse-grained</em>: only has a few segments (i.e., code, stack, heap).</li>
 <li><em>Fine-grained</em>: allowed for address spaces to consist of a large number of smaller segments with the help of segement table. The OS could better learn about which segments are in use and which are not and thus utilize main memory more effectively.</li>
 </ul>
 <ol start="4">
-<li>Potential issues of Segmentation:</li>
+<li>Potential issues of segmentation:</li>
 </ol>
 <ul>
 <li>What should the OS do on a context switch? <ul>
-<li>The segment registers must be saved and restored.</li>
+<li>The segment registers must be saved and restored, for example in TSS.</li>
 </ul>
 </li>
 <li>Each segment might be a different size which may incur the issue of <strong>external fragmentation</strong> (physical memory becomes full of little holes of free space, making it difficult to allocate new segments, or to grow existing ones). <ul>
 <li>Solved by rearranging the existing segments (costly).</li>
 <li>Solved by using better memory management algorithms (best-fit, worst-fit, first-fit, buddy, etc).</li>
+<li>Solved by paging.</li>
 </ul>
 </li>
+<li><strong>Internal fragmentation</strong>: if an allocator hands out chunks of memory bigger than that requested, any unasked for (and thus unused) space in such a chunk is considered internal fragmentation.</li>
 </ul>
 <h3 id="Chapter-17-Free-Space-Management"><a href="#Chapter-17-Free-Space-Management" class="headerlink" title="Chapter 17: Free-Space Management"></a>Chapter 17: Free-Space Management</h3><ol>
-<li><em><strong>Free-list</strong></em>:</li>
+<li><em><strong>Free-list</strong></em>: contains references to all of the free chunks of space in the managed region of memory.</li>
 </ol>
 <p><img src="6.png"></p>
 <ul>
-<li>Contains references to all of the free chunks of space in the managed region of memory.</li>
 <li><strong>Splitting</strong>: find a free chunk of memory that can satisfy the request and split it into two.</li>
 <li><strong>Coalescing</strong>: merge the nearby chunks of free space into a single larger free chunk.</li>
-<li>Header structure for allocated block:</li>
+<li>The header structure for allocated block:</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
   <span class="token keyword">int</span> size<span class="token punctuation">;</span>
@@ -108,7 +125,7 @@
 <span class="token punctuation">}</span> header_t<span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>Node structure of the Free-list:</li>
+<li>The node structure of the free-list:</li>
 </ul>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> __node_t <span class="token punctuation">{</span>
   <span class="token keyword">int</span> size<span class="token punctuation">;</span>
@@ -116,42 +133,43 @@
 <span class="token punctuation">}</span> node_t<span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="2">
-<li><em><strong>Memory Allocation Strategies</strong></em>:</li>
+<li><em><strong>Memory allocation strategies</strong></em>:</li>
 </ol>
 <ul>
-<li><strong>Best Fit</strong>: find the smallest fit.<ul>
+<li><strong>Best fit</strong>: find the smallest fit.<ul>
 <li>Pros: try to reduce wasted space.</li>
 <li>Cons: heavy performance penalty (exhaustive search).</li>
 </ul>
 </li>
-<li><strong>Worst Fit</strong> (performs badly): find the largest chunk and return the requested amount.<ul>
+<li><strong>Worst fit</strong> (performs badly): find the largest chunk and return the requested amount.<ul>
 <li>Pros: leave big chunks free instead of lots of small chunks.</li>
 <li>Cons: heavy performance penalty (exhaustive search).</li>
 </ul>
 </li>
-<li><strong>First Fit</strong>: find the first block that is big enough and returns the requested amount.<ul>
+<li><strong>First fit</strong>: find the first block that is big enough and returns the requested amount.<ul>
 <li>Pros: fast. </li>
 <li>Cons: sometimes pollutes the beginning of the free list with small objects, this can be reduced by using <strong>address-based ordering</strong> which keeps the list ordered by the address of the free space.</li>
 </ul>
 </li>
-<li><strong>Next Fit</strong>: keep an extra pointer to the location within the list where one was looking last.<ul>
+<li><strong>Next fit</strong>: keep an extra pointer to the location within the list where one was looking last.<ul>
 <li>Pros: fast, but not better than “First Fit”.</li>
 <li>Cons: (similar to “First Fit”).</li>
 </ul>
 </li>
 </ul>
 <ol start="3">
-<li>Advanced Memory Allocation Strategies:</li>
+<li>Advanced memory allocation strategies:</li>
 </ol>
 <ul>
-<li><em>Segregated Lists</em>: if a particular application has one (or a few) popular-sized request that it makes, keep a separate list just to manage objects of that size, all other requests are forwarded to a more general memory allocator.</li>
-<li><em>Buddy Allocation</em>: In such a system, free memory is first conceptually thought of as one big space of size 2<sup>N</sup>. When a request for memory is made, the search for free space recursively divides free space by two until a block that is big enough to accommodate the request is found.</li>
+<li><em>Segregated lists</em>: if a particular application has one (or a few) popular-sized request that it makes, keep a separate list just to manage objects of that size, all other requests are forwarded to a more general memory allocator.</li>
+<li><em>Buddy allocation</em>: in such a system, free memory is first conceptually thought of as one big space of size 2<sup>N</sup>. When a request for memory is made, the search for free space recursively divides free space by two until a block that is big enough to accommodate the request is found. *<em>The address of each buddy pair only differs by a single bit</em>, which bit is determined by the level(order) in the buddy tree. Typically the buddy memory allocation system is implemented with the use of a binary tree to represent used or unused split memory blocks. The address of a block’s “buddy” is equal to the bitwise exclusive OR (XOR) of the block’s address and the block’s size.</li>
 </ul>
+<p><p><img src="12.png" alt="Searching for a 7KB block with buddy allocation"><span class="pic-desc">Searching for a 7KB block with buddy allocation</span></p></p>
 <ol start="4">
 <li>Other data structures for managing space: binary trees, splay trees, or partially-ordered trees.</li>
 </ol>
 <h3 id="Chapter-18-Paging-Introduction"><a href="#Chapter-18-Paging-Introduction" class="headerlink" title="Chapter 18: Paging - Introduction"></a>Chapter 18: Paging - Introduction</h3><ol>
-<li><em><strong>Page Table</strong></em>: <strong>per-process</strong> data structure, storing the address translations for each of the virtual pages of the address space. We divide VAS into fixed-sized units, each of which we call a page.</li>
+<li><em><strong>Page table</strong></em>: a <strong>per-process</strong> data structure (except for the inverted page table), storing the address translations for each of the virtual pages of the address space. Dividing virtual address space into fixed-sized units, each of which we call a page.</li>
 </ol>
 <p><img src="7.png"></p>
 <ol start="2">
@@ -171,39 +189,72 @@
 <ol start="5">
 <li><em><strong>PTBR</strong></em> (page-table-base-register): which contains the physical address of the starting location of the page table.</li>
 </ol>
-<pre class="line-numbers language-text"><code class="language-text">// The pseudo-code for "movl 21, %eax".
-// Extract the VPN from the virtual address.
-VPN = (VirtualAddress & VPN_MASK) >> SHIFT
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// The pseudo-code for "movl 21, %eax".</span>
+<span class="token comment" spellcheck="true">// Extract the VPN from the virtual address.</span>
+VPN <span class="token operator">=</span> <span class="token punctuation">(</span>VirtualAddress <span class="token operator">&amp;</span> VPN_MASK<span class="token punctuation">)</span> <span class="token operator">>></span> SHIFT
 
-// Form the address of the page-table entry (PTE).
-PTEAddr = PTBR + (VPN * sizeof(PTE))
+<span class="token comment" spellcheck="true">// Form the address of the page-table entry (PTE).</span>
+PTEAddr <span class="token operator">=</span> PTBR <span class="token operator">+</span> <span class="token punctuation">(</span>VPN <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>PTE<span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-// Fetch the PTE.
-PTE = AccessMemory(PTEAddr)
+<span class="token comment" spellcheck="true">// Fetch the PTE.</span>
+PTE <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PTEAddr<span class="token punctuation">)</span>
 
-// Check if process can access the page.
-if (PTE.Valid == False)
-  RaiseException(SEGMENTATION_FAULT)
-else if (CanAccess(PTE.ProtectBits) == False)
-  RaiseException(PROTECTION_FAULT)
-else
-  // Access is OK: form physical address and fetch it.
-  offset = VirtualAddress & OFFSET_MASK
-  PhysAddr = (PTE.PFN << PFN_SHIFT) | offset
-  Register = AccessMemory(PhysAddr)
+<span class="token comment" spellcheck="true">// Check if process can access the page.</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>Valid <span class="token operator">==</span> False<span class="token punctuation">)</span>
+  <span class="token function">RaiseException</span><span class="token punctuation">(</span>SEGMENTATION_FAULT<span class="token punctuation">)</span>
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CanAccess</span><span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span> <span class="token operator">==</span> False<span class="token punctuation">)</span>
+  <span class="token function">RaiseException</span><span class="token punctuation">(</span>PROTECTION_FAULT<span class="token punctuation">)</span>
+<span class="token keyword">else</span>
+  <span class="token comment" spellcheck="true">// Access is OK: form physical address and fetch it.</span>
+  offset <span class="token operator">=</span> VirtualAddress <span class="token operator">&amp;</span> OFFSET_MASK
+  PhysAddr <span class="token operator">=</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>PFN <span class="token operator">&lt;&lt;</span> PFN_SHIFT<span class="token punctuation">)</span> <span class="token operator">|</span> offset
+  Register <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PhysAddr<span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="6">
-<li>Problems need to be solved of paging: </li>
+<li>The issues need to be solved of paging: </li>
 </ol>
 <ul>
-<li>Overhead of the intense access to page table.</li>
-<li>Memory waste of page tables (per process).</li>
+<li>The overhead of the intense access to page table - solved by TLB.</li>
+<li>The memory waste of page tables (per process) - solved by multi-level page table.</li>
 </ul>
 <h3 id="Chapter-19-Paging-Faster-Translations-TLBs"><a href="#Chapter-19-Paging-Faster-Translations-TLBs" class="headerlink" title="Chapter 19: Paging - Faster Translations (TLBs)"></a>Chapter 19: Paging - Faster Translations (TLBs)</h3><ol>
-<li><p><em><strong>TLB</strong></em> (translation-lookaside buffer): is a part of the chip’s MMU, a hardware cache of popular virtual-to-physical address translations. The TLB improves performance due to <strong>spatial locality</strong> (also some other optimization techniques are same). Hardware-managed TLB is usually designed for CISC, and the software-managed TLB is for RISC, it transfers the TLB miss signal via a trap (the “return-from-trap” should resume the instruction which caused the miss). The <strong>software-managed</strong> way is more flexible to OS and simple for hardware to achieve. The access to TLB miss-handling code could be handled by some pre-reserved, permanently-valid TLB entries, these translations always hit in the TLB. TLB is <strong>fully associative</strong>, this means that any given translation can be anywhere in the TLB, and that the hardware will search the entire TLB in parallel to find the desired translation. </p>
+<li><em><strong>TLB</strong></em> (translation-lookaside buffer): is a part of the chip’s MMU, a hardware cache of popular virtual-to-physical address translations. The TLB improves performance due to <strong>spatial locality</strong> (the elements of the array are packed tightly into pages (i.e., they are close to one another in space), and thus only the first access to an element on a page yields a TLB miss). </li>
+</ol>
+<ul>
+<li>Hardware-managed TLB is usually designed for CISC (.e.g X86, the hardware would simply walk the page table via <em>cr3</em> and update TLB, then retry the instruction), and the software-managed TLB is for RISC, it transfers the TLB miss signal via a trap (the “return-from-trap” should resume the instruction which caused the miss). The <strong>software-managed</strong> way is more flexible to OS and simple for hardware to achieve. </li>
+<li>The access to TLB miss-handling code could be handled by some pre-reserved, permanently-valid TLB entries, these translations always hit in the TLB. </li>
+<li>TLB is <strong>fully associative</strong>, this means that any given translation can be anywhere in the TLB, and that the hardware will search the entire TLB in parallel to find the desired translation. </li>
+<li>The TLB must be kept in sync with the page table. <strong>When a page in physical memory is replaced, its TLB entry, if there is one for it, must be invalidated</strong>. Update the TLB entry for the page being replaced to contain the virtual-to-physical mapping for the new page being loaded in. </li>
+<li>When context-siwtching: <ul>
+<li>Setting all TLB entries to invalid, or:</li>
+<li>Identifying process by the ASID in each TLB entry.</li>
+</ul>
 </li>
-<li><p><em><strong>TLB Contents</strong></em>: </p>
-</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Hardware logic:</span>
+VPN <span class="token operator">=</span> <span class="token punctuation">(</span>VirtualAddress <span class="token operator">&amp;</span> VPN_MASK<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token function">SHIFT</span>
+<span class="token punctuation">(</span>Success<span class="token punctuation">,</span> TlbEntry<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">TLB_Lookup</span><span class="token punctuation">(</span>VPN<span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>Success <span class="token operator">==</span> True<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// TLB Hit.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CanAccess</span><span class="token punctuation">(</span>TlbEntry<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span> <span class="token operator">==</span> True<span class="token punctuation">)</span>
+    Offset <span class="token operator">=</span> VirtualAddress <span class="token operator">&amp;</span> OFFSET_MASK
+    PhysAddr <span class="token operator">=</span> <span class="token punctuation">(</span>TlbEntry<span class="token punctuation">.</span>PFN <span class="token operator">&lt;&lt;</span> SHIFT<span class="token punctuation">)</span> <span class="token operator">|</span> Offset
+    Register <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PhysAddr<span class="token punctuation">)</span>
+  <span class="token keyword">else</span>
+    <span class="token function">RaiseException</span><span class="token punctuation">(</span>PROTECTION_FAULT<span class="token punctuation">)</span>
+  <span class="token keyword">else</span> <span class="token comment" spellcheck="true">// TLB Miss.</span>
+    <span class="token comment" spellcheck="true">// RaiseException(TLB_MISS)  // For RISC, simply trap to the OS when a TLB miss. </span>
+    PTEAddr <span class="token operator">=</span> PTBR <span class="token operator">+</span> <span class="token punctuation">(</span>VPN <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>PTE<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    PTE <span class="token operator">=</span> <span class="token function">AccessMemory</span><span class="token punctuation">(</span>PTEAddr<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>Valid <span class="token operator">==</span> False<span class="token punctuation">)</span>
+      <span class="token function">RaiseException</span><span class="token punctuation">(</span>SEGMENTATION_FAULT<span class="token punctuation">)</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">CanAccess</span><span class="token punctuation">(</span>PTE<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span> <span class="token operator">==</span> False<span class="token punctuation">)</span>
+      <span class="token function">RaiseException</span><span class="token punctuation">(</span>PROTECTION_FAULT<span class="token punctuation">)</span>
+    <span class="token keyword">else</span>
+      <span class="token function">TLB_Insert</span><span class="token punctuation">(</span>VPN<span class="token punctuation">,</span> PTE<span class="token punctuation">.</span>PFN<span class="token punctuation">,</span> PTE<span class="token punctuation">.</span>ProtectBits<span class="token punctuation">)</span>
+      <span class="token function">RetryInstruction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li><em><strong>TLB contents</strong></em>: </li>
 </ol>
 <p><img src="9.png"></p>
 <ul>
@@ -218,44 +269,47 @@ else
 </ul>
 <p>A <strong>wired register</strong> can be set by the OS to tell the hardware how many slots of the TLB to reserve for the OS; the OS uses these reserved mappings for code and data that it wants to access during critical times, where a TLB miss would be problematic.</p>
 <ol start="3">
-<li><em><strong>TLB Replacement Policy</strong></em>: </li>
+<li><em><strong>TLB replacement policies</strong></em>: </li>
 </ol>
 <ul>
-<li><strong>LRU</strong>: common approach, but not good for some corner-case, like: a program loops over “n + 1” pages with a TLB of size “n”.</li>
+<li><strong>LRU</strong> (Least-recently-used): a common approach, but not good for some corner-case, like: a program loops over “n + 1” pages with a TLB of size “n”.</li>
 <li><strong>Random</strong>: simple.</li>
 </ul>
 <ol start="4">
-<li><em><strong>TLB Issues</strong></em>: </li>
+<li><em><strong>TLB issues</strong></em>: </li>
 </ol>
 <ul>
-<li><strong>TLB Coverage</strong>: if the number of pages a program accesses in a short period of time exceeds the number of pages that fit into the TLB, the program will generate a large number of TLB misses.</li>
-<li><strong>Cache</strong>: <em>physically-indexed cache</em> V.S. <em>virtually-indexed cache</em>. Address translation has to take place before the cache is accessed for the former one, the latter one requires complex hardware design.</li>
+<li><strong>TLB coverage</strong>: if the number of pages a program accesses in a short period of time exceeds the number of pages that fit into the TLB, the program will generate a large number of TLB misses.</li>
+<li><strong>Cache</strong>: <ul>
+<li><strong>Physically-indexed cache</strong>: a address translation (virtual -&gt; physical) has to take place before the cache is accessed which the TLB would be the bottleneck.</li>
+<li><strong>Virtually-indexed cache</strong>: the cache could be indexed direclty with virtual address but requires complex hardware design.</li>
+</ul>
+</li>
 </ul>
 <h3 id="Chapter-20-Paging-Smaller-Tables"><a href="#Chapter-20-Paging-Smaller-Tables" class="headerlink" title="Chapter 20: Paging - Smaller Tables"></a>Chapter 20: Paging - Smaller Tables</h3><ol>
-<li>Most systems use relatively small page sizes in the common case: <strong>4KB</strong> (as in x86) or <strong>8KB</strong> (as in SPARCv9). </li>
-<li><strong>Multiple Page Sizes</strong>: many architectures (e.g., MIPS, SPARC, x86-64) now support multiple page sizes, a single large page (e.g., of size 4MB) can be used for a specific portion of the address space, enabling such applications to place a frequently-used (and large) data structure in such a space while consuming only a single TLB entry (it is to reduce pressure on the TLB).</li>
-<li><strong>Paging with Segments</strong>: one page table per logical segment (like code, heap, stack, and etc), the base register holds the value of the “base” physical address of each page table, and bounds register holds the value of the maximum valid page in the segment. But segmentation is not quite  flexible, and this way could also cause external fragmentation.</li>
+<li>Bigger page size will lead to internal fragmentation, so, most systems use relatively small page sizes in the common case: <strong>4KB</strong> (as in x86) or <strong>8KB</strong> (as in SPARCv9). </li>
+<li><strong>Multiple page sizes</strong>: many architectures (e.g., MIPS, SPARC, x86-64) now support multiple page sizes, a single large page (e.g., of size 4MB) can be used for a specific portion of the address space, enabling such applications to place a frequently-used (and large) data structure in such a space while consuming only a single TLB entry (it is to <strong>reduce pressure on the TLB</strong>).</li>
+<li><strong>Paging with segments</strong>: one page table per logical segment (.e.g code, heap, stack, and etc), the base register holds the value of the “base” physical address of each page table, and bounds register holds the value of the maximum valid page in the segment. But segmentation is not quite flexible, and this way could also cause external fragmentation.</li>
 </ol>
 <pre class="line-numbers language-text"><code class="language-text">SN = (VirtualAddress & SEG_MASK) >> SN_SHIFT
 VPN = (VirtualAddress & VPN_MASK) >> VPN_SHIFT
-// Use one of three segment base registers instead of PTBR.
+// Use one of three segment base registers instead of PTBR to get the base physical address.
 AddressOfPTE = Base[SN] + (VPN * sizeof(PTE))
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="4">
-<li><strong>Multi-level Page Tables</strong>: it turns the linear page table into something like a tree.</li>
+<li><strong>Multi-level page tables</strong>: it turns the linear page table into something like a tree. It only allocates page-table space in proportion to the amount of address space you are using; thus it is generally compact and supports sparse address spaces.</li>
 </ol>
 <p><img src="10.png"></p>
+<p><img src="13.png"></p>
 <ul>
-<li>It only allocates page-table space in proportion to the amount of address space you are using; thus it is generally compact and supports sparse address spaces.</li>
 <li>The goal is <strong>to make every piece of the multi-level page table fit into a page vanishes</strong>.</li>
 <li>The memory of the page tables could be swapped to disk when memory pressure gets a little tight (kernel virtual memory). </li>
 </ul>
 <p><img src="11.png"></p>
 <ul>
 <li>The VPN could be splitted into several parts corresponding to different level of page directory.</li>
-<li>Same calculation pattern: <em><strong>PTEAddr = (PD0E.PFN &lt;&lt; SHIFT) + (PD1Index * sizeof(PDE1)) …</strong></em>.</li>
 </ul>
 <ol start="5">
-<li><strong>Inverted Page Tables</strong>: instead of having many page tables (one per process of the system), we keep a single page table that has an entry for each physical page of the system. The entry tells us which process is using this page, and which virtual page of that process maps to this physical page (PowerPC).</li>
+<li><strong>Inverted page tables</strong>: instead of having many page tables (one per process of the system), we keep a single page table that has an entry for each physical page of the system. The entry tells us which process is using this page, and which virtual page of that process maps to this physical page (PowerPC).</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-11-01T14:01:14.000Z"> 2023 / 10 / 26, 11:37:10</time></span></div></div></article><br><span class="next-post"><a href="/2022/12/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-21-28-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/10/16/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-1-13-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-11-01T14:01:14.000Z"> 2024 / 01 / 05, 15:18:16</time></span></div></div></article><br><span class="next-post"><a href="/2022/12/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-21-29-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/10/16/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-1-13-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

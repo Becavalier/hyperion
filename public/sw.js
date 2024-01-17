@@ -991,19 +991,19 @@ self.__precacheManifest = [
   },
   {
     "url": "2022/10/16/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-1-13-章）/index.html",
-    "revision": "95966171fef245d8a68f6adc501d948f"
+    "revision": "81f7210fe75839ec2d7b02a754fc0db2"
   },
   {
     "url": "2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/index.html",
-    "revision": "1589c6ad0d3d334061646ea065aed6d4"
+    "revision": "ff32769f57366aab779238ae90851a78"
   },
   {
-    "url": "2022/12/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-21-28-章）/index.html",
-    "revision": "7c5032a1467126146a0c8ee4fc58b4fa"
+    "url": "2022/12/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-21-29-章）/index.html",
+    "revision": "63142dfba6be0176cb83436800a11c77"
   },
   {
     "url": "2023/02/15/Engineering-Manager-Cheat-Sheet/index.html",
-    "revision": "9a6160a4d170e19cce73507c50ea2987"
+    "revision": "ec83426474bfeb6478f4bfa60fedb853"
   },
   {
     "url": "2023/03/06/《算法4》读书笔记（第-1-3-章）/index.html",
@@ -1027,7 +1027,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/04/09/《x86-汇编语言：从实模式到保护模式（第2版）》读书笔记（第-1-11-章）/index.html",
-    "revision": "5519f9d00e1857633c7d0cdc27444064"
+    "revision": "31224da0bd64e4abba988e078c386796"
   },
   {
     "url": "2023/05/11/与-AI-对话/index.html",
@@ -1035,7 +1035,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/06/03/《x86-汇编语言：从实模式到保护模式（第2版）》读书笔记（第-12-20-章）/index.html",
-    "revision": "fe198d1b72ec04b41bbaf9181254ad0e"
+    "revision": "56dfa557aa8d2194626416e0a5d955d0"
   },
   {
     "url": "2023/06/05/Nodejs-Internal/index.html",
@@ -1127,7 +1127,15 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/12/23/TypeScript-Cheat-Sheet/index.html",
-    "revision": "488c78a6269cc14d190ffcbafb0a1703"
+    "revision": "8a082dba4ae112ea1e8c95ef2d058862"
+  },
+  {
+    "url": "2024/01/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-30-38-章）/index.html",
+    "revision": "f28772b42ff88edec58522bb4e0ff236"
+  },
+  {
+    "url": "2024/01/17/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-39-47-章）/index.html",
+    "revision": "c463f10ed27c70fc10cb85a2d497e23d"
   },
   {
     "url": "about/index.html",
@@ -1458,12 +1466,20 @@ self.__precacheManifest = [
     "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
   },
   {
+    "url": "archives/2024/01/index.html",
+    "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
+  },
+  {
+    "url": "archives/2024/index.html",
+    "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
+  },
+  {
     "url": "archives/index.html",
     "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
   },
   {
     "url": "articles/index.html",
-    "revision": "42d100d1a0b20f4c2d22f2562dd39c6d"
+    "revision": "20f83368cd22ca86a929804eb873554a"
   },
   {
     "url": "cards/index.html",
@@ -1479,115 +1495,115 @@ self.__precacheManifest = [
   },
   {
     "url": "index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/10/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/11/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/12/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/13/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/14/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/15/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/16/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/17/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/18/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/19/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/2/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/20/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/21/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/22/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/23/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/24/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/25/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/26/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/27/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/28/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/3/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/4/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/5/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/6/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/7/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/8/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "page/9/index.html",
-    "revision": "248200b10dd126dfe56b75eda50950ea"
+    "revision": "b05c1f796d73d3a44e17f0776cb8f2c9"
   },
   {
     "url": "readings/Advanced Design and Implementation of VMs.html",
@@ -1627,7 +1643,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "e66e379a4ecec95971c13d5c904e0a07"
+    "revision": "8e2f14c6b3c6655bd44a44722ecf722e"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1955,7 +1971,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "0828ac29ec7ee60d73d75648a974943d"
+    "revision": "0ffd7e89853122945489cd02a44168c1"
   },
   {
     "url": "tags/Interpreter/index.html",
@@ -2015,7 +2031,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/OS/index.html",
-    "revision": "76b1ea849cc5946bf9157cd83b47095c"
+    "revision": "36914d01801305ac9b2a6ddd4916d608"
   },
   {
     "url": "tags/PHP/index.html",
@@ -2147,7 +2163,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/操作系统/index.html",
-    "revision": "ccdfd3fef7429424036469709f785f0b"
+    "revision": "fcec563d6c2edd0db8c90a427152f9a8"
   },
   {
     "url": "tags/旅游/index.html",

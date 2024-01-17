@@ -1,99 +1,156 @@
 <!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="闻名已久的操作系统著作，今日拜读一下，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-1-A-Dialogue-on-the-Book"><span class="toc-text">Chapter 1: A Dialogue on the Book</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-2-Introduction-to-Operating-Systems"><span class="toc-text">Chapter 2: Introduction to Operating Systems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-3-A-Dialogue-on-Virtualization"><span class="toc-text">Chapter 3: A Dialogue on Virtualization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-4-The-Abstraction-Process"><span class="toc-text">Chapter 4: The Abstraction - Process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-5-Interlude-Process-API"><span class="toc-text">Chapter 5: Interlude - Process API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-6-Mechanism-Limited-Direct-Execution"><span class="toc-text">Chapter 6: Mechanism - Limited Direct Execution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-7-Scheduling-Introduction"><span class="toc-text">Chapter 7: Scheduling - Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-8-Scheduling-The-Multi-Level-Feedback-Queue"><span class="toc-text">Chapter 8: Scheduling - The Multi-Level Feedback Queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-9-Scheduling-Proportional-Share"><span class="toc-text">Chapter 9: Scheduling - Proportional Share</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-10-Multiprocessor-Scheduling-Advanced"><span class="toc-text">Chapter 10: Multiprocessor Scheduling (Advanced)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-11-Summary-Dialogue-on-CPU-Virtualization"><span class="toc-text">Chapter 11: Summary Dialogue on CPU Virtualization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-12-A-Dialogue-on-Memory-Virtualization"><span class="toc-text">Chapter 12: A Dialogue on Memory Virtualization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-13-The-Abstraction-Address-Spaces"><span class="toc-text">Chapter 13: The Abstraction - Address Spaces</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2022-10-16T15:08:20.000Z"> 2022 / 10 / 16, 23:08:20</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>闻名已久的操作系统著作，今日拜读一下。在线版本可以在<b><a target="_blank" rel="noopener" href="https://pages.cs.wisc.edu/~remzi/OSTEP/">这里</a></b>找到，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-1-A-Dialogue-on-the-Book"><span class="toc-text">Chapter 1: A Dialogue on the Book</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-2-Introduction-to-Operating-Systems"><span class="toc-text">Chapter 2: Introduction to Operating Systems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-3-A-Dialogue-on-Virtualization"><span class="toc-text">Chapter 3: A Dialogue on Virtualization</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-4-The-Abstraction-Process"><span class="toc-text">Chapter 4: The Abstraction - Process</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-5-Interlude-Process-API"><span class="toc-text">Chapter 5: Interlude - Process API</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-6-Mechanism-Limited-Direct-Execution"><span class="toc-text">Chapter 6: Mechanism - Limited Direct Execution</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-7-Scheduling-Introduction"><span class="toc-text">Chapter 7: Scheduling - Introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-8-Scheduling-The-Multi-Level-Feedback-Queue"><span class="toc-text">Chapter 8: Scheduling - The Multi-Level Feedback Queue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-9-Scheduling-Proportional-Share"><span class="toc-text">Chapter 9: Scheduling - Proportional Share</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-10-Multiprocessor-Scheduling-Advanced"><span class="toc-text">Chapter 10: Multiprocessor Scheduling (Advanced)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-13-The-Abstraction-Address-Spaces"><span class="toc-text">Chapter 13: The Abstraction - Address Spaces</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 1-13 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2022-10-16T15:08:20.000Z"> 2022 / 10 / 16, 23:08:20</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>闻名已久的操作系统著作，今日拜读一下。在线版本可以在<b><a target="_blank" rel="noopener" href="https://pages.cs.wisc.edu/~remzi/OSTEP/">这里</a></b>找到，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
 <h3 id="Chapter-1-A-Dialogue-on-the-Book"><a href="#Chapter-1-A-Dialogue-on-the-Book" class="headerlink" title="Chapter 1: A Dialogue on the Book"></a>Chapter 1: A Dialogue on the Book</h3><p>（略）</p>
 <h3 id="Chapter-2-Introduction-to-Operating-Systems"><a href="#Chapter-2-Introduction-to-Operating-Systems" class="headerlink" title="Chapter 2: Introduction to Operating Systems"></a>Chapter 2: Introduction to Operating Systems</h3><ol>
-<li><strong>OS</strong> (aka Virtual Machine, Supervisor, Master Control Program) uses <strong>Virtualization</strong> technique to provide a more easy-to-use layer (System Calls -&gt; Standard Library) for the above applications.</li>
+<li><strong>Operating System</strong> (aka <em>virtual machine</em>, <em>supervisor</em>, <em>master control program</em>) uses <strong>virtualization</strong> technique to provide a more easy-to-use layer (system calls -&gt; standard library) for the above applications.</li>
 </ol>
 <ul>
-<li><em><strong>CPU Virtualization</strong></em>: turning a single CPU into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once.</li>
-<li><em><strong>Memory Virtualization</strong></em>: each process accesses its own private virtual address space (VAS), which the OS somehow maps onto the physical memory of the machine.</li>
+<li><em><strong>CPU virtualization</strong></em>: turning a single CPU into a seemingly infinite number of CPUs and thus allowing many programs to seemingly run at once.</li>
+<li><em><strong>Memory virtualization</strong></em>: each process accesses its own private virtual address space (VAS), which the OS somehow maps onto the physical memory of the machine.</li>
 </ul>
 <ol start="2">
-<li><strong>Brief history of the OS</strong>: </li>
+<li>Brief history of the OS: </li>
 </ol>
 <ul>
 <li><em><strong>Library</strong></em>: including commonly-used functions called by human operator.</li>
-<li><em><strong>System Call</strong></em>: adding user mode and kernel mode to provide protection for the OS.</li>
+<li><em><strong>System call</strong></em>: adding user mode and kernel mode to provide protection for the OS. The idea here was to add a special pair of hardware instructions and hardware state to make the transition into the OS a more formal, controlled process.</li>
 <li><em><strong>Multiprogramming</strong></em>: loading a number of jobs into memory and switch rapidly between them.</li>
 <li><em><strong>Unix</strong></em>: leveraged by most of the OSes internally. </li>
 </ul>
 <h3 id="Chapter-3-A-Dialogue-on-Virtualization"><a href="#Chapter-3-A-Dialogue-on-Virtualization" class="headerlink" title="Chapter 3: A Dialogue on Virtualization"></a>Chapter 3: A Dialogue on Virtualization</h3><p>（略）</p>
 <h3 id="Chapter-4-The-Abstraction-Process"><a href="#Chapter-4-The-Abstraction-Process" class="headerlink" title="Chapter 4: The Abstraction - Process"></a>Chapter 4: The Abstraction - Process</h3><ol>
-<li>The constitution of a Process (PCB): VAS, registers, IO information.</li>
+<li>Mechanisms of CPU virtualization:</li>
+</ol>
+<ul>
+<li><em><strong>Context switch</strong></em>: the ability to stop running one program and start running another.</li>
+<li><em><strong>Scheduling policy</strong></em>: which decides how the processes should be switched.</li>
+</ul>
+<ol start="2">
+<li>The constitution of a Process (PCB): </li>
 </ol>
 <pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// A real case: xv6.</span>
-<span class="token comment" spellcheck="true">// Per-process state</span>
+<span class="token comment" spellcheck="true">// Per-process state.</span>
 <span class="token keyword">struct</span> proc <span class="token punctuation">{</span>
-  uint sz<span class="token punctuation">;</span>                     <span class="token comment" spellcheck="true">// Size of process memory (bytes)</span>
-  pde_t<span class="token operator">*</span> pgdir<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">// Page table</span>
-  <span class="token keyword">char</span> <span class="token operator">*</span>kstack<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">// Bottom of kernel stack for this process</span>
-  <span class="token keyword">enum</span> procstate state<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// Process state</span>
-  <span class="token keyword">int</span> pid<span class="token punctuation">;</span>                     <span class="token comment" spellcheck="true">// Process ID</span>
-  <span class="token keyword">struct</span> proc <span class="token operator">*</span>parent<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// Parent process</span>
-  <span class="token keyword">struct</span> trapframe <span class="token operator">*</span>tf<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// Trap frame for current syscall</span>
-  <span class="token keyword">struct</span> context <span class="token operator">*</span>context<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// swtch() here to run process</span>
-  <span class="token keyword">void</span> <span class="token operator">*</span>chan<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// If non-zero, sleeping on chan</span>
-  <span class="token keyword">int</span> killed<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// If non-zero, have been killed</span>
-  <span class="token keyword">struct</span> file <span class="token operator">*</span>ofile<span class="token punctuation">[</span>NOFILE<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Open files</span>
-  <span class="token keyword">struct</span> inode <span class="token operator">*</span>cwd<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// Current directory</span>
-  <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// Process name (debugging)</span>
+  uint sz<span class="token punctuation">;</span>                     <span class="token comment" spellcheck="true">// Size of process memory (bytes).</span>
+  pde_t<span class="token operator">*</span> pgdir<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">// Page table.</span>
+  <span class="token keyword">char</span> <span class="token operator">*</span>kstack<span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">// Bottom of kernel stack for this process.</span>
+  <span class="token keyword">enum</span> procstate state<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// Process state.</span>
+  <span class="token keyword">int</span> pid<span class="token punctuation">;</span>                     <span class="token comment" spellcheck="true">// Process ID.</span>
+  <span class="token keyword">struct</span> proc <span class="token operator">*</span>parent<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// Parent process.</span>
+  <span class="token keyword">struct</span> trapframe <span class="token operator">*</span>tf<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">// Trap frame for current syscall.</span>
+  <span class="token keyword">struct</span> context <span class="token operator">*</span>context<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">// swtch() here to run process.</span>
+  <span class="token keyword">void</span> <span class="token operator">*</span>chan<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// If non-zero, sleeping on chan.</span>
+  <span class="token keyword">int</span> killed<span class="token punctuation">;</span>                  <span class="token comment" spellcheck="true">// If non-zero, have been killed.</span>
+  <span class="token keyword">struct</span> file <span class="token operator">*</span>ofile<span class="token punctuation">[</span>NOFILE<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Open files.</span>
+  <span class="token keyword">struct</span> inode <span class="token operator">*</span>cwd<span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">// Current directory.</span>
+  <span class="token keyword">char</span> name<span class="token punctuation">[</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">;</span>               <span class="token comment" spellcheck="true">// Process name (debugging).</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
+<ul>
+<li>The process can be described by its state:<ul>
+<li>The contents of memory in its address space.</li>
+<li>The contents of CPU registers.</li>
+<li>The information about I/O.</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
 <li><strong>Three process states</strong> (at least, some may have <em>Initial</em> and <em>Final</em> states):</li>
 </ol>
 <ul>
+<li><em><strong>Initial</strong></em> (optional): a process is just created.</li>
 <li><em><strong>Running</strong></em>: a process is running on a processor.</li>
 <li><em><strong>Ready</strong></em>: a process is ready to run but for some reason the OS has chosen not to run it at this given moment.</li>
 <li><em><strong>Blocked</strong></em> (Waiting): a process has performed some kind of operation that makes it not ready to run until some other event takes place (e.g. <em>waiting for IO request finished</em>).</li>
+<li><em><strong>Final / Zombie</strong></em> (optional): a process has exited but has not yet been cleaned up by OS, this is useful for examining the return code of the process.</li>
 </ul>
 <p><img src="1.png"></p>
 <h3 id="Chapter-5-Interlude-Process-API"><a href="#Chapter-5-Interlude-Process-API" class="headerlink" title="Chapter 5: Interlude - Process API"></a>Chapter 5: Interlude - Process API</h3><ol>
-<li>Process-related calls: </li>
+<li>Process-related calls: the separation of <em>fork()</em> and <em>exec()</em> allows the shell to do a whole<br>bunch of useful things rather easily.</li>
 </ol>
 <ul>
 <li>(POSIX.1) <em><strong>fork()</strong></em>: creating new process.<ul>
+<li>This API creates an almost exact copy of the calling process as the basis for the created child process.</li>
 <li>Under Linux, fork() is implemented using <em>copy-on-write</em> pages, so the only penalty that it incurs is the time and memory required to duplicate the parent’s page tables, and to create a unique task structure for the child.</li>
 </ul>
 </li>
 <li>(POSIX.1) <em><strong>wait() / waitpid()</strong></em>: waiting for children processes to finish.</li>
-<li>(POSIX.1) <em><strong>exec()</strong></em>: replacing the current process image with a new process image.</li>
+<li>(POSIX.1) <em><strong>exec()</strong></em>: replacing the current process image with a new process image. <em><strong>It loads code and static data from the specified executable and overwrites its current code segment with it</strong></em>, the heap and stack and other parts of the memory space are re-initialized. This API never returns.</li>
 <li>(POSIX.1) <em><strong>kill()</strong></em>: sending signals to a process.</li>
 <li>(POSIX.1) <em><strong>signal()</strong></em>: setting the way of disposition for specific signal.</li>
 </ul>
 <ol start="2">
-<li><strong>C Standard Library</strong> V.S. <strong>Standard C Library</strong>: there are some interfaces that are not part of the C Standard, but part of the Standard C Library implementation (e.g. glic), for example the APIs defined in unistd.h that exposed the access to POSIX OS APIs.</li>
+<li>A similar implementation of redirection:</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// rough-redirection.c</span>
+<span class="token comment" spellcheck="true">// prompt> wc rough-redirection.c > redirection.output.txt</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/wait.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"fork failed.\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// The child process.</span>
+    <span class="token comment" spellcheck="true">// UNIX systems start looking for free file descriptors at zero, -</span>
+    <span class="token comment" spellcheck="true">// so here we close STDOUT(0) and open the target one.</span>
+    <span class="token function">close</span><span class="token punctuation">(</span>STDOUT_FILENO<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Close standard output.</span>
+    <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"redirection.output"</span><span class="token punctuation">,</span> O_CREAT <span class="token operator">|</span> O_WRONLY <span class="token operator">|</span> O_TRUNC<span class="token punctuation">,</span> S_IRWXU<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Open the file instead.</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> wc <span class="token operator">=</span> <span class="token function">strdup</span><span class="token punctuation">(</span><span class="token string">"wc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">char</span><span class="token operator">*</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span> wc<span class="token punctuation">,</span> <span class="token function">strdup</span><span class="token punctuation">(</span><span class="token string">"rough-redirection.c"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token constant">NULL</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">execvp</span><span class="token punctuation">(</span>wc<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// The main process.</span>
+    <span class="token keyword">int</span> rc_wait <span class="token operator">=</span> <span class="token function">wait</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
 <li>Unix pipes are implemented with the system call - <em><strong>pipe()</strong></em>.</li>
-<li>the separation of fork() and exec() enables features like: input/output redirection, pipes, and other cool features, all without changing anything about the programs being run.</li>
+<li>The separation of fork() and exec() enables features like: input/output redirection, pipes, and other cool features, all without changing anything about the programs being run.</li>
+</ul>
+<ol start="3">
+<li><strong>C Standard Library</strong> V.S. <strong>Standard C Library</strong>: there are some interfaces that are not part of the C Standard, but part of the Standard C Library implementation (e.g. glic), for example the APIs defined in unistd.h that exposed the access to POSIX OS APIs.</li>
 </ol>
 <h3 id="Chapter-6-Mechanism-Limited-Direct-Execution"><a href="#Chapter-6-Mechanism-Limited-Direct-Execution" class="headerlink" title="Chapter 6: Mechanism - Limited Direct Execution"></a>Chapter 6: Mechanism - Limited Direct Execution</h3><ol>
-<li>Two modes of execution: user mode (restricted) &amp; kernel mode (privileged).</li>
-<li><strong>Limited Direct Execution</strong>（LDE）: run the program directly on the CPU with some controls.</li>
+<li><strong>Limited direct execution</strong>: run the program directly on the CPU with some controls.</li>
 </ol>
 <p><img src="2.png"></p>
 <ul>
-<li>Each process has a <em>kernel stack</em> to save and restore the user registers duting context-switching. </li>
+<li>Each process has a “<em>kernel stack</em>“ area to save and restore the user registers during context-switching. </li>
+<li>Two modes of execution: <em><strong>user mode</strong></em> (restricted) &amp; <em><strong>kernel mode</strong></em> (privileged).</li>
 </ul>
-<ol start="3">
-<li>OS regains control of the CPU by:</li>
+<ol start="2">
+<li>OS could regains control of the CPU by either:</li>
 </ol>
 <ul>
-<li><em><strong>Cooperative Approach</strong></em>: the OS regains control of the CPU by <strong>waiting for a system call or an illegal operation</strong> of some kind to take place.</li>
-<li><em><strong>Non-Cooperative Approach</strong></em>: setup a <strong>programmed timer device to raise an interrupt every so many milliseconds</strong>. When the interrupt is raised, the currently running process is halted, and a pre-configured interrupt handler in the OS runs. At this point, the OS has regained control of the CPU.</li>
+<li><em><strong>Cooperative approach</strong></em>: by <strong>waiting for a system call or an illegal operation</strong> of some kind to take place, the OS then can take over the CPU.</li>
+<li><em><strong>Non-Cooperative approach</strong></em>: setup a <strong>programmed timer device to raise an interrupt every so many milliseconds</strong>. When the interrupt is raised, the currently running process is halted, and a pre-configured interrupt handler in the OS runs. At this point, the OS has regained control of the CPU.</li>
 </ul>
-<ol start="4">
-<li><strong>Context Switch</strong>: implemented by saving(restoring) a few register values onto(from) the process’s kernel stack. The tool “lmbench” can measure the time consumed of this process. Below is an example in xv6:</li>
+<ol start="3">
+<li><strong>Context switch</strong>: in xv6, <strong>context switching only involves program observable registers</strong>, and for other registers and data like below, they all would be updated by the kernel. Please note that the cost is not only from the switch of registers but also the flush of CPU states (TLB, caches, branch predictions, etc).</li>
 </ol>
-<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">struct</span> context <span class="token punctuation">{</span>
-  uint edi<span class="token punctuation">;</span>
-  uint esi<span class="token punctuation">;</span>
-  uint ebx<span class="token punctuation">;</span>
-  uint ebp<span class="token punctuation">;</span>
-  uint eip<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>Assembly implementation of the context-switch logic:</p>
-<pre class="line-numbers language-asm"><code class="language-asm"># Context switch                                            |----------------|  (after "pushl %edi")
+<ul>
+<li><em>cr3</em>: page directory base register. </li>
+<li><em>tr</em>: task register. </li>
+<li><em>ss0-ss3</em>: contains the stack segment selector for different privileges.</li>
+<li><em>rsp0-rsp3</em>: contains the stack top selector for different privileges.</li>
+</ul>
+<p>The rough implementation of the context-switch logic:</p>
+<pre class="line-numbers language-asm"><code class="language-asm"># C definition.
+struct context {
+  uint edi;
+  uint esi;
+  uint ebx;
+  uint ebp;
+  uint eip;
+};
+
+# Context switch                                            |----------------|  (after "pushl %edi")
 #                                                           | ptr_new (%edx) | --> |  struct context   |
 #   void swtch(struct context **old, struct context *new);  | ptr_old (%eax) | --> | *(struct context) | --> | struct context |
 #                                                           |      %eip      |
@@ -102,6 +159,7 @@
 # Switch stacks to new and pop previously-saved registers.  |      %esi      |
 #                                                           |      %edi      |
 #                                                           |----------------| <- %esp
+# Assembly code:
 
 .globl swtch
 swtch:
@@ -124,9 +182,9 @@ swtch:
   popl %ebx
   popl %ebp
   ret  # Will pop %eip direclty after return.
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol start="5">
-<li>Limited Direct Execution with timer interruption: </li>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li>Limited direct execution with timer interruption: </li>
 </ol>
 <p><img src="3.png"></p>
 <h3 id="Chapter-7-Scheduling-Introduction"><a href="#Chapter-7-Scheduling-Introduction" class="headerlink" title="Chapter 7: Scheduling - Introduction"></a>Chapter 7: Scheduling - Introduction</h3><ol>
@@ -140,13 +198,16 @@ swtch:
 <li>CPU scheduling algorithms:</li>
 </ol>
 <ul>
-<li><em><strong>FIFO</strong></em>: serve by their sequence, but may incur convoy effect (a number of relatively-short potential consumers of a resource get queued behind a heavyweight resource consumer).</li>
-<li><em><strong>SJF</strong></em> (Shortest Job First): run the shortest job first, then the next shortest, and so on.</li>
-<li><em><strong>STCF</strong></em> (Shortest Time-to-Completion First): based on SJF, <strong>job can preempt the existing running jobs</strong> via context-switching.</li>
-<li><em><strong>RR</strong></em> (Round-Robin): runs a job for a time slice (aka scheduling quantum, must be a multiple of the timer-interrupt period) and then switches to the next job in the run queue. <strong>The length of the time slice is critical (response time V.S. context-switching penalty)</strong>.</li>
+<li><em><strong>FIFO</strong></em> (non-preemptive): serve by their sequence, but may incur “<strong>convoy effect</strong>“ (a number of relatively-short potential consumers of a resource get queued behind a heavyweight resource consumer).</li>
+<li><em><strong>SJF</strong></em> (Shortest Job First, non-preemptive): run and complete the shortest job first, then the next shortest, and so on. This approach may also incur “<strong>convoy effect</strong>“ issue if a long task comes first along with a short task coming shortly.</li>
+<li><em><strong>PSJF</strong></em> (Preemptive Shortest Job First, preemptive): based on SJF, <strong>job can preempt the existing running jobs</strong> via context-switching.</li>
+<li><em><strong>RR</strong></em> (Round-Robin, preemptive): runs a job for a time slice (aka scheduling quantum, must be a multiple of the timer-interrupt period) and then switches to the next job in the run queue. <strong>The length of the time slice is critical (response time V.S. context-switching penalty)</strong>.</li>
 </ul>
 <ol start="3">
-<li>An example of STCF with I/O operations considered:</li>
+<li><p><strong>An inherent trade-off on scheduling</strong>: if we want to be unfair, we can run shorter jobs to completion, but at the cost of response time; if we instead value fairness, response time is lowered, but at the cost of turnaround time.</p>
+</li>
+<li><p>An example of PSJF with I/O operations considered:</p>
+</li>
 </ol>
 <ul>
 <li>Task A: CPU - 50ms, runs for 10 ms and then issues an I/O request which takes 10ms for each.</li>
@@ -158,13 +219,18 @@ swtch:
 </ol>
 <p><img src="5.jpeg"></p>
 <ul>
-<li>It has a number of <strong>distinct queues</strong>, each assigned a different <strong>priority level</strong>.</li>
+<li>It has a number of <strong>distinct queues</strong>, each assigned a different <strong>priority level</strong> with different time slice (the higher the shorter).</li>
 <li>It uses priorities to decide which job should run at a given time: a job with higher priority (i.e., a job on a higher queue) is chosen to run.<ul>
-<li><em><strong>Rule 1</strong></em>: If Priority(A) &gt; Priority(B), A runs (B doesn’t).</li>
-<li><em><strong>Rule 2</strong></em>: If Priority(A) = Priority(B), A &amp; B run in round-robin fashion using the time slice (quantum length) of the given queue.</li>
-<li><em><strong>Rule 3</strong></em>: When a job enters the system, it is placed at the highest priority (the topmost queue).</li>
-<li><em><strong>Rule 4</strong></em>: Once a job uses up its time allotment at a given level (regardless of how many times it has given up the CPU), its priority is reduced (i.e., it moves down one queue).</li>
-<li><em><strong>Rule 5</strong></em>: After some time period S, move all the jobs in the system to the topmost queue.</li>
+<li><em><strong>Rule 1</strong></em>: if Priority(A) &gt; Priority(B), A runs (B doesn’t).</li>
+<li><em><strong>Rule 2</strong></em>: if Priority(A) = Priority(B), A &amp; B run in round-robin fashion using the time slice (quantum length) of the given queue.</li>
+<li><em><strong>Rule 3</strong></em>: when a job enters the system, it is placed at the highest priority (the topmost queue).</li>
+<li><em><strong>Rule 4</strong></em>: once a job uses up its time allotment (the amount of time a job can spend at a given priority level) at a given level (regardless of how many times it has given up the CPU), its priority is reduced (i.e., it moves down one queue).</li>
+<li><em><strong>Rule 5</strong></em> (avoid starvation): after some time period S, move all the jobs in the system to the topmost queue.</li>
+</ul>
+</li>
+<li>Types of workload need to consider:<ul>
+<li>The interactive jobs that are short-running which may frequently relinquish the CPU.</li>
+<li>The longer-running “CPU-bound” jobs that need a lot of CPU time but where response time isn’t important.</li>
 </ul>
 </li>
 <li>Some voo-doo constants need to consider:<ul>
@@ -173,13 +239,13 @@ swtch:
 <li>How often should priority be boosted? <strong>1s or so</strong>.</li>
 </ul>
 </li>
-<li>Other variants:<ul>
-<li>Use mathematical formulae to calculate the priority level of a job, basing it on how much CPU<br>the process has used.</li>
+<li>Other algorithm variants:<ul>
+<li>Use mathematical formulae to calculate the priority level of a job, basing it on how much CPU the process has used.</li>
 <li>Reserve the highest priority levels for operating system work.</li>
 <li>Allow some user advice to help set priorities via CLI, like <code>nice</code>.</li>
 </ul>
 </li>
-<li>Learn from history based on the basic principle: <ul>
+<li>Learn from history based on the basic principles: <ul>
 <li>I/O intensive - hight priority.</li>
 <li>CPU intensive - low priority.</li>
 </ul>
@@ -187,56 +253,68 @@ swtch:
 </ul>
 <h3 id="Chapter-9-Scheduling-Proportional-Share"><a href="#Chapter-9-Scheduling-Proportional-Share" class="headerlink" title="Chapter 9: Scheduling - Proportional Share"></a>Chapter 9: Scheduling - Proportional Share</h3><ol>
 <li>Proportional-share (fair-share) scheduler: a scheduler that guarantees that <strong>each job could obtain a certain percentage of CPU time</strong>.</li>
-<li><strong>Lottery Scheduling</strong>: every so often, hold a “lottery” (a random number) to determine which process should get to run next. </li>
+<li><strong>Lottery scheduling</strong>: every so often, hold a “lottery” (a random number) to determine which process should get to run next. The longer these jobs complete, the more likely they are to achieve the desired percentages.</li>
 </ol>
+<p><img src="9.png"></p>
 <ul>
-<li>The longer these jobs complete, the more likely they are to achieve the desired percentages.</li>
+<li>Basic steps:<ul>
+<li>(optional) Make the process list in a sorted descending order based on the ticket number.</li>
+<li>Pick a random number (winner) from the total number of tickets.</li>
+<li>Traverse the list, adding each ticket value to the <code>counter</code> until the value exceeds winner.</li>
+<li>Then, the current list element is the winner.</li>
+</ul>
+</li>
 <li><em>Ticket currency</em>: it allows a user with a set of tickets to allocate tickets among their own jobs in whatever currency they would like.</li>
+</ul>
+<p><img src="10.png"></p>
+<ul>
 <li><em>Ticket transfer</em>: a process can temporarily hand off its tickets to another process.</li>
-<li><em>Ticket inflation</em>: a process can temporarily raise or lower the number of tickets it owns.</li>
-<li><strong>Cons</strong>: the ticket-assignment problem (how to choose tickets?).</li>
+<li><em>Ticket inflation</em>: a process can temporarily raise or lower the number of tickets it owns, tis can be applied in an environment where a group of processes trust one another.</li>
+<li><strong>Problem</strong>: how to assign ticket to each process?</li>
 </ul>
 <ol start="3">
-<li><strong>Stride Scheduling</strong>: at any given time, pick the process to run that has the lowest pass value so far; when you run a process, increment its pass counter by its stride.</li>
+<li><strong>Stride scheduling</strong>: at any given time, pick the process to run that has the lowest pass value so far; when you run a process, increment its pass counter by its stride.</li>
 </ol>
 <p><img src="6.png"></p>
 <ul>
 <li>Each job in the system has a stride, which is inverse in proportion to the number of tickets it has (a large number / #tickets).</li>
-<li><strong>Cons</strong>: how to treat new processes for their initial pass?</li>
+<li><strong>Problem</strong>: how to treat new processes for their initial pass?</li>
 </ul>
 <ol start="4">
-<li><strong>CFS</strong> (Completely Fair Scheduler): </li>
+<li><strong>CFS</strong> (Completely Fair Scheduler): CFS is being used inside Linux kernel, based on counting-based technique known as <strong>virtual runtime</strong> (vruntime), each process’s vruntime increases at the same rate, in proportion with physical (real) time. When a scheduling decision occurs, it will <strong>pick the process with the lowest vruntime to run next</strong>. It uses the value “<strong>sched_latency</strong>“ (usually 48ms) to determine how long one process should run before considering a switch. CFS divides this value by the number (n) of processes running on the CPU to determine the time slice for a process. CFS adds another parameter, “<strong>min_granularity</strong>“, which is usually set to a value like 6ms as the minimum time slice. CFS utilizes a periodic timer interrupt, it goes off frequently (e.g., every 1 ms), giving CFS a chance to wake up and determine if the current job has reached the end of its run. CFS <strong>keeps running processes in a red-black tree</strong> for a better search and insertion. Processes are ordered in the tree by vruntime, and most operations (such as insertion and deletion) are logarithmic in time. CFS sets the vruntime for the newly inserted job (ready) to the minimum value found in the RB tree.</li>
 </ol>
-<ul>
-<li>CFS is being used inside Linux kernel, based on counting-based technique known as <strong>virtual runtime</strong> (vruntime), each process’s vruntime increases at the same rate, in proportion with physical (real) time. When a scheduling decision occurs, it will <strong>pick the process with the lowest vruntime to run next</strong>.</li>
-<li>CFS uses the value “<strong>sched_latency</strong>“ (usually 48ms) to determine how long one process should run before considering a switch. CFS divides this value by the number (n) of processes running on the CPU to determine the time slice for a process. CFS adds another parameter, “<strong>min_granularity</strong>“, which is usually set to a value like 6ms as the minimum time slice.</li>
-<li>CFS utilizes a periodic timer interrupt, it goes off frequently (e.g., every 1 ms), giving CFS a chance to wake up and determine if the current job has reached the end of its run.</li>
-<li>CFS <strong>keeps running processes in a red-black tree</strong> for a better search and insertion. Processes are ordered in the tree by vruntime, and most operations (such as insertion and deletion) are<br>logarithmic in time.</li>
-<li>CFS sets the vruntime for the newly inserted job to the minimum value found in the RB tree.</li>
-</ul>
+<p><img src="11.png"></p>
 <h3 id="Chapter-10-Multiprocessor-Scheduling-Advanced"><a href="#Chapter-10-Multiprocessor-Scheduling-Advanced" class="headerlink" title="Chapter 10: Multiprocessor Scheduling (Advanced)"></a>Chapter 10: Multiprocessor Scheduling (Advanced)</h3><ol>
 <li>The issues may occur for multiple CPUs:</li>
 </ol>
 <ul>
-<li><strong>Cache Coherence</strong>: a running program has the correct latest data on CPU 1 but not CPU 2 due to the old data retrieved from main memory after scheduling. This issue could be solved by <strong>bus snooping</strong>.</li>
-<li><strong>Concurrency</strong>: as the number of CPUs grows, access to a synchronized (with locks) shared data structure becomes quite slow.</li>
-<li><strong>Cache Affinity</strong>: the states of the running process are not reused after the CPU scheduling.</li>
+<li><strong>Cache coherence</strong>: a running program has the correct latest data on CPU 1 but not CPU 2 due to the old data retrieved from main memory after scheduling. This issue could be solved by <strong>bus snooping</strong> - each cache pays attention to memory updates by observing the bus that connects them to main memory. When a CPU then sees an update for a data item it holds in its cache, it will notice the change and either invalidate its copy (i.e., remove it from its own cache) or update it (i.e., put the new value into its cache too).</li>
+<li><strong>Concurrency</strong>: synchronization, and as the number of CPUs grows, access to a synchronized (with locks) shared data structure becomes quite slow.</li>
+<li><strong>Cache affinity</strong>: the states of the running process are not reused after the CPU scheduling.</li>
 </ul>
 <ol start="2">
-<li><strong>SQMS</strong> (Single-Queue Multiprocessor Scheduling): putting all jobs that need to be scheduled into a single queue, <em>but it does not scale well (due to synchronization overheads), and it does not readily preserve cache affinity</em>.</li>
+<li><strong>SQMS</strong> (Single-Queue Multiprocessor Scheduling): putting all jobs that need to be scheduled into a single queue, <em><strong>but it does not scale well (due to synchronization overheads), and it does not readily preserve cache affinity</strong></em>.</li>
 </ol>
 <p><img src="7.png"></p>
 <ul>
 <li><strong>How to keep load cache affinity?</strong> A: Most SQMS schedulers include some kind of affinity mechanism to try to make it more likely that process will continue to run on the same CPU if possible (like above, job E will be migrating from CPU to CPU).</li>
 </ul>
 <ol start="3">
-<li><strong>MQMS</strong> (Multi-Queue Multiprocessor Scheduling): based on SQMS, using multiple queues, one per CPU. When a job enters the system, it is placed on exactly one scheduling queue, according to some heuristic (e.g., random, or picking one with fewer jobs than others).</li>
+<li><strong>MQMS</strong> (Multi-Queue Multiprocessor Scheduling): based on SQMS, using multiple queues, one per CPU. When a job enters the system, it is placed on exactly one scheduling queue, according to some heuristic (e.g., random, or picking one with fewer jobs than others). Then it is scheduled essentially independently, thus avoiding the problems of information sharing and synchronization found in the single-queue approach.</li>
 </ol>
 <p><img src="8.png"></p>
 <ul>
 <li><strong>How to solve load imbalance?</strong> A: With a <strong>work-stealing</strong> approach, a (source) queue that is low on jobs will occasionally peek at another (target) queue, to see how full it is. If the target queue is (notably) more full than the source queue, the source will “steal” one or more jobs from the target to help balance load.</li>
 </ul>
-<h3 id="Chapter-11-Summary-Dialogue-on-CPU-Virtualization"><a href="#Chapter-11-Summary-Dialogue-on-CPU-Virtualization" class="headerlink" title="Chapter 11: Summary Dialogue on CPU Virtualization"></a>Chapter 11: Summary Dialogue on CPU Virtualization</h3><p>（略）</p>
-<h3 id="Chapter-12-A-Dialogue-on-Memory-Virtualization"><a href="#Chapter-12-A-Dialogue-on-Memory-Virtualization" class="headerlink" title="Chapter 12: A Dialogue on Memory Virtualization"></a>Chapter 12: A Dialogue on Memory Virtualization</h3><p>（略）</p>
-<h3 id="Chapter-13-The-Abstraction-Address-Spaces"><a href="#Chapter-13-The-Abstraction-Address-Spaces" class="headerlink" title="Chapter 13: The Abstraction - Address Spaces"></a>Chapter 13: The Abstraction - Address Spaces</h3><p>（内容过于基础，遂略）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-10-16T15:08:20.000Z"> 2023 / 10 / 26, 11:37:10</time></span></div></div></article><br><span class="next-post"><a href="/2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/09/21/张家界-长沙-海南环岛-10-日游攻略/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<ol start="4">
+<li>Linux multiprocessor schedulers:</li>
+</ol>
+<ul>
+<li><em>O(1)</em>: a priority-based scheduler (similar to the MLFQ), changing a process’s priority over time and then scheduling those with highest priority in order to meet various scheduling objectives; interactivity is a particular focus.</li>
+<li><em>CFS</em>: a deterministic proportional-share approach.</li>
+<li><em>BFS</em>: a single-queue and proportional-share approach, based on a more complicated scheme known as Earliest Eligible Virtual Deadline First (EEVDF).</li>
+</ul>
+<h3 id="Chapter-13-The-Abstraction-Address-Spaces"><a href="#Chapter-13-The-Abstraction-Address-Spaces" class="headerlink" title="Chapter 13: The Abstraction - Address Spaces"></a>Chapter 13: The Abstraction - Address Spaces</h3><ol>
+<li>Any address you can see as a programmer of a user-level program is a <strong>virtual address</strong>, only the OS (and the hardware) knows the real truth of the physical address.</li>
+</ol>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-10-16T15:08:20.000Z"> 2024 / 01 / 06, 18:26:26</time></span></div></div></article><br><span class="next-post"><a href="/2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/09/21/张家界-长沙-海南环岛-10-日游攻略/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
