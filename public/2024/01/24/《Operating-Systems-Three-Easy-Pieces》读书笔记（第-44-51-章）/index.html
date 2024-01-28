@@ -1,0 +1,159 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 44-51 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="书接上回，本文是第 44-51 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-44-Flash-based-SSDs"><span class="toc-text">Chapter 44: Flash-based SSDs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-45-Data-Integrity-and-Protection"><span class="toc-text">Chapter 45: Data Integrity and Protection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-48-Distributed-Systems"><span class="toc-text">Chapter 48: Distributed Systems</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-49-Sun%E2%80%99s-Network-File-System-NFS"><span class="toc-text">Chapter 49: Sun’s Network File System (NFS)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-50-The-Andrew-File-System-AFS"><span class="toc-text">Chapter 50: The Andrew File System (AFS)</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 44-51 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 44-51 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2024-01-24T05:54:00.000Z"> 2024 / 01 / 24, 13:54:00</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>书接上回，本文是第 44-51 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
+<h3 id="Chapter-44-Flash-based-SSDs"><a href="#Chapter-44-Flash-based-SSDs" class="headerlink" title="Chapter 44: Flash-based SSDs"></a>Chapter 44: Flash-based SSDs</h3><ol>
+<li>Flash chips: Designed to store one or more bits in a single transistor.</li>
+</ol>
+<ul>
+<li>Types: <ul>
+<li><em>Single-level Cell</em> (SLC): Only a single bit is stored within a transistor (i.e., 1 or 0).</li>
+<li><em>Multi-level Cell</em> (MLC): Two bits are encoded into different levels of charge, e.g., 00, 01, 10, and 11 are represented by low, somewhat low, somewhat high, and high levels. </li>
+<li><em>Triple-level Cell</em> (TLC): Same as above, which encodes 3 bits per cell.</li>
+</ul>
+</li>
+<li>Basic operations: <ul>
+<li><strong>Read (a page)</strong>: Read a specific page by specifying the page number, it supports random access which takes 10s of microseconds or so for each.</li>
+<li><strong>Erase (a block)</strong>: Erase the entire block the page lies within (by setting each bit to the value 1), which takes a few milliseconds to complete.</li>
+<li><strong>Program (a page)</strong>: Change some of the 1’s within a page to 0’s, and write the desired contents of a page to the flash, which usually takes around 100s of microseconds. <strong>We have to first erase the entire block to write to a page within a block</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><p><img src="1.png" alt="A Simple Flash Chip: Pages Within Blocks"><span class="pic-desc">A Simple Flash Chip: Pages Within Blocks</span></p></p>
+<ol start="2">
+<li>Flashed based Solid-state Storage Device (SSD): An SSD consists of some number of flash chips, as well as some amount of volatile memory, which is useful for caching and buffering of data and for mapping tables. The <strong>flash translation layer</strong> (FTL) provides the functionality to turn the client reads and writes on logical blocks into internal flash operations.</li>
+</ol>
+<p><img src="2.png"></p>
+<ul>
+<li><strong>Wear leveling</strong>: FTLs could try to spread writes across the blocks of the flash as evenly as possible, ensuring that all of the blocks of the device wear out at roughly the same time. Sometimes, a block will be filled with long-lived data that does not get over-written, so the FTL must periodically read all the live data out of such blocks and re-write it elsewhere, thus making the block available for writing again.</li>
+<li><strong>Sequential-programming</strong>: FTLs will commonly program pages within an erased block in order, from low page to high page.</li>
+<li><strong>Hybrid mapping</strong>: To enable flexible writing but also reduce mapping costs, FTL logically has two types of mapping table in its memory: a small set of per-page mappings in what we’ll call the <strong>log table</strong>, and a larger set of per-block mappings in the <strong>data table</strong>. To keep the number of log blocks small, the FTL has to periodically examine log blocks (which have a pointer per page) and switch them into blocks that can be pointed to by only a single block pointer.</li>
+</ul>
+<p><p><img src="3.png" alt="Hybrid Mapping - Switch Merge"><span class="pic-desc">Hybrid Mapping - Switch Merge</span></p></p>
+<p><p><img src="4.png" alt="Hybrid Mapping - Partial Merge"><span class="pic-desc">Hybrid Mapping - Partial Merge</span></p></p>
+<p><p><img src="5.png" alt="Hybrid Mapping - Merge Comparison"><span class="pic-desc">Hybrid Mapping - Merge Comparison</span></p></p>
+<h3 id="Chapter-45-Data-Integrity-and-Protection"><a href="#Chapter-45-Data-Integrity-and-Protection" class="headerlink" title="Chapter 45: Data Integrity and Protection"></a>Chapter 45: Data Integrity and Protection</h3><ol>
+<li>Two types of single-block failures:</li>
+</ol>
+<ul>
+<li><strong>Latent sector errors</strong> (LSEs): Which arises when a disk sector (or group of sectors) has been damaged in some way. In-disk <strong>error correcting codes</strong> (ECC) are used by the drive to determine whether the on-disk bits in a block are good, and in some cases, to fix them. This error could be fixed with the help of RAID 4/5.</li>
+<li><strong>Block corruption</strong>: The cases where a disk block becomes non-detectable (.e.g buggy disk firmware writes a block to the wrong location, the block transferred from the host to the disk across a faulty bus, etc) and returns bad data. The detection of this error could be done with the help of <strong>checksum</strong>.</li>
+<li><strong>Lost write</strong>: Occurs when the device informs the upper layer that a write has completed but in fact it never is persisted. This issue could be fixed via a “<strong>write verify</strong>“, by immediately verifying the data after a write. Besides, we can also add checksum in each file system inode for double verification of the validity of the corresponding data block (.e.g ZFS).</li>
+</ul>
+<ol start="2">
+<li><strong>Checksum</strong>: Which is simply the result of a function that takes a chunk of data (say a 4KB block) as input and computes a function over said data, producing a small summary of the contents of the data (say 4 or 8 bytes). Some usual checksum algorithms:</li>
+</ol>
+<ul>
+<li><em><strong>XOR</strong></em>: Easy to implement, but not able to detect the corruption if two bits in the same position within each checksummed unit change.</li>
+<li><em><strong>Fletcher checksum</strong></em>: Position-dependent, and simple to compute.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Un-optimized version.</span>
+uint16_t <span class="token function">Fletcher16</span><span class="token punctuation">(</span>uint8_t <span class="token operator">*</span>data<span class="token punctuation">,</span> <span class="token keyword">int</span> count<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  uint16_t sum1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  uint16_t sum2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> index<span class="token punctuation">;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span>index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> <span class="token operator">++</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    sum1 <span class="token operator">=</span> <span class="token punctuation">(</span>sum1 <span class="token operator">+</span> data<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">255</span><span class="token punctuation">;</span>
+    sum2 <span class="token operator">=</span> <span class="token punctuation">(</span>sum2 <span class="token operator">+</span> sum1<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">255</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>sum2 <span class="token operator">&lt;&lt;</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">|</span> sum1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><em><strong>Cyclic redundancy check</strong></em> (CRC): Treat data block D as if it is a large binary number (it is just a string of bits after all) and divide it by an agreed upon value (k). The remainder of this division is the value of the CRC.</li>
+</ul>
+<ol start="3">
+<li>Checksum usage: When reading a block D, the client will calculate the checksum of the on-disk data and compare it with the saved checksum to determine whether any corruption exists.</li>
+</ol>
+<ul>
+<li>Basic layout:</li>
+</ul>
+<p><img src="6.png"></p>
+<ul>
+<li>The layout with a <strong>physical ID</strong> to attack “misdirected writes”:</li>
+</ul>
+<p><img src="7.png"></p>
+<ol start="4">
+<li>Other improvements:</li>
+</ol>
+<ul>
+<li>Combine data copying and checksumming into one streamlined activity.</li>
+<li>Disk scrubbing: Periodically reading through every block of the system, and checking whether checksums are still valid, the disk system can reduce the chances that all copies of a certain data item become corrupted. Typical systems schedule scans on a nightly or weekly basis.</li>
+</ul>
+<h3 id="Chapter-48-Distributed-Systems"><a href="#Chapter-48-Distributed-Systems" class="headerlink" title="Chapter 48: Distributed Systems"></a>Chapter 48: Distributed Systems</h3><ol>
+<li><strong>Remote Procedure Call</strong> (RPC): The target is to make the process of executing code on a remote machine as simple and straightforward as calling a local function. </li>
+</ol>
+<p><img src="8.webp"></p>
+<ul>
+<li>The RPC system has two pieces：<ul>
+<li><strong>Stub generator</strong> (protocol compiler): To remove some of the pain of packing function arguments and results into messages by automating it.</li>
+<li><strong>Runtime library</strong>: Handling some tough tasks, .e.g: locating a remote service specified by client, handling long-running requests, handling calls with large arguments, etc. </li>
+</ul>
+</li>
+<li>Basic flows:<ul>
+<li><strong>Client</strong>: <ul>
+<li>Create a message buffer.</li>
+<li>Pack the needed information into the message buffer.</li>
+<li>Send the message to the destination RPC server.</li>
+<li>Wait for the reply.</li>
+<li>Unpack return code and other arguments.</li>
+<li>Return to the caller.</li>
+</ul>
+</li>
+<li><strong>Server</strong>: <ul>
+<li>Unpack the message.</li>
+<li>Call into the actual function.</li>
+<li>Package the results.</li>
+<li>Send the reply.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Notes:<ul>
+<li>Many RPC packages are built on top of unreliable communication layers, such as UDP. The RPC layer achieves the desired level of responsibility by using timeout/retry and acknowledgments. By using some form of sequence numbering, the communication layer can guarantee that each RPC takes place exactly once (in the case of no failure), or at most once (in the case where failure arises).</li>
+</ul>
+</li>
+</ul>
+<h3 id="Chapter-49-Sun’s-Network-File-System-NFS"><a href="#Chapter-49-Sun’s-Network-File-System-NFS" class="headerlink" title="Chapter 49: Sun’s Network File System (NFS)"></a>Chapter 49: Sun’s Network File System (NFS)</h3><p><img src="10.png"></p>
+<ol>
+<li>NFS protocol: A block-based protocol, performs I/O that is proportional to the size of the read or write.</li>
+</ol>
+<ul>
+<li>Crash recovery: With a <strong>stateless protocol</strong>, the server, by design doesn’t keep track of anything about what is happening at each client, the clients themselves need to keep all the information for a request. Also, most NFS requests (LOOKUP, READ, WRITE) are <strong>idempotent</strong>, thus, the client could peform the recovery via a simple “<strong>retry</strong>“.</li>
+<li>File handle: Used to uniquely describe the file or directory a particular operation is going to operate upon, which consists of three parts:<ul>
+<li><strong>Volume identifier</strong>: Which informs the server which file system the request refers to (an NFS server can export more than one file system).</li>
+<li><strong>Inode number</strong>: Indicate which file within that partition the request is accessing.</li>
+<li><strong>Generation number</strong>: Which is needed when reusing an inode number; by incrementing it whenever an inode number is reused, the server ensures that a client with an old file handle can’t accidentally access the newly-allocated file.</li>
+</ul>
+</li>
+<li>Potocol in action:</li>
+</ul>
+<p><p><img src="9.png" alt="Reading A File: Client-side And File Server Actions"><span class="pic-desc">Reading A File: Client-side And File Server Actions</span></p></p>
+<ul>
+<li><strong>Client-side caching</strong>: The NFS client-side file system caches file data (and metadata) that it has read from the server in client memory. The cache also serves as a temporary buffer for writes (write buffering). The cache consistency problem needs to be handled properly via manners like <strong>flush-on-close</strong>, and before using a local cached block, the client-side file system will issue a GETATTR request to the server to fetch the file’s attributes (maybe from attribute cache) to determine which copy is the latest.</li>
+<li><strong>Server write buffering</strong>: NFS servers must commit each write to stable (persistent) storage before informing the client of success. One trick is to first put writes in a battery-backed memory, thus enabling to quickly reply to WRITE requests without fear of losing the data and without the cost of having to write to disk right away; the second trick is to use a file system design specifically designed to write to disk quickly when one finally needs to do so.</li>
+</ul>
+<h3 id="Chapter-50-The-Andrew-File-System-AFS"><a href="#Chapter-50-The-Andrew-File-System-AFS" class="headerlink" title="Chapter 50: The Andrew File System (AFS)"></a>Chapter 50: The Andrew File System (AFS)</h3><ol>
+<li>AFS: Designed for <strong>scalability</strong>.</li>
+</ol>
+<ul>
+<li>File identifier: Used to specify which file a client is interested in, which includes: a volume identifier, a file identifier, and a “uniquifier” (to enable reuse of the volume and file IDs when a file is deleted).</li>
+<li>Callback: Which is simply a promise from the server to the client that the server will inform the client when a file that the client is caching has been modified.</li>
+<li>Potocol in action:</li>
+</ul>
+<p><p><img src="11.png" alt="Reading A File: Client-side And File Server Actions"><span class="pic-desc">Reading A File: Client-side And File Server Actions</span></p></p>
+<ul>
+<li>Cache consistency timeline: <ul>
+<li>The Writes to a file are immediately visible to other local processes.</li>
+<li>Whichever client calls <code>close()</code> last will update the entire file on the server last.</li>
+<li>Making updates visible at the server and invalidates cached copies at the exact same time, which is when the updated file is closed.</li>
+</ul>
+</li>
+</ul>
+<p><p><img src="12.png" alt="Cache Consistency Timeline"><span class="pic-desc">Cache Consistency Timeline</span></p></p>
+<ul>
+<li>Crash recovery: <ul>
+<li>After the client reboots and re-connected to the server, it should ask the server whether its cached copy of file is still valid.</li>
+<li>Upon server restart, each client of the server must realize that the server has crashed and treat all of their cache contents as suspect, and reestablish the validity of a file before using it. </li>
+</ul>
+</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2024-01-24T05:54:00.000Z"> 2024 / 01 / 28, 14:42:48</time></span></div></div></article><br><span class="prev-post"><a href="/2024/01/17/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-39-43-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《Operating Systems: Three Easy Pieces》读书笔记（第 39-43 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="书接上回，本文是第 39-43 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-39-Interlude-Files-and-Directories"><span class="toc-text">Chapter 39: Interlude: Files and Directories</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-40-File-System-Implementation"><span class="toc-text">Chapter 40: File System Implementation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-41-Locality-and-The-Fast-File-System"><span class="toc-text">Chapter 41: Locality and The Fast File System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-42-Crash-Consistency-FSCK-and-Journaling"><span class="toc-text">Chapter 42: Crash Consistency: FSCK and Journaling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Chapter-43-Log-structured-File-Systems"><span class="toc-text">Chapter 43: Log-structured File Systems</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《Operating Systems: Three Easy Pieces》读书笔记（第 39-43 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《Operating Systems: Three Easy Pieces》读书笔记（第 39-43 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2024-01-17T05:51:00.000Z"> 2024 / 01 / 17, 13:51:00</time></span><span class="page-tag-anchor"><a href="/tags/OS" itemprop="url">#OS</a>&nbsp;&nbsp;<a href="/tags/操作系统" itemprop="url">#操作系统</a>&nbsp;&nbsp;</span></div><p>书接上回，本文是第 39-43 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。</p>
+<h3 id="Chapter-39-Interlude-Files-and-Directories"><a href="#Chapter-39-Interlude-Files-and-Directories" class="headerlink" title="Chapter 39: Interlude: Files and Directories"></a>Chapter 39: Interlude: Files and Directories</h3><ol>
+<li><p>Each file / directory has an <strong>inode number</strong> (the low-level name) associated with it.</p>
+</li>
+<li><p>File system APIs (system calls):</p>
+</li>
+</ol>
+<ul>
+<li>The tools that can trace system calls: <em>strace</em>, <em>dtruss</em>.</li>
+<li>Creating files:<ul>
+<li><em><strong>Step1</strong></em>: Making a structure (the inode) that will track virtually all relevant information, including the file size, where its blocks are on disk, and so forth.</li>
+<li><em><strong>Step2</strong></em>: Linking a human-readable name to that file, and putting that link into a directory.</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/**
+ * O_CREAT: create file.
+ * O_WRONLY: the file can only be written to.
+ * O_TRUNC: if the file already exists, truncates it to a size of zero bytes.
+ * S_IRUSR: permission - readable by the owner.
+ * S_IWUSR: permission - writable by the owner.
+ */</span>
+<span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> O_CREAT <span class="token operator">|</span> O_WRONLY <span class="token operator">|</span> O_TRUNC<span class="token punctuation">,</span> S_IRUSR <span class="token operator">|</span> S_IWUSR<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Return a file descriptor.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Reading and writing files:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c">ssize_t <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">int</span> fildes<span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span> size_t nbyte<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ssize_t <span class="token function">write</span><span class="token punctuation">(</span><span class="token keyword">int</span> fildes<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">void</span> <span class="token operator">*</span>buf<span class="token punctuation">,</span> size_t nbyte<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>Writing back to disk immediately:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// All the modified data and attributes of fildes will be moved to a permanent storage device.</span>
+<span class="token keyword">int</span> <span class="token function">fsync</span><span class="token punctuation">(</span><span class="token keyword">int</span> fildes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>Renaming file:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Usually implemented as an atomic operation.</span>
+<span class="token keyword">int</span> <span class="token function">rename</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>old<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>new<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>Reposition read/write file offset:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">/**
+ * If whence is SEEK_SET, the offset is set to offset bytes.
+ * If whence is SEEK_CUR, the offset is set to its current location plus offset bytes.
+ * If whence is SEEK_END, the offset is set to the size of the file plus offset bytes.
+ */</span>
+off_t <span class="token function">lseek</span><span class="token punctuation">(</span><span class="token keyword">int</span> fildes<span class="token punctuation">,</span> off_t offset<span class="token punctuation">,</span> <span class="token keyword">int</span> whence<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Getting file information:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">fstat</span><span class="token punctuation">(</span><span class="token keyword">int</span> fildes<span class="token punctuation">,</span> <span class="token keyword">struct</span> stat <span class="token operator">*</span>buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">stat</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>restrict path<span class="token punctuation">,</span> <span class="token keyword">struct</span> stat <span class="token operator">*</span>restrict buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// "struct stat": </span>
+<span class="token keyword">struct</span> stat <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* when _DARWIN_FEATURE_64_BIT_INODE is NOT defined */</span>
+  dev_t    st_dev<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* device inode resides on */</span>
+  ino_t    st_ino<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* inode's number */</span>
+  mode_t   st_mode<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* inode protection mode */</span>
+  nlink_t  st_nlink<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* number of hard links to the file */</span>
+  uid_t    st_uid<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* user-id of owner */</span>
+  gid_t    st_gid<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* group-id of owner */</span>
+  dev_t    st_rdev<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* device type, for special file inode */</span>
+  <span class="token keyword">struct</span> timespec st_atimespec<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* time of last access */</span>
+  <span class="token keyword">struct</span> timespec st_mtimespec<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* time of last data modification */</span>
+  <span class="token keyword">struct</span> timespec st_ctimespec<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* time of last file status change */</span>
+  off_t    st_size<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">/* file size, in bytes */</span>
+  quad_t   st_blocks<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* blocks allocated for file */</span>
+  u_long   st_blksize<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/* optimal file sys I/O ops blocksize */</span>
+  u_long   st_flags<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* user defined flags for file */</span>
+  u_long   st_gen<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/* file generation number */</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Removing files:<ul>
+<li><em><strong>Step1</strong></em>: Removing the “link” between the human-readable name to the given inode number.</li>
+<li><em><strong>Step2</strong></em>: Decrementing the reference count by 1.</li>
+<li><em><strong>Step3</strong></em>: Freeing the inode and related data blocks if the reference count is 0.</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Creating directories:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">mkdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">,</span> mode_t mode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Reading directories:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  DIR <span class="token operator">*</span>dp <span class="token operator">=</span> <span class="token function">opendir</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>dp <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> dirent <span class="token operator">*</span>d<span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>d <span class="token operator">=</span> <span class="token function">readdir</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Iterate over the directory entries.</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lu %s\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">long</span><span class="token punctuation">)</span> d<span class="token operator">-></span>d_ino<span class="token punctuation">,</span> d<span class="token operator">-></span>d_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">closedir</span><span class="token punctuation">(</span>dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// "struct dirent":</span>
+<span class="token keyword">struct</span> dirent <span class="token punctuation">{</span>
+  <span class="token keyword">char</span> d_name<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Filename.</span>
+  ino_t d_ino<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// inode Number.</span>
+  off_t d_off<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Offset to the next dirent.</span>
+  <span class="token keyword">unsigned</span> <span class="token keyword">short</span> d_reclen<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Length of this record.</span>
+  <span class="token keyword">unsigned</span> <span class="token keyword">char</span> d_type<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Type of file.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>Deleting directories:</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">rmdir</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>Creating hard links: Create another name in the directory you are creating the link to, and <strong>refers it to the same inode number</strong> (i.e., low-level name) of the original file. The file is not copied in any way.<ul>
+<li>We can’t create one to a directory.</li>
+<li>We can’t hard link to files in other disk partitions.</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">link</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path1<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>path2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3">
+<li><strong>Shared parent/child file table entrie</strong>: </li>
+</ol>
+<p><img src="1.png"></p>
+<ul>
+<li>By <code>fork()</code>: The open file is shared between parent and child processes.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"file.txt"</span><span class="token punctuation">,</span> O_RDONLY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>fd <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> rc <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Child process.</span>
+    rc <span class="token operator">=</span> <span class="token function">lseek</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> SEEK_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Change offset.</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> rc<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 10.</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>rc <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Main process.</span>
+    <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token function">wait</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token function">lseek</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> SEEK_CUR<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 10.</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>By <code>dup()</code> / <code>dup2()</code> / <code>dup3()</code>: Which allows a process to create a new file descriptor (fd) that refers to the same underlying open file as an existing descriptor. Each “fd” is a private, per-process entity, which refers to an entry in the open file table. The entry therein tracks which file this access refers to, the current offset of the file, and other relevant information.</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"README"</span><span class="token punctuation">,</span> O_RDONLY<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>fd <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">int</span> fd2 <span class="token operator">=</span> <span class="token function">dup</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// Now fd and fd2 can be used interchangeably.</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4">
+<li><strong>Memory mapping with <code>mmap()</code></strong>:</li>
+</ol>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token comment" spellcheck="true">// Persistent stack example of how mmap() naturally creates a software abstraction of persistent memory.</span>
+<span class="token comment" spellcheck="true">// Author: Terence Kelly</span>
+<span class="token comment" spellcheck="true">//         tpkelly @ { acm.org, cs.princeton.edu, eecs.umich.edu }</span>
+
+<span class="token comment" spellcheck="true">// Note:  Use 'truncate' to make the initial (empty) backing file,</span>
+<span class="token comment" spellcheck="true">// whose size should be a multiple of the system page size:</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//     prompt> getconf PAGESIZE</span>
+<span class="token comment" spellcheck="true">//     4096</span>
+<span class="token comment" spellcheck="true">//     prompt> truncate -s 4096 ps.img</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// makes a 4096-byte empty file.  The first sizeof(size_t) bytes will</span>
+<span class="token comment" spellcheck="true">// be interprted as the number of items on the stack; the remainder</span>
+<span class="token comment" spellcheck="true">// of the file will contain the integers contained in the stack.</span>
+<span class="token comment" spellcheck="true">// Now you can run the program:</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//     prompt> ./pstack 7 13 47 pop</span>
+<span class="token comment" spellcheck="true">//     47</span>
+<span class="token comment" spellcheck="true">//     prompt> ./pstack pop pop 99</span>
+<span class="token comment" spellcheck="true">//     13</span>
+<span class="token comment" spellcheck="true">//     7</span>
+<span class="token comment" spellcheck="true">//     prompt> ./pstack pop</span>
+<span class="token comment" spellcheck="true">//     99</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// Notice that items push'd in one invocation of the program persist</span>
+<span class="token comment" spellcheck="true">// until the next invocation:  The stack is persistent.</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">// You can use hexdump to examine the contents of the backing file:</span>
+<span class="token comment" spellcheck="true">//</span>
+<span class="token comment" spellcheck="true">//     prompt> hexdump ps.img</span>
+
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;assert.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/mman.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/stat.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+  size_t n<span class="token punctuation">;</span>
+  <span class="token keyword">int</span> stack<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// Zero-length per C99.</span>
+<span class="token punctuation">}</span> pstack_t<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">int</span> fd<span class="token punctuation">,</span> rc<span class="token punctuation">;</span>
+  <span class="token keyword">struct</span> stat s<span class="token punctuation">;</span>
+  size_t file_size<span class="token punctuation">;</span>
+  pstack_t <span class="token operator">*</span>p<span class="token punctuation">;</span>
+
+  fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"ps.img"</span><span class="token punctuation">,</span> O_RDWR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>fd <span class="token operator">></span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  rc <span class="token operator">=</span> <span class="token function">fstat</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>rc <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  file_size <span class="token operator">=</span> <span class="token punctuation">(</span>size_t<span class="token punctuation">)</span> s<span class="token punctuation">.</span>st_size<span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>file_size <span class="token operator">>=</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>pstack_t<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> file_size <span class="token operator">%</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  p <span class="token operator">=</span> <span class="token punctuation">(</span>pstack_t <span class="token operator">*</span><span class="token punctuation">)</span> <span class="token function">mmap</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">,</span> file_size<span class="token punctuation">,</span> PROT_READ<span class="token operator">|</span>PROT_WRITE<span class="token punctuation">,</span> MAP_SHARED<span class="token punctuation">,</span> fd<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">assert</span><span class="token punctuation">(</span>p <span class="token operator">!=</span> MAP_FAILED<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> argc<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">"pop"</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>p<span class="token operator">-></span>n <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// Stack not empty.</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> p<span class="token operator">-></span>stack<span class="token punctuation">[</span><span class="token operator">--</span>p<span class="token operator">-></span>n<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// Push.</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>pstack_t<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> p<span class="token operator">-></span>n<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> file_size<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Stack not full.</span>
+        p<span class="token operator">-></span>stack<span class="token punctuation">[</span>p<span class="token operator">-></span>n<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">atoi</span><span class="token punctuation">(</span>argv<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token function">close</span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="5">
+<li><p><strong>Symbolic links</strong>: It’s an actual file of the specific type, it’s formed by holding the pathname of the linked-to file as the data of the link file. So, it would be possible to cause a “<strong>dangling reference</strong>“ issue if the original file has been deleted.</p>
+</li>
+<li><p>UNIX permission bits:</p>
+</li>
+</ol>
+<p><img src="2.gif"></p>
+<ul>
+<li>For directories, the execute bit enables a user (or group, or everyone) to do things like change directories (i.e., cd) into the given directory, and, in combination with the writable bit, create files therein.</li>
+</ul>
+<ol start="7">
+<li>Making and mounting a file system:</li>
+</ol>
+<ul>
+<li><em>Creating</em>: <code>mkfs</code> with specified system type and device.</li>
+<li><em>Mounting</em>: <code>mount</code> the created file system to a specific directory (pathname) for access.</li>
+</ul>
+<h3 id="Chapter-40-File-System-Implementation"><a href="#Chapter-40-File-System-Implementation" class="headerlink" title="Chapter 40: File System Implementation"></a>Chapter 40: File System Implementation</h3><ol>
+<li>A simple case for illustration: 64 blocks in total, each of size 4KB in the below case.</li>
+</ol>
+<p><img src="3.png"></p>
+<ul>
+<li><em>S</em>: The <strong>superblock</strong>, containing the information about this file system, including how many inodes and data blocks are in the file system, where the inode table begins (block 3), etc. When mounting a file system, the OS will read the superblock first, to initialize various parameters, and then attach the volume to the file-system tree.</li>
+<li><em>i</em> / <em>d</em>: The <strong>allocation structures</strong>, using bitmap to track which data region or inode table is valid, which comes into play when creating new files.</li>
+<li><em>I</em>: The <strong>inode table</strong>, holding an array of on-disk inodes.</li>
+<li><em>D</em>: The <strong>data region</strong>, for saving user file data.</li>
+</ul>
+<ol start="2">
+<li><strong>Inode</strong> (index node): The inode (specified by i-number) is used for tracking the information like which data blocks (in the data region) comprise a file, the size of the file, its owner and access rights, access and modify times, and other similar kinds of information.</li>
+</ol>
+<p><p><img src="4.png" alt="80 inodes with each of 256 bytes here"><span class="pic-desc">80 inodes with each of 256 bytes here</span></p></p>
+<ul>
+<li>Calculation:<ul>
+<li><em>blk =&gt; (inumber * sizeof(inode_t)) / blockSize</em>.</li>
+<li><em>sector =&gt; ((blk * blockSize) + inodeStartAddr) / sectorSize</em> (disk are “sector” addressable).</li>
+</ul>
+</li>
+<li>How it refers to where data blocks are?<ul>
+<li><strong>Extents</strong>: An extent is simply a disk pointer plus a length (in blocks), which could delineate a portion of data belonging to a file.</li>
+<li><strong>Direct pointers</strong>: Each pointer refers to one disk block that belongs to the file.</li>
+<li><strong>Indirect pointers</strong>: Multi-level index, each pointer refers to a block that contains more pointers, each of which point to user data.</li>
+</ul>
+</li>
+</ul>
+<p><p><img src="5.png" alt="Direct / indirect pointers"><span class="pic-desc">Direct / indirect pointers</span></p></p>
+<ol start="3">
+<li>Directory organization:</li>
+</ol>
+<ul>
+<li>Each has a related inode (i-number) with the type of “directory”.</li>
+<li>For each item in a given directory, there is an [entry name, inode number] entries table in the data block(s) of the directory. For each string, there may also be a length.</li>
+<li>Directories could be stored in B-tree form to have a faster file creation.</li>
+</ul>
+<ol start="4">
+<li>Access paths:</li>
+</ol>
+<ul>
+<li><strong>Opening a file</strong>: <em>open(“/foo/bar”, O RDONLY)</em>.<ul>
+<li>FS reads in the block that contains inode number 2 (the root inode block).</li>
+<li>FS finds the on-disk pointers to data blocks in the inode, which contain the entries table of the root directory.</li>
+<li>FS finds the entry with the name of “foo” and its inode number.</li>
+<li>FS recursively traverses the pathname until the desired inode (bar) is found, then load it into memory.</li>
+<li>FS does a final permissions check, allocates a file descriptor for this process in the per-process open-file table, and returns it to the user. </li>
+</ul>
+</li>
+<li><strong>Reading a file</strong>:<ul>
+<li>FS consults inode to find the location of the first data block, then reads it into memory.</li>
+<li>FS updates the in-memory open file table for this fd, updating the file offset, etc.</li>
+</ul>
+</li>
+<li><strong>Writing a file</strong>:<ul>
+<li>FS reads / updates the data bitmap.</li>
+<li>FS reads / updates the inode.</li>
+<li>FS writes the actual block.</li>
+</ul>
+</li>
+<li><strong>Creating a file</strong>:<ul>
+<li>FS reads / updates the inode bitmap to find a free inode.</li>
+<li>FS writes the inode for the new file.</li>
+<li>FS updates the entries table of the directory.</li>
+<li>FS reads / updates the directory inode.</li>
+<li>FS reads / updates data bitmap to find free space.</li>
+<li>FS write file data.</li>
+</ul>
+</li>
+</ul>
+<ol start="5">
+<li>Caching and buffering:</li>
+</ol>
+<ul>
+<li>Caching:<ul>
+<li><strong>Static partitioning</strong>: Keeping a fixed portion of memory for caching the latest used file blocks, which seems to be wasteful.</li>
+<li><strong>Dynamic partitioning</strong>: Many modern OSs integrate virtual memory pages and file system pages into a “<strong>unified page cache</strong>“, so memory can be allocated more flexibly across virtual memory and file system, depending on which needs more memory at a given time.</li>
+</ul>
+</li>
+<li>Buffering: Buffer writes and performs them in batch later to employ a better IO scheduling and avoid unnecessary operations.</li>
+</ul>
+<h3 id="Chapter-41-Locality-and-The-Fast-File-System"><a href="#Chapter-41-Locality-and-The-Fast-File-System" class="headerlink" title="Chapter 41: Locality and The Fast File System"></a>Chapter 41: Locality and The Fast File System</h3><ol>
+<li>FFS (Fast File System):</li>
+</ol>
+<ul>
+<li>A Cylinder group is the same concentric track across platters. Since modern devices don’t expose geometry, we could also use <strong>block groups</strong>: Contiguous regions of the logical block address space. The target is to <strong>keeping related data within the same group to minimize seeks</strong>.</li>
+</ul>
+<p><p><img src="6.png" alt="Cylinder Group"><span class="pic-desc">Cylinder Group</span></p></p>
+<ul>
+<li><em><strong>For directories placement</strong></em>: Find the cylinder group with a low number of allocated directories (to balance directories across groups) and a high number of free inodes (to subsequently be able to allocate a bunch of files), and put the directory data and inode in that group.</li>
+<li><em><strong>For files placement</strong></em>: First, it makes sure (in the general case) to allocate the data blocks of a file in the same group as its inode, thus preventing long seeks between inode and data. Second, it places all files that are in the same directory in the cylinder group of the directory they are in.</li>
+<li><em><strong>Exception for large files</strong></em>: After some number of blocks are allocated into the first block group (e.g., 12 blocks, or the number of direct pointers available within an inode), FFS places the next “large” chunk of the file (e.g., those pointed to by the first indirect block) in another block group (perhaps chosen for its low utilization). Then, the next chunk of the file is placed in yet another different block group, and so on. This way may hurt performance (more seeking time between each group), but by enlarging the block size, we can amortize the cost of drive-seeking.</li>
+<li><em><strong>Exception for small files</strong></em>: FFS modified libc, and the library would buffer writes and then issue them in 4KB chunks to the file system.</li>
+</ul>
+<h3 id="Chapter-42-Crash-Consistency-FSCK-and-Journaling"><a href="#Chapter-42-Crash-Consistency-FSCK-and-Journaling" class="headerlink" title="Chapter 42: Crash Consistency: FSCK and Journaling"></a>Chapter 42: Crash Consistency: FSCK and Journaling</h3><ol>
+<li><strong>The crash consistency problem</strong>: The file system should transition from one consistent state (e.g., before the file got appended to) to another <strong>atomically</strong> even though the disk only commits one write at a time, and crashes or power loss may occur between these updates.</li>
+</ol>
+<p><img src="7.png"></p>
+<ol start="2">
+<li>Solution #1 - The file system checker (<strong>fsck</strong>): The goal is to make sure <strong>the file system metadata is internally consistent</strong>, but it’s too slow.</li>
+</ol>
+<ul>
+<li><em><strong>Superblock</strong></em>: fsck checks if the superblock looks reasonable, mostly doing sanity checks such as making sure the file system size is greater than the number of blocks that have been allocated.</li>
+<li><em><strong>Free blocks</strong></em>: fsck scans the inodes, indirect blocks, double indirect blocks, etc., to build an understanding of which blocks are currently allocated within the file system. It uses this knowledge to produce a correct version of the allocation bitmaps; thus, if there is any inconsistency between bitmaps and inodes, it is resolved by trusting the information within the inodes.</li>
+<li><em><strong>Inode state</strong></em>: Each inode is checked for corruption or other problems. For example, fsck makes sure that each allocated inode has a valid type field. If there are problems with the inode fields that are not easily fixed, the inode is considered suspect and cleared by fsck; the inode bitmap is correspondingly updated.</li>
+<li><em><strong>Inode links</strong></em>: fsck also verifies the link count of each allocated inode. It scans through the entire directory tree, starting at the root directory, and builds its own link counts for every file and directory in the file system. If there is a mismatch between the newly-calculated count and that found within an inode, corrective action must be taken, usually by fixing the count within the inode. If an allocated inode is discovered but no directory refers to it, it is moved to the lost+found directory.</li>
+<li><em><strong>Duplicates</strong></em>: fsck also checks for duplicate pointers, i.e., cases where two different inodes refer to the same block. If one inode is obviously bad, it may be cleared. Alternately, the pointed-to block could be copied, thus giving each inode its own copy as desired.</li>
+<li><em><strong>Bad blocks</strong></em>: A check for bad block pointers is also performed while scanning through the list of all pointers. A pointer is considered “bad” if it obviously points to something outside its valid range.</li>
+<li><em><strong>Directory checks</strong></em>: fsck performs additional integrity checks on the contents of each directory, making sure that “.” and “..” are the first entries, that each inode referred to in a directory entry is allocated, and ensuring that no directory is linked to more than once in the entire hierarchy.</li>
+</ul>
+<ol start="3">
+<li>Solution #2 - <strong>Journaling</strong> (write-ahead logging): when updating the disk, before overwriting the structures in place, first write down a little note (somewhere else on the disk, in a well-known location) describing what you are about to do. By writing the note to disk, you are guaranteeing that if a crash takes places during the update (overwrite) of the structures you are updating, you can go back and look at the note you made and try again.</li>
+</ol>
+<p><img src="8.png"></p>
+<ul>
+<li>The oldest and newest non-checkpointed transactions is logged in the journal superblock.</li>
+</ul>
+<p>- <em><strong>[Data journaling]</strong></em>:</p>
+<p><img src="9.png"></p>
+<ul>
+<li><em>TxB</em> (Transaction begin): Include information about the pending update to the FS (e.g., the final addresses of the going-to-update blocks), and some kind of transaction identifier (TID).</li>
+<li><em>TxE</em> (Transaction end): A marker of the end of this transaction, and will also contain the TID.</li>
+<li>Journaling all user data (in addition to the metadata of the file system), but normal operations may get slower due to the doubling write traffic.</li>
+<li>Steps:<ul>
+<li><strong>Journal write</strong>: Write the contents of the transaction (containing TxB and the contents of the update) to the log; wait for these writes to complete.</li>
+<li><strong>Journal commit</strong>: Write the transaction commit block (containing TxE) to the log; wait for the write to complete; the transaction is now committed.</li>
+<li><strong>Checkpoint</strong>: Write the contents of the update to their final locations within the file system.</li>
+<li><strong>Free</strong>: Some time later, mark the transaction free in the journal by updating the journal superblock.</li>
+</ul>
+</li>
+</ul>
+<p>- <em><strong>[Metadata journaling]</strong></em>:</p>
+<p><img src="10.png"></p>
+<ul>
+<li>Journaling only file system metadata.</li>
+<li>Steps:<ul>
+<li><strong>Data write</strong>: Write data to final location; wait for completion (the wait is optional; see below for details).</li>
+<li><strong>Journal metadata write</strong>: Write the begin block and metadata to the log; wait for writes to complete.</li>
+<li><strong>Journal commit</strong>: Write the transaction commit block (containing TxE) to the log; wait for the write to complete; the transaction (including data) is now committed.</li>
+<li><strong>Checkpoint metadata</strong>: Write the contents of the metadata update to their final locations within the file system.</li>
+<li><strong>Free</strong>: Later, mark the transaction free in journal superblock.</li>
+</ul>
+</li>
+</ul>
+<ol start="4">
+<li>Other solutions:</li>
+</ol>
+<ul>
+<li><em>Soft updates</em>: Carefully orders all writes to the file system to ensure that the on-disk structures are never left in an inconsistent state.</li>
+<li><em>Backpointer-based consistency</em>: An additional back pointer is added to every block in the system, when accessing a file, the file system can determine if the file is consistent by checking if the forward pointer (e.g., the address in the inode or direct block) points to a block that refers back to it.</li>
+</ul>
+<h3 id="Chapter-43-Log-structured-File-Systems"><a href="#Chapter-43-Log-structured-File-Systems" class="headerlink" title="Chapter 43: Log-structured File Systems"></a>Chapter 43: Log-structured File Systems</h3><ol>
+<li>LFS (Log-structured File Systems): Writing all updates (such as data blocks, inodes, etc.) to the disk sequentially to better leverage the efficiency of sequential write. When writing to disk, LFS buffers updates in an in-memory segment, and then writes the segment all at once to the disk. LFS always writes to an unused portion of the disk, and then later reclaims that old space through cleaning (<strong>shadow paging</strong>). </li>
+</ol>
+<p><p><img src="12.png" alt="LFS buffer the updates into a small segment, which will be commited to disk at once"><span class="pic-desc">LFS buffer the updates into a small segment, which will be commited to disk at once</span></p></p>
+<ul>
+<li>Key elements:<ul>
+<li><strong>Checkpoint region</strong> (CR): Which contains pointers to (i.e., addresses of) the latest pieces of the inode map, and thus the inode map pieces can be found by reading the CR first.</li>
+<li>D: Data block.</li>
+<li>Inode: Same structure as previous.</li>
+<li><strong>Inode map</strong> (imap): A structure that takes an inode number as input and produces the disk address of the most recent version of the inode. Any time an inode is written to disk, the imap is updated with its new location.</li>
+</ul>
+</li>
+</ul>
+<p><p><img src="13.png" alt="LFS on-disk layout of the file &quot;dir/foo&quot;"><span class="pic-desc">LFS on-disk layout of the file &quot;dir/foo&quot;</span></p></p>
+<ul>
+<li>File access processes (“dir/foo”):<ul>
+<li>CR -&gt; Find the location of imap.</li>
+<li>Imap -&gt; Find the location of inode of directory “foo” (A3).</li>
+<li>Directory inode (A3) -&gt; Find the location of the directory data (A2).</li>
+<li>Directory data (A2) -&gt; Get the inode number of the file “foo” (k).</li>
+<li>Imap -&gt; Find the location of inode number k (A1).</li>
+<li>A1 -&gt; Read the file data.</li>
+</ul>
+</li>
+<li>Garbage collection: Periodically, the LFS cleaner reads in a number of old (partially-used) segments, determines which blocks are live within these segments, and then write out a new set of segments with just the live blocks within them, freeing up the old ones for writing. LFS adds a “<strong>segment summary block</strong>“ to each segment that describes each block to determine whether a data block is live, it includes the block inode and its offset.<ul>
+<li>When: Either periodically, during idle time, or when you have to because the disk is full.</li>
+<li>Which bloks to clean: Cleaning cold segments sooner and hot segments later.</li>
+</ul>
+</li>
+</ul>
+<pre class="line-numbers language-c"><code class="language-c"><span class="token punctuation">(</span>N<span class="token punctuation">,</span> T<span class="token punctuation">)</span> <span class="token operator">=</span> SegmentSummary<span class="token punctuation">[</span>A<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// N - inode number, T - inode offset.</span>
+inode <span class="token operator">=</span> <span class="token function">Read</span><span class="token punctuation">(</span>imap<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>inode<span class="token punctuation">[</span>T<span class="token punctuation">]</span> <span class="token operator">==</span> A<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// A - block disk address.</span>
+  <span class="token comment" spellcheck="true">// Block D is alive.</span>
+<span class="token keyword">else</span>
+  <span class="token comment" spellcheck="true">// Block D is garbage.</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><p><img src="14.png" alt="A segment with its segment summary block"><span class="pic-desc">A segment with its segment summary block</span></p></p>
+<ul>
+<li>Crach recovery:<ul>
+<li><strong>Atomic CR update</strong>: LFS keeps two CRs, one at either end of the disk, and writes to them alternately. LFS also implements a careful protocol when updating the CR with the latest pointers to the inode map and other information; specifically, it first writes out a header (with timestamp), then the body of the CR, and then finally one last block (also with a timestamp). If the system crashes during a CR update, LFS can detect this by seeing an inconsistent pair of timestamps. LFS will always choose to use the most recent CR that has consistent timestamps, and thus consistent update of the CR is achieved.</li>
+<li><strong>User data recovery</strong>: During normal operation, LFS buffers writes in a segment, and then, writes the segment to disk. LFS organizes these writes in a log, i.e., the CR points to a head and tail segment, and each segment points to the next segment to be written. LFS tries to rebuild many of those segments in a recovery through a technique known as <strong>roll forward</strong>. The basic idea is to start with the last checkpoint region, find the end of the log (which is included in the CR), and then use that to read through the next segments and see if there are any valid updates within it. If there are, LFS updates the file system accordingly and thus recovers much of the data and metadata written since the last checkpoint.</li>
+</ul>
+</li>
+</ul>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2024-01-17T05:51:00.000Z"> 2024 / 01 / 24, 13:55:48</time></span></div></div></article><br><span class="next-post"><a href="/2024/01/24/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-44-51-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2024/01/11/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-30-38-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

@@ -137,11 +137,6 @@ RetryInstruction() // retry instruction
   * **Condition variables**: the sleeping/waking interaction.
 
 
-### Chapter 27: Interlude: Thread API
-
-（略）
-
-
 ### Chapter 28: Locks
 
 1. Spin/yield lock implementations:

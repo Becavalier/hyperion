@@ -10,10 +10,6 @@ tags:
 
 闻名已久的操作系统著作，今日拜读一下。在线版本可以在<b>[这里](https://pages.cs.wisc.edu/~remzi/OSTEP/)</b>找到，本文是第 1-13 章的笔记。内容基于自身情况记录，仅供参考，Dialogue 的相关章节已略过。
 
-### Chapter 1: A Dialogue on the Book
-
-（略）
-
 ### Chapter 2: Introduction to Operating Systems
 
 1. **Operating System** (aka *virtual machine*, *supervisor*, *master control program*) uses **virtualization** technique to provide a more easy-to-use layer (system calls -> standard library) for the above applications.
@@ -24,10 +20,6 @@ tags:
   * ***System call***: adding user mode and kernel mode to provide protection for the OS. The idea here was to add a special pair of hardware instructions and hardware state to make the transition into the OS a more formal, controlled process.
   * ***Multiprogramming***: loading a number of jobs into memory and switch rapidly between them.
   * ***Unix***: leveraged by most of the OSes internally. 
-
-### Chapter 3: A Dialogue on Virtualization
-
-（略）
 
 ### Chapter 4: The Abstraction - Process
 
