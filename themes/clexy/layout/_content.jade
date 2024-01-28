@@ -1,18 +1,9 @@
 //- index page;
 if is_home()
-  h4.page-title Recent Articles
-  div.content
-  each post, index in site.posts.sort('date', 'desc').toArray()
-    if (index < config.index_generator.per_page)
-      a.article(href=config.root + post.path)
-        article.item(itemscope, itemprop='blogPost', itemtype='https://schema.org/BlogPosting')
-          div.post-intro
-            h2(itemprop='headline')=post.title
-            span.post-meta
-              | Published on
-              time(itemprop='datePublished', datetime=post.date.toISOString())=full_date(new Date(post.date), ' YYYY / MM / DD, HH:mm:ss')
-            p(itemprop='text').post-excerpt=post.intro ? post.intro : post.content.replace(/<(?:.|\n)*?>/gm, '').substr(0, 220)
-  h4.page-title See more? Please refer to the "Articles" page : )
+  div.home-container
+    img(src="/images/home-pic.png")
+    h4 Each new species (mainframe, minicomputer, personal computer, handheld, embedded computer, smart card, etc.) seems to go through the development that its ancestors did, both in hardware and in software. 
+    h4.right-alignment - <i>Advanced Operating Systems</i>
 
 //- articles page;
 if is_page() && page.title.toLowerCase() === 'articles'

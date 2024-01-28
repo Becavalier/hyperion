@@ -299,15 +299,6 @@ main
       border-bottom solid 1px #aaa
       opacity 0.6
       flex 1
-  .page-title
-    color $shade-gray
-    font-family $body-font
-    font-size 1.7rem
-    font-style italic
-    font-weight $body-weight
-    margin 0
-    padding-bottom 16px
-    text-align center
   .post-meta
     color $shade-gray
     display inline-block
@@ -478,8 +469,37 @@ main
   section#comments
     padding-top 20px
     margin-top 20px
+  .home-container
+    transform translate(0, -100px)
+    display flex
+    align-items center
+    justify-content center
+    flex-direction column
+    height 100%
+    h4
+      margin 0
+      width 70%
+      max-width 700px
+      line-height 1.5
+      color $dark-gray
+      font-family $body-font
+      font-size 1.7rem
+      font-style italic
+      font-weight $body-weight
+      text-align left
+      &.right-alignment
+        text-align right
+    img 
+      width 80%
+      filter grayscale(20%)
+      max-width 700px
+      border-top-left-radius: 37px 80px;
+      border-top-right-radius: 23px 100px;
+      border-bottom-left-radius: 110px 19px;
+      border-bottom-right-radius: 120px 24px;
+      margin-bottom 30px
   .about-container
-    margi 50px 0
+    margin 50px 0
     .avatar
       margin auto
       width 200px
@@ -619,6 +639,8 @@ hr
   body
     flex-direction column
     main
+      .home-container
+        transform translate(0, 0)
       flex none
       overflow scroll
       article
