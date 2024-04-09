@@ -67,8 +67,7 @@ struct proc {
 
 ### Chapter 5: Interlude - Process API
 
-1. Process-related calls: the separation of *fork()* and *exec()* allows the shell to do a whole
-bunch of useful things rather easily.
+1. Process-related calls: the separation of *fork()* and *exec()* allows the shell to do a whole bunch of useful things rather easily.
   * (POSIX.1) ***fork()***: creating new process.
     * This API creates an almost exact copy of the calling process as the basis for the created child process.
     * Under Linux, fork() is implemented using *copy-on-write* pages, so the only penalty that it incurs is the time and memory required to duplicate the parent's page tables, and to create a unique task structure for the child.

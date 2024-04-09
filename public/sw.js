@@ -991,7 +991,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2022/10/16/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-1-13-章）/index.html",
-    "revision": "87d5c50e8ee97259ace13dcf0104d19d"
+    "revision": "9c8fc2328bd796dc7cdabe6bf67ed606"
   },
   {
     "url": "2022/11/01/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-14-20-章）/index.html",
@@ -1047,7 +1047,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2023/07/04/《Unix-环境高级编程（第3版）》读书笔记（第-1-5-章）/index.html",
-    "revision": "7cdd3d3461617e570e52aad5baf073e5"
+    "revision": "e47c85153461d9c7ade94fa3b46f6ca7"
   },
   {
     "url": "2023/07/13/关于-C++-Stack-Unwinding-的一点记录/index.html",
@@ -1139,7 +1139,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2024/01/24/《Operating-Systems-Three-Easy-Pieces》读书笔记（第-44-51-章）/index.html",
-    "revision": "c4f244a7f8260ab5d761579a94bead59"
+    "revision": "6ca3372cecced2923f8be23e31f3264a"
+  },
+  {
+    "url": "2024/02/11/《Unix-环境高级编程（第3版）》读书笔记（第-6-10-章）/index.html",
+    "revision": "ec55ec3ec6879bfe38b31e26f8c996f7"
   },
   {
     "url": "about/index.html",
@@ -1474,6 +1478,10 @@ self.__precacheManifest = [
     "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
   },
   {
+    "url": "archives/2024/02/index.html",
+    "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
+  },
+  {
     "url": "archives/2024/index.html",
     "revision": "bc3c4aa8cebf4ea0b83656aa4a521148"
   },
@@ -1483,7 +1491,7 @@ self.__precacheManifest = [
   },
   {
     "url": "articles/index.html",
-    "revision": "74f7547bafd159e0214954cf217575b0"
+    "revision": "f06258cd21f4a3d21aa6effa9d0416da"
   },
   {
     "url": "cards/index.html",
@@ -1582,6 +1590,10 @@ self.__precacheManifest = [
     "revision": "dadff42e2ce85dc37508b1ed2244b0d8"
   },
   {
+    "url": "page/29/index.html",
+    "revision": "dadff42e2ce85dc37508b1ed2244b0d8"
+  },
+  {
     "url": "page/3/index.html",
     "revision": "dadff42e2ce85dc37508b1ed2244b0d8"
   },
@@ -1647,7 +1659,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "9fb7edab7b796a33b7a405aeac5fab77"
+    "revision": "ccf5b77ca2aacec2232811a4af1d40a8"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1847,11 +1859,11 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/me-en/index.html",
-    "revision": "ec48756c47c9b8aa99353857d1a6d124"
+    "revision": "8ea8fb223c4ac3cffee968a985c6e674"
   },
   {
     "url": "resume/me/index.html",
-    "revision": "abcf03ee823c755e73de0d46cbe64247"
+    "revision": "2657343c5dbfeace5bae02353df3f62a"
   },
   {
     "url": "scripts/index.js",
@@ -1879,7 +1891,7 @@ self.__precacheManifest = [
   },
   {
     "url": "styles/screen.css",
-    "revision": "6b37e337d996d48da32546d18e9a621b"
+    "revision": "bacedd840f13f7fe22f81411f0eb01a0"
   },
   {
     "url": "tags/AI/index.html",
@@ -1975,7 +1987,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "c882cfbe1d3fed81ddd84807a342733c"
+    "revision": "93f2d162361dbc9de1feb9dd8e4f74db"
   },
   {
     "url": "tags/Interpreter/index.html",
@@ -2091,7 +2103,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/Unix/index.html",
-    "revision": "3b01fc2715b1ecbc9b700cf287105c77"
+    "revision": "ba07a77389353af1cf8522cf648970bb"
   },
   {
     "url": "tags/V8/index.html",

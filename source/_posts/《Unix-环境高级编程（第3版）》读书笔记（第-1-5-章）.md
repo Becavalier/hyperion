@@ -27,7 +27,7 @@ tags:
 
 2. Shell：
 
-* POSIX 1003.2 对 Shell 进行了标准化；
+* **POSIX 1003.2 对 Shell 进行了标准化**：The shell part of the standard describes utilities that must be present on all systems, and others that are optional, depending upon the nature of the system docstore.
 * 几种常见的 Shell 版本：
   * Bourne Shell (bash)：由 Steve Bourne 在贝尔实验室开发；
   * Borune-again Shell：GNU Shell，设计遵循 POSIX 标准，也保留了与 bash 的兼容性；
