@@ -271,7 +271,7 @@ section:last-child {
 }
 
 .sectionContent .logo-company {
-	height: 22px;
+	height: 30px;
 	margin-right: 10px;
 }
 
@@ -477,7 +477,7 @@ h2 .subDetails {
 }
 
 .sectionContent ul {
-	padding: 0;
+	padding-left: 20px;
 	font-size: .9em;
 	line-height: 1.4em;
 	margin-bottom: 20px;
@@ -485,7 +485,7 @@ h2 .subDetails {
 }
 
 .sectionContent ul li {
-	margin: 10px 0;
+	margin: 5px 0;
 }
 
 .text-italic {
