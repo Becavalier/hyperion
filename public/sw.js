@@ -1659,7 +1659,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "bde1a8168c12069f673c859c1b81df5d"
+    "revision": "dfd6cd23920991a55b3a007ff8470c40"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1863,7 +1863,7 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/me/index.html",
-    "revision": "2fa73d22e0d9f7e4eaff22285d29b406"
+    "revision": "c1ef12515a40003e507a2bd1c5541307"
   },
   {
     "url": "scripts/index.js",
@@ -1987,7 +1987,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "861acf6b798cc3512d41cb30635f836e"
+    "revision": "388f6cd2e8c3103a70a59dcd0cb883aa"
   },
   {
     "url": "tags/Interpreter/index.html",
