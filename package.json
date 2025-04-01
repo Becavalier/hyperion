@@ -8,7 +8,7 @@
   "scripts": {
     "build": "hexo clean && hexo g && cp -R extra/* public/ && npm run generate-sw",
     "serve": "node ./services/www/index.js",
-    "daemon": "pm2 start ./process.yml",
+    "deamon": "pm2 start ./process.yml",
     "generate-sw": "workbox generateSW build/workbox-config.js",
     "sync": "git pull --rebase origin master && npm run build && pm2 reload all && nginx -s reload -c $(pwd)/nginx.conf",
     "preview": "cd ./public && browser-sync start --server --files .",
