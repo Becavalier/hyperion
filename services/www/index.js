@@ -9,7 +9,7 @@ const session = require('express-session');
 const constants = require('./constants');
 const useBasicAuth = require('./middlewares/basic-auth');
 const expressEnforcesSSL = require('express-enforces-ssl');
-const setInterfaceEntrance = require('./graphql-server');
+// const setInterfaceEntrance = require('./graphql-server');
 const setupChallengesRoute = require('./routers/challenges');
 
 const app = express();
@@ -82,7 +82,7 @@ if (isProd) {
 app.use(compression());
 
 // set api routes;
-setInterfaceEntrance(app);
+// setInterfaceEntrance(app);
 
 // listen port;
 app.listen = function(port) {
