@@ -527,7 +527,10 @@ ListNode <span class="token function">dummy</span><span class="token punctuation
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><ul>
-<li>双指针、快慢指针；</li>
+<li>双指针、快慢指针；<ul>
+<li>查找回文串：从中心向两端扩散的双指针；</li>
+</ul>
+</li>
 <li><strong>滑动窗口</strong>：快慢指针的一种变体，一快一慢两个指针前后相随，中间的部分就是窗口。该技巧主要用来解决子数组问题，比如：<strong>寻找符合某个条件的最长/最短子数组</strong>。<ul>
 <li>[🔴 <b><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-window-substring/">最小覆盖子串</a></b>]。</li>
 </ul>
@@ -773,7 +776,40 @@ string <span class="token function">minWindow</span><span class="token punctuati
 <li>确定「选择」，也就是导致「状态」产生变化的行为；</li>
 <li>明确「dp 函数/数组」的定义。</li>
 </ol>
-<h3 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h3><h3 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><ul>
+<h3 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h3><ul>
+<li>[🟠 <b><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations/description/">全排列</a></b>]；</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+  vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> result<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+  <span class="token keyword">void</span> <span class="token function">iterate</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> tracks<span class="token punctuation">,</span> unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">bool</span><span class="token operator">></span><span class="token operator">&amp;</span> colorMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 回溯 -> 在循环里递归；</span>
+    <span class="token comment" spellcheck="true">// tracks 收集每一个路径，当 nums 数字全被标记时推入 result；</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>tracks<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>tracks<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 只遍历当前递归中，nums 没有被标记的部分，元素不重复选择；</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>colorMap<span class="token punctuation">[</span>num<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 修改状态；</span>
+      colorMap<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      tracks<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">iterate</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> tracks<span class="token punctuation">,</span> colorMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 恢复状态；</span>
+      colorMap<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+      tracks<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>   
+  vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">permute</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> tracks<span class="token punctuation">;</span>
+    unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">bool</span><span class="token operator">></span> colorMap<span class="token punctuation">;</span> 
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num<span class="token operator">:</span> nums<span class="token punctuation">)</span> colorMap<span class="token punctuation">[</span>num<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token function">iterate</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> tracks<span class="token punctuation">,</span> colorMap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h3><ul>
 <li>丑数（Ugly Number）：如果一个数 n 可以表示为：<b>n = 2<sup>^a</sup> x 3<sup>^b</sup> x 5<sup>^c</sup></b>，其中 a、b、c 都是非负整数，那么这个数就是一个丑数。<ul>
 <li>[🟢 <b><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ugly-number/description/">丑数</a></b>]；</li>
 <li>[🟠 <b><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/ugly-number-ii/description/">丑数2</a></b>] - 拆解 + DP；</li>
@@ -799,4 +835,18 @@ string <span class="token function">minWindow</span><span class="token punctuati
   <span class="token keyword">return</span> std<span class="token operator">::</span><span class="token function">count</span><span class="token punctuation">(</span>isPrime<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> isPrime<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2025-04-08T02:34:00.000Z"> 2025 / 04 / 23, 17:25:50</time></span></div></div></article><br><span class="prev-post"><a href="/2025/04/01/TypeScript-类型体操练习册/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<ul>
+<li>牛顿迭代法求近似平方根：</li>
+</ul>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token keyword">struct</span> Solution <span class="token punctuation">{</span>
+  <span class="token keyword">auto</span> <span class="token function">mySqrt</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">double</span> y <span class="token operator">=</span> x<span class="token punctuation">;</span> 
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>y <span class="token operator">*</span> y <span class="token operator">-</span> x<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1e-6</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">// 控制逼近精度；</span>
+      y <span class="token operator">=</span> <span class="token punctuation">(</span>y <span class="token operator">+</span> x <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> y<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2025-04-08T02:34:00.000Z"> 2025 / 04 / 25, 20:07:03</time></span></div></div></article><br><span class="prev-post"><a href="/2025/04/01/TypeScript-类型体操练习册/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
