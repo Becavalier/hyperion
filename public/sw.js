@@ -1151,7 +1151,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2025/04/08/自用算法模版/index.html",
-    "revision": "5c15dde38b4a9beed66adbb0e73d12ab"
+    "revision": "4d67e4537988c9b6a5d938543fad98a8"
   },
   {
     "url": "about/index.html",
@@ -1675,7 +1675,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "442ec36c4cf6f0b3b1165ca7070d92a6"
+    "revision": "9fb7edab7b796a33b7a405aeac5fab77"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -2007,7 +2007,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "04a7ea5d7f6f81d473fe883aad3ffbe5"
+    "revision": "3505be71396bf3c1e14158f7efef2465"
   },
   {
     "url": "tags/Interpreter/index.html",
