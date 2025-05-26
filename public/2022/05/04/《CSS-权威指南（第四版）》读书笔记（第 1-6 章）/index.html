@@ -4,10 +4,26 @@
 <li><span class="pn">Page 10</span><strong>置换元素</strong>（Replaced Element）与<strong>非置换元素</strong>（Non-replaced Element）：前者指用来置换元素内容的部分不由文档内容直接表示，如 <code>img</code>；后者指元素的内容由用户代理在元素自身生成的框中显示，如 <code>span</code>。</li>
 <li><span class="pn">Page 12</span><strong>在 HTML 中，块级元素不能出现在行内元素中</strong>，而通过 CSS 改变显示方式（<strong>display</strong>）则完全合法有效。但实际上 display 属性仅能改变元素的显示方式，而无法改变它们的种类。</li>
 </ol>
+<ul>
+<li>块级元素主要用于结构化布局；</li>
+<li>行内元素本用于描述文本的一部分。</li>
+</ul>
 <p><img src="1.png"></p>
 <ol start="3">
 <li><span class="pn">Page 16</span>将 HTML 文档与 CSS 关联的几种方式：</li>
 </ol>
+<ul>
+<li>@import 加载样式表是完全同步、阻塞的，浏览器必须等待它加载完成，才会继续渲染页面样式。</li>
+<li>通过 &lt;link&gt; 加载样式表可以并行：<ul>
+<li>发起并行 HTTP 请求加载 CSS 样式表文件；</li>
+<li>浏览器暂停构建 CSS Object Model（CSSOM），页面渲染被阻塞；</li>
+<li>（CSS 样式表加载完成后）；</li>
+<li>浏览器构建 CSSOM；</li>
+<li>DOM + CSSOM 生成 Render Tree；</li>
+<li>页面被绘制到屏幕上（Paint）。</li>
+</ul>
+</li>
+</ul>
 <pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 外部样式表 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/css<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./styles.css<span class="token punctuation">"</span></span> <span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>all<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
 <span class="token comment" spellcheck="true">&lt;!-- @import / 内联样式表 --></span>
@@ -30,7 +46,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="5">
-<li><span class="pn">Page 22</span>使用 HTTP 首部为文档关联 CSS（支持的浏览器并不多，如 Firefox）：</li>
+<li><span class="pn">Page 22</span>使用 HTTP 首部为文档关联 CSS（支持的浏览器并不多，如 Firefox），主要依赖于 Link 头：</li>
 </ol>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Express v4.</span>
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
@@ -40,6 +56,22 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>使用 preload 属性拆分关键样式 vs 非关键样式：</li>
+</ul>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token comment" spellcheck="true">&lt;!-- 关键样式：inline + 首屏快速渲染 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+  <span class="token selector">body </span><span class="token punctuation">{</span> <span class="token property">font-family</span><span class="token punctuation">:</span> sans-serif<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- 次要样式：预加载后动态生效 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> 
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span> 
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main.css<span class="token punctuation">"</span></span> 
+  <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>style<span class="token punctuation">"</span></span> 
+  <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>this.onload<span class="token punctuation">=</span>null;this.rel<span class="token punctuation">=</span><span class="token punctuation">'</span>stylesheet<span class="token punctuation">'</span><span class="token punctuation">"</span></span>
+<span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="6">
 <li><span class="pn">Page 25</span>常见的厂商前缀：</li>
 </ol>
@@ -103,10 +135,10 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token attribute">[foo|="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有 foo 属性，且其值以 "bar" 和 "-" 开头，或仅为 "bar" 本身 */</span>
 <span class="token selector"><span class="token attribute">[foo~="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有 foo 属性，且其值是包含 "bar" 的一组词（词两侧必须为空格） */</span>
 <span class="token selector"><span class="token attribute">[foo*="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有 foo 属性，且其值包含子串 "bar" */</span>
-<span class="token selector"><span class="token attribute">[foo^="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有" foo 属性，且其值以 bar" 开头 */</span>
+<span class="token selector"><span class="token attribute">[foo^="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有 foo 属性，且其值以 "bar" 开头 */</span>
 <span class="token selector"><span class="token attribute">[foo$="bar"]</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 元素有 foo 属性，且其值以 "bar" 结尾 */</span>
 
-<span class="token selector">*<span class="token attribute">[class|="btn"]</span><span class="token attribute">[class*="-arrow"]</span><span class="token pseudo-element">:after</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 联合选择 */</span>
+<span class="token selector">*<span class="token attribute">[class|="btn"]</span><span class="token attribute">[class*="-arrow"]</span><span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 联合选择 */</span>
 
 <span class="token comment" spellcheck="true">/* CSS Selectors Level 4 新加入的不区分大小写选项 */</span>
 <span class="token selector">a[href$="<span class="token class">.pdf</span>" i] </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -134,7 +166,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <ul>
 <li>后续同胞选择符：</li>
 </ul>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">h2 ~ol </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 选择与 h2 同属一个父元素的 ol */</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">h2 ~ol </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 选择 h2 之后与 h2 同属一个父元素的 ol */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="12">
 <li><span class="pn">Page 72</span>伪类选择符（<strong>使用 “:”</strong>）：可为文档中不一定真实存在的结构指定样式，或者为某些元素的特定状态指定“幽灵类”。<strong>伪类始终指代所依附的元素</strong>。</li>
@@ -142,7 +174,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <ul>
 <li>拼接伪类：</li>
 </ul>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">a<span class="token pseudo-class">:link</span><span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">a<span class="token pseudo-class">:link</span><span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 当鼠标悬停在未访问的链接上时的样式 */</span>
 <span class="token selector">a<span class="token pseudo-class">:visited</span><span class="token pseudo-class">:hover</span><span class="token pseudo-class">:lang(de)</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
@@ -154,7 +186,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token selector">div<span class="token pseudo-class">:only-of-type</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 选择同胞中唯一的 div 类型的元素 */</span>
 <span class="token selector">li<span class="token pseudo-class">:first-child</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token selector">li<span class="token pseudo-class">:last-child</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">/* 选择同胞中的第一个和最后一个某种元素 */</span>
+<span class="token comment" spellcheck="true">/* 选择同胞中的第一个和最后一个 table 元素 */</span>
 <span class="token selector">table<span class="token pseudo-class">:first-of-type</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token selector">table<span class="token pseudo-class">:last-of-type</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token selector">p<span class="token pseudo-class">:nth-child(3n + 1)</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 选择第 3、6、9 位置上的元素（n 从 1 开始）*/</span>
@@ -178,7 +210,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 </ul>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector">a<span class="token pseudo-class">:focus</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 当指定元素获得输入焦点时 */</span>
 <span class="token selector">a<span class="token pseudo-class">:hover</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 当鼠标放置于指定元素上时 */</span>
-<span class="token selector">a<span class="token pseudo-class">:active</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 当用户激活指定元素时 */</span>
+<span class="token selector">a<span class="token pseudo-class">:active</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 当用户正在点击指定元素，还未松开鼠标时 */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>UI 状态伪类：</li>
@@ -186,7 +218,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector">input<span class="token pseudo-class">:enabled</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token selector">input<span class="token pseudo-class">:disabled</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token selector">input<span class="token attribute">[type="checkbox"]</span><span class="token pseudo-class">:checked</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token selector"><span class="token pseudo-class">:indeterminate</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector"><span class="token pseudo-class">:indeterminate</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 某个表单控件既不是选中也不是未选中的“中间状态”，比如复选框的横杠，进度条没有 value */</span>
 <span class="token selector"><span class="token pseudo-class">:default</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 指代默认选中的单选按钮、复选框或选项 */</span>
 <span class="token selector">input<span class="token attribute">[type="email"]</span><span class="token pseudo-class">:valid</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span> 
 <span class="token selector">input<span class="token attribute">[type="email"]</span><span class="token pseudo-class">:invalid</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -200,7 +232,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <ul>
 <li>其他伪类：</li>
 </ul>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 当用户访问 URL 中带有 “#target” 时，页面中以 “target” 为 ID 的元素将应用该样式 */</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 当用户访问 URL 中带有 “#target” 时，页面中以 “target” 为 ID 的 p 元素将应用该样式 */</span>
 <span class="token selector">p<span class="token pseudo-class">:target</span> </span><span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 目标伪类 */</span>
 <span class="token selector">*<span class="token pseudo-class">:lang(fr)</span> </span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">/* 语言选择伪类 */</span>
 <span class="token comment" spellcheck="true">/* 否定伪类，括号中只能使用简单选择符，即：类型选择符、通用选择符、属性选择符、类选择符、ID 选择符、伪类。且其自身不能嵌套 */</span>
@@ -235,7 +267,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <pre class="line-numbers language-css"><code class="language-css"><span class="token selector">h1 </span><span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red <span class="token important">!important</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="16">
-<li><span class="pn">Page 111</span><strong>继承</strong>：某些样式不仅应用到所指元素，还应用到元素的后代上。<strong>继承值没有特指度，默认情况下能够被用户代理的样式覆盖</strong>。通用选择符（*）能匹配任何元素，因此它往往会终结继承关系。但在明确指定选择器的情况下，使用值 “inherit” 可以主动选择继承值。</li>
+<li><span class="pn">Page 111</span><strong>继承</strong>：某些样式（文本相关的样式）不仅应用到所指元素，还应用到元素的后代上。<strong>继承值没有特指度，默认情况下能够被用户代理的样式覆盖</strong>。通用选择符（*）能匹配任何元素，因此它往往会终结继承关系。但在明确指定选择器的情况下，使用值 “inherit” 可以主动选择继承值。</li>
 <li><span class="pn">Page 114</span><strong>层叠</strong>：</li>
 </ol>
 <ul>
@@ -247,7 +279,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <li>按声明的前后位置排序应用到特定元素上的所有声明。<strong>样式表或文档中靠后的声明权重较高，导入样式表中的声明放在当前样式表中所有声明的前面</strong>。</li>
 </ol>
 </li>
-<li><strong>LVFHA 顺序</strong>：受层叠规则影响，某些伪类需按特殊顺序排列。<ul>
+<li><strong>LVFHA 顺序</strong>：受层叠规则影响，某些伪类需按特殊顺序排列。记忆口诀：<strong>LoVe Fears HAte</strong>，如不按此顺序书写，可能导致样式不生效。<ul>
 <li>:link {}</li>
 <li>:visited {}</li>
 <li>:focus {}</li>
@@ -261,11 +293,11 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 </ol>
 <ul>
 <li><em>inherit</em>：把属性值设为与父元素同一属性的值一样（强制继承）；</li>
-<li><em>initial</em>：把属性值设为预定义的初始值（重置）；</li>
-<li><em>unset</em>：对继承的属性来说，作用与 inherit 类似，否则与 initial 类似（前两者的通用替身）；</li>
-<li><em>revert</em>：将属性的值恢复为若当前元素未进行任何更改时，该属性将具有的值。</li>
+<li><em>initial</em>：还原为 CSS 规范默认值；</li>
+<li><em>unset</em>：如果属性可继承就继承，否则还原为规范；</li>
+<li><em>revert</em>：还原为浏览器默认样式，或浏览器用户自己设置的样式（非网页作者）。</li>
 </ul>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">body </span><span class="token punctuation">{</span> <span class="token property">all</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">/* 除 direction、unicode-bidi 之外的所有属性值均继承自父元素 */</span>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">body </span><span class="token punctuation">{</span> <span class="token property">all</span><span class="token punctuation">:</span> unset<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">/* 清除所有非继承样式（包括 margin、padding、display 等） */</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="19">
 <li><span class="pn">Page 126</span>在 CSS 中，相对 URL 相对于所在的样式表，而非使用样式表的文件。</li>
@@ -279,7 +311,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="21">
-<li><span class="pn">Page 131</span>CSS2 建议使用 90ppi（像素每英寸）作为参考像素，CSS2.1 与 CSS3 则建议使用 <strong>96ppi</strong>。CSS 规范建议，<strong>若显示器的像素密度与每英寸 96 像素相差较大，则用户代理应该缩放像素度量</strong>（对于显示设备来说，ppi 与 dpi 两者相同）。</li>
+<li><span class="pn">Page 131</span>CSS2 建议使用 90ppi（像素每英寸）作为参考像素，CSS2.1 与 CSS3 则建议使用 <strong>96ppi</strong>。CSS 规范建议，<strong>若显示器的像素密度与每英寸 96 像素相差较大，则用户代理应该缩放像素度量</strong>（对于显示设备来说，ppi 与 dpi 两者几乎相同）。CSS 像素并不是固定的物理点，而是一个逻辑单位，代表用户眼中的“统一视觉大小”（1 个 CSS 像素 ≈ 0.26458 毫米 ≈ 1/96 英寸的物理大小），浏览器通过 devicePixelRatio 来控制逻辑像素与物理像素的比例。</li>
 </ol>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-resolution</span><span class="token punctuation">:</span> 192dpi<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
   <span class="token selector">body </span><span class="token punctuation">{</span>
@@ -299,15 +331,20 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <li><span class="pn">Page 132</span>相对长度单位：</li>
 </ol>
 <ul>
-<li><em>em</em>：1em 等于元素 font-size 的属性值；</li>
+<li><em>em</em>：相对于当前元素的字体大小；</li>
 <li><em>ex</em>：指所用字体中小写字母 “x” 的高度（会根据字体变化）；</li>
-<li><em>rem</em>：类似 em，但相对于根元素计算；</li>
+<li><em>rem</em>：类似 em，相对于根元素的字体大小；</li>
 <li><em>ch</em>：定义为所用字体中一个零的进宽（进高）；</li>
 <li><em>vw</em>：视区宽度单位（宽度 / 100）；</li>
 <li><em>vh</em>：视区高度单位（高度 / 100）；</li>
 <li><em>vmin</em>：视区宽度或高度的最小值；</li>
 <li><em>vmax</em>：视区宽度或高度的最大值。</li>
 </ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">html </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 响应式字体大小，字体会在 14px 与 18px 之间动态变化 */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">clamp</span><span class="token punctuation">(</span><span class="token number">14</span>px, <span class="token number">1.5</span>vw, <span class="token number">18</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="23">
 <li><span class="pn">Page 138</span>CSS 计算值（<strong>calc</strong>）：</li>
 </ol>
@@ -315,7 +352,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>一些规则：<ul>
-<li>“+” 与 “-” 两侧的值必须为相同单位类型。作为运算符时两者左右必须有空格；</li>
+<li>“+” 与 “-” 两侧的值可以为不同单位类型。作为运算符时两者左右必须有空格；</li>
 <li>“*” 计算的两个值中必须有一个是无单位的纯数字值；</li>
 <li>“/” 计算的两个值中右边那个必须是无单位的纯数字值；</li>
 <li>任何情况下都不能除以零。</li>
@@ -483,7 +520,7 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <li><em>sub（super）</em>：元素的基线（底边线）低于（高于）父元素的基线；</li>
 <li><em>bottom（top）</em>：将元素所在<strong>行内框</strong>的底边（顶边）与行框的底边（顶边）对齐。行框高度由行中最高的元素决定；</li>
 <li><em>text-bottom（text-top）</em>：相对行中文本的底边（顶边）对齐。文本的边界由父元素字号确定；</li>
-<li><em>middle</em>：<strong>通常用在图像上</strong>。将行内元素所在方框的中线与父元素基线向上偏移 0.5ex（<strong>多数用户代理将 1ex 视为半个 em</strong>）处的线对齐。由于用户代理对 ex 的解释可能不同，因此不同平台可能会有偏差。</li>
+<li><em>middle</em>：<strong>通常用在图像上</strong>。将行内元素所在方框的中线与父元素基线向上偏移 0.5ex（<strong>多数用户代理将 1ex 视为半个 em</strong>，ex 即小写字母 x 的高度）处的线对齐。由于用户代理对 ex 的解释可能不同，因此不同平台可能会有偏差。</li>
 </ul>
 </li>
 </ul>
@@ -542,4 +579,4 @@ p<span class="token pseudo-class">:nth-last-child(2n - 1)</span> </span><span cl
 <li><strong>text-orientation</strong>：设定文本行中字符的方向；</li>
 <li><strong>direction</strong> / <strong>unicode-bidi</strong>：CSS2 中用于控制文本方向的属性，它们会改变行内基线的方向。</li>
 </ul>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-05-04T14:09:21.000Z"> 2025 / 03 / 31, 15:59:31</time></span></div></div></article><br><span class="next-post"><a href="/2022/05/28/《无伤跑法》读书笔记/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2021/09/25/《C-Primer-Plus-第六版》读书笔记/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-05-04T14:09:21.000Z"> 2025 / 05 / 26, 17:54:13</time></span></div></div></article><br><span class="next-post"><a href="/2022/05/28/《无伤跑法》读书笔记/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2021/09/25/《C-Primer-Plus-第六版》读书笔记/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

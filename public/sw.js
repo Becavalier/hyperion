@@ -967,7 +967,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2022/05/04/《CSS-权威指南（第四版）》读书笔记（第 1-6 章）/index.html",
-    "revision": "48e3e35f92e762f896a438bfb6ee9535"
+    "revision": "8df0235adf89885b1cf6dada2b4f6ebb"
   },
   {
     "url": "2022/05/28/《无伤跑法》读书笔记/index.html",
@@ -979,7 +979,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2022/06/15/《CSS-权威指南（第四版）》读书笔记（第-7-13-章）/index.html",
-    "revision": "30763af3a2506359d57bf16ced347f62"
+    "revision": "d76563de75318b38db77628090b73237"
   },
   {
     "url": "2022/07/11/《CSS-权威指南（第四版）》读书笔记（第-14-20-章）/index.html",
@@ -1155,7 +1155,7 @@ self.__precacheManifest = [
   },
   {
     "url": "2025/05/23/前端面试模版/index.html",
-    "revision": "8f00fb35d54bf7953acec78bdd814515"
+    "revision": "4d780a60b96b6478471616eb0daac5fe"
   },
   {
     "url": "about/index.html",
@@ -2015,7 +2015,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "d05f7323612e9c3a759cdfdc131ba66f"
+    "revision": "176407bb6e8c649253c26c6719ca6dfd"
   },
   {
     "url": "tags/Interpreter/index.html",
