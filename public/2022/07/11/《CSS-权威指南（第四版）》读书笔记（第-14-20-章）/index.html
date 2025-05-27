@@ -81,25 +81,63 @@
 <li>可以使用 “@counter-style” 块定义新的计数模式：</li>
 </ul>
 </li>
+<li>CSS 函数 counter() 的普通计数器基本使用示例：</li>
 </ul>
-<pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* 计数器实例 */</span>
-<span class="token atrule"><span class="token rule">@counter-style</span> custom-counter</span> <span class="token punctuation">{</span>
-  <span class="token property">system</span><span class="token punctuation">:</span> cyclic<span class="token punctuation">;</span>
-  <span class="token property">symbols</span><span class="token punctuation">:</span> <span class="token string">"\1F44D"</span> <span class="token string">"\1F44E"</span> <span class="token string">"\1F44F"</span><span class="token punctuation">;</span>
-  <span class="token property">suffix</span><span class="token punctuation">:</span> <span class="token string">". "</span><span class="token punctuation">;</span>
-  <span class="token property">prefix</span><span class="token punctuation">:</span> <span class="token string">"-> "</span><span class="token punctuation">;</span>
-  <span class="token property">range</span><span class="token punctuation">:</span> <span class="token number">1</span> <span class="token number">2</span>, <span class="token number">4</span> <span class="token number">5</span><span class="token punctuation">;</span>
-  <span class="token property">fallback</span><span class="token punctuation">:</span> square<span class="token punctuation">;</span>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">ol </span><span class="token punctuation">{</span>
+  <span class="token property">counter-reset</span><span class="token punctuation">:</span> listCounter<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 初始化计数器 */</span>
 <span class="token punctuation">}</span>
-<span class="token atrule"><span class="token rule">@counter-style</span> custom-counter-extra</span> <span class="token punctuation">{</span>
-  <span class="token property">system</span><span class="token punctuation">:</span> extends custom-counter<span class="token punctuation">;</span>
-  <span class="token property">suffix</span><span class="token punctuation">:</span> <span class="token string">"~ "</span><span class="token punctuation">;</span>
-  <span class="token property">prefix</span><span class="token punctuation">:</span> <span class="token string">" ~"</span><span class="token punctuation">;</span>
+<span class="token selector">li </span><span class="token punctuation">{</span>
+  <span class="token property">counter-increment</span><span class="token punctuation">:</span> listCounter<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 每个列表项递增计数器 */</span>
 <span class="token punctuation">}</span>
-<span class="token selector">ul </span><span class="token punctuation">{</span>
-  <span class="token property">list-style</span><span class="token punctuation">:</span> custom-counter-extra<span class="token punctuation">;</span>
+<span class="token selector">li<span class="token pseudo-element">::after</span> </span><span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"["</span> <span class="token function">counter</span><span class="token punctuation">(</span>listCounter<span class="token punctuation">)</span> <span class="token string">"] == ["</span> <span class="token function">counter</span><span class="token punctuation">(</span>listCounter, upper-roman<span class="token punctuation">)</span> <span class="token string">"]"</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>CSS 函数 counters() 的嵌套计数器基本使用示例：</li>
+</ul>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector">ol </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 每进入一个 ol 都重置一次同名计数器，退出时恢复至父列表的计数状态 */</span>
+  <span class="token property">counter-reset</span><span class="token punctuation">:</span> listCounter<span class="token punctuation">;</span>  
+<span class="token punctuation">}</span>
+<span class="token selector">li </span><span class="token punctuation">{</span>
+  <span class="token property">counter-increment</span><span class="token punctuation">:</span> listCounter<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">li<span class="token pseudo-element">::marker</span> </span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">/* 将多个同名计数器值之间使用 . 按顺序连接显示 */</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">counters</span><span class="token punctuation">(</span>listCounter, <span class="token string">"."</span>, upper-roman<span class="token punctuation">)</span> <span class="token string">") "</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="第-16-章-变形"><a href="#第-16-章-变形" class="headerlink" title="第 16 章 - 变形"></a>第 16 章 - 变形</h3><ol start="67">
 <li><span class="pn">Page 825</span>变形：</li>
 </ol>
@@ -196,7 +234,11 @@
 <ul>
 <li>若没有指定开始和结束关键帧，则用户代理将<strong>使用要应用动画效果的属性的原始值构建一个 0%（to）和 100%（from）关键帧</strong>；</li>
 <li>如果有多个动画为同一个属性指定了不同的值，最后一个应用的动画将覆盖之前动画中声明的值；</li>
-<li>动画在 UI 线程中的优先级最低。不透明度或变形动画通常由 GPU 执行，<strong>为了提升性能，只要可能，就应该把 transform 和 opacity 属性放到动画中</strong>。</li>
+<li>动画在 UI 线程中的优先级最低。不透明度或变形动画通常由 GPU 执行，<strong>为了提升性能，只要可能，就应该把 transform 和 opacity 属性放到动画中</strong>。避免对会触发重排（reflow）或重绘（repaint）的属性（如 width、height、margin 等）进行动画操作。<ul>
+<li>重排（reflow）：发生在浏览器重新计算网页的某些部分的位置和几何形状时（例如在交互式站点更新后）。这通常会紧接着重绘；</li>
+<li>重绘（repaint）：浏览器重新绘制网页以显示更新后的视觉效果。</li>
+</ul>
+</li>
 </ul>
 <h3 id="第-19-章-滤镜、混合、剪裁和遮罩"><a href="#第-19-章-滤镜、混合、剪裁和遮罩" class="headerlink" title="第 19 章 - 滤镜、混合、剪裁和遮罩"></a>第 19 章 - 滤镜、混合、剪裁和遮罩</h3><ol start="70">
 <li><span class="pn">Page 950</span>CSS 滤镜：</li>
@@ -224,4 +266,4 @@
 <li><span class="pn">Page 971</span>剪裁和遮罩：略。</li>
 </ol>
 <h3 id="第-20-章-针对特定媒体的样式"><a href="#第-20-章-针对特定媒体的样式" class="headerlink" title="第 20 章 - 针对特定媒体的样式"></a>第 20 章 - 针对特定媒体的样式</h3><p>（略）</p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-07-11T04:11:09.000Z"> 2025 / 03 / 31, 15:59:31</time></span></div></div></article><br><span class="next-post"><a href="/2022/09/21/张家界-长沙-海南环岛-10-日游攻略/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/06/15/《CSS-权威指南（第四版）》读书笔记（第-7-13-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-07-11T04:11:09.000Z"> 2025 / 05 / 27, 17:55:00</time></span></div></div></article><br><span class="next-post"><a href="/2022/09/21/张家界-长沙-海南环岛-10-日游攻略/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/06/15/《CSS-权威指南（第四版）》读书笔记（第-7-13-章）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>

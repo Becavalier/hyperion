@@ -367,8 +367,16 @@
 <ul>
 <li>弹性盒的目的是实现一维内容分布，即<strong>沿一个方向（或轴）布置内容</strong>；</li>
 <li>弹性盒类别（display）：<ul>
-<li>flex / flex block：生成块级框；</li>
-<li>inline-flex / flex inline：生成行内块级框。</li>
+<li>flex / flex block：生成块级框；<ul>
+<li>容器是一个<strong>块级元素</strong>；</li>
+<li>容器会占据一整行，默认情况下将其他元素推到下一行；</li>
+</ul>
+</li>
+<li>inline-flex / flex inline：生成行内块级框。<ul>
+<li>容器是一个<strong>行内元素</strong>；</li>
+<li>容器不会占据整行，其他元素可以与其在同一行显示。</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>父容器在设置使用弹性盒布局后，仅子元素会变为弹性元素，其他后代则不受影响。弹性元素只要没有应用绝对定位（会被移除文档流），<strong>默认为块级元素</strong>；</li>
@@ -411,7 +419,7 @@
 <li><strong>order</strong>：用于修改单个弹性元素的显示顺序。默认情况下，弹性元素的显示和排布顺序与在源码中的顺序一致（处在同一个序号为 0 的排序组中）。</li>
 </ul>
 </li>
-<li>需要注意 flex 属性与其简写属性在使用上的不同：<strong>简写形式下，若仅提供了弹性因子，则默认缩减因子值为 0，弹性基准值为 0。因此，在计算弹性元素增长尺度分配时不减去自身尺度</strong>。类似的，弹性元素无法“缩小”；</li>
+<li>需要注意 flex 属性与其简写属性在使用上的不同：<strong>简写形式下，若仅提供了弹性增长因子，则默认缩减因子值为 0，弹性基准值为 0。因此，在计算弹性元素增长尺度分配时不减去自身尺度</strong>（前提是元素没有设置 width 等属性）。类似的，弹性元素无法“缩小”；</li>
 </ul>
 <pre class="line-numbers language-css"><code class="language-css"><span class="token comment" spellcheck="true">/* flex 简写值与等效的完整值 */</span>
 <span class="token selector">div<span class="token class">.a</span> </span><span class="token punctuation">{</span>
@@ -485,7 +493,7 @@
 <li>vertical-align 属性对栅格元素不起作用；</li>
 <li>如果为栅格容器声明的 display 值为 inline-grid，而目标元素时浮动或绝对定位的，那么 display 的计算值将变为 grid；</li>
 <li>标准规定，浏览器应先解析列的尺寸，再解析行的尺寸；</li>
-<li>minmax 函数参数的最小值部分不允许使用 fr 单位，该函数在计算尺寸时会尽量保证各轨道都在栅格容器的范围内（&lt;flexible-breadth&gt;）；</li>
+<li>minmax 函数参数的最小值部分不允许使用 fr（fraction）单位，该函数在计算尺寸时会尽量保证各轨道都在栅格容器的范围内（&lt;flexible-breadth&gt;）；</li>
 <li>fit-content(argument) =&gt; *min(max-content, max(min-content, argument))*。该函数在内容不多时可以将轨道缩小为最小的内容尺寸，而在内容较多时为其设置一个上限（给定参数）。<ul>
 <li>max-content：占据内容所需要的最大空间（宽度尽量大，以防换行）；</li>
 <li>min-content：尽量少占据空间，够显示内容即可（尽量收窄，仅保证最长单词、图像等能在一行内完整显示）。</li>
@@ -501,8 +509,103 @@
 <li>默认情况下，栅格元素按照在文档源码中的顺序叠放，可以使用 z-index 或 order（控制绘制顺序）属性对层叠顺序进行调整。</li>
 </ul>
 </li>
-<li>布局示例：</li>
+<li>示例1 - 显式行列 + 隐式行：</li>
 </ul>
-<p><img src="12.png"></p>
-<p><img src="13.png"></p>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-06-15T13:06:53.000Z"> 2025 / 05 / 26, 23:30:13</time></span></div></div></article><br><span class="next-post"><a href="/2022/07/11/《CSS-权威指南（第四版）》读书笔记（第-14-20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/06/11/《瞬间之美》内容要点小记/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>One<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Two<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Three<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Four<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Five<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Six<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Seven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Eight<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Nine<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Ten<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span> > div </span><span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">10</span>px<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">207</span>, <span class="token number">232</span>, <span class="token number">220</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> <span class="token number">2</span>px solid <span class="token function">rgb</span><span class="token punctuation">(</span><span class="token number">79</span>, <span class="token number">185</span>, <span class="token number">227</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/* 没有显式指定 grid-column 和 grid-row，但 CSS Grid 会按照网格的定义规则，自动将子元素从左到右、从上到下依次放置到网格中 */</span>
+<span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 显式定义的行列 */</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>auto-fill, <span class="token function">minmax</span><span class="token punctuation">(</span><span class="token number">200</span>px, <span class="token number">1</span>fr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* auto-fill 自动确定重复次数 */</span>
+  <span class="token property">grid-template-rows</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">3</span>, <span class="token number">100</span>px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 隐式定义的行，当网格中需要额外的行时采用这个配置 */</span>
+  <span class="token property">grid-auto-rows</span><span class="token punctuation">:</span> <span class="token function">minmax</span><span class="token punctuation">(</span><span class="token number">10</span>px, auto<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 最小值 10px，最大值自动调整 */</span>
+  <span class="token property">grid-gap</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* cell 内元素的对齐方式 */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 列方向 */</span>
+  <span class="token property">justify-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 行方向 */</span>
+  <span class="token comment" spellcheck="true">/* 整个 grid 内元素的对齐方式 */</span>
+  <span class="token property">align-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* 列方向 */</span>  
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 行方向 */</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>示例2 - 基于轨道线的元素放置：</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">/* 没有显式定义 grid-template-rows，CSS Grid 会根据内容自动生成行的高度 */</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token number">1</span>fr <span class="token number">3</span>fr<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 定义了两列，第一列占 1 份宽度，第二列占 3 份宽度 */</span>
+  <span class="token property">grid-gap</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header </span><span class="token punctuation">{</span>
+  <span class="token property">grid-column</span><span class="token punctuation">:</span> <span class="token number">1</span> / -<span class="token number">1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">/* 从第 1 列到最后一列 */</span>
+  <span class="token property">grid-row</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">article </span><span class="token punctuation">{</span>
+  <span class="token property">grid-column</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token property">grid-row</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">aside </span><span class="token punctuation">{</span>
+  <span class="token property">grid-column</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token property">grid-row</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">footer </span><span class="token punctuation">{</span>
+  <span class="token property">grid-column</span><span class="token punctuation">:</span> <span class="token number">1</span> / <span class="token number">3</span><span class="token punctuation">;</span>
+  <span class="token property">grid-row</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>示例3 - 使用 grid-template-areas 属性放置元素：</li>
+</ul>
+<pre class="line-numbers language-css"><code class="language-css"><span class="token selector"><span class="token class">.container</span> </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">grid-template-areas</span><span class="token punctuation">:</span>
+    <span class="token string">"header header"</span>
+    <span class="token string">"sidebar content"</span>
+    <span class="token string">"footer footer"</span><span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token number">1</span>fr <span class="token number">3</span>fr<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">header </span><span class="token punctuation">{</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> header<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">article </span><span class="token punctuation">{</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> content<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">aside </span><span class="token punctuation">{</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> sidebar<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">footer </span><span class="token punctuation">{</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> footer<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2022-06-15T13:06:53.000Z"> 2025 / 05 / 27, 17:06:39</time></span></div></div></article><br><span class="next-post"><a href="/2022/07/11/《CSS-权威指南（第四版）》读书笔记（第-14-20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2022/06/11/《瞬间之美》内容要点小记/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
