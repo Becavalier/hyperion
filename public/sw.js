@@ -907,11 +907,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2021/02/19/《HTTP-权威指南》读书笔记（第-1-6-章）/index.html",
-    "revision": "ad3d22b79818953ed94e82bc76f82e1e"
+    "revision": "c0e685d82a2d0f1ce37e769e27b578c6"
   },
   {
     "url": "2021/02/22/《HTTP-权威指南》读书笔记（第-7-15、20-章）/index.html",
-    "revision": "edec1ca0dc1be5df6664ddbfa9ad8f79"
+    "revision": "5b222e2b68f34cbc5d135a9b65dae6cd"
   },
   {
     "url": "2021/03/13/《前端函数式演进》读书笔记/index.html",
@@ -1683,7 +1683,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "437027b6f821e670bd2f5b073ba320fb"
+    "revision": "984fdb8f2548a0e13d5a3719972e4f06"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -2015,7 +2015,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "9b1de0110267e17cb9c08093709bdb98"
+    "revision": "c6ff12a5b45c6cb5d2c07eeac435b0bc"
   },
   {
     "url": "tags/Interpreter/index.html",

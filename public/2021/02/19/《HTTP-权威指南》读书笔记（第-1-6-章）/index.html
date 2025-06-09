@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en-us"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>《HTTP 权威指南》读书笔记（第 1-6 章） | 曜彤.手记</title><meta name="baidu-site-verification" content="codeva-P9jyH0b1lv"><meta name="description" content="旧书清理计划。2012 年出版的书，暂时没有新版，选择性读读。"><meta name="generator" content="曜彤.手记"><meta name="keywords" content="博客, C++, C, Rust, Web, Java, IT, 编程, 开发, Android, Python, MySQL, 科技, 黑客, 技术, Javascript, 云, 大数据, 计算, 机器学习, AI, 人工智能, 创业, 产品, 公司, WebAssembly, Wasm"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=0"><link rel="stylesheet" type="text/css" href="/styles/screen.css"><link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.jpg"><link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.jpg"><link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.jpg"><link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.jpg"><link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.jpg"><link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.jpg"><link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.jpg"><link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.jpg"><link rel="apple-touch-icon" sizes="196x196" href="/images/apple-touch-icon-196x196.jpg"><link rel="apple-touch-icon" sizes="310x310" href="/images/apple-touch-icon-310x310.jpg"><link href="/images/splash/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image"><link href="/images/splash/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link href="/images/splash/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png"><link rel="icon" type="image/png" sizes="128x128" href="/images/favicon-128.png"><link rel="icon" type="image/png" sizes="196x196" href="/images/favicon-196x196.png"><meta name="msapplication-TileColor" content="#FFFFFF"><meta name="msapplication-TileImage" content="mstile-144x144.png"><meta name="msapplication-square70x70logo" content="mstile-70x70.png"><meta name="msapplication-square150x150logo" content="mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="mstile-310x150.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><meta name="msapplication-square310x310logo" content="mstile-310x310.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="/atom.xml"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body itemscope itemtype="https://schema.org/WebPage"><div class="canvas-containter"><span>X</span></div><header itemscope itemtype="https://schema.org/WPHeader"><div class="logo"></div><h1 class="title"><a href="/" alt="曜彤.手记" title="曜彤.手记" itemprop="headline">曜彤.手记</a><a title="Atom 0.3" target="__blank" href="/atom.xml" class="rss"><img src="/images/rss.png"></a></h1><p itemprop="description" class="description">随记，关于互联网技术、产品与创业</p><nav itemscope itemtype="https://schema.org/SiteNavigationElement"><ul><li itemprop="name" class="menu-item"><a href="/ " alt="首页" title="首页" itemprop="url">首页</a></li><li itemprop="name" class="menu-item"><a href="/articles" alt="文章" title="文章" itemprop="url">文章</a></li><li itemprop="name" class="menu-item"><a href="/readings" alt="阅读" title="阅读" itemprop="url">阅读</a></li><li itemprop="name" class="menu-item"><a href="/cards" alt="快记" title="快记" itemprop="url">快记</a></li><li itemprop="name" class="menu-item"><a href="/tags" alt="标签" title="标签" itemprop="url">标签</a></li><li itemprop="name" class="menu-item"><a href="/about" alt="关于" title="关于" itemprop="url">关于</a></li></ul></nav><div class="dynamic-slot"></div><div class="toc-body"><div class="bookmark"></div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E7%AB%A0-HTTP-%E6%A6%82%E8%BF%B0"><span class="toc-text">第 1 章 - HTTP 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E7%AB%A0-URL-%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="toc-text">第 2 章 - URL 与资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E7%AB%A0-HTTP-%E6%8A%A5%E6%96%87"><span class="toc-text">第 3 章 - HTTP 报文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-4-%E7%AB%A0-%E8%BF%9E%E6%8E%A5%E7%AE%A1%E7%90%86"><span class="toc-text">第 4 章 - 连接管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-5-%E7%AB%A0-Web-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-text">第 5 章 - Web 服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-6-%E7%AB%A0-%E4%BB%A3%E7%90%86"><span class="toc-text">第 6 章 - 代理</span></a></li></ol></div><div class="space"></div></header><main itemscope itemtype="https://schema.org/Blog"><script src="https://shadow.elemecdn.com/npm/zoomage.js@latest/dist/zoomage.min.js" type="text/javascript"></script><script src="https://shadow.elemecdn.com/npm/axios@0.18.0/dist/axios.min.js" type="text/javascript"></script><script src="/scripts/post.js" type="text/javascript"></script><div class="touch-top"><span></span></div><article post-id="《HTTP 权威指南》读书笔记（第 1-6 章）" class="full article-post"><h1 itemprop="headline" class="align-center">《HTTP 权威指南》读书笔记（第 1-6 章）</h1><div class="content"><div class="article-meta"><span class="post-meta"><br>Created on<time itemprop="dateCreated" datetime="2021-02-19T11:45:04.000Z"> 2021 / 02 / 19, 19:45:04</time></span><span class="page-tag-anchor"><a href="/tags/HTTP" itemprop="url">#HTTP</a>&nbsp;&nbsp;</span></div><p>旧书清理计划。2012 年出版的书，暂时没有新版，选择性读读。</p>
 <h3 id="第-1-章-HTTP-概述"><a href="#第-1-章-HTTP-概述" class="headerlink" title="第 1 章 - HTTP 概述"></a>第 1 章 - HTTP 概述</h3><ol>
-<li><span class="pn">Page 6</span>最初设计 <strong>MIME</strong>（Multipurpose Internet Mail Extension，多用途因特网邮件扩展）是为了解决在不同电子邮件系统之间搬移报文时存在的问题。Web 服务器会为所有 HTTP 对象数据附加一个 MIME 类型，以便与浏览器检测是否可以处理（应该如何处理）该类内容。<strong>该类型对应于响应头的 “Content-type” 字段</strong>。</li>
+<li><span class="pn">Page 6</span>最初设计 <strong>MIME</strong>（Multipurpose Internet Mail Extension，多用途因特网邮件扩展）是为了解决在不同电子邮件系统之间搬移报文时存在的问题。Web 服务器会为所有 HTTP 对象数据附加一个 MIME 类型，以便与浏览器检测是否可以处理（应该如何处理）该类内容。<strong>该类型对应于响应头的 “Content-type” 字段，该字段值就是 MIME 类型</strong>。</li>
 <li><span class="pn">Page 7</span>URI = URL（统一资源定位符）+ URN（统一资源名）。</li>
 </ol>
 <ul>
@@ -37,7 +37,11 @@
 <li><strong>代理</strong>；</li>
 <li><strong>缓存</strong>；</li>
 <li><strong>网关</strong>：通常用于将 HTTP 流量转换成其他协议；</li>
-<li><strong>隧道</strong>：是建立之后，就会在两条连接之间对原始数据进行“盲转发”的 HTTP 应用程序。其通常用来在一条或多条 HTTP 连接上转发非 HTTP 数据，转发时不会窥探数据。一种常见用途是<strong>通过 HTTP 连接承载加密的 SSL 安全套接字层流量</strong>；</li>
+<li><strong>隧道</strong>：是建立之后，就会在两条连接之间对原始数据进行“盲转发”的 HTTP 应用程序。其通常用来在一条或多条 HTTP 连接上转发非 HTTP 数据，转发时不会窥探数据。一种常见用途是<strong>通过 HTTP 连接承载加密的 SSL 安全套接字层流量</strong>；<ul>
+<li>使用 HTTP CONNECT 方法（主要用于 HTTPS），连接后双方进入“原始 TCP”传输状态，可以直接传输加密数据（比如 TLS）；</li>
+<li>使用 POST/GET 包裹 TCP 数据（用于通用 TCP 隧道）；</li>
+</ul>
+</li>
 <li><strong>Agent 代理</strong>；代表用户发起 HTTP 请求的客户端程序（如“Web 浏览器”）。</li>
 </ul>
 <h3 id="第-2-章-URL-与资源"><a href="#第-2-章-URL-与资源" class="headerlink" title="第 2 章 - URL 与资源"></a>第 2 章 - URL 与资源</h3><ol start="7">
@@ -57,6 +61,11 @@
 <li><em><strong>query</strong></em>：查询参数；</li>
 <li><em><strong>frag</strong></em>：一小片或一部分资源的名字（仅客户端使用）。</li>
 </ul>
+<p>- <em><strong>HTTP 简单认证头部</strong></em>：dXNlcjpwYXNz 是 “username:password” 的 Base64 编码；</p>
+<pre class="line-numbers language-text"><code class="language-text">GET /protected/resource HTTP/1.1
+Host: example.com
+Authorization: Basic dXNlcjpwYXNz
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <ol start="8">
 <li><span class="pn">Page 36</span>“相对 URL 到对应绝对 URL” 的转换算法定义在 <strong>RFC 2396</strong> 中。</li>
 <li><span class="pn">Page 38</span><strong>URL 编码</strong>：为了保证 URL 在互联网中各个协议和应用中的可移植性。</li>
@@ -81,11 +90,14 @@
 </li>
 <li>PUT 方法的语义：让服务器用请求的主体创建一个<strong>由所请求 URL 命名的新文档</strong>，或者覆盖已有的文档（一般是<strong>幂等</strong>的）；</li>
 <li><strong>POST 侧重于向服务器提交数据的目的</strong>，一般用于发生非幂等的改变；</li>
-<li>TRACE 方法主要用于诊断，即用于验证请求是否如愿穿过了请求/响应链；</li>
+<li>TRACE 方法会让服务器原样返回客户端发送的请求内容，主要用于诊断，即用于验证请求是否如愿穿过了请求/响应链；</li>
 <li>HTTP/1.1 中新增了 PATCH 方法（RFC 5789）；</li>
 <li>通常，GET、HEAD、PUT、DELETE、TRACE 和 OPTIONS 方法是<strong>幂等的</strong>。</li>
-<li>GET 等方法也可以携带主体（body）部分，只是在 RFC 中并没有明确要求需要携带。</li>
+<li>GET 等方法也可以携带主体（body）部分，只是在 RFC 中并没有明确要求需要携带；</li>
+<li>OPTIONS 请求：主要用于 <strong>CORS</strong> 跨域资源共享，请求给定的 URL 或服务器的允许通信选项。本质是为浏览器提供的一套安全跨域资源访问策略；</li>
 </ul>
+<p><p><img src="10.png" alt="简单请求"><span class="pic-desc">简单请求</span></p></p>
+<p><p><img src="11.png" alt="复杂请求"><span class="pic-desc">复杂请求</span></p></p>
 <ol start="13">
 <li><span class="pn">Page 52</span>常见状态码：</li>
 </ol>
@@ -232,7 +244,7 @@ Server: Test Server
 <li>HTTP 请求发送、处理和接收时延。</li>
 </ul>
 </li>
-<li>TCP 连接握手过程：<ol>
+<li>TCP 连接三次握手过程：<ol>
 <li>（<em>SYN 位</em>）客户端向服务器发送一个小的 TCP 分组（40~60 字节）。分组中设置了一个特殊的 SYN 标记，说明这是一个连接请求；</li>
 <li>（<em>SYN 位</em> + <em>ACK 位</em>）若服务器接受了连接，会计算一些连接参数，并向客户端返回一个 TCP 分组，该分组中的 SYN 和 ACK 标记被置位，说明连接请求已被接受；</li>
 <li>（<em>ACK 位</em>）最后，客户端向服务器回送一条确认信息，通知连接已成功建立。<strong>现代 TCP 栈都允许客户端在这个确认分组中发送数据</strong>。</li>
@@ -266,7 +278,7 @@ Server: Test Server
 <li><em>HTTP/1.1 持久连接</em>：除非发送的请求中指明 <em>Connection: close</em>，否则<strong>默认情况下持久连接是激活的</strong>。</li>
 </ul>
 </li>
-<li><strong>管道化连接</strong>：通过共享的 TCP 连接发起并发的 HTTP 请求。几个限制：<ul>
+<li><strong>管道化连接</strong>（已逐渐被淘汰，被 HTTP/2 的多路复用取代）：通过共享的 TCP 连接发起并发的 HTTP 请求。几个限制：<ul>
 <li>必须按照与请求相同的顺序回送 HTTP 响应；</li>
 <li>HTTP 客户端不应该用管道化的方式发送会产生副作用的请求（比如 POST），因为在服务器出错时，这些请求无法被安全重试（不幂等）。</li>
 </ul>
@@ -279,7 +291,10 @@ Server: Test Server
 </ol>
 <p><img src="7.png"></p>
 <ul>
-<li><strong>TCP 连接是双向的</strong>；</li>
+<li><strong>TCP 连接是双向的</strong>，因此需要四次挥手；</li>
+</ul>
+<p><p><img src="12.png" alt="TCP 断开的四次挥手"><span class="pic-desc">TCP 断开的四次挥手</span></p></p>
+<ul>
 <li>关闭连接的输出信道总是安全的，而关闭连接的输入信道是危险的。如果另一端向已关闭的输入信道发送数据，操作系统会向另一端的机器回送一条 TCP “<strong>连接被对端重置</strong>”的报文。</li>
 </ul>
 <h3 id="第-5-章-Web-服务器"><a href="#第-5-章-Web-服务器" class="headerlink" title="第 5 章 - Web 服务器"></a>第 5 章 - Web 服务器</h3><ol start="19">
@@ -288,7 +303,7 @@ Server: Test Server
 <ul>
 <li><strong>单线程 Web 服务器</strong>：一次处理一个请求，直到其完成为止。一个事务处理结束之后，才去处理下一条连接；</li>
 <li><strong>多进程及多线程 Web 服务器</strong>：基于“线程池”，同时对多个请求进行处理；</li>
-<li><strong>I/O 复用 Web 服务器</strong>：用于支持大量的连接。复用结构中，同时监视所有连接上的活动。当连接发生变化时，就对其进行处理；处理结束后，将连接返回到开放连接列表中，等待下一次状态变化；</li>
+<li><strong>I/O 复用 Web 服务器</strong>：用于支持大量的连接。复用结构中，<strong>同时监视所有连接上（多个 fd）的活动</strong>。当连接发生变化时，就对其进行处理；处理结束后，将连接返回到开放连接列表中，等待下一次状态变化；</li>
 <li><strong>复用的多线程 Web 服务器</strong>：结合多线程与复用功能。</li>
 </ul>
 <p><img src="8.png"></p>
@@ -305,6 +320,10 @@ Server: Test Server
 <li><span class="pn">Page 137</span><strong>代理与网关的区别</strong>：严格来讲，代理连接的是两个或多个使用<strong>相同协议</strong>的应用程序（中继）；而网关连接的则是两个或多个使用<strong>不同协议</strong>的端点（协议转换器）。但实际上，两者之间的区别很模糊。</li>
 </ol>
 <p><img src="9.png"></p>
+<ul>
+<li>正向代理（Forward Proxy）是“站在客户端这边”帮你访问服务器：VPN、爬虫等等；</li>
+<li>反向代理（Reverse Proxy）是“站在服务器这边”帮你接收客户端请求：LBS、缓存、统一路由入口等等。</li>
+</ul>
 <ol start="22">
 <li><span class="pn">Page 138</span><strong>代理的应用场景</strong>：</li>
 </ol>
@@ -329,7 +348,7 @@ Server: Test Server
 </ul>
 <ol start="24">
 <li><span class="pn">Page 158</span><strong>Via 首部字段</strong>列出了与报文途径的每个中间节点（代理或网关）有关的信息。<strong>报文每经过一个节点，都必须将这个中间节点添加到 Via 列表的末尾</strong>。Server 首部仅用于原始服务器。</li>
-<li><span class="pn">Page 162</span>TRACE 方法可用于跟踪报文在各个代理内的变化。当 TRACE 请求到达目的服务器时，整条请求报文都会被封装在一条 HTTP 响应的主体中回送给发送端。可以使用 <strong>Max-Forwards</strong> 首部来限制 TRACE 和 OPTIONS 请求所经过的代理跳数。Max-Forwards 每经过一个代理时会被减一，当其值为 0 时，则必须将 TRACE 报文回送给客户端。</li>
+<li><span class="pn">Page 162</span>TRACE 方法可用于跟踪报文在各个代理内的变化。当 TRACE 请求到达目的服务器时，<strong>整条请求报文都会被封装在一条 HTTP 响应的主体中回送给发送端</strong>。可以使用 <strong>Max-Forwards</strong> 首部来限制 TRACE 和 OPTIONS 请求所经过的代理跳数。Max-Forwards 每经过一个代理时会被减一，当其值为 0 时，则必须将 TRACE 报文回送给客户端。</li>
 <li><span class="pn">Page 166</span>OPTIONS 请求可用于发现 Web 服务器上某个特定资源所支持的功能。请求成功后会返回一个包含各种首部字段的 200 响应，这些字段描述了服务器支持的，或资源可用的各种可选特性。HTTP/1.1 在响应中唯一指定的首部字段为 Allow 首部，其包含了服务器支持的方法列表。</li>
 </ol>
-<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-02-19T11:45:04.000Z"> 2025 / 03 / 31, 15:59:31</time></span></div></div></article><br><span class="next-post"><a href="/2021/02/22/《HTTP-权威指南》读书笔记（第-7-15、20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2021/02/17/React-特性小结（v17-0-1）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
+<br><div class="article-bottom-meta"><span class="post-meta">Last built on<time itemprop="dateModified" datetime="2021-02-19T11:45:04.000Z"> 2025 / 06 / 07, 16:37:02</time></span></div></div></article><br><span class="next-post"><a href="/2021/02/22/《HTTP-权威指南》读书笔记（第-7-15、20-章）/" itemprop="url">下一篇 ⇒</a></span><span class="prev-post"><a href="/2021/02/17/React-特性小结（v17-0-1）/" itemprop="url">⇐ 上一篇</a></span><br><section id="comments"><h4>评论 | Comments</h4><br><div class="comment-container"><div class="loading-mask">Loading ...</div><script src="https://utteranc.es/client.js" repo="Becavalier/utterances-comments" issue-term="title" label="[Comment]" theme="github-light" crossorigin="anonymous" async></script></div></section><br><br></main><script src="/scripts/index.js" type="text/javascript"></script></body></html>
