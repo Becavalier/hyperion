@@ -1151,11 +1151,11 @@ self.__precacheManifest = [
   },
   {
     "url": "2025/04/08/自用算法模版/index.html",
-    "revision": "f3388e1699402715097fa0e41206f337"
+    "revision": "022931a93ce9a188edda42d02b5b0150"
   },
   {
     "url": "2025/05/23/前端面试模版/index.html",
-    "revision": "43a5bf1b9728845252a73cfb6bf0f3b7"
+    "revision": "662434a6c0dac2ed2d2723fb9e28b656"
   },
   {
     "url": "about/index.html",
@@ -1683,7 +1683,7 @@ self.__precacheManifest = [
   },
   {
     "url": "readings/index.html",
-    "revision": "65bf1baf71b2d22e865e99cce68a9787"
+    "revision": "56c887398795581ceae32f3130dd7c8a"
   },
   {
     "url": "readings/JavaScript 二十年.html",
@@ -1879,15 +1879,15 @@ self.__precacheManifest = [
   },
   {
     "url": "resume/css/style.min.css",
-    "revision": "24493b3528725665647efa5fd29436db"
+    "revision": "e60fb5926de0e188d2b4d3cb8203a971"
   },
   {
     "url": "resume/me-en/index.html",
-    "revision": "e0e513a5974e550a9e1311baebf2245a"
+    "revision": "aee4985704757098a74f4ec69eba6d9b"
   },
   {
     "url": "resume/me/index.html",
-    "revision": "8c55cb0cc21ceb4ae78bf58d2606ca96"
+    "revision": "8befa207a3fef4fbf62763b41976df60"
   },
   {
     "url": "scripts/index.js",
@@ -2015,7 +2015,7 @@ self.__precacheManifest = [
   },
   {
     "url": "tags/index.html",
-    "revision": "09caeac64a9bba447188a1c0a4de3149"
+    "revision": "e1299c9c93b4f4dd4cf4700eccd04ac3"
   },
   {
     "url": "tags/Interpreter/index.html",
