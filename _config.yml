@@ -110,7 +110,7 @@ about:
   name: 于航（Jason Yu）
   intros: 
     - Software Engineer / @PayPal
-    - Founder of <i><a href="https://github.com/efficlab">EfficLab</a>™</i> Technologies
+    # - Founder of <i><a href="https://github.com/efficlab">EfficLab</a>™</i> Technologies
     - >
       "Breaking through every day, being a good father :)"
   skills: Web Frontend, Virtual Machine, X86-64 ASM / C / C++, WebAssembly, Entrepreneurship
