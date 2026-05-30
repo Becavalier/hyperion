@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" },
     { "src": "/interview", "dest": "/interview/index.html" },
     { "src": "/interview/((?!api/).*)", "dest": "/interview/index.html" },
