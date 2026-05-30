@@ -9,6 +9,7 @@ import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { logout } from "@/lib/auth";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Clock() {
   const [now, setNow] = useState(() => new Date());
@@ -132,6 +133,7 @@ export default function App() {
         </main>
 
         <PendingTab />
+        <SpeedInsights />
       </div>
     </AuthGate>
   );
