@@ -42,7 +42,12 @@ export const getQuestions = (params?: {
   );
 };
 
-export const createQuestion = (data: Omit<Question, "id" | "created_at">) =>
+export type CreateQuestionInput = Pick<
+  Question,
+  "title" | "content" | "category" | "difficulty" | "tags" | "answer_hint"
+>;
+
+export const createQuestion = (data: CreateQuestionInput) =>
   request<{ question: Question }>("/questions", { method: "POST", body: JSON.stringify(data) });
 
 export const updateQuestion = (id: string, data: Partial<Question>) =>
