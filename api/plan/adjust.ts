@@ -64,7 +64,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   for (const [date, questionIds] of Object.entries(adjusted)) {
     await sql`
       INSERT INTO daily_schedules (plan_id, date, question_ids)
-      VALUES (${plan.id}, ${date}, ${questionIds as string[]})
+      VALUES (${plan.id}, ${date}, ${questionIds as unknown as string})
       ON CONFLICT (plan_id, date) DO UPDATE SET question_ids = EXCLUDED.question_ids
     `;
   }

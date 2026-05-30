@@ -37,7 +37,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const merged = [...existingIds, ...newIds];
     const updated = await sql`
       UPDATE daily_schedules
-      SET question_ids = ${merged}, completed = false
+      SET question_ids = ${merged as unknown as string}, completed = false
       WHERE id = ${current.id}
       RETURNING *
     `;
@@ -61,7 +61,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const insertResult = await sql`
       INSERT INTO daily_schedules (plan_id, date, question_ids)
-      VALUES (${plan.id}, ${date}, ${questionIds})
+      VALUES (${plan.id}, ${date}, ${questionIds as unknown as string})
       ON CONFLICT (plan_id, date) DO NOTHING
       RETURNING *
     `;

@@ -86,7 +86,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (questionIds.length > 0) {
       const inserted = await sql`
         INSERT INTO daily_schedules (plan_id, date, question_ids)
-        VALUES (${plan.id}, ${today}, ${questionIds})
+        VALUES (${plan.id}, ${today}, ${questionIds as unknown as string})
         ON CONFLICT (plan_id, date) DO NOTHING
         RETURNING id, completed, array_length(question_ids, 1) AS total_q
       `;

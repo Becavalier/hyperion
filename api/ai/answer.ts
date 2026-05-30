@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { sql } from "../_lib/db";
+import type { Question } from "../_lib/db";
 import { setCors, handleOptions } from "../_lib/cors";
 import { requireAuth } from "../_lib/auth";
 import { getAnswerHint } from "../_lib/ai";
@@ -14,7 +15,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!question_id) return res.status(400).json({ error: "question_id 为必填项" });
 
   const result = await sql`SELECT * FROM questions WHERE id = ${question_id}`;
-  const question = result.rows[0];
+  const question = result.rows[0] as Question | undefined;
   if (!question) return res.status(404).json({ error: "题目不存在" });
 
   const answer = await getAnswerHint(question);
