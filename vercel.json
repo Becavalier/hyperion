@@ -1,8 +1,10 @@
 {
-  "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "rewrites": [
+    { "source": "/api/schedule/:date", "destination": "/api/schedule/[date].ts?date=:date" },
+    { "source": "/api/questions/reset/:id", "destination": "/api/questions/reset/[id].ts?id=:id" },
+    { "source": "/api/questions/:id", "destination": "/api/questions/[id].ts?id=:id" },
     { "source": "/interview", "destination": "/interview/index.html" },
     { "source": "/interview/:path*", "destination": "/interview/index.html" },
     { "source": "/(.*)", "destination": "/" }
