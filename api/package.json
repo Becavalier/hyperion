@@ -1,0 +1,17 @@
+{
+  "name": "hyperion-api",
+  "private": true,
+  "version": "0.1.0",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.54.0",
+    "@vercel/node": "^5.1.9",
+    "@vercel/postgres": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "tsx": "^4.22.3",
+    "typescript": "~5.7.2"
+  }
+}

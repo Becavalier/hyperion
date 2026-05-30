@@ -1,0 +1,263 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap");
+
+@layer base {
+  html {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    html { font-size: 17px; }
+  }
+
+  @media (min-width: 1536px) {
+    html { font-size: 18px; }
+  }
+
+  body {
+    background-color: #080c08;
+    color: #b8f5b8;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+    font-size: 0.8125rem; /* ~13px at default, ~13.8px at xl, ~14.6px at 2xl */
+  }
+
+  ::selection {
+    background-color: rgba(0, 255, 65, 0.18);
+    color: #00ff41;
+  }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #080c08; }
+  ::-webkit-scrollbar-thumb { background: #1e321e; }
+  ::-webkit-scrollbar-thumb:hover { background: #00ff4155; }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) sepia(1) saturate(4) hue-rotate(90deg);
+    opacity: 0.4;
+    cursor: pointer;
+  }
+}
+
+/* scanlines */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: "_";
+  animation: blink 1.2s step-end infinite;
+  color: #00ff41;
+}
+
+/* ── Cluster bolt — flickering electric connector between cluster tabs ── */
+@keyframes cluster-bolt-flicker {
+  0%, 100% {
+    color: #00d4ff;
+    opacity: 0.55;
+    transform: scale(0.95) rotate(-4deg);
+    filter: drop-shadow(0 0 2px #00d4ff);
+  }
+  42% {
+    color: #00d4ff;
+    opacity: 0.8;
+    transform: scale(1) rotate(-2deg);
+    filter: drop-shadow(0 0 4px #00d4ff);
+  }
+  48%, 52% {
+    color: #ffffff;
+    opacity: 1;
+    transform: scale(1.15) rotate(2deg);
+    filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 14px #00d4ff);
+  }
+  58% {
+    color: #00d4ff;
+    opacity: 0.4;
+    transform: scale(0.9) rotate(-3deg);
+    filter: drop-shadow(0 0 2px #00d4ff);
+  }
+}
+.cluster-bolt {
+  animation: cluster-bolt-flicker 1.8s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+/* ── Keyboard sparks — cyberpunk pixel burst at cursor on each keystroke ── */
+.kbd-spark {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  pointer-events: none;
+  left: var(--sx);
+  top: var(--sy);
+  background: #ffffff;
+  box-shadow:
+    0 0 4px  #ffffff,
+    0 0 10px #ffffff,
+    0 0 18px rgba(255,255,255,0.7);
+  transform: translate(0, 0) scale(1);
+  animation: kbd-spark-fly 480ms cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
+  z-index: 9998;
+  will-change: transform, opacity;
+}
+@keyframes kbd-spark-fly {
+  0%   { transform: translate(0, 0) scale(1.3);                            opacity: 1; }
+  60%  { transform: translate(calc(var(--dx) * 0.85), calc(var(--dy) * 0.85)) scale(0.9); opacity: 0.8; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.3);            opacity: 0; }
+}
+
+/* ── HACKER RANK GLOWS ──────────────────────────────────────────────────────
+   Each tier gets a qualitatively distinct cyberpunk-glow. Applied to a
+   container with .rank-glow + .glow-<key>. The container sets the box shape;
+   ::before/::after produce the glow + overlay effects.
+*/
+
+.rank-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+/* 1. SCRIPT_KIDDIE — faint, flickering green pixel-line border */
+@keyframes flicker-kiddie {
+  0%, 8%, 12%, 70%, 73%, 100% { opacity: 0.55; }
+  9%, 11%                       { opacity: 0.15; }
+  71%, 72%                      { opacity: 0.25; }
+}
+.glow-kiddie {
+  box-shadow: inset 0 0 0 1px rgba(0,255,65,0.25);
+  animation: flicker-kiddie 2.8s steps(1) infinite;
+}
+.glow-kiddie::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 6px,
+    rgba(0,255,65,0.08) 6px 7px
+  );
+  z-index: -1;
+}
+
+/* 2. DATA_STALKER — steady pulsing green outline */
+@keyframes pulse-stalker {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(0,255,65,0.55), 0 0 6px rgba(0,255,65,0.25); }
+  50%      { box-shadow: inset 0 0 0 1px rgba(0,255,65,0.9),  0 0 14px rgba(0,255,65,0.55); }
+}
+.glow-stalker { animation: pulse-stalker 3.6s ease-in-out infinite; }
+
+/* 3. GHOST_PROTOCOL — flowing matrix-silver shimmer */
+@keyframes shimmer-ghost {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.glow-ghost {
+  box-shadow: inset 0 0 0 1px rgba(200,211,216,0.45), 0 0 10px rgba(160,180,200,0.18);
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(200,211,216,0.10) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer-ghost 4.5s linear infinite;
+}
+
+/* 4. RED_HAT_VANGUARD — neon red + falling code waterfall */
+@keyframes pulse-redhat {
+  0%, 100% { box-shadow: inset 0 0 0 1px rgba(255,51,88,0.7), 0 0 14px rgba(255,51,88,0.45); }
+  50%      { box-shadow: inset 0 0 0 1px rgba(255,90,120,1),  0 0 22px rgba(255,51,88,0.85); }
+}
+@keyframes rain-redhat {
+  0%   { background-position: 0 -100%; }
+  100% { background-position: 0 200%; }
+}
+.glow-redhat {
+  position: relative;
+  animation: pulse-redhat 2.4s ease-in-out infinite;
+  overflow: hidden;
+}
+.glow-redhat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg,
+      transparent 0%,
+      rgba(255,51,88,0.18) 35%,
+      rgba(255,51,88,0.32) 50%,
+      rgba(255,51,88,0.18) 65%,
+      transparent 100%);
+  background-size: 100% 60%;
+  background-repeat: repeat-y;
+  animation: rain-redhat 2.6s linear infinite;
+  mix-blend-mode: screen;
+  z-index: -1;
+}
+
+/* 5. ROOT_ARCHITECT — chip-overload purple arc-flicker */
+@keyframes arc-root {
+  0%, 100% {
+    box-shadow:
+      inset 0 0 0 1px rgba(185,77,255,0.85),
+      0 0 18px rgba(185,77,255,0.55),
+      0 0 36px rgba(110,30,200,0.35);
+  }
+  20%      {
+    box-shadow:
+      inset 0 0 0 1px rgba(220,140,255,1),
+      0 0 28px rgba(185,77,255,0.95),
+      0 0 60px rgba(110,30,200,0.55);
+  }
+  22%      {
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.95),
+      0 0 16px rgba(185,77,255,0.4),
+      0 0 30px rgba(110,30,200,0.2);
+  }
+  60%      {
+    box-shadow:
+      inset 0 0 0 1px rgba(185,77,255,0.9),
+      0 0 24px rgba(185,77,255,0.75),
+      0 0 48px rgba(110,30,200,0.45);
+  }
+}
+@keyframes spark-root {
+  0%, 92%, 100% { opacity: 0; }
+  93%, 95%      { opacity: 0.9; }
+  94%           { opacity: 0.2; }
+}
+.glow-root {
+  position: relative;
+  animation: arc-root 3s ease-in-out infinite;
+}
+.glow-root::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  background: radial-gradient(circle at 80% 20%, rgba(255,255,255,0.6), transparent 35%),
+              radial-gradient(circle at 15% 75%, rgba(220,140,255,0.5), transparent 40%);
+  animation: spark-root 2.2s infinite;
+  mix-blend-mode: screen;
+  z-index: -1;
+}

@@ -1,7 +1,13 @@
 node_modules/
+public/interview/
+interview-src/node_modules/
+.env
+.env.local
 .*.json
 .well-known/
 .vscode/
 **/files/*.pdf
 .DS_Store
 db.json
+.vercel
+.env*

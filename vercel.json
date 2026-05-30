@@ -1,8 +1,14 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/interview", "dest": "/interview/index.html" },
+    { "src": "/interview/((?!api/).*)", "dest": "/interview/index.html" },
+    { "src": "/(.*)", "dest": "/" }
+  ],
+  "env": {
+    "POSTGRES_URL": "@postgres_url",
+    "ANTHROPIC_API_KEY": "@anthropic_api_key"
+  }
 }
