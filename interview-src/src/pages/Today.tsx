@@ -188,22 +188,34 @@ const EDITOR_LANG_LABEL: Record<Category, string> = {
 
 // ── Keyboard spark effect ─────────────────────────────────────────────────────
 
+const SPARK_COLORS = [
+  "rgba(0,255,65,0.9)",    // hacker green
+  "rgba(125,255,125,0.85)", // soft green
+  "rgba(0,212,255,0.85)",  // cyan
+  "rgba(255,255,255,0.9)", // white
+];
+
 function spawnSparks(x: number, y: number) {
   const count = 2 + Math.floor(Math.random() * 2); // 2–3
   for (let i = 0; i < count; i++) {
     const el = document.createElement("span");
     el.className = "kbd-spark";
     const angle = Math.random() * Math.PI * 2;
-    const dist = 8 + Math.random() * 10; // 短距离
+    const dist = 14 + Math.random() * 14; // 14–28px
     const dx = Math.cos(angle) * dist;
-    const dy = Math.sin(angle) * dist - 2;
+    const dy = Math.sin(angle) * dist - 3;
+    const size = 2 + Math.random() * 3.5; // 2–5.5px
+    const color = SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)];
     el.style.setProperty("--sx", `${x}px`);
     el.style.setProperty("--sy", `${y}px`);
     el.style.setProperty("--dx", `${dx}px`);
     el.style.setProperty("--dy", `${dy}px`);
-    el.style.animationDuration = `${220 + Math.random() * 120}ms`; // 更快
+    el.style.setProperty("--size", `${size}px`);
+    el.style.setProperty("--color", color);
+    el.style.setProperty("--glow", `${size * 2}px`);
+    el.style.animationDuration = `${240 + Math.random() * 100}ms`;
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 380);
+    setTimeout(() => el.remove(), 400);
   }
 }
 
@@ -258,6 +270,7 @@ function CodeEditor({
   label,
   category = "frontend",
   fontSize = "0.875rem",
+  lineWrapping = true,
 }: {
   value: string;
   onChange?: (v: string) => void;
@@ -265,6 +278,7 @@ function CodeEditor({
   label?: string;
   category?: Category;
   fontSize?: string;
+  lineWrapping?: boolean;
 }) {
   const { settings } = useSettings();
   return (
@@ -280,7 +294,7 @@ function CodeEditor({
           onChange={readOnly ? undefined : onChange}
           extensions={[
             ...(langExtension(category) ? [langExtension(category)!] : []),
-            EditorView.lineWrapping,
+            ...(lineWrapping ? [EditorView.lineWrapping] : []),
             ...(readOnly || !settings.sparksEnabled ? [] : [sparkExtension]),
           ]}
           theme={[oneDark, hackerTheme]}
@@ -770,6 +784,7 @@ export default function Today() {
                     onChange={(v) => setHintDraft(v)}
                     category={q.category}
                     fontSize="0.75rem"
+                    lineWrapping={false}
                   />
                 </div>
               )}
@@ -792,46 +807,74 @@ export default function Today() {
           {/* RIGHT — editor / review / done */}
           <div className="flex flex-col flex-1 overflow-hidden min-h-0">
 
-            {qs.phase === "coding" ? (
-              /* ── CODING ── */
+            {(qs.phase === "coding" || qs.loadingAI || qs.reviewMode !== "ai") ? (
+              /* ── CODING / AI loading / manual done ── */
               <>
                 <div className="px-4 py-2 border-b border-[#1e321e] bg-[#080c08] text-[#2a402a] text-xs tracking-widest flex items-center justify-between shrink-0">
                   <span>// EDITOR</span>
                   <span className="text-[#1e321e]">{EDITOR_LANG_LABEL[q.category]}</span>
                 </div>
-                <div className="flex-1 overflow-hidden">
-                  <CodeEditor value={qs.code} onChange={(v) => patch(q.id, { code: v })} category={q.category} />
+                <div className="flex-1 overflow-hidden relative">
+                  <CodeEditor value={qs.code} onChange={(v) => patch(q.id, { code: v })} readOnly={qs.phase !== "coding" || qs.loadingAI} category={q.category} />
+                  {qs.loadingAI && (
+                    <div className="absolute inset-0 bg-[#050905]/60 flex items-center justify-center pointer-events-none">
+                      <p className="text-[#00d4ff] text-xs tracking-widest animate-pulse pointer-events-none">ANALYZING CODE...</p>
+                    </div>
+                  )}
                 </div>
+                {!qs.loadingAI && (
                 <div className="px-4 py-2.5 border-t border-[#1e321e] bg-[#080c08] flex items-center justify-between gap-2 shrink-0">
                   <span className="text-[#2a402a] text-xs tabular-nums">
                     {qs.code.trim() ? `${qs.code.split("\n").length} ln` : "empty"}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => {
-                        patch(q.id, { phase: "submitted" });
-                        setTimeout(() => handleAIReview(), 0);
-                      }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#00d4ff] text-[#00d4ff] hover:bg-[#00091a] tracking-wider transition-colors"
-                      style={{ boxShadow: "0 0 6px rgba(0,212,255,0.25)" }}
-                    >
-                      <Sparkles className="w-3 h-3" /> AI_REVIEW
-                    </button>
-                    <span className="text-[#1e321e] text-xs tracking-widest select-none">// or</span>
-                    <div className="flex items-center gap-1.5">
-                      {RATINGS.map(({ value, label, cls }) => (
-                        <button
-                          key={value}
-                          onClick={(e) => { patch(q.id, { phase: "submitted", reviewMode: "manual" }); handleRate(value, e); }}
-                          disabled={submitting !== null}
-                          className={`px-3 py-1.5 text-xs border tracking-wider disabled:opacity-30 transition-colors ${cls}`}
-                        >
-                          {submitting === value ? "···" : label}
-                        </button>
-                      ))}
+                  {qs.phase === "coding" ? (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          patch(q.id, { phase: "submitted" });
+                          setTimeout(() => handleAIReview(), 0);
+                        }}
+                        disabled={!qs.code.trim()}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#00d4ff] text-[#00d4ff] hover:bg-[#00091a] disabled:opacity-30 disabled:cursor-not-allowed tracking-wider transition-colors"
+                        style={{ boxShadow: "0 0 6px rgba(0,212,255,0.25)" }}
+                      >
+                        <Sparkles className="w-3 h-3" /> AI_REVIEW
+                      </button>
+                      <span className="text-[#1e321e] text-xs tracking-widest select-none">// or</span>
+                      <div className="flex items-center gap-1.5">
+                        {RATINGS.map(({ value, label, cls }) => (
+                          <button
+                            key={value}
+                            onClick={(e) => { patch(q.id, { phase: "submitted", reviewMode: "manual" }); handleRate(value, e); }}
+                            disabled={submitting !== null || !qs.code.trim()}
+                            className={`px-3 py-1.5 text-xs border tracking-wider disabled:opacity-30 transition-colors ${cls}`}
+                          >
+                            {submitting === value ? "···" : label}
+                          </button>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  ) : submitting !== null ? (
+                    <span className="text-[#4d7a4d] text-xs tracking-widest animate-pulse">SAVING...</span>
+                  ) : review ? (
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs tracking-wider" style={{
+                        color: review.self_rating === "mastered" ? "#00ff41" : review.self_rating === "fuzzy" ? "#ffb300" : "#ff3358"
+                      }}>
+                        STATUS: {ratingLabel[review.self_rating]}
+                      </span>
+                      <button
+                        onClick={handleReset}
+                        disabled={resetting}
+                        className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#2a402a] px-2 py-1 hover:border-[#ff3358] hover:text-[#ff3358] hover:bg-[#120004] disabled:opacity-30 tracking-wider transition-colors"
+                      >
+                        <RotateCcw className="w-3 h-3" />
+                        {resetting ? "···" : "RESET"}
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
+                )}
               </>
 
             ) : (
