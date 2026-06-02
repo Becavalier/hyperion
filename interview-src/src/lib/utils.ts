@@ -21,7 +21,7 @@ export const difficultyLabel: Record<Difficulty, string> = {
 
 export const ratingLabel: Record<SelfRating, string> = {
   mastered: "PASS",
-  fuzzy: "PARTIAL",
+  fuzzy: "NEEDS PRACTICE",
   unknown: "FAIL",
 };
 

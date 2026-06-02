@@ -32,9 +32,8 @@ interface QState {
 const BLANK: QState = { code: "", phase: "coding", reviewMode: null, aiFeedback: null, aiVerdict: null, loadingAI: false };
 
 const RATINGS: { value: SelfRating; label: string; cls: string }[] = [
-  { value: "mastered", label: "PASS",    cls: "border-[#00ff41] text-[#00ff41] hover:bg-[#011200]" },
-  { value: "fuzzy",    label: "PARTIAL", cls: "border-[#ffb300] text-[#ffb300] hover:bg-[#120d00]" },
-  { value: "unknown",  label: "FAIL",    cls: "border-[#ff3358] text-[#ff3358] hover:bg-[#120004]" },
+  { value: "mastered", label: "PASS",          cls: "border-[#00ff41] text-[#00ff41] hover:bg-[#011200]" },
+  { value: "fuzzy",    label: "NEEDS PRACTICE", cls: "border-[#ffb300] text-[#ffb300] hover:bg-[#120d00]" },
 ];
 
 // ── custom CodeMirror theme matching hacker palette ──────────────────────────
