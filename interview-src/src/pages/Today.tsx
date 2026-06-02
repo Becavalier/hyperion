@@ -11,7 +11,7 @@ import { oneDark } from "@codemirror/theme-one-dark";
 import confetti from "canvas-confetti";
 import type { Category } from "@/types";
 import { getSchedule, submitReview, resetReview, getAIReview, updateQuestion, extendSchedule, getStats } from "@/lib/api";
-import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor, ratingColor, ratingLabel } from "@/lib/utils";
+import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor, ratingLabel } from "@/lib/utils";
 import { rankFor } from "@/lib/ranks";
 import { RankUpBanner } from "@/components/RankUpBanner";
 import type { Rank } from "@/lib/ranks";
