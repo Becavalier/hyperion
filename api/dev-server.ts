@@ -1,12 +1,28 @@
 import "dotenv/config";
 import express from "express";
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { requireAuth } from "./_lib/auth.js";
+import { setCors, handleOptions } from "./_lib/cors.js";
 
 type Handler = (req: VercelRequest, res: VercelResponse) => Promise<unknown>;
 
 function adapt(handler: Handler) {
   return (req: Request, res: Response) => handler(req as unknown as VercelRequest, res as unknown as VercelResponse);
+}
+
+/**
+ * Global auth middleware (defense-in-depth on top of per-handler requireAuth).
+ * Skips public paths (auth/login, OPTIONS preflight).
+ */
+function authMiddleware(req: Request, res: Response, next: NextFunction) {
+  setCors(res as unknown as VercelResponse);
+  if (handleOptions(req as unknown as VercelRequest, res as unknown as VercelResponse)) return;
+  // 公开端点放行
+  if (req.path === "/api/auth/login") return next();
+  if (!req.path.startsWith("/api/")) return next();
+  if (requireAuth(req as unknown as VercelRequest, res as unknown as VercelResponse)) return next();
+  // requireAuth 已经写了 401 响应
 }
 
 // Express defines req.query as a prototype getter — plain assignment silently fails.
@@ -19,6 +35,7 @@ function withParams(req: Request, params: Record<string, string>) {
 async function main() {
   const app = express();
   app.use(express.json());
+  app.use(authMiddleware);   // 全局鉴权中间件
 
   const [
     questions,

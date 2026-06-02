@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, BookOpen, Calendar, Database, TriangleAlert, LogOut } from "lucide-react";
+import { LayoutDashboard, BookOpen, Calendar, Database, TriangleAlert, LogOut, Settings as SettingsIcon } from "lucide-react";
 import Dashboard from "@/pages/Dashboard";
 import Today from "@/pages/Today";
 import Plan from "@/pages/Plan";
@@ -8,7 +8,9 @@ import Questions from "@/pages/Questions";
 import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
+import { SettingsPanel } from "@/components/SettingsPanel";
 import { logout } from "@/lib/auth";
+import { SettingsContext, loadSettings, saveSettings, type Settings } from "@/lib/settings";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Clock() {
@@ -40,16 +42,23 @@ function PendingTab() {
   const [pending, setPending] = useState<number | null>(null);
 
   useEffect(() => {
-    getSchedule(todayStr())
-      .then(({ schedule, questions, reviews }) => {
-        if (schedule && !schedule.completed) {
-          setPending(questions.length - reviews.length);
-        } else {
-          setPending(0);
-        }
-      })
-      .catch(() => setPending(0));
-  }, []);
+    const refetch = () => {
+      getSchedule(todayStr())
+        .then(({ schedule, questions, reviews }) => {
+          if (schedule && !schedule.completed) {
+            setPending(questions.length - reviews.length);
+          } else {
+            setPending(0);
+          }
+        })
+        .catch(() => setPending(0));
+    };
+    refetch();
+    // 切路由 + 业务侧自定义事件都触发刷新
+    const onReviewsChanged = () => refetch();
+    window.addEventListener("prep:reviews-changed", onReviewsChanged);
+    return () => window.removeEventListener("prep:reviews-changed", onReviewsChanged);
+  }, [location.pathname]);
 
   if (!pending || location.pathname === "/today") return null;
 
@@ -86,7 +95,16 @@ function PendingTab() {
 }
 
 export default function App() {
+  const [settings, setSettingsState] = useState<Settings>(() => loadSettings());
+  const [settingsOpen, setSettingsOpen] = useState(false);
+
+  const setSettings = (s: Settings) => {
+    setSettingsState(s);
+    saveSettings(s);
+  };
+
   return (
+    <SettingsContext.Provider value={{ settings, setSettings }}>
     <AuthGate>
       <div className="min-h-screen bg-[#080c08]">
         <header className="border-b border-[#1e321e] sticky top-0 z-10 bg-[#080c08]">
@@ -114,9 +132,16 @@ export default function App() {
             ))}
             <Clock />
             <button
+              onClick={() => setSettingsOpen(true)}
+              title="Settings"
+              className="ml-2 p-1.5 text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00] transition-colors"
+            >
+              <SettingsIcon className="w-3.5 h-3.5" />
+            </button>
+            <button
               onClick={logout}
               title="Logout"
-              className="ml-2 p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors"
+              className="p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors"
             >
               <LogOut className="w-3.5 h-3.5" />
             </button>
@@ -134,7 +159,9 @@ export default function App() {
 
         <PendingTab />
         <SpeedInsights />
+        <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
       </div>
     </AuthGate>
+    </SettingsContext.Provider>
   );
 }

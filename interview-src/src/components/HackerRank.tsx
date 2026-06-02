@@ -9,7 +9,7 @@ interface Props {
 
 export function HackerRank({ score, className }: Props) {
   const { current, next, pct } = progressToNext(score);
-  const safeScore = Math.max(0, Math.min(11, score));
+  const safeScore = Math.max(0, Math.min(100, score));
 
   return (
     <div
@@ -43,9 +43,9 @@ export function HackerRank({ score, className }: Props) {
             className="text-2xl sm:text-3xl font-bold tabular-nums"
             style={{ color: current.color }}
           >
-            {safeScore.toFixed(2)}
+            {safeScore.toFixed(1)}
           </p>
-          <p className="text-[#1e321e] text-xs tabular-nums">/ 11.00</p>
+          <p className="text-[#1e321e] text-xs tabular-nums">/ 100</p>
         </div>
       </div>
 
@@ -60,7 +60,7 @@ export function HackerRank({ score, className }: Props) {
               <>
                 <span style={{ color: next.color }}>{next.nameEn}</span>
                 <span className="text-[#1e321e] ml-2">
-                  {(safeScore).toFixed(2)} / {next.min.toFixed(2)}
+                  {safeScore.toFixed(1)} / {next.min.toFixed(0)}
                 </span>
               </>
             ) : (
@@ -96,7 +96,7 @@ export function HackerRank({ score, className }: Props) {
                 color: reached ? r.color : "#1e321e",
                 background: isCurrent ? `${r.color}10` : "transparent",
               }}
-              title={`${r.nameCn} · ${r.min.toFixed(1)}–${r.max < 11 ? r.max.toFixed(1) : "11"}`}
+              title={`${r.nameCn} · ${r.min.toFixed(0)}–${r.max <= 100 ? r.max.toFixed(0) : "100"}`}
             >
               T{RANKS.indexOf(r) + 1}
             </div>

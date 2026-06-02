@@ -17,9 +17,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const [questionStats, profDist, catBreakdown, todayScheduleResult] = await Promise.all([
     // Global question-level stats
-    // hacker_score: difficulty-weighted average proficiency, clamped to graduated cap.
+    // hacker_score: difficulty-weighted average proficiency, normalized to 0–100.
     //   weight: easy=1, medium=2, hard=3 — harder mastery counts more.
-    //   range: 0 (untouched bank) → 11 (everything graduated).
+    //   range: 0 (untouched bank) → 100 (everything graduated).
     sql.query(
       `SELECT
         COUNT(*)::int                                                               AS total,
@@ -35,7 +35,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
                 CASE difficulty WHEN 'easy' THEN 1 WHEN 'medium' THEN 2 WHEN 'hard' THEN 3 ELSE 1 END)::numeric /
             NULLIF(SUM(
                 CASE difficulty WHEN 'easy' THEN 1 WHEN 'medium' THEN 2 WHEN 'hard' THEN 3 ELSE 1 END
-            ), 0),
+            ), 0) * 100.0 / 11.0,
             0
           ),
           2

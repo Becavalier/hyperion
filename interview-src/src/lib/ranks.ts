@@ -1,4 +1,4 @@
-// Hacker rank ladder — 5 tiers mapped to weighted-avg proficiency score (0–11).
+// Hacker rank ladder — 5 tiers mapped to weighted-avg proficiency score (0–100).
 // Visuals: each rank gets a qualitatively distinct glow (see index.css).
 
 export type RankKey =
@@ -25,7 +25,7 @@ export const RANKS: Rank[] = [
     nameEn: "SCRIPT_KIDDIE",
     nameCn: "脚本小子",
     min: 0,
-    max: 2.5,
+    max: 25,
     color: "#4d7a4d",
     glowClass: "glow-kiddie",
     tagline: "// running other people's exploits",
@@ -34,8 +34,8 @@ export const RANKS: Rank[] = [
     key: "data-stalker",
     nameEn: "DATA_STALKER",
     nameCn: "数据潜行者",
-    min: 2.5,
-    max: 5,
+    min: 25,
+    max: 50,
     color: "#00ff41",
     glowClass: "glow-stalker",
     tagline: "// pattern recognition online",
@@ -44,8 +44,8 @@ export const RANKS: Rank[] = [
     key: "ghost-protocol",
     nameEn: "GHOST_PROTOCOL",
     nameCn: "幽灵协议",
-    min: 5,
-    max: 7.5,
+    min: 50,
+    max: 75,
     color: "#c8d3d8",
     glowClass: "glow-ghost",
     tagline: "// moving through the matrix",
@@ -54,8 +54,8 @@ export const RANKS: Rank[] = [
     key: "red-hat-vanguard",
     nameEn: "RED_HAT_VANGUARD",
     nameCn: "红帽教官",
-    min: 7.5,
-    max: 9.5,
+    min: 75,
+    max: 90,
     color: "#ff3358",
     glowClass: "glow-redhat",
     tagline: "// offensive ops · zero-day class",
@@ -64,8 +64,8 @@ export const RANKS: Rank[] = [
     key: "root-architect",
     nameEn: "ROOT_ARCHITECT",
     nameCn: "根源权限者",
-    min: 9.5,
-    max: 11.0001, // include 11
+    min: 90,
+    max: 100.001, // include 100
     color: "#b94dff",
     glowClass: "glow-root",
     tagline: "// kernel privileges acquired",
@@ -73,7 +73,7 @@ export const RANKS: Rank[] = [
 ];
 
 export function rankFor(score: number): { rank: Rank; index: number } {
-  const s = Math.max(0, Math.min(11, score));
+  const s = Math.max(0, Math.min(100, score));
   const idx = RANKS.findIndex((r) => s >= r.min && s < r.max);
   const i = idx === -1 ? RANKS.length - 1 : idx;
   return { rank: RANKS[i], index: i };

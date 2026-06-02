@@ -1,12 +1,16 @@
 import type { Question, DailySchedule, Review, StudyPlan, Stats, SelfRating, Category, Difficulty, PlanStats, QueueItem } from "@/types";
 import { getToken, clearToken } from "./auth";
+import { loadSettings } from "./settings";
 
 const BASE = "/api";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const token = getToken();
+  const settings = loadSettings();
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
+    "X-Prep-Language": settings.aiLanguage,
+    ...(settings.systemPrompt ? { "X-Prep-System-Prompt": settings.systemPrompt } : {}),
     ...(init?.headers as Record<string, string> | undefined),
   };
   if (token) headers["Authorization"] = `Bearer ${token}`;

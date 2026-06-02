@@ -24,19 +24,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   }
 
-  const prompt = `You are a concise JavaScript code reviewer. Review this implementation.
+  // 业务侧的设置（语言 / 自定义 system prompt）通过 header 传过来（在 settings 面板里维护）
+  const language = (req.headers["x-prep-language"] as string) || "zh";
+  const customSystemPrompt = (req.headers["x-prep-system-prompt"] as string) || "";
+  const langInstruction = language === "en"
+    ? "Respond in English."
+    : language === "ja"
+    ? "日本語で回答してください。"
+    : language === "auto"
+    ? "Detect the language of the question and respond in the same language."
+    : "用中文回答。";
+
+  const prompt = `You are a JavaScript / coding review assistant. Evaluate the user's submission **by overall correctness and direction**, not exact wording.
 
 Question: ${question.title}
-${question.content ? `\nDescription: ${question.content}` : ""}
+${question.content ? `\nDescription:\n${question.content}` : ""}
 
-User's Code:
-\`\`\`javascript
-${code?.trim() || "(empty — user submitted without code)"}
+User's submission (this could be code, or analysis/explanation text for review-type tasks):
+\`\`\`
+${code?.trim() || "(empty — user submitted nothing)"}
 \`\`\`
 
-${question.answer_hint ? `Reference Answer:\n\`\`\`javascript\n${question.answer_hint}\n\`\`\`` : ""}
+${question.answer_hint ? `Reference / hint:\n${question.answer_hint}` : ""}
 
-Give a concise review in 3-5 bullet points. Cover: correctness, edge cases handled or missed, and key differences from reference. Be direct. No intro/outro text.
+${customSystemPrompt ? `Additional instructions: ${customSystemPrompt}\n` : ""}
+
+${langInstruction}
+
+Provide your review in this structure (use markdown):
+
+### 🎯 Verdict reasoning
+3-5 bullet points covering: correctness, key insights matched / missed, edge cases.
+**Important: be lenient on phrasing / variable names / minor stylistic differences. Focus on whether the user grasped the core idea, not whether wording matches the reference.**
+
+### ✅ What was good
+What the user got right.
+
+### ⚠️ What's missing or wrong
+Specific gaps. If empty submission, say so.
+
+### 💡 Recommended answer
+Provide a clean, idiomatic recommended answer (code or analysis depending on task type). For code: full working snippet with brief comments. For review tasks: a structured bug list with fixes.
 
 ═══════════════════════════════════════════════════════════════
 MANDATORY FINAL LINE — this rule is NOT optional:
@@ -46,16 +74,14 @@ The very last line of your response MUST be exactly one of:
   VERDICT: PARTIAL
   VERDICT: FAIL
 
-Pick exactly ONE token (PASS, PARTIAL, or FAIL). Do not output the pipe \`|\`, do not list all three, do not add explanation after it, do not omit the line.
+Selection rubric (lenient):
+- PASS    — overall direction is correct, key points covered; minor wording / style / edge-case gaps are OK.
+- PARTIAL — right general idea but missing important pieces or has real bugs.
+- FAIL    — empty, fundamentally wrong, or misses the core concept.
 
-Selection rubric:
-- PASS    — solution is correct and covers the key cases; minor stylistic gaps are OK.
-- PARTIAL — right idea but has bugs, misses edge cases, or skips important sub-problems.
-- FAIL    — empty, fundamentally wrong, or doesn't address the problem.
+Do not output the pipe \`|\`, do not list all three, do not add explanation after VERDICT. The line must stand alone.`;
 
-A response without the VERDICT line is INVALID. The line must stand alone on its own line.`;
-
-  const raw = await chatCompletion(prompt, { tier: "fast", maxTokens: 1024 });
+  const raw = await chatCompletion(prompt, { tier: "fast", maxTokens: 2048 });
 
   // Pull verdict off the end and strip it from the feedback shown to the user
   const verdictMatch = raw.match(/VERDICT:\s*(PASS|PARTIAL|FAIL)/i);
