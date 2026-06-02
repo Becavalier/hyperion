@@ -152,7 +152,7 @@ export default function Plan() {
       {plan && (
         <div className="text-[#2a402a] text-xs border border-[#1e321e] px-3 py-2 tracking-wide leading-relaxed">
           // SCHEDULING — each day: up to {Math.floor(plan.config.daily_count / 2)} due reviews + {plan.config.daily_count - Math.floor(plan.config.daily_count / 2)} new questions.
-          Mastered → +1 proficiency · Fuzzy → no change · Unknown → −1 · Proficiency &gt; 10 → graduated.
+          Pass → +1 proficiency · Needs Practice → no change · Proficiency &gt; 10 → graduated.
         </div>
       )}
 
