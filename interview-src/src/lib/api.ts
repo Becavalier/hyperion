@@ -10,7 +10,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     "X-Prep-Language": settings.aiLanguage,
-    ...(settings.systemPrompt ? { "X-Prep-System-Prompt": settings.systemPrompt } : {}),
+    ...(settings.systemPrompt ? { "X-Prep-System-Prompt": encodeURIComponent(settings.systemPrompt) } : {}),
     ...(init?.headers as Record<string, string> | undefined),
   };
   if (token) headers["Authorization"] = `Bearer ${token}`;

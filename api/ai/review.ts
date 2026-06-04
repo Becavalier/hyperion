@@ -26,7 +26,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // 业务侧的设置（语言 / 自定义 system prompt）通过 header 传过来（在 settings 面板里维护）
   const language = (req.headers["x-prep-language"] as string) || "zh";
-  const customSystemPrompt = (req.headers["x-prep-system-prompt"] as string) || "";
+  const customSystemPrompt = req.headers["x-prep-system-prompt"]
+    ? decodeURIComponent(req.headers["x-prep-system-prompt"] as string)
+    : "";
   const langInstruction = language === "en"
     ? "Respond in English."
     : language === "ja"
