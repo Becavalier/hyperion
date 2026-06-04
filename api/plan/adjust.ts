@@ -3,6 +3,7 @@ import { sql } from "../_lib/db";
 import { setCors, handleOptions } from "../_lib/cors";
 import { requireAuth } from "../_lib/auth";
 import { adjustPlan } from "../_lib/ai";
+import type { Question } from "../_lib/db";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
@@ -52,13 +53,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // 获取对应题目信息供 AI 参考
   const ids = needReschedule.map((r) => r.question_id);
-  const questionsResult = await sql.query(
-    `SELECT * FROM questions WHERE id = ANY($1::uuid[])`,
-    [ids]
-  );
+  const questionsResult = await sql`SELECT * FROM questions WHERE id = ANY(${ids})`;
 
   // 调用 AI 调整
-  const adjusted = await adjustPlan(remainingSchedule, needReschedule, questionsResult.rows);
+  const adjusted = await adjustPlan(remainingSchedule, needReschedule, questionsResult.rows as Question[]);
 
   // 更新数据库中的剩余计划
   for (const [date, questionIds] of Object.entries(adjusted)) {
