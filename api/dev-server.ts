@@ -42,8 +42,6 @@ async function main() {
     questionById,
     questionReset,
     plan,
-    planGenerate,
-    planAdjust,
     schedule,
     review,
     stats,
@@ -56,8 +54,6 @@ async function main() {
     import("./questions/[id].js"),
     import("./questions/reset/[id].js"),
     import("./plan/index.js"),
-    import("./plan/generate.js"),
-    import("./plan/adjust.js"),
     import("./schedule/[date].js"),
     import("./review/index.js"),
     import("./stats/index.js"),
@@ -76,8 +72,8 @@ async function main() {
     withParams(req, { id: req.params.id });
     adapt(questionById.default)(req, res);
   });
-  app.all("/api/plan/generate", adapt(planGenerate.default));
-  app.all("/api/plan/adjust", adapt(planAdjust.default));
+  app.all("/api/plan/generate", adapt(plan.default));
+  app.all("/api/plan/adjust", adapt(plan.default));
   app.all("/api/plan", adapt(plan.default));
   app.all("/api/schedule/:date", (req, res) => {
     withParams(req, { date: req.params.date });
