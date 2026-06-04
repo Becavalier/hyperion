@@ -6,7 +6,7 @@
     "@anthropic-ai/sdk": "^0.54.0",
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/node": "^5.1.9",
-    "longport": "^3.0.23"
+    "longport": "^3.0.18"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
