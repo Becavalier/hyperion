@@ -9,19 +9,23 @@ import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
-import { logout } from "@/lib/auth";
+import { logout, getToken } from "@/lib/auth";
 import { SettingsContext, loadSettings, saveSettings, useSettings, type Settings } from "@/lib/settings";
-import { getStockQuote } from "@/lib/api";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
-function Sparkline({ points, color }: { points: number[]; color: string }) {
+function Sparkline({ points, color }: { points: [number, number][]; color: string }) {
   if (points.length < 2) return null;
   const W = 64, H = 18, pad = 1;
-  const min = Math.min(...points);
-  const max = Math.max(...points);
-  const range = max - min || 1;
-  const xs = points.map((_, i) => pad + (i / (points.length - 1)) * (W - pad * 2));
-  const ys = points.map(p => H - pad - ((p - min) / range) * (H - pad * 2));
+  // handle both [ts, price] tuples and legacy number[] format
+  const isTuple = Array.isArray(points[0]);
+  const prices = isTuple ? (points as [number, number][]).map(([, p]) => p) : (points as unknown as number[]);
+  const ts = isTuple ? (points as [number, number][]).map(([t]) => t) : prices.map((_, i) => i);
+  const minP = Math.min(...prices), maxP = Math.max(...prices);
+  const minT = Math.min(...ts), maxT = Math.max(...ts);
+  const rangeP = maxP - minP || 1;
+  const rangeT = maxT - minT || 1;
+  const xs = ts.map(t => pad + ((t - minT) / rangeT) * (W - pad * 2));
+  const ys = prices.map(p => H - pad - ((p - minP) / rangeP) * (H - pad * 2));
   const d = xs.map((x, i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${ys[i].toFixed(1)}`).join(" ");
   return (
     <svg width={W} height={H} className="opacity-80 shrink-0">
@@ -32,19 +36,36 @@ function Sparkline({ points, color }: { points: number[]; color: string }) {
 
 function StockTicker() {
   const { settings } = useSettings();
-  const [quote, setQuote] = useState<{ price: number; change: number; changePercent: number; lines: number[] } | null>(null);
+  const [quote, setQuote] = useState<{ price: number; change: number; changePercent: number; prevClose: number; lines: [number, number][] } | null>(null);
   const [err, setErr] = useState(false);
 
   useEffect(() => {
     if (!settings.stockSymbol) { setQuote(null); setErr(false); return; }
-    let alive = true;
-    const load = () =>
-      getStockQuote(settings.stockSymbol)
-        .then(q => { if (alive) { setQuote(q); setErr(false); } })
-        .catch(() => { if (alive) setErr(true); });
-    load();
-    const id = setInterval(load, 30_000);
-    return () => { alive = false; clearInterval(id); };
+
+    const token = getToken();
+    const params = new URLSearchParams({ symbol: settings.stockSymbol });
+    if (token) params.set("token", token);
+    const es = new EventSource(`/api/stock-stream?${params}`);
+
+    es.onmessage = (e) => {
+      try {
+        const data = JSON.parse(e.data);
+        if (data.type === "snapshot") {
+          setQuote({ price: data.price, change: data.change, changePercent: data.changePercent, prevClose: data.prevClose, lines: data.lines });
+          setErr(false);
+        } else if (data.type === "quote") {
+          setQuote((prev) => {
+            if (!prev) return prev;
+            const cutoff = Date.now() - 24 * 60 * 60 * 1000;
+            const lines: [number, number][] = [...prev.lines.filter(([t]) => t >= cutoff), [data.ts, data.price]];
+            return { ...prev, price: data.price, change: data.change, changePercent: data.changePercent, lines };
+          });
+        }
+      } catch {}
+    };
+    es.onerror = () => setErr(true);
+
+    return () => es.close();
   }, [settings.stockSymbol]);
 
   if (!settings.stockSymbol) return null;
@@ -60,7 +81,7 @@ function StockTicker() {
   );
 
   const up = quote.change >= 0;
-  const clr = up ? "#00ff41" : "#ff3358";
+  const clr = up ? "#4d9e5e" : "#a63347";
 
   return (
     <div className="flex items-center gap-1.5 text-xs tabular-nums">

@@ -49,6 +49,7 @@ async function main() {
     aiReview,
     authLogin,
     stock,
+    stockStream,
   ] = await Promise.all([
     import("./questions/index.js"),
     import("./questions/[id].js"),
@@ -61,6 +62,7 @@ async function main() {
     import("./ai/review.js"),
     import("./auth/login.js"),
     import("./stock.js"),
+    import("./stock-stream.js"),
   ]);
 
   app.all("/api/questions", adapt(questions.default));
@@ -85,6 +87,7 @@ async function main() {
   app.all("/api/ai/review", adapt(aiReview.default));
   app.all("/api/auth/login", adapt(authLogin.default));
   app.all("/api/stock", adapt(stock.default));
+  app.all("/api/stock-stream", adapt(stockStream.default));
 
   const port = parseInt(process.env.API_PORT ?? "3002");
   app.listen(port, () => console.log(`API dev server running at http://localhost:${port}`));

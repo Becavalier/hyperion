@@ -116,7 +116,7 @@ export const getAIReview = (question_id: string, code: string) =>
 
 // ---------- Stock ----------
 export const getStockQuote = (symbol: string) =>
-  request<{ symbol: string; price: number; change: number; changePercent: number; lines: number[] }>(`/stock?symbol=${encodeURIComponent(symbol)}`);
+  request<{ symbol: string; price: number; change: number; changePercent: number; prevClose: number; lines: [number, number][] }>(`/stock?symbol=${encodeURIComponent(symbol)}`);
 
 // ---------- Stats ----------
 export const getStats = () =>

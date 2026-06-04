@@ -41,8 +41,13 @@ export function requireAuth(req: VercelRequest, res: VercelResponse): boolean {
   // If no credentials configured (local dev convenience), skip auth entirely.
   if (!process.env.AUTH_USERNAME || !process.env.AUTH_PASSWORD) return true;
 
+  // Accept token from Authorization header (normal requests) or ?token= query param (SSE/EventSource)
   const header = req.headers.authorization;
-  const token = header?.startsWith("Bearer ") ? header.slice(7) : null;
+  const headerToken = header?.startsWith("Bearer ") ? header.slice(7) : null;
+  const queryRaw = req.query?.token;
+  const queryToken = Array.isArray(queryRaw) ? queryRaw[0] : queryRaw;
+  const token = headerToken ?? queryToken ?? null;
+
   if (!token || !verifyToken(token)) {
     res.status(401).json({ error: "Unauthorized" });
     return false;
