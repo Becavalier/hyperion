@@ -4,8 +4,8 @@
   "version": "0.1.0",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.54.0",
-    "@vercel/node": "^5.1.9",
-    "@vercel/postgres": "^0.10.0"
+    "@neondatabase/serverless": "^1.1.0",
+    "@vercel/node": "^5.1.9"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

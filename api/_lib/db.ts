@@ -1,6 +1,9 @@
-import { sql } from "@vercel/postgres";
+import { neon } from "@neondatabase/serverless";
 
-export { sql };
+export const sql = neon(
+  process.env.POSTGRES_URL ?? process.env.DATABASE_URL ?? "",
+  { fullResults: true }
+);
 
 export type Category = "frontend" | "algorithm" | "system-design" | "quiz";
 export type Difficulty = "easy" | "medium" | "hard";
