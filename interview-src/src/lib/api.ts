@@ -114,6 +114,10 @@ export const getAIAnswer = (question_id: string) =>
 export const getAIReview = (question_id: string, code: string) =>
   request<{ feedback: string; verdict: SelfRating | null }>("/ai/review", { method: "POST", body: JSON.stringify({ question_id, code }) });
 
+// ---------- Stock ----------
+export const getStockQuote = (symbol: string) =>
+  request<{ symbol: string; price: number; change: number; changePercent: number; lines: number[] }>(`/stock?symbol=${encodeURIComponent(symbol)}`);
+
 // ---------- Stats ----------
 export const getStats = () =>
   request<{ plan: StudyPlan | null; stats: Stats | null }>("/stats");

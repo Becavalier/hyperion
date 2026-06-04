@@ -6,12 +6,14 @@ export interface Settings {
   aiLanguage: Lang;
   systemPrompt: string;
   sparksEnabled: boolean;
+  stockSymbol: string;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
   aiLanguage: "zh",
   systemPrompt: "",
   sparksEnabled: true,
+  stockSymbol: "",
 };
 
 const STORAGE_KEY = "prep.settings";

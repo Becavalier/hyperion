@@ -77,6 +77,19 @@ export function SettingsPanel({ open, onClose }: Props) {
           <p className="text-[#1e321e] text-xs">附加到每次 AI review 的 prompt 末尾</p>
         </div>
 
+        {/* Stock Ticker */}
+        <div className="space-y-2">
+          <label className="block text-xs text-[#4d7a4d] tracking-widest">STOCK_TICKER</label>
+          <input
+            type="text"
+            value={draft.stockSymbol}
+            onChange={(e) => setDraft({ ...draft, stockSymbol: e.target.value.toUpperCase() })}
+            placeholder="e.g. AAPL.US · 700.HK · 09660.HK"
+            className="w-full bg-[#080c08] border border-[#1e321e] text-[#b8f5b8] px-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] placeholder:text-[#2a402a] transition-colors"
+          />
+          <p className="text-[#1e321e] text-xs">留空则不显示 · 数据来源 Longbridge</p>
+        </div>
+
         {/* Sparks toggle */}
         <div className="space-y-2">
           <label className="flex items-center justify-between cursor-pointer">

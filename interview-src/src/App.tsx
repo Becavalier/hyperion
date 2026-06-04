@@ -10,8 +10,68 @@ import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
 import { logout } from "@/lib/auth";
-import { SettingsContext, loadSettings, saveSettings, type Settings } from "@/lib/settings";
+import { SettingsContext, loadSettings, saveSettings, useSettings, type Settings } from "@/lib/settings";
+import { getStockQuote } from "@/lib/api";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+
+function Sparkline({ points, color }: { points: number[]; color: string }) {
+  if (points.length < 2) return null;
+  const W = 64, H = 18, pad = 1;
+  const min = Math.min(...points);
+  const max = Math.max(...points);
+  const range = max - min || 1;
+  const xs = points.map((_, i) => pad + (i / (points.length - 1)) * (W - pad * 2));
+  const ys = points.map(p => H - pad - ((p - min) / range) * (H - pad * 2));
+  const d = xs.map((x, i) => `${i === 0 ? "M" : "L"}${x.toFixed(1)},${ys[i].toFixed(1)}`).join(" ");
+  return (
+    <svg width={W} height={H} className="opacity-80 shrink-0">
+      <path d={d} fill="none" stroke={color} strokeWidth="1.2" strokeLinejoin="round" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function StockTicker() {
+  const { settings } = useSettings();
+  const [quote, setQuote] = useState<{ price: number; change: number; changePercent: number; lines: number[] } | null>(null);
+  const [err, setErr] = useState(false);
+
+  useEffect(() => {
+    if (!settings.stockSymbol) { setQuote(null); setErr(false); return; }
+    let alive = true;
+    const load = () =>
+      getStockQuote(settings.stockSymbol)
+        .then(q => { if (alive) { setQuote(q); setErr(false); } })
+        .catch(() => { if (alive) setErr(true); });
+    load();
+    const id = setInterval(load, 30_000);
+    return () => { alive = false; clearInterval(id); };
+  }, [settings.stockSymbol]);
+
+  if (!settings.stockSymbol) return null;
+
+  const ticker = settings.stockSymbol.split(".")[0];
+
+  if (err || !quote) return (
+    <div className="flex items-center gap-1 text-xs tabular-nums text-[#2a402a]">
+      <span className="text-[#1e321e]">|</span>
+      <span>{ticker}</span>
+      <span>···</span>
+    </div>
+  );
+
+  const up = quote.change >= 0;
+  const clr = up ? "#00ff41" : "#ff3358";
+
+  return (
+    <div className="flex items-center gap-1.5 text-xs tabular-nums">
+      <span className="text-[#1e321e]">|</span>
+      {quote.lines.length >= 2 && <Sparkline points={quote.lines} color={clr} />}
+      <span className="text-[#4d7a4d]">{ticker}</span>
+      <span style={{ color: clr }}>{up ? "▲" : "▼"} {quote.price.toFixed(2)}</span>
+      <span style={{ color: clr }}>({up ? "+" : ""}{quote.changePercent.toFixed(2)}%)</span>
+    </div>
+  );
+}
 
 function Clock() {
   const [now, setNow] = useState(() => new Date());
@@ -131,6 +191,7 @@ export default function App() {
               </NavLink>
             ))}
             <Clock />
+            <StockTicker />
             <button
               onClick={() => setSettingsOpen(true)}
               title="Settings"
