@@ -173,7 +173,7 @@ const mdComponents = {
 // ── per-category language extension ───────────────────────────────────────────
 
 function langExtension(category: Category) {
-  if (category === "frontend") return javascript();
+  if (category === "frontend") return javascript({ jsx: true });
   if (category === "algorithm") return cpp();
   return null; // quiz / system-design → plain text
 }
