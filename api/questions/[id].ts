@@ -8,7 +8,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (handleOptions(req, res)) return;
   if (!requireAuth(req, res)) return;
 
-  const { id } = req.query as { id: string };
+  const { id, reset } = req.query as { id: string; reset?: string };
+
+  // POST /api/questions/:id?reset=1 — wipe spaced-repetition state
+  if (reset !== undefined || req.method === "POST") {
+    if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+    const result = await sql`
+      UPDATE questions
+      SET proficiency = 0, next_review_date = NULL, last_reviewed_at = NULL
+      WHERE id = ${id}
+      RETURNING id, title, proficiency, next_review_date::text AS next_review_date, last_reviewed_at
+    `;
+    if (!result.rows[0]) return res.status(404).json({ error: "Question not found" });
+    return res.json({ question: result.rows[0] });
+  }
 
   if (req.method === "GET") {
     const result = await sql`
@@ -22,7 +35,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === "PUT") {
     const { title, content, category, difficulty, tags, answer_hint } = req.body;
-
     const result = await sql`
       UPDATE questions
       SET title       = COALESCE(${title}, title),

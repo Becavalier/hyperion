@@ -114,6 +114,17 @@ export const getAIAnswer = (question_id: string) =>
 export const getAIReview = (question_id: string, code: string) =>
   request<{ feedback: string; verdict: SelfRating | null }>("/ai/review", { method: "POST", body: JSON.stringify({ question_id, code }) });
 
+// ---------- English Bank ----------
+export interface EnglishEntry { id: string; content: string; phonetic: string | null; notes: string | null; created_at: string; updated_at: string; }
+export const getEnglishEntries = (params?: { search?: string; page?: number; limit?: number }) =>
+  request<{ entries: EnglishEntry[]; total: number; page: number; limit: number }>(`/english?${new URLSearchParams(Object.entries(params ?? {}).filter(([,v]) => v != null).map(([k,v]) => [k, String(v)]))}`);
+export const createEnglishEntry = (body: { content: string; phonetic?: string; notes?: string }) =>
+  request<{ entry: EnglishEntry }>("/english", { method: "POST", body: JSON.stringify(body) });
+export const updateEnglishEntry = (id: string, body: { content?: string; phonetic?: string; notes?: string }) =>
+  request<{ entry: EnglishEntry }>(`/english/${id}`, { method: "PATCH", body: JSON.stringify(body) });
+export const deleteEnglishEntry = (id: string) =>
+  request<void>(`/english/${id}`, { method: "DELETE" });
+
 // ---------- Stock ----------
 export const getStockQuote = (symbol: string) =>
   request<{ symbol: string; price: number; change: number; changePercent: number; prevClose: number; lines: [number, number][] }>(`/stock?symbol=${encodeURIComponent(symbol)}`);

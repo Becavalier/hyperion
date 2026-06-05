@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, BookOpen, Calendar, Database, TriangleAlert, LogOut, Settings as SettingsIcon } from "lucide-react";
+import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, ChevronDown, TriangleAlert, LogOut, Settings as SettingsIcon } from "lucide-react";
 import Dashboard from "@/pages/Dashboard";
 import Today from "@/pages/Today";
 import Plan from "@/pages/Plan";
 import Questions from "@/pages/Questions";
+import English from "@/pages/English";
 import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
@@ -111,12 +112,79 @@ function Clock() {
   );
 }
 
-const nav = [
+const topNav = [
   { to: "/", label: "Overview", icon: LayoutDashboard, end: true },
-  { to: "/today", label: "Daily", icon: BookOpen, end: false },
-  { to: "/plan", label: "Schedule", icon: Calendar, end: false },
-  { to: "/questions", label: "Questions", icon: Database, end: false },
+  { to: "/english", label: "English", icon: Languages, end: false },
 ];
+
+const questionsSubmenu = [
+  { to: "/today",     label: "Daily",         icon: BookOpen  },
+  { to: "/plan",      label: "Schedule",      icon: Calendar  },
+  { to: "/questions", label: "Library",       icon: BookMarked },
+];
+
+function QuestionsNav() {
+  const location = useLocation();
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  const isActive = ["/today", "/plan", "/questions"].some(p =>
+    location.pathname === p || location.pathname.startsWith(p + "/")
+  );
+
+  const handleMouseEnter = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 120);
+  };
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button
+        className={cn(
+          "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
+          isActive
+            ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
+            : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+        )}
+      >
+        <Database className="w-3.5 h-3.5" />
+        <span className="hidden sm:inline">Questions</span>
+        <ChevronDown className={cn("w-3 h-3 transition-transform", open && "rotate-180")} />
+      </button>
+
+      {open && (
+        <div className="absolute top-full left-0 mt-0.5 bg-[#080c08] border border-[#1e321e] whitespace-nowrap z-50 py-1">
+          {questionsSubmenu.map(({ to, label, icon: Icon }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-2 px-4 py-2 text-xs tracking-wider transition-colors w-full",
+                  isActive
+                    ? "text-[#00ff41] bg-[#001a00]"
+                    : "text-[#4d7a4d] hover:text-[#b8f5b8] hover:bg-[#0a120a]"
+                )
+              }
+            >
+              <Icon className="w-3.5 h-3.5 shrink-0" />
+              <span>{label}</span>
+            </NavLink>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function PendingTab() {
   const location = useLocation();
@@ -193,24 +261,36 @@ export default function App() {
             <span className="text-[#00ff41] font-bold mr-6 text-sm tracking-[0.15em] cursor-blink select-none">
               PREP.SYS
             </span>
-            {nav.map(({ to, label, icon: Icon, end }) => (
-              <NavLink
-                key={to}
-                to={to}
-                end={end}
-                className={({ isActive }) =>
-                  cn(
-                    "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
-                    isActive
-                      ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
-                      : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
-                  )
-                }
-              >
-                <Icon className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">{label}</span>
-              </NavLink>
-            ))}
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
+                  isActive
+                    ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
+                    : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+                )
+              }
+            >
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">Overview</span>
+            </NavLink>
+            <QuestionsNav />
+            <NavLink
+              to="/english"
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
+                  isActive
+                    ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
+                    : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+                )
+              }
+            >
+              <Languages className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">English</span>
+            </NavLink>
             <Clock />
             <StockTicker />
             <button
@@ -236,8 +316,23 @@ export default function App() {
             <Route path="/today" element={<Today />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/questions" element={<Questions />} />
+            <Route path="/english" element={<English />} />
           </Routes>
         </main>
+
+        <footer className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 mt-4 border-t border-[#0e1a0e]">
+          <p className="text-[#1e321e] text-xs tracking-widest text-center">
+            POWERED BY{" "}
+            <a
+              href="https://claude.ai/code"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#2a402a] transition-colors"
+            >
+              CLAUDE CODE
+            </a>
+          </p>
+        </footer>
 
         <PendingTab />
         <SpeedInsights />

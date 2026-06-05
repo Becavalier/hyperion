@@ -3,28 +3,42 @@ import { Config, QuoteContext, SubType, TradeSessions, Period, AdjustType } from
 import { setCors, handleOptions } from "./_lib/cors";
 import { requireAuth } from "./_lib/auth";
 
+function setupLongportEnv() {
+  process.env.LONGPORT_APP_KEY          = process.env.LONGBRIDGE_APP_KEY;
+  process.env.LONGPORT_APP_SECRET       = process.env.LONGBRIDGE_APP_SECRET;
+  process.env.LONGPORT_ACCESS_TOKEN     = process.env.LONGBRIDGE_ACCESS_TOKEN;
+  process.env.LONGPORT_ENABLE_OVERNIGHT = "true";
+  if (!process.env.LONGPORT_APP_KEY || !process.env.LONGPORT_ACCESS_TOKEN) {
+    throw new Error("Longbridge credentials not configured");
+  }
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
   if (handleOptions(req, res)) return;
-  if (!requireAuth(req, res)) return; // now also accepts ?token= query param
+  if (!requireAuth(req, res)) return;
 
   const symbol = (req.query.symbol as string | undefined)?.toUpperCase();
   if (!symbol) return res.status(400).json({ error: "symbol required" });
 
-  process.env.LONGPORT_APP_KEY = process.env.LONGBRIDGE_APP_KEY;
-  process.env.LONGPORT_APP_SECRET = process.env.LONGBRIDGE_APP_SECRET;
-  process.env.LONGPORT_ACCESS_TOKEN = process.env.LONGBRIDGE_ACCESS_TOKEN;
-  process.env.LONGPORT_ENABLE_OVERNIGHT = "true";
-
   res.setHeader("Content-Type", "text/event-stream");
   res.setHeader("Cache-Control", "no-cache");
   res.setHeader("Connection", "keep-alive");
-  res.setHeader("X-Accel-Buffering", "no"); // disable nginx/Vercel edge buffering
+  res.setHeader("X-Accel-Buffering", "no");
   res.status(200);
 
   const send = (data: object) => {
     try { res.write(`data: ${JSON.stringify(data)}\n\n`); } catch {}
   };
+
+  try {
+    setupLongportEnv();
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    send({ type: "error", message: `Auth error: ${msg}` });
+    res.end();
+    return;
+  }
 
   let ctx: QuoteContext;
   try {

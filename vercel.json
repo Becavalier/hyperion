@@ -2,8 +2,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "rewrites": [
+    { "source": "/api/english/:id", "destination": "/api/english/[id].ts?id=:id" },
     { "source": "/api/schedule/:date", "destination": "/api/schedule/[date].ts?date=:date" },
-    { "source": "/api/questions/reset/:id", "destination": "/api/questions/reset/[id].ts?id=:id" },
+    { "source": "/api/questions/reset/:id", "destination": "/api/questions/[id].ts?id=:id&reset=1" },
     { "source": "/api/questions/:id", "destination": "/api/questions/[id].ts?id=:id" },
     { "source": "/interview", "destination": "/interview/index.html" },
     { "source": "/interview/:path*", "destination": "/interview/index.html" },

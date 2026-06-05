@@ -40,7 +40,6 @@ async function main() {
   const [
     questions,
     questionById,
-    questionReset,
     plan,
     schedule,
     review,
@@ -48,12 +47,12 @@ async function main() {
     aiAnswer,
     aiReview,
     authLogin,
-    stock,
     stockStream,
+    english,
+    englishById,
   ] = await Promise.all([
     import("./questions/index.js"),
     import("./questions/[id].js"),
-    import("./questions/reset/[id].js"),
     import("./plan/index.js"),
     import("./schedule/[date].js"),
     import("./review/index.js"),
@@ -61,14 +60,15 @@ async function main() {
     import("./ai/answer.js"),
     import("./ai/review.js"),
     import("./auth/login.js"),
-    import("./stock.js"),
     import("./stock-stream.js"),
+    import("./english/index.js"),
+    import("./english/[id].js"),
   ]);
 
   app.all("/api/questions", adapt(questions.default));
   app.all("/api/questions/reset/:id", (req, res) => {
-    withParams(req, { id: req.params.id });
-    adapt(questionReset.default)(req, res);
+    withParams(req, { id: req.params.id, reset: "1" });
+    adapt(questionById.default)(req, res);
   });
   app.all("/api/questions/:id", (req, res) => {
     withParams(req, { id: req.params.id });
@@ -86,8 +86,12 @@ async function main() {
   app.all("/api/ai/answer", adapt(aiAnswer.default));
   app.all("/api/ai/review", adapt(aiReview.default));
   app.all("/api/auth/login", adapt(authLogin.default));
-  app.all("/api/stock", adapt(stock.default));
   app.all("/api/stock-stream", adapt(stockStream.default));
+  app.all("/api/english", adapt(english.default));
+  app.all("/api/english/:id", (req, res) => {
+    withParams(req, { id: req.params.id });
+    adapt(englishById.default)(req, res);
+  });
 
   const port = parseInt(process.env.API_PORT ?? "3002");
   app.listen(port, () => console.log(`API dev server running at http://localhost:${port}`));
