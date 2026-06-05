@@ -132,6 +132,7 @@ export default function Dashboard() {
     {
       label: "AVG_PROFICIENCY",
       value: s.avg_proficiency != null ? s.avg_proficiency : "—",
+      suffix: s.avg_proficiency != null ? "/ 10" : undefined,
       sub: s.avg_proficiency != null ? `across ${s.in_progress + s.graduated} reviewed` : "no reviews yet",
       icon: TrendingUp,
       color: "text-[#ffb300]",
@@ -171,10 +172,13 @@ export default function Dashboard() {
         <HackerRank score={s.hacker_score ?? 0} />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {statCards.map(({ label, value, sub, icon: Icon, color, border }) => (
+          {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border }) => (
             <div key={label} className={cn("bg-[#0c120c] border p-4", border)}>
               <Icon className={cn("w-4 h-4 mb-3", color)} />
-              <div className={cn("text-2xl font-bold tabular-nums", color)}>{value}</div>
+              <div className={cn("text-2xl font-bold tabular-nums", color)}>
+                {value}
+                {suffix && <span className="text-sm font-normal text-[#3a5a3a] ml-1">{suffix}</span>}
+              </div>
               <div className="text-[#2a402a] text-xs mt-1 tracking-widest">{label}</div>
               <div className="text-[#1e321e] text-xs mt-0.5">{sub}</div>
             </div>

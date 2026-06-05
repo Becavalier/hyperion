@@ -112,11 +112,6 @@ function Clock() {
   );
 }
 
-const topNav = [
-  { to: "/", label: "Overview", icon: LayoutDashboard, end: true },
-  { to: "/english", label: "English", icon: Languages, end: false },
-];
-
 const questionsSubmenu = [
   { to: "/today",     label: "Daily",         icon: BookOpen  },
   { to: "/plan",      label: "Schedule",      icon: Calendar  },

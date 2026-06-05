@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { Plus, Pencil, Trash2, X, Check, Search } from "lucide-react";
 import { getEnglishEntries, createEnglishEntry, updateEnglishEntry, deleteEnglishEntry } from "@/lib/api";
 import type { EnglishEntry } from "@/lib/api";
-import { cn } from "@/lib/utils";
 
 const LIMIT = 40;
 
