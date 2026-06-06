@@ -18,8 +18,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const { question_id } = req.body;
     if (!question_id) return res.status(400).json({ error: "question_id 为必填项" });
 
-    const question = await findQuestionById(question_id) as Question | null;
-    if (!question) return res.status(404).json({ error: "题目不存在" });
+    const row = await findQuestionById(question_id);
+    if (!row) return res.status(404).json({ error: "题目不存在" });
+
+    const question: Question = {
+      id: row.id,
+      title: row.title,
+      content: row.content ?? "",
+      category: row.category as Question["category"],
+      difficulty: row.difficulty as Question["difficulty"],
+      tags: [],
+      answer_hint: row.answerHint ?? null,
+      cluster_id: row.clusterId ?? null,
+      created_at: row.createdAt?.toISOString() ?? "",
+      proficiency: row.proficiency ?? 0,
+      next_review_date: row.nextReviewDate ?? null,
+      last_reviewed_at: row.lastReviewedAt?.toISOString() ?? null,
+    };
 
     const answer = await getAnswerHint(question);
 
@@ -67,7 +82,7 @@ User's submission (this could be code, or analysis/explanation text for review-t
 ${code?.trim() || "(empty — user submitted nothing)"}
 \`\`\`
 
-${question.answer_hint ? `Reference / hint:\n${question.answer_hint}` : ""}
+${question.answerHint ? `Reference / hint:\n${question.answerHint}` : ""}
 
 ${customSystemPrompt ? `Additional instructions: ${customSystemPrompt}\n` : ""}
 

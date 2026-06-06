@@ -98,7 +98,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           category: z.string().optional().describe("frontend | algorithm | system-design | quiz"),
           limit:    z.number().int().min(1).max(20).default(10),
         }),
-        execute: async ({ search, category, limit }) =>
+        execute: async ({ search, category, limit }: { search: string; category?: string; limit: number }) =>
           listQuestions({ search, category, today, limit }),
       }),
 
@@ -112,7 +112,8 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           answer_hint: z.string().optional().describe("Reference answer or hint"),
           tags:        z.array(z.string()).optional(),
         }),
-        execute: async (data) => createQuestion(data),
+        execute: async (data: { title: string; content?: string; category: "frontend"|"algorithm"|"system-design"|"quiz"; difficulty: "easy"|"medium"|"hard"; answer_hint?: string; tags?: string[] }) =>
+          createQuestion(data),
       }),
 
       update_question: tool({
@@ -125,7 +126,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           difficulty:  z.enum(["easy", "medium", "hard"]).optional(),
           answer_hint: z.string().optional(),
         }),
-        execute: async ({ id, title, content, category, difficulty, answer_hint }) =>
+        execute: async ({ id, title, content, category, difficulty, answer_hint }: { id: string; title?: string; content?: string; category?: "frontend"|"algorithm"|"system-design"|"quiz"; difficulty?: "easy"|"medium"|"hard"; answer_hint?: string }) =>
           updateQuestionFields(id, { title, content, category, difficulty, answerHint: answer_hint }),
       }),
 
@@ -136,7 +137,8 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           search: z.string().describe("English word or Chinese meaning to search"),
           limit:  z.number().int().min(1).max(20).default(10),
         }),
-        execute: async ({ search, limit }) => searchEnglishEntries(search, limit),
+        execute: async ({ search, limit }: { search: string; limit: number }) =>
+          searchEnglishEntries(search, limit),
       }),
 
       create_english_entry: tool({
@@ -146,7 +148,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           phonetic: z.string().optional().describe("Phonetic notation, e.g. /wɜːrd/"),
           meaning:  z.string().optional().describe("Chinese translation or meaning. Use \\n to match lines in word field."),
         }),
-        execute: async ({ word, phonetic, meaning }) =>
+        execute: async ({ word, phonetic, meaning }: { word: string; phonetic?: string; meaning?: string }) =>
           createEnglishWord({ content: word, phonetic: phonetic ?? null, notes: meaning ?? null }),
       }),
 
@@ -158,7 +160,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
           phonetic: z.string().optional().describe("New phonetic notation"),
           meaning:  z.string().optional().describe("New Chinese meaning"),
         }),
-        execute: async ({ id, word, phonetic, meaning }) =>
+        execute: async ({ id, word, phonetic, meaning }: { id: string; word?: string; phonetic?: string; meaning?: string }) =>
           updateEnglishWordFields(id, { word, phonetic, meaning }),
       }),
     },

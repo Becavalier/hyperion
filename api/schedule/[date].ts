@@ -23,8 +23,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const current = await getScheduleByDate(plan.id as string, date);
     if (!current) return res.status(404).json({ error: "No schedule for date" });
 
-    const dailyCount: number = plan.config?.daily_count ?? 6;
-    const existingIds: string[] = current.question_ids ?? [];
+    const dailyCount: number = (plan.config as { daily_count?: number } | null)?.daily_count ?? 6;
+    const existingIds: string[] = (current.question_ids as string[]) ?? [];
     const newIds = await buildDaySchedule(date, dailyCount, existingIds);
 
     if (newIds.length === 0) {

@@ -63,7 +63,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Lazily generate today's schedule if it doesn't exist yet
   let todaySchedule = todayScheduleResult.rows[0];
   if (!todaySchedule && plan) {
-    const dailyCount: number = plan.config?.daily_count ?? 6;
+    const dailyCount: number = (plan.config as { daily_count?: number } | null)?.daily_count ?? 6;
     const questionIds = await buildDaySchedule(today, dailyCount);
     if (questionIds.length > 0) {
       const inserted = await sql`
