@@ -14,7 +14,7 @@ export function HackerRank({ score, className }: Props) {
   return (
     <div
       className={cn(
-        "rank-glow bg-[#0c120c] border border-[#1e321e] p-4 sm:p-5 flex flex-col gap-3",
+        "rank-glow bg-[var(--c-surface)] border border-[var(--c-border)] p-4 sm:p-5 flex flex-col gap-3",
         current.glowClass,
         className,
       )}
@@ -23,43 +23,43 @@ export function HackerRank({ score, className }: Props) {
         <div className="flex items-center gap-3">
           <Cpu className="w-5 h-5 shrink-0" style={{ color: current.color }} />
           <div>
-            <p className="text-[#2a402a] text-xs tracking-widest">// HACKER_RANK</p>
+            <p className="text-[var(--c-fg3)] text-xs tracking-widest">// HACKER_RANK</p>
             <p
               className="text-base sm:text-lg font-bold tracking-wider mt-0.5"
               style={{ color: current.color, textShadow: `0 0 8px ${current.color}66` }}
             >
               {current.nameEn}
-              <span className="ml-2 text-xs text-[#4d7a4d] font-normal tracking-normal">
+              <span className="ml-2 text-xs text-[var(--c-fg2)] font-normal tracking-normal">
                 {current.nameCn}
               </span>
             </p>
-            <p className="text-[#2a402a] text-xs mt-0.5">{current.tagline}</p>
+            <p className="text-[var(--c-fg3)] text-xs mt-0.5">{current.tagline}</p>
           </div>
         </div>
 
         <div className="text-right">
-          <p className="text-[#2a402a] text-xs tracking-widest">SCORE</p>
+          <p className="text-[var(--c-fg3)] text-xs tracking-widest">SCORE</p>
           <p
             className="text-2xl sm:text-3xl font-bold tabular-nums"
             style={{ color: current.color }}
           >
             {safeScore.toFixed(1)}
           </p>
-          <p className="text-[#1e321e] text-xs tabular-nums">/ 100</p>
+          <p className="text-[var(--c-fg4)] text-xs tabular-nums">/ 100</p>
         </div>
       </div>
 
       {/* Progress to next rank */}
       <div className="space-y-1">
         <div className="flex justify-between items-baseline text-xs gap-2">
-          <span className="text-[#4d7a4d] tracking-wider">
+          <span className="text-[var(--c-fg2)] tracking-wider">
             {next ? "NEXT" : "MAX_TIER"}
           </span>
-          <span className="text-[#2a402a] tabular-nums text-right">
+          <span className="text-[var(--c-fg3)] tabular-nums text-right">
             {next ? (
               <>
                 <span style={{ color: next.color }}>{next.nameEn}</span>
-                <span className="text-[#1e321e] ml-2">
+                <span className="text-[var(--c-fg4)] ml-2">
                   {safeScore.toFixed(1)} / {next.min.toFixed(0)}
                 </span>
               </>
@@ -68,7 +68,7 @@ export function HackerRank({ score, className }: Props) {
             )}
           </span>
         </div>
-        <div className="h-2 bg-[#080c08] border border-[#1e321e] overflow-hidden">
+        <div className="h-2 bg-[var(--c-bg)] border border-[var(--c-border)] overflow-hidden">
           <div
             className="h-full transition-all duration-700"
             style={{
@@ -90,7 +90,7 @@ export function HackerRank({ score, className }: Props) {
               key={r.key}
               className={cn(
                 "text-[10px] sm:text-xs tracking-widest text-center py-1 border tabular-nums transition-colors",
-                isCurrent ? "border-[#1e321e]" : "border-[#1e321e]/40",
+                isCurrent ? "border-[var(--c-border)]" : "border-[var(--c-border)]/40",
               )}
               style={{
                 color: reached ? r.color : "#1e321e",

@@ -33,7 +33,7 @@ const AlertDialogContent = React.forwardRef<
       ref={ref}
       className={cn(
         "fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4",
-        "bg-[#0c120c] border border-[#00ff41] p-6 shadow-[0_0_30px_rgba(0,255,65,0.25)]",
+        "bg-[var(--c-surface)] border border-[var(--c-green)] p-6 shadow-[0_0_30px_rgba(0,255,65,0.25)]",
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
         "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
@@ -61,7 +61,7 @@ const AlertDialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Title
     ref={ref}
-    className={cn("text-sm text-[#00ff41] tracking-widest font-semibold", className)}
+    className={cn("text-sm text-[var(--c-green)] tracking-widest font-semibold", className)}
     {...props}
   />
 ));
@@ -73,7 +73,7 @@ const AlertDialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Description
     ref={ref}
-    className={cn("text-xs text-[#b8f5b8] leading-relaxed", className)}
+    className={cn("text-xs text-[var(--c-fg1)] leading-relaxed", className)}
     {...props}
   />
 ));
@@ -87,7 +87,7 @@ const AlertDialogAction = React.forwardRef<
     ref={ref}
     className={cn(
       "px-4 py-1.5 text-xs border tracking-wider transition-colors",
-      "border-[#ffb300] text-[#ffb300] hover:bg-[#120d00]",
+      "border-[var(--c-amber)] text-[var(--c-amber)] hover:bg-[var(--c-amber-bg)]",
       className
     )}
     {...props}
@@ -103,7 +103,7 @@ const AlertDialogCancel = React.forwardRef<
     ref={ref}
     className={cn(
       "px-3 py-1.5 text-xs border tracking-wider transition-colors",
-      "border-[#1e321e] text-[#4d7a4d] hover:border-[#b8f5b8] hover:text-[#b8f5b8]",
+      "border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-fg1)] hover:text-[var(--c-fg1)]",
       className
     )}
     {...props}

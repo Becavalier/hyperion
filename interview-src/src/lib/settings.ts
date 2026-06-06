@@ -1,12 +1,14 @@
 import { createContext, useContext } from "react";
 
 export type Lang = "zh" | "en" | "ja" | "auto";
+export type Theme = "dark" | "light" | "system";
 
 export interface Settings {
   aiLanguage: Lang;
   systemPrompt: string;
   sparksEnabled: boolean;
   stockSymbol: string;
+  theme: Theme;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -14,6 +16,7 @@ export const DEFAULT_SETTINGS: Settings = {
   systemPrompt: "",
   sparksEnabled: true,
   stockSymbol: "",
+  theme: "system",
 };
 
 const STORAGE_KEY = "prep.settings";

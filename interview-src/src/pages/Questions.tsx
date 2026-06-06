@@ -35,8 +35,8 @@ const EMPTY_FORM: FormData = {
   answer_hint: "",
 };
 
-const inputCls = "w-full bg-[#080c08] border border-[#1e321e] text-[#b8f5b8] px-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] placeholder:text-[#2a402a] transition-colors resize-none";
-const selectCls = "w-full bg-[#080c08] border border-[#1e321e] text-[#b8f5b8] px-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] transition-colors";
+const inputCls = "w-full bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg1)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] placeholder:text-[var(--c-fg3)] transition-colors resize-none";
+const selectCls = "w-full bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg1)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors";
 
 interface QuestionFormProps {
   initial?: FormData;
@@ -61,10 +61,10 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
   });
 
   return (
-    <form onSubmit={handleSubmit} className="bg-[#0c120c] border border-[#00ff41] p-4 space-y-3">
-      <p className="text-[#2a402a] text-xs tracking-widest">// QUESTION_EDITOR</p>
+    <form onSubmit={handleSubmit} className="bg-[var(--c-surface)] border border-[var(--c-green)] p-4 space-y-3">
+      <p className="text-[var(--c-fg3)] text-xs tracking-widest">// QUESTION_EDITOR</p>
       <div>
-        <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">TITLE *</label>
+        <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">TITLE *</label>
         <input
           required
           placeholder="e.g. Explain the JavaScript event loop"
@@ -73,7 +73,7 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
         />
       </div>
       <div>
-        <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">DESCRIPTION</label>
+        <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">DESCRIPTION</label>
         <textarea
           rows={3}
           placeholder="Optional — add context or constraints..."
@@ -83,20 +83,20 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
       </div>
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">CATEGORY</label>
+          <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">CATEGORY</label>
           <select className={selectCls} {...field("category")}>
             {CATEGORIES.map((c) => <option key={c} value={c}>{categoryLabel[c]}</option>)}
           </select>
         </div>
         <div>
-          <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">DIFFICULTY</label>
+          <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">DIFFICULTY</label>
           <select className={selectCls} {...field("difficulty")}>
             {DIFFICULTIES.map((d) => <option key={d} value={d}>{difficultyLabel[d]}</option>)}
           </select>
         </div>
       </div>
       <div>
-        <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">TAGS (comma separated)</label>
+        <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">TAGS (comma separated)</label>
         <input
           placeholder="e.g. closure, prototype"
           className={inputCls}
@@ -104,7 +104,7 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
         />
       </div>
       <div>
-        <label className="block text-xs text-[#4d7a4d] mb-1.5 tracking-widest">HINT (optional)</label>
+        <label className="block text-xs text-[var(--c-fg2)] mb-1.5 tracking-widest">HINT (optional)</label>
         <textarea
           rows={3}
           placeholder="Leave blank to generate via AI during review..."
@@ -116,14 +116,14 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
         <button
           type="button"
           onClick={onCancel}
-          className="px-3 py-1.5 text-xs border border-[#1e321e] text-[#4d7a4d] hover:border-[#b8f5b8] hover:text-[#b8f5b8] tracking-wider transition-colors"
+          className="px-3 py-1.5 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-fg1)] hover:text-[var(--c-fg1)] tracking-wider transition-colors"
         >
           CANCEL
         </button>
         <button
           type="submit"
           disabled={saving}
-          className="px-4 py-1.5 text-xs border border-[#00ff41] text-[#00ff41] hover:bg-[#001a00] disabled:opacity-30 tracking-wider transition-colors"
+          className="px-4 py-1.5 text-xs border border-[var(--c-green)] text-[var(--c-green)] hover:bg-[var(--c-green-bg)] disabled:opacity-30 tracking-wider transition-colors"
         >
           {saving ? "SAVING..." : "SAVE"}
         </button>
@@ -241,10 +241,10 @@ export default function Questions() {
       {/* Sidebar / filter panel */}
       <div className="xl:sticky xl:top-16 xl:self-start space-y-3">
         <div className="flex items-center justify-between xl:block xl:space-y-3">
-          <p className="text-[#2a402a] text-xs tracking-widest">// QUESTION_BANK</p>
+          <p className="text-[var(--c-fg3)] text-xs tracking-widest">// QUESTION_BANK</p>
           <button
             onClick={() => { setShowForm(true); setEditingId(null); }}
-            className="flex items-center gap-1.5 px-3 py-1.5 border border-[#00ff41] text-[#00ff41] text-xs tracking-wider hover:bg-[#001a00] transition-colors xl:w-full xl:justify-center"
+            className="flex items-center gap-1.5 px-3 py-1.5 border border-[var(--c-green)] text-[var(--c-green)] text-xs tracking-wider hover:bg-[var(--c-green-bg)] transition-colors xl:w-full xl:justify-center"
           >
             <Plus className="w-3.5 h-3.5" />
             ADD_QUESTION
@@ -254,18 +254,18 @@ export default function Questions() {
         {/* Filters — horizontal on mobile/tablet, vertical on xl */}
         <div className="flex gap-2 flex-wrap xl:flex-col xl:gap-2">
           <div className="relative flex-1 min-w-48 xl:min-w-0">
-            <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-[#2a402a]" />
+            <Search className="absolute left-2.5 top-2 w-3.5 h-3.5 text-[var(--c-fg3)]" />
             <input
               placeholder="Search questions..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-[#080c08] border border-[#1e321e] text-[#b8f5b8] pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] placeholder:text-[#2a402a] transition-colors"
+              className="w-full bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg1)] pl-8 pr-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] placeholder:text-[var(--c-fg3)] transition-colors"
             />
           </div>
           <select
             value={filterCat}
             onChange={(e) => setFilterCat(e.target.value as Category | "")}
-            className="bg-[#080c08] border border-[#1e321e] text-[#4d7a4d] px-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] transition-colors xl:w-full"
+            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
           >
             <option value="">All Categories</option>
             {CATEGORIES.map((c) => <option key={c} value={c}>{categoryLabel[c]}</option>)}
@@ -273,7 +273,7 @@ export default function Questions() {
           <select
             value={filterDiff}
             onChange={(e) => setFilterDiff(e.target.value as Difficulty | "")}
-            className="bg-[#080c08] border border-[#1e321e] text-[#4d7a4d] px-3 py-2 text-xs focus:outline-none focus:border-[#00ff41] transition-colors xl:w-full"
+            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
           >
             <option value="">All Levels</option>
             {DIFFICULTIES.map((d) => <option key={d} value={d}>{difficultyLabel[d]}</option>)}
@@ -283,7 +283,7 @@ export default function Questions() {
           {(filterCat || filterDiff || search) && (
             <button
               onClick={() => { setFilterCat(""); setFilterDiff(""); setSearch(""); }}
-              className="text-xs text-[#ff3358] border border-[#ff3358] px-2 py-1 hover:bg-[#120004] transition-colors tracking-wider xl:w-full"
+              className="text-xs text-[var(--c-red)] border border-[var(--c-red)] px-2 py-1 hover:bg-[var(--c-red-bg)] transition-colors tracking-wider xl:w-full"
             >
               CLEAR
             </button>
@@ -292,9 +292,9 @@ export default function Questions() {
 
         {/* Record count + page info */}
         <div className="hidden xl:block space-y-1">
-          <p className="text-[#2a402a] text-xs tabular-nums tracking-widest">{total} record(s)</p>
+          <p className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest">{total} record(s)</p>
           {totalPages > 1 && (
-            <p className="text-[#1e321e] text-xs tabular-nums">
+            <p className="text-[var(--c-fg4)] text-xs tabular-nums">
               pg {page}/{totalPages}
             </p>
           )}
@@ -307,14 +307,14 @@ export default function Questions() {
           <QuestionForm onSave={handleCreate} onCancel={() => setShowForm(false)} />
         )}
 
-        <p className="text-[#2a402a] text-xs tabular-nums tracking-widest xl:hidden">
+        <p className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest xl:hidden">
           {total} record(s) found
         </p>
 
         {loading ? (
-          <div className="text-center py-8 text-[#4d7a4d] text-xs tracking-widest">LOADING...</div>
+          <div className="text-center py-8 text-[var(--c-fg2)] text-xs tracking-widest">LOADING...</div>
         ) : questions.length === 0 ? (
-          <div className="text-center py-12 text-[#2a402a] text-xs tracking-widest">
+          <div className="text-center py-12 text-[var(--c-fg3)] text-xs tracking-widest">
             NO_RECORDS — Click ADD_QUESTION to begin
           </div>
         ) : (
@@ -336,29 +336,28 @@ export default function Questions() {
                 />
               ) : (
                 <div key={q.id}
-                  className="bg-[#0c120c] border border-[#1e321e] px-4 py-3 flex items-start justify-between gap-3 hover:border-[#2a402a] transition-colors"
+                  className="bg-[var(--c-surface)] border border-[var(--c-border)] px-4 py-3 flex items-start justify-between gap-3 hover:border-[var(--c-border2)] transition-colors"
                 >
                   <div className="flex-1 min-w-0 space-y-1.5">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className={cn("text-xs px-2 py-0.5 font-medium tracking-wider", difficultyColor[q.difficulty])}>
                         [{difficultyLabel[q.difficulty].toUpperCase()}]
                       </span>
-                      <span className="text-xs text-[#4d7a4d] tracking-wider">{categoryLabel[q.category]}</span>
+                      <span className="text-xs text-[var(--c-fg2)] tracking-wider">{categoryLabel[q.category]}</span>
                       {q.tags.map((t) => (
-                        <span key={t} className="text-xs text-[#2a402a] bg-[#080c08] border border-[#1e321e] px-1.5 py-0.5">
+                        <span key={t} className="text-xs text-[var(--c-fg3)] bg-[var(--c-bg)] border border-[var(--c-border)] px-1.5 py-0.5">
                           {t}
                         </span>
                       ))}
                     </div>
-                    <p className="text-sm text-[#b8f5b8] truncate">{q.title}</p>
+                    <p className="text-sm text-[var(--c-fg1)] truncate">{q.title}</p>
                     {q.content && (
-                      <p className="text-xs text-[#4d7a4d] line-clamp-2 xl:line-clamp-1">{q.content}</p>
+                      <p className="text-xs text-[var(--c-fg2)] line-clamp-2 xl:line-clamp-1">{q.content}</p>
                     )}
                   </div>
                   <div className="flex items-center gap-2 shrink-0">
                     <span
-                      className="text-xs tabular-nums tracking-wider"
-                      style={{ color: q.proficiency > 10 ? "#00ff41" : q.proficiency > 0 ? "#4d7a4d" : "#2a402a" }}
+                      className={cn("text-xs tabular-nums tracking-wider", q.proficiency > 10 ? "text-[var(--c-green)]" : q.proficiency > 0 ? "text-[var(--c-fg2)]" : "text-[var(--c-fg3)]")}
                       title={
                         q.proficiency > 10
                           ? "Graduated"
@@ -373,16 +372,16 @@ export default function Questions() {
                       <button
                         onClick={() => requestReset(q)}
                         title="Reset proficiency to 0"
-                        className="p-1.5 text-[#2a402a] hover:text-[#ffb300] hover:bg-[#120d00] transition-colors"
+                        className="p-1.5 text-[var(--c-fg3)] hover:text-[var(--c-amber)] hover:bg-[var(--c-amber-bg)] transition-colors"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
                       </button>
                       <button onClick={() => setEditingId(q.id)}
-                        className="p-1.5 text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00] transition-colors">
+                        className="p-1.5 text-[var(--c-fg3)] hover:text-[var(--c-green)] hover:bg-[var(--c-green-bg)] transition-colors">
                         <Pencil className="w-3.5 h-3.5" />
                       </button>
                       <button onClick={() => handleDelete(q.id)}
-                        className="p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors">
+                        className="p-1.5 text-[var(--c-fg3)] hover:text-[var(--c-red)] hover:bg-[var(--c-red-bg)] transition-colors">
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
@@ -395,15 +394,15 @@ export default function Questions() {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between pt-2 border-t border-[#1e321e]">
-            <span className="text-[#2a402a] text-xs tabular-nums tracking-widest">
+          <div className="flex items-center justify-between pt-2 border-t border-[var(--c-border)]">
+            <span className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest">
               {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, total)} / {total}
             </span>
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="flex items-center gap-1 px-2 py-1.5 text-xs border border-[#1e321e] text-[#4d7a4d] hover:border-[#2a402a] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider"
+                className="flex items-center gap-1 px-2 py-1.5 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider"
               >
                 <ChevronLeft className="w-3 h-3" /> PREV
               </button>
@@ -418,7 +417,7 @@ export default function Questions() {
                 }, [])
                 .map((p, i) =>
                   p === "…" ? (
-                    <span key={`ellipsis-${i}`} className="px-2 text-[#2a402a] text-xs">…</span>
+                    <span key={`ellipsis-${i}`} className="px-2 text-[var(--c-fg3)] text-xs">…</span>
                   ) : (
                     <button
                       key={p}
@@ -426,8 +425,8 @@ export default function Questions() {
                       className={cn(
                         "min-w-[2rem] px-2 py-1.5 text-xs border tracking-wider transition-colors",
                         p === page
-                          ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
-                          : "border-[#1e321e] text-[#4d7a4d] hover:border-[#2a402a] hover:text-[#b8f5b8]"
+                          ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                          : "border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)]"
                       )}
                     >
                       {p}
@@ -438,7 +437,7 @@ export default function Questions() {
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="flex items-center gap-1 px-2 py-1.5 text-xs border border-[#1e321e] text-[#4d7a4d] hover:border-[#2a402a] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider"
+                className="flex items-center gap-1 px-2 py-1.5 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider"
               >
                 NEXT <ChevronRight className="w-3 h-3" />
               </button>
@@ -451,7 +450,7 @@ export default function Questions() {
       <AlertDialog open={resetTarget !== null} onOpenChange={(o) => !o && setResetTarget(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <p className="text-[#2a402a] text-xs tracking-[0.3em]">// CONFIRM_RESET</p>
+            <p className="text-[var(--c-fg3)] text-xs tracking-[0.3em]">// CONFIRM_RESET</p>
             <AlertDialogTitle>RESET_PROFICIENCY</AlertDialogTitle>
             <AlertDialogDescription asChild>
               <div className="space-y-3">
@@ -460,26 +459,26 @@ export default function Questions() {
                   history in past dailies is kept.
                 </p>
                 {resetTarget && (
-                  <div className="bg-[#080c08] border border-[#1e321e] p-3 space-y-1.5">
-                    <p className="text-[#b8f5b8] truncate">{resetTarget.title}</p>
+                  <div className="bg-[var(--c-bg)] border border-[var(--c-border)] p-3 space-y-1.5">
+                    <p className="text-[var(--c-fg1)] truncate">{resetTarget.title}</p>
                     <div className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0.5 text-xs">
-                      <span className="text-[#2a402a] tracking-widest">PROFICIENCY</span>
-                      <span className="text-[#ffb300] tabular-nums">
+                      <span className="text-[var(--c-fg3)] tracking-widest">PROFICIENCY</span>
+                      <span className="text-[var(--c-amber)] tabular-nums">
                         {resetTarget.proficiency}
-                        <span className="text-[#2a402a] mx-1.5">→</span>
-                        <span className="text-[#4d7a4d]">0</span>
+                        <span className="text-[var(--c-fg3)] mx-1.5">→</span>
+                        <span className="text-[var(--c-fg2)]">0</span>
                       </span>
-                      <span className="text-[#2a402a] tracking-widest">NEXT_REVIEW</span>
-                      <span className="text-[#4d7a4d] tabular-nums">
+                      <span className="text-[var(--c-fg3)] tracking-widest">NEXT_REVIEW</span>
+                      <span className="text-[var(--c-fg2)] tabular-nums">
                         {resetTarget.next_review_date ?? "—"}
-                        <span className="text-[#2a402a] mx-1.5">→</span>
-                        <span className="text-[#4d7a4d]">cleared</span>
+                        <span className="text-[var(--c-fg3)] mx-1.5">→</span>
+                        <span className="text-[var(--c-fg2)]">cleared</span>
                       </span>
-                      <span className="text-[#2a402a] tracking-widest">LAST_REVIEWED</span>
-                      <span className="text-[#4d7a4d] tabular-nums">
+                      <span className="text-[var(--c-fg3)] tracking-widest">LAST_REVIEWED</span>
+                      <span className="text-[var(--c-fg2)] tabular-nums">
                         {resetTarget.last_reviewed_at ? resetTarget.last_reviewed_at.slice(0, 10) : "—"}
-                        <span className="text-[#2a402a] mx-1.5">→</span>
-                        <span className="text-[#4d7a4d]">cleared</span>
+                        <span className="text-[var(--c-fg3)] mx-1.5">→</span>
+                        <span className="text-[var(--c-fg2)]">cleared</span>
                       </span>
                     </div>
                   </div>

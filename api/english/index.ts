@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (req.method === "GET") {
       const [due, newWords] = await Promise.all([
         getDueEnglishWords(today, 20),
-        getNewEnglishWords(10),
+        getNewEnglishWords(20),
       ]);
       const fresh = newWords.filter((w) => !due.some((d) => d.id === w.id));
       const words = [...due, ...fresh].slice(0, 20);

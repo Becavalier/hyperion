@@ -29,7 +29,7 @@ export function RankUpBanner({ from, to, onDismiss }: Props) {
       }}
     >
       <div
-        className={`rank-glow ${to.glowClass} bg-[#080c08] border-2 px-12 py-10 flex flex-col items-center gap-4 transform-gpu`}
+        className={`rank-glow ${to.glowClass} bg-[var(--c-bg)] border-2 px-12 py-10 flex flex-col items-center gap-4 transform-gpu`}
         style={{
           borderColor: to.color,
           transform:
@@ -40,13 +40,13 @@ export function RankUpBanner({ from, to, onDismiss }: Props) {
           transition: "transform 600ms cubic-bezier(0.16, 0.84, 0.44, 1), opacity 400ms ease",
         }}
       >
-        <div className="flex items-center gap-2 text-[#4d7a4d] text-xs tracking-[0.4em]">
+        <div className="flex items-center gap-2 text-[var(--c-fg2)] text-xs tracking-[0.4em]">
           <ChevronUp className="w-4 h-4" style={{ color: to.color }} />
           RANK_UP
           <ChevronUp className="w-4 h-4" style={{ color: to.color }} />
         </div>
 
-        <div className="flex items-baseline gap-3 text-base text-[#4d7a4d]">
+        <div className="flex items-baseline gap-3 text-base text-[var(--c-fg2)]">
           <span style={{ color: from.color }}>{from.nameEn}</span>
           <span>→</span>
           <span
@@ -57,10 +57,10 @@ export function RankUpBanner({ from, to, onDismiss }: Props) {
           </span>
         </div>
 
-        <p className="text-[#b8f5b8] text-xs">{to.nameCn}</p>
-        <p className="text-[#2a402a] text-xs tracking-widest">{to.tagline}</p>
+        <p className="text-[var(--c-fg1)] text-xs">{to.nameCn}</p>
+        <p className="text-[var(--c-fg3)] text-xs tracking-widest">{to.tagline}</p>
 
-        <p className="text-[#1e321e] text-xs mt-2 tracking-widest">// click anywhere to dismiss</p>
+        <p className="text-[var(--c-fg4)] text-xs mt-2 tracking-widest">// click anywhere to dismiss</p>
       </div>
     </div>
   );

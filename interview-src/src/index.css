@@ -2,6 +2,131 @@
 @import "tw-animate-css";
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap");
 
+/* ── Color tokens ─────────────────────────────────────────────────────────────
+   Dark theme is the default. Light and system overrides follow.
+   Components reference these via Tailwind arbitrary value syntax:
+   bg-[var(--c-bg)], text-[var(--c-fg1)], border-[var(--c-border)], etc.
+*/
+:root {
+  /* Backgrounds */
+  --c-bg:      #080c08;
+  --c-surface: #0c120c;
+  --c-panel:   #060a06;
+  --c-code:    #050905;
+  --c-hover:   #0a120a;
+  /* Text levels — slightly lifted fg2 for readability */
+  --c-fg0: #c8ffc8;
+  --c-fg1: #b8f5b8;
+  --c-fg2: #558a55;
+  --c-fg3: #2a402a;
+  --c-fg4: #1e321e;
+  /* Borders */
+  --c-border:  #1e321e;
+  --c-border2: #2a402a;
+  --c-border3: #0e1a0e;
+  /* Green accent */
+  --c-green:     #00ff41;
+  --c-green-s:   #7dff7d;
+  --c-green-bg:  #001a00;
+  --c-green-dim: #011200;
+  /* Cyan accent */
+  --c-cyan:      #00d4ff;
+  --c-cyan-b:    #1e4a5a;
+  --c-cyan-bg:   #00091a;
+  --c-cyan-text: #2a5a6a;
+  /* Danger */
+  --c-red:    #ff3358;
+  --c-red-bg: #120004;
+  /* Warning */
+  --c-amber:    #ffb300;
+  --c-amber-bg: #120d00;
+  /* Glow helpers for inline styles */
+  --c-green-glow: rgba(0, 255, 65, 0.6);
+  --c-amber-glow: rgba(255, 179, 0, 0.6);
+  --c-red-glow:   rgba(255, 51, 88, 0.6);
+  --c-cyan-glow:  rgba(0, 212, 255, 0.5);
+  /* Scanline effect: visible in dark, hidden in light */
+  --scanline-opacity: 0.06;
+}
+
+/* ── Light theme ─────────────────────────────────────────────────────────────*/
+:root[data-theme="light"] {
+  /* Backgrounds — green-tinted off-white hierarchy */
+  --c-bg:      #f0f7f0;
+  --c-surface: #ffffff;
+  --c-panel:   #e4f0e4;
+  --c-code:    #e8f4e8;
+  --c-hover:   #d8e8d8;
+  /* Text — calibrated for AA contrast on #f0f7f0 */
+  --c-fg0: #0a180a;   /* bright code text  ~12:1 */
+  --c-fg1: #112211;   /* primary           ~11:1 */
+  --c-fg2: #255a25;   /* secondary          ~6:1 */
+  --c-fg3: #456845;   /* muted              ~4.5:1 */
+  --c-fg4: #638863;   /* ghost              ~3.2:1 */
+  /* Borders — clearly visible green-tinted lines */
+  --c-border:  #7cb87c;
+  --c-border2: #5ea05e;
+  --c-border3: #a0c8a0;
+  /* Green accent */
+  --c-green:     #007a1e;
+  --c-green-s:   #2a6e2a;
+  --c-green-bg:  #bce4bc;
+  --c-green-dim: #d0edd0;
+  /* Cyan accent */
+  --c-cyan:      #0050a8;
+  --c-cyan-b:    #60a8cc;
+  --c-cyan-bg:   #c8e4f4;
+  --c-cyan-text: #003878;
+  /* Danger */
+  --c-red:    #c0001e;
+  --c-red-bg: #f8c8d0;
+  /* Warning */
+  --c-amber:    #7a5800;
+  --c-amber-bg: #fce0a0;
+  /* Glow helpers */
+  --c-green-glow: rgba(0, 122, 30, 0.4);
+  --c-amber-glow: rgba(122, 88, 0, 0.4);
+  --c-red-glow:   rgba(192, 0, 30, 0.4);
+  --c-cyan-glow:  rgba(0, 80, 168, 0.35);
+  --scanline-opacity: 0;
+}
+
+/* ── System preference (when no explicit data-theme is set) ──────────────────*/
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --c-bg:      #f0f7f0;
+    --c-surface: #ffffff;
+    --c-panel:   #e4f0e4;
+    --c-code:    #e8f4e8;
+    --c-hover:   #d8e8d8;
+    --c-fg0: #0a180a;
+    --c-fg1: #112211;
+    --c-fg2: #255a25;
+    --c-fg3: #456845;
+    --c-fg4: #638863;
+    --c-border:  #7cb87c;
+    --c-border2: #5ea05e;
+    --c-border3: #a0c8a0;
+    --c-green:     #007a1e;
+    --c-green-s:   #2a6e2a;
+    --c-green-bg:  #bce4bc;
+    --c-green-dim: #d0edd0;
+    --c-cyan:      #0050a8;
+    --c-cyan-b:    #60a8cc;
+    --c-cyan-bg:   #c8e4f4;
+    --c-cyan-text: #003878;
+    --c-red:    #c0001e;
+    --c-red-bg: #f8c8d0;
+    --c-amber:    #7a5800;
+    --c-amber-bg: #fce0a0;
+    --c-green-glow: rgba(0, 122, 30, 0.4);
+    --c-amber-glow: rgba(122, 88, 0, 0.4);
+    --c-red-glow:   rgba(192, 0, 30, 0.4);
+    --c-cyan-glow:  rgba(0, 80, 168, 0.35);
+    --scanline-opacity: 0;
+  }
+}
+
 @keyframes card-slide-in {
   from { opacity: 0; transform: translateX(48px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -22,21 +147,21 @@
   }
 
   body {
-    background-color: #080c08;
-    color: #b8f5b8;
+    background-color: var(--c-bg);
+    color: var(--c-fg1);
     font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
-    font-size: 0.8125rem; /* ~13px at default, ~13.8px at xl, ~14.6px at 2xl */
+    font-size: 0.8125rem;
   }
 
   ::selection {
-    background-color: rgba(0, 255, 65, 0.18);
-    color: #00ff41;
+    background-color: color-mix(in srgb, var(--c-green) 22%, transparent);
+    color: var(--c-green);
   }
 
   ::-webkit-scrollbar { width: 4px; height: 4px; }
-  ::-webkit-scrollbar-track { background: #080c08; }
-  ::-webkit-scrollbar-thumb { background: #1e321e; }
-  ::-webkit-scrollbar-thumb:hover { background: #00ff4155; }
+  ::-webkit-scrollbar-track { background: var(--c-bg); }
+  ::-webkit-scrollbar-thumb { background: var(--c-border); }
+  ::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--c-green) 50%, transparent); }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1) sepia(1) saturate(4) hue-rotate(90deg);
@@ -45,7 +170,7 @@
   }
 }
 
-/* scanlines */
+/* scanlines — hidden in light mode via --scanline-opacity */
 body::before {
   content: '';
   position: fixed;
@@ -54,8 +179,8 @@ body::before {
     to bottom,
     transparent,
     transparent 3px,
-    rgba(0, 0, 0, 0.06) 3px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0, 0, 0, var(--scanline-opacity)) 3px,
+    rgba(0, 0, 0, var(--scanline-opacity)) 4px
   );
   pointer-events: none;
   z-index: 9999;
@@ -69,34 +194,34 @@ body::before {
 .cursor-blink::after {
   content: "_";
   animation: blink 1.2s step-end infinite;
-  color: #00ff41;
+  color: var(--c-green);
 }
 
 /* ── Cluster bolt — flickering electric connector between cluster tabs ── */
 @keyframes cluster-bolt-flicker {
   0%, 100% {
-    color: #00d4ff;
+    color: var(--c-cyan);
     opacity: 0.55;
     transform: scale(0.95) rotate(-4deg);
-    filter: drop-shadow(0 0 2px #00d4ff);
+    filter: drop-shadow(0 0 2px var(--c-cyan));
   }
   42% {
-    color: #00d4ff;
+    color: var(--c-cyan);
     opacity: 0.8;
     transform: scale(1) rotate(-2deg);
-    filter: drop-shadow(0 0 4px #00d4ff);
+    filter: drop-shadow(0 0 4px var(--c-cyan));
   }
   48%, 52% {
-    color: #ffffff;
+    color: var(--c-fg1);
     opacity: 1;
     transform: scale(1.15) rotate(2deg);
-    filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 14px #00d4ff);
+    filter: drop-shadow(0 0 8px var(--c-fg1)) drop-shadow(0 0 14px var(--c-cyan));
   }
   58% {
-    color: #00d4ff;
+    color: var(--c-cyan);
     opacity: 0.4;
     transform: scale(0.9) rotate(-3deg);
-    filter: drop-shadow(0 0 2px #00d4ff);
+    filter: drop-shadow(0 0 2px var(--c-cyan));
   }
 }
 .cluster-bolt {
@@ -127,9 +252,7 @@ body::before {
 }
 
 /* ── HACKER RANK GLOWS ──────────────────────────────────────────────────────
-   Each tier gets a qualitatively distinct cyberpunk-glow. Applied to a
-   container with .rank-glow + .glow-<key>. The container sets the box shape;
-   ::before/::after produce the glow + overlay effects.
+   Rank glows use identity colors (not theme tokens) intentionally.
 */
 
 .rank-glow {

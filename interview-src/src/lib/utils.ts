@@ -26,15 +26,15 @@ export const ratingLabel: Record<SelfRating, string> = {
 };
 
 export const ratingColor: Record<SelfRating, string> = {
-  mastered: "border-[#00ff41] bg-[#011200]",
-  fuzzy: "border-[#ffb300] bg-[#120d00]",
-  unknown: "border-[#ff3358] bg-[#120004]",
+  mastered: "border-[var(--c-green)] bg-[var(--c-green-dim)]",
+  fuzzy: "border-[var(--c-amber)] bg-[var(--c-amber-bg)]",
+  unknown: "border-[var(--c-red)] bg-[var(--c-red-bg)]",
 };
 
 export const difficultyColor: Record<Difficulty, string> = {
-  easy: "text-[#00ff41] bg-[#011500]",
-  medium: "text-[#ffb300] bg-[#150e00]",
-  hard: "text-[#ff3358] bg-[#150004]",
+  easy: "text-[var(--c-green)] bg-[var(--c-green-dim)]",
+  medium: "text-[var(--c-amber)] bg-[var(--c-amber-bg)]",
+  hard: "text-[var(--c-red)] bg-[var(--c-red-bg)]",
 };
 
 export function formatDate(date: string) {

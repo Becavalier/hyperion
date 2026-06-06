@@ -38,7 +38,7 @@ function ProficiencyHistogram({ dist }: { dist: Stats["proficiency_dist"] }) {
             <span className="w-10 text-right tabular-nums shrink-0" style={{ color: cnt > 0 ? color : "#1e321e" }}>
               {label}
             </span>
-            <div className="flex-1 h-4 bg-[#080c08] border border-[#1e321e] overflow-hidden">
+            <div className="flex-1 h-4 bg-[var(--c-bg)] border border-[var(--c-border)] overflow-hidden">
               <div
                 className="h-full transition-all duration-700"
                 style={{
@@ -52,7 +52,7 @@ function ProficiencyHistogram({ dist }: { dist: Stats["proficiency_dist"] }) {
             <span className="w-5 tabular-nums text-right shrink-0" style={{ color: cnt > 0 ? color : "#1e321e" }}>
               {cnt > 0 ? cnt : ""}
             </span>
-            <span className="w-16 text-[#1e321e] shrink-0">{note}</span>
+            <span className="w-16 text-[var(--c-fg4)] shrink-0">{note}</span>
           </div>
         );
       })}
@@ -86,19 +86,19 @@ export default function Dashboard() {
   }, []);
 
   if (loading) {
-    return <div className="text-[#4d7a4d] text-xs py-12 text-center tracking-widest">LOADING...</div>;
+    return <div className="text-[var(--c-fg2)] text-xs py-12 text-center tracking-widest">LOADING...</div>;
   }
 
   if (!plan) {
     return (
       <div className="py-20 space-y-5 text-center">
-        <p className="text-[#2a402a] text-xs tracking-widest">// NO_ACTIVE_PLAN</p>
-        <p className="text-[#4d7a4d] text-xs">Add questions to the bank, then initialise a study plan.</p>
+        <p className="text-[var(--c-fg3)] text-xs tracking-widest">// NO_ACTIVE_PLAN</p>
+        <p className="text-[var(--c-fg2)] text-xs">Add questions to the bank, then initialise a study plan.</p>
         <div className="flex justify-center gap-3">
-          <Link to="/questions" className="px-4 py-2 border border-[#1e321e] text-[#4d7a4d] text-xs tracking-wider hover:border-[#b8f5b8] hover:text-[#b8f5b8] transition-colors">
+          <Link to="/questions" className="px-4 py-2 border border-[var(--c-border)] text-[var(--c-fg2)] text-xs tracking-wider hover:border-[var(--c-fg1)] hover:text-[var(--c-fg1)] transition-colors">
             ADD_QUESTIONS
           </Link>
-          <Link to="/plan" className="px-4 py-2 border border-[#00ff41] text-[#00ff41] text-xs tracking-wider hover:bg-[#001a00] transition-colors">
+          <Link to="/plan" className="px-4 py-2 border border-[var(--c-green)] text-[var(--c-green)] text-xs tracking-wider hover:bg-[var(--c-green-bg)] transition-colors">
             INIT_PLAN
           </Link>
         </div>
@@ -116,24 +116,24 @@ export default function Dashboard() {
       value: s.total,
       sub: `${s.new_questions} new · ${s.in_progress} active`,
       icon: BookOpen,
-      color: "text-[#00d4ff]",
-      border: "border-[#1e321e]",
+      color: "text-[var(--c-cyan)]",
+      border: "border-[var(--c-border)]",
     },
     {
       label: "GRADUATED",
       value: s.graduated,
       sub: `${graduationPct}% of bank`,
       icon: CheckCircle2,
-      color: "text-[#00ff41]",
-      border: s.graduated > 0 ? "border-[#00ff41]/30" : "border-[#1e321e]",
+      color: "text-[var(--c-green)]",
+      border: s.graduated > 0 ? "border-[var(--c-green)]/30" : "border-[var(--c-border)]",
     },
     {
       label: "DUE_TODAY",
       value: s.due_today,
       sub: s.due_today > 0 ? "needs review" : "all caught up",
       icon: Zap,
-      color: s.due_today > 0 ? "text-[#ff3358]" : "text-[#4d7a4d]",
-      border: s.due_today > 0 ? "border-[#ff3358]/30" : "border-[#1e321e]",
+      color: s.due_today > 0 ? "text-[var(--c-red)]" : "text-[var(--c-fg2)]",
+      border: s.due_today > 0 ? "border-[var(--c-red)]/30" : "border-[var(--c-border)]",
     },
     {
       label: "AVG_PROFICIENCY",
@@ -141,8 +141,8 @@ export default function Dashboard() {
       suffix: s.avg_proficiency != null ? "/ 10" : undefined,
       sub: s.avg_proficiency != null ? `across ${s.in_progress + s.graduated} reviewed` : "no reviews yet",
       icon: TrendingUp,
-      color: "text-[#ffb300]",
-      border: "border-[#1e321e]",
+      color: "text-[var(--c-amber)]",
+      border: "border-[var(--c-border)]",
     },
   ];
 
@@ -150,27 +150,27 @@ export default function Dashboard() {
     <div className="space-y-8">
 
       {/* ── QUESTIONS ─────────────────────────────────────────────────────────── */}
-      <div className="space-y-5 bg-[#0a0f0a] rounded-sm px-4 py-5">
+      <div className="space-y-5 px-4 py-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-[#2a402a] text-xs tracking-widest mb-1">// QUESTIONS</p>
-            <p className="text-[#4d7a4d] text-xs tabular-nums">
+            <p className="text-[var(--c-fg3)] text-xs tracking-widest mb-1">// QUESTIONS</p>
+            <p className="text-[var(--c-fg2)] text-xs tabular-nums">
               {todayStr()}
-              <span className="mx-2 text-[#1e321e]">·</span>
+              <span className="mx-2 text-[var(--c-fg4)]">·</span>
               {plan.config.daily_count} questions/day
             </p>
           </div>
           {s.today_completed ? (
-            <div className="flex items-center gap-2 border border-[#1e321e] bg-[#0c120c] px-4 py-2 shrink-0">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#00ff41]" />
-              <span className="text-xs text-[#00ff41] tracking-wider hidden sm:inline">SESSION COMPLETE</span>
+            <div className="flex items-center gap-2 border border-[var(--c-border)] bg-[var(--c-surface)] px-4 py-2 shrink-0">
+              <CheckCircle2 className="w-3.5 h-3.5 text-[var(--c-green)]" />
+              <span className="text-xs text-[var(--c-green)] tracking-wider hidden sm:inline">SESSION COMPLETE</span>
             </div>
           ) : (
             <Link to="/today"
-              className="flex items-center gap-2 border border-[#00ff41] bg-[#001a00] px-4 py-2 hover:bg-[#002500] transition-colors group shrink-0">
-              <BookOpen className="w-3.5 h-3.5 text-[#00ff41]" />
-              <span className="text-xs text-[#00ff41] tracking-wider hidden sm:inline">TODAY'S SESSION</span>
-              <span className="text-[#2a402a] text-xs group-hover:text-[#4d7a4d]">[ENTER]</span>
+              className="flex items-center gap-2 border border-[var(--c-green)] bg-[var(--c-green-bg)] px-4 py-2 hover:bg-[var(--c-green-bg)] transition-colors group shrink-0">
+              <BookOpen className="w-3.5 h-3.5 text-[var(--c-green)]" />
+              <span className="text-xs text-[var(--c-green)] tracking-wider hidden sm:inline">TODAY'S SESSION</span>
+              <span className="text-[var(--c-fg3)] text-xs group-hover:text-[var(--c-fg2)]">[ENTER]</span>
             </Link>
           )}
         </div>
@@ -179,61 +179,61 @@ export default function Dashboard() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border }) => (
-            <div key={label} className={cn("bg-[#0c120c] border p-4", border)}>
+            <div key={label} className={cn("bg-[var(--c-surface)] border p-4", border)}>
               <Icon className={cn("w-4 h-4 mb-3", color)} />
               <div className={cn("text-2xl font-bold tabular-nums", color)}>
                 {value}
-                {suffix && <span className="text-sm font-normal text-[#3a5a3a] ml-1">{suffix}</span>}
+                {suffix && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">{suffix}</span>}
               </div>
-              <div className="text-[#2a402a] text-xs mt-1 tracking-widest">{label}</div>
-              <div className="text-[#1e321e] text-xs mt-0.5">{sub}</div>
+              <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">{label}</div>
+              <div className="text-[var(--c-fg4)] text-xs mt-0.5">{sub}</div>
             </div>
           ))}
         </div>
 
         {s.today_total > 0 && (
-          <div className="bg-[#0c120c] border border-[#1e321e] px-4 py-3 flex items-center gap-4">
-            <span className="text-[#2a402a] text-xs tracking-widest shrink-0">TODAY</span>
-            <div className="flex-1 h-1.5 bg-[#080c08] border border-[#1e321e] overflow-hidden">
-              <div className="h-full bg-[#00ff41] transition-all duration-700"
+          <div className="bg-[var(--c-surface)] border border-[var(--c-border)] px-4 py-3 flex items-center gap-4">
+            <span className="text-[var(--c-fg3)] text-xs tracking-widest shrink-0">TODAY</span>
+            <div className="flex-1 h-1.5 bg-[var(--c-bg)] border border-[var(--c-border)] overflow-hidden">
+              <div className="h-full bg-[var(--c-green)] transition-all duration-700"
                 style={{ width: `${todayPct}%`, boxShadow: todayPct > 0 ? "0 0 6px #00ff41" : "none" }} />
             </div>
-            <span className="text-[#00ff41] text-xs tabular-nums shrink-0">
+            <span className="text-[var(--c-green)] text-xs tabular-nums shrink-0">
               {s.today_done}/{s.today_total}
             </span>
-            <span className="text-[#2a402a] text-xs tabular-nums shrink-0">{todayPct}%</span>
+            <span className="text-[var(--c-fg3)] text-xs tabular-nums shrink-0">{todayPct}%</span>
           </div>
         )}
 
         <div className="grid grid-cols-1 xl:grid-cols-[1fr_320px] gap-4">
           <div className="space-y-4">
-            <div className="bg-[#0c120c] border border-[#1e321e] p-4 space-y-3">
-              <p className="text-[#2a402a] text-xs tracking-widest">// PROFICIENCY_DISTRIBUTION</p>
+            <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4 space-y-3">
+              <p className="text-[var(--c-fg3)] text-xs tracking-widest">// PROFICIENCY_DISTRIBUTION</p>
               <ProficiencyHistogram dist={s.proficiency_dist} />
             </div>
             {s.category_breakdown.length > 0 && (
-              <div className="bg-[#0c120c] border border-[#1e321e] p-4 space-y-4">
-                <p className="text-[#2a402a] text-xs tracking-widest">// CATEGORY_BREAKDOWN</p>
+              <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4 space-y-4">
+                <p className="text-[var(--c-fg3)] text-xs tracking-widest">// CATEGORY_BREAKDOWN</p>
                 {s.category_breakdown.map((row) => {
                   const gradPct = row.total > 0 ? Math.round((row.graduated / row.total) * 100) : 0;
                   return (
                     <div key={row.category} className="space-y-1.5">
                       <div className="flex justify-between items-baseline text-xs gap-2 flex-wrap">
-                        <span className="text-[#4d7a4d] tracking-wider">
+                        <span className="text-[var(--c-fg2)] tracking-wider">
                           {categoryLabel[row.category as keyof typeof categoryLabel] ?? row.category}
                         </span>
-                        <span className="text-[#2a402a] tabular-nums text-right">
+                        <span className="text-[var(--c-fg3)] tabular-nums text-right">
                           {row.graduated}/{row.total} graduated
                           {row.due_today > 0 && (
-                            <span className="text-[#ff3358] ml-2">· {row.due_today} due</span>
+                            <span className="text-[var(--c-red)] ml-2">· {row.due_today} due</span>
                           )}
                           {row.avg_proficiency != null && (
-                            <span className="text-[#4d7a4d] ml-2">· avg {row.avg_proficiency}</span>
+                            <span className="text-[var(--c-fg2)] ml-2">· avg {row.avg_proficiency}</span>
                           )}
                         </span>
                       </div>
-                      <div className="h-1.5 bg-[#080c08] border border-[#1e321e] overflow-hidden">
-                        <div className="h-full bg-[#00ff41] transition-all duration-700"
+                      <div className="h-1.5 bg-[var(--c-bg)] border border-[var(--c-border)] overflow-hidden">
+                        <div className="h-full bg-[var(--c-green)] transition-all duration-700"
                           style={{ width: `${gradPct}%`, boxShadow: gradPct > 0 ? "0 0 6px #00ff41" : "none" }} />
                       </div>
                     </div>
@@ -245,50 +245,50 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-2 xl:grid-cols-1 gap-3 xl:content-start">
             <Link to="/plan"
-              className="bg-[#0c120c] border border-[#1e321e] p-4 hover:border-[#4d7a4d] transition-colors group">
-              <Calendar className="w-4 h-4 text-[#2a402a] mb-3 group-hover:text-[#4d7a4d]" />
-              <p className="text-xs text-[#b8f5b8] tracking-wider">REVIEW_QUEUE</p>
-              <p className="text-xs text-[#2a402a] mt-1">Proficiency schedule view</p>
+              className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4 hover:border-[var(--c-fg2)] transition-colors group">
+              <Calendar className="w-4 h-4 text-[var(--c-fg3)] mb-3 group-hover:text-[var(--c-fg2)]" />
+              <p className="text-xs text-[var(--c-fg1)] tracking-wider">REVIEW_QUEUE</p>
+              <p className="text-xs text-[var(--c-fg3)] mt-1">Proficiency schedule view</p>
             </Link>
             <Link to="/questions"
-              className="bg-[#0c120c] border border-[#1e321e] p-4 hover:border-[#4d7a4d] transition-colors group">
-              <BookOpen className="w-4 h-4 text-[#2a402a] mb-3 group-hover:text-[#4d7a4d]" />
-              <p className="text-xs text-[#b8f5b8] tracking-wider">QUESTION_BANK</p>
-              <p className="text-xs text-[#2a402a] mt-1">Add and manage questions</p>
+              className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4 hover:border-[var(--c-fg2)] transition-colors group">
+              <BookOpen className="w-4 h-4 text-[var(--c-fg3)] mb-3 group-hover:text-[var(--c-fg2)]" />
+              <p className="text-xs text-[var(--c-fg1)] tracking-wider">QUESTION_BANK</p>
+              <p className="text-xs text-[var(--c-fg3)] mt-1">Add and manage questions</p>
             </Link>
           </div>
         </div>
       </div>
 
       {/* ── ENGLISH ───────────────────────────────────────────────────────────── */}
-      <div className="space-y-4 bg-[#080c10] rounded-sm px-4 py-5">
+      <div className="space-y-4 px-4 py-5">
         <div className="flex items-center justify-between gap-4">
-          <p className="text-[#2a402a] text-xs tracking-widest">// ENGLISH</p>
+          <p className="text-[var(--c-fg3)] text-xs tracking-widest">// ENGLISH</p>
           <Link to="/english"
-            className="flex items-center gap-2 border border-[#1e4a5a] bg-[#00080c] px-4 py-2 hover:bg-[#001520] transition-colors group shrink-0">
-            <Languages className="w-3.5 h-3.5 text-[#00d4ff]/70" />
-            <span className="text-xs text-[#00d4ff]/70 tracking-wider hidden sm:inline">ENGLISH_BANK</span>
-            <span className="text-[#1e3a4a] text-xs group-hover:text-[#2a5a6a]">[ENTER]</span>
+            className="flex items-center gap-2 border border-[var(--c-cyan-b)] bg-[var(--c-cyan-bg)] px-4 py-2 hover:bg-[var(--c-cyan-bg)] transition-colors group shrink-0">
+            <Languages className="w-3.5 h-3.5 text-[var(--c-cyan)]/70" />
+            <span className="text-xs text-[var(--c-cyan)]/70 tracking-wider hidden sm:inline">ENGLISH_BANK</span>
+            <span className="text-[var(--c-cyan-b)] text-xs group-hover:text-[var(--c-cyan-text)]">[ENTER]</span>
           </Link>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <div className="bg-[#0c120c] border border-[#1e321e] p-4">
-            <Languages className="w-4 h-4 text-[#00d4ff]/40 mb-3" />
-            <div className="text-2xl font-bold tabular-nums text-[#00d4ff]/70">
+          <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
+            <Languages className="w-4 h-4 text-[var(--c-cyan)]/40 mb-3" />
+            <div className="text-2xl font-bold tabular-nums text-[var(--c-cyan)]/70">
               {englishTotal ?? "—"}
             </div>
-            <div className="text-[#2a402a] text-xs mt-1 tracking-widest">ENGLISH_BANK</div>
-            <div className="text-[#1e321e] text-xs mt-0.5">vocabulary entries</div>
+            <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">ENGLISH_BANK</div>
+            <div className="text-[var(--c-fg4)] text-xs mt-0.5">vocabulary entries</div>
           </div>
-          <div className="bg-[#0c120c] border border-[#1e321e] p-4">
-            <TrendingUp className="w-4 h-4 text-[#ffb300]/40 mb-3" />
-            <div className="text-2xl font-bold tabular-nums text-[#ffb300]">
+          <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
+            <TrendingUp className="w-4 h-4 text-[var(--c-amber)]/40 mb-3" />
+            <div className="text-2xl font-bold tabular-nums text-[var(--c-amber)]">
               {englishAvg != null ? englishAvg : "—"}
-              {englishAvg != null && <span className="text-sm font-normal text-[#3a5a3a] ml-1">/ 10</span>}
+              {englishAvg != null && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">/ 10</span>}
             </div>
-            <div className="text-[#2a402a] text-xs mt-1 tracking-widest">AVG_PROFICIENCY</div>
-            <div className="text-[#1e321e] text-xs mt-0.5">across all entries</div>
+            <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">AVG_PROFICIENCY</div>
+            <div className="text-[var(--c-fg4)] text-xs mt-0.5">across all entries</div>
           </div>
         </div>
       </div>

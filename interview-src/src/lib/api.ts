@@ -116,8 +116,8 @@ export const getAIReview = (question_id: string, code: string) =>
 
 // ---------- English Bank ----------
 export interface EnglishEntry { id: string; content: string; phonetic: string | null; notes: string | null; proficiency: number; created_at: string; updated_at: string; }
-export const getEnglishEntries = (params?: { search?: string; page?: number; limit?: number }) =>
-  request<{ entries: EnglishEntry[]; total: number; avg_proficiency: number | null; page: number; limit: number }>(`/english?${new URLSearchParams(Object.entries(params ?? {}).filter(([,v]) => v != null).map(([k,v]) => [k, String(v)]))}`);
+export const getEnglishEntries = (params?: { search?: string; page?: number; limit?: number }, signal?: AbortSignal) =>
+  request<{ entries: EnglishEntry[]; total: number; avg_proficiency: number | null; page: number; limit: number }>(`/english?${new URLSearchParams(Object.entries(params ?? {}).filter(([,v]) => v != null).map(([k,v]) => [k, String(v)]))}`, { signal } as RequestInit);
 export const createEnglishEntry = (body: { content: string; phonetic?: string; notes?: string }) =>
   request<{ entry: EnglishEntry }>("/english", { method: "POST", body: JSON.stringify(body) });
 export const updateEnglishEntry = (id: string, body: { content?: string; phonetic?: string; notes?: string; proficiency?: number }) =>

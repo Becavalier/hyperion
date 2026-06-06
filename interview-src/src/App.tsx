@@ -14,6 +14,7 @@ import { SettingsPanel } from "@/components/SettingsPanel";
 import { logout, getToken } from "@/lib/auth";
 import { SettingsContext, loadSettings, saveSettings, useSettings, type Settings } from "@/lib/settings";
 import { ChatPanel } from "@/components/ChatPanel";
+import { ReviewContextProvider } from "@/lib/reviewContext";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Sparkline({ points, color }: { points: [number, number][]; color: string }) {
@@ -76,8 +77,8 @@ function StockTicker() {
   const ticker = settings.stockSymbol.split(".")[0];
 
   if (err || !quote) return (
-    <div className="flex items-center gap-1 text-xs tabular-nums text-[#2a402a]">
-      <span className="text-[#1e321e]">|</span>
+    <div className="flex items-center gap-1 text-xs tabular-nums text-[var(--c-fg3)]">
+      <span className="text-[var(--c-fg4)]">|</span>
       <span>{ticker}</span>
       <span>···</span>
     </div>
@@ -88,9 +89,9 @@ function StockTicker() {
 
   return (
     <div className="flex items-center gap-1.5 text-xs tabular-nums">
-      <span className="text-[#1e321e]">|</span>
+      <span className="text-[var(--c-fg4)]">|</span>
       {quote.lines.length >= 2 && <Sparkline points={quote.lines} color={clr} />}
-      <span className="text-[#4d7a4d]">{ticker}</span>
+      <span className="text-[var(--c-fg2)]">{ticker}</span>
       <span style={{ color: clr }}>{up ? "▲" : "▼"} {quote.price.toFixed(2)}</span>
       <span style={{ color: clr }}>({up ? "+" : ""}{quote.changePercent.toFixed(2)}%)</span>
     </div>
@@ -107,9 +108,9 @@ function Clock() {
   const time = now.toTimeString().slice(0, 8);
   return (
     <div className="ml-auto text-xs tabular-nums hidden sm:flex items-center gap-1.5">
-      <span className="text-[#2a402a]">{date}</span>
-      <span className="text-[#1e321e]">|</span>
-      <span className="text-[#4d7a4d]">{time}</span>
+      <span className="text-[var(--c-fg3)]">{date}</span>
+      <span className="text-[var(--c-fg4)]">|</span>
+      <span className="text-[var(--c-fg2)]">{time}</span>
     </div>
   );
 }
@@ -147,20 +148,20 @@ function QuestionsNav() {
         className={cn(
           "relative flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
           isActive
-            ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
-            : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+            ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+            : "border-transparent text-[var(--c-fg2)] hover:text-[var(--c-fg1)] hover:border-[var(--c-border)]"
         )}
       >
         <Database className="w-3.5 h-3.5" />
         <span className="hidden sm:inline">Questions</span>
         <span className={cn(
           "absolute bottom-0 left-2 right-2 h-px transition-opacity duration-150",
-          open ? "bg-[#00ff41] opacity-60" : "opacity-0"
+          open ? "bg-[var(--c-green)] opacity-60" : "opacity-0"
         )} />
       </button>
 
       {open && (
-        <div className="absolute top-full left-0 mt-0.5 bg-[#080c08] border border-[#1e321e] whitespace-nowrap z-50 py-1">
+        <div className="absolute top-full left-0 mt-0.5 bg-[var(--c-bg)] border border-[var(--c-border)] whitespace-nowrap z-50 py-1">
           {questionsSubmenu.map(({ to, label, icon: Icon }) => (
             <NavLink
               key={to}
@@ -171,8 +172,8 @@ function QuestionsNav() {
                 cn(
                   "flex items-center gap-2 px-4 py-2 text-xs tracking-wider transition-colors w-full",
                   isActive
-                    ? "text-[#00ff41] bg-[#001a00]"
-                    : "text-[#4d7a4d] hover:text-[#b8f5b8] hover:bg-[#0a120a]"
+                    ? "text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                    : "text-[var(--c-fg2)] hover:text-[var(--c-fg1)] hover:bg-[var(--c-hover)]"
                 )
               }
             >
@@ -215,26 +216,22 @@ function PendingTab() {
     <>
       {/* Full-viewport amber border ring */}
       <div
-        className="fixed inset-0 z-40 pointer-events-none"
-        style={{ boxShadow: "inset 0 0 0 5px #ffb300, inset 0 0 24px rgba(255,179,0,0.06)" }}
+        className="fixed inset-0 z-40 pointer-events-none shadow-[inset_0_0_0_5px_#ffb300,inset_0_0_24px_rgba(255,179,0,0.06)]"
       />
 
       {/* Side tab */}
       <Link
         to="/today"
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 bg-[#120d00] border-l-[5px] border-t-[5px] border-b-[3px] border-[#ffb300] px-3 py-5 hover:bg-[#1a1100] transition-colors group"
-        style={{ boxShadow: "-2px 0 16px rgba(255,179,0,0.08)" }}
+        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 bg-[var(--c-amber-bg)] border-l-[5px] border-t-[5px] border-b-[3px] border-[var(--c-amber)] px-3 py-5 hover:bg-[var(--c-amber-bg)] transition-colors group shadow-[-2px_0_16px_rgba(255,179,0,0.08)]"
       >
-        <TriangleAlert className="w-4 h-4 text-[#ffb300] shrink-0" />
+        <TriangleAlert className="w-4 h-4 text-[var(--c-amber)] shrink-0" />
         <span
-          className="text-[#ffb300] text-xs tracking-[0.18em] font-medium leading-none"
-          style={{ writingMode: "vertical-rl" }}
+          className="text-[var(--c-amber)] text-xs tracking-[0.18em] font-medium leading-none [writing-mode:vertical-rl]"
         >
           UNFINISHED
         </span>
         <span
-          className="text-[#7a5a00] text-xs tabular-nums leading-none group-hover:text-[#ffb300] transition-colors"
-          style={{ writingMode: "vertical-rl" }}
+          className="text-[var(--c-amber)] text-xs tabular-nums leading-none group-hover:text-[var(--c-amber)] transition-colors [writing-mode:vertical-rl]"
         >
           {pending} LEFT
         </span>
@@ -248,18 +245,47 @@ export default function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
 
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "h") {
+        e.preventDefault();
+        setChatOpen((o) => !o);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const theme = settings.theme ?? "system";
+    if (theme === "light") {
+      html.setAttribute("data-theme", "light");
+      meta?.setAttribute("content", "#f5faf5");
+    } else if (theme === "dark") {
+      html.setAttribute("data-theme", "dark");
+      meta?.setAttribute("content", "#080c08");
+    } else {
+      html.removeAttribute("data-theme");
+      const isLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+      meta?.setAttribute("content", isLight ? "#f5faf5" : "#080c08");
+    }
+  }, [settings.theme]);
+
   const setSettings = (s: Settings) => {
     setSettingsState(s);
     saveSettings(s);
   };
 
   return (
+    <ReviewContextProvider>
     <SettingsContext.Provider value={{ settings, setSettings }}>
     <AuthGate>
-      <div className="min-h-screen bg-[#080c08]">
-        <header className="border-b border-[#1e321e] sticky top-0 z-10 bg-[#080c08]">
+      <div className="min-h-screen bg-[var(--c-bg)]">
+        <header className="border-b border-[var(--c-border)] sticky top-0 z-10 bg-[var(--c-bg)]">
           <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 h-12 flex items-center gap-1">
-            <span className="text-[#00ff41] font-bold mr-6 text-sm tracking-[0.15em] cursor-blink select-none">
+            <span className="text-[var(--c-green)] font-bold mr-6 text-sm tracking-[0.15em] cursor-blink select-none">
               PREP.SYS
             </span>
             <NavLink
@@ -269,8 +295,8 @@ export default function App() {
                 cn(
                   "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
                   isActive
-                    ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
-                    : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+                    ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                    : "border-transparent text-[var(--c-fg2)] hover:text-[var(--c-fg1)] hover:border-[var(--c-border)]"
                 )
               }
             >
@@ -284,8 +310,8 @@ export default function App() {
                 cn(
                   "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
                   isActive
-                    ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
-                    : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
+                    ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                    : "border-transparent text-[var(--c-fg2)] hover:text-[var(--c-fg1)] hover:border-[var(--c-border)]"
                 )
               }
             >
@@ -295,25 +321,25 @@ export default function App() {
             <div className="ml-auto flex items-center gap-0.5">
               <Clock />
               <StockTicker />
-              <div className="w-px h-4 bg-[#1e321e] mx-2" />
+              <div className="w-px h-4 bg-[var(--c-fg4)] mx-2" />
               <button
                 onClick={() => setChatOpen((o) => !o)}
                 title="AI Assistant"
-                className={cn("p-1.5 transition-colors", chatOpen ? "text-[#00ff41]" : "text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00]")}
+                className={cn("p-1.5 transition-colors", chatOpen ? "text-[var(--c-green)]" : "text-[var(--c-fg3)] hover:text-[var(--c-green)] hover:bg-[var(--c-green-bg)]")}
               >
                 <Bot className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={() => setSettingsOpen(true)}
                 title="Settings"
-                className="p-1.5 text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00] transition-colors"
+                className="p-1.5 text-[var(--c-fg3)] hover:text-[var(--c-green)] hover:bg-[var(--c-green-bg)] transition-colors"
               >
                 <SettingsIcon className="w-3.5 h-3.5" />
               </button>
               <button
                 onClick={logout}
                 title="Logout"
-                className="p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors"
+                className="p-1.5 text-[var(--c-fg3)] hover:text-[var(--c-red)] hover:bg-[var(--c-red-bg)] transition-colors"
               >
                 <LogOut className="w-3.5 h-3.5" />
               </button>
@@ -332,14 +358,14 @@ export default function App() {
           </Routes>
         </main>
 
-        <footer className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 mt-4 border-t border-[#0e1a0e]">
-          <p className="text-[#1e321e] text-xs tracking-widest text-center">
+        <footer className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 py-4 mt-4 border-t border-[var(--c-border3)]">
+          <p className="text-[var(--c-fg4)] text-xs tracking-widest text-center">
             POWERED BY{" "}
             <a
               href="https://claude.ai/code"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#2a402a] transition-colors"
+              className="hover:text-[var(--c-fg3)] transition-colors"
             >
               CLAUDE CODE
             </a>
@@ -353,5 +379,6 @@ export default function App() {
       </div>
     </AuthGate>
     </SettingsContext.Provider>
+    </ReviewContextProvider>
   );
 }

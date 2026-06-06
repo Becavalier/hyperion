@@ -131,6 +131,47 @@ export async function updateQuestionAnswerHint(id: string, answerHint: string) {
   await db.update(questions).set({ answerHint }).where(eq(questions.id, id));
 }
 
+export async function updateQuestionFields(id: string, fields: {
+  title?: string; content?: string; category?: string;
+  difficulty?: string; answerHint?: string;
+}) {
+  const sets: Partial<typeof questions.$inferInsert> = {};
+  if (fields.title       !== undefined) sets.title       = fields.title;
+  if (fields.content     !== undefined) sets.content     = fields.content;
+  if (fields.category    !== undefined) sets.category    = fields.category;
+  if (fields.difficulty  !== undefined) sets.difficulty  = fields.difficulty;
+  if (fields.answerHint  !== undefined) sets.answerHint  = fields.answerHint;
+  if (!Object.keys(sets).length) return null;
+  const [row] = await db.update(questions).set(sets).where(eq(questions.id, id)).returning();
+  return row ?? null;
+}
+
+export async function updateEnglishWordFields(id: string, fields: {
+  word?: string; phonetic?: string | null; meaning?: string | null;
+}) {
+  const sets: Partial<typeof englishBank.$inferInsert> = {};
+  if (fields.word     !== undefined) sets.content  = fields.word;
+  if (fields.phonetic !== undefined) sets.phonetic = fields.phonetic;
+  if (fields.meaning  !== undefined) sets.notes    = fields.meaning;
+  if (!Object.keys(sets).length) return null;
+  const [row] = await db.update(englishBank).set(sets).where(eq(englishBank.id, id)).returning();
+  return row ?? null;
+}
+
+export async function searchEnglishEntries(search: string, limit: number) {
+  return db.select({
+    id:       englishBank.id,
+    word:     englishBank.content,
+    phonetic: englishBank.phonetic,
+    meaning:  englishBank.notes,
+    proficiency: englishBank.proficiency,
+  })
+    .from(englishBank)
+    .where(or(ilike(englishBank.content, `%${search}%`), ilike(englishBank.notes!, `%${search}%`)))
+    .orderBy(asc(englishBank.proficiency))
+    .limit(limit);
+}
+
 // ── English Bank ──────────────────────────────────────────────────────────────
 
 export async function findEnglishWordById(id: string) {

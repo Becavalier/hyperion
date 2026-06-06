@@ -7,7 +7,8 @@ import { Fragment } from "react";
 import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import { cpp } from "@codemirror/lang-cpp";
-import { oneDark } from "@codemirror/theme-one-dark";
+import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
+import { tags } from "@lezer/highlight";
 import confetti from "canvas-confetti";
 import type { Category } from "@/types";
 import { getSchedule, submitReview, resetReview, getAIReview, updateQuestion, extendSchedule, getStats } from "@/lib/api";
@@ -16,6 +17,7 @@ import { rankFor } from "@/lib/ranks";
 import { RankUpBanner } from "@/components/RankUpBanner";
 import type { Rank } from "@/lib/ranks";
 import { useSettings } from "@/lib/settings";
+import { useSetReviewCtx } from "@/lib/reviewContext";
 import type { Question, Review, DailySchedule, SelfRating } from "@/types";
 
 // ── types ─────────────────────────────────────────────────────────────────────
@@ -32,58 +34,85 @@ interface QState {
 const BLANK: QState = { code: "", phase: "coding", reviewMode: null, aiFeedback: null, aiVerdict: null, loadingAI: false };
 
 const RATINGS: { value: SelfRating; label: string; cls: string }[] = [
-  { value: "mastered", label: "PASS",          cls: "border-[#00ff41] text-[#00ff41] hover:bg-[#011200]" },
-  { value: "fuzzy",    label: "NEEDS PRACTICE", cls: "border-[#ffb300] text-[#ffb300] hover:bg-[#120d00]" },
+  { value: "mastered", label: "PASS",          cls: "border-[var(--c-green)] text-[var(--c-green)] hover:bg-[var(--c-green-dim)]" },
+  { value: "fuzzy",    label: "NEEDS PRACTICE", cls: "border-[var(--c-amber)] text-[var(--c-amber)] hover:bg-[var(--c-amber-bg)]" },
 ];
 
 // ── custom CodeMirror theme matching hacker palette ──────────────────────────
 
 const hackerTheme = EditorView.theme({
-  "&": { background: "#050905", color: "#b8f5b8", height: "100%" },
+  "&": { background: "var(--c-code)", color: "var(--c-fg1)", height: "100%" },
   ".cm-scroller": { fontFamily: "'JetBrains Mono', 'Fira Code', ui-monospace, monospace", overflow: "auto", lineHeight: "1.7" },
-  ".cm-content": { padding: "12px", caretColor: "#00ff41" },
+  ".cm-content": { padding: "12px", caretColor: "var(--c-green)" },
   ".cm-line": { padding: "0 2px" },
   ".cm-focused": { outline: "none" },
-  ".cm-cursor": { borderLeftColor: "#00ff41" },
-  ".cm-selectionBackground, ::selection": { background: "rgba(0,255,65,0.15) !important" },
-  ".cm-activeLine": { background: "rgba(0,255,65,0.04)" },
-  ".cm-gutters": { background: "#050905", borderRight: "1px solid #1e321e", color: "#2a402a" },
-  ".cm-activeLineGutter": { background: "rgba(0,255,65,0.04)" },
+  ".cm-cursor": { borderLeftColor: "var(--c-green)" },
+  ".cm-selectionBackground, ::selection": { background: "color-mix(in srgb, var(--c-green) 18%, transparent) !important" },
+  ".cm-activeLine": { background: "color-mix(in srgb, var(--c-green) 5%, transparent)" },
+  ".cm-gutters": { background: "var(--c-code)", borderRight: "1px solid var(--c-border)", color: "var(--c-fg3)" },
+  ".cm-activeLineGutter": { background: "color-mix(in srgb, var(--c-green) 5%, transparent)" },
   ".cm-lineNumbers .cm-gutterElement": { paddingLeft: "8px", paddingRight: "8px" },
-  ".cm-placeholder": { color: "#1e321e" },
-}, { dark: true });
+  ".cm-placeholder": { color: "var(--c-fg4)" },
+});
+
+const hackerHighlight = HighlightStyle.define([
+  { tag: tags.keyword,                       color: "var(--c-green)",   fontWeight: "bold" },
+  { tag: tags.operator,                      color: "var(--c-green-s)" },
+  { tag: tags.comment,                       color: "var(--c-fg3)",     fontStyle: "italic" },
+  { tag: tags.lineComment,                   color: "var(--c-fg3)",     fontStyle: "italic" },
+  { tag: tags.blockComment,                  color: "var(--c-fg3)",     fontStyle: "italic" },
+  { tag: tags.string,                        color: "var(--c-amber)" },
+  { tag: tags.special(tags.string),          color: "var(--c-amber)" },
+  { tag: tags.number,                        color: "var(--c-amber)" },
+  { tag: tags.bool,                          color: "var(--c-red)" },
+  { tag: tags.null,                          color: "var(--c-red)" },
+  { tag: tags.function(tags.variableName),   color: "var(--c-cyan)" },
+  { tag: tags.function(tags.propertyName),   color: "var(--c-cyan)" },
+  { tag: tags.definition(tags.variableName), color: "var(--c-cyan)" },
+  { tag: tags.className,                     color: "var(--c-cyan)" },
+  { tag: tags.typeName,                      color: "var(--c-cyan)" },
+  { tag: tags.namespace,                     color: "var(--c-cyan)" },
+  { tag: tags.tagName,                       color: "var(--c-green)" },
+  { tag: tags.attributeName,                 color: "var(--c-cyan)" },
+  { tag: tags.propertyName,                  color: "var(--c-fg0)" },
+  { tag: tags.variableName,                  color: "var(--c-fg0)" },
+  { tag: tags.regexp,                        color: "var(--c-red)" },
+  { tag: tags.punctuation,                   color: "var(--c-fg2)" },
+  { tag: tags.angleBracket,                  color: "var(--c-fg2)" },
+  { tag: tags.meta,                          color: "var(--c-fg3)" },
+]);
 
 // ── syntax highlight theme matching hacker palette ────────────────────────────
 
 const hackerSyntaxTheme: Record<string, React.CSSProperties> = {
-  'code[class*="language-"]': { color: "#c8ffc8", background: "#050905", fontFamily: "inherit", fontSize: "0.75rem" },
-  'pre[class*="language-"]':  { color: "#c8ffc8", background: "#050905", margin: 0, padding: 0 },
-  "comment":      { color: "#6aaa6a", fontStyle: "italic" },
-  "prolog":       { color: "#6aaa6a" },
-  "keyword":      { color: "#00ff41", fontWeight: "bold" },
-  "operator":     { color: "#7dff7d" },
-  "boolean":      { color: "#ff5577" },
-  "null":         { color: "#ff5577" },
-  "undefined":    { color: "#ff5577" },
-  "number":       { color: "#ffcc44" },
-  "string":       { color: "#ffc040" },
-  "char":         { color: "#ffc040" },
-  "template-string": { color: "#ffc040" },
-  "regex":        { color: "#ff9944" },
-  "function":     { color: "#33ffcc" },
-  "method":       { color: "#33ffcc" },
-  "class-name":   { color: "#33ddff" },
-  "builtin":      { color: "#33ddff" },
-  "constant":     { color: "#33ddff" },
-  "symbol":       { color: "#33ddff" },
-  "variable":     { color: "#c8ffc8" },
-  "property":     { color: "#c8ffc8" },
-  "parameter":    { color: "#aaddff" },
-  "attr-name":    { color: "#33ffcc" },
-  "attr-value":   { color: "#ffc040" },
-  "tag":          { color: "#00ff41" },
-  "punctuation":  { color: "#7aa87a" },
-  "important":    { color: "#ff5577", fontWeight: "bold" },
+  'code[class*="language-"]': { color: "var(--c-fg0)", background: "var(--c-code)", fontFamily: "inherit", fontSize: "0.75rem" },
+  'pre[class*="language-"]':  { color: "var(--c-fg0)", background: "var(--c-code)", margin: 0, padding: 0 },
+  "comment":         { color: "var(--c-fg3)", fontStyle: "italic" },
+  "prolog":          { color: "var(--c-fg3)" },
+  "keyword":         { color: "var(--c-green)", fontWeight: "bold" },
+  "operator":        { color: "var(--c-green-s)" },
+  "boolean":         { color: "var(--c-red)" },
+  "null":            { color: "var(--c-red)" },
+  "undefined":       { color: "var(--c-red)" },
+  "number":          { color: "var(--c-amber)" },
+  "string":          { color: "var(--c-amber)" },
+  "char":            { color: "var(--c-amber)" },
+  "template-string": { color: "var(--c-amber)" },
+  "regex":           { color: "var(--c-red)" },
+  "function":        { color: "var(--c-cyan)" },
+  "method":          { color: "var(--c-cyan)" },
+  "class-name":      { color: "var(--c-cyan)" },
+  "builtin":         { color: "var(--c-cyan)" },
+  "constant":        { color: "var(--c-cyan)" },
+  "symbol":          { color: "var(--c-cyan)" },
+  "variable":        { color: "var(--c-fg0)" },
+  "property":        { color: "var(--c-fg0)" },
+  "parameter":       { color: "var(--c-fg1)" },
+  "attr-name":       { color: "var(--c-cyan)" },
+  "attr-value":      { color: "var(--c-amber)" },
+  "tag":             { color: "var(--c-green)" },
+  "punctuation":     { color: "var(--c-fg2)" },
+  "important":       { color: "var(--c-red)", fontWeight: "bold" },
 };
 
 // ── shared markdown components (used by quiz reader + AI feedback) ───────────
@@ -91,48 +120,46 @@ const hackerSyntaxTheme: Record<string, React.CSSProperties> = {
 const mdComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
     <h1
-      className="text-2xl text-[#00ff41] font-mono font-bold tracking-wider mt-10 mb-6 px-4 py-2.5 bg-[#001a00] border-l-4 border-[#00ff41] uppercase before:content-['#_'] before:text-[#4d7a4d]"
-      style={{ textShadow: "0 0 10px rgba(0,255,65,0.55)" }}
+      className="text-2xl text-[var(--c-green)] font-mono font-bold tracking-wider mt-10 mb-6 px-4 py-2.5 bg-[var(--c-green-bg)] border-l-4 border-[var(--c-green)] uppercase before:content-['#_'] before:text-[var(--c-fg2)] [text-shadow:0_0_10px_rgba(0,255,65,0.55)]"
     >
       {children}
     </h1>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
     <h2
-      className="text-lg text-[#00ff41] font-mono font-bold tracking-wide mt-8 mb-4 pb-1.5 border-b-2 border-[#00ff41]/40 before:content-['##_'] before:text-[#2a402a]"
-      style={{ textShadow: "0 0 6px rgba(0,255,65,0.25)" }}
+      className="text-lg text-[var(--c-green)] font-mono font-bold tracking-wide mt-8 mb-4 pb-1.5 border-b-2 border-[var(--c-green)]/40 before:content-['##_'] before:text-[var(--c-fg3)] [text-shadow:0_0_6px_rgba(0,255,65,0.25)]"
     >
       {children}
     </h2>
   ),
   h3: ({ children }: { children?: React.ReactNode }) => (
-    <h3 className="text-base text-[#7dff7d] font-mono tracking-wider mt-7 mb-3 pl-3 border-l-2 border-[#00ff41]/50 before:content-['###_'] before:text-[#2a402a]">
+    <h3 className="text-base text-[var(--c-green-s)] font-mono tracking-wider mt-7 mb-3 pl-3 border-l-2 border-[var(--c-green)]/50 before:content-['###_'] before:text-[var(--c-fg3)]">
       {children}
     </h3>
   ),
   h4: ({ children }: { children?: React.ReactNode }) => (
-    <h4 className="inline-block text-xs text-[#ffb300] font-mono font-bold tracking-[0.25em] uppercase mt-5 mb-2 px-2 py-0.5 bg-[#1a1100] border border-[#ffb300]/40">
+    <h4 className="inline-block text-xs text-[var(--c-amber)] font-mono font-bold tracking-[0.25em] uppercase mt-5 mb-2 px-2 py-0.5 bg-[var(--c-amber-bg)] border border-[var(--c-amber)]/40">
       {children}
     </h4>
   ),
-  p:  ({ children }: { children?: React.ReactNode }) => <p className="text-xs text-[#b8f5b8] leading-loose mb-4">{children}</p>,
+  p:  ({ children }: { children?: React.ReactNode }) => <p className="text-xs text-[var(--c-fg1)] leading-loose mb-4">{children}</p>,
   ul: ({ children }: { children?: React.ReactNode }) => (
-    <ul className="text-xs text-[#b8f5b8] list-none space-y-2.5 mb-4 pl-2 [&>li]:pl-5 [&>li]:-indent-5 [&>li]:before:content-['▸'] [&>li]:before:text-[#2a402a] [&>li]:before:mr-2">
+    <ul className="text-xs text-[var(--c-fg1)] list-none space-y-2.5 mb-4 pl-2 [&>li]:pl-5 [&>li]:-indent-5 [&>li]:before:content-['▸'] [&>li]:before:text-[var(--c-fg3)] [&>li]:before:mr-2">
       {children}
     </ul>
   ),
   ol: ({ children }: { children?: React.ReactNode }) => (
-    <ol className="text-xs text-[#b8f5b8] list-decimal list-inside space-y-2.5 mb-4 pl-2 marker:text-[#4d7a4d] marker:font-bold">
+    <ol className="text-xs text-[var(--c-fg1)] list-decimal list-inside space-y-2.5 mb-4 pl-2 marker:text-[var(--c-fg2)] marker:font-bold">
       {children}
     </ol>
   ),
   li: ({ children }: { children?: React.ReactNode }) => (
-    <li className="text-xs text-[#b8f5b8] leading-loose [&>p]:inline [&>p]:m-0">
+    <li className="text-xs text-[var(--c-fg1)] leading-loose [&>p]:inline [&>p]:m-0">
       {children}
     </li>
   ),
-  strong: ({ children }: { children?: React.ReactNode }) => <strong className="text-[#00ff41] font-semibold">{children}</strong>,
-  em:     ({ children }: { children?: React.ReactNode }) => <em className="text-[#ffb300] not-italic">{children}</em>,
+  strong: ({ children }: { children?: React.ReactNode }) => <strong className="text-[var(--c-green)] font-semibold">{children}</strong>,
+  em:     ({ children }: { children?: React.ReactNode }) => <em className="text-[var(--c-amber)] not-italic">{children}</em>,
   code: ({ children, className }: { children?: React.ReactNode; className?: string }) => {
     const match = /language-(\w+)/.exec(className ?? "");
     if (match) {
@@ -153,21 +180,21 @@ const mdComponents = {
     // already provides the container border + padding, so no per-line frame.
     const isBlock = typeof children === "string" && children.includes("\n");
     if (isBlock) {
-      return <code className="text-[#c8ffc8] font-mono text-xs whitespace-pre">{children}</code>;
+      return <code className="text-[var(--c-fg0)] font-mono text-xs whitespace-pre">{children}</code>;
     }
-    return <code className="text-[#00ff41] bg-[#011200] border border-[#1e321e] px-1 py-0.5 text-xs font-mono">{children}</code>;
+    return <code className="text-[var(--c-green)] bg-[var(--c-green-dim)] border border-[var(--c-border)] px-1 py-0.5 text-xs font-mono">{children}</code>;
   },
   pre: ({ children }: { children?: React.ReactNode }) => (
-    <pre className="bg-[#050905] border border-[#1e321e] p-3 overflow-x-auto mb-3 font-mono leading-relaxed">{children}</pre>
+    <pre className="bg-[var(--c-code)] border border-[var(--c-border)] p-3 overflow-x-auto mb-3 font-mono leading-relaxed">{children}</pre>
   ),
   blockquote: ({ children }: { children?: React.ReactNode }) => (
-    <blockquote className="border-l-2 border-[#2a402a] pl-3 text-[#4d7a4d] italic mb-3">{children}</blockquote>
+    <blockquote className="border-l-2 border-[var(--c-border2)] pl-3 text-[var(--c-fg2)] italic mb-3">{children}</blockquote>
   ),
-  hr: () => <hr className="border-[#1e321e] my-4" />,
-  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => <a href={href} className="text-[#00d4ff] underline hover:text-[#b8f5b8]">{children}</a>,
+  hr: () => <hr className="border-[var(--c-border)] my-4" />,
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => <a href={href} className="text-[var(--c-cyan)] underline hover:text-[var(--c-fg1)]">{children}</a>,
   table: ({ children }: { children?: React.ReactNode }) => <table className="w-full text-xs border-collapse mb-3">{children}</table>,
-  th:    ({ children }: { children?: React.ReactNode }) => <th className="border border-[#1e321e] px-2 py-1 text-[#4d7a4d] text-left bg-[#080c08]">{children}</th>,
-  td:    ({ children }: { children?: React.ReactNode }) => <td className="border border-[#1e321e] px-2 py-1 text-[#b8f5b8]">{children}</td>,
+  th:    ({ children }: { children?: React.ReactNode }) => <th className="border border-[var(--c-border)] px-2 py-1 text-[var(--c-fg2)] text-left bg-[var(--c-bg)]">{children}</th>,
+  td:    ({ children }: { children?: React.ReactNode }) => <td className="border border-[var(--c-border)] px-2 py-1 text-[var(--c-fg1)]">{children}</td>,
 };
 
 // ── per-category language extension ───────────────────────────────────────────
@@ -283,7 +310,7 @@ function CodeEditor({
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {label && (
-        <div className="px-3 py-1.5 border-b border-[#1e321e] bg-[#080c08] text-[#2a402a] text-xs tracking-widest shrink-0">
+        <div className="px-3 py-1.5 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest shrink-0">
           // {label}
         </div>
       )}
@@ -296,7 +323,8 @@ function CodeEditor({
             ...(lineWrapping ? [EditorView.lineWrapping] : []),
             ...(readOnly || !settings.sparksEnabled ? [] : [sparkExtension]),
           ]}
-          theme={[oneDark, hackerTheme]}
+          theme={[hackerTheme, syntaxHighlighting(hackerHighlight)]}
+
           readOnly={readOnly}
           placeholder={category === "quiz" ? "// jot down keywords and thoughts..." : "// write your solution here..."}
           basicSetup={{
@@ -338,6 +366,7 @@ export default function Today() {
   const [exhausted, setExhausted] = useState(false);
   const [rankUp, setRankUp] = useState<{ from: Rank; to: Rank } | null>(null);
 
+  const setReviewCtx = useSetReviewCtx();
   const today = todayStr();
 
   useEffect(() => {
@@ -345,6 +374,23 @@ export default function Today() {
     if (cur) setHintDraft(cur.answer_hint ?? "");
     setNotesOpen(false);   // 切题时自动收起 NOTES
   }, [current, questions]);
+
+  useEffect(() => {
+    const q = questions[current];
+    if (!q) { setReviewCtx(null); return; }
+    const qs = qStates[q.id] ?? BLANK;
+    setReviewCtx({
+      mode: "DAILY_REVIEW",
+      questionTitle: q.title,
+      questionContent: q.content || "",
+      category: q.category,
+      difficulty: q.difficulty,
+      phase: qs.phase,
+      code: qs.code,
+      codeLanguage: EDITOR_LANG_LABEL[q.category],
+    });
+    return () => setReviewCtx(null);
+  }, [questions, current, qStates, setReviewCtx]);
 
   useEffect(() => {
     setExhausted(false);
@@ -373,14 +419,14 @@ export default function Today() {
   }
 
   if (loading) {
-    return <div className="text-[#4d7a4d] text-xs py-12 text-center tracking-widest">LOADING...</div>;
+    return <div className="text-[var(--c-fg2)] text-xs py-12 text-center tracking-widest">LOADING...</div>;
   }
 
   if (!schedule) {
     return (
       <div className="text-center py-12 space-y-2">
-        <p className="text-[#4d7a4d] text-xs tracking-widest">NO_SESSION_TODAY</p>
-        <p className="text-[#2a402a] text-xs">
+        <p className="text-[var(--c-fg2)] text-xs tracking-widest">NO_SESSION_TODAY</p>
+        <p className="text-[var(--c-fg3)] text-xs">
           No questions due and no new questions — or no active plan. Check the Schedule page.
         </p>
       </div>
@@ -531,40 +577,39 @@ export default function Today() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-[#2a402a] text-xs tracking-widest">// DAILY_REVIEW</p>
-          <p className="text-[#4d7a4d] text-xs tabular-nums mt-0.5">
+          <p className="text-[var(--c-fg3)] text-xs tracking-widest">// DAILY_REVIEW</p>
+          <p className="text-[var(--c-fg2)] text-xs tabular-nums mt-0.5">
             {today}
-            <span className="mx-2 text-[#1e321e]">|</span>
-            <span className="text-[#00ff41]">{doneCount}</span>
-            <span className="text-[#2a402a]">/{questions.length} completed</span>
+            <span className="mx-2 text-[var(--c-fg4)]">|</span>
+            <span className="text-[var(--c-green)]">{doneCount}</span>
+            <span className="text-[var(--c-fg3)]">/{questions.length} completed</span>
           </p>
         </div>
         <div className="flex items-center gap-3">
           {doneCount === questions.length && questions.length > 0 && (
             exhausted ? (
-              <span className="text-[#4d7a4d] text-xs tracking-widest">// BANK_EXHAUSTED</span>
+              <span className="text-[var(--c-fg2)] text-xs tracking-widest">// BANK_EXHAUSTED</span>
             ) : (
               <button
                 onClick={handleExtend}
                 disabled={extending}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#00ff41] text-[#00ff41] bg-[#001a00] hover:bg-[#002500] disabled:opacity-30 tracking-wider transition-colors"
-                style={{ boxShadow: extending ? "none" : "0 0 8px rgba(0,255,65,0.4)" }}
+                className={cn("flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)] hover:bg-[var(--c-green-bg)] disabled:opacity-30 tracking-wider transition-colors", !extending && "shadow-[0_0_8px_rgba(0,255,65,0.4)]")}
               >
                 <PlusCircle className="w-3.5 h-3.5" />
                 {extending ? "FETCHING..." : "PICK_NEXT_BATCH ▶"}
               </button>
             )
           )}
-          <div className="w-28 h-1.5 bg-[#080c08] border border-[#1e321e] overflow-hidden">
-            <div className="h-full bg-[#00ff41] transition-all duration-500"
-              style={{ width: `${pct}%`, boxShadow: pct > 0 ? "0 0 6px #00ff41" : "none" }} />
+          <div className="w-28 h-1.5 bg-[var(--c-bg)] border border-[var(--c-border)] overflow-hidden">
+            <div className="h-full bg-[var(--c-green)] transition-all duration-500"
+              style={{ width: `${pct}%`, boxShadow: pct > 0 ? "0 0 6px var(--c-green)" : "none" }} />
           </div>
-          <span className="text-[#00ff41] text-xs tabular-nums">{pct}%</span>
+          <span className="text-[var(--c-green)] text-xs tabular-nums">{pct}%</span>
         </div>
       </div>
 
       {/* Question tabs */}
-      <div className="flex items-center gap-1 overflow-x-auto pb-0.5 min-w-0 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-[#1e321e]">
+      <div className="flex items-center gap-1 overflow-x-auto pb-0.5 min-w-0 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-[var(--c-fg4)]">
         {questions.map((qu, i) => {
           const rv = reviews.find((r) => r.question_id === qu.id);
           const isActive = i === current;
@@ -579,10 +624,10 @@ export default function Today() {
                 className={cn(
                   "flex items-center gap-1 px-3 py-1.5 text-xs border tracking-wider transition-colors shrink-0",
                   isActive
-                    ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
+                    ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
                     : rv
-                    ? "border-[#1e321e] text-[#2a402a] bg-[#080c08]"
-                    : "border-[#1e321e] text-[#4d7a4d] hover:border-[#2a402a] hover:text-[#b8f5b8]",
+                    ? "border-[var(--c-border)] text-[var(--c-fg3)] bg-[var(--c-bg)]"
+                    : "border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)]",
                 )}>
                 {rv && <CheckCircle2 className="w-3 h-3" />}
                 Q{i + 1}
@@ -605,17 +650,16 @@ export default function Today() {
       {q.category === "quiz" ? (
         /* ── QUIZ: single-panel markdown reader ── */
         <div
-          className="flex flex-col border border-[#1e321e] overflow-hidden"
-          style={{ height: "calc(100dvh - 14rem)", minHeight: 480 }}
+          className="flex flex-col border border-[var(--c-border)] overflow-hidden h-[calc(100dvh-14rem)] min-h-[480px]"
         >
-          <div className="px-4 py-2 border-b border-[#1e321e] bg-[#080c08] text-[#2a402a] text-xs tracking-widest shrink-0 flex items-center justify-between">
+          <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest shrink-0 flex items-center justify-between">
             <span>// QUIZ_CONTENT</span>
             <div className="flex items-center gap-2">
               <span className={cn("text-xs px-2 py-0.5 font-medium tracking-wider", difficultyColor[q.difficulty])}>
                 [{difficultyLabel[q.difficulty].toUpperCase()}]
               </span>
               {q.tags.map((t) => (
-                <span key={t} className="text-xs text-[#2a402a] bg-[#050905] border border-[#1e321e] px-1.5 py-0.5">
+                <span key={t} className="text-xs text-[var(--c-fg3)] bg-[var(--c-code)] border border-[var(--c-border)] px-1.5 py-0.5">
                   {t}
                 </span>
               ))}
@@ -624,7 +668,7 @@ export default function Today() {
                   <button
                     onClick={handleSaveQuizContent}
                     disabled={savingQuiz}
-                    className="flex items-center gap-1 text-xs border border-[#00ff41] text-[#00ff41] px-2 py-0.5 hover:bg-[#001a00] disabled:opacity-30 tracking-wider transition-colors"
+                    className="flex items-center gap-1 text-xs border border-[var(--c-green)] text-[var(--c-green)] px-2 py-0.5 hover:bg-[var(--c-green-bg)] disabled:opacity-30 tracking-wider transition-colors"
                   >
                     <Save className="w-3 h-3" />
                     {savingQuiz ? "···" : "SAVE"}
@@ -632,7 +676,7 @@ export default function Today() {
                   <button
                     onClick={() => setEditingQuizId(null)}
                     disabled={savingQuiz}
-                    className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#4d7a4d] px-2 py-0.5 hover:border-[#2a402a] hover:text-[#b8f5b8] disabled:opacity-30 tracking-wider transition-colors"
+                    className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-30 tracking-wider transition-colors"
                   >
                     <X className="w-3 h-3" />
                     CANCEL
@@ -641,7 +685,7 @@ export default function Today() {
               ) : (
                 <button
                   onClick={() => { setEditingQuizId(q.id); setQuizDraft(q.content); }}
-                  className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#2a402a] px-2 py-0.5 hover:border-[#2a402a] hover:text-[#4d7a4d] tracking-wider transition-colors ml-2"
+                  className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg2)] tracking-wider transition-colors ml-2"
                 >
                   <Pencil className="w-3 h-3" />
                   EDIT
@@ -661,7 +705,7 @@ export default function Today() {
             </div>
           ) : (
           <div className="flex-1 overflow-auto p-6">
-            <h2 className="text-base text-[#b8f5b8] font-mono mb-4">{q.title}</h2>
+            <h2 className="text-base text-[var(--c-fg1)] font-mono mb-4">{q.title}</h2>
             <div className="prose-quiz">
               <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
                 {q.content}
@@ -671,31 +715,31 @@ export default function Today() {
           )}
 
           {/* Nav + rating bar */}
-          <div className="px-4 py-2.5 border-t border-[#1e321e] bg-[#080c08] flex items-center justify-between shrink-0">
+          <div className="px-4 py-2.5 border-t border-[var(--c-border)] bg-[var(--c-bg)] flex items-center justify-between shrink-0">
             <div className="flex items-center gap-3">
               <button onClick={() => setCurrent((i) => Math.max(0, i - 1))} disabled={current === 0}
-                className="flex items-center gap-1 text-xs text-[#4d7a4d] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider">
+                className="flex items-center gap-1 text-xs text-[var(--c-fg2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider">
                 <ChevronLeft className="w-3 h-3" /> PREV
               </button>
-              <span className="text-[#1e321e] text-xs tabular-nums">{current + 1}/{questions.length}</span>
+              <span className="text-[var(--c-fg4)] text-xs tabular-nums">{current + 1}/{questions.length}</span>
               <button onClick={() => setCurrent((i) => Math.min(questions.length - 1, i + 1))} disabled={current === questions.length - 1}
-                className="flex items-center gap-1 text-xs text-[#4d7a4d] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider">
+                className="flex items-center gap-1 text-xs text-[var(--c-fg2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider">
                 NEXT <ChevronRight className="w-3 h-3" />
               </button>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[#2a402a] text-xs tracking-widest">SELF_RATE:</span>
+              <span className="text-[var(--c-fg3)] text-xs tracking-widest">SELF_RATE:</span>
               {review ? (
                 <div className="flex items-center gap-2">
                   <span className="text-xs tracking-wider" style={{
-                    color: review.self_rating === "mastered" ? "#00ff41" : review.self_rating === "fuzzy" ? "#ffb300" : "#ff3358"
+                    color: review.self_rating === "mastered" ? "var(--c-green)" : review.self_rating === "fuzzy" ? "var(--c-amber)" : "var(--c-red)"
                   }}>
                     STATUS: {ratingLabel[review.self_rating]}
                   </span>
                   <button
                     onClick={handleReset}
                     disabled={resetting}
-                    className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#2a402a] px-2 py-1 hover:border-[#ff3358] hover:text-[#ff3358] hover:bg-[#120004] disabled:opacity-30 tracking-wider transition-colors"
+                    className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-1 hover:border-[var(--c-red)] hover:text-[var(--c-red)] hover:bg-[var(--c-red-bg)] disabled:opacity-30 tracking-wider transition-colors"
                   >
                     <RotateCcw className="w-3 h-3" />
                     {resetting ? "···" : "RESET"}
@@ -717,13 +761,12 @@ export default function Today() {
       ) : (
         /* ── NORMAL: split panel ── */
         <div
-          className="flex flex-col md:flex-row border border-[#1e321e] overflow-hidden"
-          style={{ height: "calc(100dvh - 14rem)", minHeight: 480 }}
+          className="flex flex-col md:flex-row border border-[var(--c-border)] overflow-hidden h-[calc(100dvh-14rem)] min-h-[480px]"
         >
 
           {/* LEFT — question description */}
-          <div className="flex flex-col overflow-hidden shrink-0 border-b md:border-b-0 md:border-r border-[#1e321e] h-52 md:h-auto md:w-[38%] xl:w-[32%]">
-            <div className="px-4 py-2 border-b border-[#1e321e] bg-[#080c08] text-[#2a402a] text-xs tracking-widest shrink-0">
+          <div className="flex flex-col overflow-hidden shrink-0 border-b md:border-b-0 md:border-r border-[var(--c-border)] h-52 md:h-auto md:w-[38%] xl:w-[32%]">
+            <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest shrink-0">
               // PROBLEM
             </div>
             <div className="flex-1 overflow-auto p-4 space-y-3 min-h-0">
@@ -731,9 +774,9 @@ export default function Today() {
                 <span className={cn("text-xs px-2 py-0.5 font-medium tracking-wider", difficultyColor[q.difficulty])}>
                   [{difficultyLabel[q.difficulty].toUpperCase()}]
                 </span>
-                <span className="text-xs text-[#4d7a4d] tracking-wider">{categoryLabel[q.category]}</span>
+                <span className="text-xs text-[var(--c-fg2)] tracking-wider">{categoryLabel[q.category]}</span>
               </div>
-              <h2 className="text-sm text-[#b8f5b8] leading-snug">{q.title}</h2>
+              <h2 className="text-sm text-[var(--c-fg1)] leading-snug">{q.title}</h2>
               {q.content && (
                 <div className="prose-quiz [&_p]:leading-[1.65] [&_li]:leading-[1.65] [&_ul]:space-y-1.5 [&_ol]:space-y-1.5">
                   <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdComponents}>
@@ -744,7 +787,7 @@ export default function Today() {
               {q.tags.length > 0 && (
                 <div className="flex flex-wrap gap-1 pt-1">
                   {q.tags.map((t) => (
-                    <span key={t} className="text-xs text-[#2a402a] bg-[#050905] border border-[#1e321e] px-1.5 py-0.5">
+                    <span key={t} className="text-xs text-[var(--c-fg3)] bg-[var(--c-code)] border border-[var(--c-border)] px-1.5 py-0.5">
                       {t}
                     </span>
                   ))}
@@ -754,22 +797,22 @@ export default function Today() {
 
             {/* NOTES — editable answer_hint, saveable anytime */}
             <div
-              className="flex flex-col border-t border-[#1e321e] shrink-0"
+              className="flex flex-col border-t border-[var(--c-border)] shrink-0"
               style={notesOpen ? { height: "40%", minHeight: 160 } : undefined}
             >
-              <div className="px-4 py-1.5 border-b border-[#1e321e] bg-[#080c08] text-xs tracking-widest shrink-0 flex items-center justify-between">
+              <div className={`px-4 py-1.5 bg-[var(--c-bg)] text-xs tracking-widest shrink-0 flex items-center justify-between${notesOpen ? " border-b border-[var(--c-border)]" : ""}`}>
                 <button
                   onClick={() => setNotesOpen((o) => !o)}
-                  className="flex items-center gap-1 text-[#2a402a] hover:text-[#4d7a4d] tracking-widest transition-colors"
+                  className="flex items-center gap-1 text-[var(--c-fg3)] hover:text-[var(--c-fg2)] tracking-widest transition-colors"
                 >
                   {notesOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronUp className="w-3 h-3" />}
-                  // NOTES{hintDirty && <span className="text-[#ffb300] ml-1.5">*</span>}
+                  // NOTES{hintDirty && <span className="text-[var(--c-amber)] ml-1.5">*</span>}
                 </button>
                 {notesOpen && (
                   <button
                     onClick={handleSaveHint}
                     disabled={savingHint || !hintDirty}
-                    className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#2a402a] px-2 py-0.5 hover:border-[#00ff41] hover:text-[#00ff41] disabled:opacity-30 disabled:hover:border-[#1e321e] disabled:hover:text-[#2a402a] tracking-wider transition-colors"
+                    className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-0.5 hover:border-[var(--c-green)] hover:text-[var(--c-green)] disabled:opacity-30 disabled:hover:border-[var(--c-border)] disabled:hover:text-[var(--c-fg3)] tracking-wider transition-colors"
                   >
                     <Save className="w-3 h-3" />
                     {savingHint ? "···" : "SAVE"}
@@ -790,14 +833,14 @@ export default function Today() {
             </div>
 
             {/* Prev / Next nav */}
-            <div className="flex items-center justify-between px-4 py-2 border-t border-[#1e321e] bg-[#080c08] shrink-0">
+            <div className="flex items-center justify-between px-4 py-2 border-t border-[var(--c-border)] bg-[var(--c-bg)] shrink-0">
               <button onClick={() => setCurrent((i) => Math.max(0, i - 1))} disabled={current === 0}
-                className="flex items-center gap-1 text-xs text-[#4d7a4d] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider">
+                className="flex items-center gap-1 text-xs text-[var(--c-fg2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider">
                 <ChevronLeft className="w-3 h-3" /> PREV
               </button>
-              <span className="text-[#2a402a] text-xs tabular-nums">{current + 1} / {questions.length}</span>
+              <span className="text-[var(--c-fg3)] text-xs tabular-nums">{current + 1} / {questions.length}</span>
               <button onClick={() => setCurrent((i) => Math.min(questions.length - 1, i + 1))} disabled={current === questions.length - 1}
-                className="flex items-center gap-1 text-xs text-[#4d7a4d] hover:text-[#b8f5b8] disabled:opacity-20 transition-colors tracking-wider">
+                className="flex items-center gap-1 text-xs text-[var(--c-fg2)] hover:text-[var(--c-fg1)] disabled:opacity-20 transition-colors tracking-wider">
                 NEXT <ChevronRight className="w-3 h-3" />
               </button>
             </div>
@@ -809,21 +852,21 @@ export default function Today() {
             {(qs.phase === "coding" || qs.loadingAI || qs.reviewMode !== "ai") ? (
               /* ── CODING / AI loading / manual done ── */
               <>
-                <div className="px-4 py-2 border-b border-[#1e321e] bg-[#080c08] text-[#2a402a] text-xs tracking-widest flex items-center justify-between shrink-0">
+                <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest flex items-center justify-between shrink-0">
                   <span>// EDITOR</span>
-                  <span className="text-[#1e321e]">{EDITOR_LANG_LABEL[q.category]}</span>
+                  <span className="text-[var(--c-fg4)]">{EDITOR_LANG_LABEL[q.category]}</span>
                 </div>
                 <div className="flex-1 overflow-hidden relative">
                   <CodeEditor value={qs.code} onChange={(v) => patch(q.id, { code: v })} readOnly={qs.phase !== "coding" || qs.loadingAI} category={q.category} />
                   {qs.loadingAI && (
-                    <div className="absolute inset-0 bg-[#050905]/60 flex items-center justify-center pointer-events-none">
-                      <p className="text-[#00d4ff] text-xs tracking-widest animate-pulse pointer-events-none">ANALYZING CODE...</p>
+                    <div className="absolute inset-0 bg-[var(--c-code)]/60 flex items-center justify-center pointer-events-none">
+                      <p className="text-[var(--c-cyan)] text-xs tracking-widest animate-pulse pointer-events-none">ANALYZING CODE...</p>
                     </div>
                   )}
                 </div>
                 {!qs.loadingAI && (
-                <div className="px-4 py-2.5 border-t border-[#1e321e] bg-[#080c08] flex items-center justify-between gap-2 shrink-0">
-                  <span className="text-[#2a402a] text-xs tabular-nums">
+                <div className="px-4 py-2.5 border-t border-[var(--c-border)] bg-[var(--c-bg)] flex items-center justify-between gap-2 shrink-0">
+                  <span className="text-[var(--c-fg3)] text-xs tabular-nums">
                     {qs.code.trim() ? `${qs.code.split("\n").length} ln` : "empty"}
                   </span>
                   {qs.phase === "coding" ? (
@@ -834,12 +877,11 @@ export default function Today() {
                           setTimeout(() => handleAIReview(), 0);
                         }}
                         disabled={!qs.code.trim()}
-                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#00d4ff] text-[#00d4ff] hover:bg-[#00091a] disabled:opacity-30 disabled:cursor-not-allowed tracking-wider transition-colors"
-                        style={{ boxShadow: "0 0 6px rgba(0,212,255,0.25)" }}
+                        className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[var(--c-cyan)] text-[var(--c-cyan)] hover:bg-[var(--c-cyan-bg)] disabled:opacity-30 disabled:cursor-not-allowed tracking-wider transition-colors shadow-[0_0_6px_rgba(0,212,255,0.25)]"
                       >
                         <Sparkles className="w-3 h-3" /> AI_REVIEW
                       </button>
-                      <span className="text-[#1e321e] text-xs tracking-widest select-none">// or</span>
+                      <span className="text-[var(--c-fg4)] text-xs tracking-widest select-none">// or</span>
                       <div className="flex items-center gap-1.5">
                         {RATINGS.map(({ value, label, cls }) => (
                           <button
@@ -854,18 +896,18 @@ export default function Today() {
                       </div>
                     </div>
                   ) : submitting !== null ? (
-                    <span className="text-[#4d7a4d] text-xs tracking-widest animate-pulse">SAVING...</span>
+                    <span className="text-[var(--c-fg2)] text-xs tracking-widest animate-pulse">SAVING...</span>
                   ) : review ? (
                     <div className="flex items-center gap-2">
                       <span className="text-xs tracking-wider" style={{
-                        color: review.self_rating === "mastered" ? "#00ff41" : review.self_rating === "fuzzy" ? "#ffb300" : "#ff3358"
+                        color: review.self_rating === "mastered" ? "var(--c-green)" : review.self_rating === "fuzzy" ? "var(--c-amber)" : "var(--c-red)"
                       }}>
                         STATUS: {ratingLabel[review.self_rating]}
                       </span>
                       <button
                         onClick={handleReset}
                         disabled={resetting}
-                        className="flex items-center gap-1 text-xs border border-[#1e321e] text-[#2a402a] px-2 py-1 hover:border-[#ff3358] hover:text-[#ff3358] hover:bg-[#120004] disabled:opacity-30 tracking-wider transition-colors"
+                        className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-1 hover:border-[var(--c-red)] hover:text-[var(--c-red)] hover:bg-[var(--c-red-bg)] disabled:opacity-30 tracking-wider transition-colors"
                       >
                         <RotateCcw className="w-3 h-3" />
                         {resetting ? "···" : "RESET"}
@@ -881,15 +923,15 @@ export default function Today() {
               <>
                 <div className="flex-1 overflow-hidden flex flex-col">
                   {/* Header: // AI_REVIEW + inline 评分按钮 */}
-                  <div className="px-4 py-2 border-b border-[#1e321e] bg-[#080c08] text-xs tracking-widest flex items-center justify-between gap-2 shrink-0">
-                    <div className="flex items-center gap-2 text-[#00d4ff]">
+                  <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-xs tracking-widest flex items-center justify-between gap-2 shrink-0">
+                    <div className="flex items-center gap-2 text-[var(--c-cyan)]">
                       <Sparkles className="w-3 h-3" /> // AI_REVIEW
                     </div>
-                    <div className="flex items-center gap-0 divide-x divide-[#1e321e]">
+                    <div className="flex items-center gap-0 divide-x divide-[var(--c-border)]">
                       {!review && (
                         <button
                           onClick={() => patch(q.id, { phase: "coding", reviewMode: null, aiFeedback: null, aiVerdict: null })}
-                          className="text-[#2a402a] hover:text-[#4d7a4d] tracking-wider transition-colors px-3 py-1"
+                          className="text-[var(--c-fg3)] hover:text-[var(--c-fg2)] tracking-wider transition-colors px-3 py-1"
                         >
                           ← EDIT
                         </button>
@@ -897,14 +939,14 @@ export default function Today() {
                       {review && (
                         <>
                           <span className="px-3 py-1 tracking-wider" style={{
-                            color: review.self_rating === "mastered" ? "#00ff41" : review.self_rating === "fuzzy" ? "#ffb300" : "#ff3358"
+                            color: review.self_rating === "mastered" ? "var(--c-green)" : review.self_rating === "fuzzy" ? "var(--c-amber)" : "var(--c-red)"
                           }}>
                             {ratingLabel[review.self_rating]}
                           </span>
                           <button
                             onClick={handleReset}
                             disabled={resetting}
-                            className="flex items-center gap-1 text-[#2a402a] hover:text-[#ff3358] disabled:opacity-30 tracking-wider transition-colors px-3 py-1"
+                            className="flex items-center gap-1 text-[var(--c-fg3)] hover:text-[var(--c-red)] disabled:opacity-30 tracking-wider transition-colors px-3 py-1"
                           >
                             <RotateCcw className="w-3 h-3" />
                             {resetting ? "···" : "RESET"}
@@ -917,22 +959,23 @@ export default function Today() {
                   {/* AI feedback content */}
                   <div className="flex-1 overflow-auto">
                     {qs.loadingAI || !qs.aiFeedback ? (
-                      <p className="text-[#4d7a4d] text-xs tracking-widest animate-pulse p-4">ANALYZING CODE...</p>
+                      <p className="text-[var(--c-fg2)] text-xs tracking-widest animate-pulse p-4">ANALYZING CODE...</p>
                     ) : (
                       <>
                         {/* Verdict banner */}
                         {qs.aiVerdict && (() => {
                           const r = RATINGS.find((x) => x.value === qs.aiVerdict)!;
-                          const color = r.value === "mastered" ? "#00ff41" : r.value === "fuzzy" ? "#ffb300" : "#ff3358";
+                          const colorVar = r.value === "mastered" ? "var(--c-green)" : r.value === "fuzzy" ? "var(--c-amber)" : "var(--c-red)";
+                          const glowVar  = r.value === "mastered" ? "var(--c-green-glow)" : r.value === "fuzzy" ? "var(--c-amber-glow)" : "var(--c-red-glow)";
+                          const bgCls    = r.value === "mastered" ? "bg-[var(--c-green-dim)]" : r.value === "fuzzy" ? "bg-[var(--c-amber-bg)]" : "bg-[var(--c-red-bg)]";
                           return (
                             <div
-                              className="border-b border-[#1e321e] py-5 flex flex-col items-center justify-center gap-2"
-                              style={{ background: `${color}10` }}
+                              className={`border-b border-[var(--c-border)] py-5 flex flex-col items-center justify-center gap-2 ${bgCls}`}
                             >
-                              <p className="text-[#2a402a] text-xs tracking-[0.4em]">// VERDICT</p>
+                              <p className="text-[var(--c-fg3)] text-xs tracking-[0.4em]">// VERDICT</p>
                               <p
                                 className="text-3xl sm:text-4xl font-bold tracking-[0.2em] tabular-nums"
-                                style={{ color, textShadow: `0 0 12px ${color}99` }}
+                                style={{ color: colorVar, textShadow: `0 0 12px ${glowVar}` }}
                               >
                                 {r.label}
                               </p>
@@ -941,7 +984,7 @@ export default function Today() {
                                   onClick={(e) => handleRate(qs.aiVerdict!, e)}
                                   disabled={submitting !== null}
                                   className="mt-1 px-3 py-1 text-xs border tracking-wider disabled:opacity-30 transition-colors"
-                                  style={{ borderColor: color, color }}
+                                  style={{ borderColor: colorVar, color: colorVar }}
                                 >
                                   {submitting ? "···" : "ACCEPT_VERDICT ▶"}
                                 </button>

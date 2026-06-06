@@ -11,6 +11,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="PREP" />
     <title>PREP.SYS</title>
+    <script>
+      (function(){try{var s=JSON.parse(localStorage.getItem('prep.settings')||'{}');var t=s.theme||'system';if(t==='light')document.documentElement.setAttribute('data-theme','light');else if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();
+    </script>
   </head>
   <body>
     <div id="root"></div>
