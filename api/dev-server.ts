@@ -44,10 +44,10 @@ async function main() {
     schedule,
     review,
     stats,
-    aiAnswer,
-    aiReview,
+    ai,
     authLogin,
     stockStream,
+    chat,
     english,
     englishById,
   ] = await Promise.all([
@@ -57,10 +57,10 @@ async function main() {
     import("./schedule/[date].js"),
     import("./review/index.js"),
     import("./stats/index.js"),
-    import("./ai/answer.js"),
-    import("./ai/review.js"),
+    import("./ai/index.js"),
     import("./auth/login.js"),
     import("./stock-stream.js"),
+    import("./chat.js"),
     import("./english/index.js"),
     import("./english/[id].js"),
   ]);
@@ -83,10 +83,10 @@ async function main() {
   });
   app.all("/api/review", adapt(review.default));
   app.all("/api/stats", adapt(stats.default));
-  app.all("/api/ai/answer", adapt(aiAnswer.default));
-  app.all("/api/ai/review", adapt(aiReview.default));
+  app.all("/api/ai", adapt(ai.default));
   app.all("/api/auth/login", adapt(authLogin.default));
   app.all("/api/stock-stream", adapt(stockStream.default));
+  app.all("/api/chat", adapt(chat.default));
   app.all("/api/english", adapt(english.default));
   app.all("/api/english/:id", (req, res) => {
     withParams(req, { id: req.params.id });

@@ -3,6 +3,7 @@ import { sql } from "../_lib/db";
 import { setCors, handleOptions } from "../_lib/cors";
 import { requireAuth } from "../_lib/auth";
 import { buildDaySchedule } from "../_lib/scheduling";
+import { getActivePlan, getScheduleByDate, getQuestionsByIds, getReviewsByScheduleId } from "../_lib/repo";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
@@ -14,16 +15,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const { date } = req.query as { date: string };
 
-  const planResult = await sql`SELECT * FROM study_plans WHERE status = 'active' LIMIT 1`;
-  const plan = planResult.rows[0];
+  const plan = await getActivePlan();
   if (!plan) return res.json({ schedule: null, questions: [], reviews: [] });
 
   // POST = extend today's schedule with another batch (user finished and wants more)
   if (req.method === "POST") {
-    const existing = await sql`
-      SELECT * FROM daily_schedules WHERE plan_id = ${plan.id} AND date::text = ${date}
-    `;
-    const current = existing.rows[0];
+    const current = await getScheduleByDate(plan.id as string, date);
     if (!current) return res.status(404).json({ error: "No schedule for date" });
 
     const dailyCount: number = plan.config?.daily_count ?? 6;
@@ -45,14 +42,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Try existing schedule first
-  let scheduleResult = await sql`
-    SELECT * FROM daily_schedules WHERE plan_id = ${plan.id} AND date::text = ${date}
-  `;
-  let schedule = scheduleResult.rows[0];
+  let schedule = await getScheduleByDate(plan.id as string, date);
 
   // Lazily generate if missing
   if (!schedule) {
-    const dailyCount: number = plan.config?.daily_count ?? 6;
+    const dailyCount: number = (plan.config as Record<string, number>)?.daily_count ?? 6;
     const questionIds = await buildDaySchedule(date, dailyCount);
 
     if (questionIds.length === 0) {
@@ -65,32 +59,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ON CONFLICT (plan_id, date) DO NOTHING
       RETURNING *
     `;
-    schedule = insertResult.rows[0];
-
-    // Handle concurrent generation race
-    if (!schedule) {
-      scheduleResult = await sql`
-        SELECT * FROM daily_schedules WHERE plan_id = ${plan.id} AND date::text = ${date}
-      `;
-      schedule = scheduleResult.rows[0];
-    }
+    schedule = insertResult.rows[0] ?? await getScheduleByDate(plan.id as string, date);
 
     if (!schedule) return res.json({ schedule: null, questions: [], reviews: [] });
   }
 
-  const [questionsResult, reviewsResult] = await Promise.all([
-    sql.query(
-      `SELECT id, title, content, category, difficulty, tags, answer_hint, cluster_id, created_at,
-              proficiency, next_review_date::text AS next_review_date, last_reviewed_at
-       FROM questions WHERE id = ANY($1::uuid[]) ORDER BY array_position($1::uuid[], id)`,
-      [schedule.question_ids]
-    ),
-    sql`SELECT * FROM reviews WHERE schedule_id = ${schedule.id}`,
+  const [questions, reviews] = await Promise.all([
+    getQuestionsByIds((schedule.question_ids as string[]) ?? []),
+    getReviewsByScheduleId(schedule.id as string),
   ]);
 
-  return res.json({
-    schedule,
-    questions: questionsResult.rows,
-    reviews: reviewsResult.rows,
-  });
+  return res.json({ schedule, questions, reviews });
 }

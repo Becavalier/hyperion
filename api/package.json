@@ -3,10 +3,15 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
+    "@ai-sdk/openai": "^3.0.68",
+    "@ai-sdk/react": "^3.0.196",
     "@anthropic-ai/sdk": "^0.54.0",
     "@neondatabase/serverless": "^1.1.0",
     "@vercel/node": "^5.1.9",
-    "longport": "^3.0.18"
+    "ai": "^6.0.197",
+    "drizzle-orm": "^0.45.2",
+    "longport": "^3.0.18",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",

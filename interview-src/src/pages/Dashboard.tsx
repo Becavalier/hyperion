@@ -66,16 +66,22 @@ export default function Dashboard() {
   const [plan, setPlan] = useState<StudyPlan | null>(null);
   const [stats, setStats] = useState<Stats | null>(null);
   const [englishTotal, setEnglishTotal] = useState<number | null>(null);
+  const [englishAvg, setEnglishAvg] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([
+    Promise.allSettled([
       getStats(),
       getEnglishEntries({ limit: 1 }),
-    ]).then(([res, eng]) => {
-      setPlan(res.plan);
-      setStats(res.stats);
-      setEnglishTotal(eng.total);
+    ]).then(([statsRes, engRes]) => {
+      if (statsRes.status === "fulfilled") {
+        setPlan(statsRes.value.plan);
+        setStats(statsRes.value.stats);
+      }
+      if (engRes.status === "fulfilled") {
+        setEnglishTotal(engRes.value.total);
+        setEnglishAvg(engRes.value.avg_proficiency ?? null);
+      }
     }).finally(() => setLoading(false));
   }, []);
 
@@ -144,7 +150,7 @@ export default function Dashboard() {
     <div className="space-y-8">
 
       {/* ── QUESTIONS ─────────────────────────────────────────────────────────── */}
-      <div className="space-y-5">
+      <div className="space-y-5 bg-[#0a0f0a] rounded-sm px-4 py-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-[#2a402a] text-xs tracking-widest mb-1">// QUESTIONS</p>
@@ -255,7 +261,7 @@ export default function Dashboard() {
       </div>
 
       {/* ── ENGLISH ───────────────────────────────────────────────────────────── */}
-      <div className="space-y-4">
+      <div className="space-y-4 bg-[#080c10] rounded-sm px-4 py-5">
         <div className="flex items-center justify-between gap-4">
           <p className="text-[#2a402a] text-xs tracking-widest">// ENGLISH</p>
           <Link to="/english"
@@ -266,13 +272,24 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="bg-[#0c120c] border border-[#1e321e] p-4">
-          <Languages className="w-4 h-4 text-[#00d4ff]/40 mb-3" />
-          <div className="text-2xl font-bold tabular-nums text-[#00d4ff]/70">
-            {englishTotal ?? "—"}
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-[#0c120c] border border-[#1e321e] p-4">
+            <Languages className="w-4 h-4 text-[#00d4ff]/40 mb-3" />
+            <div className="text-2xl font-bold tabular-nums text-[#00d4ff]/70">
+              {englishTotal ?? "—"}
+            </div>
+            <div className="text-[#2a402a] text-xs mt-1 tracking-widest">ENGLISH_BANK</div>
+            <div className="text-[#1e321e] text-xs mt-0.5">vocabulary entries</div>
           </div>
-          <div className="text-[#2a402a] text-xs mt-1 tracking-widest">ENGLISH_BANK</div>
-          <div className="text-[#1e321e] text-xs mt-0.5">vocabulary entries</div>
+          <div className="bg-[#0c120c] border border-[#1e321e] p-4">
+            <TrendingUp className="w-4 h-4 text-[#ffb300]/40 mb-3" />
+            <div className="text-2xl font-bold tabular-nums text-[#ffb300]">
+              {englishAvg != null ? englishAvg : "—"}
+              {englishAvg != null && <span className="text-sm font-normal text-[#3a5a3a] ml-1">/ 10</span>}
+            </div>
+            <div className="text-[#2a402a] text-xs mt-1 tracking-widest">AVG_PROFICIENCY</div>
+            <div className="text-[#1e321e] text-xs mt-0.5">across all entries</div>
+          </div>
         </div>
       </div>
 

@@ -1,12 +1,27 @@
 import { useEffect, useState, useRef } from "react";
-import { Plus, Pencil, Trash2, X, Check, Search } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Plus, Pencil, Trash2, X, Check, Search, Zap } from "lucide-react";
 import { getEnglishEntries, createEnglishEntry, updateEnglishEntry, deleteEnglishEntry } from "@/lib/api";
 import type { EnglishEntry } from "@/lib/api";
 
 const LIMIT = 40;
 
-interface FormState { content: string; phonetic: string; notes: string; }
-const BLANK_FORM: FormState = { content: "", phonetic: "", notes: "" };
+interface FormState { content: string; phonetic: string; notes: string; proficiency: number; }
+const BLANK_FORM: FormState = { content: "", phonetic: "", notes: "", proficiency: 0 };
+
+function ProficiencyBar({ value }: { value: number | undefined }) {
+  const v = value ?? 0;
+  const pct = (v / 10) * 100;
+  const color = v >= 8 ? "#00ff41" : v >= 4 ? "#ffb300" : "#4d7a4d";
+  return (
+    <div className="flex items-center gap-2">
+      <div className="w-16 h-1 bg-[#1e321e] overflow-hidden">
+        <div style={{ width: `${pct}%`, background: color, height: "100%" }} />
+      </div>
+      <span className="text-xs tabular-nums text-[#4d7a4d]">{v}</span>
+    </div>
+  );
+}
 
 function EntryRow({
   entry,
@@ -18,7 +33,12 @@ function EntryRow({
   onDelete: (id: string) => Promise<void>;
 }) {
   const [editing, setEditing] = useState(false);
-  const [form, setForm] = useState<FormState>({ content: entry.content, phonetic: entry.phonetic ?? "", notes: entry.notes ?? "" });
+  const [form, setForm] = useState<FormState>({
+    content: entry.content,
+    phonetic: entry.phonetic ?? "",
+    notes: entry.notes ?? "",
+    proficiency: entry.proficiency,
+  });
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const ref = useRef<HTMLTextAreaElement>(null);
@@ -42,7 +62,7 @@ function EntryRow({
   if (editing) {
     return (
       <div className="border border-[#00ff41]/30 bg-[#050905] p-3 space-y-2">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-2">
           <textarea
             ref={ref}
             value={form.content}
@@ -64,6 +84,17 @@ function EntryRow({
             placeholder={"备注（逐行对应内容）"}
             className="w-full bg-transparent text-[#4d7a4d] text-xs font-mono resize-none outline-none border border-[#1e321e] px-2 py-1.5 focus:border-[#00ff41]/50 placeholder:text-[#1e321e]"
           />
+          <div className="flex flex-col gap-1 justify-center">
+            <span className="text-[#2a402a] text-xs tracking-widest">PROFICIENCY</span>
+            <input
+              type="number"
+              min={0}
+              max={10}
+              value={form.proficiency}
+              onChange={(e) => setForm((f) => ({ ...f, proficiency: Math.min(10, Math.max(0, parseInt(e.target.value) || 0)) }))}
+              className="w-16 bg-transparent text-[#ffb300] text-xs font-mono outline-none border border-[#1e321e] px-2 py-1.5 focus:border-[#ffb300]/50 tabular-nums"
+            />
+          </div>
         </div>
         <div className="flex justify-end gap-2">
           <button onClick={() => setEditing(false)} className="flex items-center gap-1 text-xs text-[#2a402a] hover:text-[#4d7a4d] tracking-wider transition-colors px-2 py-1">
@@ -78,26 +109,27 @@ function EntryRow({
   }
 
   return (
-    <div className="group border-b border-[#1e321e] hover:bg-[#080c08] transition-colors py-1.5">
+    <div className="border-b border-[#1e321e] hover:bg-[#080c08] transition-colors py-1.5">
       {contentLines.map((line, i) => (
-        <div key={i} className="grid grid-cols-1 sm:grid-cols-3 gap-x-4 px-4 py-0.5 items-baseline">
+        <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_120px_84px] gap-x-4 px-4 py-0.5 items-center">
           <p className="text-xs text-[#b8f5b8] font-mono break-words">{line}</p>
           <p className="text-xs text-[#4d7a4d] font-mono">
             {i === 0 && entry.phonetic ? entry.phonetic : ""}
           </p>
-          <div className="flex items-center justify-between gap-2">
-            <p className="text-xs text-[#4d7a4d] leading-relaxed break-words flex-1">
-              {notesLines[i] ?? ""}
-            </p>
-            {i === contentLines.length - 1 && (
-              <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+          <p className="text-xs text-[#4d7a4d] leading-relaxed break-words">
+            {notesLines[i] ?? ""}
+          </p>
+          <div className="hidden sm:block">{i === 0 && <ProficiencyBar value={entry.proficiency} />}</div>
+          <div className="hidden sm:flex gap-1">
+            {i === 0 && (
+              <>
                 <button onClick={() => setEditing(true)} className="p-1.5 text-[#2a402a] hover:text-[#4d7a4d] transition-colors">
                   <Pencil className="w-3 h-3" />
                 </button>
                 <button onClick={handleDelete} disabled={deleting} className="p-1.5 text-[#2a402a] hover:text-[#ff3358] disabled:opacity-30 transition-colors">
                   <Trash2 className="w-3 h-3" />
                 </button>
-              </div>
+              </>
             )}
           </div>
         </div>
@@ -106,13 +138,14 @@ function EntryRow({
   );
 }
 
-// Column header row
 function ListHeader() {
   return (
-    <div className="hidden sm:grid grid-cols-3 gap-x-4 px-4 py-1.5 border-b border-[#1e321e] bg-[#080c08]">
+    <div className="hidden sm:grid grid-cols-[1fr_1fr_1fr_120px_100px] gap-x-4 px-4 py-1.5 border-b border-[#1e321e] bg-[#080c08]">
       <span className="text-[#2a402a] text-xs tracking-widest">// CONTENT</span>
       <span className="text-[#2a402a] text-xs tracking-widest">// PHONETIC</span>
       <span className="text-[#2a402a] text-xs tracking-widest">// NOTES</span>
+      <span className="text-[#2a402a] text-xs tracking-widest">// PROF</span>
+      <span className="text-[#2a402a] text-xs tracking-widest">// ACTIONS</span>
     </div>
   );
 }
@@ -175,7 +208,12 @@ export default function English() {
           </p>
         </div>
         <div className="flex items-center gap-2">
-          {/* Search */}
+          <Link
+            to="/english/train"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[#00d4ff]/30 text-[#00d4ff]/60 hover:bg-[#00080c] hover:border-[#00d4ff]/50 tracking-wider transition-colors"
+          >
+            <Zap className="w-3 h-3" /> TRAIN
+          </Link>
           <div className="flex items-center gap-2 border border-[#1e321e] px-2 py-1 bg-[#050905]">
             <Search className="w-3 h-3 text-[#2a402a] shrink-0" />
             <input

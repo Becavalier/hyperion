@@ -1,9 +1,14 @@
 import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
+import * as schema from "./schema";
 
-export const sql = neon(
+const sqlClient = neon(
   process.env.POSTGRES_URL ?? process.env.DATABASE_URL ?? "",
   { fullResults: true }
 );
+
+export const sql = sqlClient;
+export const db  = drizzle(sqlClient, { schema });
 
 export type Category = "frontend" | "algorithm" | "system-design" | "quiz";
 export type Difficulty = "easy" | "medium" | "hard";

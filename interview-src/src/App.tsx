@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, ChevronDown, TriangleAlert, LogOut, Settings as SettingsIcon } from "lucide-react";
+import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, TriangleAlert, LogOut, Settings as SettingsIcon, Bot } from "lucide-react";
 import Dashboard from "@/pages/Dashboard";
 import Today from "@/pages/Today";
 import Plan from "@/pages/Plan";
 import Questions from "@/pages/Questions";
 import English from "@/pages/English";
+import EnglishTrain from "@/pages/EnglishTrain";
 import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
 import { logout, getToken } from "@/lib/auth";
 import { SettingsContext, loadSettings, saveSettings, useSettings, type Settings } from "@/lib/settings";
+import { ChatPanel } from "@/components/ChatPanel";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function Sparkline({ points, color }: { points: [number, number][]; color: string }) {
@@ -104,7 +106,7 @@ function Clock() {
   const date = now.toISOString().split("T")[0];
   const time = now.toTimeString().slice(0, 8);
   return (
-    <div className="ml-auto text-xs tabular-nums flex items-center gap-1.5">
+    <div className="ml-auto text-xs tabular-nums hidden sm:flex items-center gap-1.5">
       <span className="text-[#2a402a]">{date}</span>
       <span className="text-[#1e321e]">|</span>
       <span className="text-[#4d7a4d]">{time}</span>
@@ -143,7 +145,7 @@ function QuestionsNav() {
     >
       <button
         className={cn(
-          "flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
+          "relative flex items-center gap-1.5 px-3 py-1 text-xs tracking-wider transition-all border",
           isActive
             ? "border-[#00ff41] text-[#00ff41] bg-[#001a00]"
             : "border-transparent text-[#4d7a4d] hover:text-[#b8f5b8] hover:border-[#1e321e]"
@@ -151,7 +153,10 @@ function QuestionsNav() {
       >
         <Database className="w-3.5 h-3.5" />
         <span className="hidden sm:inline">Questions</span>
-        <ChevronDown className={cn("w-3 h-3 transition-transform", open && "rotate-180")} />
+        <span className={cn(
+          "absolute bottom-0 left-2 right-2 h-px transition-opacity duration-150",
+          open ? "bg-[#00ff41] opacity-60" : "opacity-0"
+        )} />
       </button>
 
       {open && (
@@ -241,6 +246,7 @@ function PendingTab() {
 export default function App() {
   const [settings, setSettingsState] = useState<Settings>(() => loadSettings());
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [chatOpen, setChatOpen] = useState(false);
 
   const setSettings = (s: Settings) => {
     setSettingsState(s);
@@ -286,22 +292,32 @@ export default function App() {
               <Languages className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">English</span>
             </NavLink>
-            <Clock />
-            <StockTicker />
-            <button
-              onClick={() => setSettingsOpen(true)}
-              title="Settings"
-              className="ml-2 p-1.5 text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00] transition-colors"
-            >
-              <SettingsIcon className="w-3.5 h-3.5" />
-            </button>
-            <button
-              onClick={logout}
-              title="Logout"
-              className="p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-            </button>
+            <div className="ml-auto flex items-center gap-0.5">
+              <Clock />
+              <StockTicker />
+              <div className="w-px h-4 bg-[#1e321e] mx-2" />
+              <button
+                onClick={() => setChatOpen((o) => !o)}
+                title="AI Assistant"
+                className={cn("p-1.5 transition-colors", chatOpen ? "text-[#00ff41]" : "text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00]")}
+              >
+                <Bot className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => setSettingsOpen(true)}
+                title="Settings"
+                className="p-1.5 text-[#2a402a] hover:text-[#00ff41] hover:bg-[#001a00] transition-colors"
+              >
+                <SettingsIcon className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={logout}
+                title="Logout"
+                className="p-1.5 text-[#2a402a] hover:text-[#ff3358] hover:bg-[#120004] transition-colors"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+              </button>
+            </div>
           </div>
         </header>
 
@@ -312,6 +328,7 @@ export default function App() {
             <Route path="/plan" element={<Plan />} />
             <Route path="/questions" element={<Questions />} />
             <Route path="/english" element={<English />} />
+            <Route path="/english/train" element={<EnglishTrain />} />
           </Routes>
         </main>
 
@@ -332,6 +349,7 @@ export default function App() {
         <PendingTab />
         <SpeedInsights />
         <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+        <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />
       </div>
     </AuthGate>
     </SettingsContext.Provider>

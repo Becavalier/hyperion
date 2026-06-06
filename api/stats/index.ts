@@ -3,6 +3,7 @@ import { sql } from "../_lib/db";
 import { setCors, handleOptions } from "../_lib/cors";
 import { requireAuth } from "../_lib/auth";
 import { buildDaySchedule } from "../_lib/scheduling";
+import { getProficiencyDistribution, getCategoryBreakdown, getActivePlan, getReviewCountForSchedule } from "../_lib/repo";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
@@ -10,8 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!requireAuth(req, res)) return;
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
 
-  const planResult = await sql`SELECT * FROM study_plans WHERE status = 'active' LIMIT 1`;
-  const plan = planResult.rows[0] ?? null;
+  const plan = await getActivePlan();
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -44,27 +44,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       [today]
     ),
 
-    // Proficiency distribution (bucket 11 = all graduated)
-    sql`
-      SELECT LEAST(proficiency, 11) AS level, COUNT(*)::int AS cnt
-      FROM questions
-      GROUP BY level
-      ORDER BY level
-    `,
+    getProficiencyDistribution(),
 
-    // Per-category summary
-    sql.query(
-      `SELECT
-        category,
-        COUNT(*)::int                                                              AS total,
-        COUNT(*) FILTER (WHERE proficiency > 10)::int                             AS graduated,
-        COUNT(*) FILTER (WHERE proficiency > 0 AND proficiency <= 10
-                         AND next_review_date <= $1)::int                         AS due_today,
-        ROUND(AVG(proficiency) FILTER (WHERE proficiency > 0), 1)                 AS avg_proficiency
-       FROM questions
-       GROUP BY category`,
-      [today]
-    ),
+    getCategoryBreakdown(today),
 
     // Today's existing schedule (if plan exists)
     plan
@@ -109,16 +91,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (todaySchedule) {
     todayTotal = todaySchedule.total_q ?? 0;
     todayCompleted = todaySchedule.completed ?? false;
-    const reviewCount = await sql`SELECT COUNT(*)::int AS cnt FROM reviews WHERE schedule_id = ${todaySchedule.id}`;
-    todayDone = reviewCount.rows[0]?.cnt ?? 0;
+    todayDone = await getReviewCountForSchedule(todaySchedule.id as string);
   }
 
   return res.json({
     plan,
     stats: {
       ...questionStats.rows[0],
-      proficiency_dist: profDist.rows,
-      category_breakdown: catBreakdown.rows,
+      proficiency_dist: profDist,
+      category_breakdown: catBreakdown,
       today_total: todayTotal,
       today_done: todayDone,
       today_completed: todayCompleted,

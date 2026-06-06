@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { sql } from "../_lib/db";
 import { setCors, handleOptions } from "../_lib/cors";
 import { requireAuth } from "../_lib/auth";
+import { deleteEnglishWord } from "../_lib/repo";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   setCors(res);
@@ -12,18 +13,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!id) return res.status(400).json({ error: "id required" });
 
   if (req.method === "PATCH") {
-    const { content, phonetic, notes } = req.body;
+    const { content, phonetic, notes, proficiency } = req.body;
     if (content !== undefined && !content.trim()) {
       return res.status(400).json({ error: "content cannot be empty" });
+    }
+    if (proficiency !== undefined && (typeof proficiency !== "number" || proficiency < 0 || proficiency > 10)) {
+      return res.status(400).json({ error: "proficiency must be 0–10" });
     }
 
     const fields: string[] = [];
     const params: unknown[] = [];
     let idx = 1;
 
-    if (content !== undefined) { fields.push(`content = $${idx++}`); params.push(content.trim()); }
-    if (phonetic !== undefined) { fields.push(`phonetic = $${idx++}`); params.push(phonetic.trim() || null); }
-    if (notes !== undefined)    { fields.push(`notes = $${idx++}`);    params.push(notes.trim() || null); }
+    if (content !== undefined)     { fields.push(`content = $${idx++}`);     params.push(content.trim()); }
+    if (phonetic !== undefined)     { fields.push(`phonetic = $${idx++}`);    params.push(phonetic.trim() || null); }
+    if (notes !== undefined)        { fields.push(`notes = $${idx++}`);       params.push(notes.trim() || null); }
+    if (proficiency !== undefined)  { fields.push(`proficiency = $${idx++}`); params.push(proficiency); }
 
     if (!fields.length) return res.status(400).json({ error: "nothing to update" });
 
@@ -32,7 +37,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const result = await sql.query(
       `UPDATE english_bank SET ${fields.join(", ")} WHERE id = $${idx}
-       RETURNING id, content, phonetic, notes, created_at, updated_at`,
+       RETURNING id, content, phonetic, notes, proficiency, created_at, updated_at`,
       params
     );
     if (!result.rows.length) return res.status(404).json({ error: "not found" });
@@ -40,7 +45,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   if (req.method === "DELETE") {
-    await sql`DELETE FROM english_bank WHERE id = ${id}`;
+    await deleteEnglishWord(id);
     return res.status(204).end();
   }
 
