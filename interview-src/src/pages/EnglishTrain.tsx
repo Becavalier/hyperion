@@ -7,6 +7,20 @@ import { cn } from "@/lib/utils";
 
 interface Result { id: string; known: boolean; }
 
+function HighlightLine({ text }: { text: string }) {
+  const parts = text.split(/\*\*(.+?)\*\*/g);
+  if (parts.length === 1) return <>{text}</>;
+  return (
+    <>
+      {parts.map((part, i) =>
+        i % 2 === 1
+          ? <span key={i} className="text-[var(--c-green)] underline underline-offset-2">{part}</span>
+          : part
+      )}
+    </>
+  );
+}
+
 function Card({ word, onAnswer }: { word: TrainWord; onAnswer: (known: boolean) => void }) {
   const [revealed, setRevealed] = useState(false);
   const lines = word.content.split("\n");
@@ -37,7 +51,7 @@ function Card({ word, onAnswer }: { word: TrainWord; onAnswer: (known: boolean) 
               {noteLines[i] || <span className="text-[var(--c-fg3)] italic text-sm">—</span>}
             </p>
             <div className={cn("text-right transition-opacity duration-200 shrink-0", revealed ? "opacity-100" : "opacity-0")}>
-              <p className="text-2xl font-bold text-[var(--c-green)]/80 font-mono tracking-wide">{line}</p>
+              <p className="text-2xl font-bold text-[var(--c-green)]/80 font-mono tracking-wide"><HighlightLine text={line} /></p>
               {word.phonetic && i === 0 && (
                 <p className="text-sm text-[var(--c-fg2)] font-mono">{word.phonetic}</p>
               )}
