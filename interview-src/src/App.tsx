@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
+import { Routes, Route, NavLink, useLocation } from "react-router-dom";
 import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, LogOut, Settings as SettingsIcon, Bot } from "lucide-react";
 import Dashboard from "@/pages/Dashboard";
 import Today from "@/pages/Today";
@@ -7,7 +7,7 @@ import Plan from "@/pages/Plan";
 import Questions from "@/pages/Questions";
 import English from "@/pages/English";
 import EnglishTrain from "@/pages/EnglishTrain";
-import { cn, todayStr } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
 import { logout, getToken } from "@/lib/auth";
