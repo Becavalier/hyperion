@@ -14,6 +14,7 @@ function Card({ word, onAnswer }: { word: TrainWord; onAnswer: (known: boolean) 
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (document.body.dataset.chatOpen) return;
       if (e.target instanceof HTMLButtonElement) return;
       if (!revealed) {
         if (e.key === " " || e.key === "Enter") { e.preventDefault(); setRevealed(true); }
@@ -89,6 +90,7 @@ function Summary({ results, words, onNextRound, onDone }: {
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      if (document.body.dataset.chatOpen) return;
       if (e.key === "ArrowRight") onNextRound();
       if (e.key === " ") { e.preventDefault(); onDone(); }
     }

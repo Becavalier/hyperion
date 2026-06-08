@@ -87,13 +87,16 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
       const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
       document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.body.dataset.chatOpen = "1";
     } else {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
+      delete document.body.dataset.chatOpen;
     }
     return () => {
       document.body.style.overflow = "";
       document.body.style.paddingRight = "";
+      delete document.body.dataset.chatOpen;
     };
   }, [open]);
 
