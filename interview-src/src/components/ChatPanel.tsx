@@ -13,6 +13,43 @@ const DEFAULT_WIDTH = 480;
 const MIN_WIDTH = 320;
 const MAX_WIDTH = 900;
 
+const SKILLS = [
+  {
+    trigger: "/vocab",
+    label: "/vocab [word / phrase / sentence]",
+    desc: "Build a cluster of everyday American English expressions around the input",
+  },
+  {
+    trigger: "/leetcode",
+    label: "/leetcode [#]",
+    desc: "Fetch a LeetCode problem by number and insert into question bank",
+  },
+  {
+    trigger: "/explain",
+    label: "/explain [concept]",
+    desc: "Deep-dive explanation of a concept — no DB write",
+  },
+] as const;
+
+function buildSkillPrompt(raw: string): string {
+  const vocabMatch = raw.match(/^\/vocab\s+(.+)$/i);
+  if (vocabMatch) {
+    const input = vocabMatch[1].trim();
+    return `I encountered this English expression: "${input}". Find 4-8 closely related expressions that everyday American speakers commonly use in similar contexts — can be words, short phrases, or casual sentences. Strict rule: only include expressions that are genuinely frequent in daily American conversation; skip anything rare or domain-specific. For each expression, note its usage as [spoken], [written], or [both]. Format as one vocabulary entry: content field = one expression per line (English only, no tags), notes field = one line per expression with Chinese meaning followed by the usage tag (e.g. "随口说漏 [spoken]"). CRITICAL: the content field must contain ALL the related expressions you found — never just the original input word alone. Show me the full entry for review, then call create_english_entry only after I confirm.`;
+  }
+  const explainMatch = raw.match(/^\/explain\s+(.+)$/i);
+  if (explainMatch) {
+    const concept = explainMatch[1].trim();
+    return `Give a thorough explanation of "${concept}" in a software/CS interview context: core idea, why it matters, how it works, common pitfalls, and a concrete example or code snippet if applicable. No DB writes needed.`;
+  }
+  const leetcodeMatch = raw.match(/^\/leetcode\s+(\d+)$/i);
+  if (leetcodeMatch) {
+    const num = leetcodeMatch[1];
+    return `Add LeetCode problem #${num} to the question bank. Provide: title, full description (with examples and constraints), difficulty (easy/medium/hard), category (algorithm), tags (e.g. array, dp, tree). Show all details for review, then call create_question only after I confirm.`;
+  }
+  return raw;
+}
+
 function ToolPart({ part }: { part: { type: string; toolCallId: string; state: string; input?: unknown; output?: unknown } }) {
   const [open, setOpen] = useState(false);
   const toolName = part.type.replace(/^tool-/, "");
@@ -40,6 +77,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const [input, setInput] = useState("");
+  const [skillIdx, setSkillIdx] = useState(0);
   const reviewCtx = useReviewCtx();
   const reviewCtxRef = useRef(reviewCtx);
   useEffect(() => { reviewCtxRef.current = reviewCtx; }, [reviewCtx]);
@@ -104,14 +142,34 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Skill menu: show when input starts with / and no space yet
+  const slashWord = input.startsWith("/") && !input.includes(" ") ? input : "";
+  const filteredSkills = slashWord
+    ? SKILLS.filter((s) => s.trigger.startsWith(slashWord))
+    : [];
+  const showSkillMenu = filteredSkills.length > 0;
+
+  function selectSkill(skill: typeof SKILLS[number]) {
+    setInput(skill.trigger + " ");
+    setSkillIdx(0);
+    inputRef.current?.focus();
+  }
+
   function submit() {
-    const text = input.trim();
-    if (!text || isLoading) return;
+    const raw = input.trim();
+    if (!raw || isLoading) return;
     setInput("");
-    sendMessage({ text });
+    sendMessage({ text: buildSkillPrompt(raw) });
   }
 
   function onKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (showSkillMenu) {
+      if (e.key === "ArrowDown") { e.preventDefault(); setSkillIdx((i) => Math.min(i + 1, filteredSkills.length - 1)); return; }
+      if (e.key === "ArrowUp")   { e.preventDefault(); setSkillIdx((i) => Math.max(i - 1, 0)); return; }
+      if (e.key === "Escape")    { e.preventDefault(); setInput(""); return; }
+      if (e.key === "Enter" && !e.nativeEvent.isComposing) { e.preventDefault(); selectSkill(filteredSkills[skillIdx]); return; }
+      if (e.key === "Tab")       { e.preventDefault(); selectSkill(filteredSkills[skillIdx]); return; }
+    }
     if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) { e.preventDefault(); submit(); }
   }
 
@@ -242,14 +300,32 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
 
         {/* Input */}
         <div className="border-t border-[var(--c-border)] px-3 pt-3 pb-2 shrink-0 space-y-2">
+          {/* Skill menu */}
+          {showSkillMenu && (
+            <div className="border border-[var(--c-border)] bg-[var(--c-surface)] divide-y divide-[var(--c-border)]">
+              {filteredSkills.map((skill, i) => (
+                <button
+                  key={skill.trigger}
+                  onClick={() => selectSkill(skill)}
+                  className={cn(
+                    "w-full text-left px-3 py-2 flex items-baseline gap-3 transition-colors",
+                    i === skillIdx ? "bg-[var(--c-hover)]" : "hover:bg-[var(--c-hover)]"
+                  )}
+                >
+                  <span className="text-xs font-mono text-[var(--c-green)] shrink-0">{skill.label}</span>
+                  <span className="text-[10px] text-[var(--c-fg3)] truncate">{skill.desc}</span>
+                </button>
+              ))}
+            </div>
+          )}
           <div className="flex items-center gap-2">
             <textarea
               ref={inputRef}
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => { setInput(e.target.value); setSkillIdx(0); }}
               onKeyDown={onKeyDown}
               rows={1}
-              placeholder="ask about your study data..."
+              placeholder="ask anything · type / for skills..."
               className="flex-1 bg-transparent text-xs text-[var(--c-fg1)] font-mono resize-none outline-none placeholder:text-[var(--c-fg4)] leading-relaxed min-h-14 max-h-[120px] overflow-y-auto"
               onInput={(e) => {
                 const el = e.currentTarget;
