@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Routes, Route, NavLink, Link, useLocation } from "react-router-dom";
-import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, TriangleAlert, LogOut, Settings as SettingsIcon, Bot } from "lucide-react";
+import { LayoutDashboard, BookOpen, Calendar, Database, BookMarked, Languages, LogOut, Settings as SettingsIcon, Bot } from "lucide-react";
 import Dashboard from "@/pages/Dashboard";
 import Today from "@/pages/Today";
 import Plan from "@/pages/Plan";
 import Questions from "@/pages/Questions";
 import English from "@/pages/English";
 import EnglishTrain from "@/pages/EnglishTrain";
-import { getSchedule } from "@/lib/api";
 import { cn, todayStr } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
@@ -187,58 +186,6 @@ function QuestionsNav() {
   );
 }
 
-function PendingTab() {
-  const location = useLocation();
-  const [pending, setPending] = useState<number | null>(null);
-
-  useEffect(() => {
-    const refetch = () => {
-      getSchedule(todayStr())
-        .then(({ schedule, questions, reviews }) => {
-          if (schedule && !schedule.completed) {
-            setPending(questions.length - reviews.length);
-          } else {
-            setPending(0);
-          }
-        })
-        .catch(() => setPending(0));
-    };
-    refetch();
-    // 切路由 + 业务侧自定义事件都触发刷新
-    const onReviewsChanged = () => refetch();
-    window.addEventListener("prep:reviews-changed", onReviewsChanged);
-    return () => window.removeEventListener("prep:reviews-changed", onReviewsChanged);
-  }, [location.pathname]);
-
-  if (!pending || location.pathname === "/today") return null;
-
-  return (
-    <>
-      {/* Full-viewport amber border ring */}
-      <div
-        className="fixed inset-0 z-40 pointer-events-none shadow-[inset_0_0_0_5px_#ffb300,inset_0_0_24px_rgba(255,179,0,0.06)]"
-      />
-
-      {/* Side tab */}
-      <Link
-        to="/today"
-        className="fixed right-0 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-3 bg-[var(--c-amber-bg)] border-l-[5px] border-t-[5px] border-b-[3px] border-[var(--c-amber)] px-3 py-5 hover:bg-[var(--c-amber-bg)] transition-colors group shadow-[-2px_0_16px_rgba(255,179,0,0.08)]"
-      >
-        <TriangleAlert className="w-4 h-4 text-[var(--c-amber)] shrink-0" />
-        <span
-          className="text-[var(--c-amber)] text-xs tracking-[0.18em] font-medium leading-none [writing-mode:vertical-rl]"
-        >
-          UNFINISHED
-        </span>
-        <span
-          className="text-[var(--c-amber)] text-xs tabular-nums leading-none group-hover:text-[var(--c-amber)] transition-colors [writing-mode:vertical-rl]"
-        >
-          {pending} LEFT
-        </span>
-      </Link>
-    </>
-  );
-}
 
 export default function App() {
   const [settings, setSettingsState] = useState<Settings>(() => loadSettings());
@@ -372,7 +319,6 @@ export default function App() {
           </p>
         </footer>
 
-        <PendingTab />
         <SpeedInsights />
         <SettingsPanel open={settingsOpen} onClose={() => setSettingsOpen(false)} />
         <ChatPanel open={chatOpen} onClose={() => setChatOpen(false)} />

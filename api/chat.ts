@@ -11,7 +11,7 @@ import { requireAuth } from "./_lib/auth";
 
 // DeepSeek requires `"type":"object"` on every tool schema.
 // The @ai-sdk/openai provider strips it, so we patch it back at the fetch level.
-async function deepseekFetch(url: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+async function deepseekFetch(url: string | URL | Request, init?: RequestInit): Promise<Response> {
   if (init?.body && typeof init.body === "string") {
     try {
       const body = JSON.parse(init.body);
@@ -25,7 +25,7 @@ async function deepseekFetch(url: RequestInfo | URL, init?: RequestInit): Promis
       }
     } catch { /* not JSON, leave as-is */ }
   }
-  return fetch(url as RequestInfo, init);
+  return fetch(url, init);
 }
 
 const deepseek = createOpenAI({
@@ -93,7 +93,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
       // ── Questions ───────────────────────────────────────────────────────────
       search_questions: tool({
         description: "Fuzzy search questions by title or content. Returns id, title, category, difficulty, proficiency.",
-        parameters: z.object({
+        inputSchema: z.object({
           search:   z.string().describe("Keyword to search in title or content"),
           category: z.string().optional().describe("frontend | algorithm | system-design | quiz"),
           limit:    z.number().int().min(1).max(20).default(10),
@@ -104,7 +104,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
 
       create_question: tool({
         description: "Insert a new question into the question bank. Always confirm with user before calling.",
-        parameters: z.object({
+        inputSchema: z.object({
           title:       z.string().describe("Question title"),
           content:     z.string().optional().describe("Detailed description or code prompt"),
           category:    z.enum(["frontend", "algorithm", "system-design", "quiz"]),
@@ -118,7 +118,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
 
       update_question: tool({
         description: "Update an existing question by its id. Use search_questions first to find the id. Always confirm with user before calling.",
-        parameters: z.object({
+        inputSchema: z.object({
           id:          z.string().describe("Question UUID from search_questions"),
           title:       z.string().optional(),
           content:     z.string().optional(),
@@ -133,7 +133,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
       // ── English ─────────────────────────────────────────────────────────────
       search_english: tool({
         description: "Search English vocabulary entries by word or meaning. Returns id, word, phonetic, meaning, proficiency.",
-        parameters: z.object({
+        inputSchema: z.object({
           search: z.string().describe("English word or Chinese meaning to search"),
           limit:  z.number().int().min(1).max(20).default(10),
         }),
@@ -143,7 +143,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
 
       create_english_entry: tool({
         description: "Insert a new English vocabulary entry. Always confirm with user before calling. Field mapping: word=English word, meaning=Chinese translation.",
-        parameters: z.object({
+        inputSchema: z.object({
           word:     z.string().describe("The English word or phrase. Use \\n to separate multiple words (each on its own line)."),
           phonetic: z.string().optional().describe("Phonetic notation, e.g. /wɜːrd/"),
           meaning:  z.string().optional().describe("Chinese translation or meaning. Use \\n to match lines in word field."),
@@ -154,7 +154,7 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
 
       update_english_entry: tool({
         description: "Update an existing English vocabulary entry by its id. Use search_english first to find the id. Always confirm with user before calling.",
-        parameters: z.object({
+        inputSchema: z.object({
           id:       z.string().describe("Entry UUID from search_english"),
           word:     z.string().optional().describe("New English word or phrase"),
           phonetic: z.string().optional().describe("New phonetic notation"),
@@ -167,5 +167,5 @@ Editor (${codeLanguage}): ${code?.trim() ? `\n\`\`\`${codeLanguage}\n${code}\n\`
   });
 
   result.pipeUIMessageStreamToResponse(res as never);
-  result.text.catch((e) => console.error("[chat] streamText error:", e));
+  result.text.then(undefined, (e: unknown) => console.error("[chat] streamText error:", e));
 }

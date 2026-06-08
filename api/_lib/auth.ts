@@ -1,4 +1,4 @@
-import crypto from "node:crypto";
+import * as crypto from "node:crypto";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 const TTL_MS = 2 * 24 * 60 * 60 * 1000; // 2 days

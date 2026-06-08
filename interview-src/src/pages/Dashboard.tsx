@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, Calendar, CheckCircle2, TrendingUp, Zap, Languages } from "lucide-react";
-import { getStats, getEnglishEntries } from "@/lib/api";
+import { BookOpen, Calendar, CheckCircle2, TrendingUp, Zap, Languages, TriangleAlert } from "lucide-react";
+import { getStats } from "@/lib/api";
 import { cn, todayStr, categoryLabel } from "@/lib/utils";
 import type { Stats, StudyPlan } from "@/types";
 import { HackerRank } from "@/components/HackerRank";
@@ -65,23 +65,12 @@ function ProficiencyHistogram({ dist }: { dist: Stats["proficiency_dist"] }) {
 export default function Dashboard() {
   const [plan, setPlan] = useState<StudyPlan | null>(null);
   const [stats, setStats] = useState<Stats | null>(null);
-  const [englishTotal, setEnglishTotal] = useState<number | null>(null);
-  const [englishAvg, setEnglishAvg] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.allSettled([
-      getStats(),
-      getEnglishEntries({ limit: 1 }),
-    ]).then(([statsRes, engRes]) => {
-      if (statsRes.status === "fulfilled") {
-        setPlan(statsRes.value.plan);
-        setStats(statsRes.value.stats);
-      }
-      if (engRes.status === "fulfilled") {
-        setEnglishTotal(engRes.value.total);
-        setEnglishAvg(engRes.value.avg_proficiency ?? null);
-      }
+    getStats().then(({ plan, stats }) => {
+      setPlan(plan);
+      setStats(stats);
     }).finally(() => setLoading(false));
   }, []);
 
@@ -110,6 +99,7 @@ export default function Dashboard() {
   const todayPct = s.today_total > 0 ? Math.round((s.today_done / s.today_total) * 100) : 0;
   const graduationPct = s.total > 0 ? Math.round((s.graduated / s.total) * 100) : 0;
 
+
   const statCards = [
     {
       label: "QUESTION_BANK",
@@ -118,6 +108,8 @@ export default function Dashboard() {
       icon: BookOpen,
       color: "text-[var(--c-cyan)]",
       border: "border-[var(--c-border)]",
+      bg: "bg-[var(--c-surface)]",
+      alert: false,
     },
     {
       label: "GRADUATED",
@@ -126,6 +118,8 @@ export default function Dashboard() {
       icon: CheckCircle2,
       color: "text-[var(--c-green)]",
       border: s.graduated > 0 ? "border-[var(--c-green)]/30" : "border-[var(--c-border)]",
+      bg: "bg-[var(--c-surface)]",
+      alert: false,
     },
     {
       label: "DUE_TODAY",
@@ -134,6 +128,8 @@ export default function Dashboard() {
       icon: Zap,
       color: s.due_today > 0 ? "text-[var(--c-red)]" : "text-[var(--c-fg2)]",
       border: s.due_today > 0 ? "border-[var(--c-red)]/30" : "border-[var(--c-border)]",
+      bg: s.due_today > 0 ? "bg-[var(--c-red-bg)] shadow-[inset_0_0_16px_var(--c-red-glow)]" : "bg-[var(--c-surface)]",
+      alert: s.due_today > 0,
     },
     {
       label: "AVG_PROFICIENCY",
@@ -143,6 +139,8 @@ export default function Dashboard() {
       icon: TrendingUp,
       color: "text-[var(--c-amber)]",
       border: "border-[var(--c-border)]",
+      bg: "bg-[var(--c-surface)]",
+      alert: false,
     },
   ];
 
@@ -178,9 +176,12 @@ export default function Dashboard() {
         <HackerRank score={s.hacker_score ?? 0} />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border }) => (
-            <div key={label} className={cn("bg-[var(--c-surface)] border p-4", border)}>
-              <Icon className={cn("w-4 h-4 mb-3", color)} />
+          {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border, bg, alert }) => (
+            <div key={label} className={cn("border p-4", border, bg)}>
+              <div className="flex items-center justify-between mb-3">
+                <Icon className={cn("w-4 h-4", color)} />
+                {alert && <TriangleAlert className={cn("w-4 h-4 alert-blink", color)} />}
+              </div>
               <div className={cn("text-2xl font-bold tabular-nums", color)}>
                 {value}
                 {suffix && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">{suffix}</span>}
@@ -272,20 +273,50 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {/* BANK */}
           <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
             <Languages className="w-4 h-4 text-[var(--c-cyan)]/40 mb-3" />
             <div className="text-2xl font-bold tabular-nums text-[var(--c-cyan)]/70">
-              {englishTotal ?? "—"}
+              {stats?.english?.total ?? "—"}
             </div>
             <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">ENGLISH_BANK</div>
             <div className="text-[var(--c-fg4)] text-xs mt-0.5">vocabulary entries</div>
           </div>
+          {/* GRADUATED */}
+          <div className={cn("bg-[var(--c-surface)] border p-4", (stats?.english?.graduated ?? 0) > 0 ? "border-[var(--c-green)]/30" : "border-[var(--c-border)]")}>
+            <CheckCircle2 className="w-4 h-4 text-[var(--c-green)]/40 mb-3" />
+            <div className="text-2xl font-bold tabular-nums text-[var(--c-green)]">
+              {stats?.english?.graduated ?? "—"}
+            </div>
+            <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">GRADUATED</div>
+            <div className="text-[var(--c-fg4)] text-xs mt-0.5">proficiency &gt; 10</div>
+          </div>
+          {/* OVERDUE — highlighted when non-zero */}
+          <div className={cn(
+            "border p-4",
+            (stats?.english?.overdue ?? 0) > 0
+              ? "border-[var(--c-red)]/30 bg-[var(--c-red-bg)] shadow-[inset_0_0_16px_var(--c-red-glow)]"
+              : "border-[var(--c-border)] bg-[var(--c-surface)]"
+          )}>
+            <div className="flex items-center justify-between mb-3">
+              <Zap className="w-4 h-4 text-[var(--c-red)]/40" />
+              {(stats?.english?.overdue ?? 0) > 0 && (
+                <TriangleAlert className="w-4 h-4 text-[var(--c-red)] alert-blink" />
+              )}
+            </div>
+            <div className={cn("text-2xl font-bold tabular-nums", (stats?.english?.overdue ?? 0) > 0 ? "text-[var(--c-red)]" : "text-[var(--c-fg2)]")}>
+              {stats?.english?.overdue ?? "—"}
+            </div>
+            <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">OVERDUE</div>
+            <div className="text-[var(--c-fg4)] text-xs mt-0.5">{(stats?.english?.overdue ?? 0) > 0 ? "needs review" : "all caught up"}</div>
+          </div>
+          {/* AVG_PROFICIENCY */}
           <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
             <TrendingUp className="w-4 h-4 text-[var(--c-amber)]/40 mb-3" />
             <div className="text-2xl font-bold tabular-nums text-[var(--c-amber)]">
-              {englishAvg != null ? englishAvg : "—"}
-              {englishAvg != null && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">/ 10</span>}
+              {stats?.english?.avg_proficiency != null ? stats.english.avg_proficiency : "—"}
+              {stats?.english?.avg_proficiency != null && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">/ 10</span>}
             </div>
             <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">AVG_PROFICIENCY</div>
             <div className="text-[var(--c-fg4)] text-xs mt-0.5">across all entries</div>

@@ -88,4 +88,10 @@ export interface Stats {
     due_today: number;
     avg_proficiency: number | null;
   }>;
+  english: {
+    total: number;
+    graduated: number;
+    overdue: number;
+    avg_proficiency: number | null;
+  } | null;
 }

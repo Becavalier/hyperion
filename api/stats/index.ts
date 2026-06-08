@@ -15,7 +15,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const today = new Date().toISOString().split("T")[0];
 
-  const [questionStats, profDist, catBreakdown, todayScheduleResult] = await Promise.all([
+  const [questionStats, profDist, catBreakdown, englishStats, todayScheduleResult] = await Promise.all([
     // Global question-level stats
     // hacker_score: difficulty-weighted average proficiency, normalized to 0–100.
     //   weight: easy=1, medium=2, hard=3 — harder mastery counts more.
@@ -47,6 +47,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     getProficiencyDistribution(),
 
     getCategoryBreakdown(today),
+
+    sql.query(
+      `SELECT
+        COUNT(*)::int                                              AS total,
+        COUNT(*) FILTER (WHERE proficiency > 10)::int             AS graduated,
+        COUNT(*) FILTER (WHERE proficiency > 0 AND proficiency <= 10
+                         AND next_review_date <= $1)::int          AS overdue,
+        ROUND(AVG(proficiency) FILTER (WHERE proficiency > 0), 1) AS avg_proficiency
+       FROM english_bank`,
+      [today]
+    ),
 
     // Today's existing schedule (if plan exists)
     plan
@@ -103,6 +114,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       today_total: todayTotal,
       today_done: todayDone,
       today_completed: todayCompleted,
+      english: englishStats.rows[0] ?? null,
     },
   });
 }

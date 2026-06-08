@@ -106,7 +106,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   });
 
-  try { await ctx.subscribe([symbol], [SubType.Quote]); } catch { /* best-effort */ }
+  try { await ctx.subscribe([symbol], [SubType.Quote], true); } catch { /* best-effort */ }
 
   // Heartbeat to keep the connection alive through proxies
   const heartbeat = setInterval(() => {
