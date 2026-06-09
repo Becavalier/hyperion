@@ -62,6 +62,7 @@ export async function listQuestions(opts: {
   if (dueOnly)  conditions.push(and(gt(questions.proficiency, 0), lte(questions.proficiency, 10), lte(questions.nextReviewDate!, today)));
 
   return db.select({
+    id:             questions.id,
     title:          questions.title,
     category:       questions.category,
     difficulty:     questions.difficulty,
