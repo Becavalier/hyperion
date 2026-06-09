@@ -12,7 +12,6 @@ export const questions = pgTable("questions", {
   nextReviewDate:  date("next_review_date"),
   lastReviewedAt:  timestamp("last_reviewed_at"),
   createdAt:       timestamp("created_at").defaultNow(),
-  updatedAt:       timestamp("updated_at").defaultNow(),
 });
 
 export const reviews = pgTable("reviews", {
