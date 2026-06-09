@@ -71,8 +71,6 @@ export async function buildDaySchedule(
   excludeIds: string[] = [],
   random = false,
 ): Promise<string[]> {
-  const half = Math.floor(dailyCount / 2);
-
   // Pull all non-graduated questions with the fields we need to bucket into slots.
   const all = await sql.query(
     `SELECT id, cluster_id, proficiency, next_review_date::text AS next_review_date, created_at
@@ -154,17 +152,14 @@ export async function buildDaySchedule(
 
   if (dueSlots.length === 0 && newSlots.length === 0) return [];
 
-  // Pick slots: 50/50 split
-  let picked: Slot[];
-  if (dueSlots.length > 0 && newSlots.length > 0) {
-    const duePick = dueSlots.slice(0, half);
-    const newPick = newSlots.slice(0, dailyCount - duePick.length);
-    picked = [...duePick, ...newPick];
-  } else if (dueSlots.length > 0) {
-    picked = dueSlots.slice(0, dailyCount);
-  } else {
-    picked = newSlots.slice(0, dailyCount);
-  }
+  // Dynamic ratio: each overdue slot displaces one new slot.
+  //   overdue = 0              → newQuota = dailyCount  (all new)
+  //   overdue = dailyCount / 2 → newQuota = dailyCount / 2  (50 / 50)
+  //   overdue >= dailyCount    → newQuota = 0  (all review)
+  const newQuota = Math.max(newSlots.length > 0 ? 1 : 0, dailyCount - dueSlots.length);
+  const duePick = dueSlots.slice(0, dailyCount - newQuota);
+  const newPick = newSlots.slice(0, dailyCount - duePick.length);
+  const picked = [...duePick, ...newPick];
 
   // Expand to flat id list
   return picked.flatMap((s) => s.expandIds);

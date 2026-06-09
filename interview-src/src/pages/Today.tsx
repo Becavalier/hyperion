@@ -621,7 +621,7 @@ export default function Today() {
               disabled={reshuffling}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-30 tracking-wider transition-colors"
             >
-              {reshuffling ? "···" : "换一组 ↺"}
+              {reshuffling ? "···" : "RESHUFFLE ↺"}
             </button>
           )}
           {doneCount === questions.length && questions.length > 0 && (
