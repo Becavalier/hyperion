@@ -11,7 +11,7 @@ import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { tags } from "@lezer/highlight";
 import confetti from "canvas-confetti";
 import type { Category } from "@/types";
-import { getSchedule, submitReview, resetReview, getAIReview, updateQuestion, extendSchedule, getStats } from "@/lib/api";
+import { getSchedule, submitReview, resetReview, getAIReview, updateQuestion, extendSchedule, reshuffleSchedule, getStats } from "@/lib/api";
 import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor, ratingLabel } from "@/lib/utils";
 import { rankFor } from "@/lib/ranks";
 import { RankUpBanner } from "@/components/RankUpBanner";
@@ -363,6 +363,7 @@ export default function Today() {
   const [savingHint, setSavingHint] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [extending, setExtending] = useState(false);
+  const [reshuffling, setReshuffling] = useState(false);
   const [exhausted, setExhausted] = useState(false);
   const [rankUp, setRankUp] = useState<{ from: Rank; to: Rank } | null>(null);
 
@@ -549,6 +550,34 @@ export default function Today() {
     }
   }
 
+  async function handleReshuffle() {
+    setReshuffling(true);
+    try {
+      const { questions: qs, reviews: rs, replaced, exhausted: ex } = await reshuffleSchedule(today);
+      if (replaced === 0) {
+        if (ex) setExhausted(true);
+        return;
+      }
+      setQuestions(qs);
+      setReviews(rs);
+      setQStates((prev) => {
+        const next: Record<string, QState> = {};
+        for (const q of qs) {
+          const done = rs.some((r) => r.question_id === q.id);
+          next[q.id] = prev[q.id] ?? {
+            ...BLANK,
+            phase: done ? "done" : q.category === "quiz" ? "submitted" : "coding",
+          };
+        }
+        return next;
+      });
+      const firstPending = qs.findIndex((q) => !rs.some((r) => r.question_id === q.id));
+      if (firstPending !== -1) setCurrent(firstPending);
+    } finally {
+      setReshuffling(false);
+    }
+  }
+
   async function handleSaveHint() {
     setSavingHint(true);
     try {
@@ -586,6 +615,15 @@ export default function Today() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          {doneCount < questions.length && questions.length > 0 && (
+            <button
+              onClick={handleReshuffle}
+              disabled={reshuffling}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-30 tracking-wider transition-colors"
+            >
+              {reshuffling ? "···" : "换一组 ↺"}
+            </button>
+          )}
           {doneCount === questions.length && questions.length > 0 && (
             exhausted ? (
               <span className="text-[var(--c-fg2)] text-xs tracking-widest">// BANK_EXHAUSTED</span>

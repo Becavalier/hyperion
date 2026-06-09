@@ -58,10 +58,18 @@ type Slot = {
   expandIds: string[];
 };
 
+function shuffle<T>(arr: T[]): void {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
 export async function buildDaySchedule(
   date: string,
   dailyCount: number,
   excludeIds: string[] = [],
+  random = false,
 ): Promise<string[]> {
   const half = Math.floor(dailyCount / 2);
 
@@ -136,9 +144,13 @@ export async function buildDaySchedule(
     // else: cluster is in-progress but nothing due today → skip
   }
 
-  // Sort each bucket: due by proficiency asc (lowest first), new by created_at asc
-  dueSlots.sort((a, b) => a.rank - b.rank);
-  newSlots.sort((a, b) => a.rank - b.rank);
+  if (random) {
+    shuffle(dueSlots);
+    shuffle(newSlots);
+  } else {
+    dueSlots.sort((a, b) => a.rank - b.rank);
+    newSlots.sort((a, b) => a.rank - b.rank);
+  }
 
   if (dueSlots.length === 0 && newSlots.length === 0) return [];
 

@@ -88,6 +88,12 @@ export const extendSchedule = (date: string) =>
     { method: "POST" }
   );
 
+export const reshuffleSchedule = (date: string) =>
+  request<{ schedule: DailySchedule; questions: Question[]; reviews: Review[]; replaced: number; exhausted?: boolean }>(
+    `/schedule/${date}?action=reshuffle`,
+    { method: "POST" }
+  );
+
 // ---------- Review ----------
 export const submitReview = (data: { schedule_id: string; question_id: string; self_rating: SelfRating; notes?: string }) =>
   request<{

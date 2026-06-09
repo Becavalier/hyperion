@@ -18,12 +18,46 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const plan = await getActivePlan();
   if (!plan) return res.json({ schedule: null, questions: [], reviews: [] });
 
-  // POST = extend today's schedule with another batch (user finished and wants more)
   if (req.method === "POST") {
+    const action = (req.query.action as string) ?? "extend";
     const current = await getScheduleByDate(plan.id as string, date);
     if (!current) return res.status(404).json({ error: "No schedule for date" });
 
     const dailyCount: number = (plan.config as { daily_count?: number } | null)?.daily_count ?? 6;
+
+    // Reshuffle: replace un-reviewed questions with a new random set
+    if (action === "reshuffle") {
+      const scheduleId = current.id as string;
+      const currentIds: string[] = (current.question_ids as string[]) ?? [];
+      const reviewRows = await getReviewsByScheduleId(scheduleId);
+      const reviewedIds = reviewRows.map((r: Record<string, unknown>) => r.question_id as string);
+      const reviewedSet = new Set(reviewedIds);
+      const unreviewedCount = currentIds.filter((id) => !reviewedSet.has(id)).length;
+
+      if (unreviewedCount === 0) {
+        const questions = await getQuestionsByIds(currentIds);
+        return res.json({ schedule: current, questions, reviews: reviewRows, replaced: 0 });
+      }
+
+      const newIds = await buildDaySchedule(date, unreviewedCount, currentIds, true);
+      if (newIds.length === 0) {
+        const questions = await getQuestionsByIds(currentIds);
+        return res.json({ schedule: current, questions, reviews: reviewRows, replaced: 0, exhausted: true });
+      }
+
+      const merged = [...reviewedIds, ...newIds];
+      const updated = await sql`
+        UPDATE daily_schedules SET question_ids = ${merged as unknown as string}
+        WHERE id = ${scheduleId} RETURNING *
+      `;
+      const [questions, reviews] = await Promise.all([
+        getQuestionsByIds(merged),
+        getReviewsByScheduleId(scheduleId),
+      ]);
+      return res.json({ schedule: updated.rows[0], questions, reviews, replaced: newIds.length });
+    }
+
+    // Extend: add another batch on top (user finished and wants more)
     const existingIds: string[] = (current.question_ids as string[]) ?? [];
     const newIds = await buildDaySchedule(date, dailyCount, existingIds);
 
