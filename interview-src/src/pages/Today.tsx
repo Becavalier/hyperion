@@ -253,14 +253,30 @@ const EDITOR_LANG_LABEL: Record<Category, string> = {
 
 // ── Keyboard spark effect ─────────────────────────────────────────────────────
 
-const SPARK_COLORS = [
-  "rgba(0,255,65,0.9)",    // hacker green
+const SPARK_COLORS_DARK = [
+  "rgba(0,255,65,0.9)",     // hacker green
   "rgba(125,255,125,0.85)", // soft green
-  "rgba(0,212,255,0.85)",  // cyan
-  "rgba(255,255,255,0.9)", // white
+  "rgba(0,212,255,0.85)",   // cyan
+  "rgba(255,255,255,0.9)",  // white
 ];
 
+const SPARK_COLORS_LIGHT = [
+  "rgba(0,122,30,0.92)",   // dark green  (--c-green)
+  "rgba(42,110,42,0.88)",  // forest green (--c-green-s)
+  "rgba(0,80,168,0.88)",   // deep blue    (--c-cyan)
+  "rgba(180,100,0,0.88)",  // warm amber
+];
+
+function getSparkColors() {
+  const theme = document.documentElement.dataset.theme;
+  const isLight =
+    theme === "light" ||
+    (!theme && window.matchMedia("(prefers-color-scheme: light)").matches);
+  return isLight ? SPARK_COLORS_LIGHT : SPARK_COLORS_DARK;
+}
+
 function spawnSparks(x: number, y: number) {
+  const colors = getSparkColors();
   const count = 2 + Math.floor(Math.random() * 2); // 2–3
   for (let i = 0; i < count; i++) {
     const el = document.createElement("span");
@@ -270,7 +286,7 @@ function spawnSparks(x: number, y: number) {
     const dx = Math.cos(angle) * dist;
     const dy = Math.sin(angle) * dist - 3;
     const size = 2 + Math.random() * 3.5; // 2–5.5px
-    const color = SPARK_COLORS[Math.floor(Math.random() * SPARK_COLORS.length)];
+    const color = colors[Math.floor(Math.random() * colors.length)];
     el.style.setProperty("--sx", `${x}px`);
     el.style.setProperty("--sy", `${y}px`);
     el.style.setProperty("--dx", `${dx}px`);
@@ -288,16 +304,21 @@ function spawnSparks(x: number, y: number) {
 
 // PASS rating → wave of sparks fanning out from a screen point.
 function spawnPassWave(originX: number, originY: number) {
+  const colors = getSparkColors();
   const count = 28;
   for (let i = 0; i < count; i++) {
     const el = document.createElement("span");
     el.className = "kbd-spark";
     const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
     const dist = 60 + Math.random() * 90;
+    const size = 2 + Math.random() * 4;
     el.style.setProperty("--sx", `${originX}px`);
     el.style.setProperty("--sy", `${originY}px`);
     el.style.setProperty("--dx", `${Math.cos(angle) * dist}px`);
     el.style.setProperty("--dy", `${Math.sin(angle) * dist - 20}px`);
+    el.style.setProperty("--size", `${size}px`);
+    el.style.setProperty("--color", colors[Math.floor(Math.random() * colors.length)]);
+    el.style.setProperty("--glow", `${size * 2}px`);
     el.style.animationDuration = `${700 + Math.random() * 400}ms`;
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 1200);
