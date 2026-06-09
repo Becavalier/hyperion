@@ -1136,7 +1136,8 @@ export default function Today() {
                       <>
                         {/* Verdict banner */}
                         {qs.aiVerdict && (() => {
-                          const r = RATINGS.find((x) => x.value === qs.aiVerdict)!;
+                          const r = RATINGS.find((x) => x.value === qs.aiVerdict);
+                          if (!r) return null;
                           const colorVar = r.value === "mastered" ? "var(--c-green)" : r.value === "fuzzy" ? "var(--c-amber)" : "var(--c-red)";
                           const glowVar  = r.value === "mastered" ? "var(--c-green-glow)" : r.value === "fuzzy" ? "var(--c-amber-glow)" : "var(--c-red-glow)";
                           const bgCls    = r.value === "mastered" ? "bg-[var(--c-green-dim)]" : r.value === "fuzzy" ? "bg-[var(--c-amber-bg)]" : "bg-[var(--c-red-bg)]";
