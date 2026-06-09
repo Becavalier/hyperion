@@ -239,7 +239,8 @@ export async function getReviewCountForSchedule(scheduleId: string): Promise<num
 }
 
 export async function getReviewsByScheduleId(scheduleId: string) {
-  return db.select().from(reviews).where(eq(reviews.scheduleId, scheduleId));
+  const result = await sql`SELECT * FROM reviews WHERE schedule_id = ${scheduleId}`;
+  return result.rows;
 }
 
 export async function deleteReview(scheduleId: string, questionId: string) {
