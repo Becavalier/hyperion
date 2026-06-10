@@ -1,8 +1,24 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Plus, Pencil, Trash2, X, Check, Search, Zap } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getEnglishEntries, createEnglishEntry, updateEnglishEntry, deleteEnglishEntry } from "@/lib/api";
 import type { EnglishEntry } from "@/lib/api";
+
+const mdInline = {
+  p:      ({ children }: { children?: React.ReactNode }) => <>{children}</>,
+  strong: ({ children }: { children?: React.ReactNode }) => <strong className="text-[var(--c-green)] font-semibold">{children}</strong>,
+  em:     ({ children }: { children?: React.ReactNode }) => <em className="text-[var(--c-amber)] not-italic">{children}</em>,
+  code:   ({ children }: { children?: React.ReactNode }) => (
+    <code className="text-[var(--c-green)] bg-[var(--c-green-dim)] border border-[var(--c-border)] px-1 py-0.5 font-mono">
+      {children}
+    </code>
+  ),
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+    <a href={href} className="text-[var(--c-cyan)] underline hover:text-[var(--c-fg1)]">{children}</a>
+  ),
+};
 
 const LIMIT = 40;
 
@@ -114,7 +130,9 @@ function EntryRow({
     <div className="border-b border-[var(--c-border)] hover:bg-[var(--c-bg)] transition-colors py-1.5">
       {contentLines.map((line, i) => (
         <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_120px_84px] gap-x-4 px-4 py-0.5 items-center">
-          <p className="text-xs text-[var(--c-fg1)] font-mono break-words">{line}</p>
+          <p className="text-xs text-[var(--c-fg1)] font-mono break-words">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdInline}>{line}</ReactMarkdown>
+          </p>
           <p className="text-xs text-[var(--c-fg2)] font-mono">
             {phoneticLines[i] ?? ""}
           </p>
