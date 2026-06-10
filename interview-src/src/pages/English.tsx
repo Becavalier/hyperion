@@ -57,6 +57,7 @@ function EntryRow({
   }
 
   const contentLines = entry.content.split("\n");
+  const phoneticLines = (entry.phonetic ?? "").split("\n");
   const notesLines = (entry.notes ?? "").split("\n");
 
   if (editing) {
@@ -71,11 +72,12 @@ function EntryRow({
             placeholder={"内容（多行用换行分隔）"}
             className="w-full bg-transparent text-[var(--c-fg1)] text-sm font-mono resize-none outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
           />
-          <input
+          <textarea
             value={form.phonetic}
             onChange={(e) => setForm((f) => ({ ...f, phonetic: e.target.value }))}
-            placeholder="音标"
-            className="bg-transparent text-[var(--c-fg2)] text-xs font-mono outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
+            rows={Math.max(2, contentLines.length)}
+            placeholder={"音标（逐行对应内容）"}
+            className="w-full bg-transparent text-[var(--c-fg2)] text-xs font-mono resize-none outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
           />
           <textarea
             value={form.notes}
@@ -114,7 +116,7 @@ function EntryRow({
         <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_120px_84px] gap-x-4 px-4 py-0.5 items-center">
           <p className="text-xs text-[var(--c-fg1)] font-mono break-words">{line}</p>
           <p className="text-xs text-[var(--c-fg2)] font-mono">
-            {i === 0 && entry.phonetic ? entry.phonetic : ""}
+            {phoneticLines[i] ?? ""}
           </p>
           <p className="text-xs text-[var(--c-fg2)] leading-relaxed break-words">
             {notesLines[i] ?? ""}
@@ -257,11 +259,12 @@ export default function English() {
               placeholder="内容"
               className="w-full bg-transparent text-[var(--c-fg1)] text-sm font-mono resize-none outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
             />
-            <input
+            <textarea
               value={newForm.phonetic}
               onChange={(e) => setNewForm((f) => ({ ...f, phonetic: e.target.value }))}
-              placeholder="音标"
-              className="bg-transparent text-[var(--c-fg2)] text-xs font-mono outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
+              rows={Math.max(2, newForm.content.split("\n").length)}
+              placeholder={"音标（逐行对应内容）"}
+              className="w-full bg-transparent text-[var(--c-fg2)] text-xs font-mono resize-none outline-none border border-[var(--c-border)] px-2 py-1.5 focus:border-[var(--c-green)]/50 placeholder:text-[var(--c-fg4)]"
             />
             <textarea
               value={newForm.notes}

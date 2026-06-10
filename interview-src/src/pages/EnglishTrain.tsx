@@ -25,6 +25,7 @@ function Card({ word, onAnswer }: { word: TrainWord; onAnswer: (known: boolean) 
   const [revealed, setRevealed] = useState(false);
   const lines = word.content.split("\n");
   const noteLines = (word.notes ?? "").split("\n");
+  const phoneticLines = (word.phonetic ?? "").split("\n");
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -52,8 +53,8 @@ function Card({ word, onAnswer }: { word: TrainWord; onAnswer: (known: boolean) 
             </p>
             <div className={cn("text-right transition-opacity duration-200 shrink-0", revealed ? "opacity-100" : "opacity-0")}>
               <p className="text-2xl font-bold text-[var(--c-green)]/80 font-mono tracking-wide"><HighlightLine text={line} /></p>
-              {word.phonetic && i === 0 && (
-                <p className="text-sm text-[var(--c-fg2)] font-mono">{word.phonetic}</p>
+              {phoneticLines[i] && (
+                <p className="text-sm text-[var(--c-fg2)] font-mono">{phoneticLines[i]}</p>
               )}
             </div>
           </div>
