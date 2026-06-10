@@ -129,7 +129,7 @@ function EntryRow({
   return (
     <div className="border-b border-[var(--c-border)] hover:bg-[var(--c-bg)] transition-colors py-1.5">
       {contentLines.map((line, i) => (
-        <div key={i} className="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_120px_84px] gap-x-4 px-4 py-0.5 items-center">
+        <div key={i} className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr_120px_84px] gap-x-4 px-4 py-0.5 items-center">
           <p className="text-xs text-[var(--c-fg1)] font-mono break-words">
             <ReactMarkdown remarkPlugins={[remarkGfm]} components={mdInline}>{line}</ReactMarkdown>
           </p>
@@ -160,7 +160,7 @@ function EntryRow({
 
 function ListHeader() {
   return (
-    <div className="hidden sm:grid grid-cols-[1fr_1fr_1fr_120px_100px] gap-x-4 px-4 py-1.5 border-b border-[var(--c-border)] bg-[var(--c-bg)]">
+    <div className="hidden sm:grid grid-cols-[2fr_1fr_1fr_120px_100px] gap-x-4 px-4 py-1.5 border-b border-[var(--c-border)] bg-[var(--c-bg)]">
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// CONTENT</span>
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// PHONETIC</span>
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// NOTES</span>
