@@ -83,7 +83,7 @@ export function ChatPanel({ open, onClose }: { open: boolean; onClose: () => voi
   useEffect(() => { reviewCtxRef.current = reviewCtx; }, [reviewCtx]);
 
   const transport = useMemo(() => new DefaultChatTransport({
-    api: "/api/chat",
+    api: "/api/ai?action=chat",
     headers: () => ({ Authorization: `Bearer ${getToken() ?? ""}` }),
     body: () => reviewCtxRef.current ? { reviewContext: reviewCtxRef.current } : {},
   }), []);

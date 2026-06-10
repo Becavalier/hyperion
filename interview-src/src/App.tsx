@@ -48,7 +48,7 @@ function StockTicker() {
     const token = getToken();
     const params = new URLSearchParams({ symbol: settings.stockSymbol });
     if (token) params.set("token", token);
-    const es = new EventSource(`/api/stock-stream?${params}`);
+    const es = new EventSource(`/api/ai?action=stock&${params}`);
 
     es.onmessage = (e) => {
       try {
