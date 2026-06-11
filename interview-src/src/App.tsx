@@ -7,6 +7,7 @@ import Plan from "@/pages/Plan";
 import Questions from "@/pages/Questions";
 import English from "@/pages/English";
 import EnglishTrain from "@/pages/EnglishTrain";
+import NotFound from "@/pages/NotFound";
 import { cn } from "@/lib/utils";
 import { AuthGate } from "@/components/AuthGate";
 import { SettingsPanel } from "@/components/SettingsPanel";
@@ -302,6 +303,7 @@ export default function App() {
             <Route path="/questions" element={<Questions />} />
             <Route path="/english" element={<English />} />
             <Route path="/english/train" element={<EnglishTrain />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 
