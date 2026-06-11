@@ -376,18 +376,13 @@ ${langInstruction}
 
 Provide your review in this structure (use markdown):
 
-### 🎯 Verdict reasoning
-3-5 bullet points covering: correctness, key insights matched / missed, edge cases.
-**Important: be lenient on phrasing / variable names / minor stylistic differences. Focus on whether the user grasped the core idea, not whether wording matches the reference.**
-
-### ✅ What was good
-What the user got right.
-
 ### ⚠️ What's missing or wrong
 Specific gaps. If empty submission, say so.
 
 ### 💡 Recommended answer
 Provide a clean, idiomatic recommended answer (code or analysis depending on task type). For code: full working snippet with brief comments. For review tasks: a structured bug list with fixes.
+
+When choosing the verdict below, be lenient on phrasing / variable names / minor stylistic differences — focus on whether the user grasped the core idea, not whether wording matches the reference.
 
 ═══════════════════════════════════════════════════════════════
 MANDATORY FINAL LINE — this rule is NOT optional:

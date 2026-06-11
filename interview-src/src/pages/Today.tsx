@@ -857,7 +857,7 @@ export default function Today() {
               ) : (
                 <button
                   onClick={() => { setEditingQuizId(q.id); setQuizDraft(q.content); }}
-                  className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg2)] tracking-wider transition-colors ml-2"
+                  className="flex items-center gap-1 text-xs bg-[var(--c-green)] text-[var(--c-bg)] px-2 py-0.5 hover:opacity-80 tracking-wider transition-opacity ml-2"
                 >
                   <Pencil className="w-3 h-3" />
                   EDIT
@@ -962,7 +962,7 @@ export default function Today() {
               ) : (
                 <button
                   onClick={() => { setEditingQuizId(q.id); setQuizDraft(q.content ?? ""); }}
-                  className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg2)] tracking-wider transition-colors"
+                  className="flex items-center gap-1 text-xs bg-[var(--c-green)] text-[var(--c-bg)] px-2 py-0.5 hover:opacity-80 tracking-wider transition-opacity"
                 >
                   <Pencil className="w-3 h-3" />
                   EDIT
