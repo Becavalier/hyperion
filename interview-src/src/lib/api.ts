@@ -114,9 +114,6 @@ export const resetReview = (schedule_id: string, question_id: string) =>
   });
 
 // ---------- AI ----------
-export const getAIAnswer = (question_id: string) =>
-  request<{ answer: string }>("/ai?action=answer", { method: "POST", body: JSON.stringify({ question_id }) });
-
 export const getAIReview = (question_id: string, code: string) =>
   request<{ feedback: string; verdict: SelfRating | null }>("/ai?action=review", { method: "POST", body: JSON.stringify({ question_id, code }) });
 
@@ -135,10 +132,6 @@ export const getTrainWords = () =>
   request<{ words: TrainWord[]; due_count: number }>("/english?mode=train");
 export const submitTrainResults = (results: { id: string; known: boolean }[]) =>
   request<{ ok: boolean; updated: number }>("/english?mode=train", { method: "POST", body: JSON.stringify({ results }) });
-
-// ---------- Stock ----------
-export const getStockQuote = (symbol: string) =>
-  request<{ symbol: string; price: number; change: number; changePercent: number; prevClose: number; lines: [number, number][] }>(`/stock?symbol=${encodeURIComponent(symbol)}`);
 
 // ---------- Stats ----------
 export const getStats = () =>

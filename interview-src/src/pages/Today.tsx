@@ -938,9 +938,48 @@ export default function Today() {
 
           {/* LEFT — question description */}
           <div className="flex flex-col overflow-hidden shrink-0 border-b md:border-b-0 md:border-r border-[var(--c-border)] h-52 md:h-auto md:w-[38%] xl:w-[32%]">
-            <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest shrink-0">
-              // PROBLEM
+            <div className="px-4 py-2 border-b border-[var(--c-border)] bg-[var(--c-bg)] text-[var(--c-fg3)] text-xs tracking-widest shrink-0 flex items-center justify-between">
+              <span>// PROBLEM</span>
+              {editingQuizId === q.id ? (
+                <div className="flex items-center gap-1.5">
+                  <button
+                    onClick={handleSaveQuizContent}
+                    disabled={savingQuiz}
+                    className="flex items-center gap-1 text-xs border border-[var(--c-green)] text-[var(--c-green)] px-2 py-0.5 hover:bg-[var(--c-green-bg)] disabled:opacity-30 tracking-wider transition-colors"
+                  >
+                    <Save className="w-3 h-3" />
+                    {savingQuiz ? "···" : "SAVE"}
+                  </button>
+                  <button
+                    onClick={() => setEditingQuizId(null)}
+                    disabled={savingQuiz}
+                    className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg2)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)] disabled:opacity-30 tracking-wider transition-colors"
+                  >
+                    <X className="w-3 h-3" />
+                    CANCEL
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => { setEditingQuizId(q.id); setQuizDraft(q.content ?? ""); }}
+                  className="flex items-center gap-1 text-xs border border-[var(--c-border)] text-[var(--c-fg3)] px-2 py-0.5 hover:border-[var(--c-border2)] hover:text-[var(--c-fg2)] tracking-wider transition-colors"
+                >
+                  <Pencil className="w-3 h-3" />
+                  EDIT
+                </button>
+              )}
             </div>
+            {editingQuizId === q.id ? (
+              <div className="flex-1 overflow-hidden min-h-0">
+                <CodeEditor
+                  value={quizDraft}
+                  onChange={(v) => setQuizDraft(v)}
+                  category="system-design"
+                  label="MARKDOWN_SOURCE"
+                  fontSize="0.75rem"
+                />
+              </div>
+            ) : (
             <div className="flex-1 overflow-auto p-4 space-y-3 min-h-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className={cn("text-xs px-2 py-0.5 font-medium tracking-wider", difficultyColor[q.difficulty])}>
@@ -966,6 +1005,7 @@ export default function Today() {
                 </div>
               )}
             </div>
+            )}
 
             {/* NOTES — editable answer_hint, saveable anytime */}
             <div
