@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { Plus, Pencil, Trash2, X, Check, Search, Zap } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Check, Search, Zap, ChevronUp, ChevronDown } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getEnglishEntries, createEnglishEntry, updateEnglishEntry, deleteEnglishEntry } from "@/lib/api";
@@ -158,13 +158,21 @@ function EntryRow({
   );
 }
 
-function ListHeader() {
+function ListHeader({ profSort, onToggleProfSort }: { profSort: "asc" | "desc" | null; onToggleProfSort: () => void }) {
   return (
     <div className="hidden sm:grid grid-cols-[2fr_1fr_1fr_120px_100px] gap-x-4 px-4 py-1.5 border-b border-[var(--c-border)] bg-[var(--c-bg)]">
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// CONTENT</span>
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// PHONETIC</span>
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// NOTES</span>
-      <span className="text-[var(--c-fg3)] text-xs tracking-widest">// PROF</span>
+      <button
+        onClick={onToggleProfSort}
+        className="flex items-center gap-1 text-[var(--c-fg3)] text-xs tracking-widest hover:text-[var(--c-fg1)] transition-colors"
+      >
+        // PROF
+        {profSort === "asc" && <ChevronUp className="w-3 h-3 text-[var(--c-green)]" />}
+        {profSort === "desc" && <ChevronDown className="w-3 h-3 text-[var(--c-green)]" />}
+        {profSort === null && <ChevronUp className="w-3 h-3 opacity-20" />}
+      </button>
       <span className="text-[var(--c-fg3)] text-xs tracking-widest">// ACTIONS</span>
     </div>
   );
@@ -175,6 +183,7 @@ export default function English() {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
+  const [profSort, setProfSort] = useState<"asc" | "desc" | null>(null);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
   const [newForm, setNewForm] = useState<FormState>(BLANK_FORM);
@@ -190,13 +199,23 @@ export default function English() {
       const ctrl = new AbortController();
       abortRef.current = ctrl;
       setLoading(true);
-      getEnglishEntries({ search: searchInput || undefined, page, limit: LIMIT }, ctrl.signal)
+      getEnglishEntries({
+        search: searchInput || undefined,
+        page,
+        limit: LIMIT,
+        ...(profSort ? { sort: "proficiency", order: profSort } : {}),
+      }, ctrl.signal)
         .then(({ entries: e, total: t }) => { setEntries(e); setTotal(t); })
         .catch((err) => { if (err.name === "AbortError") return; })
         .finally(() => { if (!ctrl.signal.aborted) setLoading(false); });
     }, 300);
     return () => clearTimeout(timer);
-  }, [searchInput, page]);
+  }, [searchInput, page, profSort]);
+
+  function handleToggleProfSort() {
+    setProfSort((s) => s === null ? "desc" : s === "desc" ? "asc" : null);
+    setPage(1);
+  }
 
   async function handleCreate() {
     if (!newForm.content.trim()) return;
@@ -312,7 +331,7 @@ export default function English() {
         </p>
       ) : (
         <div className="border-t border-[var(--c-border)] mx-4">
-          <ListHeader />
+          <ListHeader profSort={profSort} onToggleProfSort={handleToggleProfSort} />
           {entries.map((entry) => (
             <EntryRow key={entry.id} entry={entry} onSave={handleSave} onDelete={handleDelete} />
           ))}

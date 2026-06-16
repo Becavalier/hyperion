@@ -71,10 +71,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   // ── Normal CRUD ───────────────────────────────────────────────────────────
   if (req.method === "GET") {
-    const { search, page, limit } = req.query;
+    const { search, page, limit, sort, order } = req.query;
     const pageNum = Math.max(1, parseInt(page as string) || 1);
     const limitNum = Math.min(100, Math.max(1, parseInt(limit as string) || 40));
     const offset = (pageNum - 1) * limitNum;
+
+    const allowedSort: Record<string, string> = { proficiency: "proficiency", created_at: "created_at" };
+    const orderCol = allowedSort[sort as string] ?? "created_at";
+    const orderDir = (order as string) === "asc" ? "ASC" : "DESC";
 
     let where = "WHERE 1=1";
     const params: unknown[] = [];
@@ -90,7 +94,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       sql.query(
         `SELECT id, content, phonetic, notes, proficiency, created_at, updated_at
          FROM english_bank ${where}
-         ORDER BY created_at DESC
+         ORDER BY ${orderCol} ${orderDir}
          LIMIT $${idx} OFFSET $${idx + 1}`,
         [...params, limitNum, offset]
       ),
