@@ -149,10 +149,13 @@ export default function Questions() {
   const [resetTarget, setResetTarget] = useState<Question | null>(null);
   const [resetting, setResetting] = useState(false);
   const [todayIds, setTodayIds] = useState<Set<string>>(new Set());
+  const [todayQuestions, setTodayQuestions] = useState<Question[]>([]);
+  const [showTodayOnly, setShowTodayOnly] = useState(false);
 
   useEffect(() => {
     getSchedule(todayStr()).then(({ questions }) => {
       setTodayIds(new Set(questions.map((q) => q.id)));
+      setTodayQuestions(questions);
     }).catch(() => {});
   }, []);
 
@@ -274,24 +277,37 @@ export default function Questions() {
           <select
             value={filterCat}
             onChange={(e) => setFilterCat(e.target.value as Category | "")}
-            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
+            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] pl-3 pr-7 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
           >
             <option value="">All Categories</option>
             {CATEGORIES.map((c) => <option key={c} value={c}>{categoryLabel[c]}</option>)}
-        </select>
+          </select>
           <select
             value={filterDiff}
             onChange={(e) => setFilterDiff(e.target.value as Difficulty | "")}
-            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] px-3 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
+            className="bg-[var(--c-bg)] border border-[var(--c-border)] text-[var(--c-fg2)] pl-3 pr-7 py-2 text-xs focus:outline-none focus:border-[var(--c-green)] transition-colors xl:w-full"
           >
             <option value="">All Levels</option>
             {DIFFICULTIES.map((d) => <option key={d} value={d}>{difficultyLabel[d]}</option>)}
           </select>
 
-          {/* Active filter badges */}
-          {(filterCat || filterDiff || search) && (
+          {/* Today-only toggle */}
+          <button
+            onClick={() => setShowTodayOnly((o) => !o)}
+            className={cn(
+              "text-xs border px-2 py-1 tracking-wider transition-colors xl:w-full",
+              showTodayOnly
+                ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                : "border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)]"
+            )}
+          >
+            TODAY ({todayIds.size})
+          </button>
+
+          {/* Clear all filters */}
+          {(filterCat || filterDiff || search || showTodayOnly) && (
             <button
-              onClick={() => { setFilterCat(""); setFilterDiff(""); setSearch(""); }}
+              onClick={() => { setFilterCat(""); setFilterDiff(""); setSearch(""); setShowTodayOnly(false); }}
               className="text-xs text-[var(--c-red)] border border-[var(--c-red)] px-2 py-1 hover:bg-[var(--c-red-bg)] transition-colors tracking-wider xl:w-full"
             >
               CLEAR
@@ -301,8 +317,10 @@ export default function Questions() {
 
         {/* Record count + page info */}
         <div className="hidden xl:block space-y-1">
-          <p className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest">{total} record(s)</p>
-          {totalPages > 1 && (
+          <p className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest">
+            {showTodayOnly ? todayQuestions.length : total} record(s)
+          </p>
+          {!showTodayOnly && totalPages > 1 && (
             <p className="text-[var(--c-fg4)] text-xs tabular-nums">
               pg {page}/{totalPages}
             </p>
@@ -317,18 +335,18 @@ export default function Questions() {
         )}
 
         <p className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest xl:hidden">
-          {total} record(s) found
+          {showTodayOnly ? todayQuestions.length : total} record(s) found
         </p>
 
         {loading ? (
           <div className="text-center py-8 text-[var(--c-fg2)] text-xs tracking-widest">LOADING...</div>
-        ) : questions.length === 0 ? (
+        ) : (showTodayOnly ? todayQuestions : questions).length === 0 ? (
           <div className="text-center py-12 text-[var(--c-fg3)] text-xs tracking-widest">
-            NO_RECORDS — Click ADD_QUESTION to begin
+            {showTodayOnly ? "NO_QUESTIONS_DUE_TODAY" : "NO_RECORDS — Click ADD_QUESTION to begin"}
           </div>
         ) : (
           <div className="space-y-1.5">
-            {questions.map((q) =>
+            {(showTodayOnly ? todayQuestions : questions).map((q) =>
               editingId === q.id ? (
                 <QuestionForm
                   key={q.id}
@@ -411,7 +429,7 @@ export default function Questions() {
         )}
 
         {/* Pagination */}
-        {totalPages > 1 && (
+        {!showTodayOnly && totalPages > 1 && (
           <div className="flex items-center justify-between pt-2 border-t border-[var(--c-border)]">
             <span className="text-[var(--c-fg3)] text-xs tabular-nums tracking-widest">
               {(page - 1) * PAGE_SIZE + 1}–{Math.min(page * PAGE_SIZE, total)} / {total}
