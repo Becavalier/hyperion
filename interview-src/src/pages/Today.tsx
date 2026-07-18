@@ -1,4 +1,5 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -10,7 +11,6 @@ import { cpp } from "@codemirror/lang-cpp";
 import { HighlightStyle, syntaxHighlighting } from "@codemirror/language";
 import { tags } from "@lezer/highlight";
 import confetti from "canvas-confetti";
-import { diffLines } from "diff";
 import type { Category } from "@/types";
 import { getSchedule, submitReview, resetReview, getAIReview, updateQuestion, extendSchedule, reshuffleSchedule, getStats } from "@/lib/api";
 import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor, ratingLabel } from "@/lib/utils";
@@ -252,78 +252,6 @@ const EDITOR_LANG_LABEL: Record<Category, string> = {
   quiz: "plaintext",
 };
 
-// ── Code diff helpers ─────────────────────────────────────────────────────────
-
-function normalizeCode(code: string): string {
-  return code
-    .replace(/\r\n/g, "\n")
-    .replace(/\t/g, "  ")
-    .split("\n")
-    .map((l) => l.trimEnd())
-    .join("\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim();
-}
-
-function DiffView({ reference, submitted }: { reference: string; submitted: string }) {
-  const [open, setOpen] = useState(false);
-
-  const rows = useMemo(() => {
-    const parts = diffLines(normalizeCode(reference), normalizeCode(submitted));
-    const out: Array<{ kind: "added" | "removed" | "equal"; line: string }> = [];
-    for (const part of parts) {
-      const lines = part.value.split("\n");
-      if (lines[lines.length - 1] === "") lines.pop();
-      const kind = part.added ? "added" : part.removed ? "removed" : "equal";
-      for (const line of lines) out.push({ kind, line });
-    }
-    return out;
-  }, [reference, submitted]);
-
-  const changeCount = rows.filter((r) => r.kind !== "equal").length;
-
-  return (
-    <div className="border-t border-[var(--c-border)]">
-      <button
-        onClick={() => setOpen((o) => !o)}
-        className="w-full px-4 py-2 flex items-center justify-between text-xs tracking-widest text-[var(--c-fg3)] hover:text-[var(--c-fg2)] bg-[var(--c-bg)] transition-colors"
-      >
-        <span className="flex items-center gap-3">
-          <span>// DIFF</span>
-          <span className="text-[var(--c-fg4)]">reference ↔ submitted</span>
-          {changeCount === 0 ? (
-            <span className="text-[var(--c-green)]">✓ identical</span>
-          ) : (
-            <span className="text-[var(--c-amber)]">{changeCount} line{changeCount !== 1 ? "s" : ""} differ</span>
-          )}
-        </span>
-        {open ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-      </button>
-      {open && (
-        <div className="overflow-auto max-h-[40vh] border-t border-[var(--c-border)] bg-[var(--c-code)]">
-          <pre className="text-xs font-mono leading-relaxed">
-            {rows.map(({ kind, line }, i) => (
-              <div
-                key={i}
-                className={cn(
-                  "px-3 flex gap-2",
-                  kind === "added"   && "bg-[var(--c-green-dim)] text-[var(--c-green)]",
-                  kind === "removed" && "bg-[rgba(255,51,88,0.08)] text-[var(--c-red)]",
-                  kind === "equal"   && "text-[var(--c-fg4)]",
-                )}
-              >
-                <span className="select-none shrink-0 w-3 text-center">
-                  {kind === "added" ? "+" : kind === "removed" ? "-" : " "}
-                </span>
-                <span className="whitespace-pre">{line || " "}</span>
-              </div>
-            ))}
-          </pre>
-        </div>
-      )}
-    </div>
-  );
-}
 
 // ── Keyboard spark effect ─────────────────────────────────────────────────────
 
@@ -503,6 +431,8 @@ export default function Today() {
 
   const setReviewCtx = useSetReviewCtx();
   const today = todayStr();
+  const location = useLocation();
+  const focusId = new URLSearchParams(location.search).get("q");
 
   useEffect(() => {
     const cur = questions[current];
@@ -543,8 +473,13 @@ export default function Today() {
           };
         }
         setQStates(init);
-        const firstPending = questions.findIndex((q) => !reviews.some((r) => r.question_id === q.id));
-        if (firstPending !== -1) setCurrent(firstPending);
+        const focusIdx = focusId ? questions.findIndex((q) => q.id === focusId) : -1;
+        if (focusIdx !== -1) {
+          setCurrent(focusIdx);
+        } else {
+          const firstPending = questions.findIndex((q) => !reviews.some((r) => r.question_id === q.id));
+          if (firstPending !== -1) setCurrent(firstPending);
+        }
       })
       .finally(() => setLoading(false));
   }, [today]);
@@ -1210,9 +1145,6 @@ export default function Today() {
                             {qs.aiFeedback ?? ""}
                           </ReactMarkdown>
                         </div>
-                        {q.answer_hint && (
-                          <DiffView reference={q.answer_hint} submitted={qs.code} />
-                        )}
                       </>
                     )}
                   </div>

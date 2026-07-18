@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
-import { Plus, Search, Pencil, Trash2, ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
-import { getQuestions, createQuestion, updateQuestion, deleteQuestion, resetQuestionProficiency } from "@/lib/api";
-import { cn, categoryLabel, difficultyLabel, difficultyColor } from "@/lib/utils";
+import { useNavigate } from "react-router-dom";
+import { Plus, Search, Pencil, Trash2, ChevronLeft, ChevronRight, RotateCcw, Zap } from "lucide-react";
+import { getQuestions, createQuestion, updateQuestion, deleteQuestion, resetQuestionProficiency, getSchedule } from "@/lib/api";
+import { cn, categoryLabel, difficultyLabel, difficultyColor, todayStr } from "@/lib/utils";
 import type { Question, Category, Difficulty } from "@/types";
 import {
   AlertDialog,
@@ -135,6 +136,7 @@ function QuestionForm({ initial = EMPTY_FORM, onSave, onCancel }: QuestionFormPr
 const PAGE_SIZE = 15;
 
 export default function Questions() {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState<Question[]>([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
@@ -146,6 +148,13 @@ export default function Questions() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [resetTarget, setResetTarget] = useState<Question | null>(null);
   const [resetting, setResetting] = useState(false);
+  const [todayIds, setTodayIds] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    getSchedule(todayStr()).then(({ questions }) => {
+      setTodayIds(new Set(questions.map((q) => q.id)));
+    }).catch(() => {});
+  }, []);
 
   const totalPages = Math.ceil(total / PAGE_SIZE);
   // cancellation token for in-flight requests
@@ -369,6 +378,15 @@ export default function Questions() {
                       L{q.proficiency > 10 ? "★" : q.proficiency}
                     </span>
                     <div className="flex gap-1">
+                      {todayIds.has(q.id) && (
+                        <button
+                          onClick={() => navigate(`/today?q=${q.id}`)}
+                          title="Train this question today"
+                          className="p-1.5 text-[var(--c-green)] hover:bg-[var(--c-green-bg)] transition-colors"
+                        >
+                          <Zap className="w-3.5 h-3.5" />
+                        </button>
+                      )}
                       <button
                         onClick={() => requestReset(q)}
                         title="Reset proficiency to 0"
