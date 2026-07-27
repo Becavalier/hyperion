@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
-import { getPlan, generatePlan } from "@/lib/api";
+import { useNavigate } from "react-router-dom";
+import { Sparkles, Zap } from "lucide-react";
+import { getPlan, generatePlan, addQuestionToSchedule } from "@/lib/api";
 import { cn, todayStr, categoryLabel, difficultyColor, difficultyLabel } from "@/lib/utils";
 import type { StudyPlan, PlanStats, QueueItem } from "@/types";
 
@@ -27,6 +28,7 @@ function ProficiencyBar({ value }: { value: number }) {
 }
 
 export default function Plan() {
+  const navigate = useNavigate();
   const [plan, setPlan] = useState<StudyPlan | null>(null);
   const [stats, setStats] = useState<PlanStats | null>(null);
   const [queue, setQueue] = useState<QueueItem[]>([]);
@@ -34,6 +36,7 @@ export default function Plan() {
   const [generating, setGenerating] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState({ start_date: todayStr(), daily_count: 6 });
+  const [trainingId, setTrainingId] = useState<string | null>(null);
 
   const today = todayStr();
 
@@ -54,6 +57,18 @@ export default function Plan() {
       alert((e as Error).message);
     } finally {
       setGenerating(false);
+    }
+  }
+
+  async function handleTrainNow(questionId: string) {
+    setTrainingId(questionId);
+    try {
+      await addQuestionToSchedule(today, questionId);
+      navigate(`/today?q=${questionId}`);
+    } catch (e) {
+      alert((e as Error).message);
+    } finally {
+      setTrainingId(null);
     }
   }
 
@@ -166,7 +181,7 @@ export default function Plan() {
             <table className="w-full text-xs">
               <thead>
                 <tr className="border-b border-[var(--c-border)]">
-                  {["QUESTION", "CATEGORY", "DIFFICULTY", "PROFICIENCY", "NEXT_REVIEW"].map((h) => (
+                  {["QUESTION", "CATEGORY", "DIFFICULTY", "PROFICIENCY", "NEXT_REVIEW", ""].map((h) => (
                     <th key={h} className="px-4 py-2 text-left text-[var(--c-fg3)] tracking-widest font-normal whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
@@ -176,6 +191,7 @@ export default function Plan() {
                   const isDue = item.next_review_date !== null && item.next_review_date <= today;
                   const isToday = item.next_review_date === today;
                   const isNew = item.next_review_date === null && item.proficiency === 0;
+                  const isOverdue = isDue && !isToday;
                   return (
                     <tr key={item.id} className={cn(
                       "border-b border-[var(--c-border)] transition-colors",
@@ -207,6 +223,19 @@ export default function Plan() {
                           <span className="text-[var(--c-red)]">{item.next_review_date} ⚠</span>
                         ) : (
                           <span className="text-[var(--c-fg3)]">{item.next_review_date}</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-2.5 whitespace-nowrap">
+                        {isOverdue && (
+                          <button
+                            onClick={() => handleTrainNow(item.id)}
+                            disabled={trainingId === item.id}
+                            title="Train this question now"
+                            className="flex items-center gap-1 text-xs border border-[var(--c-red)] text-[var(--c-red)] px-2 py-1 hover:bg-[var(--c-red-bg)] disabled:opacity-30 tracking-wider transition-colors"
+                          >
+                            <Zap className="w-3 h-3" />
+                            {trainingId === item.id ? "···" : "TRAIN"}
+                          </button>
                         )}
                       </td>
                     </tr>

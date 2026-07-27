@@ -88,6 +88,12 @@ export const extendSchedule = (date: string) =>
     { method: "POST" }
   );
 
+export const addQuestionToSchedule = (date: string, questionId: string) =>
+  request<{ schedule: DailySchedule; questions: Question[]; reviews: Review[] }>(
+    `/schedule/${date}?action=add`,
+    { method: "POST", body: JSON.stringify({ question_id: questionId }) }
+  );
+
 export const reshuffleSchedule = (date: string) =>
   request<{ schedule: DailySchedule; questions: Question[]; reviews: Review[]; replaced: number; exhausted?: boolean }>(
     `/schedule/${date}?action=reshuffle`,

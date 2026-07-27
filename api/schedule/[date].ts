@@ -20,10 +20,47 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === "POST") {
     const action = (req.query.action as string) ?? "extend";
+    const dailyCount: number = (plan.config as { daily_count?: number } | null)?.daily_count ?? 6;
+
+    // Add: pull one specific question (e.g. an overdue item) into today's schedule,
+    // so it's guaranteed to show up when the client immediately navigates to it.
+    // Lazily creates the day's schedule first if it doesn't exist yet.
+    if (action === "add") {
+      const { question_id } = req.body as { question_id?: string };
+      if (!question_id) return res.status(400).json({ error: "question_id required" });
+
+      let current = await getScheduleByDate(plan.id as string, date);
+      if (!current) {
+        const questionIds = await buildDaySchedule(date, dailyCount);
+        const insertResult = await sql`
+          INSERT INTO daily_schedules (plan_id, date, question_ids)
+          VALUES (${plan.id}, ${date}, ${questionIds as unknown as string})
+          ON CONFLICT (plan_id, date) DO NOTHING
+          RETURNING *
+        `;
+        current = insertResult.rows[0] ?? await getScheduleByDate(plan.id as string, date);
+        if (!current) return res.status(500).json({ error: "Failed to create schedule" });
+      }
+
+      const existingIds: string[] = (current.question_ids as string[]) ?? [];
+      let updated = current;
+      if (!existingIds.includes(question_id)) {
+        const merged = [...existingIds, question_id];
+        const result = await sql`
+          UPDATE daily_schedules SET question_ids = ${merged as unknown as string}
+          WHERE id = ${current.id} RETURNING *
+        `;
+        updated = result.rows[0];
+      }
+      const [questions, reviews] = await Promise.all([
+        getQuestionsByIds((updated.question_ids as string[]) ?? []),
+        getReviewsByScheduleId(updated.id as string),
+      ]);
+      return res.json({ schedule: updated, questions, reviews });
+    }
+
     const current = await getScheduleByDate(plan.id as string, date);
     if (!current) return res.status(404).json({ error: "No schedule for date" });
-
-    const dailyCount: number = (plan.config as { daily_count?: number } | null)?.daily_count ?? 6;
 
     // Reshuffle: replace un-reviewed questions with a new random set
     if (action === "reshuffle") {
