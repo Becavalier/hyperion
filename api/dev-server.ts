@@ -46,8 +46,6 @@ async function main() {
     stats,
     ai,
     authLogin,
-    stockStream,
-    chat,
     english,
     englishById,
   ] = await Promise.all([
@@ -59,8 +57,6 @@ async function main() {
     import("./stats/index.js"),
     import("./ai/index.js"),
     import("./auth/login.js"),
-    import("./stock-stream.js"),
-    import("./chat.js"),
     import("./english/index.js"),
     import("./english/[id].js"),
   ]);
@@ -85,8 +81,6 @@ async function main() {
   app.all("/api/stats", adapt(stats.default));
   app.all("/api/ai", adapt(ai.default));
   app.all("/api/auth/login", adapt(authLogin.default));
-  app.all("/api/stock-stream", adapt(stockStream.default));
-  app.all("/api/chat", adapt(chat.default));
   app.all("/api/english", adapt(english.default));
   app.all("/api/english/:id", (req, res) => {
     withParams(req, { id: req.params.id });
