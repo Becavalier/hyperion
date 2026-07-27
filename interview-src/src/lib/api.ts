@@ -66,6 +66,9 @@ export const resetQuestionProficiency = (id: string) =>
     { method: "POST" }
   );
 
+export const getDailyQuestion = (date: string) =>
+  request<{ question: Question | null }>(`/questions?daily=1&date=${date}`);
+
 // ---------- Plan ----------
 export const getPlan = () =>
   request<{ plan: StudyPlan | null; stats: PlanStats; queue: QueueItem[] }>("/plan");

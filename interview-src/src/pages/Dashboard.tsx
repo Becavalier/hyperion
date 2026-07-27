@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { BookOpen, Calendar, CheckCircle2, TrendingUp, Zap, Languages, TriangleAlert } from "lucide-react";
-import { getStats } from "@/lib/api";
-import { cn, todayStr, categoryLabel } from "@/lib/utils";
-import type { Stats, StudyPlan } from "@/types";
-import { HackerRank } from "@/components/HackerRank";
+import { Link, useNavigate } from "react-router-dom";
+import { BookOpen, Calendar, CheckCircle2, TrendingUp, Zap, Languages, TriangleAlert, Dices } from "lucide-react";
+import { getStats, getDailyQuestion, addQuestionToSchedule } from "@/lib/api";
+import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor } from "@/lib/utils";
+import type { Stats, StudyPlan, Question } from "@/types";
 
 // ── Proficiency histogram ─────────────────────────────────────────────────────
 
@@ -63,16 +62,33 @@ function ProficiencyHistogram({ dist }: { dist: Stats["proficiency_dist"] }) {
 // ── Main page ─────────────────────────────────────────────────────────────────
 
 export default function Dashboard() {
+  const navigate = useNavigate();
   const [plan, setPlan] = useState<StudyPlan | null>(null);
   const [stats, setStats] = useState<Stats | null>(null);
   const [loading, setLoading] = useState(true);
+  const [dailyQuestion, setDailyQuestion] = useState<Question | null>(null);
+  const [trainingDaily, setTrainingDaily] = useState(false);
 
   useEffect(() => {
     getStats().then(({ plan, stats }) => {
       setPlan(plan);
       setStats(stats);
     }).finally(() => setLoading(false));
+    getDailyQuestion(todayStr()).then(({ question }) => setDailyQuestion(question)).catch(() => {});
   }, []);
+
+  async function handleTrainDaily() {
+    if (!dailyQuestion) return;
+    setTrainingDaily(true);
+    try {
+      await addQuestionToSchedule(todayStr(), dailyQuestion.id);
+      navigate(`/today?q=${dailyQuestion.id}`);
+    } catch (e) {
+      alert((e as Error).message);
+    } finally {
+      setTrainingDaily(false);
+    }
+  }
 
   if (loading) {
     return <div className="text-[var(--c-fg2)] text-xs py-12 text-center tracking-widest">LOADING...</div>;
@@ -173,7 +189,31 @@ export default function Dashboard() {
           )}
         </div>
 
-        <HackerRank score={s.hacker_score ?? 0} />
+        {dailyQuestion && (
+          <div className="bg-[var(--c-surface)] border border-[var(--c-border)] px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
+            <div className="flex items-center gap-3 min-w-0">
+              <Dices className="w-4 h-4 text-[var(--c-cyan)] shrink-0" />
+              <div className="min-w-0">
+                <p className="text-[var(--c-fg3)] text-xs tracking-widest mb-1">// DAILY_ONE — random pick, any level</p>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={cn("text-xs px-2 py-0.5 font-medium tracking-wider", difficultyColor[dailyQuestion.difficulty])}>
+                    [{difficultyLabel[dailyQuestion.difficulty].toUpperCase()}]
+                  </span>
+                  <span className="text-xs text-[var(--c-fg2)] tracking-wider">{categoryLabel[dailyQuestion.category]}</span>
+                  <span className="text-sm text-[var(--c-fg1)] truncate">{dailyQuestion.title}</span>
+                </div>
+              </div>
+            </div>
+            <button
+              onClick={handleTrainDaily}
+              disabled={trainingDaily}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-[var(--c-cyan)] text-[var(--c-cyan)] hover:bg-[var(--c-cyan-bg)] disabled:opacity-30 tracking-wider transition-colors shrink-0"
+            >
+              <Zap className="w-3.5 h-3.5" />
+              {trainingDaily ? "···" : "TRAIN"}
+            </button>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border, bg, alert }) => (
