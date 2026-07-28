@@ -191,7 +191,6 @@ export default function Plan() {
                   const isDue = item.next_review_date !== null && item.next_review_date <= today;
                   const isToday = item.next_review_date === today;
                   const isNew = item.next_review_date === null && item.proficiency === 0;
-                  const isOverdue = isDue && !isToday;
                   return (
                     <tr key={item.id} className={cn(
                       "border-b border-[var(--c-border)] transition-colors",
@@ -226,12 +225,17 @@ export default function Plan() {
                         )}
                       </td>
                       <td className="px-4 py-2.5 whitespace-nowrap">
-                        {isOverdue && (
+                        {isDue && (
                           <button
                             onClick={() => handleTrainNow(item.id)}
                             disabled={trainingId === item.id}
                             title="Train this question now"
-                            className="flex items-center gap-1 text-xs border border-[var(--c-red)] text-[var(--c-red)] px-2 py-1 hover:bg-[var(--c-red-bg)] disabled:opacity-30 tracking-wider transition-colors"
+                            className={cn(
+                              "flex items-center gap-1 text-xs border px-2 py-1 disabled:opacity-30 tracking-wider transition-colors",
+                              isToday
+                                ? "border-[var(--c-amber)] text-[var(--c-amber)] hover:bg-[var(--c-amber)] hover:text-[var(--c-bg)]"
+                                : "border-[var(--c-red)] text-[var(--c-red)] hover:bg-[var(--c-red)] hover:text-[var(--c-bg)]"
+                            )}
                           >
                             <Zap className="w-3 h-3" />
                             {trainingId === item.id ? "···" : "TRAIN"}
