@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { Sparkles, ChevronLeft, ChevronRight, CheckCircle2, RotateCcw, Pencil, X, Save, ChevronDown, ChevronUp, PlusCircle, Zap } from "lucide-react";
+import { Sparkles, ChevronLeft, ChevronRight, RotateCcw, Pencil, X, Save, ChevronDown, ChevronUp, PlusCircle, Zap } from "lucide-react";
 import { Fragment } from "react";
 import CodeMirror, { EditorView } from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
@@ -716,7 +716,7 @@ export default function Today() {
       </div>
 
       {/* Question tabs */}
-      <div className="flex items-center gap-1 overflow-x-auto pb-0.5 min-w-0 [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar-thumb]:bg-[var(--c-fg4)]">
+      <div className="flex flex-wrap items-center gap-1.5">
         {questions.map((qu, i) => {
           const rv = reviews.find((r) => r.question_id === qu.id);
           const isActive = i === current;
@@ -726,17 +726,20 @@ export default function Today() {
           return (
             <Fragment key={qu.id}>
               <button onClick={() => setCurrent(i)}
-                ref={isActive ? (el) => el?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' }) : undefined}
+                ref={isActive ? (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }) : undefined}
                 title={inCluster ? "Part of a question cluster — solved together" : undefined}
                 className={cn(
-                  "flex items-center gap-1 px-3 py-1.5 text-xs border tracking-wider transition-colors shrink-0",
+                  "flex items-center justify-center w-9 h-9 text-xs border tracking-wider transition-colors shrink-0",
                   isActive
                     ? "border-[var(--c-green)] text-[var(--c-green)] bg-[var(--c-green-bg)]"
+                    : rv?.self_rating === "mastered"
+                    ? "border-[var(--c-green)]/40 text-[var(--c-green)]/70 bg-[var(--c-green-dim)]"
+                    : rv?.self_rating === "fuzzy"
+                    ? "border-[var(--c-amber)]/40 text-[var(--c-amber)]/70 bg-[var(--c-amber-bg)]"
                     : rv
-                    ? "border-[var(--c-border)] text-[var(--c-fg3)] bg-[var(--c-bg)]"
+                    ? "border-[var(--c-red)]/40 text-[var(--c-red)]/70 bg-[var(--c-red-bg)]"
                     : "border-[var(--c-border)] text-[var(--c-fg2)] hover:border-[var(--c-border2)] hover:text-[var(--c-fg1)]",
                 )}>
-                {rv && <CheckCircle2 className="w-3 h-3" />}
                 Q{i + 1}
               </button>
               {linksToNext && (
