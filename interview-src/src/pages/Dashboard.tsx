@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, Calendar, CheckCircle2, TrendingUp, Zap, Languages, TriangleAlert, Dices } from "lucide-react";
+import { BookOpen, Calendar, CheckCircle2, Zap, Languages, TriangleAlert, Dices } from "lucide-react";
 import { getStats, getDailyQuestion, addQuestionToSchedule } from "@/lib/api";
 import { cn, todayStr, categoryLabel, difficultyLabel, difficultyColor } from "@/lib/utils";
 import type { Stats, StudyPlan, Question } from "@/types";
@@ -147,17 +147,6 @@ export default function Dashboard() {
       bg: s.due_today > 0 ? "bg-[var(--c-red-bg)] shadow-[inset_0_0_16px_var(--c-red-glow)]" : "bg-[var(--c-surface)]",
       alert: s.due_today > 0,
     },
-    {
-      label: "AVG_PROFICIENCY",
-      value: s.avg_proficiency != null ? s.avg_proficiency : "—",
-      suffix: s.avg_proficiency != null ? "/ 10" : undefined,
-      sub: s.avg_proficiency != null ? `across ${s.in_progress + s.graduated} reviewed` : "no reviews yet",
-      icon: TrendingUp,
-      color: "text-[var(--c-amber)]",
-      border: "border-[var(--c-border)]",
-      bg: "bg-[var(--c-surface)]",
-      alert: false,
-    },
   ];
 
   return (
@@ -215,7 +204,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border, bg, alert }) => (
             <div key={label} className={cn("border p-4", border, bg)}>
               <div className="flex items-center justify-between mb-3">
@@ -313,7 +302,7 @@ export default function Dashboard() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {/* BANK */}
           <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
             <Languages className="w-4 h-4 text-[var(--c-cyan)]/40 mb-3" />
@@ -350,16 +339,6 @@ export default function Dashboard() {
             </div>
             <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">OVERDUE</div>
             <div className="text-[var(--c-fg4)] text-xs mt-0.5">{(stats?.english?.overdue ?? 0) > 0 ? "needs review" : "all caught up"}</div>
-          </div>
-          {/* AVG_PROFICIENCY */}
-          <div className="bg-[var(--c-surface)] border border-[var(--c-border)] p-4">
-            <TrendingUp className="w-4 h-4 text-[var(--c-amber)]/40 mb-3" />
-            <div className="text-2xl font-bold tabular-nums text-[var(--c-amber)]">
-              {stats?.english?.avg_proficiency != null ? stats.english.avg_proficiency : "—"}
-              {stats?.english?.avg_proficiency != null && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">/ 10</span>}
-            </div>
-            <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">AVG_PROFICIENCY</div>
-            <div className="text-[var(--c-fg4)] text-xs mt-0.5">across all entries</div>
           </div>
         </div>
       </div>
