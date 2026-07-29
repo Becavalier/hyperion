@@ -205,7 +205,7 @@ export default function Dashboard() {
         )}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {statCards.map(({ label, value, suffix, sub, icon: Icon, color, border, bg, alert }) => (
+          {statCards.map(({ label, value, sub, icon: Icon, color, border, bg, alert }) => (
             <div key={label} className={cn("border p-4", border, bg)}>
               <div className="flex items-center justify-between mb-3">
                 <Icon className={cn("w-4 h-4", color)} />
@@ -213,7 +213,6 @@ export default function Dashboard() {
               </div>
               <div className={cn("text-2xl font-bold tabular-nums", color)}>
                 {value}
-                {suffix && <span className="text-sm font-normal text-[var(--c-fg2)] ml-1">{suffix}</span>}
               </div>
               <div className="text-[var(--c-fg3)] text-xs mt-1 tracking-widest">{label}</div>
               <div className="text-[var(--c-fg4)] text-xs mt-0.5">{sub}</div>
