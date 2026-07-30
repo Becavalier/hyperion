@@ -225,22 +225,24 @@ export default function Plan() {
                         )}
                       </td>
                       <td className="px-4 py-2.5 whitespace-nowrap">
-                        {isDue && (
-                          <button
-                            onClick={() => handleTrainNow(item.id)}
-                            disabled={trainingId === item.id}
-                            title="Train this question now"
-                            className={cn(
-                              "flex items-center gap-1 text-xs border px-2 py-1 disabled:opacity-30 tracking-wider transition-colors",
-                              isToday
-                                ? "border-[var(--c-amber)] text-[var(--c-amber)] hover:bg-[var(--c-amber)] hover:text-[var(--c-bg)]"
-                                : "border-[var(--c-red)] text-[var(--c-red)] hover:bg-[var(--c-red)] hover:text-[var(--c-bg)]"
-                            )}
-                          >
-                            <Zap className="w-3 h-3" />
-                            {trainingId === item.id ? "···" : "TRAIN"}
-                          </button>
-                        )}
+                        <button
+                          onClick={() => handleTrainNow(item.id)}
+                          disabled={trainingId === item.id}
+                          title="Train this question now"
+                          className={cn(
+                            "flex items-center gap-1 text-xs border px-2 py-1 disabled:opacity-30 tracking-wider transition-colors",
+                            isToday
+                              ? "border-[var(--c-amber)] text-[var(--c-amber)] hover:bg-[var(--c-amber)] hover:text-[var(--c-bg)]"
+                              : isDue
+                              ? "border-[var(--c-red)] text-[var(--c-red)] hover:bg-[var(--c-red)] hover:text-[var(--c-bg)]"
+                              : isNew
+                              ? "border-[var(--c-cyan)] text-[var(--c-cyan)] hover:bg-[var(--c-cyan)] hover:text-[var(--c-bg)]"
+                              : "border-[var(--c-border)] text-[var(--c-fg3)] hover:bg-[var(--c-fg3)] hover:text-[var(--c-bg)]"
+                          )}
+                        >
+                          <Zap className="w-3 h-3" />
+                          {trainingId === item.id ? "···" : "TRAIN"}
+                        </button>
                       </td>
                     </tr>
                   );
